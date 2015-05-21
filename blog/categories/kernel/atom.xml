@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Kernel | Ant-Veil]]></title>
+  <link href="http://casparant.github.io/blog/categories/kernel/atom.xml" rel="self"/>
+  <link href="http://casparant.github.io/"/>
+  <updated>2015-05-21T15:47:08+08:00</updated>
+  <id>http://casparant.github.io/</id>
+  <author>
+    <name><![CDATA[Caspar]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Linux Kernel 208.5d Panic Issue]]></title>
+    <link href="http://casparant.github.io/blog/2015/05/21/208-day-crash-issue/"/>
+    <updated>2015-05-21T15:39:33+08:00</updated>
+    <id>http://casparant.github.io/blog/2015/05/21/208-day-crash-issue</id>
+    <content type="html"><![CDATA[<p>最近线上碰到的问题，虽说早就有解决方案了，但是陆陆续续还是碰到很多没有升级内核的机器挂掉。记录一下以下内容，仅供参考。</p>
+
+<p>现象是机器运行到一定天数(刚开始反馈集中在 208.5 天左右)就会主动挂掉，报告文章末尾的 CallTrace，所幸社区几年前就有了解决方案：</p>
+
+<h1>Upstream Patch</h1>
+
+<pre><code>commit 4cecf6d401a01d054afc1e5f605bcbfe553cb9b9
+Author: Salman Qazi &lt;sqazi@google.com&gt;
+Date:   Tue Nov 15 14:12:06 2011 -0800
+
+    sched, x86: Avoid unnecessary overflow in sched_clock
+
+    (Added the missing signed-off-by line)
+
+    In hundreds of days, the __cycles_2_ns calculation in sched_clock
+    has an overflow.  cyc * per_cpu(cyc2ns, cpu) exceeds 64 bits, causing
+    the final value to become zero.  We can solve this without losing
+    any precision.
+
+    We can decompose TSC into quotient and remainder of division by the
+    scale factor, and then use this to convert TSC into nanoseconds.
+
+    Signed-off-by: Salman Qazi &lt;sqazi@google.com&gt;
+    Acked-by: John Stultz &lt;johnstul@us.ibm.com&gt;
+    Reviewed-by: Paul Turner &lt;pjt@google.com&gt;
+    Cc: stable@kernel.org
+    Signed-off-by: Peter Zijlstra &lt;a.p.zijlstra@chello.nl&gt;
+    Link: http://lkml.kernel.org/r/20111115221121.7262.88871.stgit@dungbeetle.mtv.corp.google.com
+    Signed-off-by: Ingo Molnar &lt;mingo@elte.hu&gt;
+</code></pre>
+
+<!--more-->
+
+
+<h1>Red Hat Fix</h1>
+
+<ul>
+<li>Z-stream since 2.6.32-220.5.1.el6</li>
+<li>Y-stream Since 2.6.32-226.el6</li>
+</ul>
+
+
+<h1>Ref Links</h1>
+
+<ul>
+<li><a href="http://kenichiokuyama.blogspot.hk/2011/12/schedclock-overflow-after-2085-days-in.html">http://kenichiokuyama.blogspot.hk/2011/12/schedclock-overflow-after-2085-days-in.html</a></li>
+</ul>
+
+
+<h1>Call Trace</h1>
+
+<pre><code>[776183.791021] divide error: 0000 [#1] SMP
+[776183.795055] last sysfs file: /sys/devices/system/cpu/cpu15/cache/index2/shared_cpu_map
+[776183.803045] CPU 9
+[776183.804967] Modules linked in: &lt;snip&gt;
+[776183.844841]
+[776183.846415] Modules linked in: &lt;snip&gt;
+[776183.886217] Pid: 0, comm: swapper Not tainted &lt;kernel&gt;
+[776183.895358] RIP: 0010:[&lt;ffffffff81059e15&gt;] [&lt;ffffffff81059e15&gt;] find_busiest_group+0x485/0xb50
+[776183.904258] RSP: 0018:ffff880028283c80 EFLAGS: 00010246
+[776183.909703] RAX: 0000000000000000 RBX: 0000000000000000 RCX: ffff88002828f900
+[776183.917021] RDX: 0000000000000000 RSI: ffc2c20d09ff2179 RDI: 000000001dcd6500
+[776183.924341] RBP: ffff880028283de0 R08: 0002c1ef5f24b5a6 R09: ffff88002828f910
+[776183.931658] R10: 0000000000000000 R11: 0000000000000000 R12: ffff880028295f01
+[776183.938977] R13: ffff88002828f900 R14: 0000000000015f40 R15: ffffffffffffffff
+[776183.946296] FS: 0000000000000000(0000) GS:ffff880028280000(0000) knlGS:0000000000000000
+[776183.954568] CS: 0010 DS: 0018 ES: 0018 CR0: 000000008005003b
+[776183.960447] CR2: 00000000008cb028 CR3: 0000000c61a84000 CR4: 00000000000006e0
+[776183.967776] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[776183.975095] DR3: 0000000000000000 DR6: 00000000ffff0ff0 DR7: 0000000000000400
+[776183.982418] Process swapper (pid: 0, threadinfo ffff880664a52000, task ffff880c6412f4c0)
+[776183.990691] Stack:
+[776183.992839] ffff880028283e40 ffff880028283d80 ffff880c7fc29600 ffff880028283e64
+[776184.000247] &lt;0&gt; 0000000000000040 ffff880028283e58 0000000960cf4700 ffff88002828f5e0
+[776184.008157] &lt;0&gt; 0000000028283ce0 ffff88002828f910 00000001ffffffff 0000000000000009
+[776184.016303] Call Trace:
+[776184.018884] &lt;IRQ&gt;
+[776184.021138] [&lt;ffffffff8105af96&gt;] rebalance_domains+0x146/0x520
+[776184.027193] [&lt;ffffffff8105b3bc&gt;] run_rebalance_domains+0x4c/0x150
+[776184.033506] [&lt;ffffffff8106b1e0&gt;] __do_softirq+0xc0/0x1e0
+[776184.039038] [&lt;ffffffff8100c18c&gt;] call_softirq+0x1c/0x30
+[776184.044483] [&lt;ffffffff8100dd55&gt;] do_softirq+0x65/0xa0
+[776184.049755] [&lt;ffffffff8106af2c&gt;] irq_exit+0x7c/0x90
+[776184.054856] [&lt;ffffffff814b0710&gt;] smp_apic_timer_interrupt+0x70/0x9d
+[776184.061343] [&lt;ffffffff8100bb53&gt;] apic_timer_interrupt+0x13/0x20
+[776184.067485] &lt;EOI&gt;
+[776184.069738] [&lt;ffffffff813bdc8a&gt;] ? poll_idle+0x2a/0x70
+[776184.075097] [&lt;ffffffff813bdc73&gt;] ? poll_idle+0x13/0x70
+[776184.080454] [&lt;ffffffff813bec86&gt;] ? menu_select+0xa6/0x330
+[776184.086072] [&lt;ffffffff813bdbc9&gt;] cpuidle_idle_call+0x99/0x130
+[776184.092042] [&lt;ffffffff81009888&gt;] cpu_idle+0xa8/0xe0
+[776184.097143] [&lt;ffffffff814a0d64&gt;] ? start_secondary+0x1b4/0x2a0
+[776184.103194] [&lt;ffffffff814a0d72&gt;] start_secondary+0x1c2/0x2a0
+[776184.109072] Code: d8 b8 01 00 00 00 48 c1 eb 0a 48 85 db 0f 45 c3 41 89 45 08 48 8b 8d 00 ff ff ff 48 8b 45 a8 8b 51 08 48 c1 e0 0a 48 89 d3 31 d2 &lt;48&gt; f7 f3 48 8b 55 b0 48 89 45 a0 31 c0 48 85 d2 74 0f 48 8b 45
+[776184.129029] RIP [&lt;ffffffff81059e15&gt;] find_busiest_group+0x485/0xb50
+[776184.135529] RSP &lt;ffff880028283c80&gt;
+[776184.139477] BUG: scheduling while atomic: swapper/0/0x10000100
+[776184.139485] ---[ end trace 32313550323d1731 ]---
+[776184.139586] Kernel panic - not syncing: Fatal exception in interrupt
+[776184.139589] Pid: 0, comm: swapper Tainted: G D ---------------- &lt;kernel&gt;
+[776184.139591] Call Trace:
+[776184.139592] &lt;IRQ&gt; [&lt;ffffffff81062e85&gt;] ? panic+0xa5/0x1a0
+[776184.139598] [&lt;ffffffff81352006&gt;] ? netoops+0x1c6/0x2a0
+[776184.139601] [&lt;ffffffff81064ac5&gt;] ? kmsg_dump+0x135/0x180
+[776184.139604] [&lt;ffffffff81062ae5&gt;] ? oops_exit+0x25/0x30
+[776184.139606] [&lt;ffffffff814abafb&gt;] ? oops_end+0xeb/0x100
+[776184.139609] [&lt;ffffffff8100f07b&gt;] ? die+0x5b/0x90
+[776184.139612] [&lt;ffffffff814ab226&gt;] ? do_trap+0x136/0x150
+[776184.139616] [&lt;ffffffff8100c80f&gt;] ? do_divide_error+0x8f/0xb0
+[776184.139618] [&lt;ffffffff81059e15&gt;] ? find_busiest_group+0x485/0xb50
+[776184.139623] [&lt;ffffffff8142124f&gt;] ? ip_rcv+0x26f/0x380
+[776184.139626] [&lt;ffffffff8100bdbb&gt;] ? divide_error+0x1b/0x20
+[776184.139629] [&lt;ffffffff81059e15&gt;] ? find_busiest_group+0x485/0xb50
+[776184.139633] [&lt;ffffffff8105af96&gt;] ? rebalance_domains+0x146/0x520
+[776184.139636] [&lt;ffffffff8105b3bc&gt;] ? run_rebalance_domains+0x4c/0x150
+[776184.139639] [&lt;ffffffff8106b1e0&gt;] ? __do_softirq+0xc0/0x1e0
+[776184.139642] [&lt;ffffffff8100c18c&gt;] ? call_softirq+0x1c/0x30
+[776184.139644] [&lt;ffffffff8100dd55&gt;] ? do_softirq+0x65/0xa0
+[776184.139647] [&lt;ffffffff8106af2c&gt;] ? irq_exit+0x7c/0x90
+[776184.139650] [&lt;ffffffff814b0710&gt;] ? smp_apic_timer_interrupt+0x70/0x9d
+[776184.139653] [&lt;ffffffff8100bb53&gt;] ? apic_timer_interrupt+0x13/0x20
+[776184.139654] &lt;EOI&gt; [&lt;ffffffff813bdc8a&gt;] ? poll_idle+0x2a/0x70
+[776184.139660] [&lt;ffffffff813bdc73&gt;] ? poll_idle+0x13/0x70
+[776184.139663] [&lt;ffffffff813bec86&gt;] ? menu_select+0xa6/0x330
+[776184.139666] [&lt;ffffffff813bdbc9&gt;] ? cpuidle_idle_call+0x99/0x130
+[776184.139669] [&lt;ffffffff81009888&gt;] ? cpu_idle+0xa8/0xe0
+[776184.139672] [&lt;ffffffff814a0d64&gt;] ? start_secondary+0x1b4/0x2a0
+[776184.139676] [&lt;ffffffff814a0d72&gt;] ? start_secondary+0x1c2/0x2a0
+[776184.325813] Modules linked in: &lt;snip&gt;
+[776184.367794] CPU 1:
+[776184.370036] Modules linked in: &lt;snip&gt;
+[776184.412014] Pid: 0, comm: swapper Tainted: G D ---------------- &lt;kernel&gt;
+[776184.423621] RIP: 0010:[&lt;ffffffff813bdc8a&gt;] [&lt;ffffffff813bdc8a&gt;] poll_idle+0x2a/0x70
+[776184.431644] RSP: 0018:ffff88066495bea8 EFLAGS: 00000246
+[776184.437128] RAX: ffff88066495bfd8 RBX: ffff88066495bed8 RCX: 0042e00b649a5000
+[776184.444484] RDX: 000000000001f6a9 RSI: ffff88002821d610 RDI: ffffffff81a2fbc0
+[776184.451844] RBP: ffffffff8100bb4e R08: 0000000000000000 R09: 0000000000000000
+[776184.459201] R10: 0000000000000000 R11: 0000000000000000 R12: 0042dfee0e6ae400
+[776184.466567] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000561f5fe16
+[776184.473927] FS: 0000000000000000(0000) GS:ffff880028200000(0000) knlGS:0000000000000000
+[776184.482241] CS: 0010 DS: 0018 ES: 0018 CR0: 000000008005003b
+[776184.488159] CR2: 00000000427b7078 CR3: 0000000651611000 CR4: 00000000000006e0
+[776184.495520] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[776184.502878] DR3: 0000000000000000 DR6: 00000000ffff0ff0 DR7: 0000000000000400
+[776184.510236] Call Trace:
+[776184.512861] [&lt;ffffffff813bdc73&gt;] ? poll_idle+0x13/0x70
+[776184.518261] [&lt;ffffffff813bec86&gt;] ? menu_select+0xa6/0x330
+[776184.523918] [&lt;ffffffff813bdbc9&gt;] ? cpuidle_idle_call+0x99/0x130
+[776184.530096] [&lt;ffffffff81009888&gt;] ? cpu_idle+0xa8/0xe0
+[776184.535408] [&lt;ffffffff814a0d64&gt;] ? start_secondary+0x1b4/0x2a0
+[776184.541499] [&lt;ffffffff814a0d72&gt;] ? start_secondary+0x1c2/0x2a0
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
