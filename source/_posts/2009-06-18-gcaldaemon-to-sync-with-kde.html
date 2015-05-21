@@ -1,0 +1,43 @@
+---
+layout: post
+title: GCALDaemon与KDE套件集成
+categories:
+- Configuration
+- Softwares
+tags:
+- gcaldaemon
+- kde
+published: true
+comments: true
+---
+<p>文章主要参考的还是<a href="http://gcaldaemon.sourceforge.net/usage.html">GCALDaemon的usage页面</a>，本文主要介绍使用GCALDaemon将KOrganizer和Google Calendar同步、将KAddressbook和GMAIL地址簿同步。</p>
+
+<p>上次使用远程文件的方式在Arch下确实搞定了，但是今天在Gentoo下又搞不定了。而且要使用远程资源的话，要装kdepim-kresources这个包。对于我这个有洁癖的人，当然是包越少越好了。如果有兴趣使用远程文件的，看完本文，参考前面那篇文章和GCALDaemon的官方主页吧。</p>
+
+<p>首先是下载GCALDaemon，下载完之后解压缩到/opt下，不知道GCALDaemon的开发人员刚开始怎么想的，居然想要解压缩到/usr/local/sbin下，囧。不过还要改三个文件，因为路径和预设的不一样了。使用sed命令：</p>
+
+<p><pre lang="bash">sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/password-encoder.sh
+sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/standalone-start.sh
+sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/sync-now.sh</pre></p>
+
+<p>之后可以把dev文件夹删掉，因为用不着，然后把bin/下面的*.sh文件都给增加可执行权限。</p>
+
+<p>gentoo用户可以去<a href="http://bugs.gentoo.org/237336">gentoo bugs</a>下载ebuild文件，或者用我的这个改过一些内容的：<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanMTJhNDQ4MjItYTIwZi00ZmZlLTllYzYtYmRhYjc1YzhkMDdi&hl=zh_CN">点此下载>>></a></p>
+
+<p>之后可以选择用root权限启动config-editor.sh（当然也可以按照官方网站上说的那样，chown到当前用户下，用普通用户权限执行），进行配置。</p>
+
+<p><!--more-->配置的时候关闭http同步，开启文件同步，关联好Google账户之后，在Google Calendar项选择你要同步的日历，在iCal file里面选择一个你的日历文件（一般可以在Google Calendar里面把你的private ical文件下下来后保存，然后在这里添加进去。当然也可以新建一个空的ics文件）。配置完为KOrganizer准备的同步后，配置LDAP服务器，关联好Google账户，其他都默认即可。</p>
+
+<p>接下来要启动GCALDaemon应用程序。还是以root权限启动（或者如前面所说，改了owner之后用普通用户权限启动），可以自己写一个启动脚本，比如<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanODBkMGUxYmQtNDg1YS00NDFiLWI5M2EtNGMyZGE2MDNjNTI0&hl=zh_CN">点击这里</a>下我写的Gentoo下的启动脚本。</p>
+
+<p>然后就是在应用程序里面配置了。</p>
+
+<p>打开KOrganizer，左下角“日历”处新建一个日历。从本地文件添加，找到刚才你配置时填写的本地文件，自己取个名字，确定即可。如果没有RP问题的话，应该就可以看到你在Google Calendar上面的事件了。你可以在上面增删事件，对应的修改马上会保存到本地ics文件中。但是GCALDaemon会按照你在config-editor.sh里预设的时间间隔同步到google上去，最少的间隔都要10分钟，所以这段时间里面要谨慎到Web上修改日历。</p>
+
+<p>打开KAddressbook，左下角“地址簿”处新建一个地址簿。从LDAP添加，只用填写主机和端口，主机为localhost，端口为你在config-editor.sh里面填写的端口，默认为9080。然后就可以同步了。不过我发现一个问题，在KAddressBook里面删除，不能更新Gmail。似乎是LDAP不支持。</p>
+
+<p>通过以上配置，可顺利将Google的若干服务与KDE集成。当然，配上IMAP的KMail收发Gmail，Aggregator导入Google Reader条目，这样就更完整了。</p>
+
+<p>不过，我还是十分看好Google的，现在我已经不习惯用本地客户端来收发Mail了，GMail太方便了。所以上述配置对我来说最有用的，还只是KOrganizer而已。什么时候我养成了看TODO上Web的习惯，那这些配置也就彻底不需要了。</p>
+
+<p></p>

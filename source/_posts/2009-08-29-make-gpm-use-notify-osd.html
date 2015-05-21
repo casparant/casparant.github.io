@@ -1,0 +1,21 @@
+---
+layout: post
+title: 让gnome-power-manager使用notify-osd通知
+categories:
+- Hacks
+tags:
+- gnome-power-manager
+- gpm
+- notify-osd
+published: true
+comments: true
+---
+<p>感谢<a href="http://imtx.cn" target="new">Tualatrix</a>同学对Notify-OSD, pidgin-libnotify, notification-daemon等包的hack，让我用上了Ubuntu下的Notify-OSD特性。不过因为笔记本经常要拔电源，这gnome-power-manager的事件通知还不能使用notify-osd，一拔电源就跳出窗口让人不爽，上网搜索，终于找到了解决方案。</p>
+
+<p>在AUR里面找到了这个: <a href="http://aur.archlinux.org/packages.php?ID=24699" target="new">http://aur.archlinux.org/packages.php?ID=24699</a>, 里面包含了notify-osd的补丁。可惜这是for 2.24的gpm的，直接patch会报错。我把它下载下来，修改了一下，让它能用在2.26.4的gpm上。修改后的patch可以从我在github上的overlay里下到：<a href="http://github.com/casparant/caspar-gentoo/tree/master" target="new">http://github.com/casparant/caspar-gentoo/tree/master</a>。</p>
+
+<p>现在gpm已经正常使用notify-osd了。至少拔除电源的时候能正确通知，不知道其他情况下如何。</p>
+
+<p><img src="http://img.ant.im/di-7718.png" /></p>
+
+<p>补充一个网址<a href="https://wiki.ubuntu.com/NotifyOSD" target="new">https://wiki.ubuntu.com/NotifyOSD</a>，看来Notify-OSD接管所有桌面通知任重而道远啊~</p>

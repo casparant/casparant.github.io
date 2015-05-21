@@ -1,0 +1,17 @@
+---
+layout: post
+title: libfprint finally supports Thinkpad T410
+categories:
+- Softwares
+tags:
+- fprint
+- Gentoo
+- t410
+published: true
+comments: true
+---
+<p>I have been keeping tracking of <a href="https://bugzilla.redhat.com/show_bug.cgi?id=504399" target="_blank">this RHBZ</a> for long, and I am happy to see libfprint finally supports my fingerprint reader on T410. Seems that the original author Daniel(dsd) was very busy so that another developer in Red Hat, Bastien Nocera, took this project instead. He moved the libfprint git repo to freedesktop.org, with the newest patches applied. You can find the new git repo <a href="http://cgit.freedesktop.org/libfprint/libfprint/" target="_blank">here</a>, and new libfprint release(0.2.0) <a href="http://freedesktop.org/~hadess/libfprint-0.2.0.tar.bz2" target="_blank">here</a>. Bastien Nocera is also maintaining <a href="http://www.reactivated.net/fprint/wiki/Fprintd" target="_blank">fprintd</a>, "a D-Bus daemon that offers libfprint functionality over the D-Bus interprocess communication bus". The git repo and new release are located <a href="http://cgit.freedesktop.org/libfprint/fprintd/" target="_blank">here</a> and <a href="http://freedesktop.org/~hadess/fprintd-0.2.0.tar.bz2" target="_blank">here</a>.</p>
+
+<p>Besides the RHBZ mentioned above, you should be able to get more information from this <a href="http://lists.reactivated.net/pipermail/fprint/2010-August/001530.html" target="_blank">message</a> in fprint mailing list.</p>
+
+<p>I updated my gentoo overlay in github, too. You can emerge libfprint and fprintd after you synchronized <a href="http://github.com/casparant/caspar-gentoo" target="_blank">this</a> overlay.</p>

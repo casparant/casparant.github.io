@@ -1,0 +1,48 @@
+---
+layout: post
+title: pkg-config命令学习
+categories:
+- Learning
+tags:
+- pkg-config
+published: true
+comments: true
+---
+<p>接着凌晨的文章说。</p>
+
+<p>昨天说自己被Ubuntu养懒了，确实懒了，懒得自己连系统的某些工具的用处都不知道。比如pkg-config</p>
+
+<p>以前一直不知道，Linux下那么多库，在./configure时时怎么判断它们存不存在的，难道是靠递归搜索？现在我才知道我zt了，pkg-config这个命令和/*/lib/pkgconfig下的一些.pc文件才是主角。</p>
+
+<p>每个.pc文件定义了库的名字、路径、编译选项等，比如glib-2.0.pc文件：</p>
+
+<p><blockquote>
+prefix=/usr<br />
+exec_prefix=${prefix}<br />
+libdir=/usr/lib<br />
+includedir=${prefix}/include</blockquote></p>
+
+<p>glib_genmarshal=glib-genmarshal<br />
+gobject_query=gobject-query<br />
+glib_mkenums=glib-mkenums</p>
+
+<p>Name: Glib<br />
+Description: C Utilitiy Library<br />
+Version: 2.14.4<br />
+Libs: -L${libdir} -lglib-2.0<br />
+Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
+</p>
+
+<p><!--more-->configure到某个时刻的时候，pkg-config命令会首先去PKG_CONFIG_PATH定义好的路径下搜索库名字对应的.pc文件，找到了就行了，等会儿make的时候就可以通过正则表达式取出libs和cflags的值来使用，否则的话就报错。</p>
+
+<p>刚才pkg-config提示没有libgnomeui-2.0的库，我找了一下，找到了这个.pc文件呀，但是pkg-config就是说找不到。我脑子抽筋了那么几分钟，终于意识到，在~/.bashrc中，添加libgnomeui-2.0所在的文件夹路径到PKG_CONFIG_PATH下：
+<pre lang="bash" line="1">
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
+</pre></p>
+
+<p>然后source ~/.bashrc就可以了。</p>
+
+<p>顺便说一句，编译真是个惊心动魄的过程啊，不亚于看恐怖小说。</p>
+
+<p>凌晨的时候系统坏了，现在重装好，配置好，恢复到了凌晨的状态了，sigh - b
+</p>

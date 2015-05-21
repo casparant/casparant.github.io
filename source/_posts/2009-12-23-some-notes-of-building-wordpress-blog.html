@@ -1,0 +1,27 @@
+---
+layout: post
+title: 新近摆弄WP的一点备忘
+categories:
+- Blog Stuffs
+tags:
+- theme
+- Wordpress
+- wp2.9
+published: true
+comments: true
+---
+<p>最近在加班之余还把自己的Blog整理了一遍，整理过程中发现这不知不觉就过去了一年。一年改变了好多东西，唯有折腾精神不变。</p>
+
+<p>首先是升级WP到了2.9，然后把Blog主题换了，在网上选了一款比较清爽的主题，<a href="http://www.neoease.com" target="_blank">mg12</a>的elegant box主题。这位主题作者的设计很对我胃口，上次用了他大名鼎鼎的iNove，感觉良好，情绪稳定。</p>
+
+<p>然后就整理了一下插件，自己hack了一下主题。原本辛辛苦苦hack了好几个小时的代码，把wp-thread-comment的回复样式弄得跟原生界面一样了，结果发现elegant box主题在页面上不能正确回复评论，而且不能正确显示分页。看了代码才发现，从wp2.7开始好像就自带了嵌套回复、评论分页功能，从这个版本开始主题模板中的comments.php就和以前不一样了。新的主题模板有仿佛和wp-thread-comment冲突。不过wp-thread-comment里面用的parent字段和wp原生嵌套功能的字段是一样的，所以关闭了wp-thread-comment之后嵌套评论还在。只是没有了邮件发送通知功能，网上再搜搜，发现<a href="http://fairyfish.net" target="_blank">denishua</a>的<a href="http://fairyfish.net/2008/11/03/comment-reply-notification/" target="_blank">Comment Reply Notification</a>把邮件发送功能从wp-thread-comment中抽取出来单独而成的，正和我意，于是装上。然后又发现评论上方自带了引言功能，那么Quoter这个插件也可以下课了。看来好久没有折腾wp，那是相当Out啊。</p>
+
+<p>装了几个锦上添花的插件：<a href="http://wordpress.org/extend/plugins/wp-recentcomments/" target="_blank">WP-RecentComments</a>, <a href="http://wordpress.org/extend/plugins/wp-multicollinks/" target="_blank">WP-MultiColLinks</a>, <a href="http://wordpress.org/extend/plugins/wp-easyarchives/" target="_blank">WP-EasyArchives</a>，作者都是mg12，主要是让版面排得更好看一些，其实不用也没太大影响。</p>
+
+<p><!--more-->接下去把侧边栏hack了一下，把文章页面的侧边栏内容和首页分开了。我觉得首页放一些站外共享的内容挺好，比如Google Friend Connect，Twitter，豆瓣分享什么的，但是在文章页读者想看的应该是和文章相关的内容，比如关联日志、同分类日志、Top10日志、随机日志等等。于是在sidebar.php里面加了一个判断，is_single()的时候，调用自己手动写的一个侧边栏文件，不通过Widgets来配置。这也算是用户体验上的一个改进吧，不过话说我的Blog应该是光订阅不访问的人比较多，现在日IP估计连50都没。</p>
+
+<p>最后做的一件事情就是以前经常干的：删文章。最开始出于这个那个的原因，转载了一些现在都没什么兴趣了的文章，现在看看实在扎眼，删了。</p>
+
+<p>P.S. wp2.9有了回收站功能和图片编辑功能，用了一下感觉很好。推荐大家升级。</p>
+
+<p></p>

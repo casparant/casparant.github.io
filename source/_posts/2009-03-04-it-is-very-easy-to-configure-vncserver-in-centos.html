@@ -1,0 +1,47 @@
+---
+layout: post
+title: 原来在CentOS中配置VNCServer很容易
+categories:
+- Configuration
+tags:
+- centos
+- vnc
+- vncserver
+published: true
+comments: true
+---
+<p>发现该学点脚本了，有空可以在服务器上折腾折腾。不过在此之前我还是先得把实验室这台服务器配置好。</p>
+
+<p>服务器是CentOS5.2，准备开启VNC服务。想起<a href="http://www.casparant.com/remote-login-under-ubuntu.html">当年在Ubuntu下配置费了九牛二虎之力</a>，估计着在CentOS上也不会容易。</p>
+
+<p>没想到如此简单：</p>
+
+<p>服务器在安装时已经装好了VNCServer，接下去只要编辑<code>/etc/sysconfig/vncservers</code>文件中的<code>VNCSERVERS</code>字段（确保取消了这行的注释）：</p>
+
+<p><blockquote>VNCSERVERS="1:root 2:user1 3:user2 4:blablabla"</blockquote></p>
+
+<p>如果只要为单个用户开启VNC服务，只需按照PORT:USERNAME的格式修改，如果为多个用户开启VNC服务，则用空格隔开即可。</p>
+
+<p>如果需要修改分辨率，设置是否允许通过TCP登录、是否允许通过Web登录以及是否允许不安全TCP tunel登录，则修改<code>VNCSERVERARGS[2]</code>字段：</p>
+
+<p><!--more--><blockquote>VNCSERVERARGS[2]="-geometry 1024x768  -nolisten tcp -nohttpd -localhost"</blockquote></p>
+
+<p>注意按照注释提示，酌情修改。</p>
+
+<p>如果系统开启了防火墙，还要把5901~590x端口（取决于你为多少个用户开启VNC服务，如果VNC第一个端口开放，则为5901，以此类推）打开，至于是开启TCP端口还是UDP端口，按照自己的设置来修改。</p>
+
+<p>修改完毕后，把vncserver加入开机自动启动：</p>
+
+<p><pre lang="bash">chkconfig vncserver on</pre></p>
+
+<p>或者手动往<code>rc2~5.d/</code>中加入vncserver的链接。</p>
+
+<p>同时仍然要注意使用<code>vncpasswd</code>修改密码，并且修改<code>~/.vnc/xstartup</code>，注释最后两行，添加一行<code>gnome-session &</code></p>
+
+<p><pre lang="bash"># xterm -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+# twm &
+gnome-session &</pre></p>
+
+<p>从此每个用户都顺利过上了vnc登录生活……</p>
+
+<p></p>

@@ -1,0 +1,52 @@
+---
+layout: post
+title: Ubuntu 8.04 mod_python Config
+categories:
+- Configuration
+tags:
+- apache
+- mod_python
+- python
+published: true
+comments: true
+---
+<p>第一步，安装mod_python</p>
+
+<p><pre lang="bash">sudo apt-get install libapache2-mod-python</pre></p>
+
+<p>第二步，将mod_python模块加入到启用列表中</p>
+
+<p><pre lang="bash">sudo ln -s /etc/apache2/mods-available/mod_python.load /etc/apache2/mods-enabled/</pre></p>
+
+<p><strong>注：在Ubuntu 8.10中，对应的模块配置文件名已经改成了python.load，后文中提到的也应相应改成python.conf</strong></p>
+
+<p>第三步，配置mod_python</p>
+
+<p>先在<code>/etc/apache2/mods-available/</code>下新建一个文件<code>mod_python.conf</code></p>
+
+<p><pre lang="bash">sudo vi /etc/apache2/mods-available/mod_python.conf</pre></p>
+
+<p>加入如下内容：</p>
+
+<p><pre lang="xml" line="1"><Directory /var/www>
+    AddHandler mod_python .py
+    PythonHandler test
+    PythonDebug On
+</pre></p>
+
+<p><!--more-->然后同样加入启用列表：</p>
+
+<p><pre lang="bash">sudo ln -s /etc/apache2/mods-available/mod_python.conf /etc/apache2/mods-enabled/</pre></p>
+
+<p>第四步，重启apache服务器</p>
+
+<p><pre lang="bash">sudo /etc/init.d/apache2 restart</pre></p>
+
+<p>第五步，测试</p>
+
+<p>在<code>/var/www</code>下新建一个文件，test.py，输入内容为：</p>
+
+<p><pre lang="python" line="1">def index(req):
+    return "Test Successfully";</pre></p>
+
+<p>在浏览器输入<code>http://localhost/test.py</code></p>

@@ -1,0 +1,49 @@
+---
+layout: post
+title: '[转]支付宝针Firefox 的安全控件 for Linux'
+categories:
+- Copid Entries
+tags:
+- alipay
+- firefox
+- released
+published: true
+comments: true
+---
+<p>在支付宝的官方Blog上，已经可以使用了。打开alipay的页面终于可以登录了，只是登录后要付款，发现招行还是不行，支付宝里面没钱也是白搭啊……</p>
+
+<p>下载地址在这里：<a href="http://blog.alipay.com/">http://blog.alipay.com/</a></p>
+
+<p>下面是官方消息的转载，暂时不支持数字签名。不管怎么说，还是值得期待的。</p>
+
+<p><!--more--><blockquote /></p>
+
+<p>作者：西毒 与 支付宝产品技术部安全研发组</p>
+
+<p>自从上次支付宝在官方网志上宣布将支持 Firefox 浏览器后，已经有很多用户询问什么时候能够支持 Linux 平台下的 Firefox ，现在是可以做出回答的时候了：尽管该安全控件(针对 Linux 下 Firefox 的安全控件)还没有正式在官方网站上发布，本 Blog 用户可以提前体验啦。</p>
+
+<p>      下载: <a href="http://blog.alipay.com/wp-content/2008/10/aliedit.tar.gz">支付宝安全控件 for Linux 平台 的 Firefox</a> ( MD5:02240053d32688ed996e3a4788042801 ) </p>
+
+<p>使用方法：下载上述链接的文件，解压缩成两个文件:</p>
+
+<p>$ tar -zxvf aliedit.tar.gz </p>
+
+<p>推荐校验 MD5 值：</p>
+
+<p>$ md5sum aliedit.tar.gz<br />
+02240053d32688ed996e3a4788042801  aliedit.tar.gz</p>
+
+<p>并将这两个文件复制到 ~/.mozilla/plugins 目录：</p>
+
+<p>$ cp aliedit.so aliedit.xpt ~/.mozilla/plugins </p>
+
+<p>重新启动 Firefox 即可。</p>
+
+<p>安全提示：下载前请做一下 MD5 校验。同时在官方站点发布正式的针对 Linux 下 Firefox 的安全控件之前，不要相信任何来自其他网站的安全控件。</p>
+
+<p>补充说明：目前在 Linux 下的支付宝安全控件也不支持数字证书。</p>
+
+<p>如遇到任何问题，请在本贴留言。如遇到 Bug 或者其他软件缺陷也请即时联系我们，支付志的运营团队将为您准备一份相应的礼品。</p>
+
+<p>–EOF–
+</p>

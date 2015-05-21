@@ -1,0 +1,31 @@
+---
+layout: post
+title: RHEL5添加DVD光盘为源
+categories:
+- Configuration
+tags:
+- local repo
+- rhel
+published: true
+comments: true
+---
+<p>本文仅供存档使用，米有技术含量勿怪。</p>
+
+<p><pre lang="bash" line="1">mkdir /media/rhel
+mount /dev/scd0 /media/rhel
+vi /etc/yum.repos.d/rhel-dvd.repo</pre></p>
+
+<p>内容如下：</p>
+
+<p><blockquote>[Server]<br />
+name=Red Hat Enterprise Linux $releasever - $basearch - Server<br />
+baseurl=file:///media/rhel/Server<br />
+enabled=1<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release</blockquote></p>
+
+<p>保存退出，yum update;yum install OO_AND_XX,blablabla....</p>
+
+<p>顺便说一句，某老师不熟悉yum真囧……</p>
+
+<p>再顺便说一句，学好脚本真是很有用啊。12张班得瑞的专辑改名，手工还真差点累死。脚本几行就搞定^_^</p>

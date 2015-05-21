@@ -1,0 +1,93 @@
+---
+layout: post
+title: 重新装回Gentoo
+categories:
+- Z-Turn
+tags:
+- acpi
+- Gentoo
+- hotkey
+- thinkpad
+- thinkvantage
+published: true
+comments: true
+---
+<p>最近到手T410，先是折腾了几天把里面的正版Win7 Pro通过无损分区移到角落里，然后是装了个RHEL6.0用来做测试，最后重新开始折腾Gentoo。</p>
+
+<p>这次没有纠结于选择哪个桌面环境上，我一点也不嫌弃GNOME的臃肿，于是装了个gnome-light。USE Flag把以前用过的拿过来修改了一下，顺便提一句，在我不用Gentoo的这段时间听说hal被干掉了，所以我也追风把hal标记给去掉了。</p>
+
+<p>启动的时候使用grub2，本来打了915resolution补丁来使grub宽屏显示，但是打的补丁和grub-1.98似乎不是特别搭配，导致启动grub前后各有5秒停滞时间，加上grub启动过后仍然会有一个分辨率只有640x480的屏幕，我干脆就不用915resolution补丁了。使用grub2，配上ext4分区，就可以不使用initramfs了，关键在两点，一是内核中ACHI选项要编译进内核，二是kernel行参数中不要使用UUID。</p>
+
+<p>说一下一些Thinkpad相关的配置：</p>
+
+<p>一是声卡驱动。Thinkpad T410的声卡应该是CONEXANT的，但是选择这个驱动后内核还是不认我的声卡。最后只好选择了通用驱动。</p>
+
+<p>二是hdaps，所谓的硬盘防震保护系统。portage里面相关的三个包，一个是hdaps模块，一个是GNOME的Applet，还有一个是OpenGL绘制的小程序，用来展示你的笔记本目前的水平状态。</p>
+
+<p><!--more-->三是Thinkpad相关的快捷键。目前键盘上展示的快捷键基本上都能用，除了Fn+F6的“摄像头、耳机”、Fn+F8的“触摸板、小红点切换”还有麦克风静音三个按钮不能工作。根据Thinkwiki的<a href="http://www.thinkwiki.org/wiki/How_to_get_special_keys_to_work" target="_blank">这里</a>说，Fn+F8可以通过thinkpad-acpi或者tps使之工作，其他两个目前还没办法。不过我连Fn+F8都没搞定，只是自己写了个脚本，用来切换触摸板的开关（用小红点的时候肯定很讨厌触摸板开着）：</p>
+
+<p><pre lang="bash">
+#!/bin/bash</pre></p>
+
+<p>status=`synclient -l | grep TouchpadOff | awk '{print $3}'`<br />
+if [ $status -eq 0 ]<br />
+then<br />
+    synclient TouchpadOff=1<br />
+    notify-send "Touchpad is disabled!"<br />
+elif [ $status -eq 1 ]<br />
+then<br />
+    synclient TouchpadOff=0<br />
+    notify-send "Touchpad is enabled"<br />
+fi
+
+把它保存为脚本，加上x权限，通过GNOME的键盘快捷键来控制，比如Win+Space。</p>
+
+<p>另外我给蓝牙设置了一个快捷键。笔记本上那个蓝色的ThinkVantage按钮没用到，就把它绑定了一个ACPI事件，设置为给蓝牙控制开关。事件代码如下：</p>
+
+<p><pre lang="bash">
+event=ibm/hotkey HKEY 00000080 00001018
+action=/home/caspar/.local/bin/bluetooth.sh
+</pre></p>
+
+<p>上述代码保存为ACPI事件文件，如/etc/acpi/events/bluetooth。快捷键对应的KEY CODE可以到Thinkwiki上面去找，也可以看内核的:Documentation/laptop/thinkpad-acpi.txt文档。至于用于控制的bluetooth.sh脚本，则如下(代码来源仍旧是ThinkWiki，看<a href="http://www.thinkwiki.org/wiki/How_to_setup_Bluetooth" target="_blank">这里</a>)：</p>
+
+<p><pre lang="bash">
+#!/bin/bash
+ 
+NAME="tpacpi_bluetooth_sw"
+ 
+find_by_name() {
+    NAME="$1"
+    test -z "${NAME}" && return 1
+    SYSFS_NAME=$(find -P /sys -name name -path "*/rfkill/*" -exec grep -l "${NAME}" \{\} + | head -n 1)
+    if [[ ! -z "${SYSFS_NAME}" && -r "${SYSFS_NAME/%name/state}" ]]; then
+        RESULT=${SYSFS_NAME%%/name}
+        echo $RESULT
+        return 0
+    fi
+    return 1
+}
+ 
+SYSFS="$(find_by_name "${NAME}")"
+ 
+if [[ ! -z "${SYSFS}" && -r "${SYSFS}/state" ]]; then
+    case "$(cat "${SYSFS}/state")" in
+        0)
+            echo 1 > "${SYSFS}/state"
+            ;;
+        1)
+            echo 0 > "${SYSFS}/state"
+            ;;
+    esac
+fi
+</pre></p>
+
+<p>重启ACPI服务就可以看到蓝牙可以被ThinkVantage按钮控制了。</p>
+
+<p>目前还不能工作的设备有：指纹识别器，从lshw中看到似乎还有HECI控制器(Intel似乎不想管这个咚咚了？）、温度检测设备(Thermal Subsystem)和一个Ricoh的外围设备。</p>
+
+<p>最后向使用Thinkpad的同学严重推荐<a href="http://www.thinkwiki.org" target="_blank">ThinkWiki</a>。</p>
+
+<p>P.S. 设置充电阈值：据说如果电池不怎么经常使用的话，充电不充满有利于延长电池寿命（Win7下的配套软件是这么说的），所以可以设置一个充电阈值，把下面命令放到/etc/conf.d/local.start去：</p>
+
+<p><pre lang="bash">echo 95 > /sys/devices/platform/smapi/BAT0/stop_charge_thresh</pre></p>

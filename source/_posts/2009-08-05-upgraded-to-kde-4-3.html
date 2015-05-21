@@ -1,0 +1,24 @@
+---
+layout: post
+title: 更新了KDE 4.3
+categories:
+- Z-Turn
+tags:
+- kde
+- upgrade
+published: true
+comments: true
+---
+<p>发现portage里已经有了KDE4.3，只是mask掉了。思忖再三决定装上。没有好方法把kde4.3的东西一次性unmask掉，只好手动从/usr/portage/profiles/package.mask里面把kde4.3相关的每个包给unmask掉。解决了几个比较难缠的block问题，就进入漫长的80+个包的更新过程。幸好手头有一堆BUG要VERIFY，等下午开完会，发现已经装好了。</p>
+
+<p>重启之后略略有些失望，Plasma用了Air，浅色的主题看起来不习惯了。换回Oxygen去- -b</p>
+
+<p>然后打开一个窗口，原先KWin启用了很zb的摇摆特效，在KDE4.3中居然像一坨泥巴一样不停往下掉，往下掉，往下掉……从最大化恢复到小窗口后，整个窗口又好像被人从下面卷起来卷到了窗口顶部，总之这个效果绝非摇摆特效正常的效果。还是少zb一点，把这个不会提高工作效率的特效关掉吧。</p>
+
+<p>右下角的systray，居然有了“隐藏不活动的图标”，向MS靠拢么？</p>
+
+<p>其他features没有体验到太多，用几天希望有新的好的感受吧。</p>
+
+<p>对了，KDE菜单又消失了，解决方法如下：</p>
+
+<p>emerge gnome-menus->emerge -C gnome-menus->cd /etc/xdg/menus->用vim打开里面的文件，一个一个爱抚一遍->心里骂几遍该死的菜单->重启->ok了。</p>

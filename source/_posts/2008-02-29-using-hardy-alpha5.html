@@ -1,0 +1,46 @@
+---
+layout: post
+title: '[白鼠三]Ubuntu Hardy Alpha5 使用感受'
+categories:
+- Z-Turn
+tags:
+- '8.04'
+- Aplha
+- hardy
+- Ubuntu
+published: true
+comments: true
+---
+<p>前几天Alpha5也出来了，直到今天才全新安装了试一试。</p>
+
+<p>光盘启动后界面不一样了，第一行显示是“No harm using Ubuntu in your PC”之类的话，看来是想增强初级用户体验了。Ubuntu在普及初级用户群方面下的功夫的确挺大，听说Alpha5开始直接整合了WUBI，用户可以更方便地在Windows下以非虚拟机的方式安装Ubuntu了。</p>
+
+<p>LiveCD启动完毕后发现字体变难看了，也没注意用的是什么字体。反正安装完毕后马上安装了雅黑（MS的东西，有时候该用还是得用用～）。</p>
+
+<p>安装过程和前几个版本相比没什么差别。安装完毕之后界面倒是漂亮了不少，其实也说不上漂亮，就是感觉这种新的黄色舒服了一些。记得在这个版本中是不放新主题的，估计这个界面应该不是新主题的内容吧。</p>
+
+<p>显示时间的那个Applet上可以自动显示天气了，这样就用不着WeatherApplet了。</p>
+
+<p>触摸板的配置文档<strike>没找着，所以暂时还是不能很好地用触摸屏。</strike>，在yegle的提醒下，我试着重新配置了xorg.conf文件。
+<blockquote>sudo dpkg-reconfigure xserver-xorg</blockquote>
+发现触摸板的所有功能都可用了。</p>
+
+<p><!--more-->QT程序的字体都变得比较难看了，就像在KDE里面配置的时候一样，发虚。网上说可以使用qt-config，yegle说可以使用kdebase-data中的字体调整。反正不是大问题，以后再弄吧。</p>
+
+<p>Nautilus显示图标大都正常了。</p>
+
+<p>Wine的问题，到winehq官网上下最新版本的就可以使用了，而源里面的虽然版本比winehq上“新”，但是不能工作。在新立得里面把版本给锁定了-_-|||</p>
+
+<p>Alpha5中的“更新源”突然没有了，这对于我处于恶劣环境的电信网下的人来说是一个灾难，不能自动搜寻最佳服务器了……</p>
+
+<p>然后讲几个比较Terrible的BUG：</p>
+
+<p>java在新版本中的冲突：这个问题导致java直接不能使用。表现为依赖java的任何软件如netbeans、eclipse等不能工作，编译后不能通过java执行生成的类。总之一句话，java挂了。</p>
+
+<p>还有一个问题：电源的图标不能自动更新状态，只有每次待机恢复或者开机后更新一次状态，此后一直使用过程中任何改变都不能让电源的状态变化。(03.04)今天早上内核更新到了11，更新完毕果然就正常了。</p>
+
+<p><strike>QT程序中不能使用输入法……虽然知道可以安装scim-qtimm，但是装完后还是没用。修改配置文件还是不行。</strike>安装了SCIM-bridge就行了
+<blockquote>sudo apt-get install scim-bridge-agent</blockquote>
+Nautilus和Monitor的纠结还在继续。偶尔Nautilus会崩溃(经试验发现如果先连接可移动设备后开机启动，就会出现这种情况)，然后就不能重新启动nautilus了，提示"couldn't add monitor".</p>
+
+<p>暂时就是这些，待后续，over。</p>

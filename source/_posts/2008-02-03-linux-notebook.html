@@ -1,0 +1,33 @@
+---
+layout: post
+title: Linux学习笔记(1)
+categories:
+- Learning
+tags:
+- Linux
+- newbie
+published: true
+comments: true
+---
+<p>不断更新中……
+<blockquote>Q: 如何挂载ISO镜像到光驱（即虚拟光驱）<br />
+A: sudo mount -t iso9660 -o loop ./cdimg.iso /mnt/test</blockquote>
+<blockquote>Q: 如何更改文件为可执行文件？何时需要更改？<br />
+A: 输入sudo chmod a+x filename 即可将文件改为可执行文件。当用文本格式编写了脚本之后，可以执行这个操作执行脚本。</blockquote>
+<blockquote>Q: 如何在终端下执行可执行文件？<br />
+A: ./filename 即可。</blockquote>
+<!--more-->
+<blockquote>Q: 如何安装软件：<br />
+A: 软件的安装有两种，一种是二进制包安装，一种是源码安装。<br />
+二进制包可以直接用./filename执行，按照提示逐步操作即可。<br />
+对于Ubuntu Linux，可以直接执行deb包以安装，命令行下用sudo dpkg -i XXX.deb或者sudo gdebi XXX.deb<br />
+对于Redhat/Fedora、Suse等操作系统，可以直接执行rpm包安装，命令行下用rpm -i XXX.rpm<br />
+如Adobe Flash Player之类tar.gz的压缩包，应先解压，寻找类似于install、installer等文件，仍旧使用./filename安装。（注意，虽然也是tar.gz压缩包，但是有别于源码包）<br />
+对于源码包，通常使用“安装三部曲”来进行：<br />
+配置安装环境，生成Makefile：<br />
+./configure （可带参数--prefix，为定义安装路径，如：./configure –prefix /home/caspar/google-earth）<br />
+编译链接生成可执行文件、类库等目标文件：<br />
+make<br />
+将生成的文件复制到对应的路径以安装：<br />
+make install<br />
+另外，一般的软件包解压缩后都可以找到一个README文件，可以按照文件里的步骤安装。</blockquote></p>

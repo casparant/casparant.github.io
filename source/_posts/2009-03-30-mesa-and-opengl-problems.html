@@ -1,0 +1,35 @@
+---
+layout: post
+title: Mesa和OpenGL的那点破事|有第三者
+categories:
+- Z-Turn
+tags:
+- gem
+- mesa
+- opengl
+published: true
+comments: true
+---
+<p>刚才在折腾Mesa，因为早上更新系统的时候发现mesa7.4放出了。上次升级mesa到svn版的时候发现glxgears只到100+，就给降级了。这次看到mesa7.4正式版已出，侥幸心理作怪下继续升级。结果跟上次一样，100+的glxgears，wine下打CS卡死，但是Google Earth一切正常。</p>
+
+<p>降级回7.3之后，Google Earth一如往常地卡，但是glxgears恢复了400+。</p>
+
+<p>后来glxinfo了一下，发现：</p>
+
+<p>OpenGL version string: 1.4 Mesa 7.4</p>
+
+<p>OpenGL version string: 2.1 Mesa 7.4</p>
+
+<p>这是几次折腾中的两次OpenGL版本对比。</p>
+
+<p><del datetime="2009-03-31T03:26:10+00:00">难道glxgears和wine使用的都是OpenGL1.4版本，而Google Earth支持OpenGL2.1?</del></p>
+
+<p>Mesa和OpenGL的破事，真TM难理清。</p>
+
+<p>———————————— 3月31日更新 ————————————</p>
+
+<p>今天早上--sync的时候发现要升级libdrm，在Linux@BUPT上也看到了大牛的回复。这才发现原来是GEM没有开启。没想到原来以为是Mesa和OpenGL俩人的勾当，竟然是因为第三者GEM的原因……o(╯□╰)o</p>
+
+<p>更新libdrm，glxgears回到500+，Google Earth开始小卡。</p>
+
+<p>记得TX同学说过<a href="http://www.imtx.cn/archives/1111.html">GEM对Google Earth的显示效果有改进</a>啊，怎么我不开启GEM的时候反而更好一些呢……</p>

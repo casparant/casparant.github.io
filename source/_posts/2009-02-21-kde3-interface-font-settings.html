@@ -1,0 +1,30 @@
+---
+layout: post
+title: kde3界面字体设置
+categories:
+- Configuration
+tags:
+- font
+- kde3
+- kdeglobals
+- menu
+published: true
+comments: true
+---
+<p>升级到Ubuntu 8.10之后，发现amarok, kile这些程序的英文字体特别大，用Qt3 configuration改字体只能把正文的字体改变，菜单栏、状态栏的字体都变不了。</p>
+
+<p>上网搜了一下发现kcontrol这个kde的工具可以调整菜单栏字体。但是Ubuntu 8.10吧kcontrol这个包给去掉了，所以不能轻易设置字体了。继续上网搜，发现可以直接改<code>~/.kde/share/config/kdeglobals</code>这个文件。</p>
+
+<p>在文件中的<code>[General]</code>段添加下列几行：</p>
+
+<p><blockquote>fixed=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0<br />
+font=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0<br />
+menuFont=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0<br />
+taskbarFont=WenQuanYi Zen Hei,9,5,50,0,0,0,0,0<br />
+toolBarFont=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0</blockquote></p>
+
+<p>这几行的大部分内容大家都看得懂，就不解释了。后面的我也不管是什么意思了……</p>
+
+<p><!--more-->另外求助现场观众：1. Ubuntu 8.10下这个Intel GMA950显卡3D显示效果很臭，有什么可行的解决方案没？</p>
+
+<p>2. <del datetime="2009-02-21T15:43:11+00:00">今天可能是由于升级了系统还是误装了软件，发现“通用访问首选项”这个应用程序变成登录后自动常驻icon tray了，谁能告诉我怎么取消？我懒得去追根溯源了……</del>解决了，在“辅助技术首选项”中点击“键盘辅助登录功能”，取消“允许通过快捷键打开或关闭辅助特性”。</p>

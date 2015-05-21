@@ -1,0 +1,58 @@
+---
+layout: post
+title: '[备忘]最近用到的一些技巧'
+categories:
+- Learning
+tags:
+- apt-file
+- gsynaptic
+- ooo
+- ooo startup
+- skills
+- touchpad
+- vim
+published: true
+comments: true
+---
+<p>1.<strong> VIM操作</strong></p>
+
+<p>VIM在每行行首或行尾插入指定字符串：</p>
+
+<p>行首 :%s/^/YOUR_STR/</p>
+
+<p>行尾 :%s/^$/YOUR_STR/</p>
+
+<p>删除^M标记 :%s/^M$//g，^M的输入方法为^V^M</p>
+
+<p>2. <strong>Openoffice3.0在Ubuntu8.10中不能输入中文</strong></p>
+
+<p>将libstdc++和libgcc的so文件软链到OOo的ure路径下即可：</p>
+
+<p><pre lang="bash">sudo ln -snf /usr/lib/gcc/i486-linux-gnu/4.3.2/libstdc++.so \
+/opt/openoffice.org/ure/lib/libstdc++.so.6
+sudo ln -snf /usr/lib/gcc/i486-linux-gnu/4.3.2/libgcc_s.so \
+/opt/openoffice.org/ure/lib/libgcc_s.so.1</pre></p>
+
+<p><!--more-->3. <strong>优化OOo启动速度</strong></p>
+
+<p>1. OOo“工具”对话框，选项->内存</p>
+
+<p>2. 减少“撤销命令->步数”，我设置为20</p>
+
+<p>3. 增大“图形缓冲区->用于openoffice”，我设置为128m，“每个对象的内存”，我设置为20m</p>
+
+<p>4. 取消Java选项页中的“使用Java运行环境”</p>
+
+<p>4. <strong>打开触摸板驱动</strong></p>
+
+<p>在其他版本和以前版本的ubuntu中，在xorg里添加一段话就可以使用gsynaptic了，可是Ubuntu8.10不行。解决办法是编辑<code>/usr/share/hal/fdi/policy/20thirdparty/11-x11-synaptics.fdi</code>，在里面找到<code>< match key="info.product" contains="Synaptics TouchPad"></code>这行，在出现<code>< /match></code>之前加入一行：</p>
+
+<p><code>< merge key="input.x11_options.SHMConfig" type="string">On< /merge></code>(由于wp格式的问题，请自行取消<号之后的空格)即可。</p>
+
+<p>5. <strong>使用apt-file来查找安装软件时缺少的软件包。</strong></p>
+
+<p>当./configure或者其他安装命令执行时提示缺少XXX库没有安装，apt-cache search和aptitude search无果之后，不妨尝试apt-file(当然你要先安装apt-file)。</p>
+
+<p>语法：<pre lang="bash">apt-file search FILE</pre></p>
+
+<p>唉，最近净发些没营养的东西，什么时候能静下心来真正学点东西啊……</p>

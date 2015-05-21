@@ -1,0 +1,71 @@
+---
+layout: post
+title: Ubuntu 7.10 Server Config
+categories:
+- Configuration
+tags:
+- config
+- cvs
+- Ubuntu
+- vsftp
+published: true
+comments: true
+---
+<p>这几天真是囧死了，因为自己经验不足，对服务器的一些配置相当不熟，绕了不少弯路……现在把几天下来的配置过程写一下，以供存档。</p>
+
+<p>操作系统是Ubuntu 7.10 Server。选择它还是主要因为它的软件库的方便，反正都是Linux的内核。实验室的服务器也只是在小范围内使用，安全措施可以不用那么严格和专业。</p>
+
+<p>安装完毕更换源，<strong>安装桌面环境</strong>。
+<pre lang="bash">deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ gutsy main restricted universe multiverse</pre></p>
+
+<p>完毕后安装下列软件(最后一个实在无奈，7.10默认用的是compiz管理器，我想换回metacity结果屡次不成功)</p>
+
+<p><pre lang="bash"> sudo apt-get install gdm x-window-system-core gnome-core language-selector compiz</pre></p>
+
+<p><!--more-->安装完毕之后startx就可以了。</p>
+
+<p>然后把一些需要处理的东西比如窗口装饰、登录界面等等，都给弄好，不需要好看，只需要能用就行了，毕竟时不时还是要用vnc登录的。</p>
+
+<p>之后到gdmsetup中把root登录权限打开。</p>
+
+<p>随后换上其他源，给系统打补丁。</p>
+
+<p>在系统安装的时候就已经选择了LAMP, OpenSSH，所以这里就不用另外单独安装了。剩下还有几个服务需要装：</p>
+
+<p><pre lang="bash">sudo apt-get install vsftpd cvsd</pre></p>
+
+<p><strong>FTP的配置</strong>：</p>
+
+<p>修改vsftpd的配置，在<code>/etc/vsftpd.conf</code>文件中。</p>
+
+<p>允许本地用户登录：<code>local_enable=YES</code></p>
+
+<p>允许写操作：<code>wirte_enable=YES</code></p>
+
+<p>让本地用户只能查看自己家下的文件，除root外：</p>
+
+<p><code>chroot_local_user=YES</code></p>
+
+<p>chroot_list_enable=YES</p>
+
+<p>chroot_list_file=/etc/vsftpd.chroot_list</p>
+
+<p>编辑<code>/etc/vsftpd.chroot_list</code>文件，添加root</p>
+
+<p>允许root登录ftp：修改<code>/etc/ftpusers</code>文件，将root行注释掉</p>
+
+<p><strong>cvs的配置</strong>：</p>
+
+<p>囧的是Ubuntu的CVS的仓库路径默认在/var/lib/cvsd下，而原先服务器上不是，所以我就得把BuildRoot给改掉，结果当时一时脑热，将/var/lib/cvsd下的文件直接覆盖到了/下，结果瞬间，服务器就将我弹出，之后所有连接均拒绝。到机房重启一看，系统崩溃了，因文件损坏不能启动了。。。。只好重装。</p>
+
+<p>其实只要这个命令就可以了：</p>
+
+<p><pre lang="bash">cvsd-buildroot</pre></p>
+
+<p>之后就可以选择路径，重新安装。这是一个安全的方法，碰到文件需要覆盖，系统会自动选择安全的做法（一般是不覆盖）。</p>
+
+<p>之后就建立仓库，修改配置文件<code>/etc/cvsd/cvsd.conf</code>，重启服务。</p>
+
+<p>终于搞定了。</p>
+
+<p>至于如何打开VNC服务，参看<a href="http://www.casparant.com/remote-login.html">我前面的日志</a>即可。</p>

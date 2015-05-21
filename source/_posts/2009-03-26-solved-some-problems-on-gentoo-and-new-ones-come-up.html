@@ -1,0 +1,79 @@
+---
+layout: post
+title: Gentoo新老问题-Milestone2
+categories:
+- Z-Turn
+tags:
+- amarok2
+- checkgmail
+- eclipse
+- Gentoo
+published: true
+comments: true
+---
+<p>昨天晚上已经用上2.6.29的内核了，而且也解决了部分上次提到的问题，写出来，权当折腾Gentoo之Milestone2吧。</p>
+
+<p>1. Amarok安装成功：</p>
+
+<p>今天更新了overlay，发现svn版的amarok已经把qtscriptgenerator给单独分出来做成一个包了，顿时感觉有戏，赶紧emerge一把，结果还是出错，不过错误提示和以前不太一样：
+<blockquote>/usr/lib/mysql/libmysqld.a(sql_parse.o): In function `mysql_parse(THD*, char const*, unsigned int, char const**)':                          <br />
+(.text+0xaadb): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_parse.o): In function `mysql_parse(THD*, char const*, unsigned int, char const**)':                          <br />
+(.text+0xabcc): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_prepare.o): In function `mysql_stmt_reset(THD*, char*)':                                                     <br />
+(.text+0x1dad): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_prepare.o): In function `mysql_stmt_reset(THD*, char*)':                                                     <br />
+(.text+0x1ef6): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_prepare.o): In function `mysql_stmt_fetch(THD*, char*, unsigned int)':                                       <br />
+(.text+0x20e8): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_prepare.o):(.text+0x2273): more undefined references to `clock_gettime' follow                               <br />
+/usr/lib/gcc/i686-pc-linux-gnu/4.3.3/../../../../i686-pc-linux-gnu/bin/ld: warning: creating a DT_TEXTREL in object.                        <br />
+collect2: ld returned 1 exit status                                                                                                         <br />
+make[2]: *** [lib/libamarok_collection-sqlcollection.so] Error 1                                                                            <br />
+make[1]: *** [src/collection/sqlcollection/CMakeFiles/amarok_collection-sqlcollection.dir/all] Error 2                                      <br />
+make[1]: *** Waiting for unfinished jobs....                                                                                              </blockquote></p>
+
+<p><!--more-->很明显是ld的时候没有设定flag。上网搜了一通发现了-lrt参数，加到LDFLAGS中，重新emerge，搞定了。</p>
+
+<p><pre lang="bash">export LDFLAGS=" -lrt " && emerge amarok</pre></p>
+
+<p>2. eclipse启动失败</p>
+
+<p>都删了~/workspace好几次了，还是在~/workspace/.metadata/.log中提示：
+<blockquote>!SESSION 2009-03-25 21:31:44.627 -----------------------------------------------<br />
+eclipse.buildId=I20080617-2000<br />
+java.version=1.6.0_12<br />
+java.vendor=Sun Microsystems Inc.<br />
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=zh_CN<br />
+Command-line arguments:  -os linux -ws gtk -arch x86</blockquote></p>
+
+<p>!ENTRY org.eclipse.ui.workbench 4 0 2009-03-25 21:31:53.869<br />
+!<strong>MESSAGE Widget disposed too early!</strong>
+!STACK 0<br />
+java.lang.RuntimeException: Widget disposed too early!</p>
+
+<p>上网搜索，发现只需在eclipse.ini的-vmargs参数后加上
+<pre>-Dorg.eclipse.swt.browser.XULRunnerPath=</pre>
+即可</p>
+
+<p>3. checkgmail占用CPU100%</p>
+
+<p>因为前面一直有Python/Perl的GUI程序出现麻将牌的乱码，而checkgmail在启动的时候遇到乱码会重新往./lang.xml文件中写一遍文件（当然还是乱码），几次之后这个文件就能达到几十MB，然后再继续就会造成CPU占用率过高。</p>
+
+<p>(0226) 4. 硬盘间、文件夹间复制文件速度太慢。复制到移动硬盘1M/s，同分区文件夹之间复制4M/s，远低于正常速度。</p>
+
+<p>原来是内核没配置好，先多配几个选项，以后慢慢研究吧。</p>
+
+<p>遗留问题：</p>
+
+<p><blockquote>
+[E] 挂起、休眠恢复后死机，黑屏，键盘鼠标无任何响应。<br />
+[E] KDE4注销后黑屏，不能重新进入KDM界面<br />
+[H] Python, Perl的GUI程序乱码；<br />
+[H] GEM间歇性不能开启<br />
+[H] 有时候关机出现循环提示：mount-ro: wait for killproc<br />
+[M] 配置KMS<br />
+[M] 配置宽屏控制台<br />
+[M] wine-gecko在QQ和迅雷中造成程序崩溃（其实不是Gentoo的问题，以前在Ubuntu里也碰到过这种问题）<br />
+[L] 如何在weblogic中配置jdbc-mysql
+</blockquote></p>

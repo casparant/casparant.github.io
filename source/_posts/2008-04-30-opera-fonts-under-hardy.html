@@ -1,0 +1,41 @@
+---
+layout: post
+title: Opera 9.50配置文泉驿正黑字体
+categories:
+- Configuration
+tags:
+- font
+- hardy
+- opera
+- Ubuntu
+- wqy
+- zenhei
+published: true
+comments: true
+---
+<p>Opera的字体向来纠结，前一阵子在Ubuntu Hardy下尝试这配置了一下，就冲着Hardy的标配字体文泉驿正黑，发现字体还是很纠结，就放弃了。今天无意之中乱点到了Opera的启动图标，于是又尝试配了一下。</p>
+
+<p>首先是准备工作，看到英文界面下的选项中“文泉驿字体”显示乱码，就去下了一个中文包，下不到9.50的字体，只有9.27的，打开lng文件，修改"Version.Linux"为"Version.Linux=9.50"，放到/usr/share/opera/locales下就可以了。</p>
+
+<p>切换成中文后，正式开始配置字体：</p>
+
+<p>1.创建user.css文件，在~/.opera/styles/user下新建一个user.css文件，添加以下文字：</p>
+
+<p><pre lang="css">/* Name: 文泉驿正黑体 */ 
+html,body,*{ font-family:"WenQuanYi Zen Hei" !important; }</pre></p>
+
+<p>启动Opera，在“查看”->“样式”中选择“文泉驿正黑体”。</p>
+
+<p>经过第一步，对于UTF-8的页面仍旧不起作用，需要在启动时强制指定locales。</p>
+
+<p><!--more-->2.在/usr/bin/opera中加入一行，可使用sed命令：</p>
+
+<p><pre lang="bash">sudo sed -i '2iexport LANG=en_US.UTF-8' /usr/bin/opera</pre></p>
+
+<p>经过以上两步，页面显示应该就是文泉驿的正黑体了，但是工具栏、菜单栏、对话框等字体仍旧很难看。此时应该继续调整。</p>
+
+<p>3.在“工具”->“首选项”->“高级”选项卡->“字体”项右边，把所有字体选项调整为WenQuanYi Zen Hei字体。</p>
+
+<p>重启之后，字体应该就很漂亮了～</p>
+
+<p>没想到这次人品这么好，哈哈。</p>

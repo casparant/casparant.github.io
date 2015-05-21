@@ -1,0 +1,51 @@
+---
+layout: post
+title: '[转]Ubuntu下Opera字体配置'
+categories:
+- Configuration
+- Copid Entries
+tags:
+- config
+- font
+- opera
+published: true
+comments: true
+---
+<p>转自<a href="http://linuxdesktop.cn/" title="Linux桌面中文网">Linux桌面中文网</a> - <a href="http://linuxdesktop.cn/2007/07/23/ubuntu-opera-skills" rel="bookmark">Ubuntu 下Opera的使用心得小结</a></p>
+
+<p>我只摘录了字体配置的部分。</p>
+
+<p>－－－－－－－－转载分割线－－－－－－－－－－</p>
+
+<p>...</p>
+
+<p>这里我参考了ubuntu中文社区的精华贴所说CSS的方法做了一些调整</p>
+
+<p><pre lang="bash">cd ~/.opera/styles/user/
+touch user.css
+gedit ~/.opera/styles/user/user.css</pre></p>
+
+<p>录入以下内容：</p>
+
+<p><!--more-->
+<pre lang="css">html,body,*{
+    font-family:"Microsoft YaHei" !important;
+}</pre></p>
+
+<p>注意：引号中的字体可结合个人喜好</p>
+
+<p>重启浏览器后选择</p>
+
+<p>查看－&gt;样式-&gt;user.css</p>
+
+<p>效果好了一些但是仍然不满意，而且根本没有使用我指定的雅黑字体</p>
+
+<p>询问了IRC里的一些前辈 得到命令一条
+<pre lang="bash">sudo sed -i '2iexport LANG=en_US.UTF-8' /usr/bin/opera</pre>
+果然见效，但是菜单字体出现了一些问题</p>
+
+<p>工具－&gt;首选项－&gt;高级－&gt;字体</p>
+
+<p>浏览器菜单、工具栏、对话框、面板 进行配置</p>
+
+<p>大家也可以根据自己的需要进行配置</p>

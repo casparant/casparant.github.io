@@ -1,0 +1,23 @@
+---
+layout: post
+title: 我的高PV结束了
+categories:
+- Blog Stuffs
+tags:
+- google friend connect
+- links
+- pv
+published: true
+comments: true
+---
+<p>最近一直有很高很高的PV，<a href="http://tongji.cn.yahoo.com/report.html?unit_id=472876">yahoo stat</a>里面一看就猜到是某个页面重重复访问（事实上是重复刷新）得到的结果。因为自己用的FF3一直没有出现问题，就没从自己网站上去找症结。不过最近网站访问速度很慢，有时候数据库连接还出错，问了Paveo，他说我MySQL资源超标。虽然不知道是怎么回事（现在知道了，页面重复刷新不断请求MySQL资源），但是怀疑跟那个重复访问的页面有关。从yahoo stat里面找到了那个页面，稍微一看，我靠，居然是侧边栏的Google Friend Connect在搞鬼。那个重复访问的页面URL的GET数据就是我的Google Friend Connect里的参数。</p>
+
+<p>于是去Google Friend Connect网站重新按步骤操作了一次，发现原来是我上次清理Blog的文件，把根目录下的canvas.html和rpc_relay.html这两个文件给删掉了。补上之后，到今天一直没问题。</p>
+
+<p>刚才YuLei师兄告诉我，页面终于能留言了，我就奇怪了，以前不能留言么。他说他用IE和Chrome访问我的页面就一个劲刷新，根本没法浏览，更别提留言了。于是真相大白……原来缺了那两个文件，页面就不停刷新，不停从MySQL请求数据，我网站就资源超标，访问过慢。</p>
+
+<p>不过这段时间每天有近1000PV呢，可惜了，嘿嘿。</p>
+
+<p><!--more-->另外说几个事。一个是交换友情链接，我昨天更新了一下友情链接列表，发现一年多过去，好多人的Blog都因为域名到期之类的问题关闭了。所以我就删除了你们的链接。如果你们换了域名，请跟我联系，我会补上。另外申请友情链接的，给我Mail或者在留言页面留言都可以。我的PR不高，所以对对方的PR也没要求。</p>
+
+<p>还有一个就是，我终于把Google Friend Connect的留言板弄起来了，娃哈哈……大家可以在那上面灌水，嗯。</p>

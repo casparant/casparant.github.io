@@ -1,0 +1,32 @@
+---
+layout: post
+title: pidgin-2.4.1发布
+categories:
+- Softwares
+tags:
+- pidgin
+- release
+published: true
+comments: true
+---
+<p>去看了一下getdeb还没放出deb包，就去官网<a href="http://www.pidgin.im/" target="new">http://www.pidgin.im/</a>下了源码包，顺便把两个补丁也下了。一个是MSN群显示发言人的补丁，一个是QQ群显示群名字的补丁，我均对其作了修改以适合2.4.1的版本，在<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanNWU0MmMwNmMtN2M3ZC00MTVjLWE2YWQtYWY3OWE1NWZiN2Jh&hl=zh_CN">这里</a>可以下到。</p>
+
+<p>下载完毕后，将补丁解开，放到pidgin-2.4.1目录外，执行<pre lang="bash">patch -p0 < $PATCH_NAME</pre>操作把补丁打好。</p>
+
+<p>然后安装编译所需的依赖项：
+<pre lang="bash" line="1">sudo apt-get install build-essential gettext \
+libglib2.0-dev libgtk2.0-dev libxml2-dev gettext libnss3-dev \
+libnspr4-dev libgstreamer0.10-dev libgtkspell-dev libperl-dev \
+libsasl2-dev libgnutls-dev tcl8.4-dev doxygen graphviiz</pre></p>
+
+<p><!--more-->开始编译。</p>
+
+<p>安装路径似乎只能选择/usr，我选择了/usr/local后提示error while loading shared libraries: libpurple.so.0</p>
+
+<p>安装完毕后顺势放上fetion插件，pidgin的飞信插件在这里有持续更新：<a href="http://www.linuxsir.org/bbs/thread320802.html">http://www.linuxsir.org/bbs/thread320802.html</a></p>
+
+<p>我把飞信的图标和截至到3月26日的插件更新打个压缩，自己可以解压缩到对应路径下覆盖即可。<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanYTRmZjVlMTctOWYwMC00NDRjLTgwYTctMzQyNjM1MzY2Njk0&hl=zh_CN">点此下载&gt;&gt;&gt;</a></p>
+
+<p>登录发现Jabber协议更改了图标，挺好看的；另外发现QQ不再报blist.xml出错了（好友没有变化，应该不是好友使用了怪字符的原因吧……）</p>
+
+<p>强烈推荐大家更新～</p>

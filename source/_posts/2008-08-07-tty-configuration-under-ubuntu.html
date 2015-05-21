@@ -1,0 +1,107 @@
+---
+layout: post
+title: Ubuntu 8.04 TTY配置
+categories:
+- Configuration
+tags:
+- framebuffer
+- tty
+- Ubuntu
+- utf8
+published: true
+comments: true
+---
+<p>解决了的问题：1.tty下显示中文，2.支持中文输入，3.合适的分辨率，4.关闭终端响铃</p>
+
+<p><strong>需要解决的问题：文字在屏幕上刷新不同步，造成花屏</strong></p>
+
+<p><strong>第一步：打开FrameBuffer模块</strong></p>
+
+<p>参考网址：<a href="http://blog.chinaunix.net/u/12679/showart_513111.html">http://blog.chinaunix.net/u/12679/showart_513111.html</a></p>
+
+<p>编辑文件：<pre lang="bash" line="1">sudo vi /etc/initramfs-tools/modules</pre></p>
+
+<p>加入三行内容：</p>
+
+<p><blockquote>fbcon<br />
+vesafb<br />
+vga16fb</blockquote></p>
+
+<p>编辑文件：<pre lang="bash" line="1">sudo vi /etc/modprobe.d/blacklist-framebuffer</pre></p>
+
+<p><!--more-->把以下两行给注释掉：</p>
+
+<p><blockquote>blacklist vesafb<br />
+blacklist vga16fb</blockquote></p>
+
+<p>编辑文件：<pre lang="bash" line="1">sudo vi /boot/grub/menu.lst</pre></p>
+
+<p>在启动条目的内核项后面加入vga=xxx参数</p>
+
+<p>xxx所代表的值可以用下面的方法来查看：</p>
+
+<p><pre lang="bash" line="1">sudo hwinfo --framebuffer | grep 'Mode '</pre></p>
+
+<p>这是我机子上的结果：</p>
+
+<p><blockquote>  Mode 0x0305: 1024x768 (+1024), 8 bits<br />
+  Mode 0x0317: 1024x768 (+2048), 16 bits<br />
+  Mode 0x0318: 1024x768 (+4096), 24 bits<br />
+  Mode 0x0312: 640x480 (+2560), 24 bits<br />
+  Mode 0x0314: 800x600 (+1600), 16 bits<br />
+  Mode 0x0315: 800x600 (+3200), 24 bits<br />
+  Mode 0x0301: 640x480 (+640), 8 bits<br />
+  Mode 0x0303: 800x600 (+832), 8 bits<br />
+  Mode 0x0311: 640x480 (+1280), 16 bits</blockquote></p>
+
+<p>选择1024x768的分辨率，16位色，所以应该在vga=后面加上0x0317</p>
+
+<p><strong>第二步，安装支持中文的控制台zhcon并启动</strong></p>
+
+<p><pre lang="bash">sudo apt-get install zhcon</pre></p>
+
+<p>在tty状态下输入命令</p>
+
+<p><pre lang="bash">zhcon --utf8 --drv=fb</pre></p>
+
+<p>在很多网页上提到使用--drv=vga参数来启动zhcon，这样做在我的机子上显示的分辨率是640x480，我希望有一个我看着比较舒服的大分辨率，所以我使用--drv=fb参数来启动zhcon</p>
+
+<p><strong>第三步，优化</strong></p>
+
+<p>化简zhcon启动的参数：</p>
+
+<p>在~/.bashrc中增加一行，</p>
+
+<p><pre lang="bash">alias zhcon='zhcon --utf8 --drv=fb'</pre></p>
+
+<p>这样在启动zhcon时只需要输入zhcon即可。</p>
+
+<p>设置zhcon开机自动启动：</p>
+
+<p>在~/.bashrc中增加一行，</p>
+
+<p><pre lang="bash">[[ $(tty) == /dev/tty[0-9]* ]] && zhcon</pre></p>
+
+<p>不过这个方法只针对当前用户，即对tty登入时的帐户下的~/.bashrc设置这行才有效。</p>
+
+<p><strong>第四步，中文输入法支持</strong></p>
+
+<p>zhcon中可以输入中文。Ctrl+Space即可。</p>
+
+<p><strong>第五步，关闭终端响铃</strong></p>
+
+<p>因为有时候电脑要在课上用，所以关闭system bell还是很有必要的。</p>
+
+<p>网上找了半天，找到一个softbeep的软件，摆弄半天还是没成功。</p>
+
+<p>继续google，发现Ubuntu这个模块名字叫pcspkr，blacklist之</p>
+
+<p><pre lang="bash">sudo vi /etc/modprobe.d/blacklist</pre></p>
+
+<p>添加一行</p>
+
+<p><blockquote>blacklist pcspkr</blockquote></p>
+
+<p>搞定。</p>
+
+<p>可惜花屏问题还没搞定……</p>

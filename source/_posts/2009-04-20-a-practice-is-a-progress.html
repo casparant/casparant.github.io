@@ -1,0 +1,22 @@
+---
+layout: post
+title: 每一次实验和大作业都是学习的过程
+categories:
+- Learning
+tags:
+- ebadf
+- lock
+- qt
+- struct
+published: true
+comments: true
+---
+<p>这次学会了<a href="http://www.google.com/search?q=%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%AF%B9%E9%BD%90">结构体的对齐</a>，记录锁和QT的基本操作。顺便强烈推荐使用qt-creator进行开发。</p>
+
+<p>当然还碰到个囧事，一个文件用r方式打开了，然后想往上面加写锁，加了半天就是报“错误的文件描述符”，郁闷之下man了下fcntl的内容，顿悟：</p>
+
+<p><blockquote>EBADF  fd is not an open file descriptor, <strong>or the command was  F_SETLK  or  F_SETLKW<br />
+              and  the  file  descriptor  open  mode  doesn't  match with the type of lock<br />
+              requested.</strong></blockquote></p>
+
+<p>其实本来想写很多的，但是因为这个东西做的时间太长了，又忘了随手记，就只能写出这么多了……</p>

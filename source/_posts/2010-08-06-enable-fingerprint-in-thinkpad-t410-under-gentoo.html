@@ -1,0 +1,35 @@
+---
+layout: post
+title: Enable fingerprint in Thinkpad T410 under Gentoo
+categories:
+- Softwares
+tags:
+- fingerprint
+- fprint
+- thinkpad
+- upek
+published: true
+comments: true
+---
+<p>As I mentioned in the <a href="http://www.casparant.com/back-to-gentoo-again.html" target="_blank">previous post</a>, I couldn't get my fingerprint reader work in Gentoo. Now this problem has been solved. ;-)</p>
+
+<p>Before starting, here're some useful links may help those who are suffering from similar fingerprint issues like me:</p>
+
+<p>If you're using a fingerprint with USB id "147e:2016", you can have a look at <a href="http://www.thinkwiki.org/wiki/Integrated_Fingerprint_Reader" target="blank">this thinkwiki link</a>, The "147e:2016" item is updated recently: a Red Hat Bugzilla URL added.</p>
+
+<p>This <a href="https://bugzilla.redhat.com/show_bug.cgi?id=504399" target="blank">RHBZ</a> link tried to enable TCRD4C devices, but seemed that my fingerprint was another different type since it still did not work after applied all the patches attached.</p>
+
+<p>------>8------ Cutting, Let's enable T410 fingerprint ------>8------</p>
+
+<p>Using <a href="http://www.n-view.net/Appliance/fingerprint/" target="_blank">Fingerprint-GUI</a> and <a href="http://www.upek.com/solutions/pc_and_networking/sdks/linux/" target="_blank">UPEK SDK</a> can easily enable fingerprint reader in T410. Fingerprint-GUI provides an integration of setup GUI, authentication plugin, PAM module and the UPEK library, all of the GUI parts are written with QT4 (I don't like it :-\), released under GPL-v3 licence. However, UPEK SDK library is EULA copyrighted and seems never to release the code to us.</p>
+
+<p><!--more-->Notice that you still need have <a href="http://reactivated.net/fprint/wiki/Libfprint" target="_blank">libfprint</a> installed, what's more, a version >= 1.0_pre is necessary, according to the manual of Fingerprint.</p>
+
+<p>Since A PAM module is integrated in Fingerprint-GUI so that your fingerprint driver can work in GDM, sudo, gnome-screensave, etc, you must remove other fingerprint PAM modules like pam_fprint or pam_thinkfinger.</p>
+
+<p>For Gentoo users, I have finished two ebuilds for this application. You can find them in <a href="http://github.com/casparant/caspar-gentoo" target="_blank">my github repo</a>, fprint is also included in the repo.</p>
+
+<p>I'm not good at writing ebuilds, any suggestions are welcomed.</p>
+
+<p>P.S. Is there anybody know how to assert the existence of a kernel module in a ebuild? I need to judge whether `uinput.ko' exists or not among current kernel modules. Thanks.
+</p>

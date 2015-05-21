@@ -1,0 +1,54 @@
+---
+layout: post
+title: 'VIM里的Twitter: TwitVIM'
+categories:
+- Softwares
+tags:
+- twitter
+- twitvim
+- vim
+published: true
+comments: true
+---
+<p>上网的时候发现了这个有意思的VIM插件，进VIM网站的插件页面后更加惊喜地发现作者还在更新这个插件(最近一次更新是2009年2月4日)。由于Linux下图形界面的Twitter客户端都不甚让我满意，看了看TwitVIM这个插件的介绍，决定下下来玩玩。</p>
+
+<p>点击<a href="http://www.vim.org/scripts/script.php?script_id=2204" target="new">这里</a>下载插件。</p>
+
+<p>安装步骤很简单，作者打了一个.vba格式的Vimball压缩包，只需要打开这个vba文件，并执行一次source导入就可以了。</p>
+
+<p><pre lang="bash">vim twitvim.vba
+:source %</pre></p>
+
+<p>插件会自动安装到~/.vim下。</p>
+
+<p>接下来需要在vim配置文件(比如~/.vimrc)里配置用户名，密码，如果是通过代理上网还需要配置代理。</p>
+
+<p><!--more--><pre lang="vim">let twitvim_login = "USER:PASS"
+let twitvim_proxy = "proxyhost:proxyport"</pre></p>
+
+<p><b>请注意，系统必须安装cURL，如果没有安装的请自行安装。</b></p>
+
+<p>接下来就可以启动TwitVIM了，在任意的一个VIM窗口中，输入<code>:FriendsTwitter</code>，VIM界面就分割出一个新的窗口，里面有所有好友的Twitter记录，如图：</p>
+
+<p><a href="http://img.ant.im/pm-VAVS.html" title="twitvim"><img src="http://img.ant.im/dm-VAVS.png" alt="twitvim" /></a></p>
+
+<p>你还可以使用下列命令来更新、回复、查看、搜索你的Twitter：</p>
+
+<p><blockquote>
+: PosttoTwitter - 写一条Twitter并发送。<br />
+: CPosttoTwitter - 发送当前缓冲区中当前行的内容到Twitter(当前缓冲区的内容是指你打开Twitter窗口之前，当前窗口里的内容).<br />
+: BPosttoTwitter - 发送当前缓冲区的所有内容到Twitter</blockquote></p>
+
+<p>Alt-T - 可视模式下, Alt+T 组合键把选中文本发送到Twitter(如果VIM的菜单栏可用，组合键变为Ctrl+t)<br />
+Alt-R - 针对当前的timeline进行@方式回复<br />
+Alt-D - 针对当前的timeline直接发消息</p>
+
+<p>: FriendsTwitter - 查看所有朋友的timeline.<br />
+: UserTwitter - 查看自己的timeline.<br />
+: RepliesTwitter - 查看所有的@回复.<br />
+: PublicTwitter - 查看公开的timeline.<br />
+: DMTwitter - 查看直接消息.</p>
+
+<p>: Summize - 搜索Twitter记录. </p>
+
+<p>P.S. 貌似Emacs也有一个VIM插件: <a href="http://www.emacswiki.org/cgi-bin/emacs/twit.el">twit.el</a></p>

@@ -1,0 +1,73 @@
+---
+layout: post
+title: 搞定OpenSolaris上网
+categories:
+- Z-Turn
+tags:
+- bfe
+- broadcom
+- Opensolaris
+published: true
+comments: true
+---
+<p>装好OpenSolaris后，居然有线网卡不能识别，上网看了一下，很多人都有这个问题。翻了一下网上的资料，自己总结了一下。</p>
+
+<p>我的机子是Dell 640m，</p>
+
+<p>有线网卡是Broadcom 440x 10/100 Integrated Controller；</p>
+
+<p>无线网卡是Intel PRO/Wireless 3945ABG。</p>
+
+<p>系统安装好之后，无线网卡可以被识别。在自动配置服务(Network Auto-Magic, NWAM)打开的情况下，搜索到无线网络，可以很方便配置好。</p>
+
+<p>但是有线网卡不能被识别，按照北邮人论坛上的一篇文章：<a href="http://forum.byr.edu.cn/wForum/disparticle.php?boardName=Linux&amp;ID=49780&amp;pos=23">http://forum.byr.edu.cn/wForum/disparticle.php?boardName=Linux&amp;ID=49780&amp;pos=23</a>的提示，我到<a href="http://solaris-x86.org/software/drivers/">这里</a>下载了自己的驱动bfe-2.6.0a：<a href="http://homepage2.nifty.com/mrym3/taiyodo/eng/">http://homepage2.nifty.com/mrym3/taiyodo/eng/</a></p>
+
+<p>下载完了之后解压缩，按照README的提示开始安装。</p>
+
+<p>结果发现OpenSolaris2008.05的LiveCD没有自带gcc - -b</p>
+
+<p>于是到<a href="http://www.sunfreeware.com/programlistintel10.html">http://www.sunfreeware.com/programlistintel10.html</a>上下载了gcc-3.4.6，还有它的依赖包libiconv-1.11。</p>
+
+<p>gunzip命令解压缩，pkgadd -d命令安装。</p>
+
+<p>完成后正式开始安装驱动。步骤在README中有，非常详细，在此不再赘述。</p>
+
+<p>配置网络IP我使用的是固定IP，没有用dhcp。然而不管是dhcp还是固定IP，都需要先关闭NWAM服务：</p>
+
+<p><pre lang="bash">svcadm disable nwam</pre></p>
+
+<p>我比较懒，使用network-admin来配置IP，把IP，Netmask，Gateway，DNS都给修改好了。</p>
+
+<p><!--more-->其对应的/etc下的文件操作如下：</p>
+
+<p>1.hosts文件</p>
+
+<p>在其中自定义一个解析条目为：IP domain。</p>
+
+<p>2.hostname.interface文件</p>
+
+<p>我的无线interface名为wpi0，有线interface名为bfe0，所以就有hostname.wpi0,hostname.bfe0两个文件。</p>
+
+<p>其中的内容是自己的主机名(前提是在hosts文件中定义了)，或者自己固定的IP。</p>
+
+<p>3.nodename文件</p>
+
+<p>添加内容同样为主机名</p>
+
+<p>4.netmasks文件</p>
+
+<p>添加内容为 network-number netmask</p>
+
+<p>5.defaultrouter文件</p>
+
+<p>内容为Gateway</p>
+
+<p>6.resolv.conf文件</p>
+
+<p>内容为 nameserver DNS地址</p>
+
+<p>7.在<a href="http://www.unix-center.net/bbs/viewthread.php?tid=4797&amp;extra=page%3D1">这里</a>还说需要修改/etc/nsswitch.conf文件，在hosts及ipnodes后加入dns和mdns，即：
+<blockquote>hosts:      files        dns        mdns<br />
+ipnodes:    files        dns        mdns</blockquote></p>
+
+<p>为了开机启动网络，需要启用服务：<pre lang="bash">svcadm enable svc:/network/physical:default</pre></p>

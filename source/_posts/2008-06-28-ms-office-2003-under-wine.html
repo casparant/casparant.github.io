@@ -1,0 +1,34 @@
+---
+layout: post
+title: Wine M$ Office 2003 成功
+categories:
+- Configuration
+tags:
+- msoffice
+- wine
+published: true
+comments: true
+---
+<p>都有人把M$ Office 2007给Wine成功了，我这篇文章看起来异常火星。</p>
+
+<p>当初我不Wine Office的原因很简单，字体。我当时不知道M$ Office自己带有一个很庞大的字体包，我怕装好后出现中文不能显示等问题，干脆就没来装了。结果装好了之后，发现效果非常好。</p>
+
+<p>下面简单说一下How To，其实网上很多教程，WineHQ 官方WIKI上就有。</p>
+
+<p>1. 将richedit20.dll和richedit32.dll还有msxml3.dll三个文件在winecfg里面设为native(windows).</p>
+
+<p>2.上网下载以上三个文件的安装包：</p>
+
+<p><a href="http://media.codeweavers.com/pub/crossover/office/support/richedit30.exe">http://media.codeweavers.com/pub/crossover/office/support/richedit30.exe</a></p>
+
+<p><a href="http://www.microsoft.com/downloads/details.aspx?displaylang=zh-cn&FamilyID=28494391-052b-42ff-9674-f752bdca9582">http://www.microsoft.com/downloads/details.aspx?displaylang=zh-cn&FamilyID=28494391-052b-42ff-9674-f752bdca9582</a></p>
+
+<p>3.执行安装
+<!--more--><blockquote>wine richedit30.exe<br />
+wine msiexec /i msxml3.msi</blockquote></p>
+
+<p>4.运行Office的Setup.exe</p>
+
+<p>建议安装选择查看细节，把“输入法”那块给取消掉，要不然会安装微软拼音，退出OFFICE后不会退出输入法，得手动结束ctfmon.exe进程。</p>
+
+<p>okay, enjoy~</p>

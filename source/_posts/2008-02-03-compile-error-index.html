@@ -1,0 +1,66 @@
+---
+layout: post
+title: 编译错误索引
+categories:
+- Learning
+tags:
+- compile
+- error
+- index
+published: true
+comments: true
+---
+<p>编译软件在Linux的软件安装方式中有着重要角色，最常用的就是使用“编译三部曲”：<br />
+./configure       (配置环境，生成Makefile)<br />
+make                (编译链接，生成可执行文件或库)<br />
+make install     (将生成的文件复制到对应的路径下)</p>
+
+<p>而在configure阶段会产生各种各样的错误，大都是由于没有对应的类库而造成的。本文以Ubuntu为例列出如下索引：
+<blockquote>错误信息：C compiler cannot create executables<br />
+错误信息：C++ preprocessor "/lib/cpp" fails sanity check<br />
+错误分析：以上两条信息都是由于C/C++编译组件没有安装完全导致的。在Ubuntu下有一个build-essential包，可以一次性将C/C++编译包安装完全。
+<blockquote>sudo apt-get install build-essential</blockquote>
+</blockquote>
+<!--more-->
+<blockquote>错误信息：Can't find X includes. Please check your installation and add the correct paths!<br />
+错误分析：没有X(图形界面)的包含文件。可以安装xlibs-dev解决此问题，也可以安装xorg-dev一次性安装所有的Xorg相关的包。
+<blockquote>sudo apt-get install xlibs-dev<br />
+sudo apt-get install xorg-dev</blockquote>
+</blockquote>
+<blockquote>错误信息：Qt (&gt;= Qt 3.0) (headers and libraries) not found. Please check your installation!
+<blockquote>sudo apt-get install libqt3-headers libqt3-mt-dev</blockquote>
+</blockquote>
+<blockquote> 错误信息：in the prefix, you've chosen, are no KDE headers installed. This will fail.So, check this please and use another prefix!
+<blockquote>sudo apt-get install kdelibs4-dev kdelibs4c2a</blockquote>
+</blockquote>
+<blockquote> 错误信息：autoconf: not found
+<blockquote>sudo apt-get install autoconf</blockquote>
+</blockquote>
+<blockquote> 错误信息： *** GTK &gt;= 2.4.0 not installed! ***
+<blockquote>sudo apt-get build-dep gedit</blockquote>
+</blockquote>
+<blockquote>错误信息：Cannot find GTK: Is gtk-config in path?
+<blockquote>sudo apt-get install libgtk1.2-dev</blockquote>
+</blockquote>
+<blockquote>错误信息：No package 'gtk+-2.0' found<br />
+错误信息：No package 'gtksourceview-1.0' found<br />
+错误信息：No package 'libgnomeui-2.0' found<br />
+错误信息：No package 'libglade-2.0' found<br />
+错误信息：No package 'libgnomeprintui-2.2' found
+<blockquote>sudo apt-get install libgtk2.0-dev libgtksourceview-dev libgnomeui-dev libglade2-dev libgnomeprint2.2-dev</blockquote>
+</blockquote>
+<blockquote>错误信息：No package 'libpanelapplet-2.0' found
+<blockquote>sudo apt-get install libpanelappletmm-2.6-dev</blockquote>
+</blockquote>
+<blockquote>错误信息：You must have the GTK+ 2.0 development headers installed to compile ***.
+<blockquote>sudo apt-get install libgtk2.0-dev</blockquote>
+</blockquote>
+<blockquote> 错误信息：You must have libxml2 &gt;= 2.6.0 development headers installed to build.
+<blockquote>sudo apt-get install libxml2-dev</blockquote>
+</blockquote>
+<blockquote>错误信息：wxWidgets must be installed on your system but wx-config script couldn't be found. ...
+<blockquote>sudo apt-get install libwxbase2.6-dev libwxgtk2.6-dev</blockquote>
+</blockquote>
+<blockquote>错误信息： Header file pcap.h not found;
+<blockquote>sudo apt-get install libpcap-dev</blockquote>
+</blockquote></p>

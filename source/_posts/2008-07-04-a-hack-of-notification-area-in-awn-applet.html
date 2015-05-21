@@ -1,0 +1,51 @@
+---
+layout: post
+title: 对awn-applet在通知栏的一个小改动
+categories:
+- Hacks
+tags:
+- awn-applet
+- Hacks
+published: true
+comments: true
+---
+<p>话说，用了awn-extra-applet之后，腰不疼了，腿不酸了，吃饭也香了，身体也有劲儿了……</p>
+
+<p>不过有点不爽的就是，awn applets里面的notification area(用来代替panel上的notification area的东东)显示图标有问题。当某程序的status icon使用的是高像素图标(比如128x128)时，整个notification area就被撑满了，高度也撑破了。</p>
+
+<p>如下图：</p>
+
+<p><img src="http://img.ant.im/di-0CWK.png" /></p>
+
+<p>于是好好的一个awn的美观就被破坏殆尽。</p>
+
+<p>最近对代码有点犯怵，不过还是去看了看notification area的代码，发现只有三个文件。</p>
+
+<p>在applet.c中，找到这么一段代码：</p>
+
+<p><!--more--><pre lang="cpp" line="1">
+height = awn_applet_get_height (applet);
+gtk_widget_set_size_request (GTK_WIDGET (applet), -1, height* 2 );
+ 
+table = gtk_table_new (1, 1, FALSE);
+app->table = table;
+gtk_table_set_col_spacings (GTK_TABLE (table), 2);
+gtk_table_set_row_spacings (GTK_TABLE (table), 1);
+</pre></p>
+
+<p>第一行说明notification area中显示的图标高度是由applet的实际高度决定的。applet的实际高度可以很高，比如128的那个更新图标之类的。</p>
+
+<p>于是修改起来也很简单，把第一行注释掉，再在开头height声明时初始化为24即可。</p>
+
+<p>声明部分：
+<pre lang="cpp" line="1">
+static GQuark new_quark = 0;
+static GQuark del_quark = 0;
+static gint   n_rows    = 0;
+static int   height    = 24;  //原来这里是0
+static int   icon_size = 24;
+</pre></p>
+
+<p>改完后重新编译，重新使用awn后，图标果然正常了。</p>
+
+<p><img src="http://img.ant.im/di-MBQJ.png" /></p>

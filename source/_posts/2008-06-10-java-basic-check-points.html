@@ -1,0 +1,72 @@
+---
+layout: post
+title: Java知识点没掌握扎实的后果
+categories:
+- Learning
+tags:
+- java
+- 数组初始化
+- 自动调用
+published: true
+comments: true
+---
+<p>自动调用toString方法——</p>
+
+<p><pre lang="java" line="1">
+//A.java
+public class A extends B
+{
+	public String toString()
+	{
+		return "A";
+	}
+}</pre></p>
+
+<p>//B.java<br />
+public class B<br />
+{
+	public String toString()<br />
+	{<br />
+		return "B";<br />
+	}<br />
+}</p>
+
+<p>//C.java<br />
+public class C<br />
+{
+	public static void main(String[] args)<br />
+	{<br />
+		Object o[] = {new A(), new B()};</p>
+
+<p>		System.out.print(o[0]);<br />
+		System.out.print(o[1]);<br />
+	}<br />
+}
+</p>
+
+<p><!--more-->结果是啥？</p>
+
+<p>现在我知道了，是AB！</p>
+
+<p>当时自作聪明地回答了一个类似于“A@a90653B@de6ced”的答案，唉……4分</p>
+
+<p>数组自动初始化——</p>
+
+<p><pre lang="java" line="1">
+public class Test
+{
+	public static void main(String[] args)
+	{
+		int a[] = new int[7];
+		System.out.println("a[0] = " + a[0]);
+	}	
+}
+</pre></p>
+
+<p>答案是0，我只是说明一下，我zt了，Too Complexed, Sometime Overwised.</p>
+
+<p>我的答案是：java.lang.NullPointException</p>
+
+<p>听天由命吧，希望老师看在我平时编程还算不zt的份上，给我一个85+吧……</p>
+
+<p>我早该想到，作为一个很常规的老师，程老师是不会出那种稀奇古怪的题目的，可惜我想得太复杂了……</p>

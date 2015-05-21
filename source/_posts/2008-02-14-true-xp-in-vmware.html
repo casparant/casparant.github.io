@@ -1,0 +1,55 @@
+---
+layout: post
+title: 把真实的XP系统转换为Linux下的虚拟机——VMware
+categories:
+- Configuration
+tags:
+- vmware
+- xp
+published: true
+comments: true
+---
+<p>以下步骤在XP下完成：</p>
+
+<p>下载VMware SCSI驱动<a href="http://download3.vmware.com/software/vmscsi-1.2.0.4.flp" target="_blank"> http://download3.vmware.com/software/vmscsi-1.2.0.4.flp</a></p>
+
+<p>用UltraISO或者WinISO将其解压。</p>
+
+<p>在设备管理器中安装一个SCSI驱动，选择解压后的驱动文件。</p>
+
+<p>复制硬盘配置文件，例如重命名为VMware-profile。</p>
+
+<p>以下步骤在Linux下完成：</p>
+
+<p>首先，到这里下载VMware Server——vmware推出的免费版本的VM虚拟机：</p>
+
+<p><a href="http://www.vmware.com/download/server/" target="_blank"><!--more-->http://www.vmware.com/download/server/</a></p>
+
+<p>下载完毕后安装——如果你还不会安装，请参考此文：<a href="http://www.casparant.com/linux-faq.html" target="_blank">Linux扫盲</a></p>
+
+<p>然后如果已经挂在了XP的分区，把xp盘unmount掉。</p>
+
+<p>接下去修改/etc/group文件，在disk那一行的末尾加上你的用户名，获得硬盘直接接入的权限。</p>
+
+<p>在VMware server中新建一个虚拟机，硬盘选择“使用物理磁盘”，选择需要接入的分区。</p>
+
+<p>特别要注意要把mbr所在的分区给选上，否则不能启动。</p>
+
+<p>启动后硬盘配置文件选择VMware，随后即可启动成功。</p>
+
+<p>另附：vmware-server-1.04序列号
+<blockquote>9A0DE-YWWFT-2450N-4L3KT<br />
+9AHDT-YP94T-24087-4RHRE<br />
+9216D-YWTF8-2D00Q-481CT<br />
+9856W-YY9DE-26410-4A2R8<br />
+9804X-YM969-2FHA2-480UT<br />
+98MF9-YY9FT-24HC1-48ML4<br />
+984DD-YME4X-24021-4TPVW<br />
+90448-YMT48-26184-4LMJR<br />
+9A04D-YMDFT-24583-4JJJ8</blockquote>
+另附：将vmware-server中XP的分辨率调整到12800x800的宽屏</p>
+
+<p>修改****.vmx文件(你虚拟系统的那个配置文件),在里面添加这两句话:
+<blockquote>svga.maxWidth = 1280</blockquote></p>
+
+<p>svga.maxHeight = 800</p>
