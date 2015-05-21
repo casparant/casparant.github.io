@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Kernel | Ant-Veil]]></title>
   <link href="http://www.casparzhang.com/blog/categories/kernel/atom.xml" rel="self"/>
   <link href="http://www.casparzhang.com/"/>
-  <updated>2015-05-21T20:07:41+08:00</updated>
+  <updated>2015-05-21T20:12:05+08:00</updated>
   <id>http://www.casparzhang.com/</id>
   <author>
     <name><![CDATA[Caspar]]></name>
@@ -29,29 +29,20 @@
 <!--more-->
 
 
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'>    <span class="n">target_complete_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
-</span><span class='line'>    <span class="n">kfree</span><span class="p">(</span><span class="n">ibr</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<pre><code class="C">    target_complete_cmd(cmd, status);
+    kfree(ibr);
+</code></pre>
 
 <p>把它改为这样：</p>
 
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'>    <span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="err">参考</span> <span class="n">target_core_mod</span> <span class="err">里的函数原型，定义函数指针变量</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="n">target_complete_cmd_ptr</span><span class="p">)(</span><span class="k">struct</span> <span class="n">se_cmd</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">u8</span><span class="p">);</span>
-</span><span class='line'>    <span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="err">得到的是</span> <span class="n">target_complete_cmd</span> <span class="err">函数入口地址</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
-</span><span class='line'>    <span class="n">target_complete_cmd_ptr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="p">)</span><span class="n">kallsyms_lookup_name</span><span class="p">(</span>
-</span><span class='line'>        <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="nl">target_core_mod_new</span><span class="p">:</span><span class="n">target_complete_cmd</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;);</span>
-</span><span class='line'>    <span class="p">(</span><span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="n">target_complete_cmd_ptr</span><span class="p">)(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
-</span><span class='line'>    <span class="n">kfree</span><span class="p">(</span><span class="n">ibr</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<pre><code class="C">    /* 参考 target_core_mod 里的函数原型，定义函数指针变量 */
+    void (*target_complete_cmd_ptr)(struct se_cmd *, u8);
+    /* 得到的是 target_complete_cmd 函数入口地址 */
+    target_complete_cmd_ptr = (void *)kallsyms_lookup_name(
+        "target_core_mod_new:target_complete_cmd");
+    (*target_complete_cmd_ptr)(cmd, status);
+    kfree(ibr);
+</code></pre>
 
 <p>稍微验证了一下，发现可以用了，于是开始改其他的。</p>
 
@@ -63,147 +54,64 @@
 
 <p>首先，新建一个头文件，把宏和一些函数指针定义都给丢到里面，比如叫<code>import_sym.h</code>:</p>
 
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">linux</span><span class="o">/</span><span class="n">kallsyms</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="err">先定义一个结构体存放所有可能用到的函数指针</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
-</span><span class='line'><span class="k">struct</span> <span class="n">symbol_set</span> <span class="p">{</span>
-</span><span class='line'>    <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">snip</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="n">target_complete_cmd</span><span class="p">)(</span><span class="k">struct</span> <span class="n">se_cmd</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">u8</span><span class="p">);</span>
-</span><span class='line'>    <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">snip</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="p">};</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="err">这个宏用于查找符号地址，并且做一点基本的错误检查</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">define</span> <span class="n">IMPORT_SYMBOL</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>                                             <span class="err">\</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>    <span class="n">sym</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="p">(</span><span class="n">typeof</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">*</span><span class="p">)</span><span class="n">kallsyms_lookup_name</span><span class="p">(</span>                \
-</span><span class='line'>                    <span class="s">&quot;target_core_mod_new:&quot;</span> <span class="err">#</span><span class="n">name</span><span class="p">);</span>                  \
-</span><span class='line'>    <span class="n">pr_debug</span><span class="p">(</span><span class="s">&quot;symbol name: &quot;</span> <span class="err">#</span><span class="n">name</span> <span class="s">&quot;, symbol addr found: 0x%lx</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>  \
-</span><span class='line'>            <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span><span class="n">sym</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>                               \
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sym</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>                                                  \
-</span><span class='line'>            <span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;/&lt;</span><span class="n">em</span><span class="o">&gt;</span>
-</span><span class='line'> <span class="o">*</span> <span class="err">下面这两个宏会拼成一个函数，放在前后端驱动中，前面这个宏还定义了一个</span>
-</span><span class='line'> <span class="o">*</span> <span class="err">全局静态结构用于存放</span><span class="n">symbol</span><span class="err">的集合</span>
-</span><span class='line'> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">define</span> <span class="n">IMPORT_SYMBOL_START</span>                                             <span class="err">\</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">static</span> <span class="k">struct</span> <span class="n">symbol_set</span> <span class="n">sym</span><span class="p">;</span>                                           \
-</span><span class='line'><span class="k">static</span> <span class="kt">int</span> <span class="n">__init_syms_lookup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>                                     \
-</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">define</span> <span class="n">IMPORT_SYMBOL_END</span>                                               <span class="err">\</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>                                                       \
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="err">下面这个宏用来替换前后端驱动中每个要引用原导出符号的语句</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">define</span> <span class="n">IMPORTED</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="n">sym</span><span class="p">.</span><span class="n">name</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<pre><code class="C">#include &lt;linux/kallsyms.h&gt;
+
+/* 先定义一个结构体存放所有可能用到的函数指针 */
+struct symbol_set {
+    &lt;snip...&gt;
+    void (*target_complete_cmd)(struct se_cmd *, u8);
+    &lt;snip...&gt;
+};
+
+/* 这个宏用于查找符号地址，并且做一点基本的错误检查 */
+#define IMPORT_SYMBOL(name)                                             \
+        sym.name = (typeof(name) *)kallsyms_lookup_name(                \
+                        "target_core_mod_new:" #name);                  \
+        pr_debug("symbol name: " #name ", symbol addr found: 0x%lx\n",  \
+                (unsigned long)sym.name);                               \
+        if (!sym.name)                                                  \
+                return -EINVAL;
+
+/*
+ * 下面这两个宏会拼成一个函数，放在前后端驱动中，前面这个宏还定义了一个
+ * 全局静态结构用于存放symbol的集合
+ */
+#define IMPORT_SYMBOL_START                                             \
+static struct symbol_set sym;                                           \
+static int __init_syms_lookup(void)                                     \
+{
+
+#define IMPORT_SYMBOL_END                                               \
+        return 0;                                                       \
+}
+
+/* 下面这个宏用来替换前后端驱动中每个要引用原导出符号的语句 */
+#define IMPORTED(name) (*sym.name)
+</code></pre>
 
 <p>接下来改前后端驱动的代码，还是以<code>target_core_iblock</code>为例：</p>
 
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">import_sym</span><span class="p">.</span><span class="n">h</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">IMPORT_SYMBOL_START</span>
-</span><span class='line'><span class="n">IMPORT_SYMBOL</span><span class="p">(</span><span class="n">target_complete_cmd</span><span class="p">);</span>
-</span><span class='line'><span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="err">这里还可以继续添加</span><span class="n">IMPORT_SYMBOL</span><span class="err">宏以查找更多需要用的符号</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
-</span><span class='line'><span class="n">IMPORT_SYMBOL_END</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">snip</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="err">把</span> <span class="n">target_complete_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span> <span class="err">换掉</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
-</span><span class='line'><span class="n">IMPORTED</span><span class="p">(</span><span class="n">target_complete_cmd</span><span class="p">)(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">snip</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="k">static</span> <span class="kt">int</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">init</span> <span class="n">iblock_module_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="err">在模块初始化的时候就找齐所有需要的符号地址</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">init_syms_lookup</span><span class="p">();</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">ret</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">IMPORTED</span><span class="p">(</span><span class="n">transport_subsystem_register</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">iblock_template</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<pre><code class="C">#include "import_sym.h"
+
+IMPORT_SYMBOL_START
+IMPORT_SYMBOL(target_complete_cmd);
+/* 这里还可以继续添加IMPORT_SYMBOL宏以查找更多需要用的符号 */
+IMPORT_SYMBOL_END
+
+&lt;snip...&gt;
+/* 把 target_complete_cmd(cmd, status); 换掉 */
+IMPORTED(target_complete_cmd)(cmd, status);
+
+&lt;snip...&gt;
+static int __init iblock_module_init(void)
+{
+    /* 在模块初始化的时候就找齐所有需要的符号地址 */
+    int ret = __init_syms_lookup();
+    if (ret)
+        return ret;
+    return IMPORTED(transport_subsystem_register)(&amp;iblock_template);
+}
+</code></pre>
 
 <p>这样就可以了。</p>
 

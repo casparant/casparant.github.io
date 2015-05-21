@@ -115,29 +115,29 @@
 
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'>    <span class="n">target_complete_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
-</span><span class='line'>    <span class="n">kfree</span><span class="p">(</span><span class="n">ibr</span><span class="p">);</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="n">target_complete_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+</span><span class='line'><span class="n">kfree</span><span class="p">(</span><span class="n">ibr</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>把它改为这样：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'>    <span class="cm">/* 参考 target_core_mod 里的函数原型，定义函数指针变量 */</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">target_complete_cmd_ptr</span><span class="p">)(</span><span class="k">struct</span> <span class="n">se_cmd</span> <span class="o">*</span><span class="p">,</span> <span class="n">u8</span><span class="p">);</span>
-</span><span class='line'>    <span class="cm">/* 得到的是 target_complete_cmd 函数入口地址 */</span>
-</span><span class='line'>    <span class="n">target_complete_cmd_ptr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">kallsyms_lookup_name</span><span class="p">(</span>
-</span><span class='line'>        <span class="s">&quot;target_core_mod_new:target_complete_cmd&quot;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">(</span><span class="o">*</span><span class="n">target_complete_cmd_ptr</span><span class="p">)(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
-</span><span class='line'>    <span class="n">kfree</span><span class="p">(</span><span class="n">ibr</span><span class="p">);</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cm">/* 参考 target_core_mod 里的函数原型，定义函数指针变量 */</span>
+</span><span class='line'><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">target_complete_cmd_ptr</span><span class="p">)(</span><span class="k">struct</span> <span class="n">se_cmd</span> <span class="o">*</span><span class="p">,</span> <span class="n">u8</span><span class="p">);</span>
+</span><span class='line'><span class="cm">/* 得到的是 target_complete_cmd 函数入口地址 */</span>
+</span><span class='line'><span class="n">target_complete_cmd_ptr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">kallsyms_lookup_name</span><span class="p">(</span>
+</span><span class='line'>    <span class="s">&quot;target_core_mod_new:target_complete_cmd&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">(</span><span class="o">*</span><span class="n">target_complete_cmd_ptr</span><span class="p">)(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+</span><span class='line'><span class="n">kfree</span><span class="p">(</span><span class="n">ibr</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -151,7 +151,7 @@
 
 <p>首先，新建一个头文件，把宏和一些函数指针定义都给丢到里面，比如叫<code>import_sym.h</code>:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -184,7 +184,7 @@
 <span class='line-number'>31</span>
 <span class='line-number'>32</span>
 <span class='line-number'>33</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;linux/kallsyms.h&gt;</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;linux/kallsyms.h&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="cm">/* 先定义一个结构体存放所有可能用到的函数指针 */</span>
 </span><span class='line'><span class="k">struct</span> <span class="n">symbol_set</span> <span class="p">{</span>
@@ -222,7 +222,7 @@
 
 <p>接下来改前后端驱动的代码，还是以<code>target_core_iblock</code>为例：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -242,7 +242,7 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &quot;import_sym.h&quot;</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &quot;import_sym.h&quot;</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">IMPORT_SYMBOL_START</span>
 </span><span class='line'><span class="nf">IMPORT_SYMBOL</span><span class="p">(</span><span class="n">target_complete_cmd</span><span class="p">);</span>
