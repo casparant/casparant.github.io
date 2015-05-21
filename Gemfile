@@ -1,4 +1,5 @@
-source "https://rubygems.org"
+source 'http://mirrors.aliyun.com/rubygems/'
+gem 'rails', '4.0.2'
 
 group :development do
   gem 'rake', '~> 10.0'
