@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Learning | Ant-Veil]]></title>
+  <link href="http://casparant.github.io/blog/categories/learning/atom.xml" rel="self"/>
+  <link href="http://casparant.github.io/"/>
+  <updated>2015-05-21T11:59:03+08:00</updated>
+  <id>http://casparant.github.io/</id>
+  <author>
+    <name><![CDATA[Caspar]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[每一次实验和大作业都是学习的过程]]></title>
+    <link href="http://casparant.github.io/blog/2009/04/20/a-practice-is-a-progress/"/>
+    <updated>2009-04-20T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/04/20/a-practice-is-a-progress</id>
+    <content type="html"><![CDATA[<p>这次学会了<a href="http://www.google.com/search?q=%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%AF%B9%E9%BD%90">结构体的对齐</a>，记录锁和QT的基本操作。顺便强烈推荐使用qt-creator进行开发。</p>
+
+
+
+
+<p>当然还碰到个囧事，一个文件用r方式打开了，然后想往上面加写锁，加了半天就是报“错误的文件描述符”，郁闷之下man了下fcntl的内容，顿悟：</p>
+
+
+
+
+<p><blockquote>EBADF  fd is not an open file descriptor, <strong>or the command was  F_SETLK  or  F_SETLKW<br />
+              and  the  file  descriptor  open  mode  doesn't  match with the type of lock<br />
+              requested.</strong></blockquote></p>
+
+
+
+
+<p>其实本来想写很多的，但是因为这个东西做的时间太长了，又忘了随手记，就只能写出这么多了……</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[几个日常技巧——我的滥竽充数]]></title>
+    <link href="http://casparant.github.io/blog/2009/03/26/some-common-skills/"/>
+    <updated>2009-03-26T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/03/26/some-common-skills</id>
+    <content type="html"><![CDATA[<p>因为我在KDE下不想装那个GNOME依赖关系超多的tomboy，所以暂时把这些非常过时的日常技巧发上来，众人不要怪我凑日志数哦～</p>
+
+
+
+
+<p>1. MySQL授权用户: </p>
+
+
+
+
+<p><pre lang="mysql">GRANT ALL PRIVILEGES 
+ON `DATABASE`.`TABLE` 
+TO 'USER'@'DOMAIN' 
+IDENTIFIED BY 'PASSWORD' 
+WITH GRANT OPTION ;</pre></p>
+
+
+
+
+<p>Mysql 改密码：</p>
+
+
+
+
+<p><pre lang="bash">mysqladmin -u root -p password 'NEW_PASSWORD'</pre></p>
+
+
+
+
+<p>2. 批量修改文本文件的编码：find . -iname '*.*' -execdir iconv -f GB18030 -t UTF-8 -o {} {} \;</p>
+
+
+
+
+<p>批量缩小图片到50%： for i in *; do convert $i -resize 50%x50% sm-$i; done</p>
+
+
+
+
+<p><p>3. HTML中使用脚本实现网页跳转：&lt; script>window.location=&ldquo;<a href="http://url/to/be/redirected">http://url/to/be/redirected</a>&rdquo;&lt; /script></p></p>
+
+<p><p>4. VIM中把TAB批量转为空格 :retab</p></p>
+
+<p><p>VIM中使用F3键关闭粘贴时的缩进：set pastetoggle=&lt; F3></p></p>
+
+<p><p>VIM中删除含特定字符串的行：g/str/d</p></p>
+
+<p><p><!--more-->5. 从文件夹制作ISO文件：</p></p>
+
+<p><p><pre lang="bash">mkisofs -J -T -R -V volume_id -o mycd.iso source_dir</pre></p></p>
+
+<p><p>mkisofs 主要参数说明：</p></p>
+
+<p><p><blockquote>-J/-joliet 使用 Joliet 格式的目录与文件名称<br />
+-T/-translation-table 为每个目录都生成一个 TRANS.TBL 文件名转换表文件<br />
+-R/-rock 使用 Rock Ridge Extensions<br />
+-V/-volid &lt;光盘ID> 指定光盘的卷标ID</blockquote></p></p>
+
+<p><p>6. GNOME下关闭splash screen: 在gconf-editor中，apps->gnome-session->options->show_splash_screen</p></p>
+
+<p><p>GNOME下自动挂载NTFS且解决乱码：system->storage->default_options->ntfs/ntfs-3g->mount_options|utf8</p></p>
+
+<p><p>7. 新安装的Firefox修改设定防止数据库过大导致浏览缓慢(来自LDCN)：
+<blockquote>browser.history_expire_days：3<br />
+browser.history_expire_days.mirror：7<br />
+browser.history_expire_days_min：1<br />
+browser.history_expire_sites：4000</blockquote></p></p>
+
+<p><p>如果是已经使用过一段时间的Firefox，还需要清理~/.mozilla/firefox下的.db数据库文件。</p></p>
+
+<p><p>8. Gentoo中文man page乱码</p></p>
+
+<p><p>安装groff-utf8之后</p></p>
+
+<p><p><pre lang="bash">vim /etc/man.conf</pre></p></p>
+
+<p><p>将里面的 NROFF 那行改为 NROFF /usr/bin/groff-utf8 -Tutf8 -c -mandoc</p></p>
+
+<p><p>9. wlan0显示：SIOCSIFFLAGS: No such device</p></p>
+
+<p><p>Removing the net.wlan0 symlink in /etc/init.d/ makes the card work fine.</p></p>
+
+<p><p>10. nm-applet因权限问题不能启动：</p></p>
+
+<p><p>修改/etc/dbus-1/system.d/NetworkManager.conf 和 /etc/dbus-1/system.d/nm-applet.conf，下列三处"allow"，如果为deny，则改回allow</p></p>
+
+<p><p><pre lang="xml" line="1"><policy context="default">
+<allow own="org.freedesktop.NetworkManager" />
+<allow send_destination="org.freedesktop.NetworkManager" />
+<allow send_interface="org.freedesktop.NetworkManager" />
+</policy></pre></p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[备忘]最近用到的一些技巧]]></title>
+    <link href="http://casparant.github.io/blog/2009/01/09/some-recently-used-skills/"/>
+    <updated>2009-01-09T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/01/09/some-recently-used-skills</id>
+    <content type="html"><![CDATA[<p>1.<strong> VIM操作</strong></p>
+
+
+
+
+<p>VIM在每行行首或行尾插入指定字符串：</p>
+
+
+
+
+<p>行首 :%s/^/YOUR_STR/</p>
+
+
+
+
+<p>行尾 :%s/^$/YOUR_STR/</p>
+
+
+
+
+<p>删除^M标记 :%s/^M$//g，^M的输入方法为^V^M</p>
+
+
+
+
+<p>2. <strong>Openoffice3.0在Ubuntu8.10中不能输入中文</strong></p>
+
+
+
+
+<p>将libstdc++和libgcc的so文件软链到OOo的ure路径下即可：</p>
+
+
+
+
+<p><pre lang="bash">sudo ln -snf /usr/lib/gcc/i486-linux-gnu/4.3.2/libstdc++.so \
+/opt/openoffice.org/ure/lib/libstdc++.so.6
+sudo ln -snf /usr/lib/gcc/i486-linux-gnu/4.3.2/libgcc_s.so \
+/opt/openoffice.org/ure/lib/libgcc_s.so.1</pre></p>
+
+
+
+
+<p><!--more-->3. <strong>优化OOo启动速度</strong></p>
+
+
+
+
+<p>1. OOo“工具”对话框，选项->内存</p>
+
+
+
+
+<p>2. 减少“撤销命令->步数”，我设置为20</p>
+
+
+
+
+<p>3. 增大“图形缓冲区->用于openoffice”，我设置为128m，“每个对象的内存”，我设置为20m</p>
+
+
+
+
+<p>4. 取消Java选项页中的“使用Java运行环境”</p>
+
+
+
+
+<p>4. <strong>打开触摸板驱动</strong></p>
+
+
+
+
+<p><p>在其他版本和以前版本的ubuntu中，在xorg里添加一段话就可以使用gsynaptic了，可是Ubuntu8.10不行。解决办法是编辑<code>/usr/share/hal/fdi/policy/20thirdparty/11-x11-synaptics.fdi</code>，在里面找到<code>&lt; match key=&ldquo;info.product&rdquo; contains=&ldquo;Synaptics TouchPad&rdquo;></code>这行，在出现<code>&lt; /match></code>之前加入一行：</p></p>
+
+<p><p><code>&lt; merge key=&ldquo;input.x11_options.SHMConfig&rdquo; type=&ldquo;string&rdquo;>On&lt; /merge></code>(由于wp格式的问题，请自行取消&lt;号之后的空格)即可。</p></p>
+
+<p><p>5. <strong>使用apt-file来查找安装软件时缺少的软件包。</strong></p></p>
+
+<p><p>当./configure或者其他安装命令执行时提示缺少XXX库没有安装，apt-cache search和aptitude search无果之后，不妨尝试apt-file(当然你要先安装apt-file)。</p></p>
+
+<p><p>语法：<pre lang="bash">apt-file search FILE</pre></p></p>
+
+<p><p>唉，最近净发些没营养的东西，什么时候能静下心来真正学点东西啊……</p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[动态测试中的覆盖率问题]]></title>
+    <link href="http://casparant.github.io/blog/2009/01/07/the-coverages-in-dynamic-testing/"/>
+    <updated>2009-01-07T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/01/07/the-coverages-in-dynamic-testing</id>
+    <content type="html"><![CDATA[<p>覆盖率(Coverage)的定义如下：</p>
+
+
+
+
+<p><blockquote>Coverage = (Object executed)/(Total objects) * 100%</blockquote></p>
+
+
+
+
+<p>常用的覆盖率指标有很多，这里只介绍我看到过的其中三种：</p>
+
+
+
+
+<p>语句覆盖率(Statement Coverage)，也称作“行覆盖率(Line Coverage)”、“段覆盖率(Segment Coverage)”，用于评价测试的代码语句覆盖率。</p>
+
+
+
+
+<p>判定路径覆盖率(Decision-Decision Path Coverage, DDP Coverage)，用于评价代码分支的覆盖率。</p>
+
+
+
+
+<p>修正条件/决策覆盖率(Modified Condition/Decision Coverage, MC/DC)，这个比较麻烦，稍后详述。</p>
+
+
+
+
+<p><!--more-->语句覆盖率很简单，例如有以下示例代码：</p>
+
+
+
+
+<p><pre lang="cpp">// A, B的取值范围为0和1
+if (A && B)
+  99 statements;
+else
+  1 statement;</pre></p>
+
+
+
+
+<p>当有如下测试用例，覆盖率为99%:</p>
+
+
+
+
+<p><blockquote>A B if()<br />
+1 1 true</blockquote></p>
+
+
+
+
+<p>判定路径覆盖率也比较简单，仍旧是上面的样例代码，当有如下测试用例时，DDP覆盖率即为100%：</p>
+
+
+
+
+<p><blockquote>A B if()<br />
+1 1 true<br />
+0 1 false</blockquote></p>
+
+
+
+
+<p>下面介绍一下比较麻烦的MC/DC。</p>
+
+
+
+
+<p>以下摘自<a href="http://bbs.51testing.com/archiver/tid-42768.html">51testing</a>：</p>
+
+
+
+
+<p><blockquote>MC/DC是DO-178B（美军标准）中首次提出的，开始是为了提高航空软件测试中的覆盖率水平。在 DO-178B中阐明了MC/DC的意义: 对于关键性的实时程序而言，超过半数的可执行代码可能都与布尔运算表达式有关，表达式的复杂性应得到关注。MC/DC的提出是为了引起对布尔表达式的关注…<br />
+根据DO-178B，MC/DC（Modified Condition/Decision Coverage）有如下要求：<strong>判定中每个条件的所有可能结果至少出现一次，每个判定本身的所有可能结果也至少出现一次，每个入口点和出口点至少要执行一次，并且每个条件都能单独影响判定结果</strong>。这里条件是指不含任何逻辑操作符的布尔表达式，由关系操作符构成。判定是指包含逻辑操作符的布尔表达式。如果同一个布尔表达式在一个判定中出现了多次，那么该表达式应算作多个条件。例如(A OR B)AND(A OR C)中有4个条件。条件A能单独影响判定结果是指，判定中的其他条件取值都不变时，条件A取值的改变会引起判定结果的改变。</blockquote></p>
+
+
+
+
+<p>对于上面这段话，仍旧使用前面的样例代码来理解：</p>
+
+
+
+
+<p>在前面的代码中，有2个条件，分别是A和B，有一个判定(决策），判定结果有两种，true和false。所以要使MC/DC达到100%，A的取值0和1在测试用例中都要出现至少一次，B的取值也是如此，此外判定的结果true和false也至少要出现一次。使用讲解DDP覆盖率的时候的用例，即：</p>
+
+
+
+
+<p><blockquote>A B if()<br />
+1 1 true<br />
+0 1 false</blockquote></p>
+
+
+
+
+<p>此用例的MC/DC为66.6%，这是为什么呢？</p>
+
+
+
+
+<p>按照条件单独影响判定的原则，补全上面的测试用例到100%如下：</p>
+
+
+
+
+<p><blockquote>A B if()<br />
+1 1 true<br />
+0 1 false  -- 保持B不变，单独改变A的值，改变了判定的结果。此时A和判定的所有取值都已经出现。<br />
+1 1 true<br />
+1 0 false  -- 保持A不变，单独改变B的值，改变了判定结果，B的所有取值也已经出现。</blockquote></p>
+
+
+
+
+<p>以上测试用例，有两组重复了。即取用例集{(1,1), (0,1), (1,0)}就可以达到100%的MC/DC。</p>
+
+
+
+
+<p>所以前面那组测试用例的MC/DC是66.6%了。</p>
+
+
+
+
+<p>P.S. 这里有个问题，这里提到的MC/DC达到100%时的用例数，是指最少用例数。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[使用C系统调用函数解决“抽烟者问题”]]></title>
+    <link href="http://casparant.github.io/blog/2008/11/09/using-c-system-call-to-solve-smoker-problem-under-linux/"/>
+    <updated>2008-11-09T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2008/11/09/using-c-system-call-to-solve-smoker-problem-under-linux</id>
+    <content type="html"><![CDATA[<p>问题描述:The Cigarette-Smokers Problem. Consider a system with three smoker processes and one agent process. Each smoker continuously rolls a cigarette and then smokes it. But to roll and smoke a cigarette, the smoker needs three ingredients: tobacco, paper, and matches. One of the smoker processes has paper, another has tobacco, and the third has matches. The agent has an infinite supply of all three materials. The agent places two of the ingredients on the table. The smoker who has the remaining ingredient then makes and smokes a cigarette, signaling the agent on completion. The agent then puts out another two of the three ingredients, and the cycle repeats.</p>
+
+
+
+
+<p>问题分析:通过问题描述,可以构建出一个 4 进程的系统,其中 3 个进程为 smoker 程序的实例,另一个是 agent 程序的实例。首先,Agent 执行提供材料的操作(原则上来说,抽烟者先就座等待也是可行的,代码上也易于实现,但是我编写了一段代码发现很累赘,这作为一个需要改进的部分,暂时在代码中做 TODO 标记),然后执行对 Smoker_i的 V 操作唤醒 Smoker_i,其信号量增 1,i 的值由 Agent 随机确定。接着,Agent 开始等待,进程切换到Smoker_i,Smoker_i 执行 P 操作,信号量减为 0,开始获取材料,卷烟,抽烟操作。抽完烟后 Smoker_i执行 V 操作,通知 Agent,然后 Smoker_i 循环至开头,开始等待,进程切换回 Agent。Agent 也开始循环,如此周期往复。采用同步机制的 PV 操作伪码如下:</p>
+
+
+
+
+<p><!--more--><blockquote>
+Initial semaphores:<br />
+Agent: 0<br />
+Smoker_i: 0 (i = 0, 1, 2)</blockquote></p>
+
+
+
+
+<p>Agent{<br />
+loop:<br />
+    Offer ingredients;<br />
+    V(Smoker_i);<br />
+    P(Agent);<br />
+    GOTO loop;<br />
+}
+Smoker_i{<br />
+loop:<br />
+    P(Smoker_i);<br />
+    Get ingredients, roll and smoke;<br />
+    V(Agent);<br />
+    GOTO loop;<br />
+}//i = 0, 1, 2</p>
+
+
+
+
+<p>技术细节:</p>
+
+
+
+
+<p>1. Linux 系统调用函数 semget(),semctl(),semop()</p>
+
+
+
+
+<p>1.1.   semget()函数原型:int semget(key_t key,int nsems,int semflg);</p>
+
+
+
+
+<p>这个函数用于创建一个信号量集,创建成功后在操作系统中的 Semaphore Array 中新建一条记录。第一个参数为 Semaphore Array 记录中的 key 值,用于不同进程间识别同一个信号量;第二个参数为信号量集中的信号量个数,如果为 0 则为打开现有的信号量集;第三个参数为信号量创建的操作类型和访问权限。</p>
+
+
+
+
+<p>1.2. semctl()函数原型:int semctl(int semid,int semnum,int cmd,union semun arg);</p>
+
+
+
+
+<p>这个函数用于控制信号量集中的每个信号量,具体操作由第三个参数 cmd 决定。</p>
+
+
+
+
+<p>1.3. semop()函数原型:int semop(int semid,struct sembuf*sops,unsign ednsops);</p>
+
+
+
+
+<p>这个函数用于操作信号量,通过对第二个参数结构体中的内容进行修改,可以封装成 PV 操作。</p>
+
+
+
+
+<p>2. ipcs, ipcrm 命令</p>
+
+
+
+
+<p>由于信号量是在操作系统中的共享区域中,所以可以使用系统命令查看和删除这些信号量集。ipcrm -S KEY 命令可以删除键值为 KEY 的信号量,ipcs 命令可以查看信号量列表(当然其中还有其他 IPC 列表)。</p>
+
+
+
+
+<p>代码：</p>
+
+
+
+
+<p><pre lang="cpp" line="1">/*
+ * File: PV.h
+ * Author: Caspar Zhang
+ */
+#ifndef _PV_H
+#define _PV_H</pre></p>
+
+
+
+
+<p>#define SEM_KEY 0x12345678</p>
+
+
+
+
+<p>#define ERR_AND_EXIT(arg) do { <br />
+        perror(arg); <br />
+        exit(1); <br />
+    } while(0)</p>
+
+
+
+
+<p>int P(int semid, int sem_index);<br />
+int V(int semid, int sem_index);</p>
+
+
+
+
+<p>#endif /* _PV_H */</p>
+
+
+
+
+<p><pre lang="cpp" line="1">/*
+ * File: PV.c
+ * Author: Caspar Zhang
+ */
+#include "PV.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/sem.h></unistd.h></stdio.h></pre></p>
+
+
+
+
+<p>int P(int semid, int sem_index)<br />
+{
+    struct sembuf buf;</p>
+
+
+
+
+<p> buf.sem_num = sem_index;<br />
+    buf.sem_op = -1;<br />
+    buf.sem_flg = SEM_UNDO;</p>
+
+
+
+
+<p> if (semop(semid, &buf, 1) == -1)<br />
+        return -1;</p>
+
+
+
+
+<p> return 0;<br />
+}</p>
+
+
+
+
+<p>int V(int semid, int sem_index)<br />
+{
+    struct sembuf buf;</p>
+
+
+
+
+<p> buf.sem_num = sem_index;<br />
+    buf.sem_op = 1;<br />
+    buf.sem_flg = SEM_UNDO;</p>
+
+
+
+
+<p> if (semop(semid, &buf, 1) == -1)<br />
+        return -1;</p>
+
+
+
+
+<p> return 0;<br />
+}
+</p>
+
+
+
+
+<p><pre lang="cpp" line="1">/*
+ * File: Agent.c
+ * Author: Caspar Zhang
+ */
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <sys/sem.h>
+#include "PV.h"</time.h></stdlib.h></stdio.h></unistd.h></pre></p>
+
+
+
+
+<p>int main(int argc, char *argv[])<br />
+{
+    /*<br />
+     * 0 - Paper and matches<br />
+     * 1 - Matches and tobacco<br />
+     * 2 - Tobacco and paper<br />
+     */<br />
+    char *ingredient[3] = {<br />
+        "Paper and matches", <br />
+        "Matches and tobacco",<br />
+        "Tobacco and paper"};<br />
+    int ingred_type;<br />
+    int semid, i;</p>
+
+
+
+
+<p> srand((unsigned)time(NULL));<br />
+    
+    /* Puts out the Agent's information */<br />
+    fprintf(stdout, "I'm the Agent.n" );</p>
+
+
+
+
+<p><p> /<em><br />
+     * Create a new semaphore set which has 4 semaphores in it.<br />
+     * The first 3 semaphores are the Smokers' state,<br />
+     * the last one is the Agent&rsquo;s state<br />
+     </em>/<br />
+    if ((semid = semget(SEM_KEY, 4, IPC_CREAT|0660)) &lt; 0)<br />
+        ERR_AND_EXIT(&ldquo;semget&rdquo;);<br />
+    for (i = 0; i &lt; 4; ++i)<br />
+        if (semctl(semid, i, SETVAL, 0) &lt; 0)<br />
+            ERR_AND_EXIT(&ldquo;semctl&rdquo;);</p></p>
+
+<p><p> /<em><br />
+     * The procedures are shown in below:<br />
+     * 1. Offer Ingredients<br />
+     * 2. V(Smoker_i)<br />
+     * 3. P(Agent)<br />
+     * 4. Go to 1 and repeat<br />
+     </em>/<br />
+    while (1)<br />
+    {<br />
+        /<em> Offer the ingredients randomly</em>/<br />
+        ingred_type = rand() % 3;<br />
+        fprintf(stdout, &ldquo;Agent%d: I offered %s, waiting for the smoker.n&rdquo;,<br />
+                ingred_type, ingredient[ingred_type]);<br />
+        sleep(5);</p></p>
+
+<p><p>     /<em>  Wake up the specified smoker </em>/<br />
+        if (V(semid, ingred_type) &lt; 0) ERR_AND_EXIT(&ldquo;V failed&rdquo;);</p></p>
+
+<p><p>     /<em> Wait for smoker to roll and smoke </em>/<br />
+        if (P(semid, 3) &lt; 0) ERR_AND_EXIT(&ldquo;P failed&rdquo;);<br />
+    }</p></p>
+
+<p><p> return 0;<br />
+}</p></p>
+
+<p><p><pre lang="cpp" line="1">/<em>
+ * File: Smoker.c
+ * Author: Caspar Zhang
+ </em>/</pre></p></p>
+
+<p><p>#include &lt;stdio.h></p>
+
+<h1>include &lt;stdlib.h></h1>
+
+<h1>include &lt;sys/sem.h></h1>
+
+<h1>include &ldquo;PV.h&rdquo;&lt;/stdlib.h>&lt;/stdio.h></p></h1>
+
+<p><p>int main(int argc, char <em>argv[])<br />
+{
+    /</em><br />
+     * 0 - Tobacco Smoker<br />
+     * 1 - Paper Smoker<br />
+     * 2 - Matches Smoker<br />
+     <em>/<br />
+    char </em>ingredient[3] = {&ldquo;Tobacco&rdquo;, &ldquo;Paper&rdquo;, &ldquo;Matches&rdquo;};<br />
+    int smoker = argv[1][0] - &lsquo;0&rsquo;;<br />
+    int semid;</p></p>
+
+<p><p> /<em> Puts out the Smoker&rsquo;s information </em>/<br />
+    fprintf(stdout, &ldquo;I&rsquo;m a smoker. I have %sn&rdquo;, ingredient[smoker]);</p></p>
+
+<p><p> /<em> Get the existed semaphore set </em>/<br />
+    /<em> TODO How to create semaphores if smoker process executed first? </em>/<br />
+    if ((semid = semget(SEM_KEY, 0, 0)) &lt; 0)<br />
+        ERR_AND_EXIT(&ldquo;semget&rdquo;);<br />
+    if (semctl(semid, smoker, GETVAL, 0) &lt; 0)<br />
+        ERR_AND_EXIT(&ldquo;semctl&rdquo;);<br /></p>
+
+<pre><code>/*&lt;br /&gt;
+ * The procedures are shown in below:&lt;br /&gt;
+ * 1. P(Smoker_i)&lt;br /&gt;
+ * 2. Get Ingredients, Roll and Smoke&lt;br /&gt;
+ * 3. V(Agent)&lt;br /&gt;
+ * 4. Go to 1 and repeat&lt;br /&gt;
+ */&lt;br /&gt;
+while (1)&lt;br /&gt;
+{&lt;br /&gt;
+    /* Wait for the Agent*/&lt;br /&gt;
+    fprintf(stdout, "%s: I'm waiting for the agent.n", ingredient[smoker]);&lt;br /&gt;
+    sleep(5);&lt;/p&gt;
+</code></pre>
+
+<p><p>     if (P(semid, smoker) &lt; 0) ERR_AND_EXIT(&ldquo;P failed&rdquo;);</p></p>
+
+<p><p>     /<em> Roll and smoke </em>/<br />
+        fprintf(stdout, &ldquo;%s: I get the ingredients, I&rsquo;m rolling and smoking now.n&rdquo;, <br />
+                ingredient[smoker]);<br />
+        sleep(5);</p></p>
+
+<p><p>     /<em> Wake up Agent </em>/<br />
+        if (V(semid, 3) &lt; 0) ERR_AND_EXIT(&ldquo;V failed&rdquo;);<br />
+    }</p></p>
+
+<p><p> return 0;<br />
+}</p></p>
+
+<p><p>顺便附一段用Java多线程实现的抽烟者问题解决代码，用Semaphore这个类实现的。</p></p>
+
+<p><p><pre lang="java" line="1">import java.util.Random;
+import java.util.concurrent.Semaphore;</pre></p></p>
+
+<p><p>/<em><em><br />
+ * @author caspar<br />
+ </em><br />
+ </em>/<br />
+public class AgentSmokerProblem <br />
+{
+    /<em> Create 4 semaphores, the first is for agent and the rest are for smokers </em>/<br />
+    public static Semaphore sem_agent;<br />
+    public static Semaphore[] sem_smoker = new Semaphore[3];<br /></p>
+
+<pre><code>public static void main(String[] args) &lt;br /&gt;
+{&lt;br /&gt;
+    /* Initialize the semaphores to 0 */&lt;br /&gt;
+    sem_agent = new Semaphore(0);&lt;br /&gt;
+    sem_smoker[0] = new Semaphore(0);&lt;br /&gt;
+    sem_smoker[1] = new Semaphore(0);&lt;br /&gt;
+    sem_smoker[2] = new Semaphore(0);&lt;br /&gt;
+    &lt;br /&gt;
+    /* Create agent and smokers */&lt;br /&gt;
+    Agent agent = new Agent();&lt;br /&gt;
+    Smoker[] smoker = new Smoker[3];&lt;br /&gt;
+    smoker[0] = new Smoker(0);&lt;br /&gt;
+    smoker[1] = new Smoker(1);&lt;br /&gt;
+    smoker[2] = new Smoker(2);&lt;/p&gt;
+</code></pre>
+
+<p><p>     /<em> Start the threads </em>/<br />
+        agent.start();<br />
+        smoker[0].start();<br />
+        smoker[1].start();<br />
+        smoker[2].start();<br />
+    }</p></p>
+
+<p><p>}</p></p>
+
+<p><p>class Agent extends Thread<br />
+{
+    public Agent()<br />
+    {<br />
+        super(&ldquo;Agent&rdquo;);<br />
+    }<br /></p>
+
+<pre><code>public void run()&lt;br /&gt;
+{&lt;br /&gt;
+    String[] smoker_type = {"tobacco", "paper", "matches"};&lt;br /&gt;
+    String[] ingre_type = {"paper and matches", "matches and tobacco", "tobacco and paper"};&lt;br /&gt;
+    &lt;br /&gt;
+    System.out.println("Agent is ready...");&lt;br /&gt;
+    &lt;br /&gt;
+    while (true)&lt;br /&gt;
+    {           &lt;br /&gt;
+        /* Agent running, offering ingredients */&lt;br /&gt;
+        int smoker_num = new Random().nextInt(3);&lt;br /&gt;
+        System.out.println("Agent: I offer " + ingre_type[smoker_num] + &lt;br /&gt;
+                ", now waiting for the smoker who has " + smoker_type[smoker_num]);         &lt;br /&gt;
+        try {&lt;br /&gt;
+            sleep(2000);&lt;br /&gt;
+        } catch (InterruptedException e1) {&lt;br /&gt;
+            e1.printStackTrace();&lt;br /&gt;
+        }&lt;br /&gt;
+        &lt;br /&gt;
+        /* Call the corresponding smoker */&lt;br /&gt;
+        AgentSmokerProblem.sem_smoker[smoker_num].release();&lt;br /&gt;
+        &lt;br /&gt;
+        /* Wait for the smoker */&lt;br /&gt;
+        try {&lt;br /&gt;
+            AgentSmokerProblem.sem_agent.acquire();&lt;br /&gt;
+        } catch (Exception e) {&lt;br /&gt;
+            e.printStackTrace();&lt;br /&gt;
+        }&lt;br /&gt;
+    }&lt;br /&gt;
+}&lt;br /&gt;
+</code></pre>
+
+<p>}</p></p>
+
+<p><p>class Smoker extends Thread<br />
+{
+    private int smoker_num;<br /></p>
+
+<pre><code>public Smoker(int smoker_num)&lt;br /&gt;
+{&lt;br /&gt;
+    super("Smoker " + smoker_num);&lt;br /&gt;
+    this.smoker_num = smoker_num;&lt;br /&gt;
+}&lt;br /&gt;
+
+public void run()&lt;br /&gt;
+{&lt;br /&gt;
+    String[] smoker_type = {"tobacco", "paper", "matches"};&lt;br /&gt;
+    String[] ingre_type = {"paper and matches", "matches and tobacco", "tobacco and paper"};&lt;/p&gt;
+</code></pre>
+
+<p><p>     System.out.println(&ldquo;The smoker has &rdquo; + smoker_type[smoker_num] + &ldquo; is ready&hellip;&rdquo;);<br />
+        <br />
+        while (true)<br />
+        {<br />
+            /<em> Smoker is waiting for the Agent</em>/<br />
+            try {<br />
+                AgentSmokerProblem.sem_smoker[smoker_num].acquire();<br />
+            } catch (InterruptedException e1) {<br />
+                e1.printStackTrace();<br />
+            }<br />
+            <br />
+            /<em> Smoker get ingredients, roll and smoke</em>/<br />
+            System.out.println(&ldquo;The smoker has &rdquo; + smoker_type[this.smoker_num] + &ldquo;: I get the &rdquo; + <br />
+                    ingre_type[this.smoker_num] + &ldquo;, Let me roll a cigarette and smoke.&rdquo;);<br />
+            try {<br />
+                sleep(2000);<br />
+            } catch (InterruptedException e) {<br />
+                e.printStackTrace();<br />
+            }<br />
+            <br />
+            /<em> Call agent </em>/<br />
+            AgentSmokerProblem.sem_agent.release();<br />
+            <br />
+            /<em> Smoker is waiting</em>/<br />
+            System.out.println(&ldquo;The smoker has &rdquo; + smoker_type[this.smoker_num] + <br />
+                    &ldquo;: I finish smoking, now waiting for the agent.&rdquo;);<br />
+            try {<br />
+                sleep(2000);<br />
+            } catch (InterruptedException e1) {<br />
+                e1.printStackTrace();<br />
+            }<br />
+        }<br />
+    }<br />
+}
+</p></p>
+]]></content>
+  </entry>
+  
+</feed>

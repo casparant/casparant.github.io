@@ -5,12 +5,16 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ant-Veil</title>
+  <title>Java知识点没掌握扎实的后果 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="Issue: 雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。 Environment: Razer Orochi 蓝牙鼠标
-Gentoo + KDE &hellip;">
+  <meta name="description" content="自动调用toString方法—— //A.java
+public class A extends B
+{ public String toString() { return "A"; }
+} //B.java
+public class B
+{ public String toString() { &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +22,7 @@ Gentoo + KDE &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   
-  <link rel="canonical" href="http://casparant.github.io">
+  <link rel="canonical" href="http://casparant.github.io/blog/2008/06/10/java-basic-check-points">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
@@ -98,165 +102,127 @@ Gentoo + KDE &hellip;">
   </div>
   <div id="main">
     <div class="content">
-      
-<header>
-  <div class="back">　</div>
-  <h1 class="entry-title"><a href="/">Ant-Veil</a></h1>
-</header>
-<ul class="blog-index">
+      <article class="hentry" role="article">
   
-    
-    
-      
-      
-    
-    
   
-  <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a></h2>
-    
-      <div class="entry-content"><p>Issue:</p>
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">Java知识点没掌握扎实的后果</h1>
+    </header>
+  
+  <div class="entry-content"><p>自动调用toString方法——</p>
 
-<p>雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
+<p><pre lang="java" line="1">
+//A.java
+public class A extends B
+{
+	public String toString()
+	{
+		return "A";
+	}
+}</pre></p>
 
-<p>Environment: </p>
+<p>//B.java<br />
+public class B<br />
+{
+	public String toString()<br />
+	{<br />
+		return "B";<br />
+	}<br />
+}</p>
 
-<p><blockquote>Razer Orochi 蓝牙鼠标<br />
-Gentoo + KDE<br />
-kernel 3.10 ~ 3.16<br />
-bluez 4.101 ~ 5.23<br />
-bluedevil 1.3.2 ~ 2.0_rc1</blockquote></p>
+<p>//C.java<br />
+public class C<br />
+{
+	public static void main(String[] args)<br />
+	{<br />
+		Object o[] = {new A(), new B()};</p>
 
-<p>Solution:</p>
+<p>		System.out.print(o[0]);<br />
+		System.out.print(o[1]);<br />
+	}<br />
+}
+</p>
 
-<p></div>
-      
-      
-        <footer>
-          <a rel="full-article" href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Read on &rarr;</a>
-        </footer>
-      
-    
-  </li>
-  
+<p><!--more-->结果是啥？</p>
 
+<p>现在我知道了，是AB！</p>
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a></h2>
-    
-  </li>
-  
+<p>当时自作聪明地回答了一个类似于“A@a90653B@de6ced”的答案，唉……4分</p>
 
+<p>数组自动初始化——</p>
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a></h2>
-    
-  </li>
-  
+<p><pre lang="java" line="1">
+public class Test
+{
+	public static void main(String[] args)
+	{
+		int a[] = new int[7];
+		System.out.println("a[0] = " + a[0]);
+	}	
+}
+</pre></p>
 
+<p>答案是0，我只是说明一下，我zt了，Too Complexed, Sometime Overwised.</p>
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a></h2>
-    
-  </li>
-  
+<p>我的答案是：java.lang.NullPointException</p>
 
+<p>听天由命吧，希望老师看在我平时编程还算不zt的份上，给我一个85+吧……</p>
 
+<p>我早该想到，作为一个很常规的老师，程老师是不会出那种稀奇古怪的题目的，可惜我想得太复杂了……</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
   
-    
-    
-    
+    <a class='category' href='/blog/categories/learning/'>learning</a>
   
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a></h2>
-    
-  </li>
-  
+</span>
+
+ @
+        
 
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/10/12/cm7-1-on-defy/">CM7.1 on DEFY</a></h2>
-    
-  </li>
-  
+
+
+
+
 
 
   
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/07/16/beginning-of-my-third-year-in-red-hat/">在Red Hat两年</a></h2>
-    
-  </li>
-  
 
 
+<time datetime="2008-06-10T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
   
-    
-    
-    
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2008/06/10/java-basic-check-points/" data-via="" data-counturl="http://casparant.github.io/blog/2008/06/10/java-basic-check-points/" >Tweet</a>
   
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/03/03/jibber-jabber-on-the-resumes/">关于简历的杂碎</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410/">Libfprint Finally Supports Thinkpad T410</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/06/enable-fingerprint-in-thinkpad-t410-under-gentoo/">Enable Fingerprint in Thinkpad T410 Under Gentoo</a></h2>
-    
-  </li>
-  
-
-
-  
-</ul>
-<div class="pagination">
-  
-    <a class="prev" href="2">&larr; Older</a>
   
   
 </div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/06/09/asm-by-emu8086/" title="Previous Post: 俺也汇编一下：EMU8086">&laquo; 俺也汇编一下：EMU8086</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
 
     </div>
     <footer role="contentinfo"><div class="content">

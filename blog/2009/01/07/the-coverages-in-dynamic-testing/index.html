@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>动态测试中的覆盖率问题 - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="覆盖率(Coverage)的定义如下： Coverage = (Object executed)/(Total objects) * 100% 常用的覆盖率指标有很多，这里只介绍我看到过的其中三种： 语句覆盖率(Statement Coverage)，也称作“行覆盖率(Line Coverage &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2009/01/07/the-coverages-in-dynamic-testing">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">动态测试中的覆盖率问题</h1>
+    </header>
+  
+  <div class="entry-content"><p>覆盖率(Coverage)的定义如下：</p>
+
+<p><blockquote>Coverage = (Object executed)/(Total objects) * 100%</blockquote></p>
+
+<p>常用的覆盖率指标有很多，这里只介绍我看到过的其中三种：</p>
+
+<p>语句覆盖率(Statement Coverage)，也称作“行覆盖率(Line Coverage)”、“段覆盖率(Segment Coverage)”，用于评价测试的代码语句覆盖率。</p>
+
+<p>判定路径覆盖率(Decision-Decision Path Coverage, DDP Coverage)，用于评价代码分支的覆盖率。</p>
+
+<p>修正条件/决策覆盖率(Modified Condition/Decision Coverage, MC/DC)，这个比较麻烦，稍后详述。</p>
+
+<p><!--more-->语句覆盖率很简单，例如有以下示例代码：</p>
+
+<p><pre lang="cpp">// A, B的取值范围为0和1
+if (A && B)
+  99 statements;
+else
+  1 statement;</pre></p>
+
+<p>当有如下测试用例，覆盖率为99%:</p>
+
+<p><blockquote>A B if()<br />
+1 1 true</blockquote></p>
+
+<p>判定路径覆盖率也比较简单，仍旧是上面的样例代码，当有如下测试用例时，DDP覆盖率即为100%：</p>
+
+<p><blockquote>A B if()<br />
+1 1 true<br />
+0 1 false</blockquote></p>
+
+<p>下面介绍一下比较麻烦的MC/DC。</p>
+
+<p>以下摘自<a href="http://bbs.51testing.com/archiver/tid-42768.html">51testing</a>：</p>
+
+<p><blockquote>MC/DC是DO-178B（美军标准）中首次提出的，开始是为了提高航空软件测试中的覆盖率水平。在 DO-178B中阐明了MC/DC的意义: 对于关键性的实时程序而言，超过半数的可执行代码可能都与布尔运算表达式有关，表达式的复杂性应得到关注。MC/DC的提出是为了引起对布尔表达式的关注…<br />
+根据DO-178B，MC/DC（Modified Condition/Decision Coverage）有如下要求：<strong>判定中每个条件的所有可能结果至少出现一次，每个判定本身的所有可能结果也至少出现一次，每个入口点和出口点至少要执行一次，并且每个条件都能单独影响判定结果</strong>。这里条件是指不含任何逻辑操作符的布尔表达式，由关系操作符构成。判定是指包含逻辑操作符的布尔表达式。如果同一个布尔表达式在一个判定中出现了多次，那么该表达式应算作多个条件。例如(A OR B)AND(A OR C)中有4个条件。条件A能单独影响判定结果是指，判定中的其他条件取值都不变时，条件A取值的改变会引起判定结果的改变。</blockquote></p>
+
+<p>对于上面这段话，仍旧使用前面的样例代码来理解：</p>
+
+<p>在前面的代码中，有2个条件，分别是A和B，有一个判定(决策），判定结果有两种，true和false。所以要使MC/DC达到100%，A的取值0和1在测试用例中都要出现至少一次，B的取值也是如此，此外判定的结果true和false也至少要出现一次。使用讲解DDP覆盖率的时候的用例，即：</p>
+
+<p><blockquote>A B if()<br />
+1 1 true<br />
+0 1 false</blockquote></p>
+
+<p>此用例的MC/DC为66.6%，这是为什么呢？</p>
+
+<p>按照条件单独影响判定的原则，补全上面的测试用例到100%如下：</p>
+
+<p><blockquote>A B if()<br />
+1 1 true<br />
+0 1 false  -- 保持B不变，单独改变A的值，改变了判定的结果。此时A和判定的所有取值都已经出现。<br />
+1 1 true<br />
+1 0 false  -- 保持A不变，单独改变B的值，改变了判定结果，B的所有取值也已经出现。</blockquote></p>
+
+<p>以上测试用例，有两组重复了。即取用例集{(1,1), (0,1), (1,0)}就可以达到100%的MC/DC。</p>
+
+<p>所以前面那组测试用例的MC/DC是66.6%了。</p>
+
+<p>P.S. 这里有个问题，这里提到的MC/DC达到100%时的用例数，是指最少用例数。</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/learning/'>learning</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-01-07T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2009/01/07/the-coverages-in-dynamic-testing/" data-via="" data-counturl="http://casparant.github.io/blog/2009/01/07/the-coverages-in-dynamic-testing/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/12/21/some-softwares-under-linux/" title="Previous Post: Linux下推荐的软件">&laquo; Linux下推荐的软件</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

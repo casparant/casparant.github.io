@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ubuntu 7.10 Server Config - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="这几天真是囧死了，因为自己经验不足，对服务器的一些配置相当不熟，绕了不少弯路……现在把几天下来的配置过程写一下，以供存档。 操作系统是Ubuntu 7.10 Server。选择它还是主要因为它的软件库的方便，反正都是Linux的内核。实验室的服务器也只是在小范围内使用， &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2008/03/26/ubuntu-server-config">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">Ubuntu 7.10 Server Config</h1>
+    </header>
+  
+  <div class="entry-content"><p>这几天真是囧死了，因为自己经验不足，对服务器的一些配置相当不熟，绕了不少弯路……现在把几天下来的配置过程写一下，以供存档。</p>
+
+<p>操作系统是Ubuntu 7.10 Server。选择它还是主要因为它的软件库的方便，反正都是Linux的内核。实验室的服务器也只是在小范围内使用，安全措施可以不用那么严格和专业。</p>
+
+<p>安装完毕更换源，<strong>安装桌面环境</strong>。
+<pre lang="bash">deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ gutsy main restricted universe multiverse</pre></p>
+
+<p>完毕后安装下列软件(最后一个实在无奈，7.10默认用的是compiz管理器，我想换回metacity结果屡次不成功)</p>
+
+<p><pre lang="bash"> sudo apt-get install gdm x-window-system-core gnome-core language-selector compiz</pre></p>
+
+<p><!--more-->安装完毕之后startx就可以了。</p>
+
+<p>然后把一些需要处理的东西比如窗口装饰、登录界面等等，都给弄好，不需要好看，只需要能用就行了，毕竟时不时还是要用vnc登录的。</p>
+
+<p>之后到gdmsetup中把root登录权限打开。</p>
+
+<p>随后换上其他源，给系统打补丁。</p>
+
+<p>在系统安装的时候就已经选择了LAMP, OpenSSH，所以这里就不用另外单独安装了。剩下还有几个服务需要装：</p>
+
+<p><pre lang="bash">sudo apt-get install vsftpd cvsd</pre></p>
+
+<p><strong>FTP的配置</strong>：</p>
+
+<p>修改vsftpd的配置，在<code>/etc/vsftpd.conf</code>文件中。</p>
+
+<p>允许本地用户登录：<code>local_enable=YES</code></p>
+
+<p>允许写操作：<code>wirte_enable=YES</code></p>
+
+<p>让本地用户只能查看自己家下的文件，除root外：</p>
+
+<p><code>chroot_local_user=YES</code></p>
+
+<p>chroot_list_enable=YES</p>
+
+<p>chroot_list_file=/etc/vsftpd.chroot_list</p>
+
+<p>编辑<code>/etc/vsftpd.chroot_list</code>文件，添加root</p>
+
+<p>允许root登录ftp：修改<code>/etc/ftpusers</code>文件，将root行注释掉</p>
+
+<p><strong>cvs的配置</strong>：</p>
+
+<p>囧的是Ubuntu的CVS的仓库路径默认在/var/lib/cvsd下，而原先服务器上不是，所以我就得把BuildRoot给改掉，结果当时一时脑热，将/var/lib/cvsd下的文件直接覆盖到了/下，结果瞬间，服务器就将我弹出，之后所有连接均拒绝。到机房重启一看，系统崩溃了，因文件损坏不能启动了。。。。只好重装。</p>
+
+<p>其实只要这个命令就可以了：</p>
+
+<p><pre lang="bash">cvsd-buildroot</pre></p>
+
+<p>之后就可以选择路径，重新安装。这是一个安全的方法，碰到文件需要覆盖，系统会自动选择安全的做法（一般是不覆盖）。</p>
+
+<p>之后就建立仓库，修改配置文件<code>/etc/cvsd/cvsd.conf</code>，重启服务。</p>
+
+<p>终于搞定了。</p>
+
+<p>至于如何打开VNC服务，参看<a href="http://www.casparant.com/remote-login.html">我前面的日志</a>即可。</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/configuration/'>configuration</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-03-26T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2008/03/26/ubuntu-server-config/" data-via="" data-counturl="http://casparant.github.io/blog/2008/03/26/ubuntu-server-config/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/03/16/remote-login-under-ubuntu/" title="Previous Post: Ubuntu Server远程连接的配置">&laquo; Ubuntu Server远程连接的配置</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

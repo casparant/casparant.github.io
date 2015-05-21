@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Ant-Veil]]></title>
+  <link href="http://casparant.github.io/atom.xml" rel="self"/>
+  <link href="http://casparant.github.io/"/>
+  <updated>2015-05-21T11:59:03+08:00</updated>
+  <id>http://casparant.github.io/</id>
+  <author>
+    <name><![CDATA[Caspar]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fix Razer Orochi Re-connect Issue]]></title>
+    <link href="http://casparant.github.io/blog/2014/10/10/fix-razer-orochi-re-connect-issue/"/>
+    <updated>2014-10-10T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2014/10/10/fix-razer-orochi-re-connect-issue</id>
+    <content type="html"><![CDATA[<p>Issue:</p>
+
+<p>雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
+
+<p>Environment: </p>
+
+<p><blockquote>Razer Orochi 蓝牙鼠标<br />
+Gentoo + KDE<br />
+kernel 3.10 ~ 3.16<br />
+bluez 4.101 ~ 5.23<br />
+bluedevil 1.3.2 ~ 2.0_rc1</blockquote></p>
+
+<p>Solution:</p>
+
+<p><!--more--></p>
+
+<p>通过 hcidump 工具发现：</p>
+
+<p><blockquote>
+> HCI Event: Connect Request (0x04) plen 10<br />
+    bdaddr F0:65:DD:94:9F:BB class 0x002580 type ACL<br />
+> HCI Event: Command Status (0x0f) plen 4<br />
+    Accept Connection Request (0x01|0x0009) status 0x00 ncmd 1<br />
+> HCI Event: Connect Complete (0x03) plen 11<br />
+    status 0x00 handle 13 bdaddr F0:65:DD:94:9F:BB type ACL encrypt 0x00<br />
+> HCI Event: Command Status (0x0f) plen 4<br />
+    Read Remote Supported Features (0x01|0x001b) status 0x00 ncmd 1<br />
+> HCI Event: Read Remote Supported Features (0x0b) plen 11<br />
+    status 0x00 handle 13<br />
+    Features: 0xbf 0x00 0xa0 0x78 0x18 0x1e 0x59 0x83<br />
+> HCI Event: Command Status (0x0f) plen 4<br />
+    Read Remote Extended Features (0x01|0x001c) status 0x00 ncmd 1<br />
+> HCI Event: Read Remote Extended Features (0x23) plen 13<br />
+    status 0x00 handle 13 page 1 max 1<br />
+    Features: 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00<br />
+> HCI Event: Command Status (0x0f) plen 4<br />
+    Remote Name Request (0x01|0x0019) status 0x00 ncmd 1<br />
+> HCI Event: Remote Name Req Complete (0x07) plen 255<br />
+    status 0x00 bdaddr F0:65:DD:94:9F:BB name 'Razer Orochi 2013'<br />
+> HCI Event: Command Complete (0x0e) plen 10<br />
+    Link Key Request Negative Reply (0x01|0x000c) ncmd 1<br />
+    status 0x00 bdaddr F0:65:DD:94:9F:BB<br />
+> HCI Event: Disconn Complete (0x05) plen 4<br />
+    status 0x00 handle 13 reason 0x13<br />
+    Reason: Remote User Terminated Connection</blockquote></p>
+
+<p>出现 Link Key Request Negative Reply 的字样，怀疑是配对的时候使用自动 key，而蓝牙工具没有保存这个自动 key，导致鼠标从休眠恢复时试图以空 key 连接，从而失败。</p>
+
+<p>知道了问题，解决方法就简单了，配对的时候手工输入 key/PIN 为 1234，连接即可。</p>
+
+<p>就这么一个破问题，折腾了我半天时间，内核、bluez、bluedevil 都尝试了一遍，还在人家的 Macbook 上测试了一番。差点就冲动下单换 Mac 了。 #我不是土豪#
+</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gentoo KDE 下折腾 OpenConnect]]></title>
+    <link href="http://casparant.github.io/blog/2014/03/21/configure-openconnect-in-gentoo-kde/"/>
+    <updated>2014-03-21T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2014/03/21/configure-openconnect-in-gentoo-kde</id>
+    <content type="html"><![CDATA[<p>最近呢，推上某奸商推出了 AnyConnect 套餐，这对广大翻墙群众来说绝对是个利好消息啊，可以自动配路由的东东。我毫不犹豫去把自己的绝版廉价套餐换成了100元的套餐，然后开始折腾 AnyConnect 配置。</p>
+
+<p>iOS上配置十分简单，找到 Cisco AnyConnect 这个 App 就搞定。Linux 下要把它配置得很舒服，着实花了一番功夫。</p>
+
+<p>公司 VPN 用的也是 AnyConnect，我就继续用着公司的客户端(Cisco AnyConnect Secure Mobility Client), 直到今天早上我修复了笔记本上的无线网，机器有了两个IP为止。有了两个IP的 AnyConnect service 居然segfault了，看了一下 debug 信息，我觉得对这种闭源工具我还是别折腾了。直接换开源方案 OpenConnect.</p>
+
+<p>Portage 里搜了一下，openconnect 有两个包，networkmanager-openconnect 有 libkeyring-gnome 依赖，我现在是个有洁癖的 KDE 党，果断不能装啊，于是用第二个， openconnect 命令行版…… 不行，不能这么罗里八嗦，反正最后折腾结果如下：</p>
+
+<p><!--more--><ol>
+	<li>只用命令行的话，Portage 里的 openconnect-5.99* 版本可用，配好 <code>/etc/conf.d/openconnect</code> 就可以了；</li>
+	<li>需要配合 KDE plasma 插件 networkmanagement (0.9+版本) 的话，就必须得装 NetworkManager-openconnect 了。事实证明， libkeyring-gnome 依赖是可以去掉的。我修改了 Portage 文件，放到我<a href="https://github.com/casparant/caspar-gentoo/tree/master/net-misc/networkmanager-openconnect" target="_blank">自己的 Overlay</a> 里了。</li>
+	<li><del datetime="2014-03-21T09:54:44+00:00">另外 openconnect-5.99* 版本会导致 networkmanagement 带了 openconnect flag 之后编译失败，只能回退到 5.03 版本。</del> networkmanagement 已经 deprecated 了，用 plasma-nm 代替，最新版本没有编译问题。</li>
+	<li><del datetime="2014-03-21T09:54:44+00:00">openconnect-5.03 版本也是有问题的，openconnect 命令执行后，如果从终端输入密码，需要先按一个回车，再输入一遍。所以配置文件中的<code>tmp_SERVER <<-E</code> 后面需要加一个空行，否则 daemon 永远启动失败，因为接收不到密码。</del> 换了最新的 openconnect-5.99 之后，没问题了。</li>
+</ol></p>
+
+<p>就这些。配好之后，既可以用 NM 的 GUI 连，也可以起服务连。从此过上了永不断网（某奸商广告语）的生活～</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WizNote: 终于找到比较干净的QT的笔记软件]]></title>
+    <link href="http://casparant.github.io/blog/2014/03/11/an-introduction-of-wiz-note/"/>
+    <updated>2014-03-11T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2014/03/11/an-introduction-of-wiz-note</id>
+    <content type="html"><![CDATA[<p>Linux上记笔记，向来很纠结。以前用过一段时间<a href="http://zim-wiki.org/index.html" target="_blank">Zim</a>，后来变成了KDE党，只好果断抛弃了。找到<a href="http://basket.kde.org/" target="_blank">BasKet</a>，功能还是很强大的，可是格式一团糟。无法以Plain Text存储文字，拷贝来拷贝去的时候经常格式混乱。也尝试在Web端存东西，结果还是发现不习惯，而且离线无法访问。</p>
+
+<p>然后今天工作的时候有同事提到客户报告鄙厂<a href="http://www.aliyun.com/" target="_blank">产品</a>的问题，碰到了故障（当然在内核组大牛们的努力下该问题已经解决了），我就好奇去看了一下报告者信息，然后就发现了这个笔记软件：<a href="http://wiz.cn/index.html" target="_blank">Wiz</a>. 看起来还挺Geek的，有手机端有Linux端有Mac OS端。于是去gentoo-zh的Overlay找了一圈（是的，5年过去了我还在Gentoo的不归路上慢慢走着），<a href="https://github.com/microcai/gentoo-zh/blob/master/app-text/wiznote/wiznote-2.0.64.ebuild" target="_blank">找到了</a>。</p>
+
+<p><a href="http://img.ant.im/di-PSVM.png"><img align="center" width="400" src="http://img.ant.im/di-PSVM.png" alt="Wiz" /></a></p>
+
+<p>看起来样子还不错，还比较清爽，也可以格式化为Plain Text。功能上比BasKet少一些，但是用着还是挺舒服的。</p>
+
+<p>最不能忍受的问题是没有任务栏图标，于是接着搜。</p>
+
+<p>找到了一年前某人的一个没有Merge的<a href="https://github.com/WizTeam/WizQTClient/pull/80" target="_blank">Pull Request</a>，然后稍微修改了一下补丁，打到源代码里，发现可以用了。</p>
+
+<p>修改后的ebuild请<a href="https://github.com/casparant/caspar-gentoo/blob/master/app-text/wiznote/wiznote-2.1.0_beta.ebuild" target="_blank">猛戳</a>。</p>
+
+<p>最后，有更靠谱的笔记软件请推荐。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mce的一些零散记录]]></title>
+    <link href="http://casparant.github.io/blog/2013/06/06/some-misc-items-of-mce/"/>
+    <updated>2013-06-06T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2013/06/06/some-misc-items-of-mce</id>
+    <content type="html"><![CDATA[<p>以前也测过MCE相关的东西，但是惭愧，一直不清不楚。这两天稍微整理了一下相关知识，感觉见识还是很浅，记些零碎的东西在这，权当博客复活第一篇。如有理解错误，欢迎指出。</p>
+
+<p>CPU检测到硬件错误时，内核会报Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; UCE/UE, Un-correctable Error)，内核做出不同反应。CE的话内核只把相关信息写到一个字符设备/dev/mcelog中，UE的话是会在记录相关信息之余，还会做出不同处理，比如中断当前遇错的应用程序，或者Panic. [TODO: 这块相关的内核代码还得再看几遍]</p>
+
+<p>/dev/mcelog中的信息可以用用户空间工具<a href="https://github.com/andikleen/mcelog" target="_blank">mcelog</a>来读取。mcelog比较有意思的一个参数是<code>--dmi</code>，可以尝试解析ADDR字段以获取诸如内存出厂信息，DIMM位置等有用的信息，可是很遗憾在实际环境中这些DIMM信息基本上都是错的。（mcelog man page说了，不要怪Linux，得怪那稀奇古怪的主板厂商……）</p>
+
+<p>mcelog man page还有一个地方提到：</p>
+
+<p><blockquote>The kernel prefers old messages over new. If the log buffer overflows only old ones will be kept.</blockquote></p>
+
+<p><!--more-->查看内核代码中<code>arch/x86/include/asm/mce.h</code>，有：</p>
+
+<p><pre lang="C">
+#define MCE_LOG_LEN 32</pre></p>
+
+<p>struct mce_log {<br />
+	char signature[12]; /* "MACHINECHECK" */<br />
+	unsigned len;	    /* = MCE_LOG_LEN */<br />
+	unsigned next;<br />
+	unsigned flags;<br />
+	unsigned recordlen;	/* length of struct mce */<br />
+	struct mce entry[MCE_LOG_LEN];<br />
+};
+</p>
+
+<p>这里的MCE_LOG_LEN就是man page中提到的log buffer长度。</p>
+
+<p>内核中还有个mce_inject模块（CONFIG_X86_MCE_INJECT=m/y）,可以用于产生一些假的MCE以测试相关功能。需要配合用户空间工具<a href="https://github.com/andikleen/mce-inject/" target="_blank">mce-inject</a>来使用。</p>
+
+<p>如果要做一个比较完整的测试，<a href="https://github.com/andikleen/mce-test" target="_blank">mce-test</a>工具可以帮忙，其中会设计一些RAS特性，比如hwpoison(Documentation/vm/hwpoison.txt)，不过我现在的活儿不怎么管测试，暂时就没去回顾这个测试工具了。</p>
+
+<p>先记这些，回头把细节都搞懂了再补充……</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Resolved: 如何更新git补丁]]></title>
+    <link href="http://casparant.github.io/blog/2012/01/03/how-to-update-your-git-patches/"/>
+    <updated>2012-01-03T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2012/01/03/how-to-update-your-git-patches</id>
+    <content type="html"><![CDATA[<p>使用git制作补丁时，经常发现补丁需要修改。如果只是最后一次commit需要修改，那就好办，用下面的方法就可以搞定：
+<pre lang="bash">
+$ git reset HEAD^
+# edit edit edit
+$ git commit -a -s -c ORIG_HEAD
+$ git format-patch --subject-prefix="PATCH v2"
+</pre></p>
+
+<p>但是如果是一系列补丁中的中间几个补丁需要修改，该怎么办呢？</p>
+
+<p><del datetime="2012-01-03T16:12:57+00:00">笨办法已经被删掉>.<</del></p>
+
+<p><!--more--><strong>Update 1:</strong> 非常感谢wangcong的指点！"<code>git rebase -i</code>"可以出色地完成这个任务，方法在man-page里面有详述，见"INTERACTIVE MODE"和"SPLITTING COMMITS"部分。</p>
+
+<p>假设当前所在分支名为"topic"，做了3个补丁，打算提交给邮件列表的时候发现中间一个补丁需要更新，此时使用下列命令：</p>
+
+<p><pre lang="bash">
+git rebase -i master
+</pre></p>
+
+<p>出现编辑窗口如下：
+<blockquote>
+pick 21732a8 mm/swapping01: new testcase<br />
+pick c3751d1 hugemmap01: clean-up format<br />
+pick d75449c mm/swapping01: change sleep time to 5 sec
+</blockquote></p>
+
+<p>此时需要修改commit c3751d1，则把<code>pick</code>改为<code>edit</code>即可。保存退出后git会rebase到需要修改的commit处停止，此时可以直接修改内容，然后执行：
+<pre lang="bash">
+git add xxx # mark as resolved
+git commit --amend
+</pre></p>
+
+<p>或者
+<pre lang="bash">
+git reset --soft HEAD^
+#edit edit edit
+git commit -a -s -c ORIG_HEAD
+</pre></p>
+
+<p>之后执行"<code>git rebase --continue</code>"即可。</p>
+
+<p>突然想起来一年前就请教过wangcong这个问题，只不过当时对<code>git rebase</code>完全不了解，后来就忘了，惭愧-_-|||。</p>
+
+<p><strong>Update 2</strong>: 同样感谢Iven的指点，可以去看看他的文章：<a href="http://www.kissuki.com/?p=135" target="_blank">http://www.kissuki.com/?p=135</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CM7.1 on DEFY]]></title>
+    <link href="http://casparant.github.io/blog/2011/10/12/cm7-1-on-defy/"/>
+    <updated>2011-10-12T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2011/10/12/cm7-1-on-defy</id>
+    <content type="html"><![CDATA[<p>CyanogenMod, the community Android mod, is officially <a href="http://www.cyanogenmod.com/blog/cyanogenmod-7-1-released" target="_blank">supporting Motorlora Defy</a> in the latest release CM7.1. Now the system seems running well on my device.</p>
+
+<p>Why I want CM7.1 on my machine:</p>
+
+<p><ul>
+	<li>try something new</li>
+	<li>I need openvpn</li>
+	<li>2.3.4 ROM for ME525+ not working well on my device :-(</li>
+</ul></p>
+
+<p>I followed most of the instructions from <a href="http://forum.cyanogenmod.com/topic/32469-cyanogenmod-7-for-the-motorola-defy-v710-9-oct-2011/" target="_blank">the post in CM forum</a>, except that I didn't install gapps-gb-20110828. For some reason, <em>Android Market</em> from 20110828 package continously got crashed once I opened the application. I tried with <a href="http://goo-inside.me/gapps/gapps-gb-20110613-signed.zip" target="_blank">gapps-gb-20110613</a> and <em>Android Market</em> worked as normal, so I recommend using this version of gapps if you ever encountered similar issue like me.</p>
+
+<p><!--more-->Well... Some extra jibber-jabbers about <em>Android Market</em>:</p>
+
+<p>Region restriction sucks... It prevents me from buying Touchdown license from market...</p>
+
+<p>I do hate <a href="http://twidroyd.com/" target="_blank">some</a> apps changing their names so frequently and deprecating the old version in market. I PAID for the old one, and I still need to pay for the new one!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在Red Hat两年]]></title>
+    <link href="http://casparant.github.io/blog/2011/07/16/beginning-of-my-third-year-in-red-hat/"/>
+    <updated>2011-07-16T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2011/07/16/beginning-of-my-third-year-in-red-hat</id>
+    <content type="html"><![CDATA[<p>已经进入我在Red Hat的第三年了，看到两年来这贫瘠无比的博客，决定把阶段总结发到这里来，挽回一下我那正在疯狂下滑的订阅数，嗯。回头看了一下以前的日志，去年这个时候竟然没有写总结，干脆两年的一起写好了。行文照旧会比较混乱，请将就将就。</p>
+
+<p>刚以实习生身份进入Red Hat时，主要工作就是验Bug。记得当时很多Bug的描述都很不清晰，往往一个Bug就浪费一两天时间去分析。有的Bug还不能用脚本重现，只能物理接触硬件。有一次在机房里呆了一个下午，要用针头去戳机器上的一个小孔[<a href="http://en.wikipedia.org/wiki/Non-maskable_interrupt" target="_blank">1</a>]，戳了我整整一个下午。类似的折腾人的Bug仿佛是永远都不会消失，现在我还在跟他们打交道。</p>
+
+<p>一个月后，老板让我了解一个测试套件<a href="http://ltp.sourceforge.net/" target="_blank">LTP</a>，之前是他一直在维护这个工具在内部测试平台上的正常运行，交给我之后他基本上就没再怎么管过它了（直到最近，他开始往LTP提交内存相关的测试代码，这是后话了）。我当时的基本工作就是定期把LTP的稳定发布版本移植回内部测试平台，然后如果运行出错，根据运行情况如果是LTP的问题，就写一些补丁来修复LTP运行时出现的错误。从此我才正式结束和开源项目社区浅尝辄止的试水活动，开始深入社区贡献代码。为LTP编写补丁对我的帮助很大，一方面跟编写补丁相关的工具，比如说git，都熟练掌握了；另一方面通过熟悉LTP的测试代码，了解了很多从用户空间测试内核功能的方法；而且我也学会了怎么在邮件列表里面跟开发者吵架:)</p>
+
+<p><!--more-->随后的几个月里，基本上就是继续了解一些公司内部的测试工具，同时照旧维护LTP，验Bug，写自动化测试脚本，分析测试结果。期间出错也不少，比如Bug回错地方让人误解这算是小事了，把巨大的二进制包checkin到CVS仓库里面（从美国那边同步一次得十几分钟）也算是小事了。有一次是让我分析自动化测试结果，结果马马虎虎没仔细看，就认为内核通过测试了，结果内核发布给客户之后被发现了问题，回过头来一看就是我当时马虎漏掉的那段，于是被老板叫过去促膝长谈了。这也是我当时跟客户关系最接近的一次，囧- -|||。还有一次是测试一个网络有关的Bug，结果我在远程机器上做的测试，洪水般的数据包把整个公司在所有办公室的测试环境都搞挂了……所幸的是类似的问题后来从来没犯过。</p>
+
+<p>而真正理解软件测试的过程是在半年后了，那时候老板让我尝试编写一个测试项目的测试计划，当然后来因为过年回家，没做成，美国的同事接过去做了。不过慢慢开始知道测试计划、测试用例和测试脚本之间的关系了。我们整个组看起来也是一个刚形成规范的组，现在组里在用的一些测试计划都是从那时候开始遵循<a href="http://wilma.vub.ac.be/~se1_0607/svn/bin/cgi/viewvc.cgi/documents/standards/IEEE/IEEE-STD-829-1998.pdf" target="_blank">IEEE829</a>写的。同时组里开始招人，依据内核子系统功能划分测试任务。恰好同时隔壁组的新版测试用例管理系统(上游版本<a href="https://fedoraproject.org/wiki/Nitrate" target="_blank">在此</a>)上线了，每个测试项目的成员把一些具体的测试用例都写到那上面，确实看起来更规范也更清晰了一些。</p>
+
+<p>2010年上半年准备毕业设计，老板又给了我另外一个开源社区的测试套件<a href="http://crackerjack.sourceforge.net/" target="_blank">Crackerjack</a>来移植，作为我毕设的内容。最后移植是成功了，只是那个开源社区几乎都没人参与了，后来我向管理员要了个commit权限，不过因为项目活跃度太低，而且里面很多代码都已经移植到了LTP中，也就抛下了。</p>
+
+<p>10年中旬结束学生身份，正式入职，我的工作重心继续在内核测试工具这一块，有之前一年的积累，我敢说我是全组对测试工具第二了解的人了。同时领到了新的任务，带实习生(美其名曰：Intern Tech Lead)，简而言之，就是实习生在测试时碰到问题就来找我，其中有很多问题肯定是跟测试工具相关的（吐槽：我还真是适合干这个活啊>.<）。既然继续做测试工具，我又领到一些测试工具相关的活，这些工具大多是Python写的，于是我又被迫无师自通地学会了Python。在此期间我深深感受到一件事情，碰到问题，看代码是最有效的debug方式。当然我不推荐碰到内核问题直接去看内核代码，那对不了解的人来说是一个黑洞，一陷进去就会浪费掉好久的时间。</p>
+
+<p>10年下半年有个重要事件，RHEL6发布了，刚好在我生日前后。公司搞了个庆祝活动，其实也就把自助餐厅搬到了公司里面而已，可能后续还有抽奖什么的，我反正没参加=.= 老大让每个组的负责人都上去讲讲心得，我老板上去之后把组里每个人感谢了一遍，说到我的时候我才发现原来我是个打杂的……因为在RHEL6发布前，我把组里每个人的活，除了存储测试之外，都干了一遍。<a href="http://wangcong.org/blog/?p=1416" target="_blank">kdump</a>测试人手不足的时候，我上去顶了一个星期的班；<a href="http://dup.et.redhat.com/" target="_blank">DUP</a>需要交接工作的时候，我就作为过渡人员测试一段时间；<a href="https://fedorahosted.org/v7/" target="_blank">v7</a>没人测的时候，我就承担了测试任务……当时就觉得挺忙的，不过多打打杂，开阔开阔眼界，也是挺开心的事情。得感谢老板让我多方面了解内核测试的内容。</p>
+
+<p>11年初，老板开始突然向LTP提交了很多内存测试的代码，代码被上游接受后，他把内存管理的测试连同测试计划，测试用例都丢给了我，于是我的任务又增加了一个。不过终于有机会开始直接接触内核核心组件了，心里很兴奋。可惜老板留下的代码带着一身BUG，我花了平均每个月20个补丁的代价才把它们修得差不多，而且现在还在继续修。</p>
+
+<p>从去年校园招聘前后开始，我就参与了一系列面试。现在组里有几个人就是我当时面试定下来的。自己主要面试的是应聘实习或者校园招聘的学生，因为自己也刚从学生过来，所以比较能理解面试者的心态。学生面试的时候一般会关心测试职位有没有技术含量，自己能不能学到东西。我总是喜欢拿自己在Red Hat之前一年的经历，特别是自己打杂的经历跟他们讲。我面试时也带着一些倾向性，那些偏Geek的，给开源社区做过贡献的，阅读过内核代码的，我就比较喜欢。不过根本一些的层次，我还是喜欢学习能力、理解能力、沟通能力强的。</p>
+
+<p>有了之前一年半的测试经验积累，我对测试本身的流程也比较了解了，于是现在开始参加一些更偏向于组内的测试过程控制的事情。这才理解到，所谓QA，不仅仅是写几个测试计划，验几个bug就完事的。测试周期开始前，要保证测试计划的完整；测试开始后，要定期保证测试进度；测试中发现新的Bug，要根据严重程度及时跟进DEV/PM那边的状态……刚开始干这活，完全没有经验，所以一个测试周期快结束的时候，笔记本里就满是总结经验教训。而在项目进度接近尾声的时候，往往是加班的疯狂时期。我当时既承担内存测试任务，跟踪组内的测试进度，还负责了v7那个项目的测试管理。虽说后两项不用我自己一件一件去做，但是碰到人手交接什么的活时，经验不足的我为了保证进度，只有自己上阵了，因此加班是不可避免的。在v7发布进入尾声的时候，碰到了几个严重的bug，于是我半夜跟美国那边的开发者同步跟踪进度。他一出修复版本，我就马上测试，甚至他来不及修复的时候，我就自己动手修了>.< 最后总算是把产品发布出去了，也因此搞得身心俱疲。</p>
+
+<p>然后就是最近的一两个月，一边带实习生，一边准备新项目的计划阶段。最近组里的同志们似乎又被测试工具相关的问题缠住了，于是相应的，我又有点事情要忙了，~o(>_<)o~</p>
+
+<p>付出的代价大，积累的经验教训多，收获就多，这东西跟玩仙剑是类似的。就算不给我涨工资，我也觉得这两年学到的东西很值得。当然是否值得是要看有没有建立在时常总结分析经验教训的基础上的。除此之外我觉得还有一些值得分享的东西：</p>
+
+<p>0. 开有效率的会很有用。开会是相互沟通的重要方式，组会之前做好充分准备，尽量减少无用的讨论时间，可以提高效率。开一对一的会议对了解组员的进度和想法有很大帮助。碰到问题用邮件解释不清的时候，最好的解决方案之一就是和同事约个时间开个会。</p>
+
+<p>1. 发散学习会让自己学到的东西更多。做项目不仅仅是做项目，通过项目来了解一些属于自己职责之外的东西，比如趁机会了解一些内核代码，这样会让自己进步更快。但是不能影响自己项目的进度。</p>
+
+<p>2. As usual, to Be Filled... :D</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[关于简历的杂碎]]></title>
+    <link href="http://casparant.github.io/blog/2011/03/03/jibber-jabber-on-the-resumes/"/>
+    <updated>2011-03-03T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2011/03/03/jibber-jabber-on-the-resumes</id>
+    <content type="html"><![CDATA[<p>最近在帮组里招人，不过一直没有招到合适的（去年校园招聘时候招到过一个合适的，结果被隔壁<a href="http://twitter.com/#!/guaneryu" _target="new">@GMoto</a>组里给抢去了……泪了个奔的）。一直不停地在系统里刷简历，邮件列表里收简历，于是有些碎碎念就冒出来了。想到我不久以前也是简历那一头的角色，现在变成站在这一边的角色了，正好可以忆苦思甜，对比一下。丢在这里，大家凑合着看。</p>
+
+<p>首先得先介绍一下我所在的公司的背景，因为不同公司对待简历有不同的风格。好多人都知道，我现在呆在Red Hat，就是那个跟某快递公司重名的做Linux的公司。至少我们研发部门这边，不会因为简历没写称呼没写落款就不看，也不会因为简历排版混乱就丢在一旁，甚至发现提交的是个Word文档，或者联系邮箱留了个带qq号码的qq邮箱也会认真的去看——只不过第一印象和心理上已经有些想法而已。一般来说，我们喜欢排版简洁的正文简历和pdf简历，如果能提交个odt格式的也能感觉出投简历的人确实是用心的。另外不是为了装X，我们要求中英文简历是因为，如果面试结果良好，通常把简历会转交给国外的同事看，决定是否进一步面试。</p>
+
+<p>小结一下，不管简历样式有多糟糕，只要能打开，我们就会认真看。当然非常不幸地，这也是我觉得某些提交简历的同学是折翼的天使的原因。</p>
+
+<p><!--more-->然后是简历的内容。有些简历——真是太折翼了！一看就知道是海投用的“一简历走天下”的那种。某种程度上智联招聘起了为虎作伥的作用，可恨的是我们还不得不用智联……这些简历，“求职目标”一栏把能想到的IT职位估计都填遍了，互联网，软件，硬件，开发，测试，通信，嵌入式神马的都写着；然后在项目经历里面大书特书Oracle数据库、JavaSE/JavaEE框架、C#，更发指的是写着有很丰富的Windows下某过气的图形界面库编程经验；而掌握技能里面，要么就是只写会Java，要么就是把听说过的所有语言，从HTML到.Net都写上……我能体会作为一个学生投简历时广撒网捕大鱼的心理和写简历时生怕简历单薄的心情，但是最起码投简历之前也要对应聘职位做一些分析吧，对方是"Linux""内核""测试"职位，三个关键字，至少在简历里要提到一项相关的吧……</p>
+
+<p>针对简历内容，我个人有一些建议，觉得不对的就直接忽略吧。首先是求职目标，对方招什么职位，求职目标一栏就改成什么职位，或者这个职位的大类，别太大，更别写得明显不对口。其次作为学生，项目经历可能不多，那么就在教育经历和掌握技能上稍微补充一些：教育经历一栏可以把跟应聘职位相关的课程列出来，或者把所有重要课程列出来，职位相关的课程加粗醒目表示。这样面试的时候一般都会根据上过的课程问一下相关的理论知识；另外掌握技能这一栏，就要对职位描述作更细致的审察，对方要求什么技能，就写什么技能，哪怕是职位描述上写着“对XXX技术有热情，有自主学习能力”，也可以在技能一栏写上对应的话（自学能力不也是一种技能么）。而项目经历一栏，就别填发过传单搭过Windows服务器的事情了，宁愿你写一些学校学院布置过的大作业和实训。如果有Linux实验和大作业，完全是可以写到项目经历里面的，只要你曾做过。另外每个项目最好能多写几句，一是强调自己个人在项目中的职责，二是技术要点，三可以是项目的难点和解决方案，四可以是自己负责的部分的结果。当然写每点都要有概括成一行文字的能力，长篇大论也是不讨喜的。再小结一下，简历内容一定要有针对性，让人看得出你是用心投这个职位的；技能、知识、经历都与职位要求相关最好，无关的不写或尽量一笔带过。</p>
+
+<p>接下来是一些细节的问题，想到什么说什么。比如说错别字要避免，专业词汇不要拼错；中英文简历排版最好统一，内容保持对应；描述不要夸张，特别是对于技能掌握程度的描述，避免用“精通”一词，因为还有“熟悉”“掌握”“了解”等表示程度的词语；态度要诚恳，用心写的话看的人能看出其中的态度是否诚恳。<em>其他的暂时想不起来了，待补充。</em></p>
+
+<p>最后是针对我个人，或者说我和我周围这群体的人觉得能加分的细节：简历中带一个技术博客或者开源项目的链接；简历后附带一段自己写的C/Shell/Python/Perl代码；用LaTeX写简历；有RHCE的证书。<em>其他的又想不起来了，待补充。</em></p>
+
+<p>不知道订阅我博客的五六百人都是什么群体，居然能忍受我半年不更新博客……要是是学生居多，希望上面的闲言碎语有一些能对你有帮助。当然希望能给我投简历，如果你是一个Linux和开源软件的爱好者。过一段时间如果我面试面得郁闷了，可能会发一个关于面试的碎碎念。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Libfprint Finally Supports Thinkpad T410]]></title>
+    <link href="http://casparant.github.io/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410/"/>
+    <updated>2010-08-20T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410</id>
+    <content type="html"><![CDATA[<p>I have been keeping tracking of <a href="https://bugzilla.redhat.com/show_bug.cgi?id=504399" target="_blank">this RHBZ</a> for long, and I am happy to see libfprint finally supports my fingerprint reader on T410. Seems that the original author Daniel(dsd) was very busy so that another developer in Red Hat, Bastien Nocera, took this project instead. He moved the libfprint git repo to freedesktop.org, with the newest patches applied. You can find the new git repo <a href="http://cgit.freedesktop.org/libfprint/libfprint/" target="_blank">here</a>, and new libfprint release(0.2.0) <a href="http://freedesktop.org/~hadess/libfprint-0.2.0.tar.bz2" target="_blank">here</a>. Bastien Nocera is also maintaining <a href="http://www.reactivated.net/fprint/wiki/Fprintd" target="_blank">fprintd</a>, "a D-Bus daemon that offers libfprint functionality over the D-Bus interprocess communication bus". The git repo and new release are located <a href="http://cgit.freedesktop.org/libfprint/fprintd/" target="_blank">here</a> and <a href="http://freedesktop.org/~hadess/fprintd-0.2.0.tar.bz2" target="_blank">here</a>.</p>
+
+<p>Besides the RHBZ mentioned above, you should be able to get more information from this <a href="http://lists.reactivated.net/pipermail/fprint/2010-August/001530.html" target="_blank">message</a> in fprint mailing list.</p>
+
+<p>I updated my gentoo overlay in github, too. You can emerge libfprint and fprintd after you synchronized <a href="http://github.com/casparant/caspar-gentoo" target="_blank">this</a> overlay.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Enable Fingerprint in Thinkpad T410 Under Gentoo]]></title>
+    <link href="http://casparant.github.io/blog/2010/08/06/enable-fingerprint-in-thinkpad-t410-under-gentoo/"/>
+    <updated>2010-08-06T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/08/06/enable-fingerprint-in-thinkpad-t410-under-gentoo</id>
+    <content type="html"><![CDATA[<p>As I mentioned in the <a href="http://www.casparant.com/back-to-gentoo-again.html" target="_blank">previous post</a>, I couldn't get my fingerprint reader work in Gentoo. Now this problem has been solved. ;-)</p>
+
+<p>Before starting, here're some useful links may help those who are suffering from similar fingerprint issues like me:</p>
+
+<p>If you're using a fingerprint with USB id "147e:2016", you can have a look at <a href="http://www.thinkwiki.org/wiki/Integrated_Fingerprint_Reader" target="blank">this thinkwiki link</a>, The "147e:2016" item is updated recently: a Red Hat Bugzilla URL added.</p>
+
+<p>This <a href="https://bugzilla.redhat.com/show_bug.cgi?id=504399" target="blank">RHBZ</a> link tried to enable TCRD4C devices, but seemed that my fingerprint was another different type since it still did not work after applied all the patches attached.</p>
+
+<p>------>8------ Cutting, Let's enable T410 fingerprint ------>8------</p>
+
+<p>Using <a href="http://www.n-view.net/Appliance/fingerprint/" target="_blank">Fingerprint-GUI</a> and <a href="http://www.upek.com/solutions/pc_and_networking/sdks/linux/" target="_blank">UPEK SDK</a> can easily enable fingerprint reader in T410. Fingerprint-GUI provides an integration of setup GUI, authentication plugin, PAM module and the UPEK library, all of the GUI parts are written with QT4 (I don't like it :-\), released under GPL-v3 licence. However, UPEK SDK library is EULA copyrighted and seems never to release the code to us.</p>
+
+<p><!--more-->Notice that you still need have <a href="http://reactivated.net/fprint/wiki/Libfprint" target="_blank">libfprint</a> installed, what's more, a version >= 1.0_pre is necessary, according to the manual of Fingerprint.</p>
+
+<p>Since A PAM module is integrated in Fingerprint-GUI so that your fingerprint driver can work in GDM, sudo, gnome-screensave, etc, you must remove other fingerprint PAM modules like pam_fprint or pam_thinkfinger.</p>
+
+<p>For Gentoo users, I have finished two ebuilds for this application. You can find them in <a href="http://github.com/casparant/caspar-gentoo" target="_blank">my github repo</a>, fprint is also included in the repo.</p>
+
+<p>I'm not good at writing ebuilds, any suggestions are welcomed.</p>
+
+<p>P.S. Is there anybody know how to assert the existence of a kernel module in a ebuild? I need to judge whether `uinput.ko' exists or not among current kernel modules. Thanks.
+</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[重新装回Gentoo]]></title>
+    <link href="http://casparant.github.io/blog/2010/07/02/back-to-gentoo-again/"/>
+    <updated>2010-07-02T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/07/02/back-to-gentoo-again</id>
+    <content type="html"><![CDATA[<p>最近到手T410，先是折腾了几天把里面的正版Win7 Pro通过无损分区移到角落里，然后是装了个RHEL6.0用来做测试，最后重新开始折腾Gentoo。</p>
+
+<p>这次没有纠结于选择哪个桌面环境上，我一点也不嫌弃GNOME的臃肿，于是装了个gnome-light。USE Flag把以前用过的拿过来修改了一下，顺便提一句，在我不用Gentoo的这段时间听说hal被干掉了，所以我也追风把hal标记给去掉了。</p>
+
+<p>启动的时候使用grub2，本来打了915resolution补丁来使grub宽屏显示，但是打的补丁和grub-1.98似乎不是特别搭配，导致启动grub前后各有5秒停滞时间，加上grub启动过后仍然会有一个分辨率只有640x480的屏幕，我干脆就不用915resolution补丁了。使用grub2，配上ext4分区，就可以不使用initramfs了，关键在两点，一是内核中ACHI选项要编译进内核，二是kernel行参数中不要使用UUID。</p>
+
+<p>说一下一些Thinkpad相关的配置：</p>
+
+<p>一是声卡驱动。Thinkpad T410的声卡应该是CONEXANT的，但是选择这个驱动后内核还是不认我的声卡。最后只好选择了通用驱动。</p>
+
+<p>二是hdaps，所谓的硬盘防震保护系统。portage里面相关的三个包，一个是hdaps模块，一个是GNOME的Applet，还有一个是OpenGL绘制的小程序，用来展示你的笔记本目前的水平状态。</p>
+
+<p><!--more-->三是Thinkpad相关的快捷键。目前键盘上展示的快捷键基本上都能用，除了Fn+F6的“摄像头、耳机”、Fn+F8的“触摸板、小红点切换”还有麦克风静音三个按钮不能工作。根据Thinkwiki的<a href="http://www.thinkwiki.org/wiki/How_to_get_special_keys_to_work" target="_blank">这里</a>说，Fn+F8可以通过thinkpad-acpi或者tps使之工作，其他两个目前还没办法。不过我连Fn+F8都没搞定，只是自己写了个脚本，用来切换触摸板的开关（用小红点的时候肯定很讨厌触摸板开着）：</p>
+
+<p><pre lang="bash">
+#!/bin/bash</pre></p>
+
+<p>status=`synclient -l | grep TouchpadOff | awk '{print $3}'`<br />
+if [ $status -eq 0 ]<br />
+then<br />
+    synclient TouchpadOff=1<br />
+    notify-send "Touchpad is disabled!"<br />
+elif [ $status -eq 1 ]<br />
+then<br />
+    synclient TouchpadOff=0<br />
+    notify-send "Touchpad is enabled"<br />
+fi
+
+把它保存为脚本，加上x权限，通过GNOME的键盘快捷键来控制，比如Win+Space。</p>
+
+<p>另外我给蓝牙设置了一个快捷键。笔记本上那个蓝色的ThinkVantage按钮没用到，就把它绑定了一个ACPI事件，设置为给蓝牙控制开关。事件代码如下：</p>
+
+<p><pre lang="bash">
+event=ibm/hotkey HKEY 00000080 00001018
+action=/home/caspar/.local/bin/bluetooth.sh
+</pre></p>
+
+<p>上述代码保存为ACPI事件文件，如/etc/acpi/events/bluetooth。快捷键对应的KEY CODE可以到Thinkwiki上面去找，也可以看内核的:Documentation/laptop/thinkpad-acpi.txt文档。至于用于控制的bluetooth.sh脚本，则如下(代码来源仍旧是ThinkWiki，看<a href="http://www.thinkwiki.org/wiki/How_to_setup_Bluetooth" target="_blank">这里</a>)：</p>
+
+<p><pre lang="bash">
+#!/bin/bash
+ 
+NAME="tpacpi_bluetooth_sw"
+ 
+find_by_name() {
+    NAME="$1"
+    test -z "${NAME}" && return 1
+    SYSFS_NAME=$(find -P /sys -name name -path "*/rfkill/*" -exec grep -l "${NAME}" \{\} + | head -n 1)
+    if [[ ! -z "${SYSFS_NAME}" && -r "${SYSFS_NAME/%name/state}" ]]; then
+        RESULT=${SYSFS_NAME%%/name}
+        echo $RESULT
+        return 0
+    fi
+    return 1
+}
+ 
+SYSFS="$(find_by_name "${NAME}")"
+ 
+if [[ ! -z "${SYSFS}" && -r "${SYSFS}/state" ]]; then
+    case "$(cat "${SYSFS}/state")" in
+        0)
+            echo 1 > "${SYSFS}/state"
+            ;;
+        1)
+            echo 0 > "${SYSFS}/state"
+            ;;
+    esac
+fi
+</pre></p>
+
+<p>重启ACPI服务就可以看到蓝牙可以被ThinkVantage按钮控制了。</p>
+
+<p>目前还不能工作的设备有：指纹识别器，从lshw中看到似乎还有HECI控制器(Intel似乎不想管这个咚咚了？）、温度检测设备(Thermal Subsystem)和一个Ricoh的外围设备。</p>
+
+<p>最后向使用Thinkpad的同学严重推荐<a href="http://www.thinkwiki.org" target="_blank">ThinkWiki</a>。</p>
+
+<p>P.S. 设置充电阈值：据说如果电池不怎么经常使用的话，充电不充满有利于延长电池寿命（Win7下的配套软件是这么说的），所以可以设置一个充电阈值，把下面命令放到/etc/conf.d/local.start去：</p>
+
+<p><pre lang="bash">echo 95 > /sys/devices/platform/smapi/BAT0/stop_charge_thresh</pre></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ya-bupt-thesis-bachelor-1.0-Alpha-1 Released]]></title>
+    <link href="http://casparant.github.io/blog/2010/05/16/ya-bupt-thesis-bachelor-1-0-alpha-1-released/"/>
+    <updated>2010-05-16T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/05/16/ya-bupt-thesis-bachelor-1-0-alpha-1-released</id>
+    <content type="html"><![CDATA[<p>这个东西总算是做了一大半了。因为拖了两个星期，论文还没开始写，接下来只能一边写论文一边改模板了。</p>
+
+<p>简要介绍一下这个模板。</p>
+
+<p>缘起是@yegle曾经推荐过他的同学梵高(cnMuggle)的一个<a href="http://code.google.com/p/buptthesis-bachelor/" target="_blank">北邮本科毕业论文模板</a>，我看了一下觉得不太符合我的需求，最主要是他用了CTeX，这玩意儿在我的机子上水土不服。作为一个Linux+XeTeX+xeCJK党，我就自己动手开始写。</p>
+
+<p>期间参考了梵高同学的模板，当然也参考了<a href="http://wangxu.me" target="_blank">@gnawux(apt)</a>同学<a href="http://code.google.com/p/latex-bupt/" target="_blank">的</a>，还有DazzleZhang在apt的基础上改进<a href="http://code.google.com/p/buptthesis/" target="blank">的</a>，还有老牌的<a href="http://sourceforge.net/projects/thuthesis/" target="_blank">ThuThesis</a>。当然最主要还是依靠Google和CTeX论坛，把一些稀奇古怪的问题给解决了。</p>
+
+<p>今天又解决了几个大问题，同时也把插入图片、插入表格、插入公式的格式整理了一下，所以就发布Alpha-1版本了。地址在<a href="http://code.google.com/p/yet-another-bupt-thesis-bachelor/" target="_blank">Google Code</a>上。接下来要完成的主要工作就是参考文献的排版。我一看其他模板的bst文件，几千行的代码，吓坏了。下次再搞好了。</p>
+
+<p>欢迎提Bug~</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[当系统调用不存在……]]></title>
+    <link href="http://casparant.github.io/blog/2010/04/07/when-the-system-call-does-not-exist/"/>
+    <updated>2010-04-07T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/04/07/when-the-system-call-does-not-exist</id>
+    <content type="html"><![CDATA[<p>最近在一个项目上卡了几天，整理出来主要碰到的问题，以备自己查阅。</p>
+
+<p>具体的问题抽象出来就是这么一种情况：</p>
+
+<p>有一堆分层的目录，里面全是系统调用的相关测试代码+Makefile，结构大致如下：</p>
+
+<p><blockquote>
+├── wait4<br />
+│   ├── Makefile<br />
+│   ├── wait401.c<br />
+│   └── wait402.c<br />
+├── waitid<br />
+│   ├── waitid01<br />
+│   │   ├── Makefile<br />
+│   │   └── waitid01.c<br />
+│   ├── waitid02<br />
+│   │   ├── Makefile<br />
+│   │   └── waitid02.c<br />
+├── waitpid<br />
+│   │   ├── Makefile<br />
+│   │   └── waitpid_err_test.c<br />
+.....</blockquote></p>
+
+<p><!--more-->现在要把这堆系统调用的测试代码移植到各硬件平台和各发行版上，因此要考虑内核版本、glibc版本等等问题。比如说getcpu这个东东只在2.6.19及以后版本中存在并且只有x86_64 and i386架构才可用。而编译这堆系统调用使用的Makefile大致如下：</p>
+
+<p><pre lang="bash" line="1">
+MAKEFILES_FOR_TESTCASES = $(shell find testcases -name Makefile)
+TESTCASES_BY_MAKE = $(addsuffix /test,$(dir $(MAKEFILES_FOR_TESTCASES)))</pre></p>
+
+<p>$(TESTCASES_BY_MAKE):<br />
+        $(MAKE) -C $(dir $@) test
+</p>
+
+<p>因此可能的解决方案有如下几种：</p>
+
+<p><h4>1. 修改Makefile，禁止编译会出错的测试用例</h4></p>
+
+<p><pre lang="bash" line="1">
+FILTER_OUT_CASES = testcase1 testcase2 testcase3
+ALL_MAKEFILES = $(shell find testcases -name Makefile)
+FILTER_OUT_MAKEFILES = $(wildcard $(foreach filename,$(FILTER_OUT_CASES),testcases/$(filename)/Makefile))
+MAKEFILES_FOR_TESTCASES = $(filter-out $(FILTER_OUT_MAKEFILES),$(ALL_MAKEFILES))
+TESTCASES_BY_MAKE = $(addsuffix /test,$(dir $(MAKEFILES_FOR_TESTCASES)))</pre></p>
+
+<p>$(TESTCASES_BY_MAKE):<br />
+        $(MAKE) -C $(dir $@) test
+</p>
+
+<p>代码很平淡无奇，之所以贴出这段代码是为了温习一下Makefile中wildcard,filter-out和foreach的用法 :-)</p>
+
+<p><h4>2.修改c代码，使用预处理判断是否存在</h4></p>
+
+<p>这种办法在<a href="ltp.sf.net/" target="_blank">ltp</a>上应用十分广泛，ltp中自动从configure文件中生成include/config.h，生成的config.h包含了一系列预处理，例如：</p>
+
+<p><pre lang="cpp" line="1">
+/* Define to 1 if you have the <sys/signalfd.h> header file. */
+#undef HAVE_SYS_SIGNALFD_H</pre></p>
+
+<p>/* Define to 1 if you have the <sys/stat.h> header file. */<br />
+#define HAVE_SYS_STAT_H 1
+</p>
+
+<p>当内核版本不同导致系统调用不存在时，可以设置undef预处理；如果系统调用存在，则define一下。</p>
+
+<p>接下去可以修改源代码，在可能会在不同内核版本上出现分歧的代码前后加上：</p>
+
+<p><pre lang="cpp" line="1">#ifdef HAVE_SYS_SIGNALFD_H
+...
+#else
+int main()
+{
+  printf("syscall not exists in this platform\");
+  return 1;
+}
+#endif</pre></p>
+
+<p>同时ltp还在C代码中判断内核版本，内核版本在<sys/utsname.h>中有声明。</p>
+
+<p>如果不使用configure文件，可以自己写一个shell脚本来生成，例如：</p>
+
+<p><pre lang="bash" line="1">
+#!/bin/sh</pre></p>
+
+<p>CONFIG_PATH=./include/config.h<br />
+KVER=`uname -r | cut -d'-' -f 1`<br />
+KMAJVER=`echo $KVER | cut -d'.' -f 1-2`<br />
+KMINVER=`echo $KVER | cut -d'.' -f 3`</p>
+
+<p>if [ "$KMAJVER" = "2.6" ] && [ $KMINVER -ge 19 ];<br />
+then<br />
+	echo '#define HAVE_SYS_EPOLL_H 1' >> $CONFIG_PATH<br />
+else<br />
+	echo '#ifdef HAVE_SYS_EPOLL_H' >> $CONFIG_PATH<br />
+	echo '#  undef HAVE_SYS_EPOLL_H' >> $CONFIG_PATH<br />
+	echo '#endif' >> $CONFIG_PATH<br />
+fi
+
+</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[生活在信息膨胀的社会]]></title>
+    <link href="http://casparant.github.io/blog/2010/04/07/how-to-organize-your-information/"/>
+    <updated>2010-04-07T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/04/07/how-to-organize-your-information</id>
+    <content type="html"><![CDATA[<p>现在上网的，没下列东东都不好意思说自己是混互联网的：</p>
+
+<p><blockquote>
+<a href="http://www.casparant.com">个人博客</a>（BSP/独立的至少得有一个吧），<a href="http://twitter.com/casparant" target="_blank">twitter</a>（以及其他各种围脖们），<a href="http://www.douban.com/people/casparant/" target="_blank">豆瓣</a>，<a href="http://www.facebook.com/casparant" target="_blank">facebook</a>，<a href="https://www.google.com/reader/shared/casparant" target="_blank">Google Reader</a>（或者其他rss订阅工具），<a href="http://feeds.feedburner.com/casparant" target="_blank">feedburner</a>/<a href="http://feed.feedsky.com/casparant" target="_blank">feedsky</a>，<a href="http://www.flickr.com/photos/ant-veil/" target="_blank">flickr相册</a>(或者picasaweb,或者国内的oo和xx），<a href="http://cn.last.fm/user/casparant" target="_blank">lastfm</a>, youtube订阅，friendfeed……
+</blockquote></p>
+
+<p>在这个信息膨胀的社会，如何获取信息是个头疼的问题。下面列一下自己是如何把这些信息来源整合起来的，以供参考：</p>
+
+<p>整合所有信息的核心就是feed/rss，所以首先要把博客搞一个托管，或者干脆直接用自带的feed（前者的好处是，换了博客可以不用通知别人修改你的rss地址）。我主要采用feedburner，在wordpress里用了<a href="http://vonye.com/projects/feedred">feedred</a>这个插件，把自带的feed重定向到了feedburner上。因为很久很久以前feedburner被墙了，所以feedsky也用过。</p>
+
+<p>然后就是Twitter，作为一个重度Twitter患者，巴不得把自己博客更新、Google Reader分享、豆瓣新鲜事、新拍的照片等一堆东西同步到Twitter上。这里有两种解决方案：</p>
+
+<p>1. 使用<a href="http://twitterfeed.com">TwitterFeed.com</a></p>
+
+<p>2. 使用FeedBurner。</p>
+
+<p>前者自己摸索就好了，我更推荐后者，因为自己有种感觉FeedBurner同步速度很快，莫非它采用了每分钟轮询的策略？Orz……在FeedBurner管理界面的"Publicize"中有个"Socialize"，里面可以设置把当前feed同步到Twitter上。</p>
+
+<p><!--more-->因此只要你的信息源有feed，就可以同步到Twitter上。</p>
+
+<p>接下来是facebook、校内这类社交网站，把twitter同步到facebook/校内上。</p>
+
+<p>校内的话，狗狗<a href="http://yegle.net/2009/04/21/use-bash-to-update-xiaonei-status-and-blog/" target="_blank">写过一个脚本</a>，请自行取用。facebook的话，也有两种方式：</p>
+
+<p>1. 使用friendfeed（已被facebook收购鸟），</p>
+
+<p>2.使用facebook app</p>
+
+<p>后者据<a href="http://twitter.com/luopf" target="_blank">lpf</a>同学反映，密码老是不对。我自己是很早很早以前设置的，忘了。建议有问题的同学使用第一种方案。friendfeed因为被facebook收购了，也就更好地集成在了facebook中（不好意思我忘了怎么集成了，自己摸索一下吧>_<）。需要注意的是friendfeed除了可以从twitter同步，还可以从其他源同步，这些源可能会和你之前设定的Twitter集成重复。</p>
+
+<p>其他的，比如同步到<a href="http://www.williamlong.info/archives/1962.html" target="_blank">新浪围脖</a>，请自行查阅。</p>
+
+<p>还有什么需要补充，欢迎留言。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[搞定LaTeX Beamer模板]]></title>
+    <link href="http://casparant.github.io/blog/2010/04/03/know-how-to-make-a-latex-beamer-template/"/>
+    <updated>2010-04-03T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/04/03/know-how-to-make-a-latex-beamer-template</id>
+    <content type="html"><![CDATA[<p>过一段时间公司和学校都得做presentation，所以现在就得好好开始准备slides。以前我就用Beamer做过一次slide，而且是匆匆忙忙用了默认模板搞定的。这次借着再做slides的机会，我得自己搞个模板。</p>
+
+<p>需求如下，非常简单：</p>
+
+<p><blockquote>1. 要在合适的位置打上Logo（一般是左上角或者右上角）;<br />
+2. 要能自定义页脚<br />
+3. 首页要有背景</blockquote></p>
+
+<p>经过半个白天加一个晚上的折腾，基本上解决了上述问题：</p>
+
+<p>要打Logo，并且自定义位置，可以使用如下语句：</p>
+
+<p><pre lang="latex"> \logo{\pgfputat{\pgfxy(#1,#2)}{\pgfbox[center,base]{\includegraphics[height=0.5cm]{#3}}}}</pre></p>
+
+<p>事先要包含pgf宏包，#1,#2是Logo坐标，#3是Logo路径。关于坐标，我发现用pdflatex编译和用xelatex编译时坐标表示的实际位置是不同的，反正自己手工慢慢调就是了。也可以把上述代码加个\newcommand，做成一个带参数的命令直接调用。</p>
+
+<p>自定义页脚，我参考了beamer guide和beamer里面的某个宏包的写法：</p>
+
+<p><!--more--><pre lang="latex">
+%% Custom footer
+\usefoottemplate{
+    \hbox{\tinycolouredline{structure}{
+    \begin{beamercolorbox}[wd=0.22\paperwidth,ht=2.4ex,dp=1.2ex,left]{author in head/foot}%
+        \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.5\paperwidth,ht=2.4ex,dp=1.2ex,center]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.28\paperwidth,ht=2.4ex,dp=1.2ex,right]{date in head/foot}%
+        \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{0.8em}
+        \insertframenumber{} / \inserttotalframenumber\hspace*{4.5ex}
+    \end{beamercolorbox}}}%
+}
+</pre></p>
+
+<p>需要说明的是，我始终搞不懂\tinycolouredline的第一个参数structure还能用什么代替，而且上述方案有个及其大的BUG，在页脚最左边的那列的左边有1em的空白，如果要给这列填充了和那个空白区与不一样的背景色，就会很难看。我也没找到消除那列空白的代码。</p>
+
+<p>首页加背景就太简单了，我直接用wallpaper宏包，然后在第一页加入：</p>
+
+<p><pre lang="latex">\ThisCenterWallPaper{1}{inc/cover}</pre></p>
+
+<p>不管是加Logo也好，加墙纸也好，它们都很容易被colortheme中定义的背景色覆盖，这可以通过\setbeamercolor来去掉背景色，基本语法如下：</p>
+
+<p><pre lang="latex">\setbeamercolor{background canvas}{bg=}
+\setbeamercolor{title}{fg=black, bg=lightgray!80!white}</pre></p>
+
+<p>最后放出模板，<a href="https://docs.google.com/leaf?id=0B-GDvj9JsmanZjUzZDI4M2MtYzE3MS00YTNjLWEyZjUtYjFhMzY5MzY5NWVi&hl=zh_CN">点此下载>>>></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Chrowety - a Chrome Twitter Extension]]></title>
+    <link href="http://casparant.github.io/blog/2010/03/27/chrowety-a-chrome-twitter-extension/"/>
+    <updated>2010-03-27T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/03/27/chrowety-a-chrome-twitter-extension</id>
+    <content type="html"><![CDATA[<p>事先承认，我是土星人+火星人，最近才知道Chrowety这等利器，又能用Twitter API，又能官方RT，又能有声音提示，界面做得还不错。为了拯救广大比我还火星的朋友们，特推荐此扩展。</p>
+
+<p>由于本人推荐之心实在很强烈，所以几乎就要把这篇可怜不到100字的最新文章发表。幸好发表前我强忍住了，于是找点其他东西凑数，列几个其他的Chrome扩展供大家讨论。因为最近工作和平时使用浏览器都在Chrome上了，同时越来越觉得Firefox不好用了。</p>
+
+<p>代理自动切换：不得不承认AutoProxy这等生活在西朝鲜屁民共和国的使用Firefox的我们的必备工具还是很好用的，在Chrome上迄今没找到同样利索的工具，只有用Switch Proxy + 自己在 <a href="http://autoproxy2pac.appspot.com/">autoproxy2pac.appspot.com（已被墙）</a>上下的pac文件凑合一下。</p>
+
+<p>书签同步：在使用了前一个扩展的前提下，使用XMarks。</p>
+
+<p>看Alexa和Google PR排名：Chrome SEO，功能很齐全。</p>
+
+<p>其他的诸如Google官方应用的扩展就不再赘述。</p>
+
+<p><!--more-->谢谢<a href="http://www.mellonwand.com" target="_blank">小瓜瓜</a>的提醒，我想起来还有几个：</p>
+
+<p>GMAIL Web扩展：Better GMail 2 + Folders4Gmail。</p>
+
+<p>鼠标手势+文字选中/链接拖拽：Smooth Gestures + Yet Another Drag and Go(Drag and Go很不好用，还是这个好)。</p>
+
+<p>欢迎向我推荐其他更好用的Chrome扩展。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[D3000安装裂像屏的惨痛经历]]></title>
+    <link href="http://casparant.github.io/blog/2010/03/14/the-painful-experience-of-installing-split-image-screen-on-d3000/"/>
+    <updated>2010-03-14T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/03/14/the-painful-experience-of-installing-split-image-screen-on-d3000</id>
+    <content type="html"><![CDATA[<p>下午实在等不住晚一天拿到裂像屏，就自己冒雪跑上地取了，汗。设备是在淘宝上一个叫“对焦工厂”的店里买的，他那对焦设备还挺齐全，连D3000这种超低端机的裂像屏都有，价格在110-190都有。我买了个最好的裂像屏，再买了个取景放大器。回到家中鞋子都没甩干就开始安装。</p>
+
+<p>按照网上的说明，机身倒放，打开弹簧钢丝卡扣。结果手指指甲刚剪掉，伸进去扳不开卡扣，用了镊子挑，还把周围的塑料刮花了。没想到的是这就成了今天装裂像屏的惨痛开端。</p>
+
+<p>终于把钢丝卡扣打开了，把原来的屏倒出来，把对焦屏放进去。然后想把卡扣卡回去。用了手指按，按不下去。用包了橡胶的镊子按，使不上力。一急之下把橡胶给去掉继续用镊子按，结果手一滑，镊子在对焦屏上划过……留下两条道道。顿时觉得这一百多大洋买的东西就这么被我给毁了，心痛万分。</p>
+
+<p>后来找到窍门了，还是需要指甲，看看自己右手食指指甲昨天没剪太短，伸进去，一按一推，终于把钢丝推回去了。</p>
+
+<p>打开相机，取景器里面一看，两条道道清晰可见，以后只能在拍照的时候视而不见了，痛苦万分。再仔细观察对焦屏，居然有两颗巨大的灰尘，取下镜头一看，还是在里侧，只好再次打开弹簧卡扣，用气吹吹掉，再放回去。这两下折腾，钢丝似乎都被我弄变形了。</p>
+
+<p><!--more-->最后总算是安装完成了，没有灰卡，找了个钢尺测试对焦，裂像重合的时候正好合焦，对焦还是很准确的。</p>
+
+<p>使用感受：D3000机器实在是比较小，取景器也好小，我安装了一个取景放大器看起来都不够大，在被摄体对比不明显的时候，中间裂像的圆圈容易被取景器中间对焦点的圆矩形方框盖住，很难观察清楚被摄体的裂像。另外D3000机器拆装对焦屏太折腾了，远没有网上介绍的那么容易拆卸。不过现在对安装裂像屏的效果下断言还太早，拍几天试试吧。</p>
+
+<p>经验教训：拆卸弹簧钢丝卡扣的时候，不要心急，钢丝外侧的正中间卡在塑料扣的下方，往外稍微用力把钢丝拉离塑料扣就可以了，实在不行仔细地用极细的针挑出来也可以。对焦屏取出来可以用来倒，放回去要注意防呆设计，屏上长边的突起朝左外侧。用镊子的时候一定要包好橡胶。卡口推回去要找准地方，可以用指甲往塑料扣方向按下去，然后推向相机里侧。总之一定不能心急，心急吃不了臭豆腐，还会弄坏零件T_T</p>
+
+<p>P.S. 新建Photography分类，记录摄影相关文章。</p>
+
+<p>------ 0318 分割线 ------</p>
+
+<p>终于忍不住重新买了块屏，所谓“大眼睛”，裂像特别大，直径占了取景器短边的70%左右。在公司收到快递，花了一分钟就组装好了，这次特别麻利。大裂像果然用起来特别舒服，哇哈哈。不过问题还是有的，一个是上下两个半圆居然不是平分在中心对焦点两侧，而是偏上方一点点，不过还好裂像比较大，没什么关系。<del datetime="2010-03-18T16:13:39+00:00">就是比较影响测光，减了0.7ev差不多正常。因为在公司，没法仔细检测测光，回家后再测吧。</del></p>
+
+<p>那块废掉的屏，呜呜呜……就当我在路上走路丢了200块钱吧……</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[试用GIMP的单窗口模式]]></title>
+    <link href="http://casparant.github.io/blog/2010/01/06/try-gimp-single-window-mode/"/>
+    <updated>2010-01-06T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/01/06/try-gimp-single-window-mode</id>
+    <content type="html"><![CDATA[<p>嗯，期盼了好久的GIMP单窗口模式终于在新的开发版本里面出现了，尝试一下。</p>
+
+<p>我在Gentoo下用的是9999版本，但是portage中的9999版本有编译错误，在bugzilla上看到可以使用的arcon这个overlay,遂换之，安装顺利完成。</p>
+
+<p>打开之后发现默认并没有启用单窗口模式，得在“窗口”菜单栏中勾选“启用单窗口模式”。效果如图：</p>
+
+<p><a href="http://img.ant.im/pm-KRG2.html" title="gimp"><img src="http://img.ant.im/dm-KRG2.png" alt="gimp" /></a></p>
+
+<p><!--more-->另外还发现这个开发版本中的单窗口模式不是特别好用，每启用一个新的窗口（比如图层、通道、路径），默认都不是停靠在主窗口上，而是要取消勾选然后重新勾选“单窗口模式”。另外每次退出之后这个单窗口布局就消失了，下次得自己重新布局。</p>
+
+<p>其实说白了这个单窗口模式也就是一个用户体验问题，对功能没什么影响，不过有了单窗口之后，我个人就觉得GIMP这个软件比以前专业了，心理作用--|||</p>
+
+<p>P.S. Adobe Photoshop CS5的功能太强大了：<a href="http://is.gd/5MSzM">http://is.gd/5MSzM</a></p>
+
+<p>P.P.S. 炫耀一下，明天，我就要签卖身契咯～～</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[新近摆弄WP的一点备忘]]></title>
+    <link href="http://casparant.github.io/blog/2009/12/23/some-notes-of-building-wordpress-blog/"/>
+    <updated>2009-12-23T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/12/23/some-notes-of-building-wordpress-blog</id>
+    <content type="html"><![CDATA[<p>最近在加班之余还把自己的Blog整理了一遍，整理过程中发现这不知不觉就过去了一年。一年改变了好多东西，唯有折腾精神不变。</p>
+
+<p>首先是升级WP到了2.9，然后把Blog主题换了，在网上选了一款比较清爽的主题，<a href="http://www.neoease.com" target="_blank">mg12</a>的elegant box主题。这位主题作者的设计很对我胃口，上次用了他大名鼎鼎的iNove，感觉良好，情绪稳定。</p>
+
+<p>然后就整理了一下插件，自己hack了一下主题。原本辛辛苦苦hack了好几个小时的代码，把wp-thread-comment的回复样式弄得跟原生界面一样了，结果发现elegant box主题在页面上不能正确回复评论，而且不能正确显示分页。看了代码才发现，从wp2.7开始好像就自带了嵌套回复、评论分页功能，从这个版本开始主题模板中的comments.php就和以前不一样了。新的主题模板有仿佛和wp-thread-comment冲突。不过wp-thread-comment里面用的parent字段和wp原生嵌套功能的字段是一样的，所以关闭了wp-thread-comment之后嵌套评论还在。只是没有了邮件发送通知功能，网上再搜搜，发现<a href="http://fairyfish.net" target="_blank">denishua</a>的<a href="http://fairyfish.net/2008/11/03/comment-reply-notification/" target="_blank">Comment Reply Notification</a>把邮件发送功能从wp-thread-comment中抽取出来单独而成的，正和我意，于是装上。然后又发现评论上方自带了引言功能，那么Quoter这个插件也可以下课了。看来好久没有折腾wp，那是相当Out啊。</p>
+
+<p>装了几个锦上添花的插件：<a href="http://wordpress.org/extend/plugins/wp-recentcomments/" target="_blank">WP-RecentComments</a>, <a href="http://wordpress.org/extend/plugins/wp-multicollinks/" target="_blank">WP-MultiColLinks</a>, <a href="http://wordpress.org/extend/plugins/wp-easyarchives/" target="_blank">WP-EasyArchives</a>，作者都是mg12，主要是让版面排得更好看一些，其实不用也没太大影响。</p>
+
+<p><!--more-->接下去把侧边栏hack了一下，把文章页面的侧边栏内容和首页分开了。我觉得首页放一些站外共享的内容挺好，比如Google Friend Connect，Twitter，豆瓣分享什么的，但是在文章页读者想看的应该是和文章相关的内容，比如关联日志、同分类日志、Top10日志、随机日志等等。于是在sidebar.php里面加了一个判断，is_single()的时候，调用自己手动写的一个侧边栏文件，不通过Widgets来配置。这也算是用户体验上的一个改进吧，不过话说我的Blog应该是光订阅不访问的人比较多，现在日IP估计连50都没。</p>
+
+<p>最后做的一件事情就是以前经常干的：删文章。最开始出于这个那个的原因，转载了一些现在都没什么兴趣了的文章，现在看看实在扎眼，删了。</p>
+
+<p>P.S. wp2.9有了回收站功能和图片编辑功能，用了一下感觉很好。推荐大家升级。</p>
+
+<p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linux下与相片有关的工具]]></title>
+    <link href="http://casparant.github.io/blog/2009/12/03/photograph-related-tools-under-linux/"/>
+    <updated>2009-12-03T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/12/03/photograph-related-tools-under-linux</id>
+    <content type="html"><![CDATA[<p>前段时间入手了一台入门单反，看网上都是使用光影啊、PS啊、Nikon光盘自带的ViewNX等工具来处理相片，我就想在Linux找到类似的软件。</p>
+
+<p>PS这个好说，GIMP可以搞定。不过强烈期盼<a href="http://www.gimpusers.com/news/2009-09-19/single-window-mode-gimp-2-8-confirmed.html" target="new">GIMP的单一窗口模式</a>早点出来啊～</p>
+
+<p>相片管理软件只好暂时用用Wine的Picasa了，同样期待Linux下原生的Picasa，不过这个希望相当渺茫……其实wine的Picasa还是很好用的，修正照片功能也不错，Google招牌式的I'm feeling lucky按钮，对于我等懒人，效果极佳。</p>
+
+<p>光影类的软件，我迄今为止没有找到。我主要喜欢光影的加框功能。Linux下尝试过f-spot，最后放弃，主要是修改完出片的时候根本没有压缩，遂怀疑这个软件的相片修正功能是否真正可用，而且没有加框的插件。还发现几个KDE的程序，但是因为要编译安装kdebase-lib这种大块头，我宁愿wine一个光影魔术手……现在调曝光拉曲线加框出片基本上都是靠wine的光影，痛苦啊T_T不过批量操作的时候还是用Picasa～</p>
+
+<p>然后就是RAW出片的问题。我在虚拟机上运行ViewNX来修改RAW的片子居然把虚拟机搞假死了，RAW片果然不是省油的灯……只好转战Linux平台，找了许久之后发现这个工具：<a href="http://ufraw.sourceforge.net/" target="new">UFRaw</a>，发现其功能还是很强大的，拉曲线、白平衡、曝光补偿、去噪、裁切缩放都有，而且它能认出我的D3000，在Gentoo中加上gimp的USE Flag后可以在处理完片子后在GIMP中继续编辑。目前没有发现这个软件在功能上的缺失，而且平时因为RAW出片不多，所以对这个功能的研究也比较少。</p>
+
+<p>其他工具正在继续发掘中，有类似经历的朋友欢迎推荐好用的工具。总体来说Linux下处理相片的工具还是有的，就是找到它们需要一些时间～</p>
+
+<p><!--more-->====== 我是分割线 ======</p>
+
+<p>最近人比较懒，Blog更新非常不勤快。在搬家之后，我思考了一下这个Blog未来的定位，最后觉得以后应该侧重于这么几个方面：</p>
+
+<p>1. Linux下的软件或者其他平台的开源软件的介绍（当然都是生活中常用的软件，那种跟我八杆子打不着的软件，我也不会因为它是开源的就一个劲儿宣传）</p>
+
+<p>2. 编程，这个永远是Blog中应该出现的话题，虽然我已经好久没有编程了。</p>
+
+<p>3. 因为最近折腾系统比较少了，所以关于Linux系统配置等文章，以后基本上不会出现了。而跟Linux系统有关的软件，当我有兴趣研究之后我会作为话题发上来。</p>
+
+<p>暂时就想到这么多，以后本Blog尽量不那么杂乱，好好耕耘，完毕～</p>
+]]></content>
+  </entry>
+  
+</feed>

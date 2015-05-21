@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Softwares | Ant-Veil]]></title>
+  <link href="http://casparant.github.io/blog/categories/softwares/atom.xml" rel="self"/>
+  <link href="http://casparant.github.io/"/>
+  <updated>2015-05-21T11:59:03+08:00</updated>
+  <id>http://casparant.github.io/</id>
+  <author>
+    <name><![CDATA[Caspar]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[WizNote: 终于找到比较干净的QT的笔记软件]]></title>
+    <link href="http://casparant.github.io/blog/2014/03/11/an-introduction-of-wiz-note/"/>
+    <updated>2014-03-11T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2014/03/11/an-introduction-of-wiz-note</id>
+    <content type="html"><![CDATA[<p>Linux上记笔记，向来很纠结。以前用过一段时间<a href="http://zim-wiki.org/index.html" target="_blank">Zim</a>，后来变成了KDE党，只好果断抛弃了。找到<a href="http://basket.kde.org/" target="_blank">BasKet</a>，功能还是很强大的，可是格式一团糟。无法以Plain Text存储文字，拷贝来拷贝去的时候经常格式混乱。也尝试在Web端存东西，结果还是发现不习惯，而且离线无法访问。</p>
+
+
+
+
+<p>然后今天工作的时候有同事提到客户报告鄙厂<a href="http://www.aliyun.com/" target="_blank">产品</a>的问题，碰到了故障（当然在内核组大牛们的努力下该问题已经解决了），我就好奇去看了一下报告者信息，然后就发现了这个笔记软件：<a href="http://wiz.cn/index.html" target="_blank">Wiz</a>. 看起来还挺Geek的，有手机端有Linux端有Mac OS端。于是去gentoo-zh的Overlay找了一圈（是的，5年过去了我还在Gentoo的不归路上慢慢走着），<a href="https://github.com/microcai/gentoo-zh/blob/master/app-text/wiznote/wiznote-2.0.64.ebuild" target="_blank">找到了</a>。</p>
+
+
+
+
+<p><a href="http://img.ant.im/di-PSVM.png"><img align="center" width="400" src="http://img.ant.im/di-PSVM.png" alt="Wiz" /></a></p>
+
+
+
+
+<p>看起来样子还不错，还比较清爽，也可以格式化为Plain Text。功能上比BasKet少一些，但是用着还是挺舒服的。</p>
+
+
+
+
+<p>最不能忍受的问题是没有任务栏图标，于是接着搜。</p>
+
+
+
+
+<p>找到了一年前某人的一个没有Merge的<a href="https://github.com/WizTeam/WizQTClient/pull/80" target="_blank">Pull Request</a>，然后稍微修改了一下补丁，打到源代码里，发现可以用了。</p>
+
+
+
+
+<p>修改后的ebuild请<a href="https://github.com/casparant/caspar-gentoo/blob/master/app-text/wiznote/wiznote-2.1.0_beta.ebuild" target="_blank">猛戳</a>。</p>
+
+
+
+
+<p>最后，有更靠谱的笔记软件请推荐。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Libfprint Finally Supports Thinkpad T410]]></title>
+    <link href="http://casparant.github.io/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410/"/>
+    <updated>2010-08-20T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410</id>
+    <content type="html"><![CDATA[<p>I have been keeping tracking of <a href="https://bugzilla.redhat.com/show_bug.cgi?id=504399" target="_blank">this RHBZ</a> for long, and I am happy to see libfprint finally supports my fingerprint reader on T410. Seems that the original author Daniel(dsd) was very busy so that another developer in Red Hat, Bastien Nocera, took this project instead. He moved the libfprint git repo to freedesktop.org, with the newest patches applied. You can find the new git repo <a href="http://cgit.freedesktop.org/libfprint/libfprint/" target="_blank">here</a>, and new libfprint release(0.2.0) <a href="http://freedesktop.org/~hadess/libfprint-0.2.0.tar.bz2" target="_blank">here</a>. Bastien Nocera is also maintaining <a href="http://www.reactivated.net/fprint/wiki/Fprintd" target="_blank">fprintd</a>, "a D-Bus daemon that offers libfprint functionality over the D-Bus interprocess communication bus". The git repo and new release are located <a href="http://cgit.freedesktop.org/libfprint/fprintd/" target="_blank">here</a> and <a href="http://freedesktop.org/~hadess/fprintd-0.2.0.tar.bz2" target="_blank">here</a>.</p>
+
+
+
+
+<p>Besides the RHBZ mentioned above, you should be able to get more information from this <a href="http://lists.reactivated.net/pipermail/fprint/2010-August/001530.html" target="_blank">message</a> in fprint mailing list.</p>
+
+
+
+
+<p>I updated my gentoo overlay in github, too. You can emerge libfprint and fprintd after you synchronized <a href="http://github.com/casparant/caspar-gentoo" target="_blank">this</a> overlay.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Enable Fingerprint in Thinkpad T410 Under Gentoo]]></title>
+    <link href="http://casparant.github.io/blog/2010/08/06/enable-fingerprint-in-thinkpad-t410-under-gentoo/"/>
+    <updated>2010-08-06T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/08/06/enable-fingerprint-in-thinkpad-t410-under-gentoo</id>
+    <content type="html"><![CDATA[<p>As I mentioned in the <a href="http://www.casparant.com/back-to-gentoo-again.html" target="_blank">previous post</a>, I couldn't get my fingerprint reader work in Gentoo. Now this problem has been solved. ;-)</p>
+
+
+
+
+<p>Before starting, here're some useful links may help those who are suffering from similar fingerprint issues like me:</p>
+
+
+
+
+<p>If you're using a fingerprint with USB id "147e:2016", you can have a look at <a href="http://www.thinkwiki.org/wiki/Integrated_Fingerprint_Reader" target="blank">this thinkwiki link</a>, The "147e:2016" item is updated recently: a Red Hat Bugzilla URL added.</p>
+
+
+
+
+<p>This <a href="https://bugzilla.redhat.com/show_bug.cgi?id=504399" target="blank">RHBZ</a> link tried to enable TCRD4C devices, but seemed that my fingerprint was another different type since it still did not work after applied all the patches attached.</p>
+
+
+
+
+<p>------>8------ Cutting, Let's enable T410 fingerprint ------>8------</p>
+
+
+
+
+<p>Using <a href="http://www.n-view.net/Appliance/fingerprint/" target="_blank">Fingerprint-GUI</a> and <a href="http://www.upek.com/solutions/pc_and_networking/sdks/linux/" target="_blank">UPEK SDK</a> can easily enable fingerprint reader in T410. Fingerprint-GUI provides an integration of setup GUI, authentication plugin, PAM module and the UPEK library, all of the GUI parts are written with QT4 (I don't like it :-\), released under GPL-v3 licence. However, UPEK SDK library is EULA copyrighted and seems never to release the code to us.</p>
+
+
+
+
+<p><!--more-->Notice that you still need have <a href="http://reactivated.net/fprint/wiki/Libfprint" target="_blank">libfprint</a> installed, what's more, a version >= 1.0_pre is necessary, according to the manual of Fingerprint.</p>
+
+
+
+
+<p>Since A PAM module is integrated in Fingerprint-GUI so that your fingerprint driver can work in GDM, sudo, gnome-screensave, etc, you must remove other fingerprint PAM modules like pam_fprint or pam_thinkfinger.</p>
+
+
+
+
+<p>For Gentoo users, I have finished two ebuilds for this application. You can find them in <a href="http://github.com/casparant/caspar-gentoo" target="_blank">my github repo</a>, fprint is also included in the repo.</p>
+
+
+
+
+<p>I'm not good at writing ebuilds, any suggestions are welcomed.</p>
+
+
+
+
+<p>P.S. Is there anybody know how to assert the existence of a kernel module in a ebuild? I need to judge whether `uinput.ko' exists or not among current kernel modules. Thanks.
+</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Chrowety - a Chrome Twitter Extension]]></title>
+    <link href="http://casparant.github.io/blog/2010/03/27/chrowety-a-chrome-twitter-extension/"/>
+    <updated>2010-03-27T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/03/27/chrowety-a-chrome-twitter-extension</id>
+    <content type="html"><![CDATA[<p>事先承认，我是土星人+火星人，最近才知道Chrowety这等利器，又能用Twitter API，又能官方RT，又能有声音提示，界面做得还不错。为了拯救广大比我还火星的朋友们，特推荐此扩展。</p>
+
+
+
+
+<p>由于本人推荐之心实在很强烈，所以几乎就要把这篇可怜不到100字的最新文章发表。幸好发表前我强忍住了，于是找点其他东西凑数，列几个其他的Chrome扩展供大家讨论。因为最近工作和平时使用浏览器都在Chrome上了，同时越来越觉得Firefox不好用了。</p>
+
+
+
+
+<p>代理自动切换：不得不承认AutoProxy这等生活在西朝鲜屁民共和国的使用Firefox的我们的必备工具还是很好用的，在Chrome上迄今没找到同样利索的工具，只有用Switch Proxy + 自己在 <a href="http://autoproxy2pac.appspot.com/">autoproxy2pac.appspot.com（已被墙）</a>上下的pac文件凑合一下。</p>
+
+
+
+
+<p>书签同步：在使用了前一个扩展的前提下，使用XMarks。</p>
+
+
+
+
+<p>看Alexa和Google PR排名：Chrome SEO，功能很齐全。</p>
+
+
+
+
+<p>其他的诸如Google官方应用的扩展就不再赘述。</p>
+
+
+
+
+<p><!--more-->谢谢<a href="http://www.mellonwand.com" target="_blank">小瓜瓜</a>的提醒，我想起来还有几个：</p>
+
+
+
+
+<p>GMAIL Web扩展：Better GMail 2 + Folders4Gmail。</p>
+
+
+
+
+<p>鼠标手势+文字选中/链接拖拽：Smooth Gestures + Yet Another Drag and Go(Drag and Go很不好用，还是这个好)。</p>
+
+
+
+
+<p>欢迎向我推荐其他更好用的Chrome扩展。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[试用GIMP的单窗口模式]]></title>
+    <link href="http://casparant.github.io/blog/2010/01/06/try-gimp-single-window-mode/"/>
+    <updated>2010-01-06T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/01/06/try-gimp-single-window-mode</id>
+    <content type="html"><![CDATA[<p>嗯，期盼了好久的GIMP单窗口模式终于在新的开发版本里面出现了，尝试一下。</p>
+
+
+
+
+<p>我在Gentoo下用的是9999版本，但是portage中的9999版本有编译错误，在bugzilla上看到可以使用的arcon这个overlay,遂换之，安装顺利完成。</p>
+
+
+
+
+<p>打开之后发现默认并没有启用单窗口模式，得在“窗口”菜单栏中勾选“启用单窗口模式”。效果如图：</p>
+
+
+
+
+<p><a href="http://img.ant.im/pm-KRG2.html" title="gimp"><img src="http://img.ant.im/dm-KRG2.png" alt="gimp" /></a></p>
+
+
+
+
+<p><!--more-->另外还发现这个开发版本中的单窗口模式不是特别好用，每启用一个新的窗口（比如图层、通道、路径），默认都不是停靠在主窗口上，而是要取消勾选然后重新勾选“单窗口模式”。另外每次退出之后这个单窗口布局就消失了，下次得自己重新布局。</p>
+
+
+
+
+<p>其实说白了这个单窗口模式也就是一个用户体验问题，对功能没什么影响，不过有了单窗口之后，我个人就觉得GIMP这个软件比以前专业了，心理作用--|||</p>
+
+
+
+
+<p>P.S. Adobe Photoshop CS5的功能太强大了：<a href="http://is.gd/5MSzM">http://is.gd/5MSzM</a></p>
+
+
+
+
+<p>P.P.S. 炫耀一下，明天，我就要签卖身契咯～～</p>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Copid Entries | Ant-Veil]]></title>
+  <link href="http://casparant.github.io/blog/categories/copid-entries/atom.xml" rel="self"/>
+  <link href="http://casparant.github.io/"/>
+  <updated>2015-05-21T11:59:03+08:00</updated>
+  <id>http://casparant.github.io/</id>
+  <author>
+    <name><![CDATA[Caspar]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[当年日志里的两个主角]]></title>
+    <link href="http://casparant.github.io/blog/2009/04/20/sun-is-acquired-by-oracle/"/>
+    <updated>2009-04-20T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/04/20/sun-is-acquired-by-oracle</id>
+    <content type="html"><![CDATA[<p>请看我当年的日志：<a href="http://www.casparant.com/some-acquires.html">http://www.casparant.com/some-acquires.html</a>，两个主角，Oracle收购BEA, SUN收购MySQL。</p>
+
+
+
+
+<p>现在的事情……唉……我当年那心仪的SUN公司啊……</p>
+
+
+
+
+<p>以下<em>还是</em>转自<a href="http://www.casparant.com/some-acquires.html">纽约时报</a>：</p>
+
+
+
+
+<p><a href="http://www.nytimes.com/2009/04/21/technology/companies/21sun.html?ref=technology">http://www.nytimes.com/2009/04/21/technology/companies/21sun.html?ref=technology</a></p>
+
+
+
+
+<p>———————————— 转载的分割线 ————————————</p>
+
+
+
+
+<p><strong>Oracle Agrees to Acquire Sun Microsystems</strong></p>
+
+
+
+
+<p><em>Article Tools Sponsored By</em></p>
+
+
+
+
+<p>By ASHLEE VANCE</p>
+
+
+
+
+<p>Published: April 20, 2009</p>
+
+
+
+
+<p><!--more-->The Oracle Corporation, the technology information company, announced Monday that it would acquire a rival, Sun Microsystems, for $9.50 a share, or about $7.4 billion.</p>
+
+
+
+
+<p>The agreement with Oracle came about two weeks after I.B.M. ended its talks with Sun. The Sun board balked at that deal after I.B.M. lowered its offer to $9.40 a share from $10. Still, Monday’s deal represented a 42 percent premium over Sun’s closing price of $6.69 on Friday.</p>
+
+
+
+
+<p>Oracle and Sun said in a statement that net of Sun’s cash and debt, the deal was valued at $5.6 billion.</p>
+
+
+
+
+<p>Lawrence J. Ellison, Oracle’s co-founder and chief executive, and Scott G. McNealy, Sun’s co-founder and chairman, have been two of Silicon Valley’s closest allies over the last 20 years. Their companies turned into two of the superstars of the Internet build out, and both executives made ribbing rival Microsoft a favored pastime.</p>
+
+
+
+
+<p>Historically, most of Oracle’s database sales have occurred in tandem with Sun’s servers. Over the past few years, however, Oracle has moved to make Hewlett-Packs and Dell stronger allies, as Sun’s business has declined.</p>
+
+
+
+
+<p>“This combination is a natural evolution of our relationship and will be an industry-defining event,” Mr. McNealy said.</p>
+
+
+
+
+<p>Sun’s directors have unanimously approved the transaction. It is anticipated to close this summer, subject to Sun stockholder approval, the companies said in a statement.</p>
+
+
+
+
+<p>Oracle said it expected the purchase to add at least 15 cents a share to its adjusted earnings in the first year after the deal closes. The company also estimated that Sun would contribute more than $1.5 billion to Oracle’s adjusted profit in the first year and more than $2 billion in the second year.</p>
+
+
+
+
+<p>Sun shares rose as high as $9.20 in premarket trading after closing Friday at $6.69, while Oracle shares fell as low as $18.34 after closing Friday at $19.06.</p>
+
+
+
+
+<p>The deal immediately disrupts the traditional relationships formed between some of the technology industry’s largest players and thrusts Oracle into the hardware business.</p>
+
+
+
+
+<p>Oracle, for example, has long-standing partnerships with Sun’s rivals, including Hewlett-Packard and Dell. These sellers of server computers work to fine tune Oracle’s database and business software for their computers.</p>
+
+
+
+
+<p>I.B.M., which competes against Oracle in the software market, also comes under new threats with the deal.</p>
+
+
+
+
+<p>For years, I.B.M. has used it homemade servers as leverage for selling higher-profit database and business software. With Sun, Oracle opens up the same opportunity and gains access to thousands of existing Sun customers.</p>
+
+
+
+
+<p>In addition, Oracle has now obtained the MySQL database, which Sun acquired last year for $1 billion. The open-source software has proved popular with companies looking to expand their Internet operations.</p>
+
+
+
+
+<p>Last year, Oracle began a flirtation with the hardware market. It started reselling a server computer from H.P. that relied on its software for managing and analyzing large volumes of data.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[周末休闲]God Wrote in LISP]]></title>
+    <link href="http://casparant.github.io/blog/2008/11/29/funny-song-god-wrote-in-lisp/"/>
+    <updated>2008-11-29T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2008/11/29/funny-song-god-wrote-in-lisp</id>
+    <content type="html"><![CDATA[<p>这是一首灰常有意思的歌曲，翻唱自Julia Ecklar的"God Lives on Terra"。</p>
+
+
+
+
+<p>可以看看这里了解一下这首歌曲的歌词：<a href="http://www.gnu.org/fun/jokes/eternal-flame.html">http://www.gnu.org/fun/jokes/eternal-flame.html</a></p>
+
+
+
+
+<p>GNU社区还推荐了很多有意思的东东，可以去<a href="http://www.gnu.org/fun/humor.html">http://www.gnu.org/fun/humor.html</a>查看，作为一个Linuxer和一个Programmer，这些内容可算是相当不错的休闲佐料了～</p>
+
+
+
+
+<p>顺便试一下WP的1bit插件：<a href="http://www.prometheus-music.com/audio/eternalflame.mp3">eternal－flame</a></p>
+
+
+
+
+<p>囧，居然不支持ogg格式的播放……传个MP3格式的算了，ogg格式下载<a href="http://www.gnu.org/fun/jokes/eternal-flame.ogg">点此</a>。</p>
+
+
+
+
+<p>附上歌词一览：</p>
+
+
+
+
+<p><!--more-->
+<blockquote>I was taught assembler<br />
+in my second year of school.<br />
+It's kinda like construction work --<br />
+with a toothpick for a tool.<br />
+So when I made my senior year,<br />
+I threw my code away,<br />
+And learned the way to program<br />
+that I still prefer today.</blockquote></p>
+
+
+
+
+<p>Now, some folks on the Internet<br />
+put their faith in C++.<br />
+They swear that it's so powerful,<br />
+it's what God used for us.<br />
+And maybe it lets mortals dredge<br />
+their objects from the C.<br />
+But I think that explains<br />
+why only God can make a tree.</p>
+
+
+
+
+<p>For God wrote in Lisp code<br />
+When he filled the leaves with green.<br />
+The fractal flowers and recursive roots:<br />
+The most lovely hack I've seen.<br />
+And when I ponder snowflakes,<br />
+never finding two the same,<br />
+I know God likes a language<br />
+with its own four-letter name.</p>
+
+
+
+
+<p>Now, I've used a SUN under Unix,<br />
+so I've seen what C can hold.<br />
+I've surfed for Perls, found what Fortran's for,<br />
+Got that Java stuff down cold.<br />
+Though the chance that I'd write COBOL code<br />
+is a SNOBOL's chance in Hell.<br />
+And I basically hate hieroglyphs,<br />
+so I won't use APL.</p>
+
+
+
+
+<p>Now, God must know all these languages,<br />
+and a few I haven't named.<br />
+But the Lord made sure, when each sparrow falls,<br />
+that its flesh will be reclaimed.<br />
+And the Lord could not count grains of sand<br />
+with a 32-bit word.<br />
+Who knows where we would go to<br />
+if Lisp weren't what he preferred?</p>
+
+
+
+
+<p>And God wrote in Lisp code<br />
+Every creature great and small.<br />
+Don't search the disk drive for man.c,<br />
+When the listing's on the wall.<br />
+And when I watch the lightning burn<br />
+Unbelievers to a crisp,<br />
+I know God had six days to work,<br />
+So he wrote it all in Lisp.</p>
+
+
+
+
+<p>Yes, God had a deadline.<br />
+So he wrote it all in Lisp.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[转]支付宝针Firefox 的安全控件 for Linux]]></title>
+    <link href="http://casparant.github.io/blog/2008/10/23/alipay-for-linux/"/>
+    <updated>2008-10-23T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2008/10/23/alipay-for-linux</id>
+    <content type="html"><![CDATA[<p>在支付宝的官方Blog上，已经可以使用了。打开alipay的页面终于可以登录了，只是登录后要付款，发现招行还是不行，支付宝里面没钱也是白搭啊……</p>
+
+
+
+
+<p>下载地址在这里：<a href="http://blog.alipay.com/">http://blog.alipay.com/</a></p>
+
+
+
+
+<p>下面是官方消息的转载，暂时不支持数字签名。不管怎么说，还是值得期待的。</p>
+
+
+
+
+<p><!--more--><blockquote /></p>
+
+
+
+
+<p>作者：西毒 与 支付宝产品技术部安全研发组</p>
+
+
+
+
+<p>自从上次支付宝在官方网志上宣布将支持 Firefox 浏览器后，已经有很多用户询问什么时候能够支持 Linux 平台下的 Firefox ，现在是可以做出回答的时候了：尽管该安全控件(针对 Linux 下 Firefox 的安全控件)还没有正式在官方网站上发布，本 Blog 用户可以提前体验啦。</p>
+
+
+
+
+<p>      下载: <a href="http://blog.alipay.com/wp-content/2008/10/aliedit.tar.gz">支付宝安全控件 for Linux 平台 的 Firefox</a> ( MD5:02240053d32688ed996e3a4788042801 ) </p>
+
+
+
+
+<p>使用方法：下载上述链接的文件，解压缩成两个文件:</p>
+
+
+
+
+<p>$ tar -zxvf aliedit.tar.gz </p>
+
+
+
+
+<p>推荐校验 MD5 值：</p>
+
+
+
+
+<p>$ md5sum aliedit.tar.gz<br />
+02240053d32688ed996e3a4788042801  aliedit.tar.gz</p>
+
+
+
+
+<p>并将这两个文件复制到 ~/.mozilla/plugins 目录：</p>
+
+
+
+
+<p>$ cp aliedit.so aliedit.xpt ~/.mozilla/plugins </p>
+
+
+
+
+<p>重新启动 Firefox 即可。</p>
+
+
+
+
+<p>安全提示：下载前请做一下 MD5 校验。同时在官方站点发布正式的针对 Linux 下 Firefox 的安全控件之前，不要相信任何来自其他网站的安全控件。</p>
+
+
+
+
+<p>补充说明：目前在 Linux 下的支付宝安全控件也不支持数字证书。</p>
+
+
+
+
+<p>如遇到任何问题，请在本贴留言。如遇到 Bug 或者其他软件缺陷也请即时联系我们，支付志的运营团队将为您准备一份相应的礼品。</p>
+
+
+
+
+<p>–EOF–
+</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[转]开源软件逐渐融入市场并开始走向赢利]]></title>
+    <link href="http://casparant.github.io/blog/2008/03/28/how-open-source-make-money/"/>
+    <updated>2008-03-28T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2008/03/28/how-open-source-make-money</id>
+    <content type="html"><![CDATA[<p>前几天去了Sun公司，回来之后和同学特兴奋地大谈Sun公司的开源盈利，而几乎每个同学都问我，Sun公司是怎么盈利的，既然开源了怎么还能盈利呢？我一时语塞。今天看到linuxeden上登出这篇文章后才知道，我对经济方面了解得太少太少了……汗颜。通观全文，发现通过开源软件盈利的商业模式大概有以下几种：被收购；获得公司风险投资；基于服务授权（一般来说因为是开源的，都是低价授权，有点薄利多销的样子）；聚集大量用户，只收取一少部分用户（如Google等大公司）的钱……不一而足。当然，这一切的前提必须是——开源项目受欢迎。MySQL就是一个极成功的例子。</p>
+
+
+
+
+<p>———————————— 转载的分割线 ————————————</p>
+
+
+
+
+<p>本文来自：Linux伊甸园 <a href="http://www.linuxeden.com/" target="_blank">http://www.linuxeden.com/</a></p>
+
+
+
+
+<p>文章链接：<a href="http://www.linuxeden.com/html/news/20080328/52872.html" target="_blank">http://www.linuxeden.com/html/news/20080328/52872.html </a>
+<p style="text-align: center"><span style="font-weight: bold">开源软件逐渐融入市场并开始走向赢利</span></p>
+<p dragover="true"><span dragover="true" class="a14c" id="zoom">　　去年春天的时候，著名市场评论人员和博客作家Hugh MacLeod在其博客上发表一篇文章，主题是：假如开源只是一个现象，那怎么冒出这么多亿万富翁呢？他的博客读者们并没有被他的文章所逗乐，很快他的博 客上充满了各种漫骂和叱责，这些读者认为，开源软件是一个依赖社区运作的社会软件开发模式，需要志愿者来维护、修补和开发的，并且把它们的作品免费发布。 他们认为Hugh MacLeod为开源运动中的富人排名严重亵渎了开源运动的精神。有的读者回复到：“这些开源软件的开发人员是应该得到回报，但是没你说的那么商业化”， 另外一个读者评论中直接上了脏字：“shut the F**k up,你懂啥啊，净瞎说！”</span></p>
+<p dragover="true"><!--more-->但并不是所有的开源软件开发人员都是憎恶铜钱味的。已经有相当数量的开源软件公司获得了风险投资公司的亲睐，有的直接被收购。不管开源软件运动的爱好者喜不喜欢，事实摆在面前的是--越来越多的开源软件创始人已经从这个事业中获得财富。</p>
+来自咨询公司451 group的资料显示，2007年，有超过30家的开源软件公司被收购，总金额高达10亿美金，是2005年整个开源软件产业的销售额的两倍。2008年 更是来的疯狂，1月份，sun公司宣布收购开源数据库厂商MySQL，单比收购的金额就高达10亿美金；开源软件企业Covalent和 SpringSource宣布合并；Nokia斥资1.5亿美金收购开源移动设备软件开发商Trolltech。在华尔街，更是有许多银行家们为众多的开 源企业IPO在准备着。</p>
+
+
+
+
+<p>Mozilla公司CEOJohn Lilly表示，也有很多人问他们关于上市的事情，他说他正在考虑。目前该公司的产品是全球用户量最大的开源浏览器Firefox和桌面邮件管理软件 Thunderbird。华尔街资深分析人士Henry Blodgett估计，目前的mozilla 公司价值在15亿到40亿美金之间。作为CEO，Lilly有他独到的硅谷内部人士的眼光，他认为这个价格并没有夸大，但是目前的Mozilla还是私 有，因为从目前看来，Mozilla要想发展的更好，在股东和财报的压力下是没有办法做到的。</p>
+
+
+
+
+<p>这并不是说开源软件公司在商业浪潮中不 能把持住自己，他已经越来越渗透入过去想都没有想过的领域，目前开源软件已经用在许多重要的场合，过去这都是专有软件的领地。比如沃尔玛在开源系统架构上 部署了他们的员工安全信息跟踪系统，费用省了一大笔。一位来自Benchmark Capital投资公司的投资人Kevin Harvey说到，“我认为基于软件授权的商业模式已经过时了，我们不会投资这种类型的公司，我想起他投资公司也不会这么做的”。他说的也许有道理，因为 Kevin Harvey刚刚从投资MySQL和Zimbra中获得丰厚的回报，前者被Sun斥资10亿美金收购，后者07年的时候被Yahoo斥资3.5亿美金收 购。</p>
+
+
+
+
+<p>我们如何打造自己的全新软件商业模式呢？一般的做法无碍乎是买附加值、售后服务，或者随硬件产品OEM软件等等，而这一切都是需 要基础的。现在的开源软件采用全新的模式，先是聚集许多用户，然后只要一小部分用户给钱，这收入就非常可观了。比如Mozilla，Google在其内置 搜索引擎，Google掏钱也非常乐意，因为FireFox有非常多的用户。</p>
+
+
+
+
+<p>开源软件的发展都是依照社区开发人员的意志来完成的，因为这些人对产品的影响非常大，产品的开发和维护还得依靠他们。所以这些新生的亿万富翁们得要好好想想如何笼络这些开发人员，作为社区开发人员，假如他们被奖励，他们工作的热情会更高。</p>
+
+
+
+
+<p><span style="font-weight: bold">相关英文原文如下：</span></p>
+
+
+
+
+<p>Open Source Software Made Developers Cool. Now It Can Make Them Rich<br />
+By Daniel Roth   Email   03.24.08 | 6:00 PM</p>
+
+
+
+
+<p>Last spring, marketer and blogger Hugh MacLeod posted a question on his site: If open source is such a phenomenon, where are all the open source billionaires? His audience wasn't amused. Open source software relies on a community of volunteer developers who tinker on, write for, or amend a program, then give it away free. MacLeod's site filled up with complaints that even to look for billionaires violated the spirit of the open source movement. "There have to be rewards," one commenter wrote, "but they don't have to be financial." Another simply recommended that MacLeod "shut the fuck up," adding: "You don't know what you're talking about."</p>
+
+
+
+
+<p>But not every open-sourcer has proven so averse to filthy lucre. A number of open source companies have recently attracted investments and merger interest: Whether they like it or not — and let's face it, they probably do — more and more open source creators are striking it rich.</p>
+
+
+
+
+<p>In 2007, some 30 open source software companies were purchased for more than $1 billion — double the number of sales in 2005, according to consulting firm 451 Group. And 2008 is proving to be even more frenetic. In January alone, Sun Microsystems announced the purchase of open source pioneer MySQL for $1 billion; open source development players Covalent and SpringSource merged; and Nokia agreed to pay $153 million for the open source mobile-software maker Trolltech. On Wall Street, bankers are rooting around for a good open source company to take public. "People call us all the time," says John Lilly, CEO of Mozilla, which oversees the open source Firefox browser and Thunderbird mail application. "We're a valuable thing." On his Silicon Alley Insider site, defrocked Wall Street analyst Henry Blodgett recently estimated that the for-profit arm of Mozilla was worth between $1.5 billion and $4 billion. Lilly says the estimate is about right but that Mozilla is staying private. "As long as we can pay the bills, we can take a long view of the world that we couldn't if we had shareholders and quarterly reporting."</p>
+
+
+
+
+<p>Which is not to say that open source companies can't hold their own in the business world. The software is penetrating realms that few thought it ever would. It's being used to create trading platforms for hedge funds — which are notoriously insistent on proprietary systems — and Wal-Mart is deploying an open source-based system for its workers to track their health care records. The cost savings come from not having to hire engineers to write code in-house or pay costly per-seat licensing fees. "I think the software-license business model is archaic," says Kevin Harvey, a venture capitalist at Benchmark Capital, which recently cashed in on its investments in MySQL and the open source mail-client firm Zimbra, which Yahoo picked up in late 2007 for $350 million. "I wouldn't fund a company with that model, and I don't think anyone else would, either."</p>
+
+
+
+
+<p>How can you build a business by giving away the store? The money comes from selling add-ons, service contracts, and hardware to go with the software. But that model works only if you master a couple of basics. Open source software makers have to win enough users that even the small percentage of customers who pay will generate a torrent of dollars. (Mozilla gets most of its money from Google, which pays to be the browser's default search provider — something Google is willing to do because Firefox has so many users.) More important, software makers depend on the goodwill of outside developers, whom they rely on to keep updating their products. So the new open source billionaires might want to think twice about going 767 for 767 with the Google guys. For the coder drones, accustomed to being paid in warm feelings, such displays might make them take their coding skills elsewhere.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[转]Ubuntu下Opera字体配置]]></title>
+    <link href="http://casparant.github.io/blog/2008/02/21/opera-font-config/"/>
+    <updated>2008-02-21T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2008/02/21/opera-font-config</id>
+    <content type="html"><![CDATA[<p>转自<a href="http://linuxdesktop.cn/" title="Linux桌面中文网">Linux桌面中文网</a> - <a href="http://linuxdesktop.cn/2007/07/23/ubuntu-opera-skills" rel="bookmark">Ubuntu 下Opera的使用心得小结</a></p>
+
+
+
+
+<p>我只摘录了字体配置的部分。</p>
+
+
+
+
+<p>－－－－－－－－转载分割线－－－－－－－－－－</p>
+
+
+
+
+<p>...</p>
+
+
+
+
+<p>这里我参考了ubuntu中文社区的精华贴所说CSS的方法做了一些调整</p>
+
+
+
+
+<p><pre lang="bash">cd ~/.opera/styles/user/
+touch user.css
+gedit ~/.opera/styles/user/user.css</pre></p>
+
+
+
+
+<p>录入以下内容：</p>
+
+
+
+
+<p><!--more-->
+<pre lang="css">html,body,*{
+    font-family:"Microsoft YaHei" !important;
+}</pre></p>
+
+
+
+
+<p>注意：引号中的字体可结合个人喜好</p>
+
+
+
+
+<p>重启浏览器后选择</p>
+
+
+
+
+<p>查看－&gt;样式-&gt;user.css</p>
+
+
+
+
+<p>效果好了一些但是仍然不满意，而且根本没有使用我指定的雅黑字体</p>
+
+
+
+
+<p>询问了IRC里的一些前辈 得到命令一条
+<pre lang="bash">sudo sed -i '2iexport LANG=en_US.UTF-8' /usr/bin/opera</pre>
+果然见效，但是菜单字体出现了一些问题</p>
+
+
+
+
+<p>工具－&gt;首选项－&gt;高级－&gt;字体</p>
+
+
+
+
+<p>浏览器菜单、工具栏、对话框、面板 进行配置</p>
+
+
+
+
+<p>大家也可以根据自己的需要进行配置</p>
+
+]]></content>
+  </entry>
+  
+</feed>

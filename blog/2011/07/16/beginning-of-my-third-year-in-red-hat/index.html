@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>在Red Hat两年 - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="已经进入我在Red Hat的第三年了，看到两年来这贫瘠无比的博客，决定把阶段总结发到这里来，挽回一下我那正在疯狂下滑的订阅数，嗯。回头看了一下以前的日志，去年这个时候竟然没有写总结，干脆两年的一起写好了。行文照旧会比较混乱，请将就将就。 刚以实习生身份进入Red Hat时，主要工作就是验Bug。 &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2011/07/16/beginning-of-my-third-year-in-red-hat">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">在Red Hat两年</h1>
+    </header>
+  
+  <div class="entry-content"><p>已经进入我在Red Hat的第三年了，看到两年来这贫瘠无比的博客，决定把阶段总结发到这里来，挽回一下我那正在疯狂下滑的订阅数，嗯。回头看了一下以前的日志，去年这个时候竟然没有写总结，干脆两年的一起写好了。行文照旧会比较混乱，请将就将就。</p>
+
+<p>刚以实习生身份进入Red Hat时，主要工作就是验Bug。记得当时很多Bug的描述都很不清晰，往往一个Bug就浪费一两天时间去分析。有的Bug还不能用脚本重现，只能物理接触硬件。有一次在机房里呆了一个下午，要用针头去戳机器上的一个小孔[<a href="http://en.wikipedia.org/wiki/Non-maskable_interrupt" target="_blank">1</a>]，戳了我整整一个下午。类似的折腾人的Bug仿佛是永远都不会消失，现在我还在跟他们打交道。</p>
+
+<p>一个月后，老板让我了解一个测试套件<a href="http://ltp.sourceforge.net/" target="_blank">LTP</a>，之前是他一直在维护这个工具在内部测试平台上的正常运行，交给我之后他基本上就没再怎么管过它了（直到最近，他开始往LTP提交内存相关的测试代码，这是后话了）。我当时的基本工作就是定期把LTP的稳定发布版本移植回内部测试平台，然后如果运行出错，根据运行情况如果是LTP的问题，就写一些补丁来修复LTP运行时出现的错误。从此我才正式结束和开源项目社区浅尝辄止的试水活动，开始深入社区贡献代码。为LTP编写补丁对我的帮助很大，一方面跟编写补丁相关的工具，比如说git，都熟练掌握了；另一方面通过熟悉LTP的测试代码，了解了很多从用户空间测试内核功能的方法；而且我也学会了怎么在邮件列表里面跟开发者吵架:)</p>
+
+<p><!--more-->随后的几个月里，基本上就是继续了解一些公司内部的测试工具，同时照旧维护LTP，验Bug，写自动化测试脚本，分析测试结果。期间出错也不少，比如Bug回错地方让人误解这算是小事了，把巨大的二进制包checkin到CVS仓库里面（从美国那边同步一次得十几分钟）也算是小事了。有一次是让我分析自动化测试结果，结果马马虎虎没仔细看，就认为内核通过测试了，结果内核发布给客户之后被发现了问题，回过头来一看就是我当时马虎漏掉的那段，于是被老板叫过去促膝长谈了。这也是我当时跟客户关系最接近的一次，囧- -|||。还有一次是测试一个网络有关的Bug，结果我在远程机器上做的测试，洪水般的数据包把整个公司在所有办公室的测试环境都搞挂了……所幸的是类似的问题后来从来没犯过。</p>
+
+<p>而真正理解软件测试的过程是在半年后了，那时候老板让我尝试编写一个测试项目的测试计划，当然后来因为过年回家，没做成，美国的同事接过去做了。不过慢慢开始知道测试计划、测试用例和测试脚本之间的关系了。我们整个组看起来也是一个刚形成规范的组，现在组里在用的一些测试计划都是从那时候开始遵循<a href="http://wilma.vub.ac.be/~se1_0607/svn/bin/cgi/viewvc.cgi/documents/standards/IEEE/IEEE-STD-829-1998.pdf" target="_blank">IEEE829</a>写的。同时组里开始招人，依据内核子系统功能划分测试任务。恰好同时隔壁组的新版测试用例管理系统(上游版本<a href="https://fedoraproject.org/wiki/Nitrate" target="_blank">在此</a>)上线了，每个测试项目的成员把一些具体的测试用例都写到那上面，确实看起来更规范也更清晰了一些。</p>
+
+<p>2010年上半年准备毕业设计，老板又给了我另外一个开源社区的测试套件<a href="http://crackerjack.sourceforge.net/" target="_blank">Crackerjack</a>来移植，作为我毕设的内容。最后移植是成功了，只是那个开源社区几乎都没人参与了，后来我向管理员要了个commit权限，不过因为项目活跃度太低，而且里面很多代码都已经移植到了LTP中，也就抛下了。</p>
+
+<p>10年中旬结束学生身份，正式入职，我的工作重心继续在内核测试工具这一块，有之前一年的积累，我敢说我是全组对测试工具第二了解的人了。同时领到了新的任务，带实习生(美其名曰：Intern Tech Lead)，简而言之，就是实习生在测试时碰到问题就来找我，其中有很多问题肯定是跟测试工具相关的（吐槽：我还真是适合干这个活啊>.<）。既然继续做测试工具，我又领到一些测试工具相关的活，这些工具大多是Python写的，于是我又被迫无师自通地学会了Python。在此期间我深深感受到一件事情，碰到问题，看代码是最有效的debug方式。当然我不推荐碰到内核问题直接去看内核代码，那对不了解的人来说是一个黑洞，一陷进去就会浪费掉好久的时间。</p>
+
+<p>10年下半年有个重要事件，RHEL6发布了，刚好在我生日前后。公司搞了个庆祝活动，其实也就把自助餐厅搬到了公司里面而已，可能后续还有抽奖什么的，我反正没参加=.= 老大让每个组的负责人都上去讲讲心得，我老板上去之后把组里每个人感谢了一遍，说到我的时候我才发现原来我是个打杂的……因为在RHEL6发布前，我把组里每个人的活，除了存储测试之外，都干了一遍。<a href="http://wangcong.org/blog/?p=1416" target="_blank">kdump</a>测试人手不足的时候，我上去顶了一个星期的班；<a href="http://dup.et.redhat.com/" target="_blank">DUP</a>需要交接工作的时候，我就作为过渡人员测试一段时间；<a href="https://fedorahosted.org/v7/" target="_blank">v7</a>没人测的时候，我就承担了测试任务……当时就觉得挺忙的，不过多打打杂，开阔开阔眼界，也是挺开心的事情。得感谢老板让我多方面了解内核测试的内容。</p>
+
+<p>11年初，老板开始突然向LTP提交了很多内存测试的代码，代码被上游接受后，他把内存管理的测试连同测试计划，测试用例都丢给了我，于是我的任务又增加了一个。不过终于有机会开始直接接触内核核心组件了，心里很兴奋。可惜老板留下的代码带着一身BUG，我花了平均每个月20个补丁的代价才把它们修得差不多，而且现在还在继续修。</p>
+
+<p>从去年校园招聘前后开始，我就参与了一系列面试。现在组里有几个人就是我当时面试定下来的。自己主要面试的是应聘实习或者校园招聘的学生，因为自己也刚从学生过来，所以比较能理解面试者的心态。学生面试的时候一般会关心测试职位有没有技术含量，自己能不能学到东西。我总是喜欢拿自己在Red Hat之前一年的经历，特别是自己打杂的经历跟他们讲。我面试时也带着一些倾向性，那些偏Geek的，给开源社区做过贡献的，阅读过内核代码的，我就比较喜欢。不过根本一些的层次，我还是喜欢学习能力、理解能力、沟通能力强的。</p>
+
+<p>有了之前一年半的测试经验积累，我对测试本身的流程也比较了解了，于是现在开始参加一些更偏向于组内的测试过程控制的事情。这才理解到，所谓QA，不仅仅是写几个测试计划，验几个bug就完事的。测试周期开始前，要保证测试计划的完整；测试开始后，要定期保证测试进度；测试中发现新的Bug，要根据严重程度及时跟进DEV/PM那边的状态……刚开始干这活，完全没有经验，所以一个测试周期快结束的时候，笔记本里就满是总结经验教训。而在项目进度接近尾声的时候，往往是加班的疯狂时期。我当时既承担内存测试任务，跟踪组内的测试进度，还负责了v7那个项目的测试管理。虽说后两项不用我自己一件一件去做，但是碰到人手交接什么的活时，经验不足的我为了保证进度，只有自己上阵了，因此加班是不可避免的。在v7发布进入尾声的时候，碰到了几个严重的bug，于是我半夜跟美国那边的开发者同步跟踪进度。他一出修复版本，我就马上测试，甚至他来不及修复的时候，我就自己动手修了>.< 最后总算是把产品发布出去了，也因此搞得身心俱疲。</p>
+
+<p>然后就是最近的一两个月，一边带实习生，一边准备新项目的计划阶段。最近组里的同志们似乎又被测试工具相关的问题缠住了，于是相应的，我又有点事情要忙了，~o(>_<)o~</p>
+
+<p>付出的代价大，积累的经验教训多，收获就多，这东西跟玩仙剑是类似的。就算不给我涨工资，我也觉得这两年学到的东西很值得。当然是否值得是要看有没有建立在时常总结分析经验教训的基础上的。除此之外我觉得还有一些值得分享的东西：</p>
+
+<p>0. 开有效率的会很有用。开会是相互沟通的重要方式，组会之前做好充分准备，尽量减少无用的讨论时间，可以提高效率。开一对一的会议对了解组员的进度和想法有很大帮助。碰到问题用邮件解释不清的时候，最好的解决方案之一就是和同事约个时间开个会。</p>
+
+<p>1. 发散学习会让自己学到的东西更多。做项目不仅仅是做项目，通过项目来了解一些属于自己职责之外的东西，比如趁机会了解一些内核代码，这样会让自己进步更快。但是不能影响自己项目的进度。</p>
+
+<p>2. As usual, to Be Filled... :D</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/no-category/'>no category</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-16T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2011/07/16/beginning-of-my-third-year-in-red-hat/" data-via="" data-counturl="http://casparant.github.io/blog/2011/07/16/beginning-of-my-third-year-in-red-hat/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/03/03/jibber-jabber-on-the-resumes/" title="Previous Post: 关于简历的杂碎">&laquo; 关于简历的杂碎</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

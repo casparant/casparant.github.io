@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Z-turn | Ant-Veil]]></title>
+  <link href="http://casparant.github.io/blog/categories/z-turn/atom.xml" rel="self"/>
+  <link href="http://casparant.github.io/"/>
+  <updated>2015-05-21T11:59:03+08:00</updated>
+  <id>http://casparant.github.io/</id>
+  <author>
+    <name><![CDATA[Caspar]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fix Razer Orochi Re-connect Issue]]></title>
+    <link href="http://casparant.github.io/blog/2014/10/10/fix-razer-orochi-re-connect-issue/"/>
+    <updated>2014-10-10T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2014/10/10/fix-razer-orochi-re-connect-issue</id>
+    <content type="html"><![CDATA[<p>Issue:</p>
+
+
+
+
+<p>雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
+
+
+
+
+<p>Environment: </p>
+
+
+
+
+<p><blockquote>Razer Orochi 蓝牙鼠标<br />
+Gentoo + KDE<br />
+kernel 3.10 ~ 3.16<br />
+bluez 4.101 ~ 5.23<br />
+bluedevil 1.3.2 ~ 2.0_rc1</blockquote></p>
+
+
+
+
+<p>Solution:</p>
+
+
+
+
+<p><!--more--></p>
+
+
+
+
+<p>通过 hcidump 工具发现：</p>
+
+
+
+
+<p><blockquote>
+> HCI Event: Connect Request (0x04) plen 10<br />
+    bdaddr F0:65:DD:94:9F:BB class 0x002580 type ACL<br />
+> HCI Event: Command Status (0x0f) plen 4<br />
+    Accept Connection Request (0x01|0x0009) status 0x00 ncmd 1<br />
+> HCI Event: Connect Complete (0x03) plen 11<br />
+    status 0x00 handle 13 bdaddr F0:65:DD:94:9F:BB type ACL encrypt 0x00<br />
+> HCI Event: Command Status (0x0f) plen 4<br />
+    Read Remote Supported Features (0x01|0x001b) status 0x00 ncmd 1<br />
+> HCI Event: Read Remote Supported Features (0x0b) plen 11<br />
+    status 0x00 handle 13<br />
+    Features: 0xbf 0x00 0xa0 0x78 0x18 0x1e 0x59 0x83<br />
+> HCI Event: Command Status (0x0f) plen 4<br />
+    Read Remote Extended Features (0x01|0x001c) status 0x00 ncmd 1<br />
+> HCI Event: Read Remote Extended Features (0x23) plen 13<br />
+    status 0x00 handle 13 page 1 max 1<br />
+    Features: 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00<br />
+> HCI Event: Command Status (0x0f) plen 4<br />
+    Remote Name Request (0x01|0x0019) status 0x00 ncmd 1<br />
+> HCI Event: Remote Name Req Complete (0x07) plen 255<br />
+    status 0x00 bdaddr F0:65:DD:94:9F:BB name 'Razer Orochi 2013'<br />
+> HCI Event: Command Complete (0x0e) plen 10<br />
+    Link Key Request Negative Reply (0x01|0x000c) ncmd 1<br />
+    status 0x00 bdaddr F0:65:DD:94:9F:BB<br />
+> HCI Event: Disconn Complete (0x05) plen 4<br />
+    status 0x00 handle 13 reason 0x13<br />
+    Reason: Remote User Terminated Connection</blockquote></p>
+
+
+
+
+<p>出现 Link Key Request Negative Reply 的字样，怀疑是配对的时候使用自动 key，而蓝牙工具没有保存这个自动 key，导致鼠标从休眠恢复时试图以空 key 连接，从而失败。</p>
+
+
+
+
+<p>知道了问题，解决方法就简单了，配对的时候手工输入 key/PIN 为 1234，连接即可。</p>
+
+
+
+
+<p>就这么一个破问题，折腾了我半天时间，内核、bluez、bluedevil 都尝试了一遍，还在人家的 Macbook 上测试了一番。差点就冲动下单换 Mac 了。 #我不是土豪#
+</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gentoo KDE 下折腾 OpenConnect]]></title>
+    <link href="http://casparant.github.io/blog/2014/03/21/configure-openconnect-in-gentoo-kde/"/>
+    <updated>2014-03-21T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2014/03/21/configure-openconnect-in-gentoo-kde</id>
+    <content type="html"><![CDATA[<p>最近呢，推上某奸商推出了 AnyConnect 套餐，这对广大翻墙群众来说绝对是个利好消息啊，可以自动配路由的东东。我毫不犹豫去把自己的绝版廉价套餐换成了100元的套餐，然后开始折腾 AnyConnect 配置。</p>
+
+
+
+
+<p>iOS上配置十分简单，找到 Cisco AnyConnect 这个 App 就搞定。Linux 下要把它配置得很舒服，着实花了一番功夫。</p>
+
+
+
+
+<p>公司 VPN 用的也是 AnyConnect，我就继续用着公司的客户端(Cisco AnyConnect Secure Mobility Client), 直到今天早上我修复了笔记本上的无线网，机器有了两个IP为止。有了两个IP的 AnyConnect service 居然segfault了，看了一下 debug 信息，我觉得对这种闭源工具我还是别折腾了。直接换开源方案 OpenConnect.</p>
+
+
+
+
+<p>Portage 里搜了一下，openconnect 有两个包，networkmanager-openconnect 有 libkeyring-gnome 依赖，我现在是个有洁癖的 KDE 党，果断不能装啊，于是用第二个， openconnect 命令行版…… 不行，不能这么罗里八嗦，反正最后折腾结果如下：</p>
+
+
+
+
+<p><p><!--more--><ol>
+    <li>只用命令行的话，Portage 里的 openconnect-5.99<em> 版本可用，配好 <code>/etc/conf.d/openconnect</code> 就可以了；</li>
+    <li>需要配合 KDE plasma 插件 networkmanagement (0.9+版本) 的话，就必须得装 NetworkManager-openconnect 了。事实证明， libkeyring-gnome 依赖是可以去掉的。我修改了 Portage 文件，放到我<a href="https://github.com/casparant/caspar-gentoo/tree/master/net-misc/networkmanager-openconnect" target="_blank">自己的 Overlay</a> 里了。</li>
+    <li><del datetime="2014-03-21T09:54:44+00:00">另外 openconnect-5.99</em> 版本会导致 networkmanagement 带了 openconnect flag 之后编译失败，只能回退到 5.03 版本。</del> networkmanagement 已经 deprecated 了，用 plasma-nm 代替，最新版本没有编译问题。</li>
+    <li><del datetime="2014-03-21T09:54:44+00:00">openconnect-5.03 版本也是有问题的，openconnect 命令执行后，如果从终端输入密码，需要先按一个回车，再输入一遍。所以配置文件中的<code>tmp_SERVER &lt;&lt;-E</code> 后面需要加一个空行，否则 daemon 永远启动失败，因为接收不到密码。</del> 换了最新的 openconnect-5.99 之后，没问题了。</li>
+</ol></p></p>
+
+<p><p>就这些。配好之后，既可以用 NM 的 GUI 连，也可以起服务连。从此过上了永不断网（某奸商广告语）的生活～</p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CM7.1 on DEFY]]></title>
+    <link href="http://casparant.github.io/blog/2011/10/12/cm7-1-on-defy/"/>
+    <updated>2011-10-12T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2011/10/12/cm7-1-on-defy</id>
+    <content type="html"><![CDATA[<p>CyanogenMod, the community Android mod, is officially <a href="http://www.cyanogenmod.com/blog/cyanogenmod-7-1-released" target="_blank">supporting Motorlora Defy</a> in the latest release CM7.1. Now the system seems running well on my device.</p>
+
+
+
+
+<p>Why I want CM7.1 on my machine:</p>
+
+
+
+
+<p><ul>
+    <li>try something new</li>
+    <li>I need openvpn</li>
+    <li>2.3.4 ROM for ME525+ not working well on my device :-(</li>
+</ul></p>
+
+
+
+
+<p>I followed most of the instructions from <a href="http://forum.cyanogenmod.com/topic/32469-cyanogenmod-7-for-the-motorola-defy-v710-9-oct-2011/" target="_blank">the post in CM forum</a>, except that I didn't install gapps-gb-20110828. For some reason, <em>Android Market</em> from 20110828 package continously got crashed once I opened the application. I tried with <a href="http://goo-inside.me/gapps/gapps-gb-20110613-signed.zip" target="_blank">gapps-gb-20110613</a> and <em>Android Market</em> worked as normal, so I recommend using this version of gapps if you ever encountered similar issue like me.</p>
+
+
+
+
+<p><!--more-->Well... Some extra jibber-jabbers about <em>Android Market</em>:</p>
+
+
+
+
+<p>Region restriction sucks... It prevents me from buying Touchdown license from market...</p>
+
+
+
+
+<p>I do hate <a href="http://twidroyd.com/" target="_blank">some</a> apps changing their names so frequently and deprecating the old version in market. I PAID for the old one, and I still need to pay for the new one!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[重新装回Gentoo]]></title>
+    <link href="http://casparant.github.io/blog/2010/07/02/back-to-gentoo-again/"/>
+    <updated>2010-07-02T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/07/02/back-to-gentoo-again</id>
+    <content type="html"><![CDATA[<p>最近到手T410，先是折腾了几天把里面的正版Win7 Pro通过无损分区移到角落里，然后是装了个RHEL6.0用来做测试，最后重新开始折腾Gentoo。</p>
+
+
+
+
+<p>这次没有纠结于选择哪个桌面环境上，我一点也不嫌弃GNOME的臃肿，于是装了个gnome-light。USE Flag把以前用过的拿过来修改了一下，顺便提一句，在我不用Gentoo的这段时间听说hal被干掉了，所以我也追风把hal标记给去掉了。</p>
+
+
+
+
+<p>启动的时候使用grub2，本来打了915resolution补丁来使grub宽屏显示，但是打的补丁和grub-1.98似乎不是特别搭配，导致启动grub前后各有5秒停滞时间，加上grub启动过后仍然会有一个分辨率只有640x480的屏幕，我干脆就不用915resolution补丁了。使用grub2，配上ext4分区，就可以不使用initramfs了，关键在两点，一是内核中ACHI选项要编译进内核，二是kernel行参数中不要使用UUID。</p>
+
+
+
+
+<p>说一下一些Thinkpad相关的配置：</p>
+
+
+
+
+<p>一是声卡驱动。Thinkpad T410的声卡应该是CONEXANT的，但是选择这个驱动后内核还是不认我的声卡。最后只好选择了通用驱动。</p>
+
+
+
+
+<p>二是hdaps，所谓的硬盘防震保护系统。portage里面相关的三个包，一个是hdaps模块，一个是GNOME的Applet，还有一个是OpenGL绘制的小程序，用来展示你的笔记本目前的水平状态。</p>
+
+
+
+
+<p><!--more-->三是Thinkpad相关的快捷键。目前键盘上展示的快捷键基本上都能用，除了Fn+F6的“摄像头、耳机”、Fn+F8的“触摸板、小红点切换”还有麦克风静音三个按钮不能工作。根据Thinkwiki的<a href="http://www.thinkwiki.org/wiki/How_to_get_special_keys_to_work" target="_blank">这里</a>说，Fn+F8可以通过thinkpad-acpi或者tps使之工作，其他两个目前还没办法。不过我连Fn+F8都没搞定，只是自己写了个脚本，用来切换触摸板的开关（用小红点的时候肯定很讨厌触摸板开着）：</p>
+
+
+
+
+<p><pre lang="bash">
+#!/bin/bash</pre></p>
+
+
+
+
+<p>status=`synclient -l | grep TouchpadOff | awk '{print $3}'`<br />
+if [ $status -eq 0 ]<br />
+then<br />
+    synclient TouchpadOff=1<br />
+    notify-send "Touchpad is disabled!"<br />
+elif [ $status -eq 1 ]<br />
+then<br />
+    synclient TouchpadOff=0<br />
+    notify-send "Touchpad is enabled"<br />
+fi
+
+把它保存为脚本，加上x权限，通过GNOME的键盘快捷键来控制，比如Win+Space。</p>
+
+
+
+
+<p>另外我给蓝牙设置了一个快捷键。笔记本上那个蓝色的ThinkVantage按钮没用到，就把它绑定了一个ACPI事件，设置为给蓝牙控制开关。事件代码如下：</p>
+
+
+
+
+<p><pre lang="bash">
+event=ibm/hotkey HKEY 00000080 00001018
+action=/home/caspar/.local/bin/bluetooth.sh
+</pre></p>
+
+
+
+
+<p>上述代码保存为ACPI事件文件，如/etc/acpi/events/bluetooth。快捷键对应的KEY CODE可以到Thinkwiki上面去找，也可以看内核的:Documentation/laptop/thinkpad-acpi.txt文档。至于用于控制的bluetooth.sh脚本，则如下(代码来源仍旧是ThinkWiki，看<a href="http://www.thinkwiki.org/wiki/How_to_setup_Bluetooth" target="_blank">这里</a>)：</p>
+
+
+
+
+<p><pre lang="bash">
+#!/bin/bash
+ 
+NAME="tpacpi_bluetooth_sw"
+ 
+find_by_name() {
+    NAME="$1"
+    test -z "${NAME}" && return 1
+    SYSFS_NAME=$(find -P /sys -name name -path "*/rfkill/*" -exec grep -l "${NAME}" \{\} + | head -n 1)
+    if [[ ! -z "${SYSFS_NAME}" && -r "${SYSFS_NAME/%name/state}" ]]; then
+        RESULT=${SYSFS_NAME%%/name}
+        echo $RESULT
+        return 0
+    fi
+    return 1
+}
+ 
+SYSFS="$(find_by_name "${NAME}")"
+ 
+if [[ ! -z "${SYSFS}" && -r "${SYSFS}/state" ]]; then
+    case "$(cat "${SYSFS}/state")" in
+        0)
+            echo 1 > "${SYSFS}/state"
+            ;;
+        1)
+            echo 0 > "${SYSFS}/state"
+            ;;
+    esac
+fi
+</pre></p>
+
+
+
+
+<p>重启ACPI服务就可以看到蓝牙可以被ThinkVantage按钮控制了。</p>
+
+
+
+
+<p>目前还不能工作的设备有：指纹识别器，从lshw中看到似乎还有HECI控制器(Intel似乎不想管这个咚咚了？）、温度检测设备(Thermal Subsystem)和一个Ricoh的外围设备。</p>
+
+
+
+
+<p>最后向使用Thinkpad的同学严重推荐<a href="http://www.thinkwiki.org" target="_blank">ThinkWiki</a>。</p>
+
+
+
+
+<p>P.S. 设置充电阈值：据说如果电池不怎么经常使用的话，充电不充满有利于延长电池寿命（Win7下的配套软件是这么说的），所以可以设置一个充电阈值，把下面命令放到/etc/conf.d/local.start去：</p>
+
+
+
+
+<p><pre lang="bash">echo 95 > /sys/devices/platform/smapi/BAT0/stop_charge_thresh</pre></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[生活在信息膨胀的社会]]></title>
+    <link href="http://casparant.github.io/blog/2010/04/07/how-to-organize-your-information/"/>
+    <updated>2010-04-07T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2010/04/07/how-to-organize-your-information</id>
+    <content type="html"><![CDATA[<p>现在上网的，没下列东东都不好意思说自己是混互联网的：</p>
+
+
+
+
+<p><blockquote>
+<a href="http://www.casparant.com">个人博客</a>（BSP/独立的至少得有一个吧），<a href="http://twitter.com/casparant" target="_blank">twitter</a>（以及其他各种围脖们），<a href="http://www.douban.com/people/casparant/" target="_blank">豆瓣</a>，<a href="http://www.facebook.com/casparant" target="_blank">facebook</a>，<a href="https://www.google.com/reader/shared/casparant" target="_blank">Google Reader</a>（或者其他rss订阅工具），<a href="http://feeds.feedburner.com/casparant" target="_blank">feedburner</a>/<a href="http://feed.feedsky.com/casparant" target="_blank">feedsky</a>，<a href="http://www.flickr.com/photos/ant-veil/" target="_blank">flickr相册</a>(或者picasaweb,或者国内的oo和xx），<a href="http://cn.last.fm/user/casparant" target="_blank">lastfm</a>, youtube订阅，friendfeed……
+</blockquote></p>
+
+
+
+
+<p>在这个信息膨胀的社会，如何获取信息是个头疼的问题。下面列一下自己是如何把这些信息来源整合起来的，以供参考：</p>
+
+
+
+
+<p>整合所有信息的核心就是feed/rss，所以首先要把博客搞一个托管，或者干脆直接用自带的feed（前者的好处是，换了博客可以不用通知别人修改你的rss地址）。我主要采用feedburner，在wordpress里用了<a href="http://vonye.com/projects/feedred">feedred</a>这个插件，把自带的feed重定向到了feedburner上。因为很久很久以前feedburner被墙了，所以feedsky也用过。</p>
+
+
+
+
+<p>然后就是Twitter，作为一个重度Twitter患者，巴不得把自己博客更新、Google Reader分享、豆瓣新鲜事、新拍的照片等一堆东西同步到Twitter上。这里有两种解决方案：</p>
+
+
+
+
+<p>1. 使用<a href="http://twitterfeed.com">TwitterFeed.com</a></p>
+
+
+
+
+<p>2. 使用FeedBurner。</p>
+
+
+
+
+<p>前者自己摸索就好了，我更推荐后者，因为自己有种感觉FeedBurner同步速度很快，莫非它采用了每分钟轮询的策略？Orz……在FeedBurner管理界面的"Publicize"中有个"Socialize"，里面可以设置把当前feed同步到Twitter上。</p>
+
+
+
+
+<p><!--more-->因此只要你的信息源有feed，就可以同步到Twitter上。</p>
+
+
+
+
+<p>接下来是facebook、校内这类社交网站，把twitter同步到facebook/校内上。</p>
+
+
+
+
+<p>校内的话，狗狗<a href="http://yegle.net/2009/04/21/use-bash-to-update-xiaonei-status-and-blog/" target="_blank">写过一个脚本</a>，请自行取用。facebook的话，也有两种方式：</p>
+
+
+
+
+<p>1. 使用friendfeed（已被facebook收购鸟），</p>
+
+
+
+
+<p>2.使用facebook app</p>
+
+
+
+
+<p><p>后者据<a href="http://twitter.com/luopf" target="_blank">lpf</a>同学反映，密码老是不对。我自己是很早很早以前设置的，忘了。建议有问题的同学使用第一种方案。friendfeed因为被facebook收购了，也就更好地集成在了facebook中（不好意思我忘了怎么集成了，自己摸索一下吧>_&lt;）。需要注意的是friendfeed除了可以从twitter同步，还可以从其他源同步，这些源可能会和你之前设定的Twitter集成重复。</p></p>
+
+<p><p>其他的，比如同步到<a href="http://www.williamlong.info/archives/1962.html" target="_blank">新浪围脖</a>，请自行查阅。</p></p>
+
+<p><p>还有什么需要补充，欢迎留言。</p></p>
+]]></content>
+  </entry>
+  
+</feed>

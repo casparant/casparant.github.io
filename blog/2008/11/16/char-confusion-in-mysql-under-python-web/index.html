@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ant-Veil</title>
+  <title>Python Web操作MySQL乱码问题的解决 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="Issue: 雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。 Environment: Razer Orochi 蓝牙鼠标
-Gentoo + KDE &hellip;">
+  <meta name="description" content="乱码，身为CJK语言国度的程序员永恒的主题…… 乱码，在stardict里面查了一下翻译，居然出来这么一长串： characters changed to be irrecognizable because different coder or other reasons 不管怎么说， &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +17,7 @@ Gentoo + KDE &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   
-  <link rel="canonical" href="http://casparant.github.io">
+  <link rel="canonical" href="http://casparant.github.io/blog/2008/11/16/char-confusion-in-mysql-under-python-web">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
@@ -98,165 +97,93 @@ Gentoo + KDE &hellip;">
   </div>
   <div id="main">
     <div class="content">
-      
-<header>
-  <div class="back">　</div>
-  <h1 class="entry-title"><a href="/">Ant-Veil</a></h1>
-</header>
-<ul class="blog-index">
+      <article class="hentry" role="article">
   
-    
-    
-      
-      
-    
-    
   
-  <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a></h2>
-    
-      <div class="entry-content"><p>Issue:</p>
-
-<p>雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
-
-<p>Environment: </p>
-
-<p><blockquote>Razer Orochi 蓝牙鼠标<br />
-Gentoo + KDE<br />
-kernel 3.10 ~ 3.16<br />
-bluez 4.101 ~ 5.23<br />
-bluedevil 1.3.2 ~ 2.0_rc1</blockquote></p>
-
-<p>Solution:</p>
-
-<p></div>
-      
-      
-        <footer>
-          <a rel="full-article" href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Read on &rarr;</a>
-        </footer>
-      
-    
-  </li>
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">Python Web操作MySQL乱码问题的解决</h1>
+    </header>
   
+  <div class="entry-content"><p>乱码，身为CJK语言国度的程序员永恒的主题……</p>
 
+<p>乱码，在stardict里面查了一下翻译，居然出来这么一长串：</p>
 
+<p><blockquote>characters changed to be irrecognizable because different coder or other reasons</blockquote></p>
+
+<p>不管怎么说，这次是又碰上乱码了。</p>
+
+<p>症状是这样的，写了几个psp文件，内容大概是通过POST方法从表单获取数据，写入数据库然后另一个页面调用数据库内容显示。结果在写完之后调用显示页面，提示错误：<code>unicodeDecodeError: 'ascii' codec can't decode byte</code>，看来是因为我数据库里的字段用了中文，显示不出来，然后在MySQL里面SELECT * 了一下，发现含中文的内容都是???字样的乱码(以前怎么就没注意捏……）。</p>
+
+<p>上网搜，发现了这个网页：<a href="http://blog.csdn.net/foyuan/archive/2007/07/27/1711100.aspx">http://blog.csdn.net/foyuan/archive/2007/07/27/1711100.aspx</a>，文中提示了四个步骤确保乱码消失。</p>
+
+<p><!--more-->因为我写的是PSP页面，不是纯粹的python，似乎不能用#-*- coding -*-来指定编码，但是参照里面提示的两个步骤，我最后也成功解决了乱码问题：</p>
+
+<p>1. 解决MySQL显示乱码，修改<code>/etc/mysql/my.cnf</code>文件，分别在<code>[client]、[mysqld]</code>后指定编码：<code>default-character-set = utf8</code>，重启mysql服务。</p>
+
+<p>2. 解决PSP页面不能解析Unicode字符，在python语法块内，导入sys包，然后指定编码：</p>
+
+<p><pre lang="python">
+import sys
+...</pre></p>
+
+<p>reload(sys)<br />
+sys.setdefaultencoding('utf-8')</p>
+
+<p>这样就搞定了，等我后续看看有其他什么问题没……</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
   
-    
-    
-    
+    <a class='category' href='/blog/categories/configuration/'>configuration</a>
   
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a></h2>
-    
-  </li>
-  
+</span>
+
+ @
+        
 
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a></h2>
-    
-  </li>
-  
+
+
+
+
 
 
   
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a></h2>
-    
-  </li>
-  
 
 
+<time datetime="2008-11-16T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
   
-    
-    
-    
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2008/11/16/char-confusion-in-mysql-under-python-web/" data-via="" data-counturl="http://casparant.github.io/blog/2008/11/16/char-confusion-in-mysql-under-python-web/" >Tweet</a>
   
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/10/12/cm7-1-on-defy/">CM7.1 on DEFY</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/07/16/beginning-of-my-third-year-in-red-hat/">在Red Hat两年</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/03/03/jibber-jabber-on-the-resumes/">关于简历的杂碎</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410/">Libfprint Finally Supports Thinkpad T410</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/06/enable-fingerprint-in-thinkpad-t410-under-gentoo/">Enable Fingerprint in Thinkpad T410 Under Gentoo</a></h2>
-    
-  </li>
-  
-
-
-  
-</ul>
-<div class="pagination">
-  
-    <a class="prev" href="2">&larr; Older</a>
   
   
 </div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/11/09/using-c-system-call-to-solve-smoker-problem-under-linux/" title="Previous Post: 使用C系统调用函数解决“抽烟者问题”">&laquo; 使用C系统调用函数解决“抽烟者问题”</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
 
     </div>
     <footer role="contentinfo"><div class="content">

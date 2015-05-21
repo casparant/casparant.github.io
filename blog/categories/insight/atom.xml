@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Insight | Ant-Veil]]></title>
+  <link href="http://casparant.github.io/blog/categories/insight/atom.xml" rel="self"/>
+  <link href="http://casparant.github.io/"/>
+  <updated>2015-05-21T11:59:03+08:00</updated>
+  <id>http://casparant.github.io/</id>
+  <author>
+    <name><![CDATA[Caspar]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[当年日志里的两个主角]]></title>
+    <link href="http://casparant.github.io/blog/2009/04/20/sun-is-acquired-by-oracle/"/>
+    <updated>2009-04-20T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/04/20/sun-is-acquired-by-oracle</id>
+    <content type="html"><![CDATA[<p>请看我当年的日志：<a href="http://www.casparant.com/some-acquires.html">http://www.casparant.com/some-acquires.html</a>，两个主角，Oracle收购BEA, SUN收购MySQL。</p>
+
+
+
+
+<p>现在的事情……唉……我当年那心仪的SUN公司啊……</p>
+
+
+
+
+<p>以下<em>还是</em>转自<a href="http://www.casparant.com/some-acquires.html">纽约时报</a>：</p>
+
+
+
+
+<p><a href="http://www.nytimes.com/2009/04/21/technology/companies/21sun.html?ref=technology">http://www.nytimes.com/2009/04/21/technology/companies/21sun.html?ref=technology</a></p>
+
+
+
+
+<p>———————————— 转载的分割线 ————————————</p>
+
+
+
+
+<p><strong>Oracle Agrees to Acquire Sun Microsystems</strong></p>
+
+
+
+
+<p><em>Article Tools Sponsored By</em></p>
+
+
+
+
+<p>By ASHLEE VANCE</p>
+
+
+
+
+<p>Published: April 20, 2009</p>
+
+
+
+
+<p><!--more-->The Oracle Corporation, the technology information company, announced Monday that it would acquire a rival, Sun Microsystems, for $9.50 a share, or about $7.4 billion.</p>
+
+
+
+
+<p>The agreement with Oracle came about two weeks after I.B.M. ended its talks with Sun. The Sun board balked at that deal after I.B.M. lowered its offer to $9.40 a share from $10. Still, Monday’s deal represented a 42 percent premium over Sun’s closing price of $6.69 on Friday.</p>
+
+
+
+
+<p>Oracle and Sun said in a statement that net of Sun’s cash and debt, the deal was valued at $5.6 billion.</p>
+
+
+
+
+<p>Lawrence J. Ellison, Oracle’s co-founder and chief executive, and Scott G. McNealy, Sun’s co-founder and chairman, have been two of Silicon Valley’s closest allies over the last 20 years. Their companies turned into two of the superstars of the Internet build out, and both executives made ribbing rival Microsoft a favored pastime.</p>
+
+
+
+
+<p>Historically, most of Oracle’s database sales have occurred in tandem with Sun’s servers. Over the past few years, however, Oracle has moved to make Hewlett-Packs and Dell stronger allies, as Sun’s business has declined.</p>
+
+
+
+
+<p>“This combination is a natural evolution of our relationship and will be an industry-defining event,” Mr. McNealy said.</p>
+
+
+
+
+<p>Sun’s directors have unanimously approved the transaction. It is anticipated to close this summer, subject to Sun stockholder approval, the companies said in a statement.</p>
+
+
+
+
+<p>Oracle said it expected the purchase to add at least 15 cents a share to its adjusted earnings in the first year after the deal closes. The company also estimated that Sun would contribute more than $1.5 billion to Oracle’s adjusted profit in the first year and more than $2 billion in the second year.</p>
+
+
+
+
+<p>Sun shares rose as high as $9.20 in premarket trading after closing Friday at $6.69, while Oracle shares fell as low as $18.34 after closing Friday at $19.06.</p>
+
+
+
+
+<p>The deal immediately disrupts the traditional relationships formed between some of the technology industry’s largest players and thrusts Oracle into the hardware business.</p>
+
+
+
+
+<p>Oracle, for example, has long-standing partnerships with Sun’s rivals, including Hewlett-Packard and Dell. These sellers of server computers work to fine tune Oracle’s database and business software for their computers.</p>
+
+
+
+
+<p>I.B.M., which competes against Oracle in the software market, also comes under new threats with the deal.</p>
+
+
+
+
+<p>For years, I.B.M. has used it homemade servers as leverage for selling higher-profit database and business software. With Sun, Oracle opens up the same opportunity and gains access to thousands of existing Sun customers.</p>
+
+
+
+
+<p>In addition, Oracle has now obtained the MySQL database, which Sun acquired last year for $1 billion. The open-source software has proved popular with companies looking to expand their Internet operations.</p>
+
+
+
+
+<p>Last year, Oracle began a flirtation with the hardware market. It started reselling a server computer from H.P. that relied on its software for managing and analyzing large volumes of data.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Have You RSSed Today?]]></title>
+    <link href="http://casparant.github.io/blog/2008/05/01/have-you-rssed-today/"/>
+    <updated>2008-05-01T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2008/05/01/have-you-rssed-today</id>
+    <content type="html"><![CDATA[<p>Have You RSSed Today?</p>
+
+
+
+
+<p><p style="text-align: right;">——为五月一日“RSS 推广节”而撰</p></p>
+
+
+
+
+<p>只要你经常上网，或多或少都会和这个LOGO: <img src="http://img.ant.im/di-9XYZ.gif" />混个脸熟，当然你也可能已经知道了它的名字叫RSS(Really Simple Syndication)。然而你是否知道这个小小的标志，在Web2.0的今天发挥的重要角色？你是否会用RSS来提高你的效率呢？</p>
+
+
+
+
+<p>所谓Really Simple Syndication，通常被翻译为“聚合内容”，顾名思义，它的作用就是聚合一些网站上的内容，让用户以最快最直接的方式获取自己想知道的信息。RSS当前广泛应用于博客、新闻频道、软件更新站点。这些网站有一个特点，更新频繁。如果用户有大量需要关注的类似站点，在普通情况下，就只能在收藏夹里记录所有网站，然后每隔一段时间逐个访问。RSS的出现，改变了这种枯燥乏味的现状，用户可以选择一个特定的RSS阅读器，指定一个更新间隔，获取要关注的网站的RSS地址，每个需要关注的网站的最新动态就可以及时通知给用户了。</p>
+
+
+
+
+<p>然而知道和使用RSS的人太少，到现在，全球也只有约7000万人使用RSS来获取信息，更多的人还是把时间耗费在等待数十个网站的读进度条过程中。因此在RSSday.org网站上，公布了定每年五月一日为“RSS Awareness Day”的消息。以下摘自RSSday.org上的话：</p>
+
+
+
+
+<p><!--more--><blockquote>"By creating the RSS Awareness Day and celebrating it every year we should be able to get the general public exposed to this format, hopefully increasing the usage of RSS feeds and related applications among Internet users."</blockquote></p>
+
+
+
+
+<p>那么，让我们加入RSS使用者行列吧！</p>
+
+
+
+
+<p>在几乎所有博客和新闻网站上，都提供了RSS链接，这些链接一般都有一个醒目的标志，比如网易博客、新浪博客和cnBeta：</p>
+
+
+
+
+<p><img src="http://img.ant.im/di-20X4.jpg" />&nbsp;&nbsp;&nbsp;<img src="http://img.ant.im/di-4M4G.jpg" />&nbsp;&nbsp;&nbsp;<img src="http://img.ant.im/di-227Y.jpg" /></p>
+
+
+
+
+<p>点击他们就可以链接到相应的RSS地址，此地址包含一个XML文件，如果你的浏览器具有订阅功能（比如Firefox, Opera,Maxthon等)，就会自动启动订阅功能完成订阅，如下图（Opera浏览器）：</p>
+
+
+
+
+<p><img src="http://img.ant.im/di-7MDQ.png" /></p>
+
+
+
+
+<p>另外，如果你使用Firefox浏览器或者IE内核的Maxthon等，浏览器本身可以提示此网站是否有RSS订阅功能，如下图：</p>
+
+
+
+
+<p><img src="http://img.ant.im/di-2L4H.jpg" /></p>
+
+
+
+
+<p><br /><br /></p>
+
+
+
+
+<p><img src="http://img.ant.im/di-FJJ8.jpg" /></p>
+
+
+
+
+<p>除浏览器外，还有很多专门的RSS阅读器，这些在Google上网罗可以找到一大把。</p>
+
+
+
+
+<p>当然，依赖浏览器或者离线订阅是一个不很保险的做法，随着重装系统、软件损坏等意外的发生，订阅的网站资料都会丢失。幸好我们还有一种方法，使用在线订阅器来订阅。</p>
+
+
+
+
+<p>当前有很多网站提供在线订阅服务，如Bloglines, Google, yahoo, 新浪, 鲜果, 抓虾……只要在这些网站上注册一个ID，然后输入任何一个网站的RSS地址，在线阅读器就会抓取对应网站的RSS信息并显示，当你收录多个网站后，你的在线阅读器就成为了一个“新闻聚合器”，下次你只需要登陆在线阅读器，就可以轻松获取所有你关心的网站的信息啦～</p>
+
+
+
+
+<p>以Google为例，Google推出的Google Reader服务算是我最喜欢的一个在线阅读器了（订阅我和我朋友的个人博客有60%都来自Google Reader，可见其影响力），登录GoogleReader后，在左栏界面点击"Add Subscription"，输入一个网站的地址（你甚至可以不用输入其RSS地址，GoogleReader可以自动搜索），稍等片刻，在右栏界面就会出现这个网站的订阅条目，非常方便。</p>
+
+
+
+
+<p><a href="http://img.ant.im/pm-JKZK.html" title="rss"><img src="http://img.ant.im/dm-JKZK.png" alt="rss" /></a></p>
+
+
+
+
+<p>至此，相信你已经会使用RSS了，当你熟悉它的时候，我敢肯定对于Surfing-the-Internet一族的你，很快会喜欢上它的。</p>
+
+
+
+
+<p>附：RSS day网站地址：<a href="http://www.rssday.org/">http://www.rssday.org/</a></p>
+
+
+
+
+<p>宣传图片：<a href="http://rssday.org/">http://img.ant.im/di-052W.jpg</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[转]开源软件逐渐融入市场并开始走向赢利]]></title>
+    <link href="http://casparant.github.io/blog/2008/03/28/how-open-source-make-money/"/>
+    <updated>2008-03-28T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2008/03/28/how-open-source-make-money</id>
+    <content type="html"><![CDATA[<p>前几天去了Sun公司，回来之后和同学特兴奋地大谈Sun公司的开源盈利，而几乎每个同学都问我，Sun公司是怎么盈利的，既然开源了怎么还能盈利呢？我一时语塞。今天看到linuxeden上登出这篇文章后才知道，我对经济方面了解得太少太少了……汗颜。通观全文，发现通过开源软件盈利的商业模式大概有以下几种：被收购；获得公司风险投资；基于服务授权（一般来说因为是开源的，都是低价授权，有点薄利多销的样子）；聚集大量用户，只收取一少部分用户（如Google等大公司）的钱……不一而足。当然，这一切的前提必须是——开源项目受欢迎。MySQL就是一个极成功的例子。</p>
+
+
+
+
+<p>———————————— 转载的分割线 ————————————</p>
+
+
+
+
+<p>本文来自：Linux伊甸园 <a href="http://www.linuxeden.com/" target="_blank">http://www.linuxeden.com/</a></p>
+
+
+
+
+<p>文章链接：<a href="http://www.linuxeden.com/html/news/20080328/52872.html" target="_blank">http://www.linuxeden.com/html/news/20080328/52872.html </a>
+<p style="text-align: center"><span style="font-weight: bold">开源软件逐渐融入市场并开始走向赢利</span></p>
+<p dragover="true"><span dragover="true" class="a14c" id="zoom">　　去年春天的时候，著名市场评论人员和博客作家Hugh MacLeod在其博客上发表一篇文章，主题是：假如开源只是一个现象，那怎么冒出这么多亿万富翁呢？他的博客读者们并没有被他的文章所逗乐，很快他的博 客上充满了各种漫骂和叱责，这些读者认为，开源软件是一个依赖社区运作的社会软件开发模式，需要志愿者来维护、修补和开发的，并且把它们的作品免费发布。 他们认为Hugh MacLeod为开源运动中的富人排名严重亵渎了开源运动的精神。有的读者回复到：“这些开源软件的开发人员是应该得到回报，但是没你说的那么商业化”， 另外一个读者评论中直接上了脏字：“shut the F**k up,你懂啥啊，净瞎说！”</span></p>
+<p dragover="true"><!--more-->但并不是所有的开源软件开发人员都是憎恶铜钱味的。已经有相当数量的开源软件公司获得了风险投资公司的亲睐，有的直接被收购。不管开源软件运动的爱好者喜不喜欢，事实摆在面前的是--越来越多的开源软件创始人已经从这个事业中获得财富。</p>
+来自咨询公司451 group的资料显示，2007年，有超过30家的开源软件公司被收购，总金额高达10亿美金，是2005年整个开源软件产业的销售额的两倍。2008年 更是来的疯狂，1月份，sun公司宣布收购开源数据库厂商MySQL，单比收购的金额就高达10亿美金；开源软件企业Covalent和 SpringSource宣布合并；Nokia斥资1.5亿美金收购开源移动设备软件开发商Trolltech。在华尔街，更是有许多银行家们为众多的开 源企业IPO在准备着。</p>
+
+
+
+
+<p>Mozilla公司CEOJohn Lilly表示，也有很多人问他们关于上市的事情，他说他正在考虑。目前该公司的产品是全球用户量最大的开源浏览器Firefox和桌面邮件管理软件 Thunderbird。华尔街资深分析人士Henry Blodgett估计，目前的mozilla 公司价值在15亿到40亿美金之间。作为CEO，Lilly有他独到的硅谷内部人士的眼光，他认为这个价格并没有夸大，但是目前的Mozilla还是私 有，因为从目前看来，Mozilla要想发展的更好，在股东和财报的压力下是没有办法做到的。</p>
+
+
+
+
+<p>这并不是说开源软件公司在商业浪潮中不 能把持住自己，他已经越来越渗透入过去想都没有想过的领域，目前开源软件已经用在许多重要的场合，过去这都是专有软件的领地。比如沃尔玛在开源系统架构上 部署了他们的员工安全信息跟踪系统，费用省了一大笔。一位来自Benchmark Capital投资公司的投资人Kevin Harvey说到，“我认为基于软件授权的商业模式已经过时了，我们不会投资这种类型的公司，我想起他投资公司也不会这么做的”。他说的也许有道理，因为 Kevin Harvey刚刚从投资MySQL和Zimbra中获得丰厚的回报，前者被Sun斥资10亿美金收购，后者07年的时候被Yahoo斥资3.5亿美金收 购。</p>
+
+
+
+
+<p>我们如何打造自己的全新软件商业模式呢？一般的做法无碍乎是买附加值、售后服务，或者随硬件产品OEM软件等等，而这一切都是需 要基础的。现在的开源软件采用全新的模式，先是聚集许多用户，然后只要一小部分用户给钱，这收入就非常可观了。比如Mozilla，Google在其内置 搜索引擎，Google掏钱也非常乐意，因为FireFox有非常多的用户。</p>
+
+
+
+
+<p>开源软件的发展都是依照社区开发人员的意志来完成的，因为这些人对产品的影响非常大，产品的开发和维护还得依靠他们。所以这些新生的亿万富翁们得要好好想想如何笼络这些开发人员，作为社区开发人员，假如他们被奖励，他们工作的热情会更高。</p>
+
+
+
+
+<p><span style="font-weight: bold">相关英文原文如下：</span></p>
+
+
+
+
+<p>Open Source Software Made Developers Cool. Now It Can Make Them Rich<br />
+By Daniel Roth   Email   03.24.08 | 6:00 PM</p>
+
+
+
+
+<p>Last spring, marketer and blogger Hugh MacLeod posted a question on his site: If open source is such a phenomenon, where are all the open source billionaires? His audience wasn't amused. Open source software relies on a community of volunteer developers who tinker on, write for, or amend a program, then give it away free. MacLeod's site filled up with complaints that even to look for billionaires violated the spirit of the open source movement. "There have to be rewards," one commenter wrote, "but they don't have to be financial." Another simply recommended that MacLeod "shut the fuck up," adding: "You don't know what you're talking about."</p>
+
+
+
+
+<p>But not every open-sourcer has proven so averse to filthy lucre. A number of open source companies have recently attracted investments and merger interest: Whether they like it or not — and let's face it, they probably do — more and more open source creators are striking it rich.</p>
+
+
+
+
+<p>In 2007, some 30 open source software companies were purchased for more than $1 billion — double the number of sales in 2005, according to consulting firm 451 Group. And 2008 is proving to be even more frenetic. In January alone, Sun Microsystems announced the purchase of open source pioneer MySQL for $1 billion; open source development players Covalent and SpringSource merged; and Nokia agreed to pay $153 million for the open source mobile-software maker Trolltech. On Wall Street, bankers are rooting around for a good open source company to take public. "People call us all the time," says John Lilly, CEO of Mozilla, which oversees the open source Firefox browser and Thunderbird mail application. "We're a valuable thing." On his Silicon Alley Insider site, defrocked Wall Street analyst Henry Blodgett recently estimated that the for-profit arm of Mozilla was worth between $1.5 billion and $4 billion. Lilly says the estimate is about right but that Mozilla is staying private. "As long as we can pay the bills, we can take a long view of the world that we couldn't if we had shareholders and quarterly reporting."</p>
+
+
+
+
+<p>Which is not to say that open source companies can't hold their own in the business world. The software is penetrating realms that few thought it ever would. It's being used to create trading platforms for hedge funds — which are notoriously insistent on proprietary systems — and Wal-Mart is deploying an open source-based system for its workers to track their health care records. The cost savings come from not having to hire engineers to write code in-house or pay costly per-seat licensing fees. "I think the software-license business model is archaic," says Kevin Harvey, a venture capitalist at Benchmark Capital, which recently cashed in on its investments in MySQL and the open source mail-client firm Zimbra, which Yahoo picked up in late 2007 for $350 million. "I wouldn't fund a company with that model, and I don't think anyone else would, either."</p>
+
+
+
+
+<p>How can you build a business by giving away the store? The money comes from selling add-ons, service contracts, and hardware to go with the software. But that model works only if you master a couple of basics. Open source software makers have to win enough users that even the small percentage of customers who pay will generate a torrent of dollars. (Mozilla gets most of its money from Google, which pays to be the browser's default search provider — something Google is willing to do because Firefox has so many users.) More important, software makers depend on the goodwill of outside developers, whom they rely on to keep updating their products. So the new open source billionaires might want to think twice about going 767 for 767 with the Google guys. For the coder drones, accustomed to being paid in warm feelings, such displays might make them take their coding skills elsewhere.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[两个收购，N个收购]]></title>
+    <link href="http://casparant.github.io/blog/2008/01/17/some-acquires/"/>
+    <updated>2008-01-17T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2008/01/17/some-acquires</id>
+    <content type="html"><![CDATA[<p>本来只看见Sun收购MySQL的新闻，在查相关资料的时候发现昨天甲骨文也把BEA终于给收购了。</p>
+
+
+
+
+<p>关于公司之间的并购、收购，我了解的知识很少，以前总以为一个公司倒闭了才被另一个公司收购，后来发现雅虎中国被马云给买下了，Macromedia被Adobe收购了，才知道原来活着的公司为了活得更好也可以选择被收购。</p>
+
+
+
+
+<p>Sun收购MySQL绝对是个大手笔，一个是在开源道路上走得越来越有劲的著名公司，一个是开源的著名数据库软件，应该是Sun为了拓展其数据库的市场才这么做的吧，看IBM有DB2，Orcale更不用说，而MySQL的地位绝不逊于那几个商用数据库，Sun收购了它以后在数据库市场肯定有极其重要的一席。</p>
+
+
+
+
+<p>而说到Oracle 又发现它也收购了，收购的是BEA，那个去年因为说股票估值太低而拒绝他的BEA。不管怎么说，甲骨文是终于收购了BEA了，网上有的人说这次收购只是个噱头，两个公司的产品线严重重叠，收购BEA只是为了消灭对手。</p>
+
+
+
+
+<p>这下我突然想到了Adobe收购Macromedia的事情，Adobe收购了Macromedia后到现在出了CS3好久了，功能上似乎都没什么改进。然而Macromedia的产品和Adobe也有一些重叠，比如Fireworks和PS，至少是和ImageReady有重叠。当时我还以为收购了Macromedia后Fireworks这个东西就没了呢……是不是Adobe也是为了消灭竞争对手呢？呵呵，无责任揣测……</p>
+
+
+
+
+<p>------------ 转载的分割线 ---------- About Sun Acquire MySQL ------------
+<!--more-->From：MySQL: <a href="http://www.mysql.com/news-and-events/sun-to-acquire-mysql.html">http://www.mysql.com/news-and-events/sun-to-acquire-mysql.html</a></p>
+
+
+
+
+<p>Sun: <a href="http://www.sun.com/aboutsun/pr/2008-01/sunflash.20080116.1.xml" target="_blank">http://www.sun.com/aboutsun/pr/2008-01/sunflash.20080116.1.xml</a>
+<h2>Sun Microsystems Announces Agreement to Acquire MySQL, Developer of the World's Most Popular Open Source Database</h2>
+<strong>Sun Growth Strategy Accelerates With New Position in $15 Billion Database Market</strong></p>
+
+
+
+
+<p>SANTA CLARA, CA January 16, 2008 Sun Microsystems, Inc. (NASDAQ: JAVA) today announced it has entered into a definitive agreement to acquire MySQL AB, an open source icon and developer of one of the world's fastest growing open source databases for approximately $1 billion in total consideration. The acquisition accelerates Sun's position in enterprise IT to now include the $15 billion database market. Today's announcement reaffirms Sun's position as the leading provider of platforms for the Web economy and its role as the largest commercial open source contributor.</p>
+
+
+
+
+<p>With millions of global deployments including Facebook, Google, Nokia, Baidu and China Mobile, MySQL will bring synergies to Sun that will change the landscape of the software industry by driving new adoption of MySQL's open source database in more traditional applications and enterprises. The integration with Sun will greatly extend the commercial appeal of MySQL's offerings and improve its value proposition with the addition of Sun's global services organization. MySQL will also gain new distribution through Sun's channels including its OEM relationships with Intel, IBM and Dell.</p>
+
+
+
+
+<p>"Today's acquisition reaffirms Sun's position at the center of the global Web economy. Supporting our overall growth plan, acquiring MySQL amplifies our investments in the technologies demanded by those driving extreme growth and efficiency, from Internet media titans to the world's largest traditional enterprises," said Jonathan Schwartz, CEO and president, Sun Microsystems. "MySQL's employees and culture, along with its near ubiquity across the Web, make it an ideal fit with Sun's open approach to network innovation. And most importantly, this announcement boosts our investments into the communities at the heart of innovation on the Internet and of enterprises that rely on technology as a competitive weapon."</p>
+
+
+
+
+<p>MySQL's open source database is widely deployed across all major operating systems, hardware vendors, geographies, industries and application types. The complementary product line-ups will extend MySQL's database reach and are expected to bring new markets for Sun's systems, virtualization, middleware and storage platforms.</p>
+
+
+
+
+<p>"The combination of MySQL and Sun represents an enormous opportunity for users and organizations of all sizes seeking innovation, growth and choice," said Marten Mickos, CEO, MySQL. "Sun's culture and business model complements MySQL's own by sharing the same ideals that we have had since our foundation -- software freedom, online innovation and community and partner participation. We are tremendously excited to work with Sun and the millions of members of the MySQL open source ecosystem to continue to deliver the best database for powering the modern Web economy."</p>
+
+
+
+
+<p>MySQL's open source database is the "M" in LAMP - the software platform comprised of Linux, Apache, MySQL and PHP/Perl often viewed as the foundation of the Internet. Sun is committed to enhancing and optimizing the LAMP stack on GNU/Linux and Microsoft Windows along with OpenSolaris and MAC OS X. The database from MySQL, OpenSolaris and GlassFish, together with Sun's Java platform and NetBeans communities, will create a powerful Web application platform across a wide range of customers shifting their applications to the Web.</p>
+
+
+
+
+<p>More than 100 million copies of MySQL's high-performance open source database software have been downloaded and distributed and an additional 50,000 copies are downloaded daily. This broad penetration coupled with MySQL's strength in Web 2.0, Software as a Service (SaaS), enterprise, telecom and the OEM embedded market make it an important fit for Sun. With MySQL, Sun will have the ability to deepen its existing customer relationships and create new opportunities with companies seeking the flexibility and ease-of-use of open source systems.</p>
+
+
+
+
+<p>Following completion of the proposed transaction, MySQL will be integrated into Sun's Software, Sales and Service organizations and the company's CEO, Marten Mickos, will be joining Sun's senior executive leadership team. In the interim, a joint team with representatives from both companies will develop integration plans that build upon the technical, product and cultural synergies and the best business and product development practices of both companies. MySQL is headquartered in Cupertino, CA and Uppsala, Sweden and has 400 employees in 25 countries.</p>
+
+
+
+
+<p>As part of the transaction, Sun will pay approximately $800 million in cash in exchange for all MySQL stock and assume approximately $200 million in options. The transaction is expected to close in late Q3 or early Q4 of Sun's fiscal 2008. Completion of the transaction is subject to regulatory approval and other customary closing conditions. The deal is expected to be accretive to FY10 operating income on a GAAP basis.</p>
+
+
+
+
+<p>The management teams of both companies will host a media and analyst conference call today at 10:00 am EST, 7:00 am PST. The call can be accessed at http://www.sun.com/investors. For those unable to listen to the live conference call, a telephone replay will be available for one week following the call by dialing (888) 566-0103 or outside of the U.S. by dialing (402) 998-0958. No passcode is required to access the replay.
+<h2>About MySQL</h2>
+MySQL AB develops and supports a family of high-performance, affordable database products. The company's flagship offering is 'MySQL Enterprise', a comprehensive set of production-tested software, proactive monitoring tools, and premium support services. MySQL is the world's most popular open source database software. Many of the world's largest and fastest-growing organizations use MySQL to save time and money powering their high-volume Web sites, business-critical systems and packaged software -- including industry leaders such as Yahoo!, Alcatel-Lucent, Google, Nokia, YouTube and Booking.com. With headquarters in the United States and Sweden -- and operations around the world -- MySQL AB supports both open source values and corporate customers' needs. For more information about MySQL, please visit <a href="http://www.mysql.com/">www.mysql.com</a>.
+<h2>About Sun Microsystems, Inc.</h2>
+Sun Microsystems develops the technologies that power the global marketplace. Guided by a singular vision -- "The Network is the Computer" -- Sun drives network participation through shared innovation, community development and open source leadership. Sun can be found in more than 100 countries and on the Web at <a href="http://sun.com/">http://sun.com</a>.</p>
+
+
+
+
+<p>------------ 转载的分割线 ---------- About Oracle Acquire BEA ------------</p>
+
+
+
+
+<p>From: <a href="http://www.oracle.com/global/cn/pressroom/p080116.html" target="_blank">http://www.oracle.com/global/cn/pressroom/p080116.html </a></p>
+
+
+
+
+<p><span class="topstoryhead">甲骨文宣布收购BEA系统公司</span>
+<p class="bodycopy" align="left">美 国加州红木城， 2008 年 1 月 16 日 — 甲骨文公司（纳斯达克交易代码： ORCL ）和 BEA 系统公司（纳斯达克交易代码： BEAS ）今天在美国联合宣布，两家公司已经签订了一份最终协议，根据这份协议，甲骨文公司将以每股 19.375 美元的价格现金收购 BEA 公司所有的已发行股票，收购总价约为 85 亿美元，若扣除 BEA 手头 13 亿美元的现金，收购净价为 72 亿美元。甲骨文公司总裁兼首席财务官 Safra Catz 表示：“我们预计，这件交易在完成后第一年将对甲骨文非 GAAP 每股盈余至少贡献 1-2 美分。”</p>
+<p class="bodycopy" align="left">甲骨文公司首 席执行官 Larry Ellison 表示：“ BEA 的产品和技术将大大加强和丰富甲骨文的融合中间件软件产品。 Oracle 融合中间件拥有开放的“热插拔”架构，这为客户提供了一个选择，把 BEA 的 WebLogic Java 服务器软件和 Oracle 融合软件套件几乎所有的组件有机结合起来。这只是一个简单的例子，表明客户可以如何选择甲骨文和 BEA 的中间件产品，而这些产品之间可以实现完美的交互操作，并且我们还将继续对这些产品提供支持。”</p>
+<p class="bodycopy" align="left">BEA 系统公司主席兼首席执行官 庄思浩表示：“在过去几个月的时间里，我们公司的董事会在独立的金融和法律顾问的帮助下，仔细评估了实现股东价值最大化的多种途径，包括与第三方讨论出售 公司的可能性。达成这个交易，是我们深思熟虑的决定，而且我们相信，这符合我们股东的最大利益。我们创新的产品、才华横溢的员工、全球化的客户群体，都将 是促进联合企业长期成功的关键因素，对此我充满信心。我们期待与甲骨文密切合作，成功完成这个交易。”</p>
+<p class="bodycopy" align="left">甲 骨文公司总裁 Charles Phillips 表示：“在中间件领域， BEA 公司是一个先锋者。甲骨文与 BEA 的结合，充分认可了 BEA 的创新性以及其在开拓客户上所取得的巨大成功。三年多来，我们双方的客户一直在建议我们合并。这个交易将会大大促进对以 Java 为基础的中间件技术和服务导向架构（ SOA ）的应用，推动企业应用基础设施软件的创新，拓展我们与客户和合作伙伴的战略关系，并帮助我们在像中国这样的关键区域市场上进一步拓展业务。”</p>
+<p class="bodycopy" align="left">BEA 系统公司的董事会全体一致批准了这个交易。该交易预计将于 2008 年中期完成，目前还需要获得 BEA 股东的批准，以及要考虑相关监管机构的批准过程和其他惯例条款。</p>
+<p align="left"><span class="bodycopy">甲 骨文公司和 BEA 系统公司将在太平洋时间今天上午 6 点召开电话会议，讨论这次交易。投资者可以拨打电话 719-325-4780 ，听取这次电话会议的情况。在会议结束之后的 24 小时内，投资者还可以拨打电话 719-457-0820 收听，密码是 3644405 。关于这个电话会议的视频网络直播，可以登录网址 <a href="http://casparant.com/proxy/index.php?q=aHR0cDovL3d3dy5vcmFjbGUuY29tL2ludmVzdG9y" class="bodylink">www.oracle.com/investor </a>收看，并可以在会议结束之后的七天时间里点击收看。</span></p>
+<p class="bodycopy" align="left"><strong><u>关于甲骨文</u></strong></p>
+<p class="bodycopy" align="left">甲骨文公司（NASDAQ：ORCL）是全球最大的企业级软件供应商。如需更多有关甲骨文公司的信息，请访问网址<a href="http://casparant.com/proxy/index.php?q=aHR0cDovL3d3dy5vcmFjbGUuY29t" target="_blank">www.oracle.com</a>或<a href="http://casparant.com/proxy/index.php?q=aHR0cDovL3d3dy5vcmFjbGUuY29tL2Nu" target="_blank">www.oracle.com/cn</a>。</p></p>
+
+]]></content>
+  </entry>
+  
+</feed>

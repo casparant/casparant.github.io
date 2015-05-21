@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Kernel | Ant-Veil]]></title>
+  <link href="http://casparant.github.io/blog/categories/kernel/atom.xml" rel="self"/>
+  <link href="http://casparant.github.io/"/>
+  <updated>2015-05-21T11:59:03+08:00</updated>
+  <id>http://casparant.github.io/</id>
+  <author>
+    <name><![CDATA[Caspar]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mce的一些零散记录]]></title>
+    <link href="http://casparant.github.io/blog/2013/06/06/some-misc-items-of-mce/"/>
+    <updated>2013-06-06T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2013/06/06/some-misc-items-of-mce</id>
+    <content type="html"><![CDATA[<p>以前也测过MCE相关的东西，但是惭愧，一直不清不楚。这两天稍微整理了一下相关知识，感觉见识还是很浅，记些零碎的东西在这，权当博客复活第一篇。如有理解错误，欢迎指出。</p>
+
+
+
+
+<p>CPU检测到硬件错误时，内核会报Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; UCE/UE, Un-correctable Error)，内核做出不同反应。CE的话内核只把相关信息写到一个字符设备/dev/mcelog中，UE的话是会在记录相关信息之余，还会做出不同处理，比如中断当前遇错的应用程序，或者Panic. [TODO: 这块相关的内核代码还得再看几遍]</p>
+
+
+
+
+<p>/dev/mcelog中的信息可以用用户空间工具<a href="https://github.com/andikleen/mcelog" target="_blank">mcelog</a>来读取。mcelog比较有意思的一个参数是<code>--dmi</code>，可以尝试解析ADDR字段以获取诸如内存出厂信息，DIMM位置等有用的信息，可是很遗憾在实际环境中这些DIMM信息基本上都是错的。（mcelog man page说了，不要怪Linux，得怪那稀奇古怪的主板厂商……）</p>
+
+
+
+
+<p>mcelog man page还有一个地方提到：</p>
+
+
+
+
+<p><blockquote>The kernel prefers old messages over new. If the log buffer overflows only old ones will be kept.</blockquote></p>
+
+
+
+
+<p><!--more-->查看内核代码中<code>arch/x86/include/asm/mce.h</code>，有：</p>
+
+
+
+
+<p><pre lang="C">
+#define MCE_LOG_LEN 32</pre></p>
+
+
+
+
+<p>struct mce_log {<br />
+    char signature[12]; /* "MACHINECHECK" */<br />
+    unsigned len;       /* = MCE_LOG_LEN */<br />
+    unsigned next;<br />
+    unsigned flags;<br />
+    unsigned recordlen; /* length of struct mce */<br />
+    struct mce entry[MCE_LOG_LEN];<br />
+};
+</p>
+
+
+
+
+<p>这里的MCE_LOG_LEN就是man page中提到的log buffer长度。</p>
+
+
+
+
+<p>内核中还有个mce_inject模块（CONFIG_X86_MCE_INJECT=m/y）,可以用于产生一些假的MCE以测试相关功能。需要配合用户空间工具<a href="https://github.com/andikleen/mce-inject/" target="_blank">mce-inject</a>来使用。</p>
+
+
+
+
+<p>如果要做一个比较完整的测试，<a href="https://github.com/andikleen/mce-test" target="_blank">mce-test</a>工具可以帮忙，其中会设计一些RAS特性，比如hwpoison(Documentation/vm/hwpoison.txt)，不过我现在的活儿不怎么管测试，暂时就没去回顾这个测试工具了。</p>
+
+
+
+
+<p>先记这些，回头把细节都搞懂了再补充……</p>
+
+]]></content>
+  </entry>
+  
+</feed>

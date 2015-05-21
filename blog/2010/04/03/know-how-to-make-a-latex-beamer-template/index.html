@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>搞定LaTeX Beamer模板 - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="过一段时间公司和学校都得做presentation，所以现在就得好好开始准备slides。以前我就用Beamer做过一次slide，而且是匆匆忙忙用了默认模板搞定的。这次借着再做slides的机会，我得自己搞个模板。 需求如下，非常简单： 1. 要在合适的位置打上Logo（一般是左上角或者右上角 &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2010/04/03/know-how-to-make-a-latex-beamer-template">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">搞定LaTeX Beamer模板</h1>
+    </header>
+  
+  <div class="entry-content"><p>过一段时间公司和学校都得做presentation，所以现在就得好好开始准备slides。以前我就用Beamer做过一次slide，而且是匆匆忙忙用了默认模板搞定的。这次借着再做slides的机会，我得自己搞个模板。</p>
+
+<p>需求如下，非常简单：</p>
+
+<p><blockquote>1. 要在合适的位置打上Logo（一般是左上角或者右上角）;<br />
+2. 要能自定义页脚<br />
+3. 首页要有背景</blockquote></p>
+
+<p>经过半个白天加一个晚上的折腾，基本上解决了上述问题：</p>
+
+<p>要打Logo，并且自定义位置，可以使用如下语句：</p>
+
+<p><pre lang="latex"> \logo{\pgfputat{\pgfxy(#1,#2)}{\pgfbox[center,base]{\includegraphics[height=0.5cm]{#3}}}}</pre></p>
+
+<p>事先要包含pgf宏包，#1,#2是Logo坐标，#3是Logo路径。关于坐标，我发现用pdflatex编译和用xelatex编译时坐标表示的实际位置是不同的，反正自己手工慢慢调就是了。也可以把上述代码加个\newcommand，做成一个带参数的命令直接调用。</p>
+
+<p>自定义页脚，我参考了beamer guide和beamer里面的某个宏包的写法：</p>
+
+<p><!--more--><pre lang="latex">
+%% Custom footer
+\usefoottemplate{
+    \hbox{\tinycolouredline{structure}{
+    \begin{beamercolorbox}[wd=0.22\paperwidth,ht=2.4ex,dp=1.2ex,left]{author in head/foot}%
+        \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.5\paperwidth,ht=2.4ex,dp=1.2ex,center]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.28\paperwidth,ht=2.4ex,dp=1.2ex,right]{date in head/foot}%
+        \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{0.8em}
+        \insertframenumber{} / \inserttotalframenumber\hspace*{4.5ex}
+    \end{beamercolorbox}}}%
+}
+</pre></p>
+
+<p>需要说明的是，我始终搞不懂\tinycolouredline的第一个参数structure还能用什么代替，而且上述方案有个及其大的BUG，在页脚最左边的那列的左边有1em的空白，如果要给这列填充了和那个空白区与不一样的背景色，就会很难看。我也没找到消除那列空白的代码。</p>
+
+<p>首页加背景就太简单了，我直接用wallpaper宏包，然后在第一页加入：</p>
+
+<p><pre lang="latex">\ThisCenterWallPaper{1}{inc/cover}</pre></p>
+
+<p>不管是加Logo也好，加墙纸也好，它们都很容易被colortheme中定义的背景色覆盖，这可以通过\setbeamercolor来去掉背景色，基本语法如下：</p>
+
+<p><pre lang="latex">\setbeamercolor{background canvas}{bg=}
+\setbeamercolor{title}{fg=black, bg=lightgray!80!white}</pre></p>
+
+<p>最后放出模板，<a href="https://docs.google.com/leaf?id=0B-GDvj9JsmanZjUzZDI4M2MtYzE3MS00YTNjLWEyZjUtYjFhMzY5MzY5NWVi&hl=zh_CN">点此下载>>>></a></p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/programming/'>programming</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-03T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2010/04/03/know-how-to-make-a-latex-beamer-template/" data-via="" data-counturl="http://casparant.github.io/blog/2010/04/03/know-how-to-make-a-latex-beamer-template/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/03/27/chrowety-a-chrome-twitter-extension/" title="Previous Post: Chrowety - A Chrome Twitter Extension">&laquo; Chrowety - A Chrome Twitter Extension</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

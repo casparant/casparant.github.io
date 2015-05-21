@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Wine在Ubuntu下的优异表现 - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="Wine这个软件功能越来越强大了，非常好用～～～ 源里面的Wine版本太旧，正好在昨天，Wine发布了0.9.54 ，可以直接去官方网站http://www.winehq.org/site/download下载： 首先要获取密钥： wget -q http://wine. &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2008/01/26/wine-in-ubuntu">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">Wine在Ubuntu下的优异表现</h1>
+    </header>
+  
+  <div class="entry-content"><p>Wine这个软件功能越来越强大了，非常好用～～～</p>
+
+<p>源里面的Wine版本太旧，正好在昨天，Wine发布了0.9.54 ，可以直接去官方网站<a href="http://www.winehq.org/site/download" target="_blank">http://www.winehq.org/site/download</a>下载：</p>
+
+<p>首先要获取密钥：</p>
+
+<p><pre lang="bash"> wget -q http://wine.budgetdedicated.com/apt/387EE263.gpg -O- | sudo apt-key add -</pre></p>
+
+<p>然后下载源列表：</p>
+
+<p><strong>For Ubuntu Gutsy (7.10):</strong></p>
+
+<p><pre lang="bash">sudo wget http://wine.budgetdedicated.com/apt/sources.list.d/gutsy.list -O /etc/apt/sources.list.d/winehq.list</pre></p>
+
+<p><strong>For Ubuntu Feisty (7.04):</strong></p>
+
+<p><pre lang="bash">sudo wget http://wine.budgetdedicated.com/apt/sources.list.d/feisty.list -O /etc/apt/sources.list.d/winehq.list</pre></p>
+
+<p><!--more-->随后执行更新并下载：</p>
+
+<p><pre lang="bash">sudo apt-get update
+sudo apt-get install wine</pre></p>
+
+<p>下载完毕后处理中文问题：</p>
+
+<p>从Windows下拷贝SimSun.ttf字体到<code>~/.wine/drive_c/windows/fonts/</code>下，将权限改为755。</p>
+
+<p>编辑下面一段文字：
+<blockquote>REGEDIT4</blockquote></p>
+
+<p>[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontSubstitutes]<br />
+"Arial"="simsun"<br />
+"Arial CE,238"="simsun"<br />
+"Arial CYR,204"="simsun"<br />
+"Arial Greek,161"="simsun"<br />
+"Arial TUR,162"="simsun"<br />
+"Courier New"="simsun"<br />
+"Courier New CE,238"="simsun"<br />
+"Courier New CYR,204"="simsun"<br />
+"Courier New Greek,161"="simsun"<br />
+"Courier New TUR,162"="simsun"<br />
+"FixedSys"="simsun"<br />
+"Helv"="simsun"<br />
+"Helvetica"="simsun"<br />
+"MS Sans Serif"="simsun"<br />
+"MS Shell Dlg"="simsun"<br />
+"MS Shell Dlg 2"="simsun"<br />
+"System"="simsun"<br />
+"Tahoma"="simsun"<br />
+"Times"="simsun"<br />
+"Times New Roman CE,238"="simsun"<br />
+"Times New Roman CYR,204"="simsun"<br />
+"Times New Roman Greek,161"="simsun"<br />
+"Times New Roman TUR,162"="simsun"<br />
+"Tms Rmn"="simsun"</p>
+
+<p>保存为zh.reg，在终端下通过regedit导入：</p>
+
+<p><pre lang="bash">regedit zh.reg</pre></p>
+
+<p>然后就可以开始安装Win下的软件了：</p>
+
+<p><strong>范例一：安装迅雷国际版</strong></p>
+
+<p>在终端下定位到迅雷国际版的路径，执行</p>
+
+<p><pre lang="bash">wine Gigaget.exe</pre></p>
+
+<p>像在Windows下安装一样，一路Next到底即可。</p>
+
+<p><strong>范例二：安装CS</strong></p>
+
+<p>首先仍旧wine CS.exe，一路Next到底，然后进入游戏界面后可能会出现中文不能显示的问题，此时请回到上文，仔细按照“处理中文”的步骤操作，注意SimSun.ttf的权限需要改成755或777；开始游戏后会提示安装Gecko，这个软件是wine下模拟IE的一种方式，此时可以联网下载，如果从官网下载速度慢也可以先退出游戏，上网搜wine_Gecko-0.1.0的安装文件，下载后将wine_gecko-0.1.0.cab复制到~/.wine/drive_c下，在终端打开regedit，定位到<code>HKEY_CURRENT_USER/Software/Wine/MSHTML/</code>，在右侧窗口修改<code>GeckoUrl</code>值为：<code>C:\wine_gecko-0.1.0.cab</code>，然后重新进入游戏，在提示此窗口时执行Install即可马上安装完毕。</p>
+
+<p><strong>范例三：安装ies4linux</strong></p>
+
+<p>Gecko是一个浏览器核心，在软件中需要显示HTML页面的时候经常使用，比如超星阅读器或者CS，而要想更好地模拟IE，就需要使用ies4linux这个软件，可以到<a href="http://www.tatanka.com.br/" target="_blank">http://www.tatanka.com.br/</a>下载最新版的ies4linux，下载后解压缩到某处，执行./ies4linux，按照提示一步步回答若干问题之后，就开始联网下载安装所需的文件，下载完毕后就可以在桌面上看到ies4linux的图标，打开后修改安全权限为低，发现能够登录支付宝了。</p>
+
+<p>因为ies4linux的wine配置和系统中的wine配置是不同的，所以需要重新修改配置才能将ies4linux的中文显示问题完全解决：</p>
+
+<p><pre lang="bash">gedit ~/.ies4linux/ie6/system.reg</pre></p>
+
+<p>修改这两行：</p>
+
+<p><code>"MS Sans Serif"="sserife.fon"<br />
+"MS Serif"="serife.fon"</code></p>
+
+<p>分别替换为：
+<code> "MS Sans Serif"="SIMSUN.TTC"<br />
+"MS Serif"="SIMSUN.TTC"</code></p>
+
+<p>另外修改如下代码：</p>
+
+<p><blockquote>[Software\Microsoft\Windows NT\CurrentVersion\FontSubstitutes]<br />
+1144897563</blockquote></p>
+
+<p>"MS Shell Dlg"="SimSun"<br />
+"MS Shell Dlg 2"="SimSun"</p>
+
+<p><strong>范例四：安装极品飞车9</strong></p>
+
+<p>不知道是我的集成显卡太差还是没有真正安装成功的原因，安装好了之后本该有文字的地方都变成方块了，只好卸载掉……</p>
+
+<p>安装方法：</p>
+
+<p>最好是DVD英文版光盘，将光盘中所有内容复制到一个临时文件夹中，为避免安装过程中提示没有DirectX9.0c，需要修改AutoRun的Autorun.cfg中其中两行的内容为：</p>
+
+<p><code>DirectXVersion=0<br />
+StartMenuDXEULA=0</code></p>
+
+<p>然后执行安装，安装结束后，从Windows分区的System32文件夹中复制或者到此地址<a href="http://www.dll-files.com/dllindex/dll-files.shtml?d3dx9_26" target="_blank">http://www.dll-files.com/dllindex/dll-files.shtml?d3dx9_26</a>下载<code>d3dx9_26.dll</code>，放到<code>.wine/drive_c/windows/system32</code>下。</p>
+
+<p>上网下载极品飞车9的1.3版补丁和免CD补丁，覆盖即可。</p>
+
+<p>可怜的显卡……我的极品飞车啊……</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/softwares/'>softwares</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-26T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2008/01/26/wine-in-ubuntu/" data-via="" data-counturl="http://casparant.github.io/blog/2008/01/26/wine-in-ubuntu/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/01/22/symbol-link/" title="Previous Post: 创建链接的问题：Symbol Links">&laquo; 创建链接的问题：Symbol Links</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

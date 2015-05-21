@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ant-Veil</title>
+  <title>原来在CentOS中配置VNCServer很容易 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="Issue: 雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。 Environment: Razer Orochi 蓝牙鼠标
-Gentoo + KDE &hellip;">
+  <meta name="description" content="发现该学点脚本了，有空可以在服务器上折腾折腾。不过在此之前我还是先得把实验室这台服务器配置好。 服务器是CentOS5.2，准备开启VNC服务。想起当年在Ubuntu下配置费了九牛二虎之力，估计着在CentOS上也不会容易。 没想到如此简单： 服务器在安装时已经装好了VNCServer， &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +17,7 @@ Gentoo + KDE &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   
-  <link rel="canonical" href="http://casparant.github.io">
+  <link rel="canonical" href="http://casparant.github.io/blog/2009/03/04/it-is-very-easy-to-configure-vncserver-in-centos">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
@@ -98,165 +97,102 @@ Gentoo + KDE &hellip;">
   </div>
   <div id="main">
     <div class="content">
-      
-<header>
-  <div class="back">　</div>
-  <h1 class="entry-title"><a href="/">Ant-Veil</a></h1>
-</header>
-<ul class="blog-index">
+      <article class="hentry" role="article">
   
-    
-    
-      
-      
-    
-    
   
-  <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a></h2>
-    
-      <div class="entry-content"><p>Issue:</p>
-
-<p>雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
-
-<p>Environment: </p>
-
-<p><blockquote>Razer Orochi 蓝牙鼠标<br />
-Gentoo + KDE<br />
-kernel 3.10 ~ 3.16<br />
-bluez 4.101 ~ 5.23<br />
-bluedevil 1.3.2 ~ 2.0_rc1</blockquote></p>
-
-<p>Solution:</p>
-
-<p></div>
-      
-      
-        <footer>
-          <a rel="full-article" href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Read on &rarr;</a>
-        </footer>
-      
-    
-  </li>
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">原来在CentOS中配置VNCServer很容易</h1>
+    </header>
   
+  <div class="entry-content"><p>发现该学点脚本了，有空可以在服务器上折腾折腾。不过在此之前我还是先得把实验室这台服务器配置好。</p>
+
+<p>服务器是CentOS5.2，准备开启VNC服务。想起<a href="http://www.casparant.com/remote-login-under-ubuntu.html">当年在Ubuntu下配置费了九牛二虎之力</a>，估计着在CentOS上也不会容易。</p>
+
+<p>没想到如此简单：</p>
+
+<p>服务器在安装时已经装好了VNCServer，接下去只要编辑<code>/etc/sysconfig/vncservers</code>文件中的<code>VNCSERVERS</code>字段（确保取消了这行的注释）：</p>
+
+<p><blockquote>VNCSERVERS="1:root 2:user1 3:user2 4:blablabla"</blockquote></p>
+
+<p>如果只要为单个用户开启VNC服务，只需按照PORT:USERNAME的格式修改，如果为多个用户开启VNC服务，则用空格隔开即可。</p>
+
+<p>如果需要修改分辨率，设置是否允许通过TCP登录、是否允许通过Web登录以及是否允许不安全TCP tunel登录，则修改<code>VNCSERVERARGS[2]</code>字段：</p>
+
+<p><!--more--><blockquote>VNCSERVERARGS[2]="-geometry 1024x768  -nolisten tcp -nohttpd -localhost"</blockquote></p>
+
+<p>注意按照注释提示，酌情修改。</p>
+
+<p>如果系统开启了防火墙，还要把5901~590x端口（取决于你为多少个用户开启VNC服务，如果VNC第一个端口开放，则为5901，以此类推）打开，至于是开启TCP端口还是UDP端口，按照自己的设置来修改。</p>
+
+<p>修改完毕后，把vncserver加入开机自动启动：</p>
+
+<p><pre lang="bash">chkconfig vncserver on</pre></p>
+
+<p>或者手动往<code>rc2~5.d/</code>中加入vncserver的链接。</p>
+
+<p>同时仍然要注意使用<code>vncpasswd</code>修改密码，并且修改<code>~/.vnc/xstartup</code>，注释最后两行，添加一行<code>gnome-session &</code></p>
+
+<p><pre lang="bash"># xterm -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+# twm &
+gnome-session &</pre></p>
+
+<p>从此每个用户都顺利过上了vnc登录生活……</p>
+
+<p></p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/configuration/'>configuration</a>
+  
+</span>
+
+ @
+        
 
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a></h2>
-    
-  </li>
-  
 
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a></h2>
-    
-  </li>
-  
+
+
 
 
   
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a></h2>
-    
-  </li>
-  
 
 
+<time datetime="2009-03-04T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
   
-    
-    
-    
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2009/03/04/it-is-very-easy-to-configure-vncserver-in-centos/" data-via="" data-counturl="http://casparant.github.io/blog/2009/03/04/it-is-very-easy-to-configure-vncserver-in-centos/" >Tweet</a>
   
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/10/12/cm7-1-on-defy/">CM7.1 on DEFY</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/07/16/beginning-of-my-third-year-in-red-hat/">在Red Hat两年</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/03/03/jibber-jabber-on-the-resumes/">关于简历的杂碎</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410/">Libfprint Finally Supports Thinkpad T410</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/06/enable-fingerprint-in-thinkpad-t410-under-gentoo/">Enable Fingerprint in Thinkpad T410 Under Gentoo</a></h2>
-    
-  </li>
-  
-
-
-  
-</ul>
-<div class="pagination">
-  
-    <a class="prev" href="2">&larr; Older</a>
   
   
 </div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/03/03/using-ubuntu-jaunty-alpha5/" title="Previous Post: [白鼠六]Ubuntu Jaunty Aplha5试用">&laquo; [白鼠六]Ubuntu Jaunty Aplha5试用</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
 
     </div>
     <footer role="contentinfo"><div class="content">

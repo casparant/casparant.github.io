@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ant-Veil</title>
+  <title>把你的手机和Gmail同步起来！ - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="Issue: 雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。 Environment: Razer Orochi 蓝牙鼠标
-Gentoo + KDE &hellip;">
+  <meta name="description" content="很早以前，在想要是Gmail里的列表能和我手机上的联系人同步那该有多好。现在这个想法终于实现了，Google推出的Google Sync服务，让你的手机联系人轻松与Gmail联系人同步。 Google总是能推出让人兴奋的产品，前几天的Latitude也是这样的产品，不过好多好友就是不确认我的请求， &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +17,7 @@ Gentoo + KDE &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   
-  <link rel="canonical" href="http://casparant.github.io">
+  <link rel="canonical" href="http://casparant.github.io/blog/2009/02/10/synchronize-your-mobile-with-gmail">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
@@ -98,165 +97,76 @@ Gentoo + KDE &hellip;">
   </div>
   <div id="main">
     <div class="content">
-      
-<header>
-  <div class="back">　</div>
-  <h1 class="entry-title"><a href="/">Ant-Veil</a></h1>
-</header>
-<ul class="blog-index">
+      <article class="hentry" role="article">
   
-    
-    
-      
-      
-    
-    
   
-  <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a></h2>
-    
-      <div class="entry-content"><p>Issue:</p>
-
-<p>雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
-
-<p>Environment: </p>
-
-<p><blockquote>Razer Orochi 蓝牙鼠标<br />
-Gentoo + KDE<br />
-kernel 3.10 ~ 3.16<br />
-bluez 4.101 ~ 5.23<br />
-bluedevil 1.3.2 ~ 2.0_rc1</blockquote></p>
-
-<p>Solution:</p>
-
-<p></div>
-      
-      
-        <footer>
-          <a rel="full-article" href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Read on &rarr;</a>
-        </footer>
-      
-    
-  </li>
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">把你的手机和Gmail同步起来！</h1>
+    </header>
   
+  <div class="entry-content"><p>很早以前，在想要是Gmail里的列表能和我手机上的联系人同步那该有多好。现在这个想法终于实现了，Google推出的<a href="http://www.google.com/mobile/default/sync.html">Google Sync</a>服务，让你的手机联系人轻松与Gmail联系人同步。</p>
+
+<p>Google总是能推出让人兴奋的产品，前几天的<a href="http://www.google.com/latitude/intro.html">Latitude</a>也是这样的产品，不过好多好友就是不确认我的请求，我的Latitude上现在还没几个人的信息。不过Sync这个产品绝对是值得每个拥有智能手机的人一试的好东西。</p>
+
+<p>我的手机是N81，按照Google Sync页面上的<a href="http://www.google.com/support/mobile/bin/answer.py?answer=98230&topic=15015">提示</a>，很顺利就完成了同步。不过有点郁闷的是，以前对同一个人在手机上和在Gmail里用了不同名称，同步后就出现了两个联系方式，不过这是没办法的事情。对于名字相同的人，会把资料给合并。</p>
+
+<p>另外有个不太好的地方是，由于手机和Gmail在栏位处理上的不同，同步后资料会有所偏差。比如我在Gmail上对一个人记录了5个电子邮件(1个home,1个work,3个other)，同步到手机上后，只有栏位不同的三个电子邮件同步到了手机上，其中Gmail上3个other电子邮件中只有最后一个同步到了手机上。<del datetime="2009-02-10T16:03:15+00:00">估计应该是同步的时候手机对栏位进行判断然后对号入座，对于同栏位不同号码的信息，它不会另外设置一个重复的栏位(事实上我的手机可以设置重复栏位，比如多个“电子邮件(家庭)”)，而是在同栏位上进行覆盖。</del>问题也可能出在Google那边，获取资料的时候自动覆盖相同栏位也是完全可能的。所以在这里提醒使用Gmail记通讯录的童鞋，注意一下mobile和E-mail的不同类型，防止同步到手机上后丢失重要信息。</p>
+
+<p>使用Google Sync的最直接好处就是，丢了手机之后不用再担心通讯录遗失了-_-||。备份方便，同步简单，比nokia自带的同步工具还方便，只要有网络，一键同步就搞定了。</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/configuration/'>configuration</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
 
 
   
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a></h2>
-    
-  </li>
-  
 
 
+<time datetime="2009-02-10T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
   
-    
-    
-    
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2009/02/10/synchronize-your-mobile-with-gmail/" data-via="" data-counturl="http://casparant.github.io/blog/2009/02/10/synchronize-your-mobile-with-gmail/" >Tweet</a>
   
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/10/12/cm7-1-on-defy/">CM7.1 on DEFY</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/07/16/beginning-of-my-third-year-in-red-hat/">在Red Hat两年</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/03/03/jibber-jabber-on-the-resumes/">关于简历的杂碎</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410/">Libfprint Finally Supports Thinkpad T410</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/06/enable-fingerprint-in-thinkpad-t410-under-gentoo/">Enable Fingerprint in Thinkpad T410 Under Gentoo</a></h2>
-    
-  </li>
-  
-
-
-  
-</ul>
-<div class="pagination">
-  
-    <a class="prev" href="2">&larr; Older</a>
   
   
 </div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/01/20/the-chinamobile-and-telecom/" title="Previous Post: 移动和电信">&laquo; 移动和电信</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
 
     </div>
     <footer role="contentinfo"><div class="content">

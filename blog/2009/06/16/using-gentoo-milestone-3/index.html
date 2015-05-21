@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Gentoo折腾 Milestone3 - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="上次几位说我从Gentoo叛逃到Arch我就已经心生愧疚。本来嘛，选择Arch等于选择免编译的便捷，选择Gentoo等于选择了完全定制的自由。在便捷和自由的交锋中，伴随着我一次手欠的操作，最终后者胜了，我重新回到了Gentoo的怀抱。 先说说那个手欠的操作。 我不小心新建了一个名字为~的文件夹， &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2009/06/16/using-gentoo-milestone-3">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">Gentoo折腾 Milestone3</h1>
+    </header>
+  
+  <div class="entry-content"><p>上次几位说我从Gentoo叛逃到Arch我就已经心生愧疚。本来嘛，选择Arch等于选择免编译的便捷，选择Gentoo等于选择了完全定制的自由。在便捷和自由的交锋中，伴随着我一次手欠的操作，最终后者胜了，我重新回到了Gentoo的怀抱。</p>
+
+<p>先说说那个手欠的操作。</p>
+
+<p>我不小心新建了一个名字为~的文件夹，然后发现不对，文件名弄错了。于是想要删除之。于是执行了 rm ~ -rf。就这样。等待了10秒中之后，还没意识到什么问题，居然还加了sudo再执行了一次那个命令- -||| 然后pwd，发现路径不存在。然后cd，发现路径还是不存在。于是我哭了。幸好在服务器上有半个月前的数据备份，最重要的数据都给找回来了，这半个月写的代码也都凭着记忆给补回来一些了（说明我这半个月基本上没编码，哈哈，万幸）。</p>
+
+<p>数据回来之后一不做二不休，全盘格，直接回Gentoo了。</p>
+
+<p>可爱的Arch就这么被我抛弃了。</p>
+
+<p>上来直接上ext4分区。以前碰到过grub能认分区，但是kernel panic的情况，后来发现原来是要从ext4分区启动，需要initramfs。于是genkernel --menuconfig all手动配置完内核，生成了initramfs(我目前只会这个方法，囧，谁能告诉我怎么样生成initramfs）。</p>
+
+<p>回顾一下历史遗留问题：</p>
+
+<p><!--more--><blockquote>
+[E] 挂起、休眠恢复后死机，黑屏，键盘鼠标无任何响应。<br />
+[E] KDE4注销后黑屏，不能重新进入KDM界面<br />
+[H] Python, Perl的GUI程序乱码；<br />
+[H] GEM间歇性不能开启<br />
+[H] 有时候关机出现循环提示：mount-ro: wait for killproc<br />
+[M] 配置KMS<br />
+[M] 配置宽屏控制台
+</blockquote></p>
+
+<p>1。挂起、休眠恢复的问题解决。2.6.30内核似乎使用了tuxonice补丁，当然这个问题的修复和tuxonice补丁没关系，以前用了还是死机。这次不知道怎么回事莫名其妙就好了。</p>
+
+<p>2。注销后黑屏。估计是konsolekit这个服务的问题吧，忘了上次有没有启动这个服务了。反正这次启动这个服务之后，注销就能重新回到kdm界面了。</p>
+
+<p>3。Perl GUI乱码，尚未解决，估计是CPAN里的某个包的问题。</p>
+
+<p>4。GEM间歇性不能开启。现在一切正常</p>
+
+<p>5。mount-ro: wait for killproc。现在一切正常。顺便说一句fbsplash真不错。</p>
+
+<p>6。KMS，还是不行，甚至比上次还糟糕，花屏过后直接键盘无响应了。</p>
+
+<p>7。宽屏控制台，还是没调出来。。。uvesafb真的能行么？</p>
+
+<p>当然还碰到了新的问题，慢慢解决吧。</p>
+
+<p>P.S. 雅黑字体其实挺不错的……</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/z-turn/'>z-turn</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-16T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2009/06/16/using-gentoo-milestone-3/" data-via="" data-counturl="http://casparant.github.io/blog/2009/06/16/using-gentoo-milestone-3/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/06/02/arch-beginner/" title="Previous Post: 小试ArchLinux">&laquo; 小试ArchLinux</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

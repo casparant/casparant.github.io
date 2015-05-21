@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>当系统调用不存在…… - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="最近在一个项目上卡了几天，整理出来主要碰到的问题，以备自己查阅。 具体的问题抽象出来就是这么一种情况： 有一堆分层的目录，里面全是系统调用的相关测试代码+Makefile，结构大致如下： ├── wait4
+│   ├── Makefile
+│   ├── wait401.c
+│   └── &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2010/04/07/when-the-system-call-does-not-exist">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">当系统调用不存在……</h1>
+    </header>
+  
+  <div class="entry-content"><p>最近在一个项目上卡了几天，整理出来主要碰到的问题，以备自己查阅。</p>
+
+<p>具体的问题抽象出来就是这么一种情况：</p>
+
+<p>有一堆分层的目录，里面全是系统调用的相关测试代码+Makefile，结构大致如下：</p>
+
+<p><blockquote>
+├── wait4<br />
+│   ├── Makefile<br />
+│   ├── wait401.c<br />
+│   └── wait402.c<br />
+├── waitid<br />
+│   ├── waitid01<br />
+│   │   ├── Makefile<br />
+│   │   └── waitid01.c<br />
+│   ├── waitid02<br />
+│   │   ├── Makefile<br />
+│   │   └── waitid02.c<br />
+├── waitpid<br />
+│   │   ├── Makefile<br />
+│   │   └── waitpid_err_test.c<br />
+.....</blockquote></p>
+
+<p><!--more-->现在要把这堆系统调用的测试代码移植到各硬件平台和各发行版上，因此要考虑内核版本、glibc版本等等问题。比如说getcpu这个东东只在2.6.19及以后版本中存在并且只有x86_64 and i386架构才可用。而编译这堆系统调用使用的Makefile大致如下：</p>
+
+<p><pre lang="bash" line="1">
+MAKEFILES_FOR_TESTCASES = $(shell find testcases -name Makefile)
+TESTCASES_BY_MAKE = $(addsuffix /test,$(dir $(MAKEFILES_FOR_TESTCASES)))</pre></p>
+
+<p>$(TESTCASES_BY_MAKE):<br />
+        $(MAKE) -C $(dir $@) test
+</p>
+
+<p>因此可能的解决方案有如下几种：</p>
+
+<p><h4>1. 修改Makefile，禁止编译会出错的测试用例</h4></p>
+
+<p><pre lang="bash" line="1">
+FILTER_OUT_CASES = testcase1 testcase2 testcase3
+ALL_MAKEFILES = $(shell find testcases -name Makefile)
+FILTER_OUT_MAKEFILES = $(wildcard $(foreach filename,$(FILTER_OUT_CASES),testcases/$(filename)/Makefile))
+MAKEFILES_FOR_TESTCASES = $(filter-out $(FILTER_OUT_MAKEFILES),$(ALL_MAKEFILES))
+TESTCASES_BY_MAKE = $(addsuffix /test,$(dir $(MAKEFILES_FOR_TESTCASES)))</pre></p>
+
+<p>$(TESTCASES_BY_MAKE):<br />
+        $(MAKE) -C $(dir $@) test
+</p>
+
+<p>代码很平淡无奇，之所以贴出这段代码是为了温习一下Makefile中wildcard,filter-out和foreach的用法 :-)</p>
+
+<p><h4>2.修改c代码，使用预处理判断是否存在</h4></p>
+
+<p>这种办法在<a href="ltp.sf.net/" target="_blank">ltp</a>上应用十分广泛，ltp中自动从configure文件中生成include/config.h，生成的config.h包含了一系列预处理，例如：</p>
+
+<p><pre lang="cpp" line="1">
+/* Define to 1 if you have the <sys/signalfd.h> header file. */
+#undef HAVE_SYS_SIGNALFD_H</pre></p>
+
+<p>/* Define to 1 if you have the <sys/stat.h> header file. */<br />
+#define HAVE_SYS_STAT_H 1
+</p>
+
+<p>当内核版本不同导致系统调用不存在时，可以设置undef预处理；如果系统调用存在，则define一下。</p>
+
+<p>接下去可以修改源代码，在可能会在不同内核版本上出现分歧的代码前后加上：</p>
+
+<p><pre lang="cpp" line="1">#ifdef HAVE_SYS_SIGNALFD_H
+...
+#else
+int main()
+{
+  printf("syscall not exists in this platform\");
+  return 1;
+}
+#endif</pre></p>
+
+<p>同时ltp还在C代码中判断内核版本，内核版本在<sys/utsname.h>中有声明。</p>
+
+<p>如果不使用configure文件，可以自己写一个shell脚本来生成，例如：</p>
+
+<p><pre lang="bash" line="1">
+#!/bin/sh</pre></p>
+
+<p>CONFIG_PATH=./include/config.h<br />
+KVER=`uname -r | cut -d'-' -f 1`<br />
+KMAJVER=`echo $KVER | cut -d'.' -f 1-2`<br />
+KMINVER=`echo $KVER | cut -d'.' -f 3`</p>
+
+<p>if [ "$KMAJVER" = "2.6" ] && [ $KMINVER -ge 19 ];<br />
+then<br />
+	echo '#define HAVE_SYS_EPOLL_H 1' >> $CONFIG_PATH<br />
+else<br />
+	echo '#ifdef HAVE_SYS_EPOLL_H' >> $CONFIG_PATH<br />
+	echo '#  undef HAVE_SYS_EPOLL_H' >> $CONFIG_PATH<br />
+	echo '#endif' >> $CONFIG_PATH<br />
+fi
+
+</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/programming/'>programming</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-07T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2010/04/07/when-the-system-call-does-not-exist/" data-via="" data-counturl="http://casparant.github.io/blog/2010/04/07/when-the-system-call-does-not-exist/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/04/07/how-to-organize-your-information/" title="Previous Post: 生活在信息膨胀的社会">&laquo; 生活在信息膨胀的社会</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

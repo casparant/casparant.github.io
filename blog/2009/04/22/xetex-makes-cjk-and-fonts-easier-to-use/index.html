@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>使用XeTeX，CJK无忧，字体无忧 - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="曾经的曾经，为了折腾LaTeX中的中文字体，我参照了Monnand和TualatriX童鞋的配置方式，装好CJKutf8宏包，然后用fontforge制作Type1字体，然后才算搞定。一切皆因为LaTeX默认不支持Unicode，也不能支持Truetype字体。 &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">使用XeTeX，CJK无忧，字体无忧</h1>
+    </header>
+  
+  <div class="entry-content"><p>曾经的曾经，为了折腾LaTeX中的中文字体，我参照了<a href="http://blog.linuxsky.org/58/viewspace-3824.html">Monnand</a>和<a href="http://linuxdesktop.cn/2008/02/26/config-texlive-cjk-under-ubuntu.html">TualatriX</a>童鞋的配置方式，装好CJKutf8宏包，然后用fontforge制作<a href="http://en.wikipedia.org/wiki/Type_1_and_Type_3_fonts">Type1</a>字体，然后才算搞定。一切皆因为LaTeX默认不支持Unicode，也不能支持<a href="http://en.wikipedia.org/wiki/TrueType">Truetype</a>字体。</p>
+
+<p>最近一段时间一直听到XeTeX的相关消息，在BYR上，在linuxsir上，都听说了，只是安逸于自己的CJKutf8，不想去折腾。可是昨天写简历的时候，发现没有斜体字，看来我制作的Type1字体没有包含斜体字。为了把斜体弄出来，上网狂Google，就在熄灯前的几秒钟，我看到了网上对XeTeX原生Unicode支持的评价很高，尤其是它可以直接使用Truetype字体，顿时心里痒痒。今天起床后，趁着做实验的空档，把XeTeX装好，果然很惊喜啊。</p>
+
+<p>首先了解一下什么是XeTeX吧，其官方主页：<a href="http://www.tug.org/xetex/">http://www.tug.org/xetex/</a>. 网页开篇即说：XeTeX is "a typesetting system based on a merger of Donald Knuth's TeX system with <strong>Unicode</strong> and <strong>modern font technologies</strong>."，正合我意。</p>
+
+<p><!--more-->不过虽然XeTeX支持了Unicode和<a href="http://en.wikipedia.org/wiki/OpenType">OpenType</a>(查看其wiki可以知道OpenType是一种同时包含了Truetype和Type1两种字体的字体)，但是它没说可以完美支持中文字体和中文排版，所以现在推荐孙文昌老师开发的<a href="http://bbs.ctex.org/viewthread.php?tid=40232&extra=&page=1">xeCJK宏包</a>（当然还有一种是zhspacing，不过我不太喜欢用），可以完美支持中文。具体的使用方法，可以看附件里的文档。</p>
+
+<p>从文档里可以找到我所需要的斜体字，嘿嘿。</p>
+
+<p>接下来说说怎么安装XeTeX和相关的宏包。</p>
+
+<p>linuxsir的精华区有一篇文章讲了怎么在texlive-2007下安装XeTeX和xeCJK，由于xeCJK和zhspacing这两个中文处理宏包需要XeTeX-0.997以上版本，所以需要hack一下texlive-2007，而我现在Gentoo中最新的portage里的texlive已经是2008-r4，XeTeX的版本是0.999，所以不需要hack了，而xeCJK和zhspacing在gentoo-china的overlay里跟进很快，所以直接emerge zhspacing xecjk就可以了。</p>
+
+<p>Fedora，如果是DVD版的Fedora10，<del datetime="2009-05-01T12:33:15+00:00">那就不用装<a href="http://www.tug.org/texlive/">texlive</a>了，不过texlive版本是2007，里面的XeTeX版本应该不到0.997，所以大概需要上XeTeX网站上下最新版本，安装覆盖原来的版本。不过我没试过，有哪位童鞋装好的可以传授经验。</del>需要去texlive官方网站上把最新的texlive2008的镜像下下来，装好后去下孙老师的xeCJK包，这样是最快最保险的做法。</p>
+
+<p>另外还有Ubuntu，也因为没有环境所以无法测试。不过我最后一次用Ubuntu记得里面的texlive版本也是2007。</p>
+
+<p>最后提一句，搞不清楚texlive, tex, latex, xetex, oo_and_xxtex之间的关系的童鞋，请去<a href="http://www.tug.org/texlive/doc.html">http://www.tug.org/texlive/doc.html</a>，里面有文档，看了就会清楚很多了。</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/configuration/'>configuration</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-22T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/" data-via="" data-counturl="http://casparant.github.io/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/04/20/sun-is-acquired-by-oracle/" title="Previous Post: 当年日志里的两个主角">&laquo; 当年日志里的两个主角</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

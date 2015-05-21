@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Configuration | Ant-Veil]]></title>
+  <link href="http://casparant.github.io/blog/categories/configuration/atom.xml" rel="self"/>
+  <link href="http://casparant.github.io/"/>
+  <updated>2015-05-21T11:59:03+08:00</updated>
+  <id>http://casparant.github.io/</id>
+  <author>
+    <name><![CDATA[Caspar]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[GCALDaemon与KDE套件集成]]></title>
+    <link href="http://casparant.github.io/blog/2009/06/18/gcaldaemon-to-sync-with-kde/"/>
+    <updated>2009-06-18T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/06/18/gcaldaemon-to-sync-with-kde</id>
+    <content type="html"><![CDATA[<p>文章主要参考的还是<a href="http://gcaldaemon.sourceforge.net/usage.html">GCALDaemon的usage页面</a>，本文主要介绍使用GCALDaemon将KOrganizer和Google Calendar同步、将KAddressbook和GMAIL地址簿同步。</p>
+
+
+
+
+<p>上次使用远程文件的方式在Arch下确实搞定了，但是今天在Gentoo下又搞不定了。而且要使用远程资源的话，要装kdepim-kresources这个包。对于我这个有洁癖的人，当然是包越少越好了。如果有兴趣使用远程文件的，看完本文，参考前面那篇文章和GCALDaemon的官方主页吧。</p>
+
+
+
+
+<p>首先是下载GCALDaemon，下载完之后解压缩到/opt下，不知道GCALDaemon的开发人员刚开始怎么想的，居然想要解压缩到/usr/local/sbin下，囧。不过还要改三个文件，因为路径和预设的不一样了。使用sed命令：</p>
+
+
+
+
+<p><pre lang="bash">sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/password-encoder.sh
+sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/standalone-start.sh
+sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/sync-now.sh</pre></p>
+
+
+
+
+<p>之后可以把dev文件夹删掉，因为用不着，然后把bin/下面的*.sh文件都给增加可执行权限。</p>
+
+
+
+
+<p>gentoo用户可以去<a href="http://bugs.gentoo.org/237336">gentoo bugs</a>下载ebuild文件，或者用我的这个改过一些内容的：<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanMTJhNDQ4MjItYTIwZi00ZmZlLTllYzYtYmRhYjc1YzhkMDdi&hl=zh_CN">点此下载>>></a></p>
+
+
+
+
+<p>之后可以选择用root权限启动config-editor.sh（当然也可以按照官方网站上说的那样，chown到当前用户下，用普通用户权限执行），进行配置。</p>
+
+
+
+
+<p><!--more-->配置的时候关闭http同步，开启文件同步，关联好Google账户之后，在Google Calendar项选择你要同步的日历，在iCal file里面选择一个你的日历文件（一般可以在Google Calendar里面把你的private ical文件下下来后保存，然后在这里添加进去。当然也可以新建一个空的ics文件）。配置完为KOrganizer准备的同步后，配置LDAP服务器，关联好Google账户，其他都默认即可。</p>
+
+
+
+
+<p>接下来要启动GCALDaemon应用程序。还是以root权限启动（或者如前面所说，改了owner之后用普通用户权限启动），可以自己写一个启动脚本，比如<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanODBkMGUxYmQtNDg1YS00NDFiLWI5M2EtNGMyZGE2MDNjNTI0&hl=zh_CN">点击这里</a>下我写的Gentoo下的启动脚本。</p>
+
+
+
+
+<p>然后就是在应用程序里面配置了。</p>
+
+
+
+
+<p>打开KOrganizer，左下角“日历”处新建一个日历。从本地文件添加，找到刚才你配置时填写的本地文件，自己取个名字，确定即可。如果没有RP问题的话，应该就可以看到你在Google Calendar上面的事件了。你可以在上面增删事件，对应的修改马上会保存到本地ics文件中。但是GCALDaemon会按照你在config-editor.sh里预设的时间间隔同步到google上去，最少的间隔都要10分钟，所以这段时间里面要谨慎到Web上修改日历。</p>
+
+
+
+
+<p>打开KAddressbook，左下角“地址簿”处新建一个地址簿。从LDAP添加，只用填写主机和端口，主机为localhost，端口为你在config-editor.sh里面填写的端口，默认为9080。然后就可以同步了。不过我发现一个问题，在KAddressBook里面删除，不能更新Gmail。似乎是LDAP不支持。</p>
+
+
+
+
+<p>通过以上配置，可顺利将Google的若干服务与KDE集成。当然，配上IMAP的KMail收发Gmail，Aggregator导入Google Reader条目，这样就更完整了。</p>
+
+
+
+
+<p>不过，我还是十分看好Google的，现在我已经不习惯用本地客户端来收发Mail了，GMail太方便了。所以上述配置对我来说最有用的，还只是KOrganizer而已。什么时候我养成了看TODO上Web的习惯，那这些配置也就彻底不需要了。</p>
+
+
+
+
+<p></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[使用XeTeX，CJK无忧，字体无忧]]></title>
+    <link href="http://casparant.github.io/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/"/>
+    <updated>2009-04-22T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use</id>
+    <content type="html"><![CDATA[<p>曾经的曾经，为了折腾LaTeX中的中文字体，我参照了<a href="http://blog.linuxsky.org/58/viewspace-3824.html">Monnand</a>和<a href="http://linuxdesktop.cn/2008/02/26/config-texlive-cjk-under-ubuntu.html">TualatriX</a>童鞋的配置方式，装好CJKutf8宏包，然后用fontforge制作<a href="http://en.wikipedia.org/wiki/Type_1_and_Type_3_fonts">Type1</a>字体，然后才算搞定。一切皆因为LaTeX默认不支持Unicode，也不能支持<a href="http://en.wikipedia.org/wiki/TrueType">Truetype</a>字体。</p>
+
+
+
+
+<p>最近一段时间一直听到XeTeX的相关消息，在BYR上，在linuxsir上，都听说了，只是安逸于自己的CJKutf8，不想去折腾。可是昨天写简历的时候，发现没有斜体字，看来我制作的Type1字体没有包含斜体字。为了把斜体弄出来，上网狂Google，就在熄灯前的几秒钟，我看到了网上对XeTeX原生Unicode支持的评价很高，尤其是它可以直接使用Truetype字体，顿时心里痒痒。今天起床后，趁着做实验的空档，把XeTeX装好，果然很惊喜啊。</p>
+
+
+
+
+<p>首先了解一下什么是XeTeX吧，其官方主页：<a href="http://www.tug.org/xetex/">http://www.tug.org/xetex/</a>. 网页开篇即说：XeTeX is "a typesetting system based on a merger of Donald Knuth's TeX system with <strong>Unicode</strong> and <strong>modern font technologies</strong>."，正合我意。</p>
+
+
+
+
+<p><!--more-->不过虽然XeTeX支持了Unicode和<a href="http://en.wikipedia.org/wiki/OpenType">OpenType</a>(查看其wiki可以知道OpenType是一种同时包含了Truetype和Type1两种字体的字体)，但是它没说可以完美支持中文字体和中文排版，所以现在推荐孙文昌老师开发的<a href="http://bbs.ctex.org/viewthread.php?tid=40232&extra=&page=1">xeCJK宏包</a>（当然还有一种是zhspacing，不过我不太喜欢用），可以完美支持中文。具体的使用方法，可以看附件里的文档。</p>
+
+
+
+
+<p>从文档里可以找到我所需要的斜体字，嘿嘿。</p>
+
+
+
+
+<p>接下来说说怎么安装XeTeX和相关的宏包。</p>
+
+
+
+
+<p>linuxsir的精华区有一篇文章讲了怎么在texlive-2007下安装XeTeX和xeCJK，由于xeCJK和zhspacing这两个中文处理宏包需要XeTeX-0.997以上版本，所以需要hack一下texlive-2007，而我现在Gentoo中最新的portage里的texlive已经是2008-r4，XeTeX的版本是0.999，所以不需要hack了，而xeCJK和zhspacing在gentoo-china的overlay里跟进很快，所以直接emerge zhspacing xecjk就可以了。</p>
+
+
+
+
+<p>Fedora，如果是DVD版的Fedora10，<del datetime="2009-05-01T12:33:15+00:00">那就不用装<a href="http://www.tug.org/texlive/">texlive</a>了，不过texlive版本是2007，里面的XeTeX版本应该不到0.997，所以大概需要上XeTeX网站上下最新版本，安装覆盖原来的版本。不过我没试过，有哪位童鞋装好的可以传授经验。</del>需要去texlive官方网站上把最新的texlive2008的镜像下下来，装好后去下孙老师的xeCJK包，这样是最快最保险的做法。</p>
+
+
+
+
+<p>另外还有Ubuntu，也因为没有环境所以无法测试。不过我最后一次用Ubuntu记得里面的texlive版本也是2007。</p>
+
+
+
+
+<p>最后提一句，搞不清楚texlive, tex, latex, xetex, oo_and_xxtex之间的关系的童鞋，请去<a href="http://www.tug.org/texlive/doc.html">http://www.tug.org/texlive/doc.html</a>，里面有文档，看了就会清楚很多了。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[原来在CentOS中配置VNCServer很容易]]></title>
+    <link href="http://casparant.github.io/blog/2009/03/04/it-is-very-easy-to-configure-vncserver-in-centos/"/>
+    <updated>2009-03-04T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/03/04/it-is-very-easy-to-configure-vncserver-in-centos</id>
+    <content type="html"><![CDATA[<p>发现该学点脚本了，有空可以在服务器上折腾折腾。不过在此之前我还是先得把实验室这台服务器配置好。</p>
+
+
+
+
+<p>服务器是CentOS5.2，准备开启VNC服务。想起<a href="http://www.casparant.com/remote-login-under-ubuntu.html">当年在Ubuntu下配置费了九牛二虎之力</a>，估计着在CentOS上也不会容易。</p>
+
+
+
+
+<p>没想到如此简单：</p>
+
+
+
+
+<p>服务器在安装时已经装好了VNCServer，接下去只要编辑<code>/etc/sysconfig/vncservers</code>文件中的<code>VNCSERVERS</code>字段（确保取消了这行的注释）：</p>
+
+
+
+
+<p><blockquote>VNCSERVERS="1:root 2:user1 3:user2 4:blablabla"</blockquote></p>
+
+
+
+
+<p>如果只要为单个用户开启VNC服务，只需按照PORT:USERNAME的格式修改，如果为多个用户开启VNC服务，则用空格隔开即可。</p>
+
+
+
+
+<p>如果需要修改分辨率，设置是否允许通过TCP登录、是否允许通过Web登录以及是否允许不安全TCP tunel登录，则修改<code>VNCSERVERARGS[2]</code>字段：</p>
+
+
+
+
+<p><!--more--><blockquote>VNCSERVERARGS[2]="-geometry 1024x768  -nolisten tcp -nohttpd -localhost"</blockquote></p>
+
+
+
+
+<p>注意按照注释提示，酌情修改。</p>
+
+
+
+
+<p>如果系统开启了防火墙，还要把5901~590x端口（取决于你为多少个用户开启VNC服务，如果VNC第一个端口开放，则为5901，以此类推）打开，至于是开启TCP端口还是UDP端口，按照自己的设置来修改。</p>
+
+
+
+
+<p>修改完毕后，把vncserver加入开机自动启动：</p>
+
+
+
+
+<p><pre lang="bash">chkconfig vncserver on</pre></p>
+
+
+
+
+<p>或者手动往<code>rc2~5.d/</code>中加入vncserver的链接。</p>
+
+
+
+
+<p>同时仍然要注意使用<code>vncpasswd</code>修改密码，并且修改<code>~/.vnc/xstartup</code>，注释最后两行，添加一行<code>gnome-session &</code></p>
+
+
+
+
+<p><pre lang="bash"># xterm -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+# twm &
+gnome-session &</pre></p>
+
+
+
+
+<p>从此每个用户都顺利过上了vnc登录生活……</p>
+
+
+
+
+<p></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Kde3界面字体设置]]></title>
+    <link href="http://casparant.github.io/blog/2009/02/21/kde3-interface-font-settings/"/>
+    <updated>2009-02-21T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/02/21/kde3-interface-font-settings</id>
+    <content type="html"><![CDATA[<p>升级到Ubuntu 8.10之后，发现amarok, kile这些程序的英文字体特别大，用Qt3 configuration改字体只能把正文的字体改变，菜单栏、状态栏的字体都变不了。</p>
+
+
+
+
+<p>上网搜了一下发现kcontrol这个kde的工具可以调整菜单栏字体。但是Ubuntu 8.10吧kcontrol这个包给去掉了，所以不能轻易设置字体了。继续上网搜，发现可以直接改<code>~/.kde/share/config/kdeglobals</code>这个文件。</p>
+
+
+
+
+<p>在文件中的<code>[General]</code>段添加下列几行：</p>
+
+
+
+
+<p><blockquote>fixed=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0<br />
+font=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0<br />
+menuFont=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0<br />
+taskbarFont=WenQuanYi Zen Hei,9,5,50,0,0,0,0,0<br />
+toolBarFont=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0</blockquote></p>
+
+
+
+
+<p>这几行的大部分内容大家都看得懂，就不解释了。后面的我也不管是什么意思了……</p>
+
+
+
+
+<p><!--more-->另外求助现场观众：1. Ubuntu 8.10下这个Intel GMA950显卡3D显示效果很臭，有什么可行的解决方案没？</p>
+
+
+
+
+<p>2. <del datetime="2009-02-21T15:43:11+00:00">今天可能是由于升级了系统还是误装了软件，发现“通用访问首选项”这个应用程序变成登录后自动常驻icon tray了，谁能告诉我怎么取消？我懒得去追根溯源了……</del>解决了，在“辅助技术首选项”中点击“键盘辅助登录功能”，取消“允许通过快捷键打开或关闭辅助特性”。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[把你的手机和Gmail同步起来！]]></title>
+    <link href="http://casparant.github.io/blog/2009/02/10/synchronize-your-mobile-with-gmail/"/>
+    <updated>2009-02-10T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/02/10/synchronize-your-mobile-with-gmail</id>
+    <content type="html"><![CDATA[<p>很早以前，在想要是Gmail里的列表能和我手机上的联系人同步那该有多好。现在这个想法终于实现了，Google推出的<a href="http://www.google.com/mobile/default/sync.html">Google Sync</a>服务，让你的手机联系人轻松与Gmail联系人同步。</p>
+
+
+
+
+<p>Google总是能推出让人兴奋的产品，前几天的<a href="http://www.google.com/latitude/intro.html">Latitude</a>也是这样的产品，不过好多好友就是不确认我的请求，我的Latitude上现在还没几个人的信息。不过Sync这个产品绝对是值得每个拥有智能手机的人一试的好东西。</p>
+
+
+
+
+<p>我的手机是N81，按照Google Sync页面上的<a href="http://www.google.com/support/mobile/bin/answer.py?answer=98230&topic=15015">提示</a>，很顺利就完成了同步。不过有点郁闷的是，以前对同一个人在手机上和在Gmail里用了不同名称，同步后就出现了两个联系方式，不过这是没办法的事情。对于名字相同的人，会把资料给合并。</p>
+
+
+
+
+<p>另外有个不太好的地方是，由于手机和Gmail在栏位处理上的不同，同步后资料会有所偏差。比如我在Gmail上对一个人记录了5个电子邮件(1个home,1个work,3个other)，同步到手机上后，只有栏位不同的三个电子邮件同步到了手机上，其中Gmail上3个other电子邮件中只有最后一个同步到了手机上。<del datetime="2009-02-10T16:03:15+00:00">估计应该是同步的时候手机对栏位进行判断然后对号入座，对于同栏位不同号码的信息，它不会另外设置一个重复的栏位(事实上我的手机可以设置重复栏位，比如多个“电子邮件(家庭)”)，而是在同栏位上进行覆盖。</del>问题也可能出在Google那边，获取资料的时候自动覆盖相同栏位也是完全可能的。所以在这里提醒使用Gmail记通讯录的童鞋，注意一下mobile和E-mail的不同类型，防止同步到手机上后丢失重要信息。</p>
+
+
+
+
+<p>使用Google Sync的最直接好处就是，丢了手机之后不用再担心通讯录遗失了-_-||。备份方便，同步简单，比nokia自带的同步工具还方便，只要有网络，一键同步就搞定了。</p>
+
+]]></content>
+  </entry>
+  
+</feed>

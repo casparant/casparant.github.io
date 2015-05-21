@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>俺也汇编一下：EMU8086 - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="对不住各位看官了……这个EMU8086模拟器是Windows下的，还是破解的……我只是为了完成计组老师的作业而已。只是有道题比较有意思，我深深地想了好久，发现一些问题，估计老师不会认真改我的作业，我把它发上来发泄发泄，嗯。 话说EMU8086预先弄了几个PORT， &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2008/06/09/asm-by-emu8086">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">俺也汇编一下：EMU8086</h1>
+    </header>
+  
+  <div class="entry-content"><p>对不住各位看官了……这个EMU8086模拟器是Windows下的，还是破解的……我只是为了完成计组老师的作业而已。只是有道题比较有意思，我深深地想了好久，发现一些问题，估计老师不会认真改我的作业，我把它发上来发泄发泄，嗯。</p>
+
+<p>话说EMU8086预先弄了几个PORT，其中PORT9就是实现了一个机器人的东东。具体描述如下：在一个9X6的地图内，有墙、灯、机器人三种东西。机器人碰到墙和灯都过不去，但是碰到灯的时候会自动改变灯的状态，也就是关灯或者开灯。<br />
+现在在地图上画一个地图，机器人使用给定的算法会产生死角，问怎么样消除死角。</p>
+
+<p>话说原来给定的代码太弱了，一眼看出破绽：机器人碰墙只能单纯地朝一个方向转，那么碰到开了一口的闭合空间时，一旦进去就出不来了(如图)，必然得改进。改进的方法有两个，一个是把行走改成随机方向，那么机器人再怎么囧最后也能走出去，可是老师不提倡随机，那么只好接着改了。</p>
+
+<p><img src="http://img.ant.im/di-5PLC.png" /></p>
+
+<p><!--more-->在不使用随机走法的情况下，使用回溯法是更好的解决方案。回溯法用在走迷宫的时候比较实用，遵循“右手法则”地回溯搜索路径，最后走出死角。</p>
+
+<p>然而一般“右手法则”下的回溯会产生另一个问题，就是在空白面积比较大的时候，会出现“绕某点打转”的现象，如下图：</p>
+
+<p><img src="http://img.ant.im/di-HWFU.png" /></p>
+
+<p>这在机器人行走中是致命的。</p>
+
+<p>我原计划采用的是“撒米标记法”解决此问题。<strong>但是由于对数组的使用不熟悉，没有解决这个问题。</strong>(关键在这，- -b)在这里仅写出思路：“撒米标记法”。使用一个数组来记录当前点是否已经被车子移到过，如果当前点在之前已经在同个方向上被访问过，则机器人不再继续前进，而是直接选择一个其他方向，继续按照右手法则行走。</p>
+
+<p>第二个死角的产生比较麻烦，是软件本身产生的“副作用”。此“副作用”在如下情况下执行关灯/开灯操作时出现：<br />
+当程序员手动执行机器人转向操作时，软件会记录这一次转向。一次左转和一次右转会抵消。不连续的两次转向不相关。所以转向结束后，会有一个“净转向”值。此时机器人如果正好面对一盏灯，在执行关灯/开灯操作之后，机器人会自动逆着“净转向”的方向转动相应次数。例如下图：</p>
+
+<p><img src="http://img.ant.im/di-YE28.png" /></p>
+
+<p>机器人在两次右转之后，面对的是灯。在关完灯的同时，机器人会自动向左转两次，恢复到原来状态。<br />
+了解了转向的副作用，便可知下图会产生一个死角：</p>
+
+<p><img src="http://img.ant.im/di-WD0J.png" /></p>
+
+<p>为了解决这个死角，可以采用“抵消副作用”法。对于以上右手法则，可以很容易获得其状态机：(其实这个状态机挺扯的，原谅我自动机课没学好T_T)</p>
+
+<p><img src="http://img.ant.im/di-TO8N.png" /></p>
+
+<p>圈内数字表示当前状态下的净转向值。</p>
+
+<p>具体解法可看附件的代码。</p>
+
+<p><pre lang="asm">
+#MAKE_BIN#
+#CS = 500#
+#DS = 500#
+#SS = 500#    ; stack is set
+#SP = FFFF#   ; automatically.
+#IP = 0#
+R_PORT 		EQU 9</pre></p>
+
+<p>;BL	255: turned left<br />
+;	0: turned none<br />
+;	1: turned right</p>
+
+<p>;BH	0: initial state<br />
+;	1: try right<br />
+;	2: try ahead<br />
+;	3: try left<br />
+;	4: try back<br />
+;	when it moves ahead, BH should be 0</p>
+
+<p>eternal_loop:<br />
+	CALL	WAIT_ROBOT<br />
+	MOV	AL, 4<br />
+	OUT	R_PORT, AL<br />
+	CMP	BH, 0		; judge if initial state<br />
+	JE	first_step	; first_step<br />
+	CALL	WAIT_EXAM	; else judge how to move<br />
+	IN	AL, R_PORT + 1<br />
+	CMP	AL, 0		; nothing?<br />
+	JE	forward		; so, forward<br />
+	CMP	AL, 255 	; wall?<br />
+	JE	meet_wall	; so, turn right<br />
+	CMP	AL, 7		; switched-on lamp?<br />
+	JE	switch_off	; so, switch it off and do something<br />
+	CMP	AL, 8		; switched-off lamp?<br />
+	JE	switch_on	; so, switch it on and do something<br />
+	
+first_step:<br />
+	ADD	BH, 1<br />
+	MOV	BL, 1<br />
+	JMP	turn_right<br />
+	
+meet_wall:<br />
+	ADD	BH, 1<br />
+	SUB	BL, 1<br />
+	JMP	turn_left</p>
+
+<p>meet_lamp:<br />
+	ADD	BH, 1<br />
+	CMP	BL, 255<br />
+	JE	turn_around<br />
+	SUB	BL, 1<br />
+	CMP	BL, 0<br />
+	JE	eternal_loop<br />
+	JMP	turn_left<br />
+		<br />
+turn_left:<br />
+	CALL	WAIT_ROBOT	; turn left operation<br />
+	MOV	AL, 2<br />
+	OUT	R_PORT, AL<br />
+	JMP	eternal_loop	; go again</p>
+
+<p>forward:<br />
+	MOV	BH, 0		; when forward, back to initial state<br />
+	MOV	BL, 0		; no turn mark<br />
+	CALL	WAIT_ROBOT	; go ahead<br />
+	MOV	AL, 1<br />
+	OUT	R_PORT, AL<br />
+	JMP	eternal_loop	; go again!<br />
+	
+switch_off:			<br />
+	CALL	WAIT_ROBOT	; turn off the lamp<br />
+	MOV	AL, 6<br />
+	OUT	R_PORT, AL<br />
+	
+	JMP	meet_lamp<br />
+	
+switch_on:<br />
+	CALL	WAIT_ROBOT	; turn on the lamp<br />
+	MOV	AL, 5<br />
+	OUT	R_PORT, AL<br />
+	
+	JMP	meet_lamp<br />
+	
+turn_right:<br />
+	CALL	WAIT_ROBOT	; turn right operation<br />
+	MOV	AL, 3<br />
+	OUT	R_PORT, AL<br />
+	JMP	eternal_loop	; go again<br />
+	
+turn_around:<br />
+	CALL	WAIT_ROBOT	; turn right twice to turn around<br />
+	MOV	AL, 3<br />
+	OUT	R_PORT, AL<br />
+	
+	CALL	WAIT_ROBOT<br />
+	MOV	AL, 3<br />
+	OUT	R_PORT, AL<br />
+	
+	JMP	eternal_loop	; go again<br />
+	
+WAIT_ROBOT	PROC<br />
+busy:<br />
+	IN	AL, R_PORT+2<br />
+	TEST	AL, 00000010b<br />
+	JNZ	busy ; busy, so wait.<br />
+	RET<br />
+WAIT_ROBOT	ENDP</p>
+
+<p>WAIT_EXAM	PROC<br />
+busy2:<br />
+	IN	AL, R_PORT+2<br />
+	TEST	AL, 00000001b<br />
+	JZ	busy2 ; no new data, so wait.<br />
+	RET    <br />
+WAIT_EXAM	ENDP
+</p>
+
+<p>写完了。反正问题就在，会绕圈……</p>
+
+<p>等考完事再来看。估计也就是几个register的问题。</p>
+
+<p>最后附上一个可启动的小东东：<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanM2VhYjkzOWUtNzIzNy00ZmExLWE4ZDMtNWU0ZTU0OTEwYWM3&hl=zh_CN">打字训练</a>——所谓的“操作系统”作业，Orz。专门为某打字不按指法的家伙准备的。</p>
+
+<p>谢帆说还要把Loader和Kernel分开写，我继续Orz了，这个小东西填MBR的牙缝都不够呢，还分开……</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/programming/'>programming</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-09T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2008/06/09/asm-by-emu8086/" data-via="" data-counturl="http://casparant.github.io/blog/2008/06/09/asm-by-emu8086/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/06/08/baidu-records-me/" title="Previous Post: 终于被百度收录了">&laquo; 终于被百度收录了</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

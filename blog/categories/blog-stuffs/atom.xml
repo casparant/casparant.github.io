@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Blog Stuffs | Ant-Veil]]></title>
+  <link href="http://casparant.github.io/blog/categories/blog-stuffs/atom.xml" rel="self"/>
+  <link href="http://casparant.github.io/"/>
+  <updated>2015-05-21T11:59:03+08:00</updated>
+  <id>http://casparant.github.io/</id>
+  <author>
+    <name><![CDATA[Caspar]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[新近摆弄WP的一点备忘]]></title>
+    <link href="http://casparant.github.io/blog/2009/12/23/some-notes-of-building-wordpress-blog/"/>
+    <updated>2009-12-23T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/12/23/some-notes-of-building-wordpress-blog</id>
+    <content type="html"><![CDATA[<p>最近在加班之余还把自己的Blog整理了一遍，整理过程中发现这不知不觉就过去了一年。一年改变了好多东西，唯有折腾精神不变。</p>
+
+
+
+
+<p>首先是升级WP到了2.9，然后把Blog主题换了，在网上选了一款比较清爽的主题，<a href="http://www.neoease.com" target="_blank">mg12</a>的elegant box主题。这位主题作者的设计很对我胃口，上次用了他大名鼎鼎的iNove，感觉良好，情绪稳定。</p>
+
+
+
+
+<p>然后就整理了一下插件，自己hack了一下主题。原本辛辛苦苦hack了好几个小时的代码，把wp-thread-comment的回复样式弄得跟原生界面一样了，结果发现elegant box主题在页面上不能正确回复评论，而且不能正确显示分页。看了代码才发现，从wp2.7开始好像就自带了嵌套回复、评论分页功能，从这个版本开始主题模板中的comments.php就和以前不一样了。新的主题模板有仿佛和wp-thread-comment冲突。不过wp-thread-comment里面用的parent字段和wp原生嵌套功能的字段是一样的，所以关闭了wp-thread-comment之后嵌套评论还在。只是没有了邮件发送通知功能，网上再搜搜，发现<a href="http://fairyfish.net" target="_blank">denishua</a>的<a href="http://fairyfish.net/2008/11/03/comment-reply-notification/" target="_blank">Comment Reply Notification</a>把邮件发送功能从wp-thread-comment中抽取出来单独而成的，正和我意，于是装上。然后又发现评论上方自带了引言功能，那么Quoter这个插件也可以下课了。看来好久没有折腾wp，那是相当Out啊。</p>
+
+
+
+
+<p>装了几个锦上添花的插件：<a href="http://wordpress.org/extend/plugins/wp-recentcomments/" target="_blank">WP-RecentComments</a>, <a href="http://wordpress.org/extend/plugins/wp-multicollinks/" target="_blank">WP-MultiColLinks</a>, <a href="http://wordpress.org/extend/plugins/wp-easyarchives/" target="_blank">WP-EasyArchives</a>，作者都是mg12，主要是让版面排得更好看一些，其实不用也没太大影响。</p>
+
+
+
+
+<p><!--more-->接下去把侧边栏hack了一下，把文章页面的侧边栏内容和首页分开了。我觉得首页放一些站外共享的内容挺好，比如Google Friend Connect，Twitter，豆瓣分享什么的，但是在文章页读者想看的应该是和文章相关的内容，比如关联日志、同分类日志、Top10日志、随机日志等等。于是在sidebar.php里面加了一个判断，is_single()的时候，调用自己手动写的一个侧边栏文件，不通过Widgets来配置。这也算是用户体验上的一个改进吧，不过话说我的Blog应该是光订阅不访问的人比较多，现在日IP估计连50都没。</p>
+
+
+
+
+<p>最后做的一件事情就是以前经常干的：删文章。最开始出于这个那个的原因，转载了一些现在都没什么兴趣了的文章，现在看看实在扎眼，删了。</p>
+
+
+
+
+<p>P.S. wp2.9有了回收站功能和图片编辑功能，用了一下感觉很好。推荐大家升级。</p>
+
+
+
+
+<p></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[博客搬家后Feed测试]]></title>
+    <link href="http://casparant.github.io/blog/2009/11/06/feed-test-in-new-host/"/>
+    <updated>2009-11-06T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/11/06/feed-test-in-new-host</id>
+    <content type="html"><![CDATA[<p>换到<a href="http://www.gegehost.com">hugege</a>的site5主机了，不过feed和页面都出现了很多问题。测试一下。</p>
+
+
+
+
+<p>重新验证验证Feedsky: 1975e338</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[我也软文一枚:GeekCook]]></title>
+    <link href="http://casparant.github.io/blog/2009/05/10/geekcook-tee-ad/"/>
+    <updated>2009-05-10T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/05/10/geekcook-tee-ad</id>
+    <content type="html"><![CDATA[<p>从<a href="http://yegle.net/2009/05/06/just-ad" target="new">狗狗</a>那里发现的一个好地方，<del datetime="2009-05-18T04:09:04+00:00"><a href="http://geekcook.blogspot.com" target="new">GeekCook@blogspot</a></del>，被墙了，新地址：<a href="http://www.geekcook.com/">GeekCook</a>，卖T恤和卫衣的。店主说了，写软文可以免运费，那我就撰软文一篇，把运费赚回来吧。</p>
+
+
+
+
+<p>话说店主的东西不多，样式都很棒。可惜狗狗已经抢了两件[<a href="http://www.geekcook.org/?p=44" target="new">1</a>,<a href="http://www.geekcook.org/?p=50" target="new">2</a>]，Amelie同学也抢了<a href="http://www.geekcook.org/?p=52" target="new">一件</a>，我能选择的余地就太少了～暂定那件<a href="http://www.geekcook.org/?p=48" target="new">稀有元素</a>的吧，话说当年背元素周期表我可是顺背如流啊。那件<a href="http://www.geekcook.org/?p=33" target="new">Ps</a>的也不错，只可惜自己用的是GIMP不是Ps，希望店主多推出点GNU的产品哦。</p>
+
+
+
+
+<p>不管了，撞衫就撞衫，我也要Twitter那件了！</p>
+
+
+
+
+<p>上图两张：</p>
+
+
+
+
+<p><!--more-->[caption id="" align="aligncenter" width="500" caption="Twitter Tee"]<a href="http://item.taobao.com/auction/item_detail-db1-f109fe525132e9a0277d76419f03bab7.htm"><img alt="Twitter Tee" src="http://farm3.static.flickr.com/2709/4111087617_4db0e03dcd.jpg" title="Twitter" width="500" height="500" /></a>[/caption]</p>
+
+
+
+
+<p>[caption id="" align="aligncenter" width="500" caption="稀有金属，没有雷死你吧？"]<a href="http://item.taobao.com/auction/item_detail-0db1-2424c10c609c8e832f4bd86728ba87c5.htm"><img alt="稀有金属，没有雷死你吧？" src="http://farm3.static.flickr.com/2770/4111080151_03be3903b7_o.jpg" title="稀有金属，没有雷死你吧" width="500" height="500" /></a>[/caption]</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[我的高PV结束了]]></title>
+    <link href="http://casparant.github.io/blog/2009/04/11/high-pv-ended/"/>
+    <updated>2009-04-11T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/04/11/high-pv-ended</id>
+    <content type="html"><![CDATA[<p>最近一直有很高很高的PV，<a href="http://tongji.cn.yahoo.com/report.html?unit_id=472876">yahoo stat</a>里面一看就猜到是某个页面重重复访问（事实上是重复刷新）得到的结果。因为自己用的FF3一直没有出现问题，就没从自己网站上去找症结。不过最近网站访问速度很慢，有时候数据库连接还出错，问了Paveo，他说我MySQL资源超标。虽然不知道是怎么回事（现在知道了，页面重复刷新不断请求MySQL资源），但是怀疑跟那个重复访问的页面有关。从yahoo stat里面找到了那个页面，稍微一看，我靠，居然是侧边栏的Google Friend Connect在搞鬼。那个重复访问的页面URL的GET数据就是我的Google Friend Connect里的参数。</p>
+
+
+
+
+<p>于是去Google Friend Connect网站重新按步骤操作了一次，发现原来是我上次清理Blog的文件，把根目录下的canvas.html和rpc_relay.html这两个文件给删掉了。补上之后，到今天一直没问题。</p>
+
+
+
+
+<p>刚才YuLei师兄告诉我，页面终于能留言了，我就奇怪了，以前不能留言么。他说他用IE和Chrome访问我的页面就一个劲刷新，根本没法浏览，更别提留言了。于是真相大白……原来缺了那两个文件，页面就不停刷新，不停从MySQL请求数据，我网站就资源超标，访问过慢。</p>
+
+
+
+
+<p>不过这段时间每天有近1000PV呢，可惜了，嘿嘿。</p>
+
+
+
+
+<p><!--more-->另外说几个事。一个是交换友情链接，我昨天更新了一下友情链接列表，发现一年多过去，好多人的Blog都因为域名到期之类的问题关闭了。所以我就删除了你们的链接。如果你们换了域名，请跟我联系，我会补上。另外申请友情链接的，给我Mail或者在留言页面留言都可以。我的PR不高，所以对对方的PR也没要求。</p>
+
+
+
+
+<p>还有一个就是，我终于把Google Friend Connect的留言板弄起来了，娃哈哈……大家可以在那上面灌水，嗯。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[再次测试Translate插件]]></title>
+    <link href="http://casparant.github.io/blog/2009/03/16/test-posting/"/>
+    <updated>2009-03-16T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2009/03/16/test-posting</id>
+    <content type="html"><![CDATA[<p>测试发文章……</p>
+
+
+
+
+<p>———————————— 分割线 ————————————</p>
+
+
+
+
+<p>发文成功。我基本上知道是什么原因了。</p>
+
+
+
+
+<p>记得第一次发现不能发文是在那次Google很多服务都不能用的时候。当时正打算发个文章上来抱怨一把google code不能用了，google calendar不能用了，google group不能用了，google translate不能用了，还打算感叹一下Google对我们生活的巨大影响。结果一个文章发了老半天发不出去，只是存到草稿箱里去了。而且里面的内容全没了。</p>
+
+
+
+
+<p>以为是空间商的问题，不过后来还是没去怀疑空间商；后来觉得是自己的wp的问题，但是期间我没有改过wp的文件啊。</p>
+
+
+
+
+<p>只好郁闷地搁置了两个星期。</p>
+
+
+
+
+<p>现在知道问题在哪了。是因为<a href="http://wordpress.org/extend/plugins/wp-slug/">WP-slug translate</a>这个插件。这个插件会把日志的标题通过Google Tranlate翻译成永久链接。</p>
+
+
+
+
+<p>然后这几天Google Translate经常down掉，所以由于某些原因，我的日志就发布失败了。</p>
+
+
+
+
+<p>sigh...</p>
+
+
+
+
+<p>顺便说一句，KDE4.2.1真的很不错，KWin真的很棒～</p>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Gentoo新老问题-Milestone2 - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="昨天晚上已经用上2.6.29的内核了，而且也解决了部分上次提到的问题，写出来，权当折腾Gentoo之Milestone2吧。 1. Amarok安装成功： 今天更新了overlay，发现svn版的amarok已经把qtscriptgenerator给单独分出来做成一个包了，顿时感觉有戏， &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">Gentoo新老问题-Milestone2</h1>
+    </header>
+  
+  <div class="entry-content"><p>昨天晚上已经用上2.6.29的内核了，而且也解决了部分上次提到的问题，写出来，权当折腾Gentoo之Milestone2吧。</p>
+
+<p>1. Amarok安装成功：</p>
+
+<p>今天更新了overlay，发现svn版的amarok已经把qtscriptgenerator给单独分出来做成一个包了，顿时感觉有戏，赶紧emerge一把，结果还是出错，不过错误提示和以前不太一样：
+<blockquote>/usr/lib/mysql/libmysqld.a(sql_parse.o): In function `mysql_parse(THD*, char const*, unsigned int, char const**)':                          <br />
+(.text+0xaadb): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_parse.o): In function `mysql_parse(THD*, char const*, unsigned int, char const**)':                          <br />
+(.text+0xabcc): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_prepare.o): In function `mysql_stmt_reset(THD*, char*)':                                                     <br />
+(.text+0x1dad): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_prepare.o): In function `mysql_stmt_reset(THD*, char*)':                                                     <br />
+(.text+0x1ef6): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_prepare.o): In function `mysql_stmt_fetch(THD*, char*, unsigned int)':                                       <br />
+(.text+0x20e8): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_prepare.o):(.text+0x2273): more undefined references to `clock_gettime' follow                               <br />
+/usr/lib/gcc/i686-pc-linux-gnu/4.3.3/../../../../i686-pc-linux-gnu/bin/ld: warning: creating a DT_TEXTREL in object.                        <br />
+collect2: ld returned 1 exit status                                                                                                         <br />
+make[2]: *** [lib/libamarok_collection-sqlcollection.so] Error 1                                                                            <br />
+make[1]: *** [src/collection/sqlcollection/CMakeFiles/amarok_collection-sqlcollection.dir/all] Error 2                                      <br />
+make[1]: *** Waiting for unfinished jobs....                                                                                              </blockquote></p>
+
+<p><!--more-->很明显是ld的时候没有设定flag。上网搜了一通发现了-lrt参数，加到LDFLAGS中，重新emerge，搞定了。</p>
+
+<p><pre lang="bash">export LDFLAGS=" -lrt " && emerge amarok</pre></p>
+
+<p>2. eclipse启动失败</p>
+
+<p>都删了~/workspace好几次了，还是在~/workspace/.metadata/.log中提示：
+<blockquote>!SESSION 2009-03-25 21:31:44.627 -----------------------------------------------<br />
+eclipse.buildId=I20080617-2000<br />
+java.version=1.6.0_12<br />
+java.vendor=Sun Microsystems Inc.<br />
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=zh_CN<br />
+Command-line arguments:  -os linux -ws gtk -arch x86</blockquote></p>
+
+<p>!ENTRY org.eclipse.ui.workbench 4 0 2009-03-25 21:31:53.869<br />
+!<strong>MESSAGE Widget disposed too early!</strong>
+!STACK 0<br />
+java.lang.RuntimeException: Widget disposed too early!</p>
+
+<p>上网搜索，发现只需在eclipse.ini的-vmargs参数后加上
+<pre>-Dorg.eclipse.swt.browser.XULRunnerPath=</pre>
+即可</p>
+
+<p>3. checkgmail占用CPU100%</p>
+
+<p>因为前面一直有Python/Perl的GUI程序出现麻将牌的乱码，而checkgmail在启动的时候遇到乱码会重新往./lang.xml文件中写一遍文件（当然还是乱码），几次之后这个文件就能达到几十MB，然后再继续就会造成CPU占用率过高。</p>
+
+<p>(0226) 4. 硬盘间、文件夹间复制文件速度太慢。复制到移动硬盘1M/s，同分区文件夹之间复制4M/s，远低于正常速度。</p>
+
+<p>原来是内核没配置好，先多配几个选项，以后慢慢研究吧。</p>
+
+<p>遗留问题：</p>
+
+<p><blockquote>
+[E] 挂起、休眠恢复后死机，黑屏，键盘鼠标无任何响应。<br />
+[E] KDE4注销后黑屏，不能重新进入KDM界面<br />
+[H] Python, Perl的GUI程序乱码；<br />
+[H] GEM间歇性不能开启<br />
+[H] 有时候关机出现循环提示：mount-ro: wait for killproc<br />
+[M] 配置KMS<br />
+[M] 配置宽屏控制台<br />
+[M] wine-gecko在QQ和迅雷中造成程序崩溃（其实不是Gentoo的问题，以前在Ubuntu里也碰到过这种问题）<br />
+[L] 如何在weblogic中配置jdbc-mysql
+</blockquote></p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/z-turn/'>z-turn</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-26T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/" data-via="" data-counturl="http://casparant.github.io/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/" title="Previous Post: 折腾Gentoo Milestone1">&laquo; 折腾Gentoo Milestone1</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

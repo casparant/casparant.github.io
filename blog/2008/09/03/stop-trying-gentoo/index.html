@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>咱先不折腾了 - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="我们为什么要用Linux作自己的主操作系统？ 我的内心是一直很佩服微软的。比尔盖茨一直在奋斗的Windows确实很成功，无论是自身的细节打造还是市场推广策略，都是很棒的。尤其是在用户体验上，GNU的操作系统或者Unix操作系统在短时间内无法相与比肩。 我也不是一开始就喜欢上Ubuntu &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2008/09/03/stop-trying-gentoo">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">咱先不折腾了</h1>
+    </header>
+  
+  <div class="entry-content"><p>我们为什么要用Linux作自己的主操作系统？</p>
+
+<p>我的内心是一直很佩服微软的。比尔盖茨一直在奋斗的Windows确实很成功，无论是自身的细节打造还是市场推广策略，都是很棒的。尤其是在用户体验上，GNU的操作系统或者Unix操作系统在短时间内无法相与比肩。</p>
+
+<p>我也不是一开始就喜欢上Ubuntu Linux的。一年多以前，我对Ubuntu也是抱着折腾的态度，最后总算是适应并且后来喜欢上了它。我也很佩服Ubuntu的发展之路。它已经抓住了M$的发展的部分路子，在用户体验上越来越贴近初级用户，在市场推广上，直接和笔记本厂商合作，弄得有模有样的。不过这也是很多Geeker对Ubuntu表示出不屑的原因。</p>
+
+<p>那么回归这个话题，我们为什么用Linux？</p>
+
+<p>首先讨论一个崇高的可能性：我们有自由精神，我们热爱开放源码事业。开源社区对中国的评价是，获取多，贡献少。我所在的实验室前阵子还准备把一个开源的VoIP项目改造改造，作为商业项目推出去。由此可推断持有Free Software思想的人毕竟该算是少数。</p>
+
+<p>那么，我们付不起高额的正版授权。在Free和Money Required之间，首选肯定是前者，可惜我们是在中国，一个盗版横行的国家。洁身自好的人估计比刚才说到的人数还少。</p>
+
+<p>另外一个可能性，工作需要。这种使用者可能连X都不需要，这种人要么就是Geeker，要么就是新手。</p>
+
+<p>还有一种可能性，Zhuangbility。</p>
+
+<p><!--more-->曾经我属于Zhuangbility的这种。或许我现在还是属于这种类型，要不然我也不会去尝试Gentoo了。不过当我现在看到，我的大部分工作都能在Linux下完成的时候，我从心里由衷感谢那些奉献Free Software的人。</p>
+
+<p>这几天一直在折腾Gentoo，折腾得筋疲力尽。因为刚开学，事情很多，太忙，我决定暂时放弃Gentoo。思考了一下我为什么用Linux，我需要的是效率优先。决定放弃Gentoo的时候，阿慕说我会放不下面子的，我知道她说的是我不想让自己被一个操作系统打倒，yegle都能驾驭的东西我为什么不能－。－不过我还是放下了，暂时丢开它，以后会再拾起它的。</p>
+
+<p>正如前面所述，Ubuntu的发展，在很大程度上借鉴了M$的模式。它越来越为Beginner考虑细节，以至于很多Geeker对此不屑一顾，觉得自己受到了侮辱。不过正因为它越来越傻瓜化，对我这种效率优先主义者，还是有很大吸引力的。而且debian系的apt包管理方式，对依赖关系的解决比redhat系好多了，用着也顺手。</p>
+
+<p>而Gentoo呢，它的文档丰富，对Linux系统的一些原理都有很详尽的阐释。它的定制化程度极高，可以随心所欲地自己搭配软件。它的portage系统很棒，加上overlay的支撑，对于喜欢尝鲜的用户来说最是方便。不过Gentoo一些软件编译时间太长了，我的时间就这么哗哗流逝了，而且USE Flag之类这种高度DIY的东西的学习曲线对我来说比较纠结……</p>
+
+<p>折腾Gentoo两个星期，自己编译了内核，以前总是说自己要向内核和驱动方向发展，却在装Gentoo前对其一无所知，Gentoo算是帮我打开了一扇大门。自己写了各种配置文件，从grub.conf到fstab，都手动写，累是累了点，不过还是了解了很多东西。</p>
+
+<p>现在Gentoo上装的是GNOME，我是个深深被习惯影响着的人，openbox+lxpanel+pcmanfm确实对我来说有很多不适应。不过GNOME太臃肿了，而且现在很卡，我也不知道该怎么优化。</p>
+
+<p>现在很多使用习惯很以前太不一样了，而我急需使用Linux，所以只好明天换系统了，换回Ubuntu。</p>
+
+<p>CU Later, Gentoo.</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/z-turn/'>z-turn</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-03T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2008/09/03/stop-trying-gentoo/" data-via="" data-counturl="http://casparant.github.io/blog/2008/09/03/stop-trying-gentoo/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/08/19/something-about-pidgin/" title="Previous Post: pidgin琐碎二三事">&laquo; pidgin琐碎二三事</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

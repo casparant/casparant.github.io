@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ant-Veil</title>
+  <title>把真实的XP系统转换为Linux下的虚拟机——VMware - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="Issue: 雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。 Environment: Razer Orochi 蓝牙鼠标
-Gentoo + KDE &hellip;">
+  <meta name="description" content="以下步骤在XP下完成： 下载VMware SCSI驱动 http://download3.vmware.com/software/vmscsi-1.2.0.4.flp 用UltraISO或者WinISO将其解压。 在设备管理器中安装一个SCSI驱动，选择解压后的驱动文件。 复制硬盘配置文件， &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +17,7 @@ Gentoo + KDE &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   
-  <link rel="canonical" href="http://casparant.github.io">
+  <link rel="canonical" href="http://casparant.github.io/blog/2008/02/14/true-xp-in-vmware">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
@@ -98,165 +97,111 @@ Gentoo + KDE &hellip;">
   </div>
   <div id="main">
     <div class="content">
-      
-<header>
-  <div class="back">　</div>
-  <h1 class="entry-title"><a href="/">Ant-Veil</a></h1>
-</header>
-<ul class="blog-index">
+      <article class="hentry" role="article">
   
-    
-    
-      
-      
-    
-    
   
-  <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a></h2>
-    
-      <div class="entry-content"><p>Issue:</p>
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">把真实的XP系统转换为Linux下的虚拟机——VMware</h1>
+    </header>
+  
+  <div class="entry-content"><p>以下步骤在XP下完成：</p>
 
-<p>雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
+<p>下载VMware SCSI驱动<a href="http://download3.vmware.com/software/vmscsi-1.2.0.4.flp" target="_blank"> http://download3.vmware.com/software/vmscsi-1.2.0.4.flp</a></p>
 
-<p>Environment: </p>
+<p>用UltraISO或者WinISO将其解压。</p>
 
-<p><blockquote>Razer Orochi 蓝牙鼠标<br />
-Gentoo + KDE<br />
-kernel 3.10 ~ 3.16<br />
-bluez 4.101 ~ 5.23<br />
-bluedevil 1.3.2 ~ 2.0_rc1</blockquote></p>
+<p>在设备管理器中安装一个SCSI驱动，选择解压后的驱动文件。</p>
 
-<p>Solution:</p>
+<p>复制硬盘配置文件，例如重命名为VMware-profile。</p>
 
-<p></div>
-      
-      
-        <footer>
-          <a rel="full-article" href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Read on &rarr;</a>
-        </footer>
-      
-    
-  </li>
+<p>以下步骤在Linux下完成：</p>
+
+<p>首先，到这里下载VMware Server——vmware推出的免费版本的VM虚拟机：</p>
+
+<p><a href="http://www.vmware.com/download/server/" target="_blank"><!--more-->http://www.vmware.com/download/server/</a></p>
+
+<p>下载完毕后安装——如果你还不会安装，请参考此文：<a href="http://www.casparant.com/linux-faq.html" target="_blank">Linux扫盲</a></p>
+
+<p>然后如果已经挂在了XP的分区，把xp盘unmount掉。</p>
+
+<p>接下去修改/etc/group文件，在disk那一行的末尾加上你的用户名，获得硬盘直接接入的权限。</p>
+
+<p>在VMware server中新建一个虚拟机，硬盘选择“使用物理磁盘”，选择需要接入的分区。</p>
+
+<p>特别要注意要把mbr所在的分区给选上，否则不能启动。</p>
+
+<p>启动后硬盘配置文件选择VMware，随后即可启动成功。</p>
+
+<p>另附：vmware-server-1.04序列号
+<blockquote>9A0DE-YWWFT-2450N-4L3KT<br />
+9AHDT-YP94T-24087-4RHRE<br />
+9216D-YWTF8-2D00Q-481CT<br />
+9856W-YY9DE-26410-4A2R8<br />
+9804X-YM969-2FHA2-480UT<br />
+98MF9-YY9FT-24HC1-48ML4<br />
+984DD-YME4X-24021-4TPVW<br />
+90448-YMT48-26184-4LMJR<br />
+9A04D-YMDFT-24583-4JJJ8</blockquote>
+另附：将vmware-server中XP的分辨率调整到12800x800的宽屏</p>
+
+<p>修改****.vmx文件(你虚拟系统的那个配置文件),在里面添加这两句话:
+<blockquote>svga.maxWidth = 1280</blockquote></p>
+
+<p>svga.maxHeight = 800</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
   
+    <a class='category' href='/blog/categories/configuration/'>configuration</a>
+  
+</span>
+
+ @
+        
 
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a></h2>
-    
-  </li>
-  
 
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a></h2>
-    
-  </li>
-  
 
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a></h2>
-    
-  </li>
-  
 
 
   
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a></h2>
-    
-  </li>
-  
 
 
+<time datetime="2008-02-14T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
   
-    
-    
-    
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2008/02/14/true-xp-in-vmware/" data-via="" data-counturl="http://casparant.github.io/blog/2008/02/14/true-xp-in-vmware/" >Tweet</a>
   
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/10/12/cm7-1-on-defy/">CM7.1 on DEFY</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/07/16/beginning-of-my-third-year-in-red-hat/">在Red Hat两年</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/03/03/jibber-jabber-on-the-resumes/">关于简历的杂碎</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410/">Libfprint Finally Supports Thinkpad T410</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/06/enable-fingerprint-in-thinkpad-t410-under-gentoo/">Enable Fingerprint in Thinkpad T410 Under Gentoo</a></h2>
-    
-  </li>
-  
-
-
-  
-</ul>
-<div class="pagination">
-  
-    <a class="prev" href="2">&larr; Older</a>
   
   
 </div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/02/11/suffer-alpha4-reinstallation/" title="Previous Post: 历经苦难的Ubuntu硬盘重装">&laquo; 历经苦难的Ubuntu硬盘重装</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
 
     </div>
     <footer role="contentinfo"><div class="content">

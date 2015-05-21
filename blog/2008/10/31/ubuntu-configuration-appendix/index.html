@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>在Ubuntu下编程开发配置Tips - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="值此Ubuntu 8.10发布之际（终于发布了，再不发布那就得叫Ubuntu 8.11了），特作此文。本文只是作为一个Ubuntu入门教材参考，因为很多人说我写Ubuntu安装教程时很多地方写的很模糊，对于没有Linux基础的人来说无异于天书- -b 孩子们，满足你们的愿望吧… &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2008/10/31/ubuntu-configuration-appendix">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">在Ubuntu下编程开发配置Tips</h1>
+    </header>
+  
+  <div class="entry-content"><p>值此Ubuntu 8.10发布之际（终于发布了，再不发布那就得叫Ubuntu 8.11了），特作此文。本文只是作为一个Ubuntu入门教材参考，因为很多人说我写Ubuntu安装教程时很多地方写的很模糊，对于没有Linux基础的人来说无异于天书- -b 孩子们，满足你们的愿望吧…</p>
+
+<p>本文基于如下对读者的假设：</p>
+
+<p>1. Ubuntu Linux安装成功。如果迄今为止没有成功，请询问身边已经安装成功的人。我相信安装成功的人的数量，在学校抓一把至少其中含有一个。</p>
+
+<p>2. 了解终端是什么，知道如何打开终端输入命令，了解命令语法。如果不知道如何打开终端输入命令，我也没办法……以下所有叙述，如果涉及命令操作，必然是在终端中进行操作。学过DOS的人应该对这一点在理解上没有难度，在Windows下用过cmd 运行ping命令检测网络的人在理解上应该也没有难度。关于命令的语法，比如sudo apt-get install OO_AND_XX这个命令，表示在使用root权限(sudo)的情况下使用软件包管理工具(apt-get)进行安装 (install)OO_AND_XX这个软件包的操作；同理sudo gedit /etc/apt/sources.list这个命令表示在使用root权限的情况下使用gedit这个文本编辑器打开/etc/apt/路径下的 sources.list这个文件进行编辑(真费劲- -b)</p>
+
+<p><!--more-->3.了解Linux下root权限的基本知识，为什么在2中的例子都要带上root而你见过的Redhat的教科书上就没有？因为上述命令是需要root权限的……</p>
+
+<p>由于Ubuntu LiveCD不带开发工具的不良嗜好，在进行编程和开发之前，需要解决工具的安装问题。你所需要的工具都需要从网络上获取，因此你需要更新你的网络源。网络源是一个仓库，通过在/etc/apt/sources.list下的URL更新仓库中的软件包列表，然后通过apt-get或aptitude工具从列表上下载、安装、卸载所需的软件包。</p>
+
+<p>在此提供一些比较好的教育网内的源列表：</p>
+
+<p><blockquote># 北邮Openware源，北邮校内人士首选源。曾经我说过这个源比较不稳定，但是后来经过验证，还是挺稳定的，推荐<br />
+deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ intrepid main multiverse restricted universe<br />
+deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ intrepid-backports main multiverse restricted universe<br />
+deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ intrepid-proposed main multiverse restricted universe<br />
+deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ intrepid-security main multiverse restricted universe<br />
+deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ intrepid-updates main multiverse restricted universe</blockquote></p>
+
+<p><blockquote># 台湾高性能计算中心(NCHC)源：<br />
+deb http://free.nchc.org.tw/ubuntu/ intrepid main restricted multiverse universe<br />
+deb http://free.nchc.org.tw/ubuntu/ intrepid-updates main restricted multiverse universe<br />
+deb http://free.nchc.org.tw/ubuntu/ intrepid-security main restricted multiverse universe<br />
+deb http://free.nchc.org.tw/ubuntu/ intrepid-proposed main restricted multiverse universe<br />
+deb http://free.nchc.org.tw/ubuntu/ intrepid-backports main restricted multiverse universe</blockquote></p>
+
+<p><blockquote># 台湾交大(NCTU)源：<br />
+deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ intrepid main multiverse restricted universe<br />
+deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ intrepid-backports main multiverse restricted universe<br />
+deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ intrepid-proposed main multiverse restricted universe<br />
+deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ intrepid-security main multiverse restricted universe<br />
+deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ intrepid-updates main multiverse restricted universe</blockquote></p>
+
+<p>从上述三个中挑选一个源，覆盖到/etc/apt/sources.list下即可。覆盖方法：</p>
+
+<p><pre lang="bash">sudo gedit /etc/apt/sources.list</pre></p>
+
+<p>打开后挑选一个源，复制到文件中，覆盖原内容，保存退出。其中要注意的一点是，如果你的Ubuntu版本是8.04，那么保持源列表中的"hardy"不变，如果你的是Ubuntu 8.04，请将所有的"intrepid"改成"hardy"，如果是7.10，那么改成"gutsy"。</p>
+
+<p>安装完毕之后，请执行下列命令更新软件列表(仅仅是软件列表，还没有更新系统和下载软件)：</p>
+
+<p><pre lang="bash">sudo apt-get update</pre></p>
+
+<p>更新完毕之后，如果你的网速太慢，就不要执行更新操作了，凑合着用吧，如果速度还行，可以执行下列命令更新系统：</p>
+
+<p><pre lang="bash">sudo apt-get dist-upgrade</pre></p>
+
+<p>更新或者没有更新完系统之后，可以选择安装中文输入法和中文语言包支持。这一步我一般是在图形界面下完成的：到系统(System)->系统管理(Administration)->语言支持(Language Support)中，勾选汉语(Chinese)选项，自动下载中文语言包和SCIM的拼音支持。</p>
+
+<p>准备工作结束，可以开始安装编译器gcc了。</p>
+
+<p>如果你只是运行sudo apt-get install gcc，那么当你写完一个c程序之后运行gcc test.c会提示你找不到头文件。那是因为你没有装libc-dev这个包。包含lib开头和dev结尾的软件包在Ubuntu下很流行，它表示这是一个开发库(developing library)，其中包含了C语言标准头文件和库。在Ubuntu下另外有一个软件包集合了这些常用的C/C++开发工具，它的名字叫build- essential。所以你可以只运行下列命令就可以完成gcc的配置：</p>
+
+<p><pre lang="bash">sudo apt-get install build-essential</pre></p>
+
+<p>gcc是一个强大的工具，目前我只是使用它来编译C、C++和ASM，关于gcc的更多使用方法，可以使用下列两个方法：</p>
+
+<p><pre lang="bash">man gcc</pre></p>
+
+<p>http://gcc.gnu.org/onlinedocs/</p>
+
+<p>至于man命令的作用，请运行man man-_-|||</p>
+
+<p>接下去可以按相同的方法安装gdb，只需要一条命令：</p>
+
+<p><pre lang="bash">sudo apt-get install gdb</pre></p>
+
+<p>然后谈谈vi。现在大家使用的vi基本上都是vim，可以使用方向键来控制移动，而Ubuntu自带的vi由于习惯问题让人很不适应，所以你应该安装vim-full这个软件，它包含了vim和gvim，后者是一个GUI化的vim编辑器：</p>
+
+<p><pre lang="bash">sudo apt-get install vim-full</pre></p>
+
+<p>刚离开VS或者VC的你，可能不适应Linux下的编程环境。然而适应VI的操作是一个必须的技能，传说Linux程序员有三种，使用VI进行开发的，使用EMACS开发的，和使用其他进行开发的。如果你有兴趣了解emacs，可以运行下列命令：</p>
+
+<p><pre lang="bash">sudo apt-get install emacs21</pre></p>
+
+<p>vi和emacs的使用，请访问下列站点：</p>
+
+<p>http://vimdoc.sourceforge.net/htmldoc/usr_toc.html</p>
+
+<p>http://www.gnu.org/software/emacs/manual/</p>
+
+<p>至此，vi+gcc+gdb的开发环境基本上搭建完毕，进行操作系统课上的基础编程作业应该绰绰有余了。
+</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/configuration/'>configuration</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-31T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2008/10/31/ubuntu-configuration-appendix/" data-via="" data-counturl="http://casparant.github.io/blog/2008/10/31/ubuntu-configuration-appendix/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/10/23/alipay-for-linux/" title="Previous Post: [转]支付宝针Firefox 的安全控件 for Linux">&laquo; [转]支付宝针Firefox 的安全控件 for Linux</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>折腾Gentoo Milestone1 - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="上次在日志中提到一下当Ubuntu9.04正式版出来的时候，我就换Gentoo，结果自己还是在Ubuntu Aplha6 出来之前就开始了Gentoo折腾之旅。 前一次折腾Gentoo还是在暑假，因为挂载和其他一堆莫名其妙的问题导致我直接放弃了Gentoo。这次是在心理准备充足的情况下开始的， &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2009/03/22/install-and-configure-gentoo-milestone1">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">折腾Gentoo Milestone1</h1>
+    </header>
+  
+  <div class="entry-content"><p>上次在日志中提到一下当Ubuntu9.04正式版出来的时候，我就换Gentoo，结果自己还是在Ubuntu Aplha6 出来之前就开始了Gentoo折腾之旅。</p>
+
+<p>前一次折腾Gentoo还是在暑假，因为挂载和其他一堆莫名其妙的问题导致我直接放弃了Gentoo。这次是在心理准备充足的情况下开始的，没想到还是很折腾。</p>
+
+<p>桌面管理器从GNOME换到Openbox，然后转成KDE4，顺便还试用了一下enlightenment，发现这种轻量级桌面对我来说不是很适应，就没再继续下去了。</p>
+
+<p>感谢Gentoo的文档和各种bugzilla，我解决了大部分问题。</p>
+
+<p>比方说无线的问题，经常出现SCIOFLAGS: No such device，上网找了半天发现要把/etc/init.d/net.wlan0给删掉。因为现在网络接口已经移交wicd管理了。具体原因尚未知。</p>
+
+<p>当然也碰到了一些莫名其妙的问题，其中大部分是和内核选项有关。</p>
+
+<p>比如声卡，音箱和耳机会同时出声。后来我把和我的声卡沾边的选项统统勾上，重新编译模块，就OK了。还有ext4分区的问题，系统始终不认ext4分区，在水木求助了两天都没解决，后来自己重新编译一次内核，居然就OK了。</p>
+
+<p><!--more-->ibus在KDE4上经常抽风，无奈换成了SunPinyin，突然发现SUN-Pinyin也不是那么囧，用起来比以前顺手多了（在设置里多了个词频调整幅度之类的选项）。</p>
+
+<p>到现在为止还有很多细节问题没解决，先发个TODO List(其中有很多不是Gentoo发行版特有的问题)，看到这篇文章且有相关经验的童鞋欢迎赐教：</p>
+
+<p><blockquote>1. Amarok2编译失败，提示：</blockquote></p>
+
+<p>[ 93%] Building CXX object src/scriptengine/generator/generator/CMakeFiles/qtscript_gui.dir/generated_cpp/com_trolltech_qt_gui/qtscriptshell_QColorDialog.o                           <br />
+[ 93%] Building CXX object src/scriptengine/generator/generator/CMakeFiles/qtscript_gui.dir/generated_cpp/com_trolltech_qt_gui/qtscriptshell_QFontDialog.o                            <br />
+[ 93%] Building CXX object src/scriptengine/generator/generator/CMakeFiles/qtscript_gui.dir/generated_cpp/com_trolltech_qt_gui/qtscriptshell_QInputDialog.o                           <br />
+Linking CXX shared module ../../../../lib/libqtscript_gui.so<br />
+[ 93%] Built target qtscript_gui<br />
+make: *** [all] Error 2</p>
+
+<p>3. <del datetime="2009-03-24T02:56:49+00:00">vbox开机自动加载vboxdrv模块和vboxnetflt模块(/etc/modules.autoload/kernel-2.6里面加上语句也不行)</del></p>
+
+<p>已解决：因为/etc/init.d/vboxdrv的脚本文件和gentoo通过runscript管理的脚本文件格式不一样，最后的那行exit 0惹祸了，注释掉就OK了。</p>
+
+<p>4. 待机、休眠恢复失败（ACPI related)</p>
+
+<p>5. 实现宽屏控制台和KMS(打了915resolution补丁没有作用，TX童鞋等你有空了我要向你请教一下细节)。</p>
+
+<p>6. wine-gecko在QQ、迅雷中会造成程序僵死出错(Wine related，老问题了）</p>
+
+<p>7. 麻将牌乱码</p>
+
+<p>这个问题好要好解释一下：现在的情况是，ibus和scim-python中都出现了麻将牌乱码（这两个都是python程序），checkgmail中的非ANSI字符也是麻将牌（这个是perl程序），Droid Sans Fallback字体的页面抓取字体的时候也出现了乱码（这个似乎是Flash?)，上几个截图吧：</p>
+
+<p><img src="http://img.ant.im/di-RF68.png" /></p>
+
+<p><img src="http://img.ant.im/di-EAOX.png" /></p>
+
+<p><img src="http://img.ant.im/di-VQ38.png" /></p>
+
+<p></p>
+
+<p>最后发一个我现在用的软件列表，有更好的软件欢迎推荐：</p>
+
+<p><blockquote>Desktop： KDE4.2<br />
+Network Management: wicd<br />
+KeyBinding: xbindkeys<br />
+Twitter Client: qwit
+</blockquote></p>
+
+<p>额，突然发现和<a href="http://www.casparant.com/some-softwares-under-linux.html">http://www.casparant.com/some-softwares-under-linux.html</a>里面的软件差不多，不写了。</p>
+
+<p>最最后求一个比较好的KDE4下面用的TODO软件，像GNOME下tasque和gtodo那样的。</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/z-turn/'>z-turn</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-22T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2009/03/22/install-and-configure-gentoo-milestone1/" data-via="" data-counturl="http://casparant.github.io/blog/2009/03/22/install-and-configure-gentoo-milestone1/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/03/16/test-posting/" title="Previous Post: 再次测试Translate插件">&laquo; 再次测试Translate插件</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

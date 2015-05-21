@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ant-Veil</title>
+  <title>Kde3界面字体设置 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="Issue: 雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。 Environment: Razer Orochi 蓝牙鼠标
-Gentoo + KDE &hellip;">
+  <meta name="description" content="升级到Ubuntu 8.10之后，发现amarok, kile这些程序的英文字体特别大，用Qt3 configuration改字体只能把正文的字体改变，菜单栏、状态栏的字体都变不了。 上网搜了一下发现kcontrol这个kde的工具可以调整菜单栏字体。但是Ubuntu 8. &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +17,7 @@ Gentoo + KDE &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   
-  <link rel="canonical" href="http://casparant.github.io">
+  <link rel="canonical" href="http://casparant.github.io/blog/2009/02/21/kde3-interface-font-settings">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
@@ -98,165 +97,84 @@ Gentoo + KDE &hellip;">
   </div>
   <div id="main">
     <div class="content">
-      
-<header>
-  <div class="back">　</div>
-  <h1 class="entry-title"><a href="/">Ant-Veil</a></h1>
-</header>
-<ul class="blog-index">
+      <article class="hentry" role="article">
   
-    
-    
-      
-      
-    
-    
   
-  <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a></h2>
-    
-      <div class="entry-content"><p>Issue:</p>
-
-<p>雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
-
-<p>Environment: </p>
-
-<p><blockquote>Razer Orochi 蓝牙鼠标<br />
-Gentoo + KDE<br />
-kernel 3.10 ~ 3.16<br />
-bluez 4.101 ~ 5.23<br />
-bluedevil 1.3.2 ~ 2.0_rc1</blockquote></p>
-
-<p>Solution:</p>
-
-<p></div>
-      
-      
-        <footer>
-          <a rel="full-article" href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Read on &rarr;</a>
-        </footer>
-      
-    
-  </li>
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">Kde3界面字体设置</h1>
+    </header>
   
+  <div class="entry-content"><p>升级到Ubuntu 8.10之后，发现amarok, kile这些程序的英文字体特别大，用Qt3 configuration改字体只能把正文的字体改变，菜单栏、状态栏的字体都变不了。</p>
+
+<p>上网搜了一下发现kcontrol这个kde的工具可以调整菜单栏字体。但是Ubuntu 8.10吧kcontrol这个包给去掉了，所以不能轻易设置字体了。继续上网搜，发现可以直接改<code>~/.kde/share/config/kdeglobals</code>这个文件。</p>
+
+<p>在文件中的<code>[General]</code>段添加下列几行：</p>
+
+<p><blockquote>fixed=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0<br />
+font=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0<br />
+menuFont=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0<br />
+taskbarFont=WenQuanYi Zen Hei,9,5,50,0,0,0,0,0<br />
+toolBarFont=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0</blockquote></p>
+
+<p>这几行的大部分内容大家都看得懂，就不解释了。后面的我也不管是什么意思了……</p>
+
+<p><!--more-->另外求助现场观众：1. Ubuntu 8.10下这个Intel GMA950显卡3D显示效果很臭，有什么可行的解决方案没？</p>
+
+<p>2. <del datetime="2009-02-21T15:43:11+00:00">今天可能是由于升级了系统还是误装了软件，发现“通用访问首选项”这个应用程序变成登录后自动常驻icon tray了，谁能告诉我怎么取消？我懒得去追根溯源了……</del>解决了，在“辅助技术首选项”中点击“键盘辅助登录功能”，取消“允许通过快捷键打开或关闭辅助特性”。</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/configuration/'>configuration</a>
+  
+</span>
+
+ @
+        
 
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a></h2>
-    
-  </li>
-  
+
+
+
+
 
 
   
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a></h2>
-    
-  </li>
-  
 
 
+<time datetime="2009-02-21T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
   
-    
-    
-    
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2009/02/21/kde3-interface-font-settings/" data-via="" data-counturl="http://casparant.github.io/blog/2009/02/21/kde3-interface-font-settings/" >Tweet</a>
   
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/10/12/cm7-1-on-defy/">CM7.1 on DEFY</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/07/16/beginning-of-my-third-year-in-red-hat/">在Red Hat两年</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/03/03/jibber-jabber-on-the-resumes/">关于简历的杂碎</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410/">Libfprint Finally Supports Thinkpad T410</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/06/enable-fingerprint-in-thinkpad-t410-under-gentoo/">Enable Fingerprint in Thinkpad T410 Under Gentoo</a></h2>
-    
-  </li>
-  
-
-
-  
-</ul>
-<div class="pagination">
-  
-    <a class="prev" href="2">&larr; Older</a>
   
   
 </div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/02/13/business-problem-of-taobao-and-alipay/" title="Previous Post: 新添SPProblems分类，这次说说淘宝支付宝">&laquo; 新添SPProblems分类，这次说说淘宝支付宝</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
 
     </div>
     <footer role="contentinfo"><div class="content">

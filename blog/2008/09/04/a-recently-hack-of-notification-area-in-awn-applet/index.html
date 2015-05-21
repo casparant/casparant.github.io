@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>又对awn-applet的通知栏图标hack了一下 - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="曾经写过一篇文章《对awn-applet的notification area的一个小改动》，目的是为了避免高像素图标将notification area这个applet的高度撑破，经过修改，确实能将每个图标的像素给固定住，使得applet保持原大小。今天通过重新解读代码， &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2008/09/04/a-recently-hack-of-notification-area-in-awn-applet">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">又对awn-applet的通知栏图标hack了一下</h1>
+    </header>
+  
+  <div class="entry-content"><p>曾经写过一篇文章《<a href="http://www.casparant.com/a-hack-of-notification-area-in-awn-applet.html">对awn-applet的notification area的一个小改动</a>》，目的是为了避免高像素图标将notification area这个applet的高度撑破，经过修改，确实能将每个图标的像素给固定住，使得applet保持原大小。今天通过重新解读代码，发现原来的修改步骤并不那么完美，事实上只需要修改一条语句即可，仍旧是在applet.c这个源文件中，看到如下代码：</p>
+
+<p><pre lang="cpp" line="1">static void
+tray_icon_added (EggTrayManager *manager,
+                 GtkWidget      *icon,
+                 TrayApplet     *applet)
+{
+  //gtk_widget_set_size_request (GTK_WIDGET (icon), 24, 24);
+  g_object_set_qdata (G_OBJECT (icon), new_quark, GINT_TO_POINTER (1));
+  g_object_set_qdata (G_OBJECT (icon), del_quark, GINT_TO_POINTER (0));</pre></p>
+
+<p>  applet->icons = g_list_append (applet->icons, icon);<br />
+  gtk_widget_set_size_request (icon, icon_size, icon_size);<br />
+  tray_applet_refresh (applet);<br />
+}</p>
+
+<p><!--more-->其中的11行的<code>gtk_widget_set_size_request</code>函数，在<gtk/gtkwidgets.h>中有声明，含义为为第一个参数指定的widget请求大小，第二个参数为width，第三个参数为height。经过添加printf监听变量，发现除了awn启动后icon_size为原先指定好的24，此后一直就变为-1(其意义为不约束图标大小，使用原大小)。而图标通常都是尽可能使用高像素图标的，所以会造成撑破applet高度的现象。</p>
+
+<p>因此不用我以前那么麻烦的修改，只需要在第11行上将后一个icon_size指定好大小即可。</p>
+
+<p>但是有些细节还是不尽完美。比如grnotify这个软件在notification area上的高宽比不是1:1，图标右侧有未读订阅数显示，效果如下图：</p>
+
+<p><img src="http://img.ant.im/di-6QO8.png" /></p>
+
+<p>而经过我修改的新applet中，grnotify这个软件的高宽比变成是1:1，也就是它图标右侧的未读订阅数不能显示，如下图：</p>
+
+<p><img src="http://img.ant.im/di-389Y.png" /></p>
+
+<p>我是个偏向完美主义的人，自然要继续修改代码。</p>
+
+<p>弄了半天之后发现，原来将第11行代码上的24改成22就可以了。因为以前修改过pidgin的图标，知道trayicon一般有三种分辨率：18x18,22x22,48x48。为什么修改成22就可以显示真实的宽高比了呢？估计和图标的显示机制有关。</p>
+
+<p>不猜了，反正我现在用着正常就好，嗯。
+</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/hacks/'>hacks</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-04T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2008/09/04/a-recently-hack-of-notification-area-in-awn-applet/" data-via="" data-counturl="http://casparant.github.io/blog/2008/09/04/a-recently-hack-of-notification-area-in-awn-applet/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/09/04/a-collection-of-linux-softwares/" title="Previous Post: Linux软件更新推荐">&laquo; Linux软件更新推荐</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>

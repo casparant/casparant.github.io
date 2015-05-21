@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ant-Veil</title>
+  <title>创建链接的问题：Symbol Links - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="Issue: 雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。 Environment: Razer Orochi 蓝牙鼠标
-Gentoo + KDE &hellip;">
+  <meta name="description" content="下了NetBeans6.0正式版的安装文件，没想到安装完毕在菜单项中居然不出现！一查看安装路径，执行脚本netbeans还在安安静静地躺在/usr/local/netbeans-6.0/bin下面呢。于是准备创建链接。 因为刚才查找路径的时候已经进入 /usr/local/netbeans-6.0 &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +17,7 @@ Gentoo + KDE &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   
-  <link rel="canonical" href="http://casparant.github.io">
+  <link rel="canonical" href="http://casparant.github.io/blog/2008/01/22/symbol-link">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
@@ -98,165 +97,94 @@ Gentoo + KDE &hellip;">
   </div>
   <div id="main">
     <div class="content">
-      
-<header>
-  <div class="back">　</div>
-  <h1 class="entry-title"><a href="/">Ant-Veil</a></h1>
-</header>
-<ul class="blog-index">
+      <article class="hentry" role="article">
   
-    
-    
-      
-      
-    
-    
   
-  <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a></h2>
-    
-      <div class="entry-content"><p>Issue:</p>
-
-<p>雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
-
-<p>Environment: </p>
-
-<p><blockquote>Razer Orochi 蓝牙鼠标<br />
-Gentoo + KDE<br />
-kernel 3.10 ~ 3.16<br />
-bluez 4.101 ~ 5.23<br />
-bluedevil 1.3.2 ~ 2.0_rc1</blockquote></p>
-
-<p>Solution:</p>
-
-<p></div>
-      
-      
-        <footer>
-          <a rel="full-article" href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Read on &rarr;</a>
-        </footer>
-      
-    
-  </li>
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">创建链接的问题：Symbol Links</h1>
+    </header>
   
+  <div class="entry-content"><p>下了NetBeans6.0正式版的安装文件，没想到安装完毕在菜单项中居然不出现！一查看安装路径，执行脚本netbeans还在安安静静地躺在/usr/local/netbeans-6.0/bin下面呢。于是准备创建链接。</p>
 
+<p>因为刚才查找路径的时候已经进入 /usr/local/netbeans-6.0/bin下了，所以想当然地执行了如下的命令：
+<blockquote>ln -s netbeans /usr/bin</blockquote>
+结果在Terminal下面输入netbeans，无效，提示：Too many levels of symbolic links</p>
 
+<p>一顿狂搜仍无结果……突然，意识到会不会是相对路径的问题，于是重新创建链接：
+<blockquote>ln -sf  /usr/local/netbeans-6.0/bin/netbeans /usr/bin</blockquote>
+f命令表示强制创建，覆盖同名文件。
+<p dragover="true">这次终于成功了……</p>
+<p dragover="true">另外给一段关于Symbol Link  和 Hard Link的介绍：</p>
+<p dragover="true"><!--more--><code dragover="true"><strong dragover="true">A Hard Link</strong> is where a file has two names which are both on an equal weighting, and both of the file names in the "inode table" point directly to the blocks on the disc that contain the data. See diagram to the left.</code></p>
+You set up a hard link with an ln command without options - if the file ab.txt already exists and you want to give an additional name (hard link) to it, you'll write</p>
+
+<p>ln ab.txt cd.txt</p>
+
+<p>and then both names will have equal ranking. The only way you'll know that there's a link there is by doing a long listing and you'll see a link count of 2 rather than 1, and if you need to find out what's linked to what, use the -i option to ls.</p>
+
+<p><strong>A Symbolic Link</strong> is where a file has one main name, but there's an extra entry in the file name table that refers any accesses back to the main name. This is slighly slower at runtime that a hard link, but it's more flexible and much more often used in day to day admin work.</p>
+
+<p>Symbolic links are set up using the ln command with the -s option - so for example</p>
+
+<p>ln -s ab.txt cd.txt</p>
+
+<p>will set up a new name cd.txt that points to the (existing) file ab.txt. If you do a log listing (ls -l) of a directory that contains a symbolic link, you'll be told that it's a symbolic link with an "l" in the first</p>
+
+<p>其实一般创建的时候都用Symbol  Link就行了。如果使用Hard Link，一不小心删了链接，就对原文件造成了破坏。</p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
   
-    
-    
-    
+    <a class='category' href='/blog/categories/learning/'>learning</a>
   
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a></h2>
-    
-  </li>
-  
+</span>
+
+ @
+        
 
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a></h2>
-    
-  </li>
-  
+
+
+
+
 
 
   
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a></h2>
-    
-  </li>
-  
 
 
+<time datetime="2008-01-22T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
   
-    
-    
-    
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2008/01/22/symbol-link/" data-via="" data-counturl="http://casparant.github.io/blog/2008/01/22/symbol-link/" >Tweet</a>
   
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/10/12/cm7-1-on-defy/">CM7.1 on DEFY</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/07/16/beginning-of-my-third-year-in-red-hat/">在Red Hat两年</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2011/03/03/jibber-jabber-on-the-resumes/">关于简历的杂碎</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410/">Libfprint Finally Supports Thinkpad T410</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2010/08/06/enable-fingerprint-in-thinkpad-t410-under-gentoo/">Enable Fingerprint in Thinkpad T410 Under Gentoo</a></h2>
-    
-  </li>
-  
-
-
-  
-</ul>
-<div class="pagination">
-  
-    <a class="prev" href="2">&larr; Older</a>
   
   
 </div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/01/21/linux-about-boot/" title="Previous Post: Linux启动时的一些闲言碎语">&laquo; Linux启动时的一些闲言碎语</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
 
     </div>
     <footer role="contentinfo"><div class="content">

@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ubuntu 8.04 Config - Ant-Veil</title>
+  <meta name="author" content="Caspar">
+
+  
+  <meta name="description" content="注：本文并非为纯新手准备，请在看本文前至少了解一些命令行操作并最好对Ubuntu以前版本或其他发行版的图形界面操作比较熟悉。如果你需要一些更初级的内容请访问下列两个页面： Ubuntu 7.10 配置参考 Ubuntu配置补遗 Ubuntu 8.04 (Hardy Heron)果然没有让我失望， &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  
+  <link rel="canonical" href="http://casparant.github.io/blog/2008/04/29/ubuntu-hardy-config">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="sidebar_control"></div>
+  <div id="sidebar">
+    <div class="logo">
+      Ant
+    </div>
+    <div class="content hide">
+      <section role="navigation">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
+
+</header>
+        
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:casparant.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+  <li><a href="/">home</a></li>
+  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+</ul>
+
+
+      </section>
+      
+        <section>
+  <h2>recent</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+      
+    </div>
+  </div>
+  <div id="main">
+    <div class="content">
+      <article class="hentry" role="article">
+  
+  
+    <header>
+      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
+      <h1 class="entry-title">Ubuntu 8.04 Config</h1>
+    </header>
+  
+  <div class="entry-content"><p>注：本文并非为纯新手准备，请在看本文前至少了解一些命令行操作并最好对Ubuntu以前版本或其他发行版的图形界面操作比较熟悉。如果你需要一些更初级的内容请访问下列两个页面：</p>
+
+<p><a href="http://www.casparant.com/ubuntu-gutsy-config.html">Ubuntu 7.10 配置参考</a></p>
+
+<p><a href="http://www.casparant.com/ubuntu-configuration-appendix.html">Ubuntu配置补遗</a></p>
+
+<p>Ubuntu 8.04 (Hardy Heron)果然没有让我失望，X2300的特效已经可以开启了，色偏，分辨率默认低的问题都完美解决了。</p>
+
+<p>闲话少叙，直接开始配置吧:)</p>
+
+<p>★更新</p>
+
+<p>请根据您的网络环境和网速条件选择以下合适的一组源用以获取服务器软件包资源以及更新系统。教育网用户推荐台湾的源（光纤就是爽啊～～）更新源列表及系统的命令为：</p>
+
+<p><pre lang="bash">sudo apt-get update
+sudo apt-get dist-upgrade</pre></p>
+
+<p>推荐源列表：</p>
+
+<p><!--more--><blockquote><code># 欧洲官方源（建议网速好的电信去访问，否则那就慢慢套着驴车，慢悠悠拉着吧～<br />
+deb http://archive.ubuntu.com/ubuntu hardy main restricted universe multiverse<br />
+deb http://archive.ubuntu.com/ubuntu hardy-security main restricted universe multiverse<br />
+deb http://archive.ubuntu.com/ubuntu hardy-updates main restricted universe multiverse<br />
+deb http://archive.ubuntu.com/ubuntu hardy-backports main restricted universe multiverse<br />
+deb http://archive.ubuntu.com/ubuntu hardy-proposed main restricted universe multiverse</code></blockquote></p>
+
+<p><blockquote><code># 台湾NCHC源：<br />
+deb http://free.nchc.org.tw/ubuntu/ hardy main restricted multiverse universe<br />
+deb http://free.nchc.org.tw/ubuntu/ hardy-updates main restricted multiverse universe<br />
+deb http://free.nchc.org.tw/ubuntu/ hardy-security main restricted multiverse universe<br />
+deb http://free.nchc.org.tw/ubuntu/ hardy-proposed main restricted multiverse universe<br />
+deb http://free.nchc.org.tw/ubuntu/ hardy-backports main restricted multiverse universe</code></blockquote></p>
+
+<p><blockquote><code># 台湾交大源：<br />
+deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ hardy main multiverse restricted universe<br />
+deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ hardy-backports main multiverse restricted universe<br />
+deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ hardy-proposed main multiverse restricted universe<br />
+deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ hardy-security main multiverse restricted universe<br />
+deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ hardy-updates main multiverse restricted universe</code></blockquote></p>
+
+<p><blockquote><code># 北京邮电大学Openware源：<br />
+deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ hardy main multiverse restricted universe<br />
+deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ hardy-backports main multiverse restricted universe<br />
+deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ hardy-proposed main multiverse restricted universe<br />
+deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ hardy-security main multiverse restricted universe<br />
+deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ hardy-updates main multiverse restricted universe</code></blockquote></p>
+
+<p>更新系统完毕后，安装中文语言包，到系统(System)->系统管理(Administration)->语言支持(Language Support)中，勾选汉语(Chinese)选项，自动下载中文语言包和SCIM的拼音支持。一直很奇怪hardy的语言包依赖关系，居然会把hunderbird安装上- -b</p>
+
+<p>如果是NVIDIA/ATI显卡，可以安装显卡驱动了，在系统->硬件驱动中，勾选“未使用”的显卡驱动，会自动从源上下载相关驱动。重启后就可以正常使用特效等功能了。如果在“硬件驱动”中还有其他“未使用”的驱动，也可以勾选下载安装，通常无线网卡和某些声卡。</p>
+
+<p>★软件包安装</p>
+
+<p><b>系统相关</b></p>
+
+<p>QT程序输入法: scim-bridge-client-qt, scim-bridge-client-qt4</p>
+
+<p>Compiz特效管理器: compizconfig-settings-manager</p>
+
+<p>转换ID3v2标签为UTF-8: python-mutagen</p>
+
+<p>★转换当前目录层下的mp3文件：</p>
+
+<p><pre lang="bash">mid3iconv -e gbk *.mp3</pre></p>
+
+<p>★转换当前目录下包括子目录在内的所有 mp3：</p>
+
+<p><pre lang="bash">find . -iname "*.mp3" -execdir mid3iconv -e gbk {} ;</pre></p>
+
+<p>命令集合：</p>
+
+<p><pre lang="bash">sudo apt-get install scim-bridge-client-qt scim-bridge-client-qt4 
+compizconfig-settings-manager python-mutagen</pre></p>
+
+<p>编译器相关</p>
+
+<p>gcc: build-essential</p>
+
+<p>★因为gcc版本的问题，build-essential中不包含libstdc++5了，在安装一些deb或者从源码编译的时候会出错，需要自己安装。</p>
+
+<p>java: sun-java6-*</p>
+
+<p>editor: vim-full</p>
+
+<p>★修改配置文件：</p>
+
+<p><pre lang="bash">cp /etc/vim/vimrc ~/.vimrc
+vi ~/.vimrc</pre></p>
+
+<p>可以Google一下配置文件，网上有很多强大的配置文件。</p>
+
+<p>命令集合：</p>
+
+<p><pre lang="bash">sudo apt-get install libstdc++5 gcc-3.3-base build-essential sun-java6-* vim-full</pre></p>
+
+<p><b>多媒体相关</b></p>
+
+<p>解码器: w32codecs, gstreamer</p>
+
+<p>Video: vlc, smplayer</p>
+
+<p>★如果Mplayer播放出现异常，将视频驱动选择为x11再试试。在hardy中的mplayer打开中文文件名的BUG已经消除了。</p>
+
+<p>Audio: amarok, audacious</p>
+
+<p>命令集合：</p>
+
+<p><pre lang="bash">sudo apt-get install gstreamer0.10-* smplayer mplayer-nogui mozilla-mplayer 
+vlc mozilla-plugin-vlc vlc-plugin-esd audacious audacious-plugins audacious-plugins-extra amarok
+wget -c http://www.debian-multimedia.org/pool/main/w/w32codecs/w32codecs_20071007-0.1_i386.deb
+sudo dpkg -i w32codecs_20071007-0.1_i386.deb</pre></p>
+
+<p><b>网络相关</b></p>
+
+<p>FTP: <del datetime="2008-12-21T05:33:16+00:00">gftp</del></p>
+
+<p>★解决gFTP显示中文列表乱码问题：</p>
+
+<p>修改启动脚本文件：</p>
+
+<p><pre lang="bash">sudo gedit /usr/bin/gftp</pre></p>
+
+<p>在#!/bin/sh之后加上一行：<pre lang="bash">export LANG=zh_CN</pre></p>
+
+<p>保存并执行命令生成相应的locale：</p>
+
+<p><pre lang="bash">sudo locale-gen zh_CN</pre></p>
+
+<p>gFTP已经落伍了，推荐Filezilla，在设置里可以调整locale，下载中文文件也不会乱码，还能登陆ipv6站点~</p>
+
+<p>Web Server: LAMP</p>
+
+<p>ssh: OpenSSH</p>
+
+<p>Gmail邮件监测: checkgmail</p>
+
+<p>命令集合：<pre lang="bash">sudo apt-get install filezilla checkgmail 
+openssh-server apache2 mysql-server php5-common php5-mysql</pre></p>
+
+<p><b>其他软件</b></p>
+
+<p>解压缩: rar压缩&解压缩、rpm包转换工具、7zip</p>
+
+<p>电子书: kchmviewer</p>
+
+<p>pdf: Adobe Reader</p>
+
+<p>★到此处下载：<a href="http://www.adobe.com/products/acrobat/readstep2_allversions.html">http://www.adobe.com/products/acrobat/readstep2_allversions.html</a></p>
+
+<p>字典: 星际译王stardict</p>
+
+<p>★字典库需要到<a href="http://stardict.sourceforge.net/cn/Dictionaries_zh_CN.php">http://stardict.sourceforge.net/cn/Dictionaries_zh_CN.php</a>下载，下载完毕后解压缩到<code>/usr/share/stardict/dic </code></p>
+
+<p>命令集合：<pre lang="bash">sudo apt-get install rar unrar alien p7zip-full kchmviewer stardict</pre></p>
+</div>
+  <footer>
+    <div class="articlemeta">
+      <span class="hide">
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/configuration/'>configuration</a>
+  
+</span>
+
+ @
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-29T00:00:00+08:00" pubdate data-updated="true"></time>
+      </span>
+      <span class="plus">
+        
+          <a href="#">+</a>
+        
+      </span>
+    </div>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2008/04/29/ubuntu-hardy-config/" data-via="" data-counturl="http://casparant.github.io/blog/2008/04/29/ubuntu-hardy-config/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <div class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/04/24/ubuntu-hardy-released/" title="Previous Post: [白鼠五]Ubuntu 8.04发布">&laquo; [白鼠五]Ubuntu 8.04发布</a>
+      
+    </div>
+  </footer>
+
+
+</article>
+
+
+    </div>
+    <footer role="contentinfo"><div class="content">
+  <p>
+    Copyright &copy; 2015 Caspar
+  </p>
+</div>
+
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var userAgent = navigator.userAgent.toLowerCase();
+  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
+  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
+  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
+  $('#sidebar').on(clickEvent, function() {
+    $(this).toggleClass('open');
+  });
+  $('.articlemeta').on(clickEvent, function() {
+    toggleDisqus();
+    $(this).toggleClass('open');
+  });
+});
+</script>
+
+</body>
+</html>
