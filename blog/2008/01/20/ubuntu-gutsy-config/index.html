@@ -1,111 +1,44 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Ubuntu 7.10 Configuration - Ant-Veil</title>
-  <meta name="author" content="Caspar">
+	<meta charset="utf-8">
+	<title>Ubuntu 7.10 Configuration  | Ant-Veil</title>
 
-  
-  <meta name="description" content="在Linux的众多发行版中，ubuntu以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数Linux用户，本文即以Ubuntu Linux 7.10为例，讲解其安装与配置。 插一句：Linux初学者推荐下载一本命令行手册，点此下载&gt;&gt;&gt;(特别感谢yegle同学倾心制作！) &hellip;">
-  
+	<meta name="author" content="Caspar"> 
+	
+	<meta name="description" content="在Linux的众多发行版中，ubuntu以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数Linux用户，本文即以Ubuntu Linux 7.10为例，讲解其安装与配置。 插一句：Linux初学者推荐下载一本命令行手册，点此下载&gt;&gt;&gt;(特别感谢yegle同学倾心制作！) &hellip;"> <meta name="keywords" content="">
 
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <link rel="canonical" href="http://casparant.github.io/blog/2008/01/20/ubuntu-gutsy-config">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
+	<link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
 </head>
 
-<body   >
-  <div id="sidebar_control"></div>
-  <div id="sidebar">
-    <div class="logo">
-      Ant
-    </div>
-    <div class="content hide">
-      <section role="navigation">
-        <header role="banner"><hgroup>
-  <h1><a href="/">Ant-Veil</a></h1>
-  
-    <h2>Caspar Blog</h2>
-  
-</hgroup>
+
+
+<body>
+	<header id="header" class="inner"><h1>Ant-Veil</h1>
+<nav id="main-nav"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="blog/archives">Archive</a></li>
+	<li><a href="blog/about">About</a></li>
+    <li><a href="blog/categories/kernel">Kernel</a></li>
+    <li><a href="blog/categories/z-turn">Z-Turn</a></li>
+</ul>
+</nav>
+
 
 </header>
-        
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:casparant.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
 
-<ul class="main-navigation">
-  <li><a href="/">home</a></li>
-  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
-</ul>
-
-
-      </section>
-      
-        <section>
-  <h2>recent</h2>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-      
-    </div>
-  </div>
-  <div id="main">
-    <div class="content">
-      <article class="hentry" role="article">
-  
-  
-    <header>
-      <div class="back"><a href="/" onclick="history.go(-1);return false;">← Back</a></div>
-      <h1 class="entry-title">Ubuntu 7.10 Configuration</h1>
-    </header>
-  
-  <div class="entry-content"><p>在Linux的众多发行版中，ubuntu以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数Linux用户，本文即以Ubuntu Linux 7.10为例，讲解其安装与配置。</p>
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Ubuntu 7.10 Configuration</h2>
+	<div class="entry-content"><p>在Linux的众多发行版中，ubuntu以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数Linux用户，本文即以Ubuntu Linux 7.10为例，讲解其安装与配置。</p>
 
 <p>插一句：Linux初学者推荐下载一本命令行手册，<a href="http://docs.google.com/fileview?id=0B-GDvj9JsmanY2Q4Nzg4M2EtOGVkMC00NzU1LWE5ZDUtMjNkNWI3OWFhNjdj&hl=zh_CN">点此下载&gt;&gt;&gt;</a>(特别感谢<a href="http://yegle.net" target="_blank">yegle</a>同学倾心制作！)</p>
 
@@ -460,19 +393,10 @@ vi ~/.vimrc</pre></p>
 
 <p><pre lang="bash">sudo apt-get install checkgmail</pre></p>
 </div>
-  <footer>
-    <div class="articlemeta">
-      <span class="hide">
-        
 
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-  
-</span>
 
- @
-        
+<div class="meta">
+	<div class="date">
 
 
 
@@ -484,117 +408,26 @@ vi ~/.vimrc</pre></p>
   
 
 
-<time datetime="2008-01-20T00:00:00+08:00" pubdate data-updated="true"></time>
-      </span>
-      <span class="plus">
-        
-          <a href="#disqus_thread" onclick="return false;" data-disqus-identifier="http://casparant.github.io/blog/2008/01/20/ubuntu-gutsy-config/">+</a>
-        
-      </span>
-    </div>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://casparant.github.io/blog/2008/01/20/ubuntu-gutsy-config/" data-via="" data-counturl="http://casparant.github.io/blog/2008/01/20/ubuntu-gutsy-config/" >Tweet</a>
-  
-  
-  
+
+<time datetime="2008-01-20T00:00:00+08:00" pubdate data-updated="true">Jan 20th, 2008</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
 </div>
 
-    
-    <div class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2008/01/17/some-acquires/" title="Previous Post: 两个收购，N个收购">&laquo; 两个收购，N个收购</a>
-      
-    </div>
-  </footer>
 
-
+</div>
 </article>
-
-  <section>
-    <div class="hide" id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-  </section>
-
-
-    </div>
-    <footer role="contentinfo"><div class="content">
-  <p>
-    Copyright &copy; 2015 Caspar
-  </p>
-</div>
-
+	<footer id="footer" class="inner">Copyright &copy; 2015
+ Caspar 
+<br>
+Powered by Octopress.
 </footer>
-    
-
-<script type="text/javascript">
-  disqus_shortname = 'casparant';
-  
-    disqus_identifier = 'http://casparant.github.io/blog/2008/01/20/ubuntu-gutsy-config/';
-    disqus_url = 'http://casparant.github.io/blog/2008/01/20/ubuntu-gutsy-config/';
-    function loadDisqus() {
-      
-      // var disqus_developer = 1;
-      var disqus_script = 'embed.js';
-      (function () {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }());
-    }
-  
-  (function () {
-    var disqus_script = 'count.js';
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  }());
-</script>
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-  </div>
-  <script src="/javascripts/modernizr-2.0.js"></script>
-<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){
-  var userAgent = navigator.userAgent.toLowerCase();
-  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
-  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
-  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
-  $('#sidebar').on(clickEvent, function() {
-    $(this).toggleClass('open');
-  });
-  $('.articlemeta').on(clickEvent, function() {
-    toggleDisqus();
-    $(this).toggleClass('open');
-  });
-});
-</script>
+	
 
 </body>
 </html>

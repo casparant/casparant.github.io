@@ -1,320 +1,639 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Ant-Veil</title>
-  <meta name="author" content="Caspar">
+	<meta charset="utf-8">
+	<title>Caspar Blog  | Ant-Veil</title>
 
-  
-  <meta name="description" content="曾经的曾经，为了折腾LaTeX中的中文字体，我参照了Monnand和TualatriX童鞋的配置方式，装好CJKutf8宏包，然后用fontforge制作Type1字体，然后才算搞定。一切皆因为LaTeX默认不支持Unicode，也不能支持Truetype字体。 &hellip;">
-  
+	<meta name="author" content="Caspar"> 
+	
+	<meta name="description" content="曾经的曾经，为了折腾LaTeX中的中文字体，我参照了Monnand和TualatriX童鞋的配置方式，装好CJKutf8宏包，然后用fontforge制作Type1字体，然后才算搞定。一切皆因为LaTeX默认不支持Unicode，也不能支持Truetype字体。 &hellip;"> <meta name="keywords" content="">
 
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <link rel="canonical" href="http://casparant.github.io/posts/4">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
+	<link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
 </head>
 
-<body   >
-  <div id="sidebar_control"></div>
-  <div id="sidebar">
-    <div class="logo">
-      Ant
-    </div>
-    <div class="content hide">
-      <section role="navigation">
-        <header role="banner"><hgroup>
-  <h1><a href="/">Ant-Veil</a></h1>
-  
-    <h2>Caspar Blog</h2>
-  
-</hgroup>
 
-</header>
-        
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:casparant.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
 
-<ul class="main-navigation">
-  <li><a href="/">home</a></li>
-  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+<body>
+	<header id="header" class="inner"><h1>Ant-Veil</h1>
+<nav id="main-nav"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="blog/archives">Archive</a></li>
+	<li><a href="blog/about">About</a></li>
+    <li><a href="blog/categories/kernel">Kernel</a></li>
+    <li><a href="blog/categories/z-turn">Z-Turn</a></li>
 </ul>
+</nav>
 
 
-      </section>
-      
-        <section>
-  <h2>recent</h2>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-      
-    </div>
-  </div>
-  <div id="main">
-    <div class="content">
-      
-<header>
-  <div class="back">　</div>
-  <h1 class="entry-title"><a href="/">Ant-Veil</a></h1>
 </header>
-<ul class="blog-index">
-  
-    
-    
-      
-      
-    
-    
-  
-  <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/">使用XeTeX，CJK无忧，字体无忧</a></h2>
-    
-      <div class="entry-content"><p>曾经的曾经，为了折腾LaTeX中的中文字体，我参照了<a href="http://blog.linuxsky.org/58/viewspace-3824.html">Monnand</a>和<a href="http://linuxdesktop.cn/2008/02/26/config-texlive-cjk-under-ubuntu.html">TualatriX</a>童鞋的配置方式，装好CJKutf8宏包，然后用fontforge制作<a href="http://en.wikipedia.org/wiki/Type_1_and_Type_3_fonts">Type1</a>字体，然后才算搞定。一切皆因为LaTeX默认不支持Unicode，也不能支持<a href="http://en.wikipedia.org/wiki/TrueType">Truetype</a>字体。</p>
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/">
+		
+			使用XeTeX，CJK无忧，字体无忧</a>
+	</h2>
+	<div class="entry-content">
+		<p>曾经的曾经，为了折腾LaTeX中的中文字体，我参照了<a href="http://blog.linuxsky.org/58/viewspace-3824.html">Monnand</a>和<a href="http://linuxdesktop.cn/2008/02/26/config-texlive-cjk-under-ubuntu.html">TualatriX</a>童鞋的配置方式，装好CJKutf8宏包，然后用fontforge制作<a href="http://en.wikipedia.org/wiki/Type_1_and_Type_3_fonts">Type1</a>字体，然后才算搞定。一切皆因为LaTeX默认不支持Unicode，也不能支持<a href="http://en.wikipedia.org/wiki/TrueType">Truetype</a>字体。</p>
 
 <p>最近一段时间一直听到XeTeX的相关消息，在BYR上，在linuxsir上，都听说了，只是安逸于自己的CJKutf8，不想去折腾。可是昨天写简历的时候，发现没有斜体字，看来我制作的Type1字体没有包含斜体字。为了把斜体弄出来，上网狂Google，就在熄灯前的几秒钟，我看到了网上对XeTeX原生Unicode支持的评价很高，尤其是它可以直接使用Truetype字体，顿时心里痒痒。今天起床后，趁着做实验的空档，把XeTeX装好，果然很惊喜啊。</p>
 
 <p>首先了解一下什么是XeTeX吧，其官方主页：<a href="http://www.tug.org/xetex/">http://www.tug.org/xetex/</a>. 网页开篇即说：XeTeX is "a typesetting system based on a merger of Donald Knuth's TeX system with <strong>Unicode</strong> and <strong>modern font technologies</strong>."，正合我意。</p>
 
-<p></div>
-      
-      
-        <footer>
-          <a rel="full-article" href="/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/">Read on &rarr;</a>
-        </footer>
-      
-    
-  </li>
-  
+<p>
+		
+		<a href="/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
 
 
   
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/04/20/sun-is-acquired-by-oracle/">当年日志里的两个主角</a></h2>
-    
-  </li>
-  
 
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/04/20/a-practice-is-a-progress/">每一次实验和大作业都是学习的过程</a></h2>
-    
-  </li>
-  
 
+<time datetime="2009-04-22T00:00:00+08:00" pubdate data-updated="true">Apr 22nd, 2009</time></div>
+	
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/04/11/high-pv-ended/">我的高PV结束了</a></h2>
-    
-  </li>
-  
+<div class="tags">
 
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/03/30/mesa-and-opengl-problems/">Mesa和OpenGL的那点破事|有第三者</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/03/30/how-to-create-a-qt-project/">如何创建QT工程</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/03/26/some-common-skills/">几个日常技巧——我的滥竽充数</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/">Gentoo新老问题-Milestone2</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/">折腾Gentoo Milestone1</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/03/16/test-posting/">再次测试Translate插件</a></h2>
-    
-  </li>
-  
-
-
-  
-</ul>
-<div class="pagination">
-  
-    <a class="prev" href="5">&larr; Older</a>
-  
-  
-  <a class="next" href="3">Newer &rarr;</a>
-  
 </div>
 
-    </div>
-    <footer role="contentinfo"><div class="content">
-  <p>
-    Copyright &copy; 2015 Caspar
-  </p>
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/04/20/sun-is-acquired-by-oracle/">
+		
+			当年日志里的两个主角</a>
+	</h2>
+	<div class="entry-content">
+		<p>请看我当年的<a href="http://www.casparzhang.com/blog/2008/01/17/some-acquires/">日志</a>，两个主角，Oracle收购BEA, SUN收购MySQL。</p>
+
+<p>现在的事情……唉……我当年那心仪的SUN公司啊……</p>
+
+<p>以下<em>还是</em>转自纽约时报：</p>
+
+<p><a href="http://www.nytimes.com/2009/04/21/technology/companies/21sun.html?ref=technology">http://www.nytimes.com/2009/04/21/technology/companies/21sun.html?ref=technology</a></p>
+
+<p>———————————— 转载的分割线 ————————————</p>
+
+<p><strong>Oracle Agrees to Acquire Sun Microsystems</strong></p>
+
+<p><em>Article Tools Sponsored By</em></p>
+
+<p>By ASHLEE VANCE</p>
+
+<p>Published: April 20, 2009</p>
+
+<p>
+		
+		<a href="/blog/2009/04/20/sun-is-acquired-by-oracle/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-04-20T00:00:00+08:00" pubdate data-updated="true">Apr 20th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
 </div>
 
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/04/20/a-practice-is-a-progress/">
+		
+			每一次实验和大作业都是学习的过程</a>
+	</h2>
+	<div class="entry-content">
+		<p>这次学会了<a href="http://www.google.com/search?q=%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%AF%B9%E9%BD%90">结构体的对齐</a>，记录锁和QT的基本操作。顺便强烈推荐使用qt-creator进行开发。</p>
+
+<p>当然还碰到个囧事，一个文件用r方式打开了，然后想往上面加写锁，加了半天就是报“错误的文件描述符”，郁闷之下man了下fcntl的内容，顿悟：</p>
+
+<p><blockquote>EBADF  fd is not an open file descriptor, <strong>or the command was  F_SETLK  or  F_SETLKW<br />
+              and  the  file  descriptor  open  mode  doesn't  match with the type of lock<br />
+              requested.</strong></blockquote></p>
+
+<p>其实本来想写很多的，但是因为这个东西做的时间太长了，又忘了随手记，就只能写出这么多了……</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-04-20T00:00:00+08:00" pubdate data-updated="true">Apr 20th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/04/11/high-pv-ended/">
+		
+			我的高PV结束了</a>
+	</h2>
+	<div class="entry-content">
+		<p>最近一直有很高很高的PV，<a href="http://tongji.cn.yahoo.com/report.html?unit_id=472876">yahoo stat</a>里面一看就猜到是某个页面重重复访问（事实上是重复刷新）得到的结果。因为自己用的FF3一直没有出现问题，就没从自己网站上去找症结。不过最近网站访问速度很慢，有时候数据库连接还出错，问了Paveo，他说我MySQL资源超标。虽然不知道是怎么回事（现在知道了，页面重复刷新不断请求MySQL资源），但是怀疑跟那个重复访问的页面有关。从yahoo stat里面找到了那个页面，稍微一看，我靠，居然是侧边栏的Google Friend Connect在搞鬼。那个重复访问的页面URL的GET数据就是我的Google Friend Connect里的参数。</p>
+
+<p>于是去Google Friend Connect网站重新按步骤操作了一次，发现原来是我上次清理Blog的文件，把根目录下的canvas.html和rpc_relay.html这两个文件给删掉了。补上之后，到今天一直没问题。</p>
+
+<p>刚才YuLei师兄告诉我，页面终于能留言了，我就奇怪了，以前不能留言么。他说他用IE和Chrome访问我的页面就一个劲刷新，根本没法浏览，更别提留言了。于是真相大白……原来缺了那两个文件，页面就不停刷新，不停从MySQL请求数据，我网站就资源超标，访问过慢。</p>
+
+<p>不过这段时间每天有近1000PV呢，可惜了，嘿嘿。</p>
+
+<p>
+		
+		<a href="/blog/2009/04/11/high-pv-ended/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-04-11T00:00:00+08:00" pubdate data-updated="true">Apr 11th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/03/30/mesa-and-opengl-problems/">
+		
+			Mesa和OpenGL的那点破事|有第三者</a>
+	</h2>
+	<div class="entry-content">
+		<p>刚才在折腾Mesa，因为早上更新系统的时候发现mesa7.4放出了。上次升级mesa到svn版的时候发现glxgears只到100+，就给降级了。这次看到mesa7.4正式版已出，侥幸心理作怪下继续升级。结果跟上次一样，100+的glxgears，wine下打CS卡死，但是Google Earth一切正常。</p>
+
+<p>降级回7.3之后，Google Earth一如往常地卡，但是glxgears恢复了400+。</p>
+
+<p>后来glxinfo了一下，发现：</p>
+
+<p>OpenGL version string: 1.4 Mesa 7.4</p>
+
+<p>OpenGL version string: 2.1 Mesa 7.4</p>
+
+<p>这是几次折腾中的两次OpenGL版本对比。</p>
+
+<p><del datetime="2009-03-31T03:26:10+00:00">难道glxgears和wine使用的都是OpenGL1.4版本，而Google Earth支持OpenGL2.1?</del></p>
+
+<p>Mesa和OpenGL的破事，真TM难理清。</p>
+
+<p>———————————— 3月31日更新 ————————————</p>
+
+<p>今天早上--sync的时候发现要升级libdrm，在Linux@BUPT上也看到了大牛的回复。这才发现原来是GEM没有开启。没想到原来以为是Mesa和OpenGL俩人的勾当，竟然是因为第三者GEM的原因……o(╯□╰)o</p>
+
+<p>更新libdrm，glxgears回到500+，Google Earth开始小卡。</p>
+
+<p>记得TX同学说过<a href="http://www.imtx.cn/archives/1111.html">GEM对Google Earth的显示效果有改进</a>啊，怎么我不开启GEM的时候反而更好一些呢……</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-03-30T00:00:00+08:00" pubdate data-updated="true">Mar 30th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/03/30/how-to-create-a-qt-project/">
+		
+			如何创建QT工程</a>
+	</h2>
+	<div class="entry-content">
+		<p>刚才打了一大段字，不小心给其他页面覆盖了……看来WP的自动保存功能还是得开启……</p>
+
+<p>最近有心学一下GUI编程，在GTK, wxWidgets和QT之间选择，最后因为QT Designer和喜欢C++的缘故选择了QT。当然QT4 Designer也不是那么傻瓜化的东西，有很多步骤都需要自己来完成。经过一番Google上的学习之后，我总算完成了一个简单的QT工程的创建，因此以这个工程为例，记录一下创建过程，以供参考。</p>
+
+<p><blockquote>
+项目名称：POS<br />
+主程序名：main.cpp<br />
+主窗口及SIGNAL/SLOT处理：POSMainWindow[.h, .cpp]<br />
+界面文件：ui_POSMainWindow.h, POSMainWindow.ui
+<a href="http://www.qiliang.net/qt/moc.html">Meta Object Compiler</a>文件：moc_POSMainWindow[.h, .cpp]
+</blockquote></p>
+
+<p>1. 新建界面配置文件(POSMainWindow.ui)</p>
+
+<p>
+		
+		<a href="/blog/2009/03/30/how-to-create-a-qt-project/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-03-30T00:00:00+08:00" pubdate data-updated="true">Mar 30th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/03/26/some-common-skills/">
+		
+			几个日常技巧——我的滥竽充数</a>
+	</h2>
+	<div class="entry-content">
+		<p>因为我在KDE下不想装那个GNOME依赖关系超多的tomboy，所以暂时把这些非常过时的日常技巧发上来，众人不要怪我凑日志数哦～</p>
+
+<p>1. MySQL授权用户: </p>
+
+<p><pre lang="mysql">GRANT ALL PRIVILEGES
+ON `DATABASE`.`TABLE`
+TO 'USER'@'DOMAIN'
+IDENTIFIED BY 'PASSWORD'
+WITH GRANT OPTION ;</pre></p>
+
+<p>Mysql 改密码：</p>
+
+<p><pre lang="bash">mysqladmin -u root -p password 'NEW_PASSWORD'</pre></p>
+
+<p>2. 批量修改文本文件的编码：find . -iname '*.*' -execdir iconv -f GB18030 -t UTF-8 -o {} {} \;</p>
+
+<p>批量缩小图片到50%： for i in *; do convert $i -resize 50%x50% sm-$i; done</p>
+
+<p>3. HTML中使用脚本实现网页跳转：< script>window.location="http://url/to/be/redirected"< /script></p>
+
+<p>4. VIM中把TAB批量转为空格 :retab</p>
+
+<p>VIM中使用F3键关闭粘贴时的缩进：set pastetoggle=< F3></p>
+
+<p>VIM中删除含特定字符串的行：g/str/d</p>
+
+<p>
+		
+		<a href="/blog/2009/03/26/some-common-skills/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-03-26T00:00:00+08:00" pubdate data-updated="true">Mar 26th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/">
+		
+			Gentoo新老问题-Milestone2</a>
+	</h2>
+	<div class="entry-content">
+		<p>昨天晚上已经用上2.6.29的内核了，而且也解决了部分上次提到的问题，写出来，权当折腾Gentoo之Milestone2吧。</p>
+
+<p>1. Amarok安装成功：</p>
+
+<p>今天更新了overlay，发现svn版的amarok已经把qtscriptgenerator给单独分出来做成一个包了，顿时感觉有戏，赶紧emerge一把，结果还是出错，不过错误提示和以前不太一样：
+<blockquote>/usr/lib/mysql/libmysqld.a(sql_parse.o): In function `mysql_parse(THD*, char const*, unsigned int, char const**)':                          <br />
+(.text+0xaadb): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_parse.o): In function `mysql_parse(THD*, char const*, unsigned int, char const**)':                          <br />
+(.text+0xabcc): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_prepare.o): In function `mysql_stmt_reset(THD*, char*)':                                                     <br />
+(.text+0x1dad): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_prepare.o): In function `mysql_stmt_reset(THD*, char*)':                                                     <br />
+(.text+0x1ef6): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_prepare.o): In function `mysql_stmt_fetch(THD*, char*, unsigned int)':                                       <br />
+(.text+0x20e8): undefined reference to `clock_gettime'                                                                                      <br />
+/usr/lib/mysql/libmysqld.a(sql_prepare.o):(.text+0x2273): more undefined references to `clock_gettime' follow                               <br />
+/usr/lib/gcc/i686-pc-linux-gnu/4.3.3/../../../../i686-pc-linux-gnu/bin/ld: warning: creating a DT_TEXTREL in object.                        <br />
+collect2: ld returned 1 exit status                                                                                                         <br />
+make[2]: *** [lib/libamarok_collection-sqlcollection.so] Error 1                                                                            <br />
+make[1]: *** [src/collection/sqlcollection/CMakeFiles/amarok_collection-sqlcollection.dir/all] Error 2                                      <br />
+make[1]: *** Waiting for unfinished jobs....                                                                                              </blockquote></p>
+
+<p>
+		
+		<a href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-03-26T00:00:00+08:00" pubdate data-updated="true">Mar 26th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/">
+		
+			折腾Gentoo Milestone1</a>
+	</h2>
+	<div class="entry-content">
+		<p>上次在日志中提到一下当Ubuntu9.04正式版出来的时候，我就换Gentoo，结果自己还是在Ubuntu Aplha6 出来之前就开始了Gentoo折腾之旅。</p>
+
+<p>前一次折腾Gentoo还是在暑假，因为挂载和其他一堆莫名其妙的问题导致我直接放弃了Gentoo。这次是在心理准备充足的情况下开始的，没想到还是很折腾。</p>
+
+<p>桌面管理器从GNOME换到Openbox，然后转成KDE4，顺便还试用了一下enlightenment，发现这种轻量级桌面对我来说不是很适应，就没再继续下去了。</p>
+
+<p>感谢Gentoo的文档和各种bugzilla，我解决了大部分问题。</p>
+
+<p>比方说无线的问题，经常出现SCIOFLAGS: No such device，上网找了半天发现要把/etc/init.d/net.wlan0给删掉。因为现在网络接口已经移交wicd管理了。具体原因尚未知。</p>
+
+<p>当然也碰到了一些莫名其妙的问题，其中大部分是和内核选项有关。</p>
+
+<p>比如声卡，音箱和耳机会同时出声。后来我把和我的声卡沾边的选项统统勾上，重新编译模块，就OK了。还有ext4分区的问题，系统始终不认ext4分区，在水木求助了两天都没解决，后来自己重新编译一次内核，居然就OK了。</p>
+
+<p>
+		
+		<a href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-03-22T00:00:00+08:00" pubdate data-updated="true">Mar 22nd, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/03/16/test-posting/">
+		
+			再次测试Translate插件</a>
+	</h2>
+	<div class="entry-content">
+		<p>测试发文章……</p>
+
+<p>———————————— 分割线 ————————————</p>
+
+<p>发文成功。我基本上知道是什么原因了。</p>
+
+<p>记得第一次发现不能发文是在那次Google很多服务都不能用的时候。当时正打算发个文章上来抱怨一把google code不能用了，google calendar不能用了，google group不能用了，google translate不能用了，还打算感叹一下Google对我们生活的巨大影响。结果一个文章发了老半天发不出去，只是存到草稿箱里去了。而且里面的内容全没了。</p>
+
+<p>以为是空间商的问题，不过后来还是没去怀疑空间商；后来觉得是自己的wp的问题，但是期间我没有改过wp的文件啊。</p>
+
+<p>只好郁闷地搁置了两个星期。</p>
+
+<p>现在知道问题在哪了。是因为<a href="http://wordpress.org/extend/plugins/wp-slug/">WP-slug translate</a>这个插件。这个插件会把日志的标题通过Google Tranlate翻译成永久链接。</p>
+
+<p>然后这几天Google Translate经常down掉，所以由于某些原因，我的日志就发布失败了。</p>
+
+<p>sigh...</p>
+
+<p>顺便说一句，KDE4.2.1真的很不错，KWin真的很棒～</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-03-16T00:00:00+08:00" pubdate data-updated="true">Mar 16th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+<nav id="pagenavi">
+    
+        <a href="3" class="prev">Prev</a>
+    
+    
+        <a href="5" class="next">Next</a>
+    
+</nav>
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2015
+ Caspar 
+<br>
+Powered by Octopress.
 </footer>
-    
-
-<script type="text/javascript">
-  disqus_shortname = 'casparant';
-  
-  (function () {
-    var disqus_script = 'count.js';
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  }());
-</script>
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-  </div>
-  <script src="/javascripts/modernizr-2.0.js"></script>
-<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){
-  var userAgent = navigator.userAgent.toLowerCase();
-  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
-  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
-  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
-  $('#sidebar').on(clickEvent, function() {
-    $(this).toggleClass('open');
-  });
-  $('.articlemeta').on(clickEvent, function() {
-    toggleDisqus();
-    $(this).toggleClass('open');
-  });
-});
-</script>
+	
 
 </body>
 </html>

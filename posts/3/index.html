@@ -1,120 +1,53 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Ant-Veil</title>
-  <meta name="author" content="Caspar">
+	<meta charset="utf-8">
+	<title>Caspar Blog  | Ant-Veil</title>
 
-  
-  <meta name="description" content="　 Ant-Veil 更新到了xorg-server-1.7 Unmask了xorg-server，然后有一堆x11-libs和x11-protos的包要升级，而且都是给mask了的，于是统统unmask掉，编译。 关于X相关组件的编译，这里再提一下@gnawux说过的： 先编译mesa- &hellip;">
-  
+	<meta name="author" content="Caspar"> 
+	
+	<meta name="description" content="Unmask了xorg-server，然后有一堆x11-libs和x11-protos的包要升级，而且都是给mask了的，于是统统unmask掉，编译。 关于X相关组件的编译，这里再提一下@gnawux说过的： 先编译mesa-libs,再编译mesa，再编译xorg-server，再编译x11 &hellip;"> <meta name="keywords" content="">
 
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <link rel="canonical" href="http://casparant.github.io/posts/3">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
+	<link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
 </head>
 
-<body   >
-  <div id="sidebar_control"></div>
-  <div id="sidebar">
-    <div class="logo">
-      Ant
-    </div>
-    <div class="content hide">
-      <section role="navigation">
-        <header role="banner"><hgroup>
-  <h1><a href="/">Ant-Veil</a></h1>
-  
-    <h2>Caspar Blog</h2>
-  
-</hgroup>
 
-</header>
-        
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:casparant.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
 
-<ul class="main-navigation">
-  <li><a href="/">home</a></li>
-  <li><a href="//wg.dotkrnl.com/p/public">public</a></li>
+<body>
+	<header id="header" class="inner"><h1>Ant-Veil</h1>
+<nav id="main-nav"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="blog/archives">Archive</a></li>
+	<li><a href="blog/about">About</a></li>
+    <li><a href="blog/categories/kernel">Kernel</a></li>
+    <li><a href="blog/categories/z-turn">Z-Turn</a></li>
 </ul>
+</nav>
 
 
-      </section>
-      
-        <section>
-  <h2>recent</h2>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-      
-    </div>
-  </div>
-  <div id="main">
-    <div class="content">
-      
-<header>
-  <div class="back">　</div>
-  <h1 class="entry-title"><a href="/">Ant-Veil</a></h1>
 </header>
-<ul class="blog-index">
-  
-    
-    
-      
-      
-    
-    
-  
-  <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2009/10/16/update-to-xorg-server-1-7/">更新到了xorg-server-1.7</a></h2>
-    
-      <div class="entry-content"><p>Unmask了xorg-server，然后有一堆x11-libs和x11-protos的包要升级，而且都是给mask了的，于是统统unmask掉，编译。</p>
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/10/16/update-to-xorg-server-1-7/">
+		
+			更新到了xorg-server-1.7</a>
+	</h2>
+	<div class="entry-content">
+		<p>Unmask了xorg-server，然后有一堆x11-libs和x11-protos的包要升级，而且都是给mask了的，于是统统unmask掉，编译。</p>
 
 <p>关于X相关组件的编译，这里再提一下<a href="http://labs.chinamobile.com/mblog/225">@gnawux</a>说过的：</p>
 
@@ -127,197 +60,527 @@
 <p>就这样。</p>
 
 <p>P.S. 今天去面试了某互联网公司，一塌糊涂。看来我真的不适合这样的公司，还是老老实实做我的Linux吧。</p>
-</div>
-      
-      
-    
-  </li>
-  
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
 
 
   
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/08/29/make-gpm-use-notify-osd/">让gnome-power-manager使用notify-osd通知</a></h2>
-    
-  </li>
-  
 
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/08/05/upgraded-to-kde-4-3/">更新了KDE 4.3</a></h2>
-    
-  </li>
-  
 
+<time datetime="2009-10-16T00:00:00+08:00" pubdate data-updated="true">Oct 16th, 2009</time></div>
+	
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/06/18/gcaldaemon-to-sync-with-kde/">GCALDaemon与KDE套件集成</a></h2>
-    
-  </li>
-  
+<div class="tags">
 
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
 
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/06/17/poor-my-notebook/">可怜的笔记本</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/06/16/using-gentoo-milestone-3/">Gentoo折腾 Milestone3</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/06/02/arch-beginner/">小试ArchLinux</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/05/10/geekcook-tee-ad/">我也软文一枚:GeekCook</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/05/01/a-collection-of-twitter-clients/">Twitter客户端一箩筐</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/04/23/latex-resume-templates/">LaTeX Resume Templates</a></h2>
-    
-  </li>
-  
-
-
-  
-</ul>
-<div class="pagination">
-  
-    <a class="prev" href="4">&larr; Older</a>
-  
-  
-  <a class="next" href="2">Newer &rarr;</a>
-  
 </div>
 
-    </div>
-    <footer role="contentinfo"><div class="content">
-  <p>
-    Copyright &copy; 2015 Caspar
-  </p>
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/08/29/make-gpm-use-notify-osd/">
+		
+			让gnome-power-manager使用notify-osd通知</a>
+	</h2>
+	<div class="entry-content">
+		<p>感谢<a href="http://imtx.cn" target="new">Tualatrix</a>同学对Notify-OSD, pidgin-libnotify, notification-daemon等包的hack，让我用上了Ubuntu下的Notify-OSD特性。不过因为笔记本经常要拔电源，这gnome-power-manager的事件通知还不能使用notify-osd，一拔电源就跳出窗口让人不爽，上网搜索，终于找到了解决方案。</p>
+
+<p>在AUR里面找到了这个: <a href="http://aur.archlinux.org/packages.php?ID=24699" target="new">http://aur.archlinux.org/packages.php?ID=24699</a>, 里面包含了notify-osd的补丁。可惜这是for 2.24的gpm的，直接patch会报错。我把它下载下来，修改了一下，让它能用在2.26.4的gpm上。修改后的patch可以从我在github上的overlay里下到：<a href="http://github.com/casparant/caspar-gentoo/tree/master" target="new">http://github.com/casparant/caspar-gentoo/tree/master</a>。</p>
+
+<p>现在gpm已经正常使用notify-osd了。至少拔除电源的时候能正确通知，不知道其他情况下如何。</p>
+
+<p><img src="http://img.ant.im/di-7718.png" /></p>
+
+<p>补充一个网址<a href="https://wiki.ubuntu.com/NotifyOSD" target="new">https://wiki.ubuntu.com/NotifyOSD</a>，看来Notify-OSD接管所有桌面通知任重而道远啊~</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-08-29T00:00:00+08:00" pubdate data-updated="true">Aug 29th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
 </div>
 
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/08/05/upgraded-to-kde-4-3/">
+		
+			更新了KDE 4.3</a>
+	</h2>
+	<div class="entry-content">
+		<p>发现portage里已经有了KDE4.3，只是mask掉了。思忖再三决定装上。没有好方法把kde4.3的东西一次性unmask掉，只好手动从/usr/portage/profiles/package.mask里面把kde4.3相关的每个包给unmask掉。解决了几个比较难缠的block问题，就进入漫长的80+个包的更新过程。幸好手头有一堆BUG要VERIFY，等下午开完会，发现已经装好了。</p>
+
+<p>重启之后略略有些失望，Plasma用了Air，浅色的主题看起来不习惯了。换回Oxygen去- -b</p>
+
+<p>然后打开一个窗口，原先KWin启用了很zb的摇摆特效，在KDE4.3中居然像一坨泥巴一样不停往下掉，往下掉，往下掉……从最大化恢复到小窗口后，整个窗口又好像被人从下面卷起来卷到了窗口顶部，总之这个效果绝非摇摆特效正常的效果。还是少zb一点，把这个不会提高工作效率的特效关掉吧。</p>
+
+<p>右下角的systray，居然有了“隐藏不活动的图标”，向MS靠拢么？</p>
+
+<p>其他features没有体验到太多，用几天希望有新的好的感受吧。</p>
+
+<p>对了，KDE菜单又消失了，解决方法如下：</p>
+
+<p>emerge gnome-menus->emerge -C gnome-menus->cd /etc/xdg/menus->用vim打开里面的文件，一个一个爱抚一遍->心里骂几遍该死的菜单->重启->ok了。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-08-05T00:00:00+08:00" pubdate data-updated="true">Aug 5th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/06/18/gcaldaemon-to-sync-with-kde/">
+		
+			GCALDaemon与KDE套件集成</a>
+	</h2>
+	<div class="entry-content">
+		<p>文章主要参考的还是<a href="http://gcaldaemon.sourceforge.net/usage.html">GCALDaemon的usage页面</a>，本文主要介绍使用GCALDaemon将KOrganizer和Google Calendar同步、将KAddressbook和GMAIL地址簿同步。</p>
+
+<p>上次使用远程文件的方式在Arch下确实搞定了，但是今天在Gentoo下又搞不定了。而且要使用远程资源的话，要装kdepim-kresources这个包。对于我这个有洁癖的人，当然是包越少越好了。如果有兴趣使用远程文件的，看完本文，参考前面那篇文章和GCALDaemon的官方主页吧。</p>
+
+<p>首先是下载GCALDaemon，下载完之后解压缩到/opt下，不知道GCALDaemon的开发人员刚开始怎么想的，居然想要解压缩到/usr/local/sbin下，囧。不过还要改三个文件，因为路径和预设的不一样了。使用sed命令：</p>
+
+<p><pre lang="bash">sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/password-encoder.sh
+sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/standalone-start.sh
+sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/sync-now.sh</pre></p>
+
+<p>之后可以把dev文件夹删掉，因为用不着，然后把bin/下面的*.sh文件都给增加可执行权限。</p>
+
+<p>gentoo用户可以去<a href="http://bugs.gentoo.org/237336">gentoo bugs</a>下载ebuild文件，或者用我的这个改过一些内容的：<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanMTJhNDQ4MjItYTIwZi00ZmZlLTllYzYtYmRhYjc1YzhkMDdi&hl=zh_CN">点此下载>>></a></p>
+
+<p>之后可以选择用root权限启动config-editor.sh（当然也可以按照官方网站上说的那样，chown到当前用户下，用普通用户权限执行），进行配置。</p>
+
+<p>
+		
+		<a href="/blog/2009/06/18/gcaldaemon-to-sync-with-kde/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-06-18T00:00:00+08:00" pubdate data-updated="true">Jun 18th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/06/17/poor-my-notebook/">
+		
+			可怜的笔记本</a>
+	</h2>
+	<div class="entry-content">
+		<p>昨晚呢，由于一瓶水泼到了键盘上……</p>
+
+<p>1.5秒之后，当机立断拔掉电源和电池，把笔记本倒扣。</p>
+
+<p>30分钟之后，键盘被拆下，甩了甩，各种出水。</p>
+
+<p>为了确认笔记本别处没有进水，遂决定把整个笔记本都拆开。</p>
+
+<p><img src="http://img.ant.im/di-GO91.jpg" /></p>
+
+<p>
+		
+		<a href="/blog/2009/06/17/poor-my-notebook/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-06-17T00:00:00+08:00" pubdate data-updated="true">Jun 17th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/06/16/using-gentoo-milestone-3/">
+		
+			Gentoo折腾 Milestone3</a>
+	</h2>
+	<div class="entry-content">
+		<p>上次几位说我从Gentoo叛逃到Arch我就已经心生愧疚。本来嘛，选择Arch等于选择免编译的便捷，选择Gentoo等于选择了完全定制的自由。在便捷和自由的交锋中，伴随着我一次手欠的操作，最终后者胜了，我重新回到了Gentoo的怀抱。</p>
+
+<p>先说说那个手欠的操作。</p>
+
+<p>我不小心新建了一个名字为~的文件夹，然后发现不对，文件名弄错了。于是想要删除之。于是执行了 rm ~ -rf。就这样。等待了10秒中之后，还没意识到什么问题，居然还加了sudo再执行了一次那个命令- -||| 然后pwd，发现路径不存在。然后cd，发现路径还是不存在。于是我哭了。幸好在服务器上有半个月前的数据备份，最重要的数据都给找回来了，这半个月写的代码也都凭着记忆给补回来一些了（说明我这半个月基本上没编码，哈哈，万幸）。</p>
+
+<p>数据回来之后一不做二不休，全盘格，直接回Gentoo了。</p>
+
+<p>可爱的Arch就这么被我抛弃了。</p>
+
+<p>上来直接上ext4分区。以前碰到过grub能认分区，但是kernel panic的情况，后来发现原来是要从ext4分区启动，需要initramfs。于是genkernel --menuconfig all手动配置完内核，生成了initramfs(我目前只会这个方法，囧，谁能告诉我怎么样生成initramfs）。</p>
+
+<p>回顾一下历史遗留问题：</p>
+
+<p>
+		
+		<a href="/blog/2009/06/16/using-gentoo-milestone-3/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-06-16T00:00:00+08:00" pubdate data-updated="true">Jun 16th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/06/02/arch-beginner/">
+		
+			小试ArchLinux</a>
+	</h2>
+	<div class="entry-content">
+		<p>夏日来临，再隔三差五地emerge一次估计我的电脑寿命将迅速缩短，短期内还没钱买新本，只好决定放弃Gentoo投奔Arch的怀抱。</p>
+
+<p>话说用了Gentoo之后，装其他发行版全部是驾轻就熟，就算是配置相对比较麻烦的Arch都轻松搞定。装好之后发现一些疑难杂症，比如不能待机、glxgears分数过低、checkgmail乱码、注销后不能重新启动kdm等等，都不治而愈了。看来Gentoo的可定制性太强了，有些设置我都完全不知道。</p>
+
+<p>由于刚开始不熟悉pacman和aur的包机制，不小心把一些自己不需要的包当依赖关系给装上了，下次有空一定要好好清理一遍。</p>
+
+<p>正在慢慢适应AUR中，这种管理方式感觉有点混乱，毕竟是成千上万的Arch用户都往里面塞东西。莫非我真的有洁癖？哈哈。昨天给Monkey's Audio Codec包打了个补丁，提交PKGBUILD却发现不能覆盖已有的包，郁闷。</p>
+
+<p>PKGBUILD太凌乱了，还是怀念USE flag啊。</p>
+
+<p>二进制包虽方便，有的用着还是不太爽，可能是心理作用，但是我的KNotes已经崩溃N次了。</p>
+
+<p>先用一段时间再看看。总体来说除了GentooUSE flag把我养得快有洁癖和偏执了，以至于Arch的PKGBUILD让我不爽，其他的Arch做得都不错。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-06-02T00:00:00+08:00" pubdate data-updated="true">Jun 2nd, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/05/10/geekcook-tee-ad/">
+		
+			我也软文一枚:GeekCook</a>
+	</h2>
+	<div class="entry-content">
+		<p>从<a href="http://yegle.net/2009/05/06/just-ad" target="new">狗狗</a>那里发现的一个好地方，<del datetime="2009-05-18T04:09:04+00:00"><a href="http://geekcook.blogspot.com" target="new">GeekCook@blogspot</a></del>，被墙了，新地址：<a href="http://www.geekcook.com/">GeekCook</a>，卖T恤和卫衣的。店主说了，写软文可以免运费，那我就撰软文一篇，把运费赚回来吧。</p>
+
+<p>话说店主的东西不多，样式都很棒。可惜狗狗已经抢了两件[<a href="http://www.geekcook.org/?p=44" target="new">1</a>,<a href="http://www.geekcook.org/?p=50" target="new">2</a>]，Amelie同学也抢了<a href="http://www.geekcook.org/?p=52" target="new">一件</a>，我能选择的余地就太少了～暂定那件<a href="http://www.geekcook.org/?p=48" target="new">稀有元素</a>的吧，话说当年背元素周期表我可是顺背如流啊。那件<a href="http://www.geekcook.org/?p=33" target="new">Ps</a>的也不错，只可惜自己用的是GIMP不是Ps，希望店主多推出点GNU的产品哦。</p>
+
+<p>不管了，撞衫就撞衫，我也要Twitter那件了！</p>
+
+<p>上图两张：</p>
+
+<p>
+		
+		<a href="/blog/2009/05/10/geekcook-tee-ad/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-05-10T00:00:00+08:00" pubdate data-updated="true">May 10th, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/05/01/a-collection-of-twitter-clients/">
+		
+			Twitter客户端一箩筐</a>
+	</h2>
+	<div class="entry-content">
+		<p>今天更新portage的时候注意到又有一个twitter客户端出现了，名字叫qTwitter，标记为N，说明是刚进的portage。好奇之下装上一用，感觉不错。结合以前用过的若干twitter客户端，在这里网罗总结一下：</p>
+
+<p>
+		
+		<a href="/blog/2009/05/01/a-collection-of-twitter-clients/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-05-01T00:00:00+08:00" pubdate data-updated="true">May 1st, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/04/23/latex-resume-templates/">
+		
+			LaTeX Resume Templates</a>
+	</h2>
+	<div class="entry-content">
+		<p>用LaTeX上瘾之后，什么东西都想用LaTeX来做。前段时间由于经验不足，折腾LaTeX版的实验报告模板未果，这次在写LaTeX简历之前，足足做好了功课，最后总算是做出来了，感觉很棒。</p>
+
+<p>推荐几个LaTeX模板，一个是以前找到的，不过我最后没采用。<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanYmVlOWE1NDAtY2RmOS00MTkyLWE4YTItYWU2N2I0NmVlZDdj&hl=zh_CN">点此下载>>></a></p>
+
+<p>另外一个是在这里找到的：<a href="http://www.davidgrant.ca/latex_resume_template">http://www.davidgrant.ca/latex_resume_template</a>，作者使用了shading宏包，但是我用了XeTeX包后shading包似乎就不起作用了，后来在作者文章后面发现一个留言，似乎是个变通的办法，但是shading是有了，边框却没了。最后去smth上的TeX版求助，可爱的版主大人瞬间就回帖告诉我，用\fcolorbox等比较常见的包中的命令就能搞定，于是我就搞定了。经过我修改后的LaTeX模板，我只贴一个文件\begin{document}前面的那部分吧，因为简历的内容真的是不好意思拿出手-。-和我下载的那个网页的主人比起来，真是汗颜啊~~</p>
+
+<p>这部分改动还是挺多的，特别是修改了几个命令，请注意自己替换，并且请使用xelatex命令编译。</p>
+
+<p>
+		
+		<a href="/blog/2009/04/23/latex-resume-templates/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-04-23T00:00:00+08:00" pubdate data-updated="true">Apr 23rd, 2009</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+
+</div>
+
+
+</div>
+</article>
+
+
+<nav id="pagenavi">
+    
+        <a href="2" class="prev">Prev</a>
+    
+    
+        <a href="4" class="next">Next</a>
+    
+</nav>
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2015
+ Caspar 
+<br>
+Powered by Octopress.
 </footer>
-    
-
-<script type="text/javascript">
-  disqus_shortname = 'casparant';
-  
-  (function () {
-    var disqus_script = 'count.js';
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  }());
-</script>
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-  </div>
-  <script src="/javascripts/modernizr-2.0.js"></script>
-<script src="//ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-<script src="/javascripts/libs/respond.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){
-  var userAgent = navigator.userAgent.toLowerCase();
-  var isiPhone = (userAgent.indexOf('iphone') != -1 || userAgent.indexOf('ipod') != -1) ? true : false;
-  var isAndroid = (userAgent.indexOf('android') != -1) ? true : false;
-  clickEvent = (isiPhone || isAndroid) ? 'touchstart' : 'click';
-  $('#sidebar').on(clickEvent, function() {
-    $(this).toggleClass('open');
-  });
-  $('.articlemeta').on(clickEvent, function() {
-    toggleDisqus();
-    $(this).toggleClass('open');
-  });
-});
-</script>
+	
 
 </body>
 </html>
