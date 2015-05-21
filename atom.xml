@@ -4,7 +4,7 @@
   <title><![CDATA[Ant-Veil]]></title>
   <link href="http://casparant.github.io/atom.xml" rel="self"/>
   <link href="http://casparant.github.io/"/>
-  <updated>2015-05-21T15:24:25+08:00</updated>
+  <updated>2015-05-21T15:38:06+08:00</updated>
   <id>http://casparant.github.io/</id>
   <author>
     <name><![CDATA[Caspar]]></name>
@@ -31,58 +31,90 @@
     <link href="http://casparant.github.io/blog/2014/10/10/fix-razer-orochi-re-connect-issue/"/>
     <updated>2014-10-10T00:00:00+08:00</updated>
     <id>http://casparant.github.io/blog/2014/10/10/fix-razer-orochi-re-connect-issue</id>
-    <content type="html"><![CDATA[<p>Issue:</p>
+    <content type="html"><![CDATA[<h2>Issue</h2>
 
 <p>雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
 
-<p>Environment: </p>
+<h2>Environment</h2>
 
-<p><blockquote>Razer Orochi 蓝牙鼠标<br />
-Gentoo + KDE<br />
-kernel 3.10 ~ 3.16<br />
-bluez 4.101 ~ 5.23<br />
-bluedevil 1.3.2 ~ 2.0_rc1</blockquote></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Razer Orochi 蓝牙鼠标
+</span><span class='line'>Gentoo + KDE
+</span><span class='line'>kernel 3.10 ~ 3.16
+</span><span class='line'>bluez 4.101 ~ 5.23
+</span><span class='line'>bluedevil 1.3.2 ~ 2.0_rc1</span></code></pre></td></tr></table></div></figure>
 
-<p>Solution:</p>
 
-<p><!--more--></p>
+<h2>Solution</h2>
 
-<p>通过 hcidump 工具发现：</p>
+<!--more-->
 
-<p><blockquote>
-> HCI Event: Connect Request (0x04) plen 10<br />
-    bdaddr F0:65:DD:94:9F:BB class 0x002580 type ACL<br />
-> HCI Event: Command Status (0x0f) plen 4<br />
-    Accept Connection Request (0x01|0x0009) status 0x00 ncmd 1<br />
-> HCI Event: Connect Complete (0x03) plen 11<br />
-    status 0x00 handle 13 bdaddr F0:65:DD:94:9F:BB type ACL encrypt 0x00<br />
-> HCI Event: Command Status (0x0f) plen 4<br />
-    Read Remote Supported Features (0x01|0x001b) status 0x00 ncmd 1<br />
-> HCI Event: Read Remote Supported Features (0x0b) plen 11<br />
-    status 0x00 handle 13<br />
-    Features: 0xbf 0x00 0xa0 0x78 0x18 0x1e 0x59 0x83<br />
-> HCI Event: Command Status (0x0f) plen 4<br />
-    Read Remote Extended Features (0x01|0x001c) status 0x00 ncmd 1<br />
-> HCI Event: Read Remote Extended Features (0x23) plen 13<br />
-    status 0x00 handle 13 page 1 max 1<br />
-    Features: 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00<br />
-> HCI Event: Command Status (0x0f) plen 4<br />
-    Remote Name Request (0x01|0x0019) status 0x00 ncmd 1<br />
-> HCI Event: Remote Name Req Complete (0x07) plen 255<br />
-    status 0x00 bdaddr F0:65:DD:94:9F:BB name 'Razer Orochi 2013'<br />
-> HCI Event: Command Complete (0x0e) plen 10<br />
-    Link Key Request Negative Reply (0x01|0x000c) ncmd 1<br />
-    status 0x00 bdaddr F0:65:DD:94:9F:BB<br />
-> HCI Event: Disconn Complete (0x05) plen 4<br />
-    status 0x00 handle 13 reason 0x13<br />
-    Reason: Remote User Terminated Connection</blockquote></p>
 
-<p>出现 Link Key Request Negative Reply 的字样，怀疑是配对的时候使用自动 key，而蓝牙工具没有保存这个自动 key，导致鼠标从休眠恢复时试图以空 key 连接，从而失败。</p>
+<p>通过 <code>hcidump</code> 工具发现：</p>
 
-<p>知道了问题，解决方法就简单了，配对的时候手工输入 key/PIN 为 1234，连接即可。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; HCI Event: Connect Request (0x04) plen 10
+</span><span class='line'>    bdaddr F0:65:DD:94:9F:BB class 0x002580 type ACL
+</span><span class='line'>&gt; HCI Event: Command Status (0x0f) plen 4
+</span><span class='line'>    Accept Connection Request (0x01|0x0009) status 0x00 ncmd 1
+</span><span class='line'>&gt; HCI Event: Connect Complete (0x03) plen 11
+</span><span class='line'>    status 0x00 handle 13 bdaddr F0:65:DD:94:9F:BB type ACL encrypt 0x00
+</span><span class='line'>&gt; HCI Event: Command Status (0x0f) plen 4
+</span><span class='line'>    Read Remote Supported Features (0x01|0x001b) status 0x00 ncmd 1
+</span><span class='line'>&gt; HCI Event: Read Remote Supported Features (0x0b) plen 11
+</span><span class='line'>    status 0x00 handle 13
+</span><span class='line'>    Features: 0xbf 0x00 0xa0 0x78 0x18 0x1e 0x59 0x83
+</span><span class='line'>&gt; HCI Event: Command Status (0x0f) plen 4
+</span><span class='line'>    Read Remote Extended Features (0x01|0x001c) status 0x00 ncmd 1
+</span><span class='line'>&gt; HCI Event: Read Remote Extended Features (0x23) plen 13
+</span><span class='line'>    status 0x00 handle 13 page 1 max 1
+</span><span class='line'>    Features: 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+</span><span class='line'>&gt; HCI Event: Command Status (0x0f) plen 4
+</span><span class='line'>    Remote Name Request (0x01|0x0019) status 0x00 ncmd 1
+</span><span class='line'>&gt; HCI Event: Remote Name Req Complete (0x07) plen 255
+</span><span class='line'>    status 0x00 bdaddr F0:65:DD:94:9F:BB name 'Razer Orochi 2013'
+</span><span class='line'>&gt; HCI Event: Command Complete (0x0e) plen 10
+</span><span class='line'>    Link Key Request Negative Reply (0x01|0x000c) ncmd 1
+</span><span class='line'>    status 0x00 bdaddr F0:65:DD:94:9F:BB
+</span><span class='line'>&gt; HCI Event: Disconn Complete (0x05) plen 4
+</span><span class='line'>    status 0x00 handle 13 reason 0x13
+</span><span class='line'>    Reason: Remote User Terminated Connection</span></code></pre></td></tr></table></div></figure>
 
-<p>就这么一个破问题，折腾了我半天时间，内核、bluez、bluedevil 都尝试了一遍，还在人家的 Macbook 上测试了一番。差点就冲动下单换 Mac 了。 #我不是土豪#
-</p>
+
+<p>出现 <strong><em>Link Key Request Negative Reply</em></strong> 的字样，怀疑是配对的时候使用自动 key，而蓝牙工具没有保存这个自动 key，导致鼠标从休眠恢复时试图以空 key 连接，从而失败。</p>
+
+<p>知道了问题，解决方法就简单了，配对的时候手工输入 key/PIN 为 <strong><em>1234</em></strong>，连接即可。</p>
+
+<p>就这么一个破问题，折腾了我半天时间，内核、bluez、bluedevil 都尝试了一遍，还在人家的 Macbook 上测试了一番。差点就冲动下单换 Mac 了。 <code>#我不是土豪#</code></p>
 ]]></content>
   </entry>
   
