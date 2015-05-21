@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="前段时间入手了一台入门单反，看网上都是使用光影啊、PS啊、Nikon光盘自带的ViewNX等工具来处理相片，我就想在Linux找到类似的软件。 PS这个好说，GIMP可以搞定。不过强烈期盼GIMP的单一窗口模式早点出来啊～ 相片管理软件只好暂时用用Wine的Picasa了， &hellip;">
+  <meta name="description" content="最近在加班之余还把自己的Blog整理了一遍，整理过程中发现这不知不觉就过去了一年。一年改变了好多东西，唯有折腾精神不变。 首先是升级WP到了2.9，然后把Blog主题换了，在网上选了一款比较清爽的主题，mg12的elegant box主题。这位主题作者的设计很对我胃口， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/12/23/some-notes-of-building-wordpress-blog/">新近摆弄WP的一点备忘</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-12-23T00:00:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/12/23/some-notes-of-building-wordpress-blog/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/12/23/some-notes-of-building-wordpress-blog/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近在加班之余还把自己的Blog整理了一遍，整理过程中发现这不知不觉就过去了一年。一年改变了好多东西，唯有折腾精神不变。</p>
+
+<p>首先是升级WP到了2.9，然后把Blog主题换了，在网上选了一款比较清爽的主题，<a href="http://www.neoease.com" target="_blank">mg12</a>的elegant box主题。这位主题作者的设计很对我胃口，上次用了他大名鼎鼎的iNove，感觉良好，情绪稳定。</p>
+
+<p>然后就整理了一下插件，自己hack了一下主题。原本辛辛苦苦hack了好几个小时的代码，把wp-thread-comment的回复样式弄得跟原生界面一样了，结果发现elegant box主题在页面上不能正确回复评论，而且不能正确显示分页。看了代码才发现，从wp2.7开始好像就自带了嵌套回复、评论分页功能，从这个版本开始主题模板中的comments.php就和以前不一样了。新的主题模板有仿佛和wp-thread-comment冲突。不过wp-thread-comment里面用的parent字段和wp原生嵌套功能的字段是一样的，所以关闭了wp-thread-comment之后嵌套评论还在。只是没有了邮件发送通知功能，网上再搜搜，发现<a href="http://fairyfish.net" target="_blank">denishua</a>的<a href="http://fairyfish.net/2008/11/03/comment-reply-notification/" target="_blank">Comment Reply Notification</a>把邮件发送功能从wp-thread-comment中抽取出来单独而成的，正和我意，于是装上。然后又发现评论上方自带了引言功能，那么Quoter这个插件也可以下课了。看来好久没有折腾wp，那是相当Out啊。</p>
+
+<p>装了几个锦上添花的插件：<a href="http://wordpress.org/extend/plugins/wp-recentcomments/" target="_blank">WP-RecentComments</a>, <a href="http://wordpress.org/extend/plugins/wp-multicollinks/" target="_blank">WP-MultiColLinks</a>, <a href="http://wordpress.org/extend/plugins/wp-easyarchives/" target="_blank">WP-EasyArchives</a>，作者都是mg12，主要是让版面排得更好看一些，其实不用也没太大影响。</p>
+
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/12/23/some-notes-of-building-wordpress-blog/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -488,43 +531,6 @@ sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/sync-now.sh</pre></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/05/01/a-collection-of-twitter-clients/">Twitter客户端一箩筐</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-05-01T00:00:00+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2009/05/01/a-collection-of-twitter-clients/#disqus_thread"
-             data-disqus-identifier="http://casparant.github.io/blog/2009/05/01/a-collection-of-twitter-clients/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天更新portage的时候注意到又有一个twitter客户端出现了，名字叫qTwitter，标记为N，说明是刚进的portage。好奇之下装上一用，感觉不错。结合以前用过的若干twitter客户端，在这里网罗总结一下：</p>
-
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2009/05/01/a-collection-of-twitter-clients/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -542,6 +548,10 @@ sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/sync-now.sh</pre></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/208-day-crash-issue/">Linux Kernel 208.5d Panic Issue</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/21/blog-revived/">Blog 恢复</a>
       </li>
     
@@ -555,10 +565,6 @@ sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/sync-now.sh</pre></p>
     
       <li class="post">
         <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
       </li>
     
   </ul>

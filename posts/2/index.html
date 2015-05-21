@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="As I mentioned in the previous post, I couldn't get my fingerprint reader work in Gentoo. Now this problem has been solved. ;-) Before starting, here &hellip;">
+  <meta name="description" content="I have been keeping tracking of this RHBZ for long, and I am happy to see libfprint finally supports my fingerprint reader on T410. Seems that the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,42 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410/">Libfprint Finally Supports Thinkpad T410</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-08-20T00:00:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have been keeping tracking of <a href="https://bugzilla.redhat.com/show_bug.cgi?id=504399" target="_blank">this RHBZ</a> for long, and I am happy to see libfprint finally supports my fingerprint reader on T410. Seems that the original author Daniel(dsd) was very busy so that another developer in Red Hat, Bastien Nocera, took this project instead. He moved the libfprint git repo to freedesktop.org, with the newest patches applied. You can find the new git repo <a href="http://cgit.freedesktop.org/libfprint/libfprint/" target="_blank">here</a>, and new libfprint release(0.2.0) <a href="http://freedesktop.org/~hadess/libfprint-0.2.0.tar.bz2" target="_blank">here</a>. Bastien Nocera is also maintaining <a href="http://www.reactivated.net/fprint/wiki/Fprintd" target="_blank">fprintd</a>, "a D-Bus daemon that offers libfprint functionality over the D-Bus interprocess communication bus". The git repo and new release are located <a href="http://cgit.freedesktop.org/libfprint/fprintd/" target="_blank">here</a> and <a href="http://freedesktop.org/~hadess/fprintd-0.2.0.tar.bz2" target="_blank">here</a>.</p>
+
+<p>Besides the RHBZ mentioned above, you should be able to get more information from this <a href="http://lists.reactivated.net/pipermail/fprint/2010-August/001530.html" target="_blank">message</a> in fprint mailing list.</p>
+
+<p>I updated my gentoo overlay in github, too. You can emerge libfprint and fprintd after you synchronized <a href="http://github.com/casparant/caspar-gentoo" target="_blank">this</a> overlay.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -516,49 +552,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/12/23/some-notes-of-building-wordpress-blog/">新近摆弄WP的一点备忘</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-12-23T00:00:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2009/12/23/some-notes-of-building-wordpress-blog/#disqus_thread"
-             data-disqus-identifier="http://casparant.github.io/blog/2009/12/23/some-notes-of-building-wordpress-blog/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近在加班之余还把自己的Blog整理了一遍，整理过程中发现这不知不觉就过去了一年。一年改变了好多东西，唯有折腾精神不变。</p>
-
-<p>首先是升级WP到了2.9，然后把Blog主题换了，在网上选了一款比较清爽的主题，<a href="http://www.neoease.com" target="_blank">mg12</a>的elegant box主题。这位主题作者的设计很对我胃口，上次用了他大名鼎鼎的iNove，感觉良好，情绪稳定。</p>
-
-<p>然后就整理了一下插件，自己hack了一下主题。原本辛辛苦苦hack了好几个小时的代码，把wp-thread-comment的回复样式弄得跟原生界面一样了，结果发现elegant box主题在页面上不能正确回复评论，而且不能正确显示分页。看了代码才发现，从wp2.7开始好像就自带了嵌套回复、评论分页功能，从这个版本开始主题模板中的comments.php就和以前不一样了。新的主题模板有仿佛和wp-thread-comment冲突。不过wp-thread-comment里面用的parent字段和wp原生嵌套功能的字段是一样的，所以关闭了wp-thread-comment之后嵌套评论还在。只是没有了邮件发送通知功能，网上再搜搜，发现<a href="http://fairyfish.net" target="_blank">denishua</a>的<a href="http://fairyfish.net/2008/11/03/comment-reply-notification/" target="_blank">Comment Reply Notification</a>把邮件发送功能从wp-thread-comment中抽取出来单独而成的，正和我意，于是装上。然后又发现评论上方自带了引言功能，那么Quoter这个插件也可以下课了。看来好久没有折腾wp，那是相当Out啊。</p>
-
-<p>装了几个锦上添花的插件：<a href="http://wordpress.org/extend/plugins/wp-recentcomments/" target="_blank">WP-RecentComments</a>, <a href="http://wordpress.org/extend/plugins/wp-multicollinks/" target="_blank">WP-MultiColLinks</a>, <a href="http://wordpress.org/extend/plugins/wp-easyarchives/" target="_blank">WP-EasyArchives</a>，作者都是mg12，主要是让版面排得更好看一些，其实不用也没太大影响。</p>
-
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2009/12/23/some-notes-of-building-wordpress-blog/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -576,6 +569,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/208-day-crash-issue/">Linux Kernel 208.5d Panic Issue</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/21/blog-revived/">Blog 恢复</a>
       </li>
     
@@ -589,10 +586,6 @@
     
       <li class="post">
         <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
       </li>
     
   </ul>

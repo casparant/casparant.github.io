@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="这两天被启动的东西给弄晕了，现在回过神来写一段备用。 一、启动冲突 造成启动冲突的原因往往只有一个，MBR覆盖。比如先装的XP再装的Linux，Linux就会把XP安装时写入MBR的数据给覆盖掉，如果先装Ubuntu再装Fedora， &hellip;">
+  <meta name="description" content="下了NetBeans6.0正式版的安装文件，没想到安装完毕在菜单项中居然不出现！一查看安装路径，执行脚本netbeans还在安安静静地躺在/usr/local/netbeans-6.0/bin下面呢。于是准备创建链接。 因为刚才查找路径的时候已经进入 /usr/local/netbeans-6.0 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/22/symbol-link/">创建链接的问题：Symbol Links</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-01-22T00:00:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/01/22/symbol-link/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/01/22/symbol-link/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>下了NetBeans6.0正式版的安装文件，没想到安装完毕在菜单项中居然不出现！一查看安装路径，执行脚本netbeans还在安安静静地躺在/usr/local/netbeans-6.0/bin下面呢。于是准备创建链接。</p>
+
+<p>因为刚才查找路径的时候已经进入 /usr/local/netbeans-6.0/bin下了，所以想当然地执行了如下的命令：
+<blockquote>ln -s netbeans /usr/bin</blockquote>
+结果在Terminal下面输入netbeans，无效，提示：Too many levels of symbolic links</p>
+
+<p>一顿狂搜仍无结果……突然，意识到会不会是相对路径的问题，于是重新创建链接：
+<blockquote>ln -sf  /usr/local/netbeans-6.0/bin/netbeans /usr/bin</blockquote>
+f命令表示强制创建，覆盖同名文件。
+<p dragover="true">这次终于成功了……</p>
+<p dragover="true">另外给一段关于Symbol Link  和 Hard Link的介绍：</p>
+<p dragover="true"></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/01/22/symbol-link/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -331,6 +377,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/208-day-crash-issue/">Linux Kernel 208.5d Panic Issue</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/21/blog-revived/">Blog 恢复</a>
       </li>
     
@@ -344,10 +394,6 @@
     
       <li class="post">
         <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
       </li>
     
   </ul>

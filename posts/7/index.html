@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="这几天太忙，好久没有更新了。今天上来推荐一个软件：几天前，永中推出了它的Office2009版本，永中的Office一直都支持Linux平台，这次的亮点是永中有了免费的版本：集成Office个人版。 永中Office的排版和WORD比较相近，这下交老师的实验报告就不用跑虚拟机下开Windows了。 &hellip;">
+  <meta name="description" content="第一步，安装mod_python sudo apt-get install libapache2-mod-python 第二步，将mod_python模块加入到启用列表中 sudo ln -s /etc/apache2/mods-available/mod_python.load /etc/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,65 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/10/19/modpython-configuration-under-ubuntu-804/">Ubuntu 8.04 Mod_python Config</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-10-19T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/10/19/modpython-configuration-under-ubuntu-804/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/10/19/modpython-configuration-under-ubuntu-804/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>第一步，安装mod_python</p>
+
+<p><pre lang="bash">sudo apt-get install libapache2-mod-python</pre></p>
+
+<p>第二步，将mod_python模块加入到启用列表中</p>
+
+<p><pre lang="bash">sudo ln -s /etc/apache2/mods-available/mod_python.load /etc/apache2/mods-enabled/</pre></p>
+
+<p><strong>注：在Ubuntu 8.10中，对应的模块配置文件名已经改成了python.load，后文中提到的也应相应改成python.conf</strong></p>
+
+<p>第三步，配置mod_python</p>
+
+<p>先在<code>/etc/apache2/mods-available/</code>下新建一个文件<code>mod_python.conf</code></p>
+
+<p><pre lang="bash">sudo vi /etc/apache2/mods-available/mod_python.conf</pre></p>
+
+<p>加入如下内容：</p>
+
+<p><pre lang="xml" line="1"><Directory /var/www>
+    AddHandler mod_python .py
+    PythonHandler test
+    PythonDebug On
+</pre></p>
+
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/10/19/modpython-configuration-under-ubuntu-804/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -523,65 +582,6 @@ tray_icon_added (EggTrayManager *manager,
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/08/13/gcc-4-3-1-bootstrap-succeeded-under-opensolaris/">OpenSolaris编译安装gcc4.3.1成功</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-08-13T00:00:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2008/08/13/gcc-4-3-1-bootstrap-succeeded-under-opensolaris/#disqus_thread"
-             data-disqus-identifier="http://casparant.github.io/blog/2008/08/13/gcc-4-3-1-bootstrap-succeeded-under-opensolaris/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>编译时间为1小时零12分钟，调试错误的时间累计就不知道多少了。要编译的语言为c,c++,f95。之前出过N多的错误，因为时间过去太久了，有些错误的名字记不太清楚了，只大概地写一下：</p>
-
-<p><blockquote>Fatal error in reader: makefile, line XXX: Unexpected end of line seen</blockquote></p>
-
-<p>解决这个问题，需要安装gmake，因为OpenSolaris中自带的语法和gnu make的语法可能不一样。</p>
-
-<p>接下去碰到的问题，是采用以下编译选项的：</p>
-
-<p><pre lang="bash" line="1">./configure --prefix=/usr/local \
---with-gnu-ld=/usr/gnu/bin/ld; \
-gmake all</pre></p>
-
-<p>出错提示有很多，都记不太清了，比如：</p>
-
-<p><blockquote>configure: error: cannot compute suffix of object files: cannot compile</blockquote></p>
-
-<p><blockquote>[gmake] *** cannot create rule to make target `all' ***</blockquote></p>
-
-<p><blockquote>ld errors: no .eh_frame_hdr table will be created.</blockquote></p>
-
-<p>在网上找到这个网页：<a href="http://www.linuxidc.com/Linux/2008-07/14125p2.htm">http://www.linuxidc.com/Linux/2008-07/14125p2.htm</a></p>
-
-<p>看到如下的configure选项：</p>
-
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2008/08/13/gcc-4-3-1-bootstrap-succeeded-under-opensolaris/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/8">&larr; Older</a>
@@ -599,6 +599,10 @@ gmake all</pre></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/208-day-crash-issue/">Linux Kernel 208.5d Panic Issue</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/21/blog-revived/">Blog 恢复</a>
       </li>
     
@@ -612,10 +616,6 @@ gmake all</pre></p>
     
       <li class="post">
         <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
       </li>
     
   </ul>

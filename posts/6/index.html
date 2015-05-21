@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="等了好久的Amarok2终于发布了。 Ubuntu用户可以参考Kubuntu网站上的Installation Instructions： 1. Follow the Kubuntu Repository Guide to enable Recommended Updates (backports &hellip;">
+  <meta name="description" content="1周年，100篇日志，100个Feedsky订阅，10个Feedburner订阅（- -|||），2w次访问，20w的Alexa排名。 写Blog也算有些年了，03年开始学习HTML，想做个个人主页，由于美工功底差，做出来的主页惨不忍睹，一度放弃；04年在杂志上了解到Blog，开始写， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,46 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/12/17/blog-anniversary/">周年记</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-12-17T00:00:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/12/17/blog-anniversary/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/12/17/blog-anniversary/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>1周年，100篇日志，100个Feedsky订阅，10个Feedburner订阅（- -|||），2w次访问，20w的Alexa排名。</p>
+
+<p>写Blog也算有些年了，03年开始学习HTML，想做个个人主页，由于美工功底差，做出来的主页惨不忍睹，一度放弃；04年在杂志上了解到Blog，开始写，不过直到06年为止还是什么都不懂的涂鸦阶段，这两年主要停留在两个BSP上，<a href="http://swordantcs.blogcn.com">Blogcn.com</a>和<a href="http://swordantcs.blog.com.cn">Blog.com.cn</a>，选择这两个BSP是因为它们的域名很NB；06开始到07年末，是辗转时期，Blog.com.cn的服务器太慢，抛弃了之后去了<a href="http://blog.sina.com.cn/swordantcs">新浪</a>，新浪有短时间服务器也开始抽风，于是去了<a href="http://casparant.blog.163.com">网易</a>，网易之后又去了<a href="http://casparant.blogbus.com">博客大巴</a>，反正一顿辗转，总是找不到满意的BSP。最后在<a href="http://yegle.net">yegle</a>的教唆之下，选择了<a href="http://www.lampdrive.com">自建Blog</a>。</p>
+
+<p>在这个Blog之前的日志，大多是写自己的生活，只是我这人毛病有二，一是不喜欢让自己日志太散，所以一个博客废弃了就喜欢删文章；另一个是喜欢回头去看文章，看到写得太流水的文章也删。所以现在基本上已经找不到我当年的文字了。</p>
+
+<p>写技术Blog也纯属是兴趣，还是要感谢<a href="http://monnand.linuxsky.org">monnand</a>带我进入Linux这个伟大的世界，摆弄久了就想分享一些文字，所以就有了这个技术博客。</p>
+
+<p>文章开头的那些数字是堆很普通的数字，我没有能力没有时间也没有想过让我的Blog成为公众关注的站点，自娱自乐，并且能让需要得到信息的朋友们获取需要的信息，足矣。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -457,65 +497,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/10/19/modpython-configuration-under-ubuntu-804/">Ubuntu 8.04 Mod_python Config</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-10-19T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2008/10/19/modpython-configuration-under-ubuntu-804/#disqus_thread"
-             data-disqus-identifier="http://casparant.github.io/blog/2008/10/19/modpython-configuration-under-ubuntu-804/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>第一步，安装mod_python</p>
-
-<p><pre lang="bash">sudo apt-get install libapache2-mod-python</pre></p>
-
-<p>第二步，将mod_python模块加入到启用列表中</p>
-
-<p><pre lang="bash">sudo ln -s /etc/apache2/mods-available/mod_python.load /etc/apache2/mods-enabled/</pre></p>
-
-<p><strong>注：在Ubuntu 8.10中，对应的模块配置文件名已经改成了python.load，后文中提到的也应相应改成python.conf</strong></p>
-
-<p>第三步，配置mod_python</p>
-
-<p>先在<code>/etc/apache2/mods-available/</code>下新建一个文件<code>mod_python.conf</code></p>
-
-<p><pre lang="bash">sudo vi /etc/apache2/mods-available/mod_python.conf</pre></p>
-
-<p>加入如下内容：</p>
-
-<p><pre lang="xml" line="1"><Directory /var/www>
-    AddHandler mod_python .py
-    PythonHandler test
-    PythonDebug On
-</pre></p>
-
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2008/10/19/modpython-configuration-under-ubuntu-804/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/7">&larr; Older</a>
@@ -533,6 +514,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/208-day-crash-issue/">Linux Kernel 208.5d Panic Issue</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/21/blog-revived/">Blog 恢复</a>
       </li>
     
@@ -546,10 +531,6 @@
     
       <li class="post">
         <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
       </li>
     
   </ul>

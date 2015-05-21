@@ -9,7 +9,12 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="对不住各位看官了……这个EMU8086模拟器是Windows下的，还是破解的……我只是为了完成计组老师的作业而已。只是有道题比较有意思，我深深地想了好久，发现一些问题，估计老师不会认真改我的作业，我把它发上来发泄发泄，嗯。 话说EMU8086预先弄了几个PORT， &hellip;">
+  <meta name="description" content="自动调用toString方法—— //A.java
+public class A extends B
+{ public String toString() { return "A"; }
+} //B.java
+public class B
+{ public String toString() { &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +85,75 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/10/java-basic-check-points/">Java知识点没掌握扎实的后果</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-06-10T00:00:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/06/10/java-basic-check-points/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/06/10/java-basic-check-points/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>自动调用toString方法——</p>
+
+<p><pre lang="java" line="1">
+//A.java
+public class A extends B
+{
+	public String toString()
+	{
+		return "A";
+	}
+}</pre></p>
+
+<p>//B.java<br />
+public class B<br />
+{
+	public String toString()<br />
+	{<br />
+		return "B";<br />
+	}<br />
+}</p>
+
+<p>//C.java<br />
+public class C<br />
+{
+	public static void main(String[] args)<br />
+	{<br />
+		Object o[] = {new A(), new B()};</p>
+
+<p>		System.out.print(o[0]);<br />
+		System.out.print(o[1]);<br />
+	}<br />
+}
+</p>
+
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/06/10/java-basic-check-points/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -474,52 +548,6 @@ sudo apt-get dist-upgrade</pre></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/04/07/using-latex/">开始学习LaTeX</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-04-07T00:00:00+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2008/04/07/using-latex/#disqus_thread"
-             data-disqus-identifier="http://casparant.github.io/blog/2008/04/07/using-latex/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在论坛上知道了LaTeX,又从monnand那里看到了它的应用，又听见某慕容同学嚷嚷着要学，那么我就看看LaTeX到底是怎么样一个东西吧……</p>
-
-<p>What's LaTex?
-<blockquote>LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation.<br />
-LaTeX is the de facto standard for the communication and publication of scientific documents. LaTeX is available as free software.</blockquote>
-请访问LaTeX Porjiect页面以了解更多信息：<a href="http://www.latex-project.org/">http://www.latex-project.org/</a></p>
-
-<p>What's CJK?</p>
-
-<p>C就是Chinese，J就是Japanese，K就是Korean。CJK就是中日韩文字符支持……</p>
-
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2008/04/07/using-latex/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/10">&larr; Older</a>
@@ -537,6 +565,10 @@ LaTeX is the de facto standard for the communication and publication of scientif
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/208-day-crash-issue/">Linux Kernel 208.5d Panic Issue</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/21/blog-revived/">Blog 恢复</a>
       </li>
     
@@ -550,10 +582,6 @@ LaTeX is the de facto standard for the communication and publication of scientif
     
       <li class="post">
         <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="解决了的问题：1.tty下显示中文，2.支持中文输入，3.合适的分辨率，4.关闭终端响铃 需要解决的问题：文字在屏幕上刷新不同步，造成花屏 第一步：打开FrameBuffer模块 参考网址：http://blog.chinaunix.net/u/12679/showart_513111.html &hellip;">
+  <meta name="description" content="编译时间为1小时零12分钟，调试错误的时间累计就不知道多少了。要编译的语言为c,c++,f95。之前出过N多的错误，因为时间过去太久了，有些错误的名字记不太清楚了，只大概地写一下： Fatal error in reader: makefile, line XXX: Unexpected end &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,65 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/08/13/gcc-4-3-1-bootstrap-succeeded-under-opensolaris/">OpenSolaris编译安装gcc4.3.1成功</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-08-13T00:00:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/08/13/gcc-4-3-1-bootstrap-succeeded-under-opensolaris/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/08/13/gcc-4-3-1-bootstrap-succeeded-under-opensolaris/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>编译时间为1小时零12分钟，调试错误的时间累计就不知道多少了。要编译的语言为c,c++,f95。之前出过N多的错误，因为时间过去太久了，有些错误的名字记不太清楚了，只大概地写一下：</p>
+
+<p><blockquote>Fatal error in reader: makefile, line XXX: Unexpected end of line seen</blockquote></p>
+
+<p>解决这个问题，需要安装gmake，因为OpenSolaris中自带的语法和gnu make的语法可能不一样。</p>
+
+<p>接下去碰到的问题，是采用以下编译选项的：</p>
+
+<p><pre lang="bash" line="1">./configure --prefix=/usr/local \
+--with-gnu-ld=/usr/gnu/bin/ld; \
+gmake all</pre></p>
+
+<p>出错提示有很多，都记不太清了，比如：</p>
+
+<p><blockquote>configure: error: cannot compute suffix of object files: cannot compile</blockquote></p>
+
+<p><blockquote>[gmake] *** cannot create rule to make target `all' ***</blockquote></p>
+
+<p><blockquote>ld errors: no .eh_frame_hdr table will be created.</blockquote></p>
+
+<p>在网上找到这个网页：<a href="http://www.linuxidc.com/Linux/2008-07/14125p2.htm">http://www.linuxidc.com/Linux/2008-07/14125p2.htm</a></p>
+
+<p>看到如下的configure选项：</p>
+
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/08/13/gcc-4-3-1-bootstrap-succeeded-under-opensolaris/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -546,75 +605,6 @@ Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/06/10/java-basic-check-points/">Java知识点没掌握扎实的后果</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-06-10T00:00:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2008/06/10/java-basic-check-points/#disqus_thread"
-             data-disqus-identifier="http://casparant.github.io/blog/2008/06/10/java-basic-check-points/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>自动调用toString方法——</p>
-
-<p><pre lang="java" line="1">
-//A.java
-public class A extends B
-{
-	public String toString()
-	{
-		return "A";
-	}
-}</pre></p>
-
-<p>//B.java<br />
-public class B<br />
-{
-	public String toString()<br />
-	{<br />
-		return "B";<br />
-	}<br />
-}</p>
-
-<p>//C.java<br />
-public class C<br />
-{
-	public static void main(String[] args)<br />
-	{<br />
-		Object o[] = {new A(), new B()};</p>
-
-<p>		System.out.print(o[0]);<br />
-		System.out.print(o[1]);<br />
-	}<br />
-}
-</p>
-
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2008/06/10/java-basic-check-points/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/9">&larr; Older</a>
@@ -632,6 +622,10 @@ public class C<br />
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/208-day-crash-issue/">Linux Kernel 208.5d Panic Issue</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/21/blog-revived/">Blog 恢复</a>
       </li>
     
@@ -645,10 +639,6 @@ public class C<br />
     
       <li class="post">
         <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
       </li>
     
   </ul>

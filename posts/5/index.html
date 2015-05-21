@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="测试发文章…… ———————————— 分割线 ———————————— 发文成功。我基本上知道是什么原因了。 记得第一次发现不能发文是在那次Google很多服务都不能用的时候。当时正打算发个文章上来抱怨一把google code不能用了，google calendar不能用了，google &hellip;">
+  <meta name="description" content="上次在日志中提到一下当Ubuntu9.04正式版出来的时候，我就换Gentoo，结果自己还是在Ubuntu Aplha6 出来之前就开始了Gentoo折腾之旅。 前一次折腾Gentoo还是在暑假，因为挂载和其他一堆莫名其妙的问题导致我直接放弃了Gentoo。这次是在心理准备充足的情况下开始的， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/">折腾Gentoo Milestone1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-03-22T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/03/22/install-and-configure-gentoo-milestone1/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>上次在日志中提到一下当Ubuntu9.04正式版出来的时候，我就换Gentoo，结果自己还是在Ubuntu Aplha6 出来之前就开始了Gentoo折腾之旅。</p>
+
+<p>前一次折腾Gentoo还是在暑假，因为挂载和其他一堆莫名其妙的问题导致我直接放弃了Gentoo。这次是在心理准备充足的情况下开始的，没想到还是很折腾。</p>
+
+<p>桌面管理器从GNOME换到Openbox，然后转成KDE4，顺便还试用了一下enlightenment，发现这种轻量级桌面对我来说不是很适应，就没再继续下去了。</p>
+
+<p>感谢Gentoo的文档和各种bugzilla，我解决了大部分问题。</p>
+
+<p>比方说无线的问题，经常出现SCIOFLAGS: No such device，上网找了半天发现要把/etc/init.d/net.wlan0给删掉。因为现在网络接口已经移交wicd管理了。具体原因尚未知。</p>
+
+<p>当然也碰到了一些莫名其妙的问题，其中大部分是和内核选项有关。</p>
+
+<p>比如声卡，音箱和耳机会同时出声。后来我把和我的声卡沾边的选项统统勾上，重新编译模块，就OK了。还有ext4分区的问题，系统始终不认ext4分区，在水木求助了两天都没解决，后来自己重新编译一次内核，居然就OK了。</p>
+
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -514,46 +563,6 @@ sudo ln -snf /usr/lib/gcc/i486-linux-gnu/4.3.2/libgcc_s.so \
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/12/17/blog-anniversary/">周年记</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-12-17T00:00:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2008/12/17/blog-anniversary/#disqus_thread"
-             data-disqus-identifier="http://casparant.github.io/blog/2008/12/17/blog-anniversary/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>1周年，100篇日志，100个Feedsky订阅，10个Feedburner订阅（- -|||），2w次访问，20w的Alexa排名。</p>
-
-<p>写Blog也算有些年了，03年开始学习HTML，想做个个人主页，由于美工功底差，做出来的主页惨不忍睹，一度放弃；04年在杂志上了解到Blog，开始写，不过直到06年为止还是什么都不懂的涂鸦阶段，这两年主要停留在两个BSP上，<a href="http://swordantcs.blogcn.com">Blogcn.com</a>和<a href="http://swordantcs.blog.com.cn">Blog.com.cn</a>，选择这两个BSP是因为它们的域名很NB；06开始到07年末，是辗转时期，Blog.com.cn的服务器太慢，抛弃了之后去了<a href="http://blog.sina.com.cn/swordantcs">新浪</a>，新浪有短时间服务器也开始抽风，于是去了<a href="http://casparant.blog.163.com">网易</a>，网易之后又去了<a href="http://casparant.blogbus.com">博客大巴</a>，反正一顿辗转，总是找不到满意的BSP。最后在<a href="http://yegle.net">yegle</a>的教唆之下，选择了<a href="http://www.lampdrive.com">自建Blog</a>。</p>
-
-<p>在这个Blog之前的日志，大多是写自己的生活，只是我这人毛病有二，一是不喜欢让自己日志太散，所以一个博客废弃了就喜欢删文章；另一个是喜欢回头去看文章，看到写得太流水的文章也删。所以现在基本上已经找不到我当年的文字了。</p>
-
-<p>写技术Blog也纯属是兴趣，还是要感谢<a href="http://monnand.linuxsky.org">monnand</a>带我进入Linux这个伟大的世界，摆弄久了就想分享一些文字，所以就有了这个技术博客。</p>
-
-<p>文章开头的那些数字是堆很普通的数字，我没有能力没有时间也没有想过让我的Blog成为公众关注的站点，自娱自乐，并且能让需要得到信息的朋友们获取需要的信息，足矣。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -571,6 +580,10 @@ sudo ln -snf /usr/lib/gcc/i486-linux-gnu/4.3.2/libgcc_s.so \
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/208-day-crash-issue/">Linux Kernel 208.5d Panic Issue</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/21/blog-revived/">Blog 恢复</a>
       </li>
     
@@ -584,10 +597,6 @@ sudo ln -snf /usr/lib/gcc/i486-linux-gnu/4.3.2/libgcc_s.so \
     
       <li class="post">
         <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
       </li>
     
   </ul>
