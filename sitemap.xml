@@ -481,15 +481,6 @@
     <loc>http://www.casparzhang.com/blog/about/</loc>
   </url>
   <url>
-    <loc>http://www.casparzhang.com/blog/categories/deprecated/</loc>
-  </url>
-  <url>
-    <loc>http://www.casparzhang.com/blog/categories/z-turn/</loc>
-  </url>
-  <url>
-    <loc>http://www.casparzhang.com/blog/categories/kernel/</loc>
-  </url>
-  <url>
     <loc>http://www.casparzhang.com/blog/2015/05/</loc>
   </url>
   <url>
@@ -596,5 +587,14 @@
   </url>
   <url>
     <loc>http://www.casparzhang.com/blog/2007/12/</loc>
+  </url>
+  <url>
+    <loc>http://www.casparzhang.com/blog/categories/deprecated/</loc>
+  </url>
+  <url>
+    <loc>http://www.casparzhang.com/blog/categories/z-turn/</loc>
+  </url>
+  <url>
+    <loc>http://www.casparzhang.com/blog/categories/kernel/</loc>
   </url>
 </urlset>
