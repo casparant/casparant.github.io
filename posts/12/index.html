@@ -1,53 +1,111 @@
 
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<title>Caspar Blog  | Ant-Veil</title>
+  <meta charset="utf-8">
+  <title>Ant-Veil</title>
+  <meta name="author" content="Caspar">
 
-	<meta name="author" content="Caspar"> 
-	
-	<meta name="description" content="在Linux的众多发行版中，ubuntu以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数Linux用户，本文即以Ubuntu Linux 7.10为例，讲解其安装与配置。 插一句：Linux初学者推荐下载一本命令行手册，点此下载&gt;&gt;&gt;(特别感谢yegle同学倾心制作 &hellip;"> <meta name="keywords" content="">
+  
+  <meta name="description" content="在Linux的众多发行版中，ubuntu以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数Linux用户，本文即以Ubuntu Linux 7.10为例，讲解其安装与配置。 插一句：Linux初学者推荐下载一本命令行手册，点此下载&gt;&gt;&gt;(特别感谢yegle同学倾心制作！) &hellip;">
+  
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
-	
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	
+  
+  <link rel="canonical" href="http://casparant.github.io/posts/12/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-63208569-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
 </head>
 
-
-
-<body>
-	<header id="header" class="inner"><h1>Ant-Veil</h1>
-<nav id="main-nav"><ul>
-	<li><a href="/">Blog</a></li>
-	<li><a href="/blog/archives">Archive</a></li>
-	<li><a href="/blog/about">About</a></li>
-    <li><a href="/blog/categories/kernel">Kernel</a></li>
-    <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
-</ul>
-</nav>
-
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
 
 </header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="casparant.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/blog/about">About</a></li>
+  <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
+</ul>
 
-	<div id="content" class="inner">
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/20/ubuntu-gutsy-config/">Ubuntu 7.10 Configuration</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/01/20/ubuntu-gutsy-config/">
-		
-			Ubuntu 7.10 Configuration</a>
-	</h2>
-	<div class="entry-content">
-		<p>在Linux的众多发行版中，ubuntu以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数Linux用户，本文即以Ubuntu Linux 7.10为例，讲解其安装与配置。</p>
+
+
+<time class='entry-date' datetime='2008-01-20T00:00:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/01/20/ubuntu-gutsy-config/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/01/20/ubuntu-gutsy-config/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在Linux的众多发行版中，ubuntu以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数Linux用户，本文即以Ubuntu Linux 7.10为例，讲解其安装与配置。</p>
 
 <p>插一句：Linux初学者推荐下载一本命令行手册，<a href="http://docs.google.com/fileview?id=0B-GDvj9JsmanY2Q4Nzg4M2EtOGVkMC00NzU1LWE5ZDUtMjNkNWI3OWFhNjdj&hl=zh_CN">点此下载&gt;&gt;&gt;</a>(特别感谢<a href="http://yegle.net" target="_blank">yegle</a>同学倾心制作！)</p>
 
@@ -59,49 +117,42 @@
 
 <p>如果你不能进入安装，可能是显卡问题，请下载Alternative的光盘进行文字界面安装。</p>
 
-<p>
-		
-		<a href="/blog/2008/01/20/ubuntu-gutsy-config/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/01/20/ubuntu-gutsy-config/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/17/some-acquires/">两个收购，N个收购</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-01-20T00:00:00+08:00" pubdate data-updated="true">Jan 20th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-01-17T00:00:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/01/17/some-acquires/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/01/17/some-acquires/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/01/17/some-acquires/">
-		
-			两个收购，N个收购</a>
-	</h2>
-	<div class="entry-content">
-		<p>本来只看见Sun收购MySQL的新闻，在查相关资料的时候发现昨天甲骨文也把BEA终于给收购了。</p>
+  <div class="entry-content"><p>本来只看见Sun收购MySQL的新闻，在查相关资料的时候发现昨天甲骨文也把BEA终于给收购了。</p>
 
 <p>关于公司之间的并购、收购，我了解的知识很少，以前总以为一个公司倒闭了才被另一个公司收购，后来发现雅虎中国被马云给买下了，Macromedia被Adobe收购了，才知道原来活着的公司为了活得更好也可以选择被收购。</p>
 
@@ -112,49 +163,42 @@
 <p>这下我突然想到了Adobe收购Macromedia的事情，Adobe收购了Macromedia后到现在出了CS3好久了，功能上似乎都没什么改进。然而Macromedia的产品和Adobe也有一些重叠，比如Fireworks和PS，至少是和ImageReady有重叠。当时我还以为收购了Macromedia后Fireworks这个东西就没了呢……是不是Adobe也是为了消灭竞争对手呢？呵呵，无责任揣测……</p>
 
 <p>------------ 转载的分割线 ---------- About Sun Acquire MySQL ------------
-
-		
-		<a href="/blog/2008/01/17/some-acquires/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/01/17/some-acquires/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/11/using-hardy-alpha3/">[白鼠一]升级到Hardy Alpha3</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-01-17T00:00:00+08:00" pubdate data-updated="true">Jan 17th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-01-11T00:00:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/01/11/using-hardy-alpha3/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/01/11/using-hardy-alpha3/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/01/11/using-hardy-alpha3/">
-		
-			[白鼠一]升级到Hardy Alpha3</a>
-	</h2>
-	<div class="entry-content">
-		<p>昨晚手痒痒把源改成了Hardy的源，结果更新完毕了yegle告诉我，不要用学校的和台湾交大的源……其实不用他提醒我就已经发现问题了。语言包不能安装，依赖关系一片混乱；开了Compiz后卡得一塌糊涂；进入桌面后一大堆程序crash了……一不做二不休，一大早就去下Hardy的安装盘准备全新安装。突然发现Hardy放出Alpha3了，正好。</p>
+  <div class="entry-content"><p>昨晚手痒痒把源改成了Hardy的源，结果更新完毕了yegle告诉我，不要用学校的和台湾交大的源……其实不用他提醒我就已经发现问题了。语言包不能安装，依赖关系一片混乱；开了Compiz后卡得一塌糊涂；进入桌面后一大堆程序crash了……一不做二不休，一大早就去下Hardy的安装盘准备全新安装。突然发现Hardy放出Alpha3了，正好。</p>
 
 <p>安装的时候照旧是拔网线安装，发现没有弹出“APT源”那个错误对话框，而且安装过程中莫名其妙出现了三次开机打鼓声。</p>
 
@@ -171,49 +215,42 @@
 	<li>Audacious的CueSheet插件丢失</li>
 	<li>Amarok播放flac时间偏慢</li>
 
-
-		
-		<a href="/blog/2008/01/11/using-hardy-alpha3/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/01/11/using-hardy-alpha3/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/12/23/know-something-about-linux/">初学Linux漫谈</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-01-11T00:00:00+08:00" pubdate data-updated="true">Jan 11th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2007-12-23T00:00:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2007/12/23/know-something-about-linux/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2007/12/23/know-something-about-linux/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2007/12/23/know-something-about-linux/">
-		
-			初学Linux漫谈</a>
-	</h2>
-	<div class="entry-content">
-		<p>前言：其实我并没有多少资格来写和Linux相关的东西，我是今年5月份才开始接触Linux的，那时对Linux下尚无一丝概念，天真的以为Linux不过是一个Windows的翻版而已。一个偶然的机会，我见到了一个高手在他的电脑上演示Linux的桌面特效，炫目的3D桌面变换，精彩的果冻窗口特效，各种绚丽的操作，让我深深为之折服：为什么Windows操作系统就没有这么好看的效果呢？于是我决定开始了解Linux。开始学Linux的理由，现在看起来有点幼稚，但是那个后来才知道名叫Beryl的特效软件，的确就是我学Linux的动力^.^ 二话不说把Windows下划分出10G的空间，用来装Linux。趁着暑假到来，踏上了反复重装，反复折腾的Linux小白鼠历程......</p>
+  <div class="entry-content"><p>前言：其实我并没有多少资格来写和Linux相关的东西，我是今年5月份才开始接触Linux的，那时对Linux下尚无一丝概念，天真的以为Linux不过是一个Windows的翻版而已。一个偶然的机会，我见到了一个高手在他的电脑上演示Linux的桌面特效，炫目的3D桌面变换，精彩的果冻窗口特效，各种绚丽的操作，让我深深为之折服：为什么Windows操作系统就没有这么好看的效果呢？于是我决定开始了解Linux。开始学Linux的理由，现在看起来有点幼稚，但是那个后来才知道名叫Beryl的特效软件，的确就是我学Linux的动力^.^ 二话不说把Windows下划分出10G的空间，用来装Linux。趁着暑假到来，踏上了反复重装，反复折腾的Linux小白鼠历程......</p>
 
 <p>（本文主要为个人体会，必然有常识性错误，欢迎高人指出～）</p>
 
@@ -221,54 +258,141 @@
 
 <p>首先，了解正确的“Linux”。我们通常所说的“Linux”系统，事实上是一个Linux的内核加上N个自由软件组成的一个操作系统。“Linux”这个词本身是指Linux之父--Linus Torvalds以及其他贡献者所写的Linux内核。Linux有300多个发行版本，它们都是建立在内核的基础上的。内核提供了诸如硬件与软件交互的支持，使得发行版里的软件得以使用并扩展。</p>
 
-<p>
-		
-		<a href="/blog/2007/12/23/know-something-about-linux/" class="more-link">Read on &rarr;</a>
-	</div>
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2007/12/23/know-something-about-linux/">Read on &rarr;</a>
+    </footer>
+  
 
 
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/11">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/casparant">@casparant</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
 
-
+        github.showRepos({
+            user: 'casparant',
+            count: 2,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
 
 
 
 
 
   
+</aside>
 
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Caspar -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
 
-
-<time datetime="2007-12-23T00:00:00+08:00" pubdate data-updated="true">Dec 23rd, 2007</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
-
-
-</div>
-</article>
-
-
-<nav id="pagenavi">
-    
-        <a href="11" class="prev">Prev</a>
-    
-    
-</nav>
-
-</div>
-	<footer id="footer" class="inner">Copyright &copy; 2015
- Caspar 
-<br>
-Powered by Octopress.
 </footer>
-	
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'casparant';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
 
 </body>
 </html>

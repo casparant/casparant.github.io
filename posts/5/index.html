@@ -1,53 +1,111 @@
 
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<title>Caspar Blog  | Ant-Veil</title>
+  <meta charset="utf-8">
+  <title>Ant-Veil</title>
+  <meta name="author" content="Caspar">
 
-	<meta name="author" content="Caspar"> 
-	
-	<meta name="description" content="发现该学点脚本了，有空可以在服务器上折腾折腾。不过在此之前我还是先得把实验室这台服务器配置好。 服务器是CentOS5.2，准备开启VNC服务。想起当年在Ubuntu下配置费了九牛二虎之力，估计着在CentOS上也不会容易。 没想到如此简单： 服务器在安装时已经装好了VNCServer， &hellip;"> <meta name="keywords" content="">
+  
+  <meta name="description" content="发现该学点脚本了，有空可以在服务器上折腾折腾。不过在此之前我还是先得把实验室这台服务器配置好。 服务器是CentOS5.2，准备开启VNC服务。想起当年在Ubuntu下配置费了九牛二虎之力，估计着在CentOS上也不会容易。 没想到如此简单： 服务器在安装时已经装好了VNCServer， &hellip;">
+  
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
-	
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	
+  
+  <link rel="canonical" href="http://casparant.github.io/posts/5/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-63208569-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
 </head>
 
-
-
-<body>
-	<header id="header" class="inner"><h1>Ant-Veil</h1>
-<nav id="main-nav"><ul>
-	<li><a href="/">Blog</a></li>
-	<li><a href="/blog/archives">Archive</a></li>
-	<li><a href="/blog/about">About</a></li>
-    <li><a href="/blog/categories/kernel">Kernel</a></li>
-    <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
-</ul>
-</nav>
-
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
 
 </header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="casparant.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/blog/about">About</a></li>
+  <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
+</ul>
 
-	<div id="content" class="inner">
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/04/it-is-very-easy-to-configure-vncserver-in-centos/">原来在CentOS中配置VNCServer很容易</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/03/04/it-is-very-easy-to-configure-vncserver-in-centos/">
-		
-			原来在CentOS中配置VNCServer很容易</a>
-	</h2>
-	<div class="entry-content">
-		<p>发现该学点脚本了，有空可以在服务器上折腾折腾。不过在此之前我还是先得把实验室这台服务器配置好。</p>
+
+
+<time class='entry-date' datetime='2009-03-04T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/03/04/it-is-very-easy-to-configure-vncserver-in-centos/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/03/04/it-is-very-easy-to-configure-vncserver-in-centos/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>发现该学点脚本了，有空可以在服务器上折腾折腾。不过在此之前我还是先得把实验室这台服务器配置好。</p>
 
 <p>服务器是CentOS5.2，准备开启VNC服务。想起<a href="http://www.casparzhang.com/blog/2008/03/16/remote-login-under-ubuntu.html">当年在Ubuntu下配置费了九牛二虎之力</a>，估计着在CentOS上也不会容易。</p>
 
@@ -61,49 +119,42 @@
 
 <p>如果需要修改分辨率，设置是否允许通过TCP登录、是否允许通过Web登录以及是否允许不安全TCP tunel登录，则修改<code>VNCSERVERARGS[2]</code>字段：</p>
 
-<p>
-		
-		<a href="/blog/2009/03/04/it-is-very-easy-to-configure-vncserver-in-centos/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/03/04/it-is-very-easy-to-configure-vncserver-in-centos/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/03/using-ubuntu-jaunty-alpha5/">[白鼠六]Ubuntu Jaunty Aplha5试用</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-03-04T00:00:00+08:00" pubdate data-updated="true">Mar 4th, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-03-03T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/03/03/using-ubuntu-jaunty-alpha5/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/03/03/using-ubuntu-jaunty-alpha5/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/03/03/using-ubuntu-jaunty-alpha5/">
-		
-			[白鼠六]Ubuntu Jaunty Aplha5试用</a>
-	</h2>
-	<div class="entry-content">
-		<p>又当了一回小白鼠。在写使用感受前，请允许我废话一句：等Ubuntu这个版本过时后，我肯定换Gentoo!实在受不了这种系统频繁升级和软件版本滞后的折磨了。</p>
+  <div class="entry-content"><p>又当了一回小白鼠。在写使用感受前，请允许我废话一句：等Ubuntu这个版本过时后，我肯定换Gentoo!实在受不了这种系统频繁升级和软件版本滞后的折磨了。</p>
 
 <p>从8.10升级到9.04的原因主要是8.10不是很好用，在虚拟机上折腾了几天Jaunty，感觉还是很不错的，于是升级了。</p>
 
@@ -115,49 +166,42 @@
 
 <p><img src="http://img.ant.im/di-G0E2.png" /></p>
 
-<p>
-		
-		<a href="/blog/2009/03/03/using-ubuntu-jaunty-alpha5/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/03/03/using-ubuntu-jaunty-alpha5/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/02/25/twitvim-a-good-twitter-client-under-vim/">VIM里的Twitter: TwitVIM</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-03-03T00:00:00+08:00" pubdate data-updated="true">Mar 3rd, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-02-25T00:00:00+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/02/25/twitvim-a-good-twitter-client-under-vim/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/02/25/twitvim-a-good-twitter-client-under-vim/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/02/25/twitvim-a-good-twitter-client-under-vim/">
-		
-			VIM里的Twitter: TwitVIM</a>
-	</h2>
-	<div class="entry-content">
-		<p>上网的时候发现了这个有意思的VIM插件，进VIM网站的插件页面后更加惊喜地发现作者还在更新这个插件(最近一次更新是2009年2月4日)。由于Linux下图形界面的Twitter客户端都不甚让我满意，看了看TwitVIM这个插件的介绍，决定下下来玩玩。</p>
+  <div class="entry-content"><p>上网的时候发现了这个有意思的VIM插件，进VIM网站的插件页面后更加惊喜地发现作者还在更新这个插件(最近一次更新是2009年2月4日)。由于Linux下图形界面的Twitter客户端都不甚让我满意，看了看TwitVIM这个插件的介绍，决定下下来玩玩。</p>
 
 <p>点击<a href="http://www.vim.org/scripts/script.php?script_id=2204" target="new">这里</a>下载插件。</p>
 
@@ -170,49 +214,42 @@
 
 <p>接下来需要在vim配置文件(比如~/.vimrc)里配置用户名，密码，如果是通过代理上网还需要配置代理。</p>
 
-<p>
-		
-		<a href="/blog/2009/02/25/twitvim-a-good-twitter-client-under-vim/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/02/25/twitvim-a-good-twitter-client-under-vim/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/02/21/kde3-interface-font-settings/">Kde3界面字体设置</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-02-25T00:00:00+08:00" pubdate data-updated="true">Feb 25th, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-02-21T00:00:00+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/02/21/kde3-interface-font-settings/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/02/21/kde3-interface-font-settings/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/02/21/kde3-interface-font-settings/">
-		
-			Kde3界面字体设置</a>
-	</h2>
-	<div class="entry-content">
-		<p>升级到Ubuntu 8.10之后，发现amarok, kile这些程序的英文字体特别大，用Qt3 configuration改字体只能把正文的字体改变，菜单栏、状态栏的字体都变不了。</p>
+  <div class="entry-content"><p>升级到Ubuntu 8.10之后，发现amarok, kile这些程序的英文字体特别大，用Qt3 configuration改字体只能把正文的字体改变，菜单栏、状态栏的字体都变不了。</p>
 
 <p>上网搜了一下发现kcontrol这个kde的工具可以调整菜单栏字体。但是Ubuntu 8.10吧kcontrol这个包给去掉了，所以不能轻易设置字体了。继续上网搜，发现可以直接改<code>~/.kde/share/config/kdeglobals</code>这个文件。</p>
 
@@ -226,49 +263,42 @@ toolBarFont=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0</blockquote></p>
 
 <p>这几行的大部分内容大家都看得懂，就不解释了。后面的我也不管是什么意思了……</p>
 
-<p>
-		
-		<a href="/blog/2009/02/21/kde3-interface-font-settings/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/02/21/kde3-interface-font-settings/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/02/10/synchronize-your-mobile-with-gmail/">把你的手机和Gmail同步起来！</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-02-21T00:00:00+08:00" pubdate data-updated="true">Feb 21st, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-02-10T00:00:00+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/02/10/synchronize-your-mobile-with-gmail/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/02/10/synchronize-your-mobile-with-gmail/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/02/10/synchronize-your-mobile-with-gmail/">
-		
-			把你的手机和Gmail同步起来！</a>
-	</h2>
-	<div class="entry-content">
-		<p>很早以前，在想要是Gmail里的列表能和我手机上的联系人同步那该有多好。现在这个想法终于实现了，Google推出的<a href="http://www.google.com/mobile/default/sync.html">Google Sync</a>服务，让你的手机联系人轻松与Gmail联系人同步。</p>
+  <div class="entry-content"><p>很早以前，在想要是Gmail里的列表能和我手机上的联系人同步那该有多好。现在这个想法终于实现了，Google推出的<a href="http://www.google.com/mobile/default/sync.html">Google Sync</a>服务，让你的手机联系人轻松与Gmail联系人同步。</p>
 
 <p>Google总是能推出让人兴奋的产品，前几天的<a href="http://www.google.com/latitude/intro.html">Latitude</a>也是这样的产品，不过好多好友就是不确认我的请求，我的Latitude上现在还没几个人的信息。不过Sync这个产品绝对是值得每个拥有智能手机的人一试的好东西。</p>
 
@@ -277,49 +307,38 @@ toolBarFont=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0</blockquote></p>
 <p>另外有个不太好的地方是，由于手机和Gmail在栏位处理上的不同，同步后资料会有所偏差。比如我在Gmail上对一个人记录了5个电子邮件(1个home,1个work,3个other)，同步到手机上后，只有栏位不同的三个电子邮件同步到了手机上，其中Gmail上3个other电子邮件中只有最后一个同步到了手机上。<del datetime="2009-02-10T16:03:15+00:00">估计应该是同步的时候手机对栏位进行判断然后对号入座，对于同栏位不同号码的信息，它不会另外设置一个重复的栏位(事实上我的手机可以设置重复栏位，比如多个“电子邮件(家庭)”)，而是在同栏位上进行覆盖。</del>问题也可能出在Google那边，获取资料的时候自动覆盖相同栏位也是完全可能的。所以在这里提醒使用Gmail记通讯录的童鞋，注意一下mobile和E-mail的不同类型，防止同步到手机上后丢失重要信息。</p>
 
 <p>使用Google Sync的最直接好处就是，丢了手机之后不用再担心通讯录遗失了-_-||。备份方便，同步简单，比nokia自带的同步工具还方便，只要有网络，一键同步就搞定了。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+</div>
+  
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/01/09/some-recently-used-skills/">[备忘]最近用到的一些技巧</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-02-10T00:00:00+08:00" pubdate data-updated="true">Feb 10th, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-01-09T00:00:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/01/09/some-recently-used-skills/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/01/09/some-recently-used-skills/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/01/09/some-recently-used-skills/">
-		
-			[备忘]最近用到的一些技巧</a>
-	</h2>
-	<div class="entry-content">
-		<p>1.<strong> VIM操作</strong></p>
+  <div class="entry-content"><p>1.<strong> VIM操作</strong></p>
 
 <p>VIM在每行行首或行尾插入指定字符串：</p>
 
@@ -338,49 +357,42 @@ toolBarFont=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0</blockquote></p>
 sudo ln -snf /usr/lib/gcc/i486-linux-gnu/4.3.2/libgcc_s.so \
 /opt/openoffice.org/ure/lib/libgcc_s.so.1</pre></p>
 
-<p>
-		
-		<a href="/blog/2009/01/09/some-recently-used-skills/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/01/09/some-recently-used-skills/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/01/07/the-coverages-in-dynamic-testing/">动态测试中的覆盖率问题</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-01-09T00:00:00+08:00" pubdate data-updated="true">Jan 9th, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-01-07T00:00:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/01/07/the-coverages-in-dynamic-testing/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/01/07/the-coverages-in-dynamic-testing/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/01/07/the-coverages-in-dynamic-testing/">
-		
-			动态测试中的覆盖率问题</a>
-	</h2>
-	<div class="entry-content">
-		<p>覆盖率(Coverage)的定义如下：</p>
+  <div class="entry-content"><p>覆盖率(Coverage)的定义如下：</p>
 
 <p><blockquote>Coverage = (Object executed)/(Total objects) * 100%</blockquote></p>
 
@@ -392,49 +404,42 @@ sudo ln -snf /usr/lib/gcc/i486-linux-gnu/4.3.2/libgcc_s.so \
 
 <p>修正条件/决策覆盖率(Modified Condition/Decision Coverage, MC/DC)，这个比较麻烦，稍后详述。</p>
 
-<p>
-		
-		<a href="/blog/2009/01/07/the-coverages-in-dynamic-testing/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/01/07/the-coverages-in-dynamic-testing/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/12/21/some-softwares-under-linux/">Linux下推荐的软件</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-01-07T00:00:00+08:00" pubdate data-updated="true">Jan 7th, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-12-21T00:00:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/12/21/some-softwares-under-linux/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/12/21/some-softwares-under-linux/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/12/21/some-softwares-under-linux/">
-		
-			Linux下推荐的软件</a>
-	</h2>
-	<div class="entry-content">
-		<p>Web Browser: <a href="http://www.mozillaonline.com/">Firefox3</a>, <a href="http://www.opera.com/browser/download/">Opera</a></p>
+  <div class="entry-content"><p>Web Browser: <a href="http://www.mozillaonline.com/">Firefox3</a>, <a href="http://www.opera.com/browser/download/">Opera</a></p>
 
 <p>FTP Client: <a href="http://filezilla-project.org/download.php">Filezilla</a></p>
 
@@ -448,49 +453,42 @@ sudo ln -snf /usr/lib/gcc/i486-linux-gnu/4.3.2/libgcc_s.so \
 
 <p>飞鸽: <a href="http://code.google.com/p/iptux/downloads/list">IPTux</a>，<a href="http://www.ipmsg.org/index.html.en">g2ipmsg</a></p>
 
-<p>
-		
-		<a href="/blog/2008/12/21/some-softwares-under-linux/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/12/21/some-softwares-under-linux/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/12/17/blog-anniversary/">周年记</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-12-21T00:00:00+08:00" pubdate data-updated="true">Dec 21st, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-12-17T00:00:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/12/17/blog-anniversary/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/12/17/blog-anniversary/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/12/17/blog-anniversary/">
-		
-			周年记</a>
-	</h2>
-	<div class="entry-content">
-		<p>1周年，100篇日志，100个Feedsky订阅，10个Feedburner订阅（- -|||），2w次访问，20w的Alexa排名。</p>
+  <div class="entry-content"><p>1周年，100篇日志，100个Feedsky订阅，10个Feedburner订阅（- -|||），2w次访问，20w的Alexa排名。</p>
 
 <p>写Blog也算有些年了，03年开始学习HTML，想做个个人主页，由于美工功底差，做出来的主页惨不忍睹，一度放弃；04年在杂志上了解到Blog，开始写，不过直到06年为止还是什么都不懂的涂鸦阶段，这两年主要停留在两个BSP上，<a href="http://swordantcs.blogcn.com">Blogcn.com</a>和<a href="http://swordantcs.blog.com.cn">Blog.com.cn</a>，选择这两个BSP是因为它们的域名很NB；06开始到07年末，是辗转时期，Blog.com.cn的服务器太慢，抛弃了之后去了<a href="http://blog.sina.com.cn/swordantcs">新浪</a>，新浪有短时间服务器也开始抽风，于是去了<a href="http://casparant.blog.163.com">网易</a>，网易之后又去了<a href="http://casparant.blogbus.com">博客大巴</a>，反正一顿辗转，总是找不到满意的BSP。最后在<a href="http://yegle.net">yegle</a>的教唆之下，选择了<a href="http://www.lampdrive.com">自建Blog</a>。</p>
 
@@ -499,49 +497,38 @@ sudo ln -snf /usr/lib/gcc/i486-linux-gnu/4.3.2/libgcc_s.so \
 <p>写技术Blog也纯属是兴趣，还是要感谢<a href="http://monnand.linuxsky.org">monnand</a>带我进入Linux这个伟大的世界，摆弄久了就想分享一些文字，所以就有了这个技术博客。</p>
 
 <p>文章开头的那些数字是堆很普通的数字，我没有能力没有时间也没有想过让我的Blog成为公众关注的站点，自娱自乐，并且能让需要得到信息的朋友们获取需要的信息，足矣。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+</div>
+  
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/12/11/amarok2-and-wp27-released/">Amarok2 and WP2.7 Released</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-12-17T00:00:00+08:00" pubdate data-updated="true">Dec 17th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-12-11T00:00:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/12/11/amarok2-and-wp27-released/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/12/11/amarok2-and-wp27-released/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/12/11/amarok2-and-wp27-released/">
-		
-			Amarok2 and WP2.7 Released</a>
-	</h2>
-	<div class="entry-content">
-		<p>等了好久的Amarok2终于发布了。</p>
+  <div class="entry-content"><p>等了好久的Amarok2终于发布了。</p>
 
 <p>Ubuntu用户可以参考Kubuntu网站上的Installation Instructions：</p>
 
@@ -553,56 +540,143 @@ sudo ln -snf /usr/lib/gcc/i486-linux-gnu/4.3.2/libgcc_s.so \
 
 <p>If you do not have an existing Amarok 2 install, please follow the Adept How to and install the package called "<em>amarok-kde4</em>". </p>
 
-<p>
-		
-		<a href="/blog/2008/12/11/amarok2-and-wp27-released/" class="more-link">Read on &rarr;</a>
-	</div>
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/12/11/amarok2-and-wp27-released/">Read on &rarr;</a>
+    </footer>
+  
 
 
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/6">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/4">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/casparant">@casparant</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
 
-
+        github.showRepos({
+            user: 'casparant',
+            count: 2,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
 
 
 
 
 
   
+</aside>
 
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Caspar -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
 
-
-<time datetime="2008-12-11T00:00:00+08:00" pubdate data-updated="true">Dec 11th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
-
-
-</div>
-</article>
-
-
-<nav id="pagenavi">
-    
-        <a href="4" class="prev">Prev</a>
-    
-    
-        <a href="6" class="next">Next</a>
-    
-</nav>
-
-</div>
-	<footer id="footer" class="inner">Copyright &copy; 2015
- Caspar 
-<br>
-Powered by Octopress.
 </footer>
-	
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'casparant';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
 
 </body>
 </html>

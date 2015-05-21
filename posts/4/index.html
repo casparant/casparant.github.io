@@ -1,101 +1,152 @@
 
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<title>Caspar Blog  | Ant-Veil</title>
+  <meta charset="utf-8">
+  <title>Ant-Veil</title>
+  <meta name="author" content="Caspar">
 
-	<meta name="author" content="Caspar"> 
-	
-	<meta name="description" content="曾经的曾经，为了折腾LaTeX中的中文字体，我参照了Monnand和TualatriX童鞋的配置方式，装好CJKutf8宏包，然后用fontforge制作Type1字体，然后才算搞定。一切皆因为LaTeX默认不支持Unicode，也不能支持Truetype字体。 &hellip;"> <meta name="keywords" content="">
+  
+  <meta name="description" content="曾经的曾经，为了折腾LaTeX中的中文字体，我参照了Monnand和TualatriX童鞋的配置方式，装好CJKutf8宏包，然后用fontforge制作Type1字体，然后才算搞定。一切皆因为LaTeX默认不支持Unicode，也不能支持Truetype字体。 &hellip;">
+  
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
-	
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	
+  
+  <link rel="canonical" href="http://casparant.github.io/posts/4/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-63208569-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
 </head>
 
-
-
-<body>
-	<header id="header" class="inner"><h1>Ant-Veil</h1>
-<nav id="main-nav"><ul>
-	<li><a href="/">Blog</a></li>
-	<li><a href="/blog/archives">Archive</a></li>
-	<li><a href="/blog/about">About</a></li>
-    <li><a href="/blog/categories/kernel">Kernel</a></li>
-    <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
-</ul>
-</nav>
-
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
 
 </header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="casparant.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/blog/about">About</a></li>
+  <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
+</ul>
 
-	<div id="content" class="inner">
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/">使用XeTeX，CJK无忧，字体无忧</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/">
-		
-			使用XeTeX，CJK无忧，字体无忧</a>
-	</h2>
-	<div class="entry-content">
-		<p>曾经的曾经，为了折腾LaTeX中的中文字体，我参照了<a href="http://blog.linuxsky.org/58/viewspace-3824.html">Monnand</a>和<a href="http://linuxdesktop.cn/2008/02/26/config-texlive-cjk-under-ubuntu.html">TualatriX</a>童鞋的配置方式，装好CJKutf8宏包，然后用fontforge制作<a href="http://en.wikipedia.org/wiki/Type_1_and_Type_3_fonts">Type1</a>字体，然后才算搞定。一切皆因为LaTeX默认不支持Unicode，也不能支持<a href="http://en.wikipedia.org/wiki/TrueType">Truetype</a>字体。</p>
+
+
+<time class='entry-date' datetime='2009-04-22T00:00:00+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>曾经的曾经，为了折腾LaTeX中的中文字体，我参照了<a href="http://blog.linuxsky.org/58/viewspace-3824.html">Monnand</a>和<a href="http://linuxdesktop.cn/2008/02/26/config-texlive-cjk-under-ubuntu.html">TualatriX</a>童鞋的配置方式，装好CJKutf8宏包，然后用fontforge制作<a href="http://en.wikipedia.org/wiki/Type_1_and_Type_3_fonts">Type1</a>字体，然后才算搞定。一切皆因为LaTeX默认不支持Unicode，也不能支持<a href="http://en.wikipedia.org/wiki/TrueType">Truetype</a>字体。</p>
 
 <p>最近一段时间一直听到XeTeX的相关消息，在BYR上，在linuxsir上，都听说了，只是安逸于自己的CJKutf8，不想去折腾。可是昨天写简历的时候，发现没有斜体字，看来我制作的Type1字体没有包含斜体字。为了把斜体弄出来，上网狂Google，就在熄灯前的几秒钟，我看到了网上对XeTeX原生Unicode支持的评价很高，尤其是它可以直接使用Truetype字体，顿时心里痒痒。今天起床后，趁着做实验的空档，把XeTeX装好，果然很惊喜啊。</p>
 
 <p>首先了解一下什么是XeTeX吧，其官方主页：<a href="http://www.tug.org/xetex/">http://www.tug.org/xetex/</a>. 网页开篇即说：XeTeX is "a typesetting system based on a merger of Donald Knuth's TeX system with <strong>Unicode</strong> and <strong>modern font technologies</strong>."，正合我意。</p>
 
-<p>
-		
-		<a href="/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/20/sun-is-acquired-by-oracle/">当年日志里的两个主角</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-04-22T00:00:00+08:00" pubdate data-updated="true">Apr 22nd, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-04-20T00:00:00+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/04/20/sun-is-acquired-by-oracle/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/04/20/sun-is-acquired-by-oracle/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/04/20/sun-is-acquired-by-oracle/">
-		
-			当年日志里的两个主角</a>
-	</h2>
-	<div class="entry-content">
-		<p>请看我当年的<a href="http://www.casparzhang.com/blog/2008/01/17/some-acquires/">日志</a>，两个主角，Oracle收购BEA, SUN收购MySQL。</p>
+  <div class="entry-content"><p>请看我当年的<a href="http://www.casparzhang.com/blog/2008/01/17/some-acquires/">日志</a>，两个主角，Oracle收购BEA, SUN收购MySQL。</p>
 
 <p>现在的事情……唉……我当年那心仪的SUN公司啊……</p>
 
@@ -113,49 +164,42 @@
 
 <p>Published: April 20, 2009</p>
 
-<p>
-		
-		<a href="/blog/2009/04/20/sun-is-acquired-by-oracle/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/04/20/sun-is-acquired-by-oracle/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/20/a-practice-is-a-progress/">每一次实验和大作业都是学习的过程</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-04-20T00:00:00+08:00" pubdate data-updated="true">Apr 20th, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-04-20T00:00:00+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/04/20/a-practice-is-a-progress/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/04/20/a-practice-is-a-progress/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/04/20/a-practice-is-a-progress/">
-		
-			每一次实验和大作业都是学习的过程</a>
-	</h2>
-	<div class="entry-content">
-		<p>这次学会了<a href="http://www.google.com/search?q=%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%AF%B9%E9%BD%90">结构体的对齐</a>，记录锁和QT的基本操作。顺便强烈推荐使用qt-creator进行开发。</p>
+  <div class="entry-content"><p>这次学会了<a href="http://www.google.com/search?q=%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%AF%B9%E9%BD%90">结构体的对齐</a>，记录锁和QT的基本操作。顺便强烈推荐使用qt-creator进行开发。</p>
 
 <p>当然还碰到个囧事，一个文件用r方式打开了，然后想往上面加写锁，加了半天就是报“错误的文件描述符”，郁闷之下man了下fcntl的内容，顿悟：</p>
 
@@ -164,49 +208,38 @@
               requested.</strong></blockquote></p>
 
 <p>其实本来想写很多的，但是因为这个东西做的时间太长了，又忘了随手记，就只能写出这么多了……</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+</div>
+  
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/11/high-pv-ended/">我的高PV结束了</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-04-20T00:00:00+08:00" pubdate data-updated="true">Apr 20th, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-04-11T00:00:00+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/04/11/high-pv-ended/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/04/11/high-pv-ended/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/04/11/high-pv-ended/">
-		
-			我的高PV结束了</a>
-	</h2>
-	<div class="entry-content">
-		<p>最近一直有很高很高的PV，<a href="http://tongji.cn.yahoo.com/report.html?unit_id=472876">yahoo stat</a>里面一看就猜到是某个页面重重复访问（事实上是重复刷新）得到的结果。因为自己用的FF3一直没有出现问题，就没从自己网站上去找症结。不过最近网站访问速度很慢，有时候数据库连接还出错，问了Paveo，他说我MySQL资源超标。虽然不知道是怎么回事（现在知道了，页面重复刷新不断请求MySQL资源），但是怀疑跟那个重复访问的页面有关。从yahoo stat里面找到了那个页面，稍微一看，我靠，居然是侧边栏的Google Friend Connect在搞鬼。那个重复访问的页面URL的GET数据就是我的Google Friend Connect里的参数。</p>
+  <div class="entry-content"><p>最近一直有很高很高的PV，<a href="http://tongji.cn.yahoo.com/report.html?unit_id=472876">yahoo stat</a>里面一看就猜到是某个页面重重复访问（事实上是重复刷新）得到的结果。因为自己用的FF3一直没有出现问题，就没从自己网站上去找症结。不过最近网站访问速度很慢，有时候数据库连接还出错，问了Paveo，他说我MySQL资源超标。虽然不知道是怎么回事（现在知道了，页面重复刷新不断请求MySQL资源），但是怀疑跟那个重复访问的页面有关。从yahoo stat里面找到了那个页面，稍微一看，我靠，居然是侧边栏的Google Friend Connect在搞鬼。那个重复访问的页面URL的GET数据就是我的Google Friend Connect里的参数。</p>
 
 <p>于是去Google Friend Connect网站重新按步骤操作了一次，发现原来是我上次清理Blog的文件，把根目录下的canvas.html和rpc_relay.html这两个文件给删掉了。补上之后，到今天一直没问题。</p>
 
@@ -214,49 +247,42 @@
 
 <p>不过这段时间每天有近1000PV呢，可惜了，嘿嘿。</p>
 
-<p>
-		
-		<a href="/blog/2009/04/11/high-pv-ended/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/04/11/high-pv-ended/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/30/mesa-and-opengl-problems/">Mesa和OpenGL的那点破事|有第三者</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-04-11T00:00:00+08:00" pubdate data-updated="true">Apr 11th, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-03-30T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/03/30/mesa-and-opengl-problems/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/03/30/mesa-and-opengl-problems/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/03/30/mesa-and-opengl-problems/">
-		
-			Mesa和OpenGL的那点破事|有第三者</a>
-	</h2>
-	<div class="entry-content">
-		<p>刚才在折腾Mesa，因为早上更新系统的时候发现mesa7.4放出了。上次升级mesa到svn版的时候发现glxgears只到100+，就给降级了。这次看到mesa7.4正式版已出，侥幸心理作怪下继续升级。结果跟上次一样，100+的glxgears，wine下打CS卡死，但是Google Earth一切正常。</p>
+  <div class="entry-content"><p>刚才在折腾Mesa，因为早上更新系统的时候发现mesa7.4放出了。上次升级mesa到svn版的时候发现glxgears只到100+，就给降级了。这次看到mesa7.4正式版已出，侥幸心理作怪下继续升级。结果跟上次一样，100+的glxgears，wine下打CS卡死，但是Google Earth一切正常。</p>
 
 <p>降级回7.3之后，Google Earth一如往常地卡，但是glxgears恢复了400+。</p>
 
@@ -279,49 +305,38 @@
 <p>更新libdrm，glxgears回到500+，Google Earth开始小卡。</p>
 
 <p>记得TX同学说过<a href="http://www.imtx.cn/archives/1111.html">GEM对Google Earth的显示效果有改进</a>啊，怎么我不开启GEM的时候反而更好一些呢……</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+</div>
+  
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/30/how-to-create-a-qt-project/">如何创建QT工程</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-03-30T00:00:00+08:00" pubdate data-updated="true">Mar 30th, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-03-30T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/03/30/how-to-create-a-qt-project/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/03/30/how-to-create-a-qt-project/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/03/30/how-to-create-a-qt-project/">
-		
-			如何创建QT工程</a>
-	</h2>
-	<div class="entry-content">
-		<p>刚才打了一大段字，不小心给其他页面覆盖了……看来WP的自动保存功能还是得开启……</p>
+  <div class="entry-content"><p>刚才打了一大段字，不小心给其他页面覆盖了……看来WP的自动保存功能还是得开启……</p>
 
 <p>最近有心学一下GUI编程，在GTK, wxWidgets和QT之间选择，最后因为QT Designer和喜欢C++的缘故选择了QT。当然QT4 Designer也不是那么傻瓜化的东西，有很多步骤都需要自己来完成。经过一番Google上的学习之后，我总算完成了一个简单的QT工程的创建，因此以这个工程为例，记录一下创建过程，以供参考。</p>
 
@@ -335,49 +350,42 @@
 
 <p>1. 新建界面配置文件(POSMainWindow.ui)</p>
 
-<p>
-		
-		<a href="/blog/2009/03/30/how-to-create-a-qt-project/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/03/30/how-to-create-a-qt-project/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/26/some-common-skills/">几个日常技巧——我的滥竽充数</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-03-30T00:00:00+08:00" pubdate data-updated="true">Mar 30th, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-03-26T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/03/26/some-common-skills/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/03/26/some-common-skills/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/03/26/some-common-skills/">
-		
-			几个日常技巧——我的滥竽充数</a>
-	</h2>
-	<div class="entry-content">
-		<p>因为我在KDE下不想装那个GNOME依赖关系超多的tomboy，所以暂时把这些非常过时的日常技巧发上来，众人不要怪我凑日志数哦～</p>
+  <div class="entry-content"><p>因为我在KDE下不想装那个GNOME依赖关系超多的tomboy，所以暂时把这些非常过时的日常技巧发上来，众人不要怪我凑日志数哦～</p>
 
 <p>1. MySQL授权用户: </p>
 
@@ -403,49 +411,42 @@ WITH GRANT OPTION ;</pre></p>
 
 <p>VIM中删除含特定字符串的行：g/str/d</p>
 
-<p>
-		
-		<a href="/blog/2009/03/26/some-common-skills/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/03/26/some-common-skills/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/">Gentoo新老问题-Milestone2</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-03-26T00:00:00+08:00" pubdate data-updated="true">Mar 26th, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-03-26T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/">
-		
-			Gentoo新老问题-Milestone2</a>
-	</h2>
-	<div class="entry-content">
-		<p>昨天晚上已经用上2.6.29的内核了，而且也解决了部分上次提到的问题，写出来，权当折腾Gentoo之Milestone2吧。</p>
+  <div class="entry-content"><p>昨天晚上已经用上2.6.29的内核了，而且也解决了部分上次提到的问题，写出来，权当折腾Gentoo之Milestone2吧。</p>
 
 <p>1. Amarok安装成功：</p>
 
@@ -467,49 +468,42 @@ make[2]: *** [lib/libamarok_collection-sqlcollection.so] Error 1                
 make[1]: *** [src/collection/sqlcollection/CMakeFiles/amarok_collection-sqlcollection.dir/all] Error 2                                      <br />
 make[1]: *** Waiting for unfinished jobs....                                                                                              </blockquote></p>
 
-<p>
-		
-		<a href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/">折腾Gentoo Milestone1</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-03-26T00:00:00+08:00" pubdate data-updated="true">Mar 26th, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-03-22T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/03/22/install-and-configure-gentoo-milestone1/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/">
-		
-			折腾Gentoo Milestone1</a>
-	</h2>
-	<div class="entry-content">
-		<p>上次在日志中提到一下当Ubuntu9.04正式版出来的时候，我就换Gentoo，结果自己还是在Ubuntu Aplha6 出来之前就开始了Gentoo折腾之旅。</p>
+  <div class="entry-content"><p>上次在日志中提到一下当Ubuntu9.04正式版出来的时候，我就换Gentoo，结果自己还是在Ubuntu Aplha6 出来之前就开始了Gentoo折腾之旅。</p>
 
 <p>前一次折腾Gentoo还是在暑假，因为挂载和其他一堆莫名其妙的问题导致我直接放弃了Gentoo。这次是在心理准备充足的情况下开始的，没想到还是很折腾。</p>
 
@@ -523,49 +517,42 @@ make[1]: *** Waiting for unfinished jobs....                                    
 
 <p>比如声卡，音箱和耳机会同时出声。后来我把和我的声卡沾边的选项统统勾上，重新编译模块，就OK了。还有ext4分区的问题，系统始终不认ext4分区，在水木求助了两天都没解决，后来自己重新编译一次内核，居然就OK了。</p>
 
-<p>
-		
-		<a href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/16/test-posting/">再次测试Translate插件</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2009-03-22T00:00:00+08:00" pubdate data-updated="true">Mar 22nd, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2009-03-16T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/03/16/test-posting/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2009/03/16/test-posting/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2009/03/16/test-posting/">
-		
-			再次测试Translate插件</a>
-	</h2>
-	<div class="entry-content">
-		<p>测试发文章……</p>
+  <div class="entry-content"><p>测试发文章……</p>
 
 <p>———————————— 分割线 ————————————</p>
 
@@ -584,56 +571,139 @@ make[1]: *** Waiting for unfinished jobs....                                    
 <p>sigh...</p>
 
 <p>顺便说一句，KDE4.2.1真的很不错，KWin真的很棒～</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
+</div>
+  
+  
 
 
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/5">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/3">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/casparant">@casparant</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'casparant',
+            count: 2,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
 
 
 
 
 
   
+</aside>
 
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Caspar -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
 
-
-<time datetime="2009-03-16T00:00:00+08:00" pubdate data-updated="true">Mar 16th, 2009</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
-
-
-</div>
-</article>
-
-
-<nav id="pagenavi">
-    
-        <a href="3" class="prev">Prev</a>
-    
-    
-        <a href="5" class="next">Next</a>
-    
-</nav>
-
-</div>
-	<footer id="footer" class="inner">Copyright &copy; 2015
- Caspar 
-<br>
-Powered by Octopress.
 </footer>
-	
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'casparant';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
 
 </body>
 </html>

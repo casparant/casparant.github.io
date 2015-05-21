@@ -1,56 +1,114 @@
 
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<title>Caspar Blog  | Ant-Veil</title>
+  <meta charset="utf-8">
+  <title>Ant-Veil</title>
+  <meta name="author" content="Caspar">
 
-	<meta name="author" content="Caspar"> 
-	
-	<meta name="description" content="本文仅供存档使用，米有技术含量勿怪。 mkdir /media/rhel
+  
+  <meta name="description" content="本文仅供存档使用，米有技术含量勿怪。 mkdir /media/rhel
 mount /dev/scd0 /media/rhel
 vi /etc/yum.repos.d/rhel-dvd.repo 内容如下： [Server]
-name=Red Hat Enterprise Linux $ &hellip;"> <meta name="keywords" content="">
+name=Red Hat Enterprise Linux $ &hellip;">
+  
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
-	
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	
+  
+  <link rel="canonical" href="http://casparant.github.io/posts/8/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-63208569-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
 </head>
 
-
-
-<body>
-	<header id="header" class="inner"><h1>Ant-Veil</h1>
-<nav id="main-nav"><ul>
-	<li><a href="/">Blog</a></li>
-	<li><a href="/blog/archives">Archive</a></li>
-	<li><a href="/blog/about">About</a></li>
-    <li><a href="/blog/categories/kernel">Kernel</a></li>
-    <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
-</ul>
-</nav>
-
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Ant-Veil</a></h1>
+  
+    <h2>Caspar Blog</h2>
+  
+</hgroup>
 
 </header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="casparant.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/blog/about">About</a></li>
+  <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
+</ul>
 
-	<div id="content" class="inner">
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/08/06/rhel5-dvd-repos/">RHEL5添加DVD光盘为源</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/08/06/rhel5-dvd-repos/">
-		
-			RHEL5添加DVD光盘为源</a>
-	</h2>
-	<div class="entry-content">
-		<p>本文仅供存档使用，米有技术含量勿怪。</p>
+
+
+<time class='entry-date' datetime='2008-08-06T00:00:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/08/06/rhel5-dvd-repos/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/08/06/rhel5-dvd-repos/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本文仅供存档使用，米有技术含量勿怪。</p>
 
 <p><pre lang="bash" line="1">mkdir /media/rhel
 mount /dev/scd0 /media/rhel
@@ -70,49 +128,38 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release</blockquote></p>
 <p>顺便说一句，某老师不熟悉yum真囧……</p>
 
 <p>再顺便说一句，学好脚本真是很有用啊。12张班得瑞的专辑改名，手工还真差点累死。脚本几行就搞定^_^</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+</div>
+  
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/07/19/pkg-config/">Pkg-config命令学习</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-08-06T00:00:00+08:00" pubdate data-updated="true">Aug 6th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-07-19T00:00:00+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/07/19/pkg-config/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/07/19/pkg-config/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/07/19/pkg-config/">
-		
-			Pkg-config命令学习</a>
-	</h2>
-	<div class="entry-content">
-		<p>接着凌晨的文章说。</p>
+  <div class="entry-content"><p>接着凌晨的文章说。</p>
 
 <p>昨天说自己被Ubuntu养懒了，确实懒了，懒得自己连系统的某些工具的用处都不知道。比如pkg-config</p>
 
@@ -137,49 +184,42 @@ Libs: -L${libdir} -lglib-2.0<br />
 Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
 </p>
 
-<p>
-		
-		<a href="/blog/2008/07/19/pkg-config/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/07/19/pkg-config/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/07/19/i-am-lazy/">我是被养懒了的人</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-07-19T00:00:00+08:00" pubdate data-updated="true">Jul 19th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-07-19T00:00:00+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/07/19/i-am-lazy/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/07/19/i-am-lazy/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/07/19/i-am-lazy/">
-		
-			我是被养懒了的人</a>
-	</h2>
-	<div class="entry-content">
-		<p>曾经俊俊在Ubuntu下吭哧吭哧地下源码包来编译安装，我还笑他小题大做，Ubuntu的源里不是有很多库么。</p>
+  <div class="entry-content"><p>曾经俊俊在Ubuntu下吭哧吭哧地下源码包来编译安装，我还笑他小题大做，Ubuntu的源里不是有很多库么。</p>
 
 <p>没想到我也开始吭哧吭哧地找源码包，手动解决依赖关系了。</p>
 
@@ -192,49 +232,38 @@ Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
 <p>所以才有空上来发个日志牢骚牢骚。</p>
 
 <p>下午去了Sun公司，再次感叹一下Sun的环境真不错。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+</div>
+  
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/07/16/wordpress-26released/">Wordpress 2.6 发布</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-07-19T00:00:00+08:00" pubdate data-updated="true">Jul 19th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-07-16T00:00:00+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/07/16/wordpress-26released/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/07/16/wordpress-26released/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/07/16/wordpress-26released/">
-		
-			Wordpress 2.6 发布</a>
-	</h2>
-	<div class="entry-content">
-		<p>昨天就装上了。虽然听说有修订历史那么一个不好的功能还是装上了。</p>
+  <div class="entry-content"><p>昨天就装上了。虽然听说有修订历史那么一个不好的功能还是装上了。</p>
 
 <p>然后就在很多网站上找到了去除修订历史的方法：</p>
 
@@ -252,49 +281,42 @@ Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
 
 <p>不过某人说得好（忘了是谁说的了），WP功能强大了，方便使用才是最好的。什么时候能把必要插件整合起来，比如2.5里的gravatars集成一样，这样我的WP就不显得那么臃肿，也不用花那么多时间去配置了。</p>
 
-<p>
-		
-		<a href="/blog/2008/07/16/wordpress-26released/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/07/16/wordpress-26released/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/07/11/visit-internet-in-opensolaris/">搞定OpenSolaris上网</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-07-16T00:00:00+08:00" pubdate data-updated="true">Jul 16th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-07-11T00:00:00+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/07/11/visit-internet-in-opensolaris/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/07/11/visit-internet-in-opensolaris/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/07/11/visit-internet-in-opensolaris/">
-		
-			搞定OpenSolaris上网</a>
-	</h2>
-	<div class="entry-content">
-		<p>装好OpenSolaris后，居然有线网卡不能识别，上网看了一下，很多人都有这个问题。翻了一下网上的资料，自己总结了一下。</p>
+  <div class="entry-content"><p>装好OpenSolaris后，居然有线网卡不能识别，上网看了一下，很多人都有这个问题。翻了一下网上的资料，自己总结了一下。</p>
 
 <p>我的机子是Dell 640m，</p>
 
@@ -322,49 +344,42 @@ Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
 
 <p>我比较懒，使用network-admin来配置IP，把IP，Netmask，Gateway，DNS都给修改好了。</p>
 
-<p>
-		
-		<a href="/blog/2008/07/11/visit-internet-in-opensolaris/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/07/11/visit-internet-in-opensolaris/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/">对awn-applet在通知栏的一个小改动</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-07-11T00:00:00+08:00" pubdate data-updated="true">Jul 11th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-07-04T00:00:00+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/">
-		
-			对awn-applet在通知栏的一个小改动</a>
-	</h2>
-	<div class="entry-content">
-		<p>话说，用了awn-extra-applet之后，腰不疼了，腿不酸了，吃饭也香了，身体也有劲儿了……</p>
+  <div class="entry-content"><p>话说，用了awn-extra-applet之后，腰不疼了，腿不酸了，吃饭也香了，身体也有劲儿了……</p>
 
 <p>不过有点不爽的就是，awn applets里面的notification area(用来代替panel上的notification area的东东)显示图标有问题。当某程序的status icon使用的是高像素图标(比如128x128)时，整个notification area就被撑满了，高度也撑破了。</p>
 
@@ -378,49 +393,42 @@ Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
 
 <p>在applet.c中，找到这么一段代码：</p>
 
-<p>
-		
-		<a href="/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/28/ms-office-2003-under-wine/">Wine M$ Office 2003 成功</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-07-04T00:00:00+08:00" pubdate data-updated="true">Jul 4th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-06-28T00:00:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/06/28/ms-office-2003-under-wine/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/06/28/ms-office-2003-under-wine/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/06/28/ms-office-2003-under-wine/">
-		
-			Wine M$ Office 2003 成功</a>
-	</h2>
-	<div class="entry-content">
-		<p>都有人把M$ Office 2007给Wine成功了，我这篇文章看起来异常火星。</p>
+  <div class="entry-content"><p>都有人把M$ Office 2007给Wine成功了，我这篇文章看起来异常火星。</p>
 
 <p>当初我不Wine Office的原因很简单，字体。我当时不知道M$ Office自己带有一个很庞大的字体包，我怕装好后出现中文不能显示等问题，干脆就没来装了。结果装好了之后，发现效果非常好。</p>
 
@@ -435,49 +443,42 @@ Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
 <p><a href="http://www.microsoft.com/downloads/details.aspx?displaylang=zh-cn&FamilyID=28494391-052b-42ff-9674-f752bdca9582">http://www.microsoft.com/downloads/details.aspx?displaylang=zh-cn&FamilyID=28494391-052b-42ff-9674-f752bdca9582</a></p>
 
 <p>3.执行安装
-
-		
-		<a href="/blog/2008/06/28/ms-office-2003-under-wine/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/06/28/ms-office-2003-under-wine/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/18/wine-10-released/">15年, Wine 1.0 Released</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-06-28T00:00:00+08:00" pubdate data-updated="true">Jun 28th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-06-18T00:00:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/06/18/wine-10-released/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/06/18/wine-10-released/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/06/18/wine-10-released/">
-		
-			15年, Wine 1.0 Released</a>
-	</h2>
-	<div class="entry-content">
-		<p>最近忙着考试复习，第三次错过了第一时间发布（至少是同步发布）消息的时机，sigh~</p>
+  <div class="entry-content"><p>最近忙着考试复习，第三次错过了第一时间发布（至少是同步发布）消息的时机，sigh~</p>
 
 <p><blockquote>The Wine team is proud to announce that Wine 1.0 is now available. This is the first stable release of Wine after 15 years of development and beta testing. Many thanks to everybody who helped us along that long road!</blockquote></p>
 
@@ -488,49 +489,38 @@ Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
 <p>15年，赞毅力，别的不说了，嗯。</p>
 
 <p></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+</div>
+  
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/10/java-basic-check-points/">Java知识点没掌握扎实的后果</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-06-18T00:00:00+08:00" pubdate data-updated="true">Jun 18th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-06-10T00:00:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/06/10/java-basic-check-points/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/06/10/java-basic-check-points/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/06/10/java-basic-check-points/">
-		
-			Java知识点没掌握扎实的后果</a>
-	</h2>
-	<div class="entry-content">
-		<p>自动调用toString方法——</p>
+  <div class="entry-content"><p>自动调用toString方法——</p>
 
 <p><pre lang="java" line="1">
 //A.java
@@ -564,49 +554,42 @@ public class C<br />
 }
 </p>
 
-<p>
-		
-		<a href="/blog/2008/06/10/java-basic-check-points/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/06/10/java-basic-check-points/">Read on &rarr;</a>
+    </footer>
   
 
 
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/09/asm-by-emu8086/">俺也汇编一下：EMU8086</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<time datetime="2008-06-10T00:00:00+08:00" pubdate data-updated="true">Jun 10th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
 
 
-</div>
-</article>
+
+<time class='entry-date' datetime='2008-06-09T00:00:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/06/09/asm-by-emu8086/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/06/09/asm-by-emu8086/">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2008/06/09/asm-by-emu8086/">
-		
-			俺也汇编一下：EMU8086</a>
-	</h2>
-	<div class="entry-content">
-		<p>对不住各位看官了……这个EMU8086模拟器是Windows下的，还是破解的……我只是为了完成计组老师的作业而已。只是有道题比较有意思，我深深地想了好久，发现一些问题，估计老师不会认真改我的作业，我把它发上来发泄发泄，嗯。</p>
+  <div class="entry-content"><p>对不住各位看官了……这个EMU8086模拟器是Windows下的，还是破解的……我只是为了完成计组老师的作业而已。只是有道题比较有意思，我深深地想了好久，发现一些问题，估计老师不会认真改我的作业，我把它发上来发泄发泄，嗯。</p>
 
 <p>话说EMU8086预先弄了几个PORT，其中PORT9就是实现了一个机器人的东东。具体描述如下：在一个9X6的地图内，有墙、灯、机器人三种东西。机器人碰到墙和灯都过不去，但是碰到灯的时候会自动改变灯的状态，也就是关灯或者开灯。<br />
 现在在地图上画一个地图，机器人使用给定的算法会产生死角，问怎么样消除死角。</p>
@@ -615,56 +598,143 @@ public class C<br />
 
 <p><img src="http://img.ant.im/di-5PLC.png" /></p>
 
-<p>
-		
-		<a href="/blog/2008/06/09/asm-by-emu8086/" class="more-link">Read on &rarr;</a>
-	</div>
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/06/09/asm-by-emu8086/">Read on &rarr;</a>
+    </footer>
+  
 
 
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/9">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/7">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
+      </li>
+    
+  </ul>
+</section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/casparant">@casparant</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
 
-
+        github.showRepos({
+            user: 'casparant',
+            count: 2,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
 
 
 
 
 
   
+</aside>
 
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Caspar -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
 
-
-<time datetime="2008-06-09T00:00:00+08:00" pubdate data-updated="true">Jun 9th, 2008</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/deprecated/'>deprecated</a>
-
-</div>
-
-
-</div>
-</article>
-
-
-<nav id="pagenavi">
-    
-        <a href="7" class="prev">Prev</a>
-    
-    
-        <a href="9" class="next">Next</a>
-    
-</nav>
-
-</div>
-	<footer id="footer" class="inner">Copyright &copy; 2015
- Caspar 
-<br>
-Powered by Octopress.
 </footer>
-	
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'casparant';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
 
 </body>
 </html>

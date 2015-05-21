@@ -4,7 +4,7 @@
   <title><![CDATA[Ant-Veil]]></title>
   <link href="http://casparant.github.io/atom.xml" rel="self"/>
   <link href="http://casparant.github.io/"/>
-  <updated>2015-05-21T15:02:57+08:00</updated>
+  <updated>2015-05-21T15:10:09+08:00</updated>
   <id>http://casparant.github.io/</id>
   <author>
     <name><![CDATA[Caspar]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Fix Razer Orochi re-connect issue]]></title>
+    <title type="html"><![CDATA[Fix Razer Orochi Re-connect Issue]]></title>
     <link href="http://casparant.github.io/blog/2014/10/10/fix-razer-orochi-re-connect-issue/"/>
     <updated>2014-10-10T00:00:00+08:00</updated>
     <id>http://casparant.github.io/blog/2014/10/10/fix-razer-orochi-re-connect-issue</id>
@@ -121,7 +121,7 @@ bluedevil 1.3.2 ~ 2.0_rc1</blockquote></p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[mce的一些零散记录]]></title>
+    <title type="html"><![CDATA[Mce的一些零散记录]]></title>
     <link href="http://casparant.github.io/blog/2013/06/06/some-misc-items-of-mce/"/>
     <updated>2013-06-06T00:00:00+08:00</updated>
     <id>http://casparant.github.io/blog/2013/06/06/some-misc-items-of-mce</id>
@@ -301,7 +301,7 @@ git commit -a -s -c ORIG_HEAD
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[libfprint finally supports Thinkpad T410]]></title>
+    <title type="html"><![CDATA[Libfprint Finally Supports Thinkpad T410]]></title>
     <link href="http://casparant.github.io/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410/"/>
     <updated>2010-08-20T00:00:00+08:00</updated>
     <id>http://casparant.github.io/blog/2010/08/20/libfprint-finally-supports-thinkpad-t410</id>
@@ -314,7 +314,7 @@ git commit -a -s -c ORIG_HEAD
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Enable fingerprint in Thinkpad T410 under Gentoo]]></title>
+    <title type="html"><![CDATA[Enable Fingerprint in Thinkpad T410 Under Gentoo]]></title>
     <link href="http://casparant.github.io/blog/2010/08/06/enable-fingerprint-in-thinkpad-t410-under-gentoo/"/>
     <updated>2010-08-06T00:00:00+08:00</updated>
     <id>http://casparant.github.io/blog/2010/08/06/enable-fingerprint-in-thinkpad-t410-under-gentoo</id>
@@ -652,7 +652,7 @@ fi
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Chrowety - A Chrome Twitter Extension]]></title>
+    <title type="html"><![CDATA[Chrowety - a Chrome Twitter Extension]]></title>
     <link href="http://casparant.github.io/blog/2010/03/27/chrowety-a-chrome-twitter-extension/"/>
     <updated>2010-03-27T00:00:00+08:00</updated>
     <id>http://casparant.github.io/blog/2010/03/27/chrowety-a-chrome-twitter-extension</id>
