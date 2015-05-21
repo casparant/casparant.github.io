@@ -109,7 +109,7 @@
 
 <p>于是想当然地认为只要把编译出来的模块改个名字就好了。然而事情并没那么简单，中间碰到两个问题，首先就是本文要讲到的，导出符号(EXPORT_SYMBOL)重复的问题。其实问题很好理解，我改了个名字之后的模块(比如：<code>target_core_mod_new.ko</code>，在代码中还是会导出相同的符号，所以解决方法就是在新的模块中不导出这些符号，删掉所有的<code>EXPORT_SYMBOL()</code>宏。</p>
 
-<p>可是问题又来了，我的后端驱动模块(比如：<code>target_core_iblock.ko</code>)需要依赖新的模块的函数，在无法导出符号的情况下，我没有办法使用后端驱动模块。稍微搜了一下，找到<code>kallsyms_lookup_name()</code>函数(<a href="http://lxr.free-electrons.com/source/kernel/kallsyms.c?v=2.6.33#L170">定义</a>)，这个函数传入一个类似<strong><em>module:symbol</em></strong>形式的参数，用于读取<code>/proc/kallsyms</code>中的符号表，找到对应的符号，然后返回符号的地址(即函数的入口)。</p>
+<p>可是问题又来了，我的后端驱动模块(比如：<code>target_core_iblock.ko</code>)需要依赖新的模块的函数，在无法导出符号的情况下，我没有办法使用后端驱动模块。稍微搜了一下，找到<code>kallsyms_lookup_name()</code>函数(<a href="http://lxr.free-electrons.com/source/kernel/kallsyms.c?v=2.6.33#L170">定义</a>)，这个函数传入一个类似 <strong><em>module:symbol</em></strong> 形式的参数，用于读取<code>/proc/kallsyms</code>中的符号表，找到对应的符号，然后返回符号的地址(即函数的入口)。</p>
 
 <p>于是我拿了这个函数开开心心地去改代码了。以<code>target_complete_cmd()</code>这个函数为例，我在后端驱动模块的代码需要调用这个函数的地方：</p>
 
