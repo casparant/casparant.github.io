@@ -2,7 +2,7 @@
 layout: post
 title: 俺也汇编一下：EMU8086
 categories:
-- Programming
+- Deprecated
 tags:
 - asm
 - bug
@@ -84,12 +84,12 @@ R_PORT 		EQU 9</pre></p>
 	JE	switch_off	; so, switch it off and do something<br />
 	CMP	AL, 8		; switched-off lamp?<br />
 	JE	switch_on	; so, switch it on and do something<br />
-	
+
 first_step:<br />
 	ADD	BH, 1<br />
 	MOV	BL, 1<br />
 	JMP	turn_right<br />
-	
+
 meet_wall:<br />
 	ADD	BH, 1<br />
 	SUB	BL, 1<br />
@@ -117,38 +117,38 @@ turn_left:<br />
 	MOV	AL, 1<br />
 	OUT	R_PORT, AL<br />
 	JMP	eternal_loop	; go again!<br />
-	
+
 switch_off:			<br />
 	CALL	WAIT_ROBOT	; turn off the lamp<br />
 	MOV	AL, 6<br />
 	OUT	R_PORT, AL<br />
-	
+
 	JMP	meet_lamp<br />
-	
+
 switch_on:<br />
 	CALL	WAIT_ROBOT	; turn on the lamp<br />
 	MOV	AL, 5<br />
 	OUT	R_PORT, AL<br />
-	
+
 	JMP	meet_lamp<br />
-	
+
 turn_right:<br />
 	CALL	WAIT_ROBOT	; turn right operation<br />
 	MOV	AL, 3<br />
 	OUT	R_PORT, AL<br />
 	JMP	eternal_loop	; go again<br />
-	
+
 turn_around:<br />
 	CALL	WAIT_ROBOT	; turn right twice to turn around<br />
 	MOV	AL, 3<br />
 	OUT	R_PORT, AL<br />
-	
+
 	CALL	WAIT_ROBOT<br />
 	MOV	AL, 3<br />
 	OUT	R_PORT, AL<br />
-	
+
 	JMP	eternal_loop	; go again<br />
-	
+
 WAIT_ROBOT	PROC<br />
 busy:<br />
 	IN	AL, R_PORT+2<br />

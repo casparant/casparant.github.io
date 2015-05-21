@@ -2,7 +2,7 @@
 layout: post
 title: 重新装回Gentoo
 categories:
-- Z-Turn
+- Deprecated
 tags:
 - acpi
 - Gentoo
@@ -53,9 +53,9 @@ action=/home/caspar/.local/bin/bluetooth.sh
 
 <p><pre lang="bash">
 #!/bin/bash
- 
+
 NAME="tpacpi_bluetooth_sw"
- 
+
 find_by_name() {
     NAME="$1"
     test -z "${NAME}" && return 1
@@ -67,9 +67,9 @@ find_by_name() {
     fi
     return 1
 }
- 
+
 SYSFS="$(find_by_name "${NAME}")"
- 
+
 if [[ ! -z "${SYSFS}" && -r "${SYSFS}/state" ]]; then
     case "$(cat "${SYSFS}/state")" in
         0)

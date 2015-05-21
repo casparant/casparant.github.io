@@ -2,7 +2,7 @@
 layout: post
 title: OpenSolaris编译安装gcc4.3.1成功
 categories:
-- Z-Turn
+- Deprecated
 tags:
 - bootstrap
 - config
@@ -36,17 +36,17 @@ gmake all</pre></p>
 <p>看到如下的configure选项：</p>
 
 <p><!--more--><pre lang="bash" line="1">
-./configure --prefix=/usr 
---libdir=/usr/lib 
---libexecdir=/usr/lib 
---enable-shared 
---enable-threads=posix 
---enable-__cxa_atexit 
---enable-c99 
---enable-long-long 
---enable-clocale=gnu 
---disable-libstdcxx-pch 
---disable-multilib 
+./configure --prefix=/usr
+--libdir=/usr/lib
+--libexecdir=/usr/lib
+--enable-shared
+--enable-threads=posix
+--enable-__cxa_atexit
+--enable-c99
+--enable-long-long
+--enable-clocale=gnu
+--disable-libstdcxx-pch
+--disable-multilib
 --enable-languages=c,c++,f95</pre></p>
 
 <p>第1,2,3不是关键选项。继续查找资料，第4项在gcc的README里面说明了是默认打开的。第5项我把posix改成了solaris，第6项在有glibc的情况下下才有用，第7,8,9,10没找到相关说明，第11项是禁止多个平台的库都编译(我觉得我过去几天没编译成功的原因很可能就是这样的，因为总是在AMD64相关的目录下编译，我的机子可是i386啊…)，最后一项指定要安装的语言，我下的是core包和自己要装的语言包，就用不着这个命令了。</p>

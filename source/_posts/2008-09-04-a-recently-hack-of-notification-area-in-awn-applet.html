@@ -2,14 +2,14 @@
 layout: post
 title: 又对awn-applet的通知栏图标hack了一下
 categories:
-- Hacks
+- Deprecated
 tags:
 - awn-applet
 - Hacks
 published: true
 comments: true
 ---
-<p>曾经写过一篇文章《<a href="http://www.casparant.com/a-hack-of-notification-area-in-awn-applet.html">对awn-applet的notification area的一个小改动</a>》，目的是为了避免高像素图标将notification area这个applet的高度撑破，经过修改，确实能将每个图标的像素给固定住，使得applet保持原大小。今天通过重新解读代码，发现原来的修改步骤并不那么完美，事实上只需要修改一条语句即可，仍旧是在applet.c这个源文件中，看到如下代码：</p>
+<p>曾经写过一篇文章《<a href="http://www.casparzhang.com/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet">对awn-applet的notification area的一个小改动</a>》，目的是为了避免高像素图标将notification area这个applet的高度撑破，经过修改，确实能将每个图标的像素给固定住，使得applet保持原大小。今天通过重新解读代码，发现原来的修改步骤并不那么完美，事实上只需要修改一条语句即可，仍旧是在applet.c这个源文件中，看到如下代码：</p>
 
 <p><pre lang="cpp" line="1">static void
 tray_icon_added (EggTrayManager *manager,

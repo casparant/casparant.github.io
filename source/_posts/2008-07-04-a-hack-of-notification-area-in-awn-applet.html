@@ -2,7 +2,7 @@
 layout: post
 title: 对awn-applet在通知栏的一个小改动
 categories:
-- Hacks
+- Deprecated
 tags:
 - awn-applet
 - Hacks
@@ -26,7 +26,7 @@ comments: true
 <p><!--more--><pre lang="cpp" line="1">
 height = awn_applet_get_height (applet);
 gtk_widget_set_size_request (GTK_WIDGET (applet), -1, height* 2 );
- 
+
 table = gtk_table_new (1, 1, FALSE);
 app->table = table;
 gtk_table_set_col_spacings (GTK_TABLE (table), 2);

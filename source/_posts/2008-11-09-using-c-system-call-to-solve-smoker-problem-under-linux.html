@@ -2,8 +2,7 @@
 layout: post
 title: 使用C系统调用函数解决“抽烟者问题”
 categories:
-- Learning
-- Programming
+- Deprecated
 tags:
 - C
 - semaphore
@@ -140,7 +139,7 @@ int V(int semid, int sem_index);</p>
 	int semid, i;</p>
 
 <p>	srand((unsigned)time(NULL));<br />
-	
+
 	/* Puts out the Agent's information */<br />
 	fprintf(stdout, "I'm the Agent.n" );</p>
 
@@ -210,7 +209,7 @@ int V(int semid, int sem_index);</p>
 		ERR_AND_EXIT("semget");<br />
 	if (semctl(semid, smoker, GETVAL, 0) < 0)<br />
 		ERR_AND_EXIT("semctl");<br />
-	
+
 	/*<br />
 	 * The procedures are shown in below:<br />
 	 * 1. P(Smoker_i)<br />
@@ -252,7 +251,7 @@ public class AgentSmokerProblem <br />
 	/* Create 4 semaphores, the first is for agent and the rest are for smokers */<br />
 	public static Semaphore sem_agent;<br />
 	public static Semaphore[] sem_smoker = new Semaphore[3];<br />
-	
+
 	public static void main(String[] args) <br />
 	{<br />
 		/* Initialize the semaphores to 0 */<br />
@@ -283,7 +282,7 @@ public class AgentSmokerProblem <br />
 	{<br />
 		super("Agent");<br />
 	}<br />
-	
+
 	public void run()<br />
 	{<br />
 		String[] smoker_type = {"tobacco", "paper", "matches"};<br />
@@ -319,13 +318,13 @@ public class AgentSmokerProblem <br />
 <p>class Smoker extends Thread<br />
 {
 	private int smoker_num;<br />
-	
+
 	public Smoker(int smoker_num)<br />
 	{<br />
 		super("Smoker " + smoker_num);<br />
 		this.smoker_num = smoker_num;<br />
 	}<br />
-	
+
 	public void run()<br />
 	{<br />
 		String[] smoker_type = {"tobacco", "paper", "matches"};<br />
