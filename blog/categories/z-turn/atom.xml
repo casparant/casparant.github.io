@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Z-turn | Ant-Veil]]></title>
+  <link href="http://casparant.github.io/blog/categories/z-turn/atom.xml" rel="self"/>
+  <link href="http://casparant.github.io/"/>
+  <updated>2015-05-21T15:22:56+08:00</updated>
+  <id>http://casparant.github.io/</id>
+  <author>
+    <name><![CDATA[Caspar]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Blog 恢复]]></title>
+    <link href="http://casparant.github.io/blog/2015/05/21/blog-revivied/"/>
+    <updated>2015-05-21T15:17:37+08:00</updated>
+    <id>http://casparant.github.io/blog/2015/05/21/blog-revivied</id>
+    <content type="html"><![CDATA[<p>Blog 已经迁移到了 <a href="http://www.github.com">GitHub</a>，准备恢复更新，主要更新一些内核相关的内容(瞬间变得高大上了有没有~lol)。</p>
+
+<p>且看看我这会儿能坚持多久吧。</p>
+
+<p>对了，坚持用 FeedBurner 订阅的用户，跳出来冒个泡呗…… 估计已经没有多少了吧？</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="今天发现侧边栏上有人在百度直接通过关键字"Ant"访问到了我的网站，顿时一惊。自己搜了一下，果然如此，而且还在第一页。这种词汇都能在百度显示我的网站，服了……再搜Caspar，第一个就是我的网站，哈。不知道百度的关键字排名是怎么弄的…… 不过搜"GMAIL LAB"， &hellip;">
+  <meta name="description" content="对不住各位看官了……这个EMU8086模拟器是Windows下的，还是破解的……我只是为了完成计组老师的作业而已。只是有道题比较有意思，我深深地想了好久，发现一些问题，估计老师不会认真改我的作业，我把它发上来发泄发泄，嗯。 话说EMU8086预先弄了几个PORT， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/09/asm-by-emu8086/">俺也汇编一下：EMU8086</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-06-09T00:00:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/06/09/asm-by-emu8086/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/06/09/asm-by-emu8086/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>对不住各位看官了……这个EMU8086模拟器是Windows下的，还是破解的……我只是为了完成计组老师的作业而已。只是有道题比较有意思，我深深地想了好久，发现一些问题，估计老师不会认真改我的作业，我把它发上来发泄发泄，嗯。</p>
+
+<p>话说EMU8086预先弄了几个PORT，其中PORT9就是实现了一个机器人的东东。具体描述如下：在一个9X6的地图内，有墙、灯、机器人三种东西。机器人碰到墙和灯都过不去，但是碰到灯的时候会自动改变灯的状态，也就是关灯或者开灯。<br />
+现在在地图上画一个地图，机器人使用给定的算法会产生死角，问怎么样消除死角。</p>
+
+<p>话说原来给定的代码太弱了，一眼看出破绽：机器人碰墙只能单纯地朝一个方向转，那么碰到开了一口的闭合空间时，一旦进去就出不来了(如图)，必然得改进。改进的方法有两个，一个是把行走改成随机方向，那么机器人再怎么囧最后也能走出去，可是老师不提倡随机，那么只好接着改了。</p>
+
+<p><img src="http://img.ant.im/di-5PLC.png" /></p>
+
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/06/09/asm-by-emu8086/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -476,54 +520,6 @@ LaTeX is the de facto standard for the communication and publication of scientif
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/04/02/wqy-zenhei-released/">文泉驿正黑(夸父-final)，[正式版发布]</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-04-02T00:00:00+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2008/04/02/wqy-zenhei-released/#disqus_thread"
-             data-disqus-identifier="http://casparant.github.io/blog/2008/04/02/wqy-zenhei-released/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>其实我晚了好几天……今天看到TOY上有这个消息，去看了看，再去文泉驿主页看看了。</p>
-
-<p>地址在这里：</p>
-
-<p><a href="http://wenq.org/forum/viewtopic.php?t=628">http://wenq.org/forum/viewtopic.php?t=628</a></p>
-
-<p><a href="http://linuxtoy.org/archives/wenquanyi-zenhei-kwafoo.html">http://linuxtoy.org/archives/wenquanyi-zenhei-kwafoo.html</a></p>
-
-<p>原来很郁闷的是小字号的://都不能显示，Final版本修复了……真棒。</p>
-
-<p>虽然文泉驿现在显示效果没有雅黑在7.10的机子上好看，还是有虚边。但是看着它的改进，现在字体已经越来越顺眼了。赞一下国产和开源～</p>
-
-<p>文泉驿主页的Release Note:
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2008/04/02/wqy-zenhei-released/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/10">&larr; Older</a>
@@ -541,6 +537,10 @@ LaTeX is the de facto standard for the communication and publication of scientif
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/blog-revivied/">Blog 恢复</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
       </li>
     
@@ -554,10 +554,6 @@ LaTeX is the de facto standard for the communication and publication of scientif
     
       <li class="post">
         <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
       </li>
     
   </ul>

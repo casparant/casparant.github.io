@@ -4,7 +4,7 @@
   <title><![CDATA[Ant-Veil]]></title>
   <link href="http://casparant.github.io/atom.xml" rel="self"/>
   <link href="http://casparant.github.io/"/>
-  <updated>2015-05-21T15:12:36+08:00</updated>
+  <updated>2015-05-21T15:22:56+08:00</updated>
   <id>http://casparant.github.io/</id>
   <author>
     <name><![CDATA[Caspar]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Blog 恢复]]></title>
+    <link href="http://casparant.github.io/blog/2015/05/21/blog-revivied/"/>
+    <updated>2015-05-21T15:17:37+08:00</updated>
+    <id>http://casparant.github.io/blog/2015/05/21/blog-revivied</id>
+    <content type="html"><![CDATA[<p>Blog 已经迁移到了 <a href="http://www.github.com">GitHub</a>，准备恢复更新，主要更新一些内核相关的内容(瞬间变得高大上了有没有~lol)。</p>
+
+<p>且看看我这会儿能坚持多久吧。</p>
+
+<p>对了，坚持用 FeedBurner 订阅的用户，跳出来冒个泡呗…… 估计已经没有多少了吧？</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fix Razer Orochi Re-connect Issue]]></title>
@@ -752,37 +765,6 @@ fi
 <p>P.S. wp2.9有了回收站功能和图片编辑功能，用了一下感觉很好。推荐大家升级。</p>
 
 <p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Linux下与相片有关的工具]]></title>
-    <link href="http://casparant.github.io/blog/2009/12/03/photograph-related-tools-under-linux/"/>
-    <updated>2009-12-03T00:00:00+08:00</updated>
-    <id>http://casparant.github.io/blog/2009/12/03/photograph-related-tools-under-linux</id>
-    <content type="html"><![CDATA[<p>前段时间入手了一台入门单反，看网上都是使用光影啊、PS啊、Nikon光盘自带的ViewNX等工具来处理相片，我就想在Linux找到类似的软件。</p>
-
-<p>PS这个好说，GIMP可以搞定。不过强烈期盼<a href="http://www.gimpusers.com/news/2009-09-19/single-window-mode-gimp-2-8-confirmed.html" target="new">GIMP的单一窗口模式</a>早点出来啊～</p>
-
-<p>相片管理软件只好暂时用用Wine的Picasa了，同样期待Linux下原生的Picasa，不过这个希望相当渺茫……其实wine的Picasa还是很好用的，修正照片功能也不错，Google招牌式的I'm feeling lucky按钮，对于我等懒人，效果极佳。</p>
-
-<p>光影类的软件，我迄今为止没有找到。我主要喜欢光影的加框功能。Linux下尝试过f-spot，最后放弃，主要是修改完出片的时候根本没有压缩，遂怀疑这个软件的相片修正功能是否真正可用，而且没有加框的插件。还发现几个KDE的程序，但是因为要编译安装kdebase-lib这种大块头，我宁愿wine一个光影魔术手……现在调曝光拉曲线加框出片基本上都是靠wine的光影，痛苦啊T_T不过批量操作的时候还是用Picasa～</p>
-
-<p>然后就是RAW出片的问题。我在虚拟机上运行ViewNX来修改RAW的片子居然把虚拟机搞假死了，RAW片果然不是省油的灯……只好转战Linux平台，找了许久之后发现这个工具：<a href="http://ufraw.sourceforge.net/" target="new">UFRaw</a>，发现其功能还是很强大的，拉曲线、白平衡、曝光补偿、去噪、裁切缩放都有，而且它能认出我的D3000，在Gentoo中加上gimp的USE Flag后可以在处理完片子后在GIMP中继续编辑。目前没有发现这个软件在功能上的缺失，而且平时因为RAW出片不多，所以对这个功能的研究也比较少。</p>
-
-<p>其他工具正在继续发掘中，有类似经历的朋友欢迎推荐好用的工具。总体来说Linux下处理相片的工具还是有的，就是找到它们需要一些时间～</p>
-
-<p><!--more-->====== 我是分割线 ======</p>
-
-<p>最近人比较懒，Blog更新非常不勤快。在搬家之后，我思考了一下这个Blog未来的定位，最后觉得以后应该侧重于这么几个方面：</p>
-
-<p>1. Linux下的软件或者其他平台的开源软件的介绍（当然都是生活中常用的软件，那种跟我八杆子打不着的软件，我也不会因为它是开源的就一个劲儿宣传）</p>
-
-<p>2. 编程，这个永远是Blog中应该出现的话题，虽然我已经好久没有编程了。</p>
-
-<p>3. 因为最近折腾系统比较少了，所以关于Linux系统配置等文章，以后基本上不会出现了。而跟Linux系统有关的软件，当我有兴趣研究之后我会作为话题发上来。</p>
-
-<p>暂时就想到这么多，以后本Blog尽量不那么杂乱，好好耕耘，完毕～</p>
 ]]></content>
   </entry>
   

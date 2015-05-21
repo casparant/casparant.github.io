@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="在Linux的众多发行版中，ubuntu以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数Linux用户，本文即以Ubuntu Linux 7.10为例，讲解其安装与配置。 插一句：Linux初学者推荐下载一本命令行手册，点此下载&gt;&gt;&gt;(特别感谢yegle同学倾心制作！) &hellip;">
+  <meta name="description" content="这两天被启动的东西给弄晕了，现在回过神来写一段备用。 一、启动冲突 造成启动冲突的原因往往只有一个，MBR覆盖。比如先装的XP再装的Linux，Linux就会把XP安装时写入MBR的数据给覆盖掉，如果先装Ubuntu再装Fedora， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/21/linux-about-boot/">Linux启动时的一些闲言碎语</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-01-21T00:00:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/01/21/linux-about-boot/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/01/21/linux-about-boot/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>这两天被启动的东西给弄晕了，现在回过神来写一段备用。</p>
+
+<p><h3>一、启动冲突</h3></p>
+
+<p>造成启动冲突的原因往往只有一个，MBR覆盖。比如先装的XP再装的Linux，Linux就会把XP安装时写入MBR的数据给覆盖掉，如果先装Ubuntu再装Fedora，Fedora的GRUB会安装到MBR上覆盖了Ubuntu的GRUB。这些情况都可能会造成某些操作系统不能启动。</p>
+
+<p>幸好Linux在这方面还算人性化，它在覆盖XP在MBR中的数据之后，会自动搜索可启动的Windows分区，并且把XP的启动信息写到自己GRUB的menu.lst中，这样在装完Linux后能在启动菜单上看见原先的 Windows启动项（通常在最后一项）。</p>
+
+<p>而有时候不小心会把Windows弄坏，需要重装Windows，等你Windows重新装好了，Linux也就启动不了了，因为Windows把MBR又给更新了。Windows和Linux抢MBR的矛盾一直如此激化……</p>
+
+<p>那么如何防止两个系统吵架呢？两种方法。</p>
+
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/01/21/linux-about-boot/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -284,6 +331,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/blog-revivied/">Blog 恢复</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
       </li>
     
@@ -297,10 +348,6 @@
     
       <li class="post">
         <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
       </li>
     
   </ul>

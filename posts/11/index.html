@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="前几天Alpha5也出来了，直到今天才全新安装了试一试。 光盘启动后界面不一样了，第一行显示是“No harm using Ubuntu in your PC”之类的话，看来是想增强初级用户体验了。Ubuntu在普及初级用户群方面下的功夫的确挺大，听说Alpha5开始直接整合了WUBI， &hellip;">
+  <meta name="description" content="这个学期开学，pidgin就不能登录google talk了。刚开始以为是google的问题，结果发现win下用talk官方版可以，登录gmail用网页版也都可以。看来问题出在pidgin上。 上网搜，在这个网页找到了答案 http://linuxtoy.org/archives/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,48 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/03/04/config-gtalk-port-on-pidgin/">Pidgin配置Gtalk端口</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-03-04T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/03/04/config-gtalk-port-on-pidgin/#disqus_thread"
+             data-disqus-identifier="http://casparant.github.io/blog/2008/03/04/config-gtalk-port-on-pidgin/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>这个学期开学，pidgin就不能登录google talk了。刚开始以为是google的问题，结果发现win下用talk官方版可以，登录gmail用网页版也都可以。看来问题出在pidgin上。</p>
+
+<p>上网搜，在这个网页找到了答案</p>
+
+<p><a href="http://linuxtoy.org/archives/configure-pidgin-for-google-talk.html" target="_blank">http://linuxtoy.org/archives/configure-pidgin-for-google-talk.html</a></p>
+
+<p>应该是宏福的出口把5222给封了还是怎么的，得用443端口。具体设置如下：</p>
+
+<p>在XMPP的“高级”选项卡中勾选“允许旧SSL”和“允许在不加密流上的纯文本验证”，</p>
+
+<p>文本框中连接端口填443，连接服务器填talk.google.com</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -503,53 +545,6 @@ f命令表示强制创建，覆盖同名文件。
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/01/21/linux-about-boot/">Linux启动时的一些闲言碎语</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-01-21T00:00:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2008/01/21/linux-about-boot/#disqus_thread"
-             data-disqus-identifier="http://casparant.github.io/blog/2008/01/21/linux-about-boot/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>这两天被启动的东西给弄晕了，现在回过神来写一段备用。</p>
-
-<p><h3>一、启动冲突</h3></p>
-
-<p>造成启动冲突的原因往往只有一个，MBR覆盖。比如先装的XP再装的Linux，Linux就会把XP安装时写入MBR的数据给覆盖掉，如果先装Ubuntu再装Fedora，Fedora的GRUB会安装到MBR上覆盖了Ubuntu的GRUB。这些情况都可能会造成某些操作系统不能启动。</p>
-
-<p>幸好Linux在这方面还算人性化，它在覆盖XP在MBR中的数据之后，会自动搜索可启动的Windows分区，并且把XP的启动信息写到自己GRUB的menu.lst中，这样在装完Linux后能在启动菜单上看见原先的 Windows启动项（通常在最后一项）。</p>
-
-<p>而有时候不小心会把Windows弄坏，需要重装Windows，等你Windows重新装好了，Linux也就启动不了了，因为Windows把MBR又给更新了。Windows和Linux抢MBR的矛盾一直如此激化……</p>
-
-<p>那么如何防止两个系统吵架呢？两种方法。</p>
-
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2008/01/21/linux-about-boot/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/12">&larr; Older</a>
@@ -567,6 +562,10 @@ f命令表示强制创建，覆盖同名文件。
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/blog-revivied/">Blog 恢复</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
       </li>
     
@@ -580,10 +579,6 @@ f命令表示强制创建，覆盖同名文件。
     
       <li class="post">
         <a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a>
       </li>
     
   </ul>
