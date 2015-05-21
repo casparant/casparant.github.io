@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Kernel | Ant-Veil]]></title>
-  <link href="http://www.casparzhang.com//blog/categories/kernel/atom.xml" rel="self"/>
-  <link href="http://www.casparzhang.com//"/>
-  <updated>2015-05-21T15:54:13+08:00</updated>
-  <id>http://www.casparzhang.com//</id>
+  <link href="http://www.casparzhang.com/blog/categories/kernel/atom.xml" rel="self"/>
+  <link href="http://www.casparzhang.com/"/>
+  <updated>2015-05-21T17:18:10+08:00</updated>
+  <id>http://www.casparzhang.com/</id>
   <author>
     <name><![CDATA[Caspar]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Linux Kernel 208.5d Panic Issue]]></title>
-    <link href="http://www.casparzhang.com//blog/2015/05/21/208-day-crash-issue/"/>
+    <link href="http://www.casparzhang.com/blog/2015/05/21/208-day-crash-issue/"/>
     <updated>2015-05-21T15:39:33+08:00</updated>
-    <id>http://www.casparzhang.com//blog/2015/05/21/208-day-crash-issue</id>
+    <id>http://www.casparzhang.com/blog/2015/05/21/208-day-crash-issue</id>
     <content type="html"><![CDATA[<p>最近线上碰到的问题，虽说早就有解决方案了，但是陆陆续续还是碰到很多没有升级内核的机器挂掉。记录一下以下内容，仅供参考。</p>
 
 <p>现象是机器运行到一定天数(刚开始反馈集中在 208.5 天左右)就会主动挂掉，报告文章末尾的 CallTrace，所幸社区几年前就有了解决方案：</p>

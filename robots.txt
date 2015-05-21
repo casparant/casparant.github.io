@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://www.casparzhang.com//sitemap.xml 
+Sitemap: http://www.casparzhang.com/sitemap.xml 
