@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Kernel | Ant-Veil]]></title>
-  <link href="http://casparant.github.io/blog/categories/kernel/atom.xml" rel="self"/>
-  <link href="http://casparant.github.io/"/>
-  <updated>2015-05-21T15:47:08+08:00</updated>
-  <id>http://casparant.github.io/</id>
+  <link href="http://www.casparzhang.com//blog/categories/kernel/atom.xml" rel="self"/>
+  <link href="http://www.casparzhang.com//"/>
+  <updated>2015-05-21T15:54:13+08:00</updated>
+  <id>http://www.casparzhang.com//</id>
   <author>
     <name><![CDATA[Caspar]]></name>
     
@@ -15,14 +15,14 @@
   
   <entry>
     <title type="html"><![CDATA[Linux Kernel 208.5d Panic Issue]]></title>
-    <link href="http://casparant.github.io/blog/2015/05/21/208-day-crash-issue/"/>
+    <link href="http://www.casparzhang.com//blog/2015/05/21/208-day-crash-issue/"/>
     <updated>2015-05-21T15:39:33+08:00</updated>
-    <id>http://casparant.github.io/blog/2015/05/21/208-day-crash-issue</id>
+    <id>http://www.casparzhang.com//blog/2015/05/21/208-day-crash-issue</id>
     <content type="html"><![CDATA[<p>最近线上碰到的问题，虽说早就有解决方案了，但是陆陆续续还是碰到很多没有升级内核的机器挂掉。记录一下以下内容，仅供参考。</p>
 
 <p>现象是机器运行到一定天数(刚开始反馈集中在 208.5 天左右)就会主动挂掉，报告文章末尾的 CallTrace，所幸社区几年前就有了解决方案：</p>
 
-<h1>Upstream Patch</h1>
+<h2>Upstream Patch</h2>
 
 <pre><code>commit 4cecf6d401a01d054afc1e5f605bcbfe553cb9b9
 Author: Salman Qazi &lt;sqazi@google.com&gt;
@@ -52,7 +52,7 @@ Date:   Tue Nov 15 14:12:06 2011 -0800
 <!--more-->
 
 
-<h1>Red Hat Fix</h1>
+<h2>Red Hat Fix</h2>
 
 <ul>
 <li>Z-stream since 2.6.32-220.5.1.el6</li>
@@ -60,14 +60,14 @@ Date:   Tue Nov 15 14:12:06 2011 -0800
 </ul>
 
 
-<h1>Ref Links</h1>
+<h2>Ref Links</h2>
 
 <ul>
 <li><a href="http://kenichiokuyama.blogspot.hk/2011/12/schedclock-overflow-after-2085-days-in.html">http://kenichiokuyama.blogspot.hk/2011/12/schedclock-overflow-after-2085-days-in.html</a></li>
 </ul>
 
 
-<h1>Call Trace</h1>
+<h2>Call Trace</h2>
 
 <pre><code>[776183.791021] divide error: 0000 [#1] SMP
 [776183.795055] last sysfs file: /sys/devices/system/cpu/cpu15/cache/index2/shared_cpu_map

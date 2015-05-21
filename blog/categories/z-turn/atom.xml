@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Z-turn | Ant-Veil]]></title>
-  <link href="http://casparant.github.io/blog/categories/z-turn/atom.xml" rel="self"/>
-  <link href="http://casparant.github.io/"/>
-  <updated>2015-05-21T15:47:08+08:00</updated>
-  <id>http://casparant.github.io/</id>
+  <link href="http://www.casparzhang.com//blog/categories/z-turn/atom.xml" rel="self"/>
+  <link href="http://www.casparzhang.com//"/>
+  <updated>2015-05-21T15:54:13+08:00</updated>
+  <id>http://www.casparzhang.com//</id>
   <author>
     <name><![CDATA[Caspar]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Blog 恢复]]></title>
-    <link href="http://casparant.github.io/blog/2015/05/21/blog-revived/"/>
+    <link href="http://www.casparzhang.com//blog/2015/05/21/blog-revived/"/>
     <updated>2015-05-21T15:17:37+08:00</updated>
-    <id>http://casparant.github.io/blog/2015/05/21/blog-revived</id>
+    <id>http://www.casparzhang.com//blog/2015/05/21/blog-revived</id>
     <content type="html"><![CDATA[<p>Blog 已经迁移到了 <a href="http://www.github.com">GitHub</a>，准备恢复更新，主要更新一些内核相关的内容(瞬间变得高大上了有没有~lol)。</p>
 
 <p>且看看我这会儿能坚持多久吧。</p>
