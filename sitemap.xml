@@ -81,10 +81,6 @@
     <lastmod>2009-12-03T00:00:00+08:00</lastmod>
   </url>
   <url>
-    <loc>http://casparant.github.io/blog/2009/11/06/feed-test-in-new-host/</loc>
-    <lastmod>2009-11-06T00:00:00+08:00</lastmod>
-  </url>
-  <url>
     <loc>http://casparant.github.io/blog/2009/10/16/update-to-xorg-server-1-7/</loc>
     <lastmod>2009-10-16T00:00:00+08:00</lastmod>
   </url>
@@ -181,16 +177,8 @@
     <lastmod>2009-02-21T00:00:00+08:00</lastmod>
   </url>
   <url>
-    <loc>http://casparant.github.io/blog/2009/02/13/business-problem-of-taobao-and-alipay/</loc>
-    <lastmod>2009-02-13T00:00:00+08:00</lastmod>
-  </url>
-  <url>
     <loc>http://casparant.github.io/blog/2009/02/10/synchronize-your-mobile-with-gmail/</loc>
     <lastmod>2009-02-10T00:00:00+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/2009/01/20/the-chinamobile-and-telecom/</loc>
-    <lastmod>2009-01-20T00:00:00+08:00</lastmod>
   </url>
   <url>
     <loc>http://casparant.github.io/blog/2009/01/09/some-recently-used-skills/</loc>
@@ -251,10 +239,6 @@
   <url>
     <loc>http://casparant.github.io/blog/2008/10/17/recommend-using-eioffice-2009-personal/</loc>
     <lastmod>2008-10-17T00:00:00+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/2008/09/28/flippancy-and-habit/</loc>
-    <lastmod>2008-09-28T00:00:00+08:00</lastmod>
   </url>
   <url>
     <loc>http://casparant.github.io/blog/2008/09/22/using-chrome-under-windows/</loc>
@@ -319,10 +303,6 @@
   <url>
     <loc>http://casparant.github.io/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/</loc>
     <lastmod>2008-07-04T00:00:00+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/2008/06/29/banks-requires-money-makes-me-angry/</loc>
-    <lastmod>2008-06-29T00:00:00+08:00</lastmod>
   </url>
   <url>
     <loc>http://casparant.github.io/blog/2008/06/28/ms-office-2003-under-wine/</loc>
@@ -477,54 +457,15 @@
     <lastmod>2007-12-23T00:00:00+08:00</lastmod>
   </url>
   <url>
+    <loc>http://casparant.github.io/blog/about/</loc>
+  </url>
+  <url>
     <loc>http://casparant.github.io/blog/archives/</loc>
   </url>
   <url>
     <loc>http://casparant.github.io/</loc>
   </url>
   <url>
-    <loc>http://casparant.github.io/blog/categories/learning/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/z-turn/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/copid-entries/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/insight/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/configuration/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/softwares/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/blog-stuffs/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/hacks/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/wordpress/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/programming/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/complains/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/no-category/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/life/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/photography/</loc>
-  </url>
-  <url>
-    <loc>http://casparant.github.io/blog/categories/kernel/</loc>
+    <loc>http://casparant.github.io/blog/categories/deprecated/</loc>
   </url>
 </urlset>

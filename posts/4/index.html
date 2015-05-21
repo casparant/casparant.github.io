@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="用LaTeX上瘾之后，什么东西都想用LaTeX来做。前段时间由于经验不足，折腾LaTeX版的实验报告模板未果，这次在写LaTeX简历之前，足足做好了功课，最后总算是做出来了，感觉很棒。 推荐几个LaTeX模板，一个是以前找到的，不过我最后没采用。点此下载>>> 另外一个是在这里找到的：http &hellip;">
+  <meta name="description" content="曾经的曾经，为了折腾LaTeX中的中文字体，我参照了Monnand和TualatriX童鞋的配置方式，装好CJKutf8宏包，然后用fontforge制作Type1字体，然后才算搞定。一切皆因为LaTeX默认不支持Unicode，也不能支持Truetype字体。 &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -112,35 +112,21 @@
     
   
   <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2009/04/23/latex-resume-templates/">LaTeX Resume Templates</a></h2>
+    <h2 class="entry-title"><a href="/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/">使用XeTeX，CJK无忧，字体无忧</a></h2>
     
-      <div class="entry-content"><p>用LaTeX上瘾之后，什么东西都想用LaTeX来做。前段时间由于经验不足，折腾LaTeX版的实验报告模板未果，这次在写LaTeX简历之前，足足做好了功课，最后总算是做出来了，感觉很棒。</p>
+      <div class="entry-content"><p>曾经的曾经，为了折腾LaTeX中的中文字体，我参照了<a href="http://blog.linuxsky.org/58/viewspace-3824.html">Monnand</a>和<a href="http://linuxdesktop.cn/2008/02/26/config-texlive-cjk-under-ubuntu.html">TualatriX</a>童鞋的配置方式，装好CJKutf8宏包，然后用fontforge制作<a href="http://en.wikipedia.org/wiki/Type_1_and_Type_3_fonts">Type1</a>字体，然后才算搞定。一切皆因为LaTeX默认不支持Unicode，也不能支持<a href="http://en.wikipedia.org/wiki/TrueType">Truetype</a>字体。</p>
 
-<p>推荐几个LaTeX模板，一个是以前找到的，不过我最后没采用。<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanYmVlOWE1NDAtY2RmOS00MTkyLWE4YTItYWU2N2I0NmVlZDdj&hl=zh_CN">点此下载>>></a></p>
+<p>最近一段时间一直听到XeTeX的相关消息，在BYR上，在linuxsir上，都听说了，只是安逸于自己的CJKutf8，不想去折腾。可是昨天写简历的时候，发现没有斜体字，看来我制作的Type1字体没有包含斜体字。为了把斜体弄出来，上网狂Google，就在熄灯前的几秒钟，我看到了网上对XeTeX原生Unicode支持的评价很高，尤其是它可以直接使用Truetype字体，顿时心里痒痒。今天起床后，趁着做实验的空档，把XeTeX装好，果然很惊喜啊。</p>
 
-<p>另外一个是在这里找到的：<a href="http://www.davidgrant.ca/latex_resume_template">http://www.davidgrant.ca/latex_resume_template</a>，作者使用了shading宏包，但是我用了XeTeX包后shading包似乎就不起作用了，后来在作者文章后面发现一个留言，似乎是个变通的办法，但是shading是有了，边框却没了。最后去smth上的TeX版求助，可爱的版主大人瞬间就回帖告诉我，用\fcolorbox等比较常见的包中的命令就能搞定，于是我就搞定了。经过我修改后的LaTeX模板，我只贴一个文件\begin{document}前面的那部分吧，因为简历的内容真的是不好意思拿出手-。-和我下载的那个网页的主人比起来，真是汗颜啊~~</p>
-
-<p>这部分改动还是挺多的，特别是修改了几个命令，请注意自己替换，并且请使用xelatex命令编译。</p>
+<p>首先了解一下什么是XeTeX吧，其官方主页：<a href="http://www.tug.org/xetex/">http://www.tug.org/xetex/</a>. 网页开篇即说：XeTeX is "a typesetting system based on a merger of Donald Knuth's TeX system with <strong>Unicode</strong> and <strong>modern font technologies</strong>."，正合我意。</p>
 
 <p></div>
       
       
         <footer>
-          <a rel="full-article" href="/blog/2009/04/23/latex-resume-templates/">Read on &rarr;</a>
+          <a rel="full-article" href="/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/">Read on &rarr;</a>
         </footer>
       
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/04/22/xetex-makes-cjk-and-fonts-easier-to-use/">使用XeTeX，CJK无忧，字体无忧</a></h2>
     
   </li>
   
@@ -243,6 +229,18 @@
 
 
   
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2009/03/16/test-posting/">再次测试Translate插件</a></h2>
+    
+  </li>
+  
+
+
+  
 </ul>
 <div class="pagination">
   
@@ -262,6 +260,17 @@
 
 </footer>
     
+
+<script type="text/javascript">
+  disqus_shortname = 'casparant';
+  
+  (function () {
+    var disqus_script = 'count.js';
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
 
 
 

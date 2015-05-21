@@ -9,11 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="不断更新中……
-Q: 如何挂载ISO镜像到光驱（即虚拟光驱）
-A: sudo mount -t iso9660 -o loop ./cdimg.iso /mnt/test
-Q: 如何更改文件为可执行文件？何时需要更改？
-A: 输入sudo chmod a+x filename &hellip;">
+  <meta name="description" content="在Linux的众多发行版中，ubuntu以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数Linux用户，本文即以Ubuntu Linux 7.10为例，讲解其安装与配置。 插一句：Linux初学者推荐下载一本命令行手册，点此下载&gt;&gt;&gt;(特别感谢yegle同学倾心制作！) &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -116,82 +112,27 @@ A: 输入sudo chmod a+x filename &hellip;">
     
   
   <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2008/02/03/linux-notebook/">Linux学习笔记(1)</a></h2>
+    <h2 class="entry-title"><a href="/blog/2008/01/20/ubuntu-gutsy-config/">Ubuntu 7.10 Configuration</a></h2>
     
-      <div class="entry-content"><p>不断更新中……
-<blockquote>Q: 如何挂载ISO镜像到光驱（即虚拟光驱）<br />
-A: sudo mount -t iso9660 -o loop ./cdimg.iso /mnt/test</blockquote>
-<blockquote>Q: 如何更改文件为可执行文件？何时需要更改？<br />
-A: 输入sudo chmod a+x filename 即可将文件改为可执行文件。当用文本格式编写了脚本之后，可以执行这个操作执行脚本。</blockquote>
-<blockquote>Q: 如何在终端下执行可执行文件？<br />
-A: ./filename 即可。</blockquote>
-</div>
+      <div class="entry-content"><p>在Linux的众多发行版中，ubuntu以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数Linux用户，本文即以Ubuntu Linux 7.10为例，讲解其安装与配置。</p>
+
+<p>插一句：Linux初学者推荐下载一本命令行手册，<a href="http://docs.google.com/fileview?id=0B-GDvj9JsmanY2Q4Nzg4M2EtOGVkMC00NzU1LWE5ZDUtMjNkNWI3OWFhNjdj&hl=zh_CN">点此下载&gt;&gt;&gt;</a>(特别感谢<a href="http://yegle.net" target="_blank">yegle</a>同学倾心制作！)</p>
+
+<p>使用LiveCD启动Ubuntu7.10操作系统后，双击桌面上的"Install"图标即可开始安装。选择语言、键盘布局、时区，这些步骤都很简单。在进入“分区”阶段，选择“手动”，否则小心你的数据被误删；一般新手只分一个格式为EXT3的/分区和一个swap分区即可，swap分区的大小不超过内存即可。接下去进行用户名设置等操作，也比较容易。</p>
+
+<p>接下来就可以执行安装，此时一定要注意拔出网线，否则Ubuntu7.10在安装程序进行到后期扫描镜像站点时会卡住，只能重新安装Ubuntu。</p>
+
+<p>另外，系统时间可能不正确，那么可以等重启系统之后进行设置。安装完系统之后只需要把BIOS的时间确认正确就行了。</p>
+
+<p>如果你不能进入安装，可能是显卡问题，请下载Alternative的光盘进行文字界面安装。</p>
+
+<p></div>
       
       
         <footer>
-          <a rel="full-article" href="/blog/2008/02/03/linux-notebook/">Read on &rarr;</a>
+          <a rel="full-article" href="/blog/2008/01/20/ubuntu-gutsy-config/">Read on &rarr;</a>
         </footer>
       
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2008/02/03/compile-error-index/">编译错误索引</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2008/01/26/wine-in-ubuntu/">Wine在Ubuntu下的优异表现</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2008/01/22/symbol-link/">创建链接的问题：Symbol Links</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2008/01/21/linux-about-boot/">Linux启动时的一些闲言碎语</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2008/01/20/ubuntu-gutsy-config/">Ubuntu 7.10 Configuration</a></h2>
     
   </li>
   
@@ -251,6 +192,17 @@ A: ./filename 即可。</blockquote>
 
 </footer>
     
+
+<script type="text/javascript">
+  disqus_shortname = 'casparant';
+  
+  (function () {
+    var disqus_script = 'count.js';
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
 
 
 

@@ -146,9 +146,9 @@ action=/home/caspar/.local/bin/bluetooth.sh
 
 <p><pre lang="bash">
 #!/bin/bash
- 
+
 NAME="tpacpi_bluetooth_sw"
- 
+
 find_by_name() {
     NAME="$1"
     test -z "${NAME}" && return 1
@@ -160,9 +160,9 @@ find_by_name() {
     fi
     return 1
 }
- 
+
 SYSFS="$(find_by_name "${NAME}")"
- 
+
 if [[ ! -z "${SYSFS}" && -r "${SYSFS}/state" ]]; then
     case "$(cat "${SYSFS}/state")" in
         0)
@@ -192,7 +192,7 @@ fi
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/z-turn/'>z-turn</a>
+    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
   
 </span>
 
@@ -213,7 +213,7 @@ fi
       </span>
       <span class="plus">
         
-          <a href="#">+</a>
+          <a href="#disqus_thread" onclick="return false;" data-disqus-identifier="http://casparant.github.io/blog/2010/07/02/back-to-gentoo-again/">+</a>
         
       </span>
     </div>
@@ -237,6 +237,11 @@ fi
 
 </article>
 
+  <section>
+    <div class="hide" id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
 
     </div>
     <footer role="contentinfo"><div class="content">
@@ -247,6 +252,30 @@ fi
 
 </footer>
     
+
+<script type="text/javascript">
+  disqus_shortname = 'casparant';
+  
+    disqus_identifier = 'http://casparant.github.io/blog/2010/07/02/back-to-gentoo-again/';
+    disqus_url = 'http://casparant.github.io/blog/2010/07/02/back-to-gentoo-again/';
+    function loadDisqus() {
+      
+      // var disqus_developer = 1;
+      var disqus_script = 'embed.js';
+      (function () {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    }
+  
+  (function () {
+    var disqus_script = 'count.js';
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
 
 
 

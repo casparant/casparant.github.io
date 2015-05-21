@@ -234,7 +234,7 @@ int V(int semid, int sem_index);</p>
 	int semid, i;</p>
 
 <p>	srand((unsigned)time(NULL));<br />
-	
+
 	/* Puts out the Agent's information */<br />
 	fprintf(stdout, "I'm the Agent.n" );</p>
 
@@ -304,7 +304,7 @@ int V(int semid, int sem_index);</p>
 		ERR_AND_EXIT("semget");<br />
 	if (semctl(semid, smoker, GETVAL, 0) < 0)<br />
 		ERR_AND_EXIT("semctl");<br />
-	
+
 	/*<br />
 	 * The procedures are shown in below:<br />
 	 * 1. P(Smoker_i)<br />
@@ -346,7 +346,7 @@ public class AgentSmokerProblem <br />
 	/* Create 4 semaphores, the first is for agent and the rest are for smokers */<br />
 	public static Semaphore sem_agent;<br />
 	public static Semaphore[] sem_smoker = new Semaphore[3];<br />
-	
+
 	public static void main(String[] args) <br />
 	{<br />
 		/* Initialize the semaphores to 0 */<br />
@@ -377,7 +377,7 @@ public class AgentSmokerProblem <br />
 	{<br />
 		super("Agent");<br />
 	}<br />
-	
+
 	public void run()<br />
 	{<br />
 		String[] smoker_type = {"tobacco", "paper", "matches"};<br />
@@ -413,13 +413,13 @@ public class AgentSmokerProblem <br />
 <p>class Smoker extends Thread<br />
 {
 	private int smoker_num;<br />
-	
+
 	public Smoker(int smoker_num)<br />
 	{<br />
 		super("Smoker " + smoker_num);<br />
 		this.smoker_num = smoker_num;<br />
 	}<br />
-	
+
 	public void run()<br />
 	{<br />
 		String[] smoker_type = {"tobacco", "paper", "matches"};<br />
@@ -468,7 +468,7 @@ public class AgentSmokerProblem <br />
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/learning/'>learning</a>, <a class='category' href='/blog/categories/programming/'>programming</a>
+    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
   
 </span>
 
@@ -489,7 +489,7 @@ public class AgentSmokerProblem <br />
       </span>
       <span class="plus">
         
-          <a href="#">+</a>
+          <a href="#disqus_thread" onclick="return false;" data-disqus-identifier="http://casparant.github.io/blog/2008/11/09/using-c-system-call-to-solve-smoker-problem-under-linux/">+</a>
         
       </span>
     </div>
@@ -513,6 +513,11 @@ public class AgentSmokerProblem <br />
 
 </article>
 
+  <section>
+    <div class="hide" id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
 
     </div>
     <footer role="contentinfo"><div class="content">
@@ -523,6 +528,30 @@ public class AgentSmokerProblem <br />
 
 </footer>
     
+
+<script type="text/javascript">
+  disqus_shortname = 'casparant';
+  
+    disqus_identifier = 'http://casparant.github.io/blog/2008/11/09/using-c-system-call-to-solve-smoker-problem-under-linux/';
+    disqus_url = 'http://casparant.github.io/blog/2008/11/09/using-c-system-call-to-solve-smoker-problem-under-linux/';
+    function loadDisqus() {
+      
+      // var disqus_developer = 1;
+      var disqus_script = 'embed.js';
+      (function () {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    }
+  
+  (function () {
+    var disqus_script = 'count.js';
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
 
 
 

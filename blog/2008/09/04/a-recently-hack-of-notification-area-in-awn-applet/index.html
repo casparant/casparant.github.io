@@ -105,7 +105,7 @@
       <h1 class="entry-title">又对awn-applet的通知栏图标hack了一下</h1>
     </header>
   
-  <div class="entry-content"><p>曾经写过一篇文章《<a href="http://www.casparant.com/a-hack-of-notification-area-in-awn-applet.html">对awn-applet的notification area的一个小改动</a>》，目的是为了避免高像素图标将notification area这个applet的高度撑破，经过修改，确实能将每个图标的像素给固定住，使得applet保持原大小。今天通过重新解读代码，发现原来的修改步骤并不那么完美，事实上只需要修改一条语句即可，仍旧是在applet.c这个源文件中，看到如下代码：</p>
+  <div class="entry-content"><p>曾经写过一篇文章《<a href="http://www.casparzhang.com/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet">对awn-applet的notification area的一个小改动</a>》，目的是为了避免高像素图标将notification area这个applet的高度撑破，经过修改，确实能将每个图标的像素给固定住，使得applet保持原大小。今天通过重新解读代码，发现原来的修改步骤并不那么完美，事实上只需要修改一条语句即可，仍旧是在applet.c这个源文件中，看到如下代码：</p>
 
 <p><pre lang="cpp" line="1">static void
 tray_icon_added (EggTrayManager *manager,
@@ -147,7 +147,7 @@ tray_icon_added (EggTrayManager *manager,
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/hacks/'>hacks</a>
+    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
   
 </span>
 
@@ -168,7 +168,7 @@ tray_icon_added (EggTrayManager *manager,
       </span>
       <span class="plus">
         
-          <a href="#">+</a>
+          <a href="#disqus_thread" onclick="return false;" data-disqus-identifier="http://casparant.github.io/blog/2008/09/04/a-recently-hack-of-notification-area-in-awn-applet/">+</a>
         
       </span>
     </div>
@@ -192,6 +192,11 @@ tray_icon_added (EggTrayManager *manager,
 
 </article>
 
+  <section>
+    <div class="hide" id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
 
     </div>
     <footer role="contentinfo"><div class="content">
@@ -202,6 +207,30 @@ tray_icon_added (EggTrayManager *manager,
 
 </footer>
     
+
+<script type="text/javascript">
+  disqus_shortname = 'casparant';
+  
+    disqus_identifier = 'http://casparant.github.io/blog/2008/09/04/a-recently-hack-of-notification-area-in-awn-applet/';
+    disqus_url = 'http://casparant.github.io/blog/2008/09/04/a-recently-hack-of-notification-area-in-awn-applet/';
+    function loadDisqus() {
+      
+      // var disqus_developer = 1;
+      var disqus_script = 'embed.js';
+      (function () {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    }
+  
+  (function () {
+    var disqus_script = 'count.js';
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
 
 
 

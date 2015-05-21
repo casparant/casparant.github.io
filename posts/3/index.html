@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="　 Ant-Veil 博客搬家后Feed测试 换到hugege的site5主机了，不过feed和页面都出现了很多问题。测试一下。 重新验证验证Feedsky: 1975e338 更新到了xorg-server-1.7 让gnome-power-manager使用notify-osd通知 &hellip;">
+  <meta name="description" content="　 Ant-Veil 更新到了xorg-server-1.7 Unmask了xorg-server，然后有一堆x11-libs和x11-protos的包要升级，而且都是给mask了的，于是统统unmask掉，编译。 关于X相关组件的编译，这里再提一下@gnawux说过的： 先编译mesa- &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -112,26 +112,24 @@
     
   
   <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2009/11/06/feed-test-in-new-host/">博客搬家后Feed测试</a></h2>
+    <h2 class="entry-title"><a href="/blog/2009/10/16/update-to-xorg-server-1-7/">更新到了xorg-server-1.7</a></h2>
     
-      <div class="entry-content"><p>换到<a href="http://www.gegehost.com">hugege</a>的site5主机了，不过feed和页面都出现了很多问题。测试一下。</p>
+      <div class="entry-content"><p>Unmask了xorg-server，然后有一堆x11-libs和x11-protos的包要升级，而且都是给mask了的，于是统统unmask掉，编译。</p>
 
-<p>重新验证验证Feedsky: 1975e338</p>
+<p>关于X相关组件的编译，这里再提一下<a href="http://labs.chinamobile.com/mblog/225">@gnawux</a>说过的：</p>
+
+<p><blockquote>先编译mesa-libs,再编译mesa，再编译xorg-server，再编译x11-drivers。其中一个升级了，它后面的软件都得重新依次编译。</blockquote></p>
+
+<p>我现在是升级xorg-server，所以编译完之后要重新编译驱动，尤其是像这种1.6到1.7的跨大版本的更新。其中发现除了udev有一个新版本之外，其他的驱动都是老版本。</p>
+
+<p>编译完了之后发现/etc/X11/xorg.conf的格式有一点点改变，几乎没有影响，有没有增减字段我就不知道了。进了X之后，使用起来没有什么变化。</p>
+
+<p>就这样。</p>
+
+<p>P.S. 今天去面试了某互联网公司，一塌糊涂。看来我真的不适合这样的公司，还是老老实实做我的Linux吧。</p>
 </div>
       
       
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2009/10/16/update-to-xorg-server-1-7/">更新到了xorg-server-1.7</a></h2>
     
   </li>
   
@@ -234,6 +232,18 @@
 
 
   
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2009/04/23/latex-resume-templates/">LaTeX Resume Templates</a></h2>
+    
+  </li>
+  
+
+
+  
 </ul>
 <div class="pagination">
   
@@ -253,6 +263,17 @@
 
 </footer>
     
+
+<script type="text/javascript">
+  disqus_shortname = 'casparant';
+  
+  (function () {
+    var disqus_script = 'count.js';
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
 
 
 

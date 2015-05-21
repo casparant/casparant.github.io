@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Deprecated | Ant-Veil]]></title>
+  <link href="http://casparant.github.io/blog/categories/deprecated/atom.xml" rel="self"/>
+  <link href="http://casparant.github.io/"/>
+  <updated>2015-05-21T13:40:15+08:00</updated>
+  <id>http://casparant.github.io/</id>
+  <author>
+    <name><![CDATA[Caspar]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fix Razer Orochi Re-connect Issue]]></title>
+    <link href="http://casparant.github.io/blog/2014/10/10/fix-razer-orochi-re-connect-issue/"/>
+    <updated>2014-10-10T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2014/10/10/fix-razer-orochi-re-connect-issue</id>
+    <content type="html"><![CDATA[<p>Issue:</p>
+
+
+
+
+<p>雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
+
+
+
+
+<p>Environment: </p>
+
+
+
+
+<p><blockquote>Razer Orochi 蓝牙鼠标<br />
+Gentoo + KDE<br />
+kernel 3.10 ~ 3.16<br />
+bluez 4.101 ~ 5.23<br />
+bluedevil 1.3.2 ~ 2.0_rc1</blockquote></p>
+
+
+
+
+<p>Solution:</p>
+
+
+
+
+<p><!--more--></p>
+
+
+
+
+<p>通过 hcidump 工具发现：</p>
+
+
+
+
+<p><blockquote>
+> HCI Event: Connect Request (0x04) plen 10<br />
+    bdaddr F0:65:DD:94:9F:BB class 0x002580 type ACL<br />
+> HCI Event: Command Status (0x0f) plen 4<br />
+    Accept Connection Request (0x01|0x0009) status 0x00 ncmd 1<br />
+> HCI Event: Connect Complete (0x03) plen 11<br />
+    status 0x00 handle 13 bdaddr F0:65:DD:94:9F:BB type ACL encrypt 0x00<br />
+> HCI Event: Command Status (0x0f) plen 4<br />
+    Read Remote Supported Features (0x01|0x001b) status 0x00 ncmd 1<br />
+> HCI Event: Read Remote Supported Features (0x0b) plen 11<br />
+    status 0x00 handle 13<br />
+    Features: 0xbf 0x00 0xa0 0x78 0x18 0x1e 0x59 0x83<br />
+> HCI Event: Command Status (0x0f) plen 4<br />
+    Read Remote Extended Features (0x01|0x001c) status 0x00 ncmd 1<br />
+> HCI Event: Read Remote Extended Features (0x23) plen 13<br />
+    status 0x00 handle 13 page 1 max 1<br />
+    Features: 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00<br />
+> HCI Event: Command Status (0x0f) plen 4<br />
+    Remote Name Request (0x01|0x0019) status 0x00 ncmd 1<br />
+> HCI Event: Remote Name Req Complete (0x07) plen 255<br />
+    status 0x00 bdaddr F0:65:DD:94:9F:BB name 'Razer Orochi 2013'<br />
+> HCI Event: Command Complete (0x0e) plen 10<br />
+    Link Key Request Negative Reply (0x01|0x000c) ncmd 1<br />
+    status 0x00 bdaddr F0:65:DD:94:9F:BB<br />
+> HCI Event: Disconn Complete (0x05) plen 4<br />
+    status 0x00 handle 13 reason 0x13<br />
+    Reason: Remote User Terminated Connection</blockquote></p>
+
+
+
+
+<p>出现 Link Key Request Negative Reply 的字样，怀疑是配对的时候使用自动 key，而蓝牙工具没有保存这个自动 key，导致鼠标从休眠恢复时试图以空 key 连接，从而失败。</p>
+
+
+
+
+<p>知道了问题，解决方法就简单了，配对的时候手工输入 key/PIN 为 1234，连接即可。</p>
+
+
+
+
+<p>就这么一个破问题，折腾了我半天时间，内核、bluez、bluedevil 都尝试了一遍，还在人家的 Macbook 上测试了一番。差点就冲动下单换 Mac 了。 #我不是土豪#
+</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gentoo KDE 下折腾 OpenConnect]]></title>
+    <link href="http://casparant.github.io/blog/2014/03/21/configure-openconnect-in-gentoo-kde/"/>
+    <updated>2014-03-21T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2014/03/21/configure-openconnect-in-gentoo-kde</id>
+    <content type="html"><![CDATA[<p>最近呢，推上某奸商推出了 AnyConnect 套餐，这对广大翻墙群众来说绝对是个利好消息啊，可以自动配路由的东东。我毫不犹豫去把自己的绝版廉价套餐换成了100元的套餐，然后开始折腾 AnyConnect 配置。</p>
+
+
+
+
+<p>iOS上配置十分简单，找到 Cisco AnyConnect 这个 App 就搞定。Linux 下要把它配置得很舒服，着实花了一番功夫。</p>
+
+
+
+
+<p>公司 VPN 用的也是 AnyConnect，我就继续用着公司的客户端(Cisco AnyConnect Secure Mobility Client), 直到今天早上我修复了笔记本上的无线网，机器有了两个IP为止。有了两个IP的 AnyConnect service 居然segfault了，看了一下 debug 信息，我觉得对这种闭源工具我还是别折腾了。直接换开源方案 OpenConnect.</p>
+
+
+
+
+<p>Portage 里搜了一下，openconnect 有两个包，networkmanager-openconnect 有 libkeyring-gnome 依赖，我现在是个有洁癖的 KDE 党，果断不能装啊，于是用第二个， openconnect 命令行版…… 不行，不能这么罗里八嗦，反正最后折腾结果如下：</p>
+
+
+
+
+<p><p><!--more--><ol>
+    <li>只用命令行的话，Portage 里的 openconnect-5.99<em> 版本可用，配好 <code>/etc/conf.d/openconnect</code> 就可以了；</li>
+    <li>需要配合 KDE plasma 插件 networkmanagement (0.9+版本) 的话，就必须得装 NetworkManager-openconnect 了。事实证明， libkeyring-gnome 依赖是可以去掉的。我修改了 Portage 文件，放到我<a href="https://github.com/casparant/caspar-gentoo/tree/master/net-misc/networkmanager-openconnect" target="_blank">自己的 Overlay</a> 里了。</li>
+    <li><del datetime="2014-03-21T09:54:44+00:00">另外 openconnect-5.99</em> 版本会导致 networkmanagement 带了 openconnect flag 之后编译失败，只能回退到 5.03 版本。</del> networkmanagement 已经 deprecated 了，用 plasma-nm 代替，最新版本没有编译问题。</li>
+    <li><del datetime="2014-03-21T09:54:44+00:00">openconnect-5.03 版本也是有问题的，openconnect 命令执行后，如果从终端输入密码，需要先按一个回车，再输入一遍。所以配置文件中的<code>tmp_SERVER &lt;&lt;-E</code> 后面需要加一个空行，否则 daemon 永远启动失败，因为接收不到密码。</del> 换了最新的 openconnect-5.99 之后，没问题了。</li>
+</ol></p></p>
+
+<p><p>就这些。配好之后，既可以用 NM 的 GUI 连，也可以起服务连。从此过上了永不断网（某奸商广告语）的生活～</p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WizNote: 终于找到比较干净的QT的笔记软件]]></title>
+    <link href="http://casparant.github.io/blog/2014/03/11/an-introduction-of-wiz-note/"/>
+    <updated>2014-03-11T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2014/03/11/an-introduction-of-wiz-note</id>
+    <content type="html"><![CDATA[<p>Linux上记笔记，向来很纠结。以前用过一段时间<a href="http://zim-wiki.org/index.html" target="_blank">Zim</a>，后来变成了KDE党，只好果断抛弃了。找到<a href="http://basket.kde.org/" target="_blank">BasKet</a>，功能还是很强大的，可是格式一团糟。无法以Plain Text存储文字，拷贝来拷贝去的时候经常格式混乱。也尝试在Web端存东西，结果还是发现不习惯，而且离线无法访问。</p>
+
+
+
+
+<p>然后今天工作的时候有同事提到客户报告鄙厂<a href="http://www.aliyun.com/" target="_blank">产品</a>的问题，碰到了故障（当然在内核组大牛们的努力下该问题已经解决了），我就好奇去看了一下报告者信息，然后就发现了这个笔记软件：<a href="http://wiz.cn/index.html" target="_blank">Wiz</a>. 看起来还挺Geek的，有手机端有Linux端有Mac OS端。于是去gentoo-zh的Overlay找了一圈（是的，5年过去了我还在Gentoo的不归路上慢慢走着），<a href="https://github.com/microcai/gentoo-zh/blob/master/app-text/wiznote/wiznote-2.0.64.ebuild" target="_blank">找到了</a>。</p>
+
+
+
+
+<p><a href="http://img.ant.im/di-PSVM.png"><img align="center" width="400" src="http://img.ant.im/di-PSVM.png" alt="Wiz" /></a></p>
+
+
+
+
+<p>看起来样子还不错，还比较清爽，也可以格式化为Plain Text。功能上比BasKet少一些，但是用着还是挺舒服的。</p>
+
+
+
+
+<p>最不能忍受的问题是没有任务栏图标，于是接着搜。</p>
+
+
+
+
+<p>找到了一年前某人的一个没有Merge的<a href="https://github.com/WizTeam/WizQTClient/pull/80" target="_blank">Pull Request</a>，然后稍微修改了一下补丁，打到源代码里，发现可以用了。</p>
+
+
+
+
+<p>修改后的ebuild请<a href="https://github.com/casparant/caspar-gentoo/blob/master/app-text/wiznote/wiznote-2.1.0_beta.ebuild" target="_blank">猛戳</a>。</p>
+
+
+
+
+<p>最后，有更靠谱的笔记软件请推荐。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mce的一些零散记录]]></title>
+    <link href="http://casparant.github.io/blog/2013/06/06/some-misc-items-of-mce/"/>
+    <updated>2013-06-06T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2013/06/06/some-misc-items-of-mce</id>
+    <content type="html"><![CDATA[<p>以前也测过MCE相关的东西，但是惭愧，一直不清不楚。这两天稍微整理了一下相关知识，感觉见识还是很浅，记些零碎的东西在这，权当博客复活第一篇。如有理解错误，欢迎指出。</p>
+
+
+
+
+<p>CPU检测到硬件错误时，内核会报Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; UCE/UE, Un-correctable Error)，内核做出不同反应。CE的话内核只把相关信息写到一个字符设备/dev/mcelog中，UE的话是会在记录相关信息之余，还会做出不同处理，比如中断当前遇错的应用程序，或者Panic. [TODO: 这块相关的内核代码还得再看几遍]</p>
+
+
+
+
+<p>/dev/mcelog中的信息可以用用户空间工具<a href="https://github.com/andikleen/mcelog" target="_blank">mcelog</a>来读取。mcelog比较有意思的一个参数是<code>--dmi</code>，可以尝试解析ADDR字段以获取诸如内存出厂信息，DIMM位置等有用的信息，可是很遗憾在实际环境中这些DIMM信息基本上都是错的。（mcelog man page说了，不要怪Linux，得怪那稀奇古怪的主板厂商……）</p>
+
+
+
+
+<p>mcelog man page还有一个地方提到：</p>
+
+
+
+
+<p><blockquote>The kernel prefers old messages over new. If the log buffer overflows only old ones will be kept.</blockquote></p>
+
+
+
+
+<p><!--more-->查看内核代码中<code>arch/x86/include/asm/mce.h</code>，有：</p>
+
+
+
+
+<p><pre lang="C">
+#define MCE_LOG_LEN 32</pre></p>
+
+
+
+
+<p>struct mce_log {<br />
+    char signature[12]; /* "MACHINECHECK" */<br />
+    unsigned len;       /* = MCE_LOG_LEN */<br />
+    unsigned next;<br />
+    unsigned flags;<br />
+    unsigned recordlen; /* length of struct mce */<br />
+    struct mce entry[MCE_LOG_LEN];<br />
+};
+</p>
+
+
+
+
+<p>这里的MCE_LOG_LEN就是man page中提到的log buffer长度。</p>
+
+
+
+
+<p>内核中还有个mce_inject模块（CONFIG_X86_MCE_INJECT=m/y）,可以用于产生一些假的MCE以测试相关功能。需要配合用户空间工具<a href="https://github.com/andikleen/mce-inject/" target="_blank">mce-inject</a>来使用。</p>
+
+
+
+
+<p>如果要做一个比较完整的测试，<a href="https://github.com/andikleen/mce-test" target="_blank">mce-test</a>工具可以帮忙，其中会设计一些RAS特性，比如hwpoison(Documentation/vm/hwpoison.txt)，不过我现在的活儿不怎么管测试，暂时就没去回顾这个测试工具了。</p>
+
+
+
+
+<p>先记这些，回头把细节都搞懂了再补充……</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Resolved: 如何更新git补丁]]></title>
+    <link href="http://casparant.github.io/blog/2012/01/03/how-to-update-your-git-patches/"/>
+    <updated>2012-01-03T00:00:00+08:00</updated>
+    <id>http://casparant.github.io/blog/2012/01/03/how-to-update-your-git-patches</id>
+    <content type="html"><![CDATA[<p>使用git制作补丁时，经常发现补丁需要修改。如果只是最后一次commit需要修改，那就好办，用下面的方法就可以搞定：
+<pre lang="bash">
+$ git reset HEAD^
+# edit edit edit
+$ git commit -a -s -c ORIG_HEAD
+$ git format-patch --subject-prefix="PATCH v2"
+</pre></p>
+
+
+
+
+<p>但是如果是一系列补丁中的中间几个补丁需要修改，该怎么办呢？</p>
+
+
+
+
+<p><p><del datetime="2012-01-03T16:12:57+00:00">笨办法已经被删掉>.&lt;</del></p></p>
+
+<p><p><!--more--><strong>Update 1:</strong> 非常感谢wangcong的指点！"<code>git rebase -i</code>&ldquo;可以出色地完成这个任务，方法在man-page里面有详述，见"INTERACTIVE MODE"和"SPLITTING COMMITS"部分。</p></p>
+
+<p><p>假设当前所在分支名为"topic"，做了3个补丁，打算提交给邮件列表的时候发现中间一个补丁需要更新，此时使用下列命令：</p></p>
+
+<p><p><pre lang="bash">
+git rebase -i master
+</pre></p></p>
+
+<p><p>出现编辑窗口如下：
+<blockquote>
+pick 21732a8 mm/swapping01: new testcase<br />
+pick c3751d1 hugemmap01: clean-up format<br />
+pick d75449c mm/swapping01: change sleep time to 5 sec
+</blockquote></p></p>
+
+<p><p>此时需要修改commit c3751d1，则把<code>pick</code>改为<code>edit</code>即可。保存退出后git会rebase到需要修改的commit处停止，此时可以直接修改内容，然后执行：
+<pre lang="bash">
+git add xxx # mark as resolved
+git commit &ndash;amend
+</pre></p></p>
+
+<p><p>或者
+<pre lang="bash">
+git reset &ndash;soft HEAD^</p>
+
+<h1>edit edit edit</h1>
+
+<p>git commit -a -s -c ORIG_HEAD
+</pre></p></p>
+
+<p><p>之后执行"<code>git rebase &ndash;continue</code>&ldquo;即可。</p></p>
+
+<p><p>突然想起来一年前就请教过wangcong这个问题，只不过当时对<code>git rebase</code>完全不了解，后来就忘了，惭愧-_-|||。</p></p>
+
+<p><p><strong>Update 2</strong>: 同样感谢Iven的指点，可以去看看他的文章：<a href="http://www.kissuki.com/?p=135" target="_blank"><a href="http://www.kissuki.com/?p=135">http://www.kissuki.com/?p=135</a></a></p></p>
+]]></content>
+  </entry>
+  
+</feed>

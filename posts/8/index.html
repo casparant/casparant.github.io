@@ -9,7 +9,10 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="1.Pidgin 2.5.0发布 从狗狗那里看到cnbeta上说sourceforge.net已经放出了pidgin-2.5.0，而官网上还没发布呢。 这不禁让我开始思考，我要不要把cb的rss重新放回我的订阅列表呢？ 安装完毕需要运行一下ldconfig，要不然symbolic link有问题， &hellip;">
+  <meta name="description" content="　 Ant-Veil RHEL5添加DVD光盘为源 本文仅供存档使用，米有技术含量勿怪。 mkdir /media/rhel
+mount /dev/scd0 /media/rhel
+vi /etc/yum.repos.d/rhel-dvd.repo 内容如下： [Server]
+name=Red &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -112,93 +115,31 @@
     
   
   <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2008/08/19/something-about-pidgin/">Pidgin琐碎二三事</a></h2>
-    
-      <div class="entry-content"><p>1.<strong>Pidgin 2.5.0发布</strong></p>
-
-<p>从<a href="http://yegle.net/2008/08/19/pidgin-250-released/">狗狗</a>那里看到<a href="http://www.cnbeta.com/articles/62626.htm">cnbeta</a>上说<a href="http://sourceforge.net/projects/pidgin/?abmode=1">sourceforge.net已经放出了pidgin-2.5.0</a>，而<a href="http://www.pidgin.im">官网上</a>还没发布呢。</p>
-
-<p>这不禁让我开始思考，我要不要把cb的rss重新放回我的订阅列表呢？</p>
-
-<p>安装完毕需要运行一下ldconfig，要不然symbolic link有问题，囧。</p>
-
-<p>安装完最显眼的就是那只鸽子的鼻子更红了- -b，刚开始差点被吓到……</p>
-
-<p>原来MSN的群里输入/showname就可以显示群里发言人的名字了呀，幸亏狗狗提醒我，要不然我又要打补丁了，真是够zt，嗯……</p>
-
-<p>ChangeLog中的亮点：</p>
-
-<p><blockquote>version 2.5.0 (08/18/2008):<br />
-	libpurple:<br />
-	* Ability to create custom smileys (currently only the MSN protocol<br />
-	  utilizes the feature). (Thanks to Mauro Sérgio Ferreira Brasil,<br />
-	  Marcus Lundblad, Jorge Villaseñor and other contributors)</blockquote></p>
-
-<p>	MSN:<br />
-	* Update MSN support to protocol 15 (Elliott Sales de Andrade, Jorge<br />
-	  Villaseñor, Mike Ruprecht, Carlos Silva, Ma Yuan, Daniel Ljungborg<br />
-	  and others)<br />
-	* Personal messages are now supported. They are treated as status<br />
-	  messages.<br />
-	* Offline IM is now supported.<br />
-	* Aliasing is now supported server-side.
-</p>
-
-<p></div>
-      
-      
-        <footer>
-          <a rel="full-article" href="/blog/2008/08/19/something-about-pidgin/">Read on &rarr;</a>
-        </footer>
-      
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2008/08/18/gentoo-or-ubuntu/">Gentoo还是Ubuntu?</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2008/08/13/gcc-4-3-1-bootstrap-succeeded-under-opensolaris/">OpenSolaris编译安装gcc4.3.1成功</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2008/08/07/tty-configuration-under-ubuntu/">Ubuntu 8.04 TTY配置</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
     <h2 class="entry-title"><a href="/blog/2008/08/06/rhel5-dvd-repos/">RHEL5添加DVD光盘为源</a></h2>
+    
+      <div class="entry-content"><p>本文仅供存档使用，米有技术含量勿怪。</p>
+
+<p><pre lang="bash" line="1">mkdir /media/rhel
+mount /dev/scd0 /media/rhel
+vi /etc/yum.repos.d/rhel-dvd.repo</pre></p>
+
+<p>内容如下：</p>
+
+<p><blockquote>[Server]<br />
+name=Red Hat Enterprise Linux $releasever - $basearch - Server<br />
+baseurl=file:///media/rhel/Server<br />
+enabled=1<br />
+gpgcheck=1<br />
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release</blockquote></p>
+
+<p>保存退出，yum update;yum install OO_AND_XX,blablabla....</p>
+
+<p>顺便说一句，某老师不熟悉yum真囧……</p>
+
+<p>再顺便说一句，学好脚本真是很有用啊。12张班得瑞的专辑改名，手工还真差点累死。脚本几行就搞定^_^</p>
+</div>
+      
+      
     
   </li>
   
@@ -265,6 +206,54 @@
 
 
   
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2008/06/28/ms-office-2003-under-wine/">Wine M$ Office 2003 成功</a></h2>
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2008/06/18/wine-10-released/">15年, Wine 1.0 Released</a></h2>
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2008/06/10/java-basic-check-points/">Java知识点没掌握扎实的后果</a></h2>
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2008/06/09/asm-by-emu8086/">俺也汇编一下：EMU8086</a></h2>
+    
+  </li>
+  
+
+
+  
 </ul>
 <div class="pagination">
   
@@ -284,6 +273,17 @@
 
 </footer>
     
+
+<script type="text/javascript">
+  disqus_shortname = 'casparant';
+  
+  (function () {
+    var disqus_script = 'count.js';
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
 
 
 

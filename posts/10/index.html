@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="注：本文并非为纯新手准备，请在看本文前至少了解一些命令行操作并最好对Ubuntu以前版本或其他发行版的图形界面操作比较熟悉。如果你需要一些更初级的内容请访问下列两个页面： Ubuntu 7.10 配置参考 Ubuntu配置补遗 Ubuntu 8.04 (Hardy Heron)果然没有让我失望， &hellip;">
+  <meta name="description" content="去看了一下getdeb还没放出deb包，就去官网http://www.pidgin.im/下了源码包，顺便把两个补丁也下了。一个是MSN群显示发言人的补丁，一个是QQ群显示群名字的补丁，我均对其作了修改以适合2.4.1的版本，在这里可以下到。 下载完毕后，将补丁解开，放到pidgin-2.4. &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -112,94 +112,25 @@
     
   
   <li class="entry first-entry">
-    <h2 class="entry-title"><a href="/blog/2008/04/29/ubuntu-hardy-config/">Ubuntu 8.04 Config</a></h2>
+    <h2 class="entry-title"><a href="/blog/2008/04/01/pidgin-241-released/">pidgin-2.4.1发布</a></h2>
     
-      <div class="entry-content"><p>注：本文并非为纯新手准备，请在看本文前至少了解一些命令行操作并最好对Ubuntu以前版本或其他发行版的图形界面操作比较熟悉。如果你需要一些更初级的内容请访问下列两个页面：</p>
+      <div class="entry-content"><p>去看了一下getdeb还没放出deb包，就去官网<a href="http://www.pidgin.im/" target="new">http://www.pidgin.im/</a>下了源码包，顺便把两个补丁也下了。一个是MSN群显示发言人的补丁，一个是QQ群显示群名字的补丁，我均对其作了修改以适合2.4.1的版本，在<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanNWU0MmMwNmMtN2M3ZC00MTVjLWE2YWQtYWY3OWE1NWZiN2Jh&hl=zh_CN">这里</a>可以下到。</p>
 
-<p><a href="http://www.casparant.com/ubuntu-gutsy-config.html">Ubuntu 7.10 配置参考</a></p>
+<p>下载完毕后，将补丁解开，放到pidgin-2.4.1目录外，执行<pre lang="bash">patch -p0 < $PATCH_NAME</pre>操作把补丁打好。</p>
 
-<p><a href="http://www.casparant.com/ubuntu-configuration-appendix.html">Ubuntu配置补遗</a></p>
-
-<p>Ubuntu 8.04 (Hardy Heron)果然没有让我失望，X2300的特效已经可以开启了，色偏，分辨率默认低的问题都完美解决了。</p>
-
-<p>闲话少叙，直接开始配置吧:)</p>
-
-<p>★更新</p>
-
-<p>请根据您的网络环境和网速条件选择以下合适的一组源用以获取服务器软件包资源以及更新系统。教育网用户推荐台湾的源（光纤就是爽啊～～）更新源列表及系统的命令为：</p>
-
-<p><pre lang="bash">sudo apt-get update
-sudo apt-get dist-upgrade</pre></p>
-
-<p>推荐源列表：</p>
+<p>然后安装编译所需的依赖项：
+<pre lang="bash" line="1">sudo apt-get install build-essential gettext \
+libglib2.0-dev libgtk2.0-dev libxml2-dev gettext libnss3-dev \
+libnspr4-dev libgstreamer0.10-dev libgtkspell-dev libperl-dev \
+libsasl2-dev libgnutls-dev tcl8.4-dev doxygen graphviiz</pre></p>
 
 <p></div>
       
       
         <footer>
-          <a rel="full-article" href="/blog/2008/04/29/ubuntu-hardy-config/">Read on &rarr;</a>
+          <a rel="full-article" href="/blog/2008/04/01/pidgin-241-released/">Read on &rarr;</a>
         </footer>
       
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2008/04/24/ubuntu-hardy-released/">[白鼠五]Ubuntu 8.04发布</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2008/04/08/openid-supported/">跟风提供OpenID的支持</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2008/04/07/using-latex/">开始学习LaTeX</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2008/04/02/wqy-zenhei-released/">文泉驿正黑(夸父-final)，[正式版发布]</a></h2>
-    
-  </li>
-  
-
-
-  
-    
-    
-    
-  
-  <li class="entry ">
-    <h2 class="entry-title"><a href="/blog/2008/04/01/pidgin-241-released/">pidgin-2.4.1发布</a></h2>
     
   </li>
   
@@ -254,6 +185,66 @@ sudo apt-get dist-upgrade</pre></p>
 
 
   
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2008/03/16/remote-login-under-ubuntu/">Ubuntu Server远程连接的配置</a></h2>
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2008/03/12/ipmsg-problems/">Linux下飞鸽传书的两个问题的解决</a></h2>
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2008/03/08/using-hardy-alpha6/">[白鼠四]Alpha6, 最后一个Alpha了……</a></h2>
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2008/03/08/stop-proxy/">网页代理停用公告</a></h2>
+    
+  </li>
+  
+
+
+  
+    
+    
+    
+  
+  <li class="entry ">
+    <h2 class="entry-title"><a href="/blog/2008/03/04/config-gtalk-port-on-pidgin/">Pidgin配置Gtalk端口</a></h2>
+    
+  </li>
+  
+
+
+  
 </ul>
 <div class="pagination">
   
@@ -273,6 +264,17 @@ sudo apt-get dist-upgrade</pre></p>
 
 </footer>
     
+
+<script type="text/javascript">
+  disqus_shortname = 'casparant';
+  
+  (function () {
+    var disqus_script = 'count.js';
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
 
 
 

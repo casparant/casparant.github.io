@@ -178,12 +178,12 @@ R_PORT 		EQU 9</pre></p>
 	JE	switch_off	; so, switch it off and do something<br />
 	CMP	AL, 8		; switched-off lamp?<br />
 	JE	switch_on	; so, switch it on and do something<br />
-	
+
 first_step:<br />
 	ADD	BH, 1<br />
 	MOV	BL, 1<br />
 	JMP	turn_right<br />
-	
+
 meet_wall:<br />
 	ADD	BH, 1<br />
 	SUB	BL, 1<br />
@@ -211,38 +211,38 @@ turn_left:<br />
 	MOV	AL, 1<br />
 	OUT	R_PORT, AL<br />
 	JMP	eternal_loop	; go again!<br />
-	
+
 switch_off:			<br />
 	CALL	WAIT_ROBOT	; turn off the lamp<br />
 	MOV	AL, 6<br />
 	OUT	R_PORT, AL<br />
-	
+
 	JMP	meet_lamp<br />
-	
+
 switch_on:<br />
 	CALL	WAIT_ROBOT	; turn on the lamp<br />
 	MOV	AL, 5<br />
 	OUT	R_PORT, AL<br />
-	
+
 	JMP	meet_lamp<br />
-	
+
 turn_right:<br />
 	CALL	WAIT_ROBOT	; turn right operation<br />
 	MOV	AL, 3<br />
 	OUT	R_PORT, AL<br />
 	JMP	eternal_loop	; go again<br />
-	
+
 turn_around:<br />
 	CALL	WAIT_ROBOT	; turn right twice to turn around<br />
 	MOV	AL, 3<br />
 	OUT	R_PORT, AL<br />
-	
+
 	CALL	WAIT_ROBOT<br />
 	MOV	AL, 3<br />
 	OUT	R_PORT, AL<br />
-	
+
 	JMP	eternal_loop	; go again<br />
-	
+
 WAIT_ROBOT	PROC<br />
 busy:<br />
 	IN	AL, R_PORT+2<br />
@@ -275,7 +275,7 @@ WAIT_EXAM	ENDP
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/programming/'>programming</a>
+    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
   
 </span>
 
@@ -296,7 +296,7 @@ WAIT_EXAM	ENDP
       </span>
       <span class="plus">
         
-          <a href="#">+</a>
+          <a href="#disqus_thread" onclick="return false;" data-disqus-identifier="http://casparant.github.io/blog/2008/06/09/asm-by-emu8086/">+</a>
         
       </span>
     </div>
@@ -320,6 +320,11 @@ WAIT_EXAM	ENDP
 
 </article>
 
+  <section>
+    <div class="hide" id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
 
     </div>
     <footer role="contentinfo"><div class="content">
@@ -330,6 +335,30 @@ WAIT_EXAM	ENDP
 
 </footer>
     
+
+<script type="text/javascript">
+  disqus_shortname = 'casparant';
+  
+    disqus_identifier = 'http://casparant.github.io/blog/2008/06/09/asm-by-emu8086/';
+    disqus_url = 'http://casparant.github.io/blog/2008/06/09/asm-by-emu8086/';
+    function loadDisqus() {
+      
+      // var disqus_developer = 1;
+      var disqus_script = 'embed.js';
+      (function () {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    }
+  
+  (function () {
+    var disqus_script = 'count.js';
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
 
 
 
