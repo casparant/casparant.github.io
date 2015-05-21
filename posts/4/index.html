@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="今天更新portage的时候注意到又有一个twitter客户端出现了，名字叫qTwitter，标记为N，说明是刚进的portage。好奇之下装上一用，感觉不错。结合以前用过的若干twitter客户端，在这里网罗总结一下： ">
+  <meta name="description" content="从狗狗那里发现的一个好地方，GeekCook@blogspot，被墙了，新地址：GeekCook，卖T恤和卫衣的。店主说了，写软文可以免运费，那我就撰软文一篇，把运费赚回来吧。 话说店主的东西不多，样式都很棒。可惜狗狗已经抢了两件[1,2]，Amelie同学也抢了一件，我能选择的余地就太少了～ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/05/10/geekcook-tee-ad/">我也软文一枚:GeekCook</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-05-10T00:00:00+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2009/05/10/geekcook-tee-ad/#disqus_thread"
+             data-disqus-identifier="http://www.casparzhang.com/blog/2009/05/10/geekcook-tee-ad/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>从<a href="http://yegle.net/2009/05/06/just-ad" target="new">狗狗</a>那里发现的一个好地方，<del datetime="2009-05-18T04:09:04+00:00"><a href="http://geekcook.blogspot.com" target="new">GeekCook@blogspot</a></del>，被墙了，新地址：<a href="http://www.geekcook.com/">GeekCook</a>，卖T恤和卫衣的。店主说了，写软文可以免运费，那我就撰软文一篇，把运费赚回来吧。</p>
+
+<p>话说店主的东西不多，样式都很棒。可惜狗狗已经抢了两件[<a href="http://www.geekcook.org/?p=44" target="new">1</a>,<a href="http://www.geekcook.org/?p=50" target="new">2</a>]，Amelie同学也抢了<a href="http://www.geekcook.org/?p=52" target="new">一件</a>，我能选择的余地就太少了～暂定那件<a href="http://www.geekcook.org/?p=48" target="new">稀有元素</a>的吧，话说当年背元素周期表我可是顺背如流啊。那件<a href="http://www.geekcook.org/?p=33" target="new">Ps</a>的也不错，只可惜自己用的是GIMP不是Ps，希望店主多推出点GNU的产品哦。</p>
+
+<p>不管了，撞衫就撞衫，我也要Twitter那件了！</p>
+
+<p>上图两张：</p>
+
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2009/05/10/geekcook-tee-ad/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -502,63 +545,6 @@ WITH GRANT OPTION ;</pre></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/">Gentoo新老问题-Milestone2</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-03-26T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/#disqus_thread"
-             data-disqus-identifier="http://www.casparzhang.com/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>昨天晚上已经用上2.6.29的内核了，而且也解决了部分上次提到的问题，写出来，权当折腾Gentoo之Milestone2吧。</p>
-
-<p>1. Amarok安装成功：</p>
-
-<p>今天更新了overlay，发现svn版的amarok已经把qtscriptgenerator给单独分出来做成一个包了，顿时感觉有戏，赶紧emerge一把，结果还是出错，不过错误提示和以前不太一样：
-<blockquote>/usr/lib/mysql/libmysqld.a(sql_parse.o): In function `mysql_parse(THD*, char const*, unsigned int, char const**)':                          <br />
-(.text+0xaadb): undefined reference to `clock_gettime'                                                                                      <br />
-/usr/lib/mysql/libmysqld.a(sql_parse.o): In function `mysql_parse(THD*, char const*, unsigned int, char const**)':                          <br />
-(.text+0xabcc): undefined reference to `clock_gettime'                                                                                      <br />
-/usr/lib/mysql/libmysqld.a(sql_prepare.o): In function `mysql_stmt_reset(THD*, char*)':                                                     <br />
-(.text+0x1dad): undefined reference to `clock_gettime'                                                                                      <br />
-/usr/lib/mysql/libmysqld.a(sql_prepare.o): In function `mysql_stmt_reset(THD*, char*)':                                                     <br />
-(.text+0x1ef6): undefined reference to `clock_gettime'                                                                                      <br />
-/usr/lib/mysql/libmysqld.a(sql_prepare.o): In function `mysql_stmt_fetch(THD*, char*, unsigned int)':                                       <br />
-(.text+0x20e8): undefined reference to `clock_gettime'                                                                                      <br />
-/usr/lib/mysql/libmysqld.a(sql_prepare.o):(.text+0x2273): more undefined references to `clock_gettime' follow                               <br />
-/usr/lib/gcc/i686-pc-linux-gnu/4.3.3/../../../../i686-pc-linux-gnu/bin/ld: warning: creating a DT_TEXTREL in object.                        <br />
-collect2: ld returned 1 exit status                                                                                                         <br />
-make[2]: *** [lib/libamarok_collection-sqlcollection.so] Error 1                                                                            <br />
-make[1]: *** [src/collection/sqlcollection/CMakeFiles/amarok_collection-sqlcollection.dir/all] Error 2                                      <br />
-make[1]: *** Waiting for unfinished jobs....                                                                                              </blockquote></p>
-
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -576,6 +562,10 @@ make[1]: *** Waiting for unfinished jobs....                                    
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/use-non-export-symbol/">Use Non-export Symbol</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/21/208-day-crash-issue/">Linux Kernel 208.5d Panic Issue</a>
       </li>
     
@@ -589,10 +579,6 @@ make[1]: *** Waiting for unfinished jobs....                                    
     
       <li class="post">
         <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
       </li>
     
   </ul>

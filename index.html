@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="最近线上碰到的问题，虽说早就有解决方案了，但是陆陆续续还是碰到很多没有升级内核的机器挂掉。记录一下以下内容，仅供参考。 现象是机器运行到一定天数(刚开始反馈集中在 208.5 天左右)就会主动挂掉，报告文章末尾的 CallTrace，所幸社区几年前就有了解决方案： Upstream Patch 1 &hellip;">
+  <meta name="description" content="最近在折腾 LIO，里面的模块好多，有核心模块(target_core_mod)、前端驱动模块(vhost-scsi, iscsi, etc)、后端驱动模块(target_core_iblock, target_core_file, etc)。我想要实现某种程度的模块“热升级”，具体来说， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/05/21/use-non-export-symbol/">Use Non-export Symbol</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-05-21T18:38:25+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:38 pm</span></time>
+        
+           | <a href="/blog/2015/05/21/use-non-export-symbol/#disqus_thread"
+             data-disqus-identifier="http://www.casparzhang.com/blog/2015/05/21/use-non-export-symbol/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近在折腾 <a href="http://linux-iscsi.org">LIO</a>，里面的模块好多，有核心模块(<code>target_core_mod</code>)、前端驱动模块(<code>vhost-scsi</code>, <code>iscsi</code>, etc)、后端驱动模块(<code>target_core_iblock</code>, <code>target_core_file</code>, etc)。我想要实现某种程度的模块“热升级”，具体来说，比如<code>target_core_mod</code>这个核心模块升级了之后，想要和旧模块共存，新的前端和后端驱动在接入的时候直接使用新模块。</p>
+
+<p>于是想当然地认为只要把编译出来的模块改个名字就好了。然而事情并没那么简单，中间碰到两个问题，首先就是本文要讲到的，导出符号(EXPORT_SYMBOL)重复的问题。其实问题很好理解，我改了个名字之后的模块(比如：<code>target_core_mod_new.ko</code>，在代码中还是会导出相同的符号，所以解决方法就是在新的模块中不导出这些符号，删掉所有的<code>EXPORT_SYMBOL()</code>宏。</p>
+
+<p>可是问题又来了，我的后端驱动模块(比如：<code>target_core_iblock.ko</code>)需要依赖新的模块的函数，在无法导出符号的情况下，我没有办法使用后端驱动模块。稍微搜了一下，找到<code>kallsyms_lookup_name()</code>函数(<a href="http://lxr.free-electrons.com/source/kernel/kallsyms.c?v=2.6.33#L170">定义</a>)，这个函数传入一个类似<strong><em>module:symbol</em></strong>形式的参数，用于读取<code>/proc/kallsyms</code>中的符号表，找到对应的符号，然后返回符号的地址(即函数的入口)。</p>
+
+<p>于是我拿了这个函数开开心心地去改代码了。以<code>target_complete_cmd()</code>这个函数为例，我在后端驱动模块的代码需要调用这个函数的地方：</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/05/21/use-non-export-symbol/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -528,47 +571,6 @@ $ git format-patch --subject-prefix="PATCH v2"
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/03/jibber-jabber-on-the-resumes/">关于简历的杂碎</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-03-03T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2011/03/03/jibber-jabber-on-the-resumes/#disqus_thread"
-             data-disqus-identifier="http://www.casparzhang.com/blog/2011/03/03/jibber-jabber-on-the-resumes/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近在帮组里招人，不过一直没有招到合适的（去年校园招聘时候招到过一个合适的，结果被隔壁<a href="http://twitter.com/#!/guaneryu" _target="new">@GMoto</a>组里给抢去了……泪了个奔的）。一直不停地在系统里刷简历，邮件列表里收简历，于是有些碎碎念就冒出来了。想到我不久以前也是简历那一头的角色，现在变成站在这一边的角色了，正好可以忆苦思甜，对比一下。丢在这里，大家凑合着看。</p>
-
-<p>首先得先介绍一下我所在的公司的背景，因为不同公司对待简历有不同的风格。好多人都知道，我现在呆在Red Hat，就是那个跟某快递公司重名的做Linux的公司。至少我们研发部门这边，不会因为简历没写称呼没写落款就不看，也不会因为简历排版混乱就丢在一旁，甚至发现提交的是个Word文档，或者联系邮箱留了个带qq号码的qq邮箱也会认真的去看——只不过第一印象和心理上已经有些想法而已。一般来说，我们喜欢排版简洁的正文简历和pdf简历，如果能提交个odt格式的也能感觉出投简历的人确实是用心的。另外不是为了装X，我们要求中英文简历是因为，如果面试结果良好，通常把简历会转交给国外的同事看，决定是否进一步面试。</p>
-
-<p>小结一下，不管简历样式有多糟糕，只要能打开，我们就会认真看。当然非常不幸地，这也是我觉得某些提交简历的同学是折翼的天使的原因。</p>
-
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/03/03/jibber-jabber-on-the-resumes/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -584,6 +586,10 @@ $ git format-patch --subject-prefix="PATCH v2"
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/use-non-export-symbol/">Use Non-export Symbol</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/21/208-day-crash-issue/">Linux Kernel 208.5d Panic Issue</a>
       </li>
     
@@ -597,10 +603,6 @@ $ git format-patch --subject-prefix="PATCH v2"
     
       <li class="post">
         <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
       </li>
     
   </ul>

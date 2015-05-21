@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="下了NetBeans6.0正式版的安装文件，没想到安装完毕在菜单项中居然不出现！一查看安装路径，执行脚本netbeans还在安安静静地躺在/usr/local/netbeans-6.0/bin下面呢。于是准备创建链接。 因为刚才查找路径的时候已经进入 /usr/local/netbeans-6.0 &hellip;">
+  <meta name="description" content="Wine这个软件功能越来越强大了，非常好用～～～ 源里面的Wine版本太旧，正好在昨天，Wine发布了0.9.54 ，可以直接去官方网站http://www.winehq.org/site/download下载： 首先要获取密钥： wget -q http://wine. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/26/wine-in-ubuntu/">Wine在Ubuntu下的优异表现</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-01-26T00:00:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/01/26/wine-in-ubuntu/#disqus_thread"
+             data-disqus-identifier="http://www.casparzhang.com/blog/2008/01/26/wine-in-ubuntu/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Wine这个软件功能越来越强大了，非常好用～～～</p>
+
+<p>源里面的Wine版本太旧，正好在昨天，Wine发布了0.9.54 ，可以直接去官方网站<a href="http://www.winehq.org/site/download" target="_blank">http://www.winehq.org/site/download</a>下载：</p>
+
+<p>首先要获取密钥：</p>
+
+<p><pre lang="bash"> wget -q http://wine.budgetdedicated.com/apt/387EE263.gpg -O- | sudo apt-key add -</pre></p>
+
+<p>然后下载源列表：</p>
+
+<p><strong>For Ubuntu Gutsy (7.10):</strong></p>
+
+<p><pre lang="bash">sudo wget http://wine.budgetdedicated.com/apt/sources.list.d/gutsy.list -O /etc/apt/sources.list.d/winehq.list</pre></p>
+
+<p><strong>For Ubuntu Feisty (7.04):</strong></p>
+
+<p><pre lang="bash">sudo wget http://wine.budgetdedicated.com/apt/sources.list.d/feisty.list -O /etc/apt/sources.list.d/winehq.list</pre></p>
+
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/01/26/wine-in-ubuntu/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -377,6 +430,10 @@ f命令表示强制创建，覆盖同名文件。
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/21/use-non-export-symbol/">Use Non-export Symbol</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/21/208-day-crash-issue/">Linux Kernel 208.5d Panic Issue</a>
       </li>
     
@@ -390,10 +447,6 @@ f命令表示强制创建，覆盖同名文件。
     
       <li class="post">
         <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a>
       </li>
     
   </ul>
