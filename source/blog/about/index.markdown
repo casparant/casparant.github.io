@@ -15,11 +15,31 @@ comments: true
 
 出于对 Linux 和开源的热爱，大四找工作的时候只投了两三个和 Linux 相关的工作，且最终如愿以偿地进入 Red Hat 实习，并在一年后成为内核测试组的正式员工。在这工作一年多，真正觉得 Red Hat 的开放文化就是源于开源的文化，有自由的工作环境，也有充满激情的同事，有浓厚的分享氛围，更有学不完的技术。在 Red Hat 期间，也寻找到了未来更具体的兴趣方向，即 Linux Kernel 方向。
 
-2013年由于个人原因离职 Red Hat，离开北京回到家乡，现就职于杭州某著名大型电商平台，继续 Linux Kernel 方面的学习和打杂生涯。Happy Hacking! :-)
+2013年由于个人原因离职 Red Hat，离开北京回到家乡，现就职于杭州某著名大型电商平台，继续 Linux Kernel 方面的学习和打杂生涯。
+
+For those who have problem reading Chinese
+------------------------------------------
+
+Hi there, this is Caspar Zhang from Hangzhou City in Eastern China, thanks for reading the _about page_ of my personal blog. It's safe to skip those Chinese paragraphs above, as they're just no more than some boring jibber-jabbers, lol~
+
+I'm a Linux kernel enthusiasm, and I love programming. I know it's still a bit long way for me to be a Linux kernel hacker, but I'll keep trying to learn more and coding more. Happy hacking, happy life :-)
+
+I previously worked in [Red Hat](http://www.redhat.com/) in Beijing, playing my role as a quality engineer in _Kernel QE team_; After moved back to Zhejiang Province, I went to the famous B2B/B2C e-commerce company, [Alibaba Inc](http://www.alibabagroup.com/), working on hardware reliability & stability optimizations in _Site Reliability Engineering (a.k.a. SRE)_ department; Then I transferred to the _Kernel team_ of [Aliyun.com](http://www.aliyun.com/?lang=en), a subsdiary of Alibaba Group, and now I mainly focus on I/O optimization for Ali-Cloud Elastic Compute Service ([ECS](http://www.aliyun.com/product/ecs/?lang=en)).
+
+To get to know more about my works, please checkout my ***LinkedIn*** page below. Feel free to send me E-mails if you want to communicate with me :-)
 
 Contact
 -------
 
-E-mail: `# echo Y2FzcGFyQGNhc3BhcnpoYW5nLmNvbQ== | base64 -d`
++ __E-mail__    : `echo oo@ooxx.com | sed 's/oo/caspar/g;s/xx/zhang/g'`
++ __LinkedIn__  : [Caspar Zhang](https://www.linkedin.com/in/casparant)
++ __SlideShare__: [casparant](http://www.slideshare.net/casparant)
++ __GitHub__    : [casparant](http://github.com/casparant)
++ __Twitter__   : [@casparant](https://twitter.com/casparant)
++ __Facebook__  : [Caspar Zhang](https://www.facebook.com/casparant)
++ __Google+__   : [+CasparZhang](https://plus.google.com/+CasparZhang)
++ __Instagram__ : [@casparant](https://instagram.com/casparant)
++ __Douban__    : [casparant](http://www.douban.com/people/casparant/)
++ __Weibo__     : [@Ant-Veil](http://weibo.com/swordantcs)
 
 交流技术问题的话，给我发邮件在任何情况下都受欢迎。我会及时查收邮件(但不一定及时回复)。
