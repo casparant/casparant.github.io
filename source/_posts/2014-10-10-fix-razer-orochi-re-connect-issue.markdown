@@ -2,7 +2,7 @@
 layout: post
 title: Fix Razer Orochi re-connect issue
 categories:
-- Deprecated
+- Z-Turn
 tags: []
 published: true
 comments: true
