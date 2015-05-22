@@ -106,34 +106,47 @@
 
 <div class="entry-content"><p>以前也测过 MCE 相关的东西，但是惭愧，一直不清不楚。这两天稍微整理了一下相关知识，感觉见识还是很浅，记些零碎的东西在这，权当博客复活第一篇。如有理解错误，欢迎指出。</p>
 
-<p>CPU 检测到硬件错误时，内核会报 Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; UCE/UE, Un-correctable Error)，内核做出不同反应。CE 的话内核只把相关信息写到一个字符设备/dev/mcelog 中，UE 的话是会在记录相关信息之余，还会做出不同处理，比如中断当前遇错的应用程序，或者 Panic. [TODO: 这块相关的内核代码还得再看几遍]</p>
+<p>CPU 检测到硬件错误时，内核会报 Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; UCE/UE, Un-correctable Error)，内核做出不同反应。CE 的话内核只把相关信息写到一个字符设备 <code>/dev/mcelog</code> 中，UE 的话是会在记录相关信息之余，还会做出不同处理，比如中断当前遇错的应用程序，或者 Panic. <code>[TODO: 这块相关的内核代码还得再看几遍]</code></p>
 
-<p>/dev/mcelog 中的信息可以用用户空间工具<a href="https://github.com/andikleen/mcelog" target="_blank">mcelog</a>来读取。mcelog 比较有意思的一个参数是<code>--dmi</code>，可以尝试解析 ADDR 字段以获取诸如内存出厂信息，DIMM 位置等有用的信息，可是很遗憾在实际环境中这些 DIMM 信息基本上都是错的。（mcelog man page 说了，不要怪 Linux，得怪那稀奇古怪的主板厂商……）</p>
+<p><code>/dev/mcelog</code> 中的信息可以用用户空间工具 <strong><a href="https://github.com/andikleen/mcelog">mcelog</a></strong> 来读取。<strong>mcelog</strong> 比较有意思的一个参数是 <code>--dmi</code>，可以尝试解析 ADDR 字段以获取诸如内存出厂信息，DIMM 位置等有用的信息，可是很遗憾在实际环境中这些 DIMM 信息基本上都是错的。 (mcelog 的 man page 说了，不要怪 Linux，得怪那稀奇古怪的主板厂商……)</p>
 
-<p>mcelog man page 还有一个地方提到：</p>
+<p>man page 还有一个地方提到：</p>
 
-<p><blockquote>The kernel prefers old messages over new. If the log buffer overflows only old ones will be kept.</blockquote></p>
+<blockquote><p>The kernel prefers old messages over new. If the log buffer overflows only old ones will be kept.</p></blockquote>
 
-<p><!--more-->查看内核代码中<code>arch/x86/include/asm/mce.h</code>，有：</p>
+<!--more-->
 
-<p><pre lang="C">
-#define MCE_LOG_LEN 32</pre></p>
 
-<p>struct mce_log {<br />
-	char signature[12]; /* "MACHINECHECK" */<br />
-	unsigned len;	    /* = MCE_LOG_LEN */<br />
-	unsigned next;<br />
-	unsigned flags;<br />
-	unsigned recordlen;	/* length of struct mce */<br />
-	struct mce entry[MCE_LOG_LEN];<br />
-};
-</p>
+<p>查看内核代码中 <code>arch/x86/include/asm/mce.h</code>，有：</p>
 
-<p>这里的 MCE_LOG_LEN 就是 man page 中提到的 log buffer 长度。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#define MCE_LOG_LEN 32</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">struct</span> <span class="n">mce_log</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kt">char</span> <span class="n">signature</span><span class="p">[</span><span class="mi">12</span><span class="p">];</span> <span class="cm">/* &quot;MACHINECHECK&quot; */</span>
+</span><span class='line'>        <span class="kt">unsigned</span> <span class="n">len</span><span class="p">;</span>       <span class="cm">/* = MCE_LOG_LEN */</span>
+</span><span class='line'>        <span class="kt">unsigned</span> <span class="n">next</span><span class="p">;</span>
+</span><span class='line'>        <span class="kt">unsigned</span> <span class="n">flags</span><span class="p">;</span>
+</span><span class='line'>        <span class="kt">unsigned</span> <span class="n">recordlen</span><span class="p">;</span>     <span class="cm">/* length of struct mce */</span>
+</span><span class='line'>        <span class="k">struct</span> <span class="n">mce</span> <span class="n">entry</span><span class="p">[</span><span class="n">MCE_LOG_LEN</span><span class="p">];</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>内核中还有个 mce_inject 模块（CONFIG_X86_MCE_INJECT=m/y）,可以用于产生一些假的 MCE 以测试相关功能。需要配合用户空间工具<a href="https://github.com/andikleen/mce-inject/" target="_blank">mce-inject</a>来使用。</p>
 
-<p>如果要做一个比较完整的测试，<a href="https://github.com/andikleen/mce-test" target="_blank">mce-test</a>工具可以帮忙，其中会设计一些 RAS 特性，比如 hwpoison(Documentation/vm/hwpoison.txt)，不过我现在的活儿不怎么管测试，暂时就没去回顾这个测试工具了。</p>
+<p>这里的 <code>MCE_LOG_LEN</code> 就是 man page 中提到的 log buffer 长度。</p>
+
+<p>内核中还有个 <code>mce_inject</code> 模块（<code>CONFIG_X86_MCE_INJECT=m/y</code>）,可以用于产生一些假的 MCE 以测试相关功能。需要配合用户空间工具 <strong><a href="https://github.com/andikleen/mce-inject/">mce-inject</a></strong> 来使用。</p>
+
+<p>如果要做一个比较完整的测试，<strong><a href="https://github.com/andikleen/mce-test">mce-test</a></strong> 工具可以帮忙，其中会涉及一些 RAS 特性，比如 <strong><em>hwpoison</em></strong>(<code>Documentation/vm/hwpoison.txt</code>)，不过我现在的活儿不怎么管测试，暂时就没去回顾这个测试工具了。</p>
 
 <p>先记这些，回头把细节都搞懂了再补充……</p>
 </div>

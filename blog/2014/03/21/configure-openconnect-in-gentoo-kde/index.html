@@ -112,12 +112,16 @@
 
 <p>Portage 里搜了一下，openconnect 有两个包，networkmanager-openconnect 有 libkeyring-gnome 依赖，我现在是个有洁癖的 KDE 党，果断不能装啊，于是用第二个， openconnect 命令行版…… 不行，不能这么罗里八嗦，反正最后折腾结果如下：</p>
 
-<p><!--more--><ol>
-	<li>只用命令行的话，Portage 里的 openconnect-5.99* 版本可用，配好 <code>/etc/conf.d/openconnect</code> 就可以了；</li>
-	<li>需要配合 KDE plasma 插件 networkmanagement (0.9+版本) 的话，就必须得装 NetworkManager-openconnect 了。事实证明， libkeyring-gnome 依赖是可以去掉的。我修改了 Portage 文件，放到我<a href="https://github.com/casparant/caspar-gentoo/tree/master/net-misc/networkmanager-openconnect" target="_blank">自己的 Overlay</a> 里了。</li>
-	<li><del datetime="2014-03-21T09:54:44+00:00">另外 openconnect-5.99* 版本会导致 networkmanagement 带了 openconnect flag 之后编译失败，只能回退到 5.03 版本。</del> networkmanagement 已经 deprecated 了，用 plasma-nm 代替，最新版本没有编译问题。</li>
-	<li><del datetime="2014-03-21T09:54:44+00:00">openconnect-5.03 版本也是有问题的，openconnect 命令执行后，如果从终端输入密码，需要先按一个回车，再输入一遍。所以配置文件中的<code>tmp_SERVER <<-E</code> 后面需要加一个空行，否则 daemon 永远启动失败，因为接收不到密码。</del> 换了最新的 openconnect-5.99 之后，没问题了。</li>
-</ol></p>
+<!--more-->
+
+
+<ol>
+<li>只用命令行的话，Portage 里的 <strong><em>openconnect-5.99*</em></strong> 版本可用，配好 <code>/etc/conf.d/openconnect</code> 就可以了；</li>
+<li>需要配合 KDE plasma 插件 <strong><em>networkmanagement</em></strong> (0.9+版本) 的话，就必须得装 <strong>NetworkManager-openconnect</strong> 了。事实证明，<strong>libkeyring-gnome</strong> 依赖是可以去掉的。我修改了 Portage 文件，放到我<a href="https://github.com/casparant/caspar-gentoo/tree/master/net-misc/networkmanager-openconnect">自己的 Overlay</a> 里了。</li>
+<li><del datetime="2014-03-21T09:54:44+00:00">另外 <strong><em>openconnect-5.99*</em></strong> 版本会导致 <strong><em>networkmanagement</em></strong> 带了 <code>openconnect</code> flag 之后编译失败，只能回退到 5.03 版本。</del> <strong><em>networkmanagement</em></strong> 已经 deprecated 了，用 <strong><em>plasma-nm</em></strong> 代替，最新版本没有编译问题。</li>
+<li><del datetime="2014-03-21T09:54:44+00:00"><strong><em>openconnect-5.03</em></strong> 版本也是有问题的，<code>openconnect</code> 命令执行后，如果从终端输入密码，需要先按一个回车，再输入一遍。所以配置文件中的 <code>tmp_SERVER &lt;&lt;-E</code> 后面需要加一个空行，否则 daemon 永远启动失败，因为接收不到密码。</del> 换了最新的 <strong><em>openconnect-5.99</em></strong> 之后，没问题了。</li>
+</ol>
+
 
 <p>就这些。配好之后，既可以用 NM 的 GUI 连，也可以起服务连。从此过上了永不断网（某奸商广告语）的生活～</p>
 </div>

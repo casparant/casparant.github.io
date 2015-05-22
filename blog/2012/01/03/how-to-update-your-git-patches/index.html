@@ -9,10 +9,14 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="使用 git 制作补丁时，经常发现补丁需要修改。如果只是最后一次 commit 需要修改，那就好办，用下面的方法就可以搞定： $ git reset HEAD^
+  <meta name="description" content="使用 git 制作补丁时，经常发现补丁需要修改。如果只是最后一次 commit 需要修改，那就好办，用下面的方法就可以搞定： 1
+2
+3
+4
+git reset HEAD^
 # edit edit edit
-$ git commit -a -s -c ORIG_HEAD
-$ git format-patch &hellip;">
+git commit -a -s -c ORIG_HEAD
+git format- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -107,51 +111,71 @@ $ git format-patch &hellip;">
   </header>
 
 
-<div class="entry-content"><p>使用 git 制作补丁时，经常发现补丁需要修改。如果只是最后一次 commit 需要修改，那就好办，用下面的方法就可以搞定：
-<pre lang="bash">
-$ git reset HEAD^
-# edit edit edit
-$ git commit -a -s -c ORIG_HEAD
-$ git format-patch --subject-prefix="PATCH v2"
-</pre></p>
+<div class="entry-content"><p>使用 git 制作补丁时，经常发现补丁需要修改。如果只是最后一次 commit 需要修改，那就好办，用下面的方法就可以搞定：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git reset HEAD^
+</span><span class='line'><span class="c"># edit edit edit</span>
+</span><span class='line'>git commit -a -s -c ORIG_HEAD
+</span><span class='line'>git format-patch --subject-prefix<span class="o">=</span><span class="s2">&quot;PATCH v2&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>但是如果是一系列补丁中的中间几个补丁需要修改，该怎么办呢？</p>
 
-<p><del datetime="2012-01-03T16:12:57+00:00">笨办法已经被删掉>.<</del></p>
+<p><del datetime="2012-01-03T16:12:57+00:00">笨办法已经被删掉>.&lt;</del></p>
 
-<p><!--more--><strong>Update 1:</strong> 非常感谢 wangcong 的指点！"<code>git rebase -i</code>"可以出色地完成这个任务，方法在 man-page 里面有详述，见"INTERACTIVE MODE"和"SPLITTING COMMITS"部分。</p>
+<!--more-->
 
-<p>假设当前所在分支名为"topic"，做了 3 个补丁，打算提交给邮件列表的时候发现中间一个补丁需要更新，此时使用下列命令：</p>
 
-<p><pre lang="bash">
-git rebase -i master
-</pre></p>
+<p><strong>Update 1:</strong> 非常感谢 wangcong 的指点！<code>git rebase -i</code> 可以出色地完成这个任务，方法在 man-page 里面有详述，见 <strong><em>INTERACTIVE MODE</em></strong> 和 <strong><em>SPLITTING COMMITS</em></strong> 部分。</p>
 
-<p>出现编辑窗口如下：
-<blockquote>
-pick 21732a8 mm/swapping01: new testcase<br />
-pick c3751d1 hugemmap01: clean-up format<br />
-pick d75449c mm/swapping01: change sleep time to 5 sec
-</blockquote></p>
+<p>假设当前所在分支名为 <strong>topic</strong> ，做了 3 个补丁，打算提交给邮件列表的时候发现中间一个补丁需要更新，此时使用下列命令：</p>
 
-<p>此时需要修改 commit c3751d1，则把<code>pick</code>改为<code>edit</code>即可。保存退出后 git 会 rebase 到需要修改的 commit 处停止，此时可以直接修改内容，然后执行：
-<pre lang="bash">
-git add xxx # mark as resolved
-git commit --amend
-</pre></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git rebase -i HEAD~4
+</span></code></pre></td></tr></table></div></figure>
 
-<p>或者
-<pre lang="bash">
-git reset --soft HEAD^
-#edit edit edit
-git commit -a -s -c ORIG_HEAD
-</pre></p>
 
-<p>之后执行"<code>git rebase --continue</code>"即可。</p>
+<p>出现编辑窗口如下：</p>
 
-<p>突然想起来一年前就请教过 wangcong 这个问题，只不过当时对<code>git rebase</code>完全不了解，后来就忘了，惭愧-_-|||。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pick 21732a8 mm/swapping01: new testcase
+</span><span class='line'>pick c3751d1 hugemmap01: clean-up format
+</span><span class='line'>pick d75449c mm/swapping01: change sleep <span class="nb">time </span>to <span class="m">5</span> sec
+</span></code></pre></td></tr></table></div></figure>
 
-<p><strong>Update 2</strong>: 同样感谢 Iven 的指点，可以去看看他的文章：<a href="http://www.kissuki.com/?p=135" target="_blank">http://www.kissuki.com/?p=135</a></p>
+
+<p>此时需要修改 <code>commit c3751d1</code>，则把 <code>pick</code> 改为 <code>edit</code> 即可。保存退出后 git 会 rebase 到需要修改的 commit 处停止，此时可以直接修改内容，然后执行：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git add xxx <span class="c"># mark as resolved</span>
+</span><span class='line'>git commit --amend
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>或者</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git reset --soft HEAD^
+</span><span class='line'><span class="c">#edit edit edit</span>
+</span><span class='line'>git commit -a -s -c ORIG_HEAD
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>之后执行 <code>git rebase --continue</code> 即可。</p>
+
+<p>突然想起来一年前就请教过 wangcong 这个问题，只不过当时对 <code>git rebase</code> 完全不了解，后来就忘了，惭愧 -_-|||。</p>
+
+<p><strong>Update 2</strong>: 同样感谢 Iven 的指点，可以去看看他的文章: <a href="http://www.kissuki.com/?p=135">http://www.kissuki.com/?p=135</a></p>
 </div>
 
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Ant-Veil]]></title>
   <link href="http://www.casparzhang.com/atom.xml" rel="self"/>
   <link href="http://www.casparzhang.com/"/>
-  <updated>2015-05-22T11:11:09+08:00</updated>
+  <updated>2015-05-22T11:53:35+08:00</updated>
   <id>http://www.casparzhang.com/</id>
   <author>
     <name><![CDATA[Caspar]]></name>
@@ -588,12 +588,16 @@
 
 <p>Portage 里搜了一下，openconnect 有两个包，networkmanager-openconnect 有 libkeyring-gnome 依赖，我现在是个有洁癖的 KDE 党，果断不能装啊，于是用第二个， openconnect 命令行版…… 不行，不能这么罗里八嗦，反正最后折腾结果如下：</p>
 
-<p><!--more--><ol>
-	<li>只用命令行的话，Portage 里的 openconnect-5.99* 版本可用，配好 <code>/etc/conf.d/openconnect</code> 就可以了；</li>
-	<li>需要配合 KDE plasma 插件 networkmanagement (0.9+版本) 的话，就必须得装 NetworkManager-openconnect 了。事实证明， libkeyring-gnome 依赖是可以去掉的。我修改了 Portage 文件，放到我<a href="https://github.com/casparant/caspar-gentoo/tree/master/net-misc/networkmanager-openconnect" target="_blank">自己的 Overlay</a> 里了。</li>
-	<li><del datetime="2014-03-21T09:54:44+00:00">另外 openconnect-5.99* 版本会导致 networkmanagement 带了 openconnect flag 之后编译失败，只能回退到 5.03 版本。</del> networkmanagement 已经 deprecated 了，用 plasma-nm 代替，最新版本没有编译问题。</li>
-	<li><del datetime="2014-03-21T09:54:44+00:00">openconnect-5.03 版本也是有问题的，openconnect 命令执行后，如果从终端输入密码，需要先按一个回车，再输入一遍。所以配置文件中的<code>tmp_SERVER <<-E</code> 后面需要加一个空行，否则 daemon 永远启动失败，因为接收不到密码。</del> 换了最新的 openconnect-5.99 之后，没问题了。</li>
-</ol></p>
+<!--more-->
+
+
+<ol>
+<li>只用命令行的话，Portage 里的 <strong><em>openconnect-5.99*</em></strong> 版本可用，配好 <code>/etc/conf.d/openconnect</code> 就可以了；</li>
+<li>需要配合 KDE plasma 插件 <strong><em>networkmanagement</em></strong> (0.9+版本) 的话，就必须得装 <strong>NetworkManager-openconnect</strong> 了。事实证明，<strong>libkeyring-gnome</strong> 依赖是可以去掉的。我修改了 Portage 文件，放到我<a href="https://github.com/casparant/caspar-gentoo/tree/master/net-misc/networkmanager-openconnect">自己的 Overlay</a> 里了。</li>
+<li><del datetime="2014-03-21T09:54:44+00:00">另外 <strong><em>openconnect-5.99*</em></strong> 版本会导致 <strong><em>networkmanagement</em></strong> 带了 <code>openconnect</code> flag 之后编译失败，只能回退到 5.03 版本。</del> <strong><em>networkmanagement</em></strong> 已经 deprecated 了，用 <strong><em>plasma-nm</em></strong> 代替，最新版本没有编译问题。</li>
+<li><del datetime="2014-03-21T09:54:44+00:00"><strong><em>openconnect-5.03</em></strong> 版本也是有问题的，<code>openconnect</code> 命令执行后，如果从终端输入密码，需要先按一个回车，再输入一遍。所以配置文件中的 <code>tmp_SERVER &lt;&lt;-E</code> 后面需要加一个空行，否则 daemon 永远启动失败，因为接收不到密码。</del> 换了最新的 <strong><em>openconnect-5.99</em></strong> 之后，没问题了。</li>
+</ol>
+
 
 <p>就这些。配好之后，既可以用 NM 的 GUI 连，也可以起服务连。从此过上了永不断网（某奸商广告语）的生活～</p>
 ]]></content>
@@ -604,17 +608,17 @@
     <link href="http://www.casparzhang.com/blog/2014/03/11/an-introduction-of-wiz-note/"/>
     <updated>2014-03-11T00:00:00+08:00</updated>
     <id>http://www.casparzhang.com/blog/2014/03/11/an-introduction-of-wiz-note</id>
-    <content type="html"><![CDATA[<p>Linux 上记笔记，向来很纠结。以前用过一段时间<a href="http://zim-wiki.org/index.html" target="_blank">Zim</a>，后来变成了 KDE 党，只好果断抛弃了。找到<a href="http://basket.kde.org/" target="_blank">BasKet</a>，功能还是很强大的，可是格式一团糟。无法以 Plain Text 存储文字，拷贝来拷贝去的时候经常格式混乱。也尝试在 Web 端存东西，结果还是发现不习惯，而且离线无法访问。</p>
+    <content type="html"><![CDATA[<p>Linux 上记笔记，向来很纠结。以前用过一段时间 <a href="http://zim-wiki.org/index.html">Zim</a>，后来变成了 KDE 党，只好果断抛弃了。找到 <a href="http://basket.kde.org/">BasKet</a>，功能还是很强大的，可是格式一团糟。无法以 Plain Text 存储文字，拷贝来拷贝去的时候经常格式混乱。也尝试在 Web 端存东西，结果还是发现不习惯，而且离线无法访问。</p>
 
-<p>然后今天工作的时候有同事提到客户报告鄙厂<a href="http://www.aliyun.com/" target="_blank">产品</a>的问题，碰到了故障（当然在内核组大牛们的努力下该问题已经解决了），我就好奇去看了一下报告者信息，然后就发现了这个笔记软件：<a href="http://wiz.cn/index.html" target="_blank">Wiz</a>. 看起来还挺 Geek 的，有手机端有 Linux 端有 Mac OS 端。于是去 gentoo-zh 的 Overlay 找了一圈（是的，5 年过去了我还在 Gentoo 的不归路上慢慢走着），<a href="https://github.com/microcai/gentoo-zh/blob/master/app-text/wiznote/wiznote-2.0.64.ebuild" target="_blank">找到了</a>。</p>
+<p>然后今天工作的时候有同事提到客户报告鄙厂<a href="http://www.aliyun.com/">产品</a>的问题，碰到了故障（当然在内核组大牛们的努力下该问题已经解决了），我就好奇去看了一下报告者信息，然后就发现了这个笔记软件：<a href="http://wiz.cn/index.html">Wiz</a>. 看起来还挺 Geek 的，有手机端有 Linux 端有 Mac 端。于是去 gentoo-zh 的 Overlay 找了一圈（是的，5 年过去了我还在 Gentoo 的不归路上慢慢走着），<a href="https://github.com/microcai/gentoo-zh/blob/master/app-text/wiznote/wiznote-2.0.64.ebuild">找到了</a>。</p>
 
 <p>看起来样子还不错，还比较清爽，也可以格式化为 Plain Text。功能上比 BasKet 少一些，但是用着还是挺舒服的。</p>
 
 <p>最不能忍受的问题是没有任务栏图标，于是接着搜。</p>
 
-<p>找到了一年前某人的一个没有 Merge 的<a href="https://github.com/WizTeam/WizQTClient/pull/80" target="_blank">Pull Request</a>，然后稍微修改了一下补丁，打到源代码里，发现可以用了。</p>
+<p>找到了一年前某人的一个没有 Merge 的 <a href="https://github.com/WizTeam/WizQTClient/pull/80">Pull Request</a>，然后稍微修改了一下补丁，打到源代码里，发现可以用了。</p>
 
-<p>修改后的 ebuild 请<a href="https://github.com/casparant/caspar-gentoo/blob/master/app-text/wiznote/wiznote-2.1.0_beta.ebuild" target="_blank">猛戳</a>。</p>
+<p>修改后的 ebuild 请<a href="https://github.com/casparant/caspar-gentoo/blob/master/app-text/wiznote/wiznote-2.1.0_beta.ebuild">猛戳</a>。</p>
 
 <p>最后，有更靠谱的笔记软件请推荐。</p>
 ]]></content>
@@ -627,34 +631,47 @@
     <id>http://www.casparzhang.com/blog/2013/06/06/some-misc-items-of-mce</id>
     <content type="html"><![CDATA[<p>以前也测过 MCE 相关的东西，但是惭愧，一直不清不楚。这两天稍微整理了一下相关知识，感觉见识还是很浅，记些零碎的东西在这，权当博客复活第一篇。如有理解错误，欢迎指出。</p>
 
-<p>CPU 检测到硬件错误时，内核会报 Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; UCE/UE, Un-correctable Error)，内核做出不同反应。CE 的话内核只把相关信息写到一个字符设备/dev/mcelog 中，UE 的话是会在记录相关信息之余，还会做出不同处理，比如中断当前遇错的应用程序，或者 Panic. [TODO: 这块相关的内核代码还得再看几遍]</p>
+<p>CPU 检测到硬件错误时，内核会报 Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; UCE/UE, Un-correctable Error)，内核做出不同反应。CE 的话内核只把相关信息写到一个字符设备 <code>/dev/mcelog</code> 中，UE 的话是会在记录相关信息之余，还会做出不同处理，比如中断当前遇错的应用程序，或者 Panic. <code>[TODO: 这块相关的内核代码还得再看几遍]</code></p>
 
-<p>/dev/mcelog 中的信息可以用用户空间工具<a href="https://github.com/andikleen/mcelog" target="_blank">mcelog</a>来读取。mcelog 比较有意思的一个参数是<code>--dmi</code>，可以尝试解析 ADDR 字段以获取诸如内存出厂信息，DIMM 位置等有用的信息，可是很遗憾在实际环境中这些 DIMM 信息基本上都是错的。（mcelog man page 说了，不要怪 Linux，得怪那稀奇古怪的主板厂商……）</p>
+<p><code>/dev/mcelog</code> 中的信息可以用用户空间工具 <strong><a href="https://github.com/andikleen/mcelog">mcelog</a></strong> 来读取。<strong>mcelog</strong> 比较有意思的一个参数是 <code>--dmi</code>，可以尝试解析 ADDR 字段以获取诸如内存出厂信息，DIMM 位置等有用的信息，可是很遗憾在实际环境中这些 DIMM 信息基本上都是错的。 (mcelog 的 man page 说了，不要怪 Linux，得怪那稀奇古怪的主板厂商……)</p>
 
-<p>mcelog man page 还有一个地方提到：</p>
+<p>man page 还有一个地方提到：</p>
 
-<p><blockquote>The kernel prefers old messages over new. If the log buffer overflows only old ones will be kept.</blockquote></p>
+<blockquote><p>The kernel prefers old messages over new. If the log buffer overflows only old ones will be kept.</p></blockquote>
 
-<p><!--more-->查看内核代码中<code>arch/x86/include/asm/mce.h</code>，有：</p>
+<!--more-->
 
-<p><pre lang="C">
-#define MCE_LOG_LEN 32</pre></p>
 
-<p>struct mce_log {<br />
-	char signature[12]; /* "MACHINECHECK" */<br />
-	unsigned len;	    /* = MCE_LOG_LEN */<br />
-	unsigned next;<br />
-	unsigned flags;<br />
-	unsigned recordlen;	/* length of struct mce */<br />
-	struct mce entry[MCE_LOG_LEN];<br />
-};
-</p>
+<p>查看内核代码中 <code>arch/x86/include/asm/mce.h</code>，有：</p>
 
-<p>这里的 MCE_LOG_LEN 就是 man page 中提到的 log buffer 长度。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#define MCE_LOG_LEN 32</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">struct</span> <span class="n">mce_log</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kt">char</span> <span class="n">signature</span><span class="p">[</span><span class="mi">12</span><span class="p">];</span> <span class="cm">/* &quot;MACHINECHECK&quot; */</span>
+</span><span class='line'>        <span class="kt">unsigned</span> <span class="n">len</span><span class="p">;</span>       <span class="cm">/* = MCE_LOG_LEN */</span>
+</span><span class='line'>        <span class="kt">unsigned</span> <span class="n">next</span><span class="p">;</span>
+</span><span class='line'>        <span class="kt">unsigned</span> <span class="n">flags</span><span class="p">;</span>
+</span><span class='line'>        <span class="kt">unsigned</span> <span class="n">recordlen</span><span class="p">;</span>     <span class="cm">/* length of struct mce */</span>
+</span><span class='line'>        <span class="k">struct</span> <span class="n">mce</span> <span class="n">entry</span><span class="p">[</span><span class="n">MCE_LOG_LEN</span><span class="p">];</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>内核中还有个 mce_inject 模块（CONFIG_X86_MCE_INJECT=m/y）,可以用于产生一些假的 MCE 以测试相关功能。需要配合用户空间工具<a href="https://github.com/andikleen/mce-inject/" target="_blank">mce-inject</a>来使用。</p>
 
-<p>如果要做一个比较完整的测试，<a href="https://github.com/andikleen/mce-test" target="_blank">mce-test</a>工具可以帮忙，其中会设计一些 RAS 特性，比如 hwpoison(Documentation/vm/hwpoison.txt)，不过我现在的活儿不怎么管测试，暂时就没去回顾这个测试工具了。</p>
+<p>这里的 <code>MCE_LOG_LEN</code> 就是 man page 中提到的 log buffer 长度。</p>
+
+<p>内核中还有个 <code>mce_inject</code> 模块（<code>CONFIG_X86_MCE_INJECT=m/y</code>）,可以用于产生一些假的 MCE 以测试相关功能。需要配合用户空间工具 <strong><a href="https://github.com/andikleen/mce-inject/">mce-inject</a></strong> 来使用。</p>
+
+<p>如果要做一个比较完整的测试，<strong><a href="https://github.com/andikleen/mce-test">mce-test</a></strong> 工具可以帮忙，其中会涉及一些 RAS 特性，比如 <strong><em>hwpoison</em></strong>(<code>Documentation/vm/hwpoison.txt</code>)，不过我现在的活儿不怎么管测试，暂时就没去回顾这个测试工具了。</p>
 
 <p>先记这些，回头把细节都搞懂了再补充……</p>
 ]]></content>
@@ -665,51 +682,71 @@
     <link href="http://www.casparzhang.com/blog/2012/01/03/how-to-update-your-git-patches/"/>
     <updated>2012-01-03T00:00:00+08:00</updated>
     <id>http://www.casparzhang.com/blog/2012/01/03/how-to-update-your-git-patches</id>
-    <content type="html"><![CDATA[<p>使用 git 制作补丁时，经常发现补丁需要修改。如果只是最后一次 commit 需要修改，那就好办，用下面的方法就可以搞定：
-<pre lang="bash">
-$ git reset HEAD^
-# edit edit edit
-$ git commit -a -s -c ORIG_HEAD
-$ git format-patch --subject-prefix="PATCH v2"
-</pre></p>
+    <content type="html"><![CDATA[<p>使用 git 制作补丁时，经常发现补丁需要修改。如果只是最后一次 commit 需要修改，那就好办，用下面的方法就可以搞定：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git reset HEAD^
+</span><span class='line'><span class="c"># edit edit edit</span>
+</span><span class='line'>git commit -a -s -c ORIG_HEAD
+</span><span class='line'>git format-patch --subject-prefix<span class="o">=</span><span class="s2">&quot;PATCH v2&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>但是如果是一系列补丁中的中间几个补丁需要修改，该怎么办呢？</p>
 
-<p><del datetime="2012-01-03T16:12:57+00:00">笨办法已经被删掉>.<</del></p>
+<p><del datetime="2012-01-03T16:12:57+00:00">笨办法已经被删掉>.&lt;</del></p>
 
-<p><!--more--><strong>Update 1:</strong> 非常感谢 wangcong 的指点！"<code>git rebase -i</code>"可以出色地完成这个任务，方法在 man-page 里面有详述，见"INTERACTIVE MODE"和"SPLITTING COMMITS"部分。</p>
+<!--more-->
 
-<p>假设当前所在分支名为"topic"，做了 3 个补丁，打算提交给邮件列表的时候发现中间一个补丁需要更新，此时使用下列命令：</p>
 
-<p><pre lang="bash">
-git rebase -i master
-</pre></p>
+<p><strong>Update 1:</strong> 非常感谢 wangcong 的指点！<code>git rebase -i</code> 可以出色地完成这个任务，方法在 man-page 里面有详述，见 <strong><em>INTERACTIVE MODE</em></strong> 和 <strong><em>SPLITTING COMMITS</em></strong> 部分。</p>
 
-<p>出现编辑窗口如下：
-<blockquote>
-pick 21732a8 mm/swapping01: new testcase<br />
-pick c3751d1 hugemmap01: clean-up format<br />
-pick d75449c mm/swapping01: change sleep time to 5 sec
-</blockquote></p>
+<p>假设当前所在分支名为 <strong>topic</strong> ，做了 3 个补丁，打算提交给邮件列表的时候发现中间一个补丁需要更新，此时使用下列命令：</p>
 
-<p>此时需要修改 commit c3751d1，则把<code>pick</code>改为<code>edit</code>即可。保存退出后 git 会 rebase 到需要修改的 commit 处停止，此时可以直接修改内容，然后执行：
-<pre lang="bash">
-git add xxx # mark as resolved
-git commit --amend
-</pre></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git rebase -i HEAD~4
+</span></code></pre></td></tr></table></div></figure>
 
-<p>或者
-<pre lang="bash">
-git reset --soft HEAD^
-#edit edit edit
-git commit -a -s -c ORIG_HEAD
-</pre></p>
 
-<p>之后执行"<code>git rebase --continue</code>"即可。</p>
+<p>出现编辑窗口如下：</p>
 
-<p>突然想起来一年前就请教过 wangcong 这个问题，只不过当时对<code>git rebase</code>完全不了解，后来就忘了，惭愧-_-|||。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pick 21732a8 mm/swapping01: new testcase
+</span><span class='line'>pick c3751d1 hugemmap01: clean-up format
+</span><span class='line'>pick d75449c mm/swapping01: change sleep <span class="nb">time </span>to <span class="m">5</span> sec
+</span></code></pre></td></tr></table></div></figure>
 
-<p><strong>Update 2</strong>: 同样感谢 Iven 的指点，可以去看看他的文章：<a href="http://www.kissuki.com/?p=135" target="_blank">http://www.kissuki.com/?p=135</a></p>
+
+<p>此时需要修改 <code>commit c3751d1</code>，则把 <code>pick</code> 改为 <code>edit</code> 即可。保存退出后 git 会 rebase 到需要修改的 commit 处停止，此时可以直接修改内容，然后执行：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git add xxx <span class="c"># mark as resolved</span>
+</span><span class='line'>git commit --amend
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>或者</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git reset --soft HEAD^
+</span><span class='line'><span class="c">#edit edit edit</span>
+</span><span class='line'>git commit -a -s -c ORIG_HEAD
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>之后执行 <code>git rebase --continue</code> 即可。</p>
+
+<p>突然想起来一年前就请教过 wangcong 这个问题，只不过当时对 <code>git rebase</code> 完全不了解，后来就忘了，惭愧 -_-|||。</p>
+
+<p><strong>Update 2</strong>: 同样感谢 Iven 的指点，可以去看看他的文章: <a href="http://www.kissuki.com/?p=135">http://www.kissuki.com/?p=135</a></p>
 ]]></content>
   </entry>
   

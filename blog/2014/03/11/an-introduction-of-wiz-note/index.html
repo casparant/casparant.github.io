@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="Linux 上记笔记，向来很纠结。以前用过一段时间Zim，后来变成了 KDE 党，只好果断抛弃了。找到BasKet，功能还是很强大的，可是格式一团糟。无法以 Plain Text 存储文字，拷贝来拷贝去的时候经常格式混乱。也尝试在 Web 端存东西，结果还是发现不习惯，而且离线无法访问。 &hellip;">
+  <meta name="description" content="Linux 上记笔记，向来很纠结。以前用过一段时间 Zim，后来变成了 KDE 党，只好果断抛弃了。找到 BasKet，功能还是很强大的，可是格式一团糟。无法以 Plain Text 存储文字，拷贝来拷贝去的时候经常格式混乱。也尝试在 Web 端存东西，结果还是发现不习惯，而且离线无法访问。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,17 +104,17 @@
   </header>
 
 
-<div class="entry-content"><p>Linux 上记笔记，向来很纠结。以前用过一段时间<a href="http://zim-wiki.org/index.html" target="_blank">Zim</a>，后来变成了 KDE 党，只好果断抛弃了。找到<a href="http://basket.kde.org/" target="_blank">BasKet</a>，功能还是很强大的，可是格式一团糟。无法以 Plain Text 存储文字，拷贝来拷贝去的时候经常格式混乱。也尝试在 Web 端存东西，结果还是发现不习惯，而且离线无法访问。</p>
+<div class="entry-content"><p>Linux 上记笔记，向来很纠结。以前用过一段时间 <a href="http://zim-wiki.org/index.html">Zim</a>，后来变成了 KDE 党，只好果断抛弃了。找到 <a href="http://basket.kde.org/">BasKet</a>，功能还是很强大的，可是格式一团糟。无法以 Plain Text 存储文字，拷贝来拷贝去的时候经常格式混乱。也尝试在 Web 端存东西，结果还是发现不习惯，而且离线无法访问。</p>
 
-<p>然后今天工作的时候有同事提到客户报告鄙厂<a href="http://www.aliyun.com/" target="_blank">产品</a>的问题，碰到了故障（当然在内核组大牛们的努力下该问题已经解决了），我就好奇去看了一下报告者信息，然后就发现了这个笔记软件：<a href="http://wiz.cn/index.html" target="_blank">Wiz</a>. 看起来还挺 Geek 的，有手机端有 Linux 端有 Mac OS 端。于是去 gentoo-zh 的 Overlay 找了一圈（是的，5 年过去了我还在 Gentoo 的不归路上慢慢走着），<a href="https://github.com/microcai/gentoo-zh/blob/master/app-text/wiznote/wiznote-2.0.64.ebuild" target="_blank">找到了</a>。</p>
+<p>然后今天工作的时候有同事提到客户报告鄙厂<a href="http://www.aliyun.com/">产品</a>的问题，碰到了故障（当然在内核组大牛们的努力下该问题已经解决了），我就好奇去看了一下报告者信息，然后就发现了这个笔记软件：<a href="http://wiz.cn/index.html">Wiz</a>. 看起来还挺 Geek 的，有手机端有 Linux 端有 Mac 端。于是去 gentoo-zh 的 Overlay 找了一圈（是的，5 年过去了我还在 Gentoo 的不归路上慢慢走着），<a href="https://github.com/microcai/gentoo-zh/blob/master/app-text/wiznote/wiznote-2.0.64.ebuild">找到了</a>。</p>
 
 <p>看起来样子还不错，还比较清爽，也可以格式化为 Plain Text。功能上比 BasKet 少一些，但是用着还是挺舒服的。</p>
 
 <p>最不能忍受的问题是没有任务栏图标，于是接着搜。</p>
 
-<p>找到了一年前某人的一个没有 Merge 的<a href="https://github.com/WizTeam/WizQTClient/pull/80" target="_blank">Pull Request</a>，然后稍微修改了一下补丁，打到源代码里，发现可以用了。</p>
+<p>找到了一年前某人的一个没有 Merge 的 <a href="https://github.com/WizTeam/WizQTClient/pull/80">Pull Request</a>，然后稍微修改了一下补丁，打到源代码里，发现可以用了。</p>
 
-<p>修改后的 ebuild 请<a href="https://github.com/casparant/caspar-gentoo/blob/master/app-text/wiznote/wiznote-2.1.0_beta.ebuild" target="_blank">猛戳</a>。</p>
+<p>修改后的 ebuild 请<a href="https://github.com/casparant/caspar-gentoo/blob/master/app-text/wiznote/wiznote-2.1.0_beta.ebuild">猛戳</a>。</p>
 
 <p>最后，有更靠谱的笔记软件请推荐。</p>
 </div>
