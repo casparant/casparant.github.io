@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="在Linux的众多发行版中，ubuntu以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数Linux用户，本文即以Ubuntu Linux 7.10为例，讲解其安装与配置。 插一句：Linux初学者推荐下载一本命令行手册，点此下载&gt;&gt;&gt;(特别感谢yegle同学倾心制作！) &hellip;">
+  <meta name="description" content="在 Linux 的众多发行版中，ubuntu 以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数 Linux 用户，本文即以 Ubuntu Linux 7.10 为例，讲解其安装与配置。 插一句：Linux 初学者推荐下载一本命令行手册，点此下载&gt;&gt;&gt;( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -103,19 +104,19 @@
   </header>
 
 
-<div class="entry-content"><p>在Linux的众多发行版中，ubuntu以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数Linux用户，本文即以Ubuntu Linux 7.10为例，讲解其安装与配置。</p>
+<div class="entry-content"><p>在 Linux 的众多发行版中，ubuntu 以其良好的操作界面、丰富而方便的软件包管理器，赢得了多数 Linux 用户，本文即以 Ubuntu Linux 7.10 为例，讲解其安装与配置。</p>
 
-<p>插一句：Linux初学者推荐下载一本命令行手册，<a href="http://docs.google.com/fileview?id=0B-GDvj9JsmanY2Q4Nzg4M2EtOGVkMC00NzU1LWE5ZDUtMjNkNWI3OWFhNjdj&hl=zh_CN">点此下载&gt;&gt;&gt;</a>(特别感谢<a href="http://yegle.net" target="_blank">yegle</a>同学倾心制作！)</p>
+<p>插一句：Linux 初学者推荐下载一本命令行手册，<a href="http://docs.google.com/fileview?id=0B-GDvj9JsmanY2Q4Nzg4M2EtOGVkMC00NzU1LWE5ZDUtMjNkNWI3OWFhNjdj&hl=zh_CN">点此下载&gt;&gt;&gt;</a>(特别感谢<a href="http://yegle.net" target="_blank">yegle</a>同学倾心制作！)</p>
 
-<p>使用LiveCD启动Ubuntu7.10操作系统后，双击桌面上的"Install"图标即可开始安装。选择语言、键盘布局、时区，这些步骤都很简单。在进入“分区”阶段，选择“手动”，否则小心你的数据被误删；一般新手只分一个格式为EXT3的/分区和一个swap分区即可，swap分区的大小不超过内存即可。接下去进行用户名设置等操作，也比较容易。</p>
+<p>使用 LiveCD 启动 Ubuntu7.10 操作系统后，双击桌面上的"Install"图标即可开始安装。选择语言、键盘布局、时区，这些步骤都很简单。在进入“分区”阶段，选择“手动”，否则小心你的数据被误删；一般新手只分一个格式为 EXT3 的/分区和一个 swap 分区即可，swap 分区的大小不超过内存即可。接下去进行用户名设置等操作，也比较容易。</p>
 
-<p>接下来就可以执行安装，此时一定要注意拔出网线，否则Ubuntu7.10在安装程序进行到后期扫描镜像站点时会卡住，只能重新安装Ubuntu。</p>
+<p>接下来就可以执行安装，此时一定要注意拔出网线，否则 Ubuntu7.10 在安装程序进行到后期扫描镜像站点时会卡住，只能重新安装 Ubuntu。</p>
 
-<p>另外，系统时间可能不正确，那么可以等重启系统之后进行设置。安装完系统之后只需要把BIOS的时间确认正确就行了。</p>
+<p>另外，系统时间可能不正确，那么可以等重启系统之后进行设置。安装完系统之后只需要把 BIOS 的时间确认正确就行了。</p>
 
-<p>如果你不能进入安装，可能是显卡问题，请下载Alternative的光盘进行文字界面安装。</p>
+<p>如果你不能进入安装，可能是显卡问题，请下载 Alternative 的光盘进行文字界面安装。</p>
 
-<p><!--more-->好了，Ubuntu的安装已经结束，下面是配置系统。</p>
+<p><!--more-->好了，Ubuntu 的安装已经结束，下面是配置系统。</p>
 
 <p>以下所有涉及命令操作均需在终端(Terminal)下完成：应用程序(Application)-&gt;附件(Accessories)-&gt;终端(Terminal)。</p>
 
@@ -194,28 +195,28 @@ sudo apt-get dist-upgrade</pre></p>
 
 <p>如果中文未安装完全，请至<code>"System"-&gt;"Administratation"-&gt;"Language Support"-&gt;"Supported Languages"列表中勾选"Chinese"</code> ，然后按确定下载语言包更新。</p>
 
-<p><h3>配置SCIM输入法</h3></p>
+<p><h3>配置 SCIM 输入法</h3></p>
 
-<p>系统右上角的SCIM图标上点右键，选择"SCIM设置"，在"前端"-&gt;"全局设置"中取消勾选"<code>在所有应用程序中共享一个输入法</code>"和“将预编辑字符嵌入到用户窗口中”，以防止软件之间使用输入法时冲突；在"输入法引擎"-&gt;"全局设置"中取消不需要的输入法，仅保留自己常用的即可。</p>
+<p>系统右上角的 SCIM 图标上点右键，选择"SCIM 设置"，在"前端"-&gt;"全局设置"中取消勾选"<code>在所有应用程序中共享一个输入法</code>"和“将预编辑字符嵌入到用户窗口中”，以防止软件之间使用输入法时冲突；在"输入法引擎"-&gt;"全局设置"中取消不需要的输入法，仅保留自己常用的即可。</p>
 
-<p><h4>解决GTK程序与SCIM输入法的冲突：</h4></p>
+<p><h4>解决 GTK 程序与 SCIM 输入法的冲突：</h4></p>
 
 <p><pre lang="bash">sudo gedit /etc/X11/xinit/xinput.d/scim</pre></p>
 
 <p>修改其中<code>GTK_IM_MODULE=xim</code>一行内容为：<code>GTK_IM_MODULE="scim"</code>
-或者安装scim-bridge:</p>
+或者安装 scim-bridge:</p>
 
 <p><pre lang="bash">sudo apt-get install scim-bridge*</pre></p>
 
 <p><h3>配置系统字体</h3></p>
 
-<p>请到Vista下将msyh.ttf, msyhbd.ttf两个雅黑字体文件拷贝到home路径的.fonts目录下（如果不存在这个目录请新建），完毕后刷新字体缓存（需要管理员权限）</p>
+<p>请到 Vista 下将 msyh.ttf, msyhbd.ttf 两个雅黑字体文件拷贝到 home 路径的.fonts 目录下（如果不存在这个目录请新建），完毕后刷新字体缓存（需要管理员权限）</p>
 
 <p><pre lang="bash">mkdir ~/.fonts
 cp msyh.ttf ~/.fonts && cp msyhbd.ttf ~/.fonts
 sudo fc-cache -fv</pre></p>
 
-<p>到"系统"-&gt;"首选项"-&gt;"外观"-&gt;"字体"处将非"等宽字体"的几项字体均改为"微软雅黑"，"等宽字体"项改为"DejaVu Sans Mono Book"，字体大小酌情改为9或10，渲染方式改为"次像素平滑"。</p>
+<p>到"系统"-&gt;"首选项"-&gt;"外观"-&gt;"字体"处将非"等宽字体"的几项字体均改为"微软雅黑"，"等宽字体"项改为"DejaVu Sans Mono Book"，字体大小酌情改为 9 或 10，渲染方式改为"次像素平滑"。</p>
 
 <p>修改字体配置文件：
 <pre lang="bash">sudo gedit /etc/fonts/language-selector.conf</pre></p>
@@ -230,13 +231,13 @@ sudo fc-cache -fv</pre></p>
 
 <p><h3>系统细节配置</h3></p>
 
-<p>(如果你不打算主用Linux请不要执行此步骤)解决mp3文件ID3标签在Linux下显示乱码问题：</p>
+<p>(如果你不打算主用 Linux 请不要执行此步骤)解决 mp3 文件 ID3 标签在 Linux 下显示乱码问题：</p>
 
-<p>安装mutagen</p>
+<p>安装 mutagen</p>
 
 <p><pre lang="bash">sudo apt-get install python-mutagen</pre></p>
 
-<p>安装完毕在终端中使用命令转换当前目录层下的mp3文件：</p>
+<p>安装完毕在终端中使用命令转换当前目录层下的 mp3 文件：</p>
 
 <p><pre lang="bash">mid3iconv -e gbk *.mp3</pre></p>
 
@@ -244,16 +245,16 @@ sudo fc-cache -fv</pre></p>
 
 <p><pre lang="bash">find . -iname "*.mp3″ -execdir mid3iconv -e gbk {} ;</pre></p>
 
-<p>系统compiz-fusion特效管理器：</p>
+<p>系统 compiz-fusion 特效管理器：</p>
 
 <p><pre lang="bash">sudo apt-get install compizconfig-settings-manager</pre></p>
 
-<p>请注意，系统特效开启需要显卡驱动支持。Ubuntu对ATI显卡支持不是很好，很难开启特效；对NVIDIA及Intel显卡支持较好，只需要在"受限驱动管理器"中将闭源的显卡驱动下载完毕安装重启即可。</p>
+<p>请注意，系统特效开启需要显卡驱动支持。Ubuntu 对 ATI 显卡支持不是很好，很难开启特效；对 NVIDIA 及 Intel 显卡支持较好，只需要在"受限驱动管理器"中将闭源的显卡驱动下载完毕安装重启即可。</p>
 
-<p>Firefox扩展
+<p>Firefox 扩展
 <blockquote>downthemall(下载工具)<br />
 gladder(穿墙工具)<br />
-Gmail Manager(Gmail邮件通知)<br />
+Gmail Manager(Gmail 邮件通知)<br />
 Tab Mix Plus(标签栏加强工具)<br />
 All-in-One Gestures(右键手势)<br />
 Extended Statusbar(个性状态条)<br />
@@ -264,29 +265,29 @@ Colorful Tabs(彩色标签栏)</blockquote></p>
 
 <p>自带音乐播放器——rhythmbox</p>
 
-<p>需要安装解码器gstreamer，请参考下一步</p>
+<p>需要安装解码器 gstreamer，请参考下一步</p>
 
 <p>音视频解码器——gstreamer
 <pre lang="bash">sudo apt-get install gstreamer0.10-*</pre></p>
 
-<p>win32视频解码器——w32codecs</p>
+<p>win32 视频解码器——w32codecs</p>
 
 <p>如果你的网速还不错，可以尝试如下命令：</p>
 
 <p><pre lang="bash">wget -c http://www.debian-multimedia.org/pool/main/w/w32codecs/w32codecs_20071007-0.1_i386.deb
 sudo dpkg -i w32codecs_20071007-0.1_i386.deb</pre></p>
 
-<p>否则请在XP下用迅雷等软件下载。</p>
+<p>否则请在 XP 下用迅雷等软件下载。</p>
 
 <p>视频播放工具——Mplayer</p>
 
-<p>Mplayer在安装了w32codecs后就是一个通用播放器。</p>
+<p>Mplayer 在安装了 w32codecs 后就是一个通用播放器。</p>
 
 <p><pre lang="bash">sudo apt-get install mplayer mplayer-fonts mozilla-mplayer</pre></p>
 
 <p>◎解决点击视频播放时出现的"fatal error"现象：</p>
 
-<p>在<code>preferences-&gt;video</code>中选择通用驱动X11</p>
+<p>在<code>preferences-&gt;video</code>中选择通用驱动 X11</p>
 
 <p>◎解决点击文件名为中文的视频无法打开的现象：</p>
 
@@ -322,23 +323,23 @@ sudo dpkg -i w32codecs_20071007-0.1_i386.deb</pre></p>
 
 <p>下载地址：<a href="http://www.real.com/linux" target="_blank">http://www.real.com/linux</a></p>
 
-<p>因为vlc不能播放rmvb，所以还需要安装realplay。下载完毕后，在终端中定位到安装文件所在路径，执行</p>
+<p>因为 vlc 不能播放 rmvb，所以还需要安装 realplay。下载完毕后，在终端中定位到安装文件所在路径，执行</p>
 
 <p><pre lang="bash">sudo ./RealPlayer10GOLD.bin</pre></p>
 
-<p>◎解决Realplay播放无声问题：</p>
+<p>◎解决 Realplay 播放无声问题：</p>
 
-<p>安装alsa-oss</p>
+<p>安装 alsa-oss</p>
 
 <p><pre lang="bash">sudo apt-get install alsa-oss</pre></p>
 
-<p>然后打开realplay的启动脚本文件：</p>
+<p>然后打开 realplay 的启动脚本文件：</p>
 
 <p><pre lang="bash">sudo gedit /usr/bin/realplay</pre></p>
 
 <p>找到<code>$REALPLAYBIN "$@" </code>，在其前面加上<code>aoss</code></p>
 
-<p>◎解决与SCIM输入法冲突导致不能打开realplay的问题</p>
+<p>◎解决与 SCIM 输入法冲突导致不能打开 realplay 的问题</p>
 
 <p>仍旧打开启动脚本文件，在文件最开头的<code>#!/bin/sh</code>行之后加入一行：<code>export GTK_IM_MODULE=xim</code>，保存关闭。</p>
 
@@ -348,7 +349,7 @@ sudo dpkg -i w32codecs_20071007-0.1_i386.deb</pre></p>
 
 <p><pre lang="bash">sudo apt-get install vim-full</pre></p>
 
-<p>◎让vim编辑器高亮显示关键字：</p>
+<p>◎让 vim 编辑器高亮显示关键字：</p>
 
 <p>修改配置文件：
 <pre lang="bash">cp /etc/vim/vimrc ~/.vimrc
@@ -356,17 +357,17 @@ vi ~/.vimrc</pre></p>
 
 <p>编辑<code>"syntax on</code>处，去掉"符号，保存退出</p>
 
-<p>如想实现其他如自动缩进、括号匹配、行号等效果，请<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanZDBiN2Q4NTQtZmZjNy00MDJmLWE3MDQtNmFhNTI0ZDNiN2Q5&hl=zh_CN" target="_blank">到此处下载我的.vimrc文件</a>，放到~/下即可。</p>
+<p>如想实现其他如自动缩进、括号匹配、行号等效果，请<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanZDBiN2Q4NTQtZmZjNy00MDJmLWE3MDQtNmFhNTI0ZDNiN2Q5&hl=zh_CN" target="_blank">到此处下载我的.vimrc 文件</a>，放到~/下即可。</p>
 
 <p>gcc/g++编程包——build-essential</p>
 
-<p>此软件包含了gcc/gcc、make等诸多工具，只需执行：</p>
+<p>此软件包含了 gcc/gcc、make 等诸多工具，只需执行：</p>
 
 <p><pre lang="bash">sudo apt-get install build-essential</pre></p>
 
 <p>即可全部安装。</p>
 
-<p>jdk、java插件</p>
+<p>jdk、java 插件</p>
 
 <p><pre lang="bash">sudo apt-get install sun-java6-jdk sun-java6-plugin</pre></p>
 
@@ -374,51 +375,51 @@ vi ~/.vimrc</pre></p>
 
 <p><pre lang="bash">sudo apt-get install eclipse</pre></p>
 
-<p>同时可以去<a href="http://www.eclipse.org/">http://www.eclipse.org/</a>下载eclipse的C++集成开发环境插件CDT</p>
+<p>同时可以去<a href="http://www.eclipse.org/">http://www.eclipse.org/</a>下载 eclipse 的 C++集成开发环境插件 CDT</p>
 
 <p><h3>常用网络资源传输工具解决方案</h3></p>
 
-<p>FTP下载——gFTP</p>
+<p>FTP 下载——gFTP</p>
 
 <p><pre lang="bash">sudo apt-get install gftp</pre></p>
 
-<p>◎解决gFTP显示中文列表乱码问题：</p>
+<p>◎解决 gFTP 显示中文列表乱码问题：</p>
 
 <p>修改启动脚本文件：</p>
 
 <p><pre lang="bash">sudo gedit /usr/bin/gftp</pre></p>
 
-<p>在#!/bin/sh之后加上一行：<code>export LANG=zh_CN</code></p>
+<p>在#!/bin/sh 之后加上一行：<code>export LANG=zh_CN</code></p>
 
-<p>保存并执行命令生成相应的locale：</p>
+<p>保存并执行命令生成相应的 locale：</p>
 
 <p><pre lang="bash">sudo locale-gen zh_CN</pre></p>
 
-<p>如果仍然不行，删除gftp的配置文件即可：</p>
+<p>如果仍然不行，删除 gftp 的配置文件即可：</p>
 
 <p><pre lang="bash">rm -rf ~/.gftp</pre></p>
 
-<p>即时通讯软件QQ替代品——eva</p>
+<p>即时通讯软件 QQ 替代品——eva</p>
 
 <p><pre lang="bash">sudo apt-get install eva</pre></p>
 
 <p>◎解决聊天窗口选中文字点右键崩溃问题：</p>
 
-<p>安装kdebase-bin，kdebase-data</p>
+<p>安装 kdebase-bin，kdebase-data</p>
 
 <p><pre lang="bash">sudo apt-get install kdebase-bin kdebase-data</pre></p>
 
 <p><h3>其他工具软件</h3></p>
 
-<p>rar压缩&amp;解压缩、rpm包转换工具、7zip</p>
+<p>rar 压缩&amp;解压缩、rpm 包转换工具、7zip</p>
 
 <p><pre lang="bash">sudo apt-get install rar unrar alien p7zip-full</pre></p>
 
-<p>chm电子书查看器——kchmviewer</p>
+<p>chm 电子书查看器——kchmviewer</p>
 
 <p><pre lang="bash">sudo apt-get install kchmviewer</pre></p>
 
-<p>pdf电子书阅读器——Adobe Reader</p>
+<p>pdf 电子书阅读器——Adobe Reader</p>
 
 <p><a href="http://www.adobe.com/products/acrobat/readstep2_allversions.html" target="_blank">http://www.adobe.com/products/acrobat/readstep2_allversions.html</a></p>
 
@@ -430,31 +431,31 @@ vi ~/.vimrc</pre></p>
 
 <p>虚拟机——virtualbox</p>
 
-<p>有时候想用XP，但是不想重启用另一个系统，此时可以装一个虚拟机。</p>
+<p>有时候想用 XP，但是不想重启用另一个系统，此时可以装一个虚拟机。</p>
 
-<p>源中的vbox是开源的，效果没有闭源的vbox好。闭源的vbox可以到<a href="http://www.virtualbox.org/">http://www.virtualbox.org/</a>下载。</p>
+<p>源中的 vbox 是开源的，效果没有闭源的 vbox 好。闭源的 vbox 可以到<a href="http://www.virtualbox.org/">http://www.virtualbox.org/</a>下载。</p>
 
 <p>解决启动虚拟机时提示的权限问题：</p>
 
 <p>"系统"-&gt;"系统管理"-&gt;"用户和组"-&gt;VBOXUSERS-&gt;“管理组”-&gt;"添加用户权限"-&gt;重新登陆系统</p>
 
-<p>解决Vbox在XP下及其他操作系统下享问题</p>
+<p>解决 Vbox 在 XP 下及其他操作系统下享问题</p>
 
-<p>无论哪个虚拟系统，都需要先安装虚拟辅助工具包，设置好主机的共享文件夹，然后在虚拟XP下"我的电脑"中，映射网络驱动器\vboxsvr\XXX</p>
+<p>无论哪个虚拟系统，都需要先安装虚拟辅助工具包，设置好主机的共享文件夹，然后在虚拟 XP 下"我的电脑"中，映射网络驱动器\vboxsvr\XXX</p>
 
-<p>在其他Linux系统中挂载mount -t XXX sdaX /media/sdaX</p>
+<p>在其他 Linux 系统中挂载 mount -t XXX sdaX /media/sdaX</p>
 
-<p>Windows程序模拟器——wine</p>
+<p>Windows 程序模拟器——wine</p>
 
 <p><pre lang="bash">sudo apt-get install wine</pre></p>
 
-<p>“Wine Is Not a Emulator”，它提供了一系列Win下的API，使得Windows程序在Linux下的运行成为可能。具体可以参考我的令一篇文章“<a href="http://www.casparzhang.com/blog/2008/01/26/wine-in-ubuntu/" target="_blank">Wine在Ubuntu下的优异表现</a>”</p>
+<p>“Wine Is Not a Emulator”，它提供了一系列 Win 下的 API，使得 Windows 程序在 Linux 下的运行成为可能。具体可以参考我的令一篇文章“<a href="http://www.casparzhang.com/blog/2008/01/26/wine-in-ubuntu/" target="_blank">Wine 在 Ubuntu 下的优异表现</a>”</p>
 
 <p>BBS Client —— Qterm</p>
 
 <p><pre lang="bash">sudo apt-get install qterm</pre></p>
 
-<p>Gmail邮件监测工具 —— checkgmail</p>
+<p>Gmail 邮件监测工具 —— checkgmail</p>
 
 <p><pre lang="bash">sudo apt-get install checkgmail</pre></p>
 </div>
@@ -477,7 +478,7 @@ vi ~/.vimrc</pre></p>
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -495,10 +496,10 @@ vi ~/.vimrc</pre></p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2008/01/17/some-acquires/" title="Previous Post: 两个收购，N个收购">&laquo; 两个收购，N个收购</a>
+        <a class="basic-alignment left" href="/blog/2008/01/17/some-acquires/" title="Previous Post: 两个收购， N 个收购">&laquo; 两个收购， N 个收购</a>
       
       
-        <a class="basic-alignment right" href="/blog/2008/01/21/linux-about-boot/" title="Next Post: Linux启动时的一些闲言碎语">Linux启动时的一些闲言碎语 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2008/01/21/linux-about-boot/" title="Next Post: Linux 启动时的一些闲言碎语">Linux 启动时的一些闲言碎语 &raquo;</a>
       
     </p>
   </footer>

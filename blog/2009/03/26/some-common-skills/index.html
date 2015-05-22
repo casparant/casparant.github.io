@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="因为我在KDE下不想装那个GNOME依赖关系超多的tomboy，所以暂时把这些非常过时的日常技巧发上来，众人不要怪我凑日志数哦～ 1. MySQL授权用户: GRANT ALL PRIVILEGES
+  <meta name="description" content="因为我在 KDE 下不想装那个 GNOME 依赖关系超多的 tomboy，所以暂时把这些非常过时的日常技巧发上来，众人不要怪我凑日志数哦～ 1. MySQL 授权用户: GRANT ALL PRIVILEGES
 ON `DATABASE`.`TABLE`
 TO 'USER'@'DOMAIN' &hellip;">
   
@@ -75,6 +75,7 @@ TO 'USER'@'DOMAIN' &hellip;">
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -105,9 +106,9 @@ TO 'USER'@'DOMAIN' &hellip;">
   </header>
 
 
-<div class="entry-content"><p>因为我在KDE下不想装那个GNOME依赖关系超多的tomboy，所以暂时把这些非常过时的日常技巧发上来，众人不要怪我凑日志数哦～</p>
+<div class="entry-content"><p>因为我在 KDE 下不想装那个 GNOME 依赖关系超多的 tomboy，所以暂时把这些非常过时的日常技巧发上来，众人不要怪我凑日志数哦～</p>
 
-<p>1. MySQL授权用户: </p>
+<p>1. MySQL 授权用户: </p>
 
 <p><pre lang="mysql">GRANT ALL PRIVILEGES
 ON `DATABASE`.`TABLE`
@@ -121,17 +122,17 @@ WITH GRANT OPTION ;</pre></p>
 
 <p>2. 批量修改文本文件的编码：find . -iname '*.*' -execdir iconv -f GB18030 -t UTF-8 -o {} {} \;</p>
 
-<p>批量缩小图片到50%： for i in *; do convert $i -resize 50%x50% sm-$i; done</p>
+<p>批量缩小图片到 50%： for i in *; do convert $i -resize 50%x50% sm-$i; done</p>
 
-<p>3. HTML中使用脚本实现网页跳转：< script>window.location="http://url/to/be/redirected"< /script></p>
+<p>3. HTML 中使用脚本实现网页跳转：< script>window.location="http://url/to/be/redirected"< /script></p>
 
-<p>4. VIM中把TAB批量转为空格 :retab</p>
+<p>4. VIM 中把 TAB 批量转为空格 :retab</p>
 
-<p>VIM中使用F3键关闭粘贴时的缩进：set pastetoggle=< F3></p>
+<p>VIM 中使用 F3 键关闭粘贴时的缩进：set pastetoggle=< F3></p>
 
-<p>VIM中删除含特定字符串的行：g/str/d</p>
+<p>VIM 中删除含特定字符串的行：g/str/d</p>
 
-<p><!--more-->5. 从文件夹制作ISO文件：</p>
+<p><!--more-->5. 从文件夹制作 ISO 文件：</p>
 
 <p><pre lang="bash">mkisofs -J -T -R -V volume_id -o mycd.iso source_dir</pre></p>
 
@@ -140,35 +141,35 @@ WITH GRANT OPTION ;</pre></p>
 <p><blockquote>-J/-joliet 使用 Joliet 格式的目录与文件名称<br />
 -T/-translation-table 为每个目录都生成一个 TRANS.TBL 文件名转换表文件<br />
 -R/-rock 使用 Rock Ridge Extensions<br />
--V/-volid <光盘ID> 指定光盘的卷标ID</blockquote></p>
+-V/-volid <光盘 ID> 指定光盘的卷标 ID</blockquote></p>
 
-<p>6. GNOME下关闭splash screen: 在gconf-editor中，apps->gnome-session->options->show_splash_screen</p>
+<p>6. GNOME 下关闭 splash screen: 在 gconf-editor 中，apps->gnome-session->options->show_splash_screen</p>
 
-<p>GNOME下自动挂载NTFS且解决乱码：system->storage->default_options->ntfs/ntfs-3g->mount_options|utf8</p>
+<p>GNOME 下自动挂载 NTFS 且解决乱码：system->storage->default_options->ntfs/ntfs-3g->mount_options|utf8</p>
 
-<p>7. 新安装的Firefox修改设定防止数据库过大导致浏览缓慢(来自LDCN)：
+<p>7. 新安装的 Firefox 修改设定防止数据库过大导致浏览缓慢(来自 LDCN)：
 <blockquote>browser.history_expire_days：3<br />
 browser.history_expire_days.mirror：7<br />
 browser.history_expire_days_min：1<br />
 browser.history_expire_sites：4000</blockquote></p>
 
-<p>如果是已经使用过一段时间的Firefox，还需要清理~/.mozilla/firefox下的.db数据库文件。</p>
+<p>如果是已经使用过一段时间的 Firefox，还需要清理~/.mozilla/firefox 下的.db 数据库文件。</p>
 
-<p>8. Gentoo中文man page乱码</p>
+<p>8. Gentoo 中文 man page 乱码</p>
 
-<p>安装groff-utf8之后</p>
+<p>安装 groff-utf8 之后</p>
 
 <p><pre lang="bash">vim /etc/man.conf</pre></p>
 
 <p>将里面的 NROFF 那行改为 NROFF /usr/bin/groff-utf8 -Tutf8 -c -mandoc</p>
 
-<p>9. wlan0显示：SIOCSIFFLAGS: No such device</p>
+<p>9. wlan0 显示：SIOCSIFFLAGS: No such device</p>
 
 <p>Removing the net.wlan0 symlink in /etc/init.d/ makes the card work fine.</p>
 
-<p>10. nm-applet因权限问题不能启动：</p>
+<p>10. nm-applet 因权限问题不能启动：</p>
 
-<p>修改/etc/dbus-1/system.d/NetworkManager.conf 和 /etc/dbus-1/system.d/nm-applet.conf，下列三处"allow"，如果为deny，则改回allow</p>
+<p>修改/etc/dbus-1/system.d/NetworkManager.conf 和 /etc/dbus-1/system.d/nm-applet.conf，下列三处"allow"，如果为 deny，则改回 allow</p>
 
 <p><pre lang="xml" line="1"><policy context="default">
 <allow own="org.freedesktop.NetworkManager" />
@@ -195,7 +196,7 @@ browser.history_expire_sites：4000</blockquote></p>
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -213,10 +214,10 @@ browser.history_expire_sites：4000</blockquote></p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/" title="Previous Post: Gentoo新老问题-Milestone2">&laquo; Gentoo新老问题-Milestone2</a>
+        <a class="basic-alignment left" href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/" title="Previous Post: Gentoo 新老问题 (Milestone 2)">&laquo; Gentoo 新老问题 (Milestone 2)</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/03/30/how-to-create-a-qt-project/" title="Next Post: 如何创建QT工程">如何创建QT工程 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/03/30/how-to-create-a-qt-project/" title="Next Post: 如何创建 Qt 工程">如何创建 Qt 工程 &raquo;</a>
       
     </p>
   </footer>

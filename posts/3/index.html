@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="嗯，期盼了好久的GIMP单窗口模式终于在新的开发版本里面出现了，尝试一下。 我在Gentoo下用的是9999版本，但是portage中的9999版本有编译错误，在bugzilla上看到可以使用的arcon这个overlay,遂换之，安装顺利完成。 打开之后发现默认并没有启用单窗口模式，得在“窗口” &hellip;">
+  <meta name="description" content="嗯，期盼了好久的 GIMP 单窗口模式终于在新的开发版本里面出现了，尝试一下。 我在 Gentoo 下用的是 9999 版本，但是 portage 中的 9999 版本有编译错误，在 bugzilla 上看到可以使用的 arcon 这个 overlay,遂换之，安装顺利完成。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -87,7 +88,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2010/01/06/try-gimp-single-window-mode/">试用GIMP的单窗口模式</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/01/06/try-gimp-single-window-mode/">试用 GIMP 的单窗口模式</a></h1>
     
     
       <p class="meta">
@@ -106,9 +107,9 @@
   </header>
 
 
-  <div class="entry-content"><p>嗯，期盼了好久的GIMP单窗口模式终于在新的开发版本里面出现了，尝试一下。</p>
+  <div class="entry-content"><p>嗯，期盼了好久的 GIMP 单窗口模式终于在新的开发版本里面出现了，尝试一下。</p>
 
-<p>我在Gentoo下用的是9999版本，但是portage中的9999版本有编译错误，在bugzilla上看到可以使用的arcon这个overlay,遂换之，安装顺利完成。</p>
+<p>我在 Gentoo 下用的是 9999 版本，但是 portage 中的 9999 版本有编译错误，在 bugzilla 上看到可以使用的 arcon 这个 overlay,遂换之，安装顺利完成。</p>
 
 <p>打开之后发现默认并没有启用单窗口模式，得在“窗口”菜单栏中勾选“启用单窗口模式”。效果如图：</p>
 
@@ -130,7 +131,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/12/23/some-notes-of-building-wordpress-blog/">新近摆弄WP的一点备忘</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/12/23/some-notes-of-building-wordpress-blog/">新近摆弄 WP 的一点备忘</a></h1>
     
     
       <p class="meta">
@@ -149,13 +150,13 @@
   </header>
 
 
-  <div class="entry-content"><p>最近在加班之余还把自己的Blog整理了一遍，整理过程中发现这不知不觉就过去了一年。一年改变了好多东西，唯有折腾精神不变。</p>
+  <div class="entry-content"><p>最近在加班之余还把自己的 Blog 整理了一遍，整理过程中发现这不知不觉就过去了一年。一年改变了好多东西，唯有折腾精神不变。</p>
 
-<p>首先是升级WP到了2.9，然后把Blog主题换了，在网上选了一款比较清爽的主题，<a href="http://www.neoease.com" target="_blank">mg12</a>的elegant box主题。这位主题作者的设计很对我胃口，上次用了他大名鼎鼎的iNove，感觉良好，情绪稳定。</p>
+<p>首先是升级 WP 到了 2.9，然后把 Blog 主题换了，在网上选了一款比较清爽的主题，<a href="http://www.neoease.com" target="_blank">mg12</a>的 elegant box 主题。这位主题作者的设计很对我胃口，上次用了他大名鼎鼎的 iNove，感觉良好，情绪稳定。</p>
 
-<p>然后就整理了一下插件，自己hack了一下主题。原本辛辛苦苦hack了好几个小时的代码，把wp-thread-comment的回复样式弄得跟原生界面一样了，结果发现elegant box主题在页面上不能正确回复评论，而且不能正确显示分页。看了代码才发现，从wp2.7开始好像就自带了嵌套回复、评论分页功能，从这个版本开始主题模板中的comments.php就和以前不一样了。新的主题模板有仿佛和wp-thread-comment冲突。不过wp-thread-comment里面用的parent字段和wp原生嵌套功能的字段是一样的，所以关闭了wp-thread-comment之后嵌套评论还在。只是没有了邮件发送通知功能，网上再搜搜，发现<a href="http://fairyfish.net" target="_blank">denishua</a>的<a href="http://fairyfish.net/2008/11/03/comment-reply-notification/" target="_blank">Comment Reply Notification</a>把邮件发送功能从wp-thread-comment中抽取出来单独而成的，正和我意，于是装上。然后又发现评论上方自带了引言功能，那么Quoter这个插件也可以下课了。看来好久没有折腾wp，那是相当Out啊。</p>
+<p>然后就整理了一下插件，自己 hack 了一下主题。原本辛辛苦苦 hack 了好几个小时的代码，把 wp-thread-comment 的回复样式弄得跟原生界面一样了，结果发现 elegant box 主题在页面上不能正确回复评论，而且不能正确显示分页。看了代码才发现，从 wp2.7 开始好像就自带了嵌套回复、评论分页功能，从这个版本开始主题模板中的 comments.php 就和以前不一样了。新的主题模板有仿佛和 wp-thread-comment 冲突。不过 wp-thread-comment 里面用的 parent 字段和 wp 原生嵌套功能的字段是一样的，所以关闭了 wp-thread-comment 之后嵌套评论还在。只是没有了邮件发送通知功能，网上再搜搜，发现<a href="http://fairyfish.net" target="_blank">denishua</a>的<a href="http://fairyfish.net/2008/11/03/comment-reply-notification/" target="_blank">Comment Reply Notification</a>把邮件发送功能从 wp-thread-comment 中抽取出来单独而成的，正和我意，于是装上。然后又发现评论上方自带了引言功能，那么 Quoter 这个插件也可以下课了。看来好久没有折腾 wp，那是相当 Out 啊。</p>
 
-<p>装了几个锦上添花的插件：<a href="http://wordpress.org/extend/plugins/wp-recentcomments/" target="_blank">WP-RecentComments</a>, <a href="http://wordpress.org/extend/plugins/wp-multicollinks/" target="_blank">WP-MultiColLinks</a>, <a href="http://wordpress.org/extend/plugins/wp-easyarchives/" target="_blank">WP-EasyArchives</a>，作者都是mg12，主要是让版面排得更好看一些，其实不用也没太大影响。</p>
+<p>装了几个锦上添花的插件：<a href="http://wordpress.org/extend/plugins/wp-recentcomments/" target="_blank">WP-RecentComments</a>, <a href="http://wordpress.org/extend/plugins/wp-multicollinks/" target="_blank">WP-MultiColLinks</a>, <a href="http://wordpress.org/extend/plugins/wp-easyarchives/" target="_blank">WP-EasyArchives</a>，作者都是 mg12，主要是让版面排得更好看一些，其实不用也没太大影响。</p>
 
 <p></div>
   
@@ -173,7 +174,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/12/03/photograph-related-tools-under-linux/">Linux下与相片有关的工具</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/12/03/photograph-related-tools-under-linux/">Linux 下与相片有关的工具</a></h1>
     
     
       <p class="meta">
@@ -192,17 +193,17 @@
   </header>
 
 
-  <div class="entry-content"><p>前段时间入手了一台入门单反，看网上都是使用光影啊、PS啊、Nikon光盘自带的ViewNX等工具来处理相片，我就想在Linux找到类似的软件。</p>
+  <div class="entry-content"><p>前段时间入手了一台入门单反，看网上都是使用光影啊、PS 啊、Nikon 光盘自带的 ViewNX 等工具来处理相片，我就想在 Linux 找到类似的软件。</p>
 
-<p>PS这个好说，GIMP可以搞定。不过强烈期盼<a href="http://www.gimpusers.com/news/2009-09-19/single-window-mode-gimp-2-8-confirmed.html" target="new">GIMP的单一窗口模式</a>早点出来啊～</p>
+<p>PS 这个好说，GIMP 可以搞定。不过强烈期盼<a href="http://www.gimpusers.com/news/2009-09-19/single-window-mode-gimp-2-8-confirmed.html" target="new">GIMP 的单一窗口模式</a>早点出来啊～</p>
 
-<p>相片管理软件只好暂时用用Wine的Picasa了，同样期待Linux下原生的Picasa，不过这个希望相当渺茫……其实wine的Picasa还是很好用的，修正照片功能也不错，Google招牌式的I'm feeling lucky按钮，对于我等懒人，效果极佳。</p>
+<p>相片管理软件只好暂时用用 Wine 的 Picasa 了，同样期待 Linux 下原生的 Picasa，不过这个希望相当渺茫……其实 wine 的 Picasa 还是很好用的，修正照片功能也不错，Google 招牌式的 I'm feeling lucky 按钮，对于我等懒人，效果极佳。</p>
 
-<p>光影类的软件，我迄今为止没有找到。我主要喜欢光影的加框功能。Linux下尝试过f-spot，最后放弃，主要是修改完出片的时候根本没有压缩，遂怀疑这个软件的相片修正功能是否真正可用，而且没有加框的插件。还发现几个KDE的程序，但是因为要编译安装kdebase-lib这种大块头，我宁愿wine一个光影魔术手……现在调曝光拉曲线加框出片基本上都是靠wine的光影，痛苦啊T_T不过批量操作的时候还是用Picasa～</p>
+<p>光影类的软件，我迄今为止没有找到。我主要喜欢光影的加框功能。Linux 下尝试过 f-spot，最后放弃，主要是修改完出片的时候根本没有压缩，遂怀疑这个软件的相片修正功能是否真正可用，而且没有加框的插件。还发现几个 KDE 的程序，但是因为要编译安装 kdebase-lib 这种大块头，我宁愿 wine 一个光影魔术手……现在调曝光拉曲线加框出片基本上都是靠 wine 的光影，痛苦啊 T_T 不过批量操作的时候还是用 Picasa～</p>
 
-<p>然后就是RAW出片的问题。我在虚拟机上运行ViewNX来修改RAW的片子居然把虚拟机搞假死了，RAW片果然不是省油的灯……只好转战Linux平台，找了许久之后发现这个工具：<a href="http://ufraw.sourceforge.net/" target="new">UFRaw</a>，发现其功能还是很强大的，拉曲线、白平衡、曝光补偿、去噪、裁切缩放都有，而且它能认出我的D3000，在Gentoo中加上gimp的USE Flag后可以在处理完片子后在GIMP中继续编辑。目前没有发现这个软件在功能上的缺失，而且平时因为RAW出片不多，所以对这个功能的研究也比较少。</p>
+<p>然后就是 RAW 出片的问题。我在虚拟机上运行 ViewNX 来修改 RAW 的片子居然把虚拟机搞假死了，RAW 片果然不是省油的灯……只好转战 Linux 平台，找了许久之后发现这个工具：<a href="http://ufraw.sourceforge.net/" target="new">UFRaw</a>，发现其功能还是很强大的，拉曲线、白平衡、曝光补偿、去噪、裁切缩放都有，而且它能认出我的 D3000，在 Gentoo 中加上 gimp 的 USE Flag 后可以在处理完片子后在 GIMP 中继续编辑。目前没有发现这个软件在功能上的缺失，而且平时因为 RAW 出片不多，所以对这个功能的研究也比较少。</p>
 
-<p>其他工具正在继续发掘中，有类似经历的朋友欢迎推荐好用的工具。总体来说Linux下处理相片的工具还是有的，就是找到它们需要一些时间～</p>
+<p>其他工具正在继续发掘中，有类似经历的朋友欢迎推荐好用的工具。总体来说 Linux 下处理相片的工具还是有的，就是找到它们需要一些时间～</p>
 
 <p></div>
   
@@ -220,7 +221,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/10/16/update-to-xorg-server-1-7/">更新到了xorg-server-1.7</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/10/16/update-to-xorg-server-1-7/">更新到了 xorg-server-1.7</a></h1>
     
     
       <p class="meta">
@@ -239,19 +240,19 @@
   </header>
 
 
-  <div class="entry-content"><p>Unmask了xorg-server，然后有一堆x11-libs和x11-protos的包要升级，而且都是给mask了的，于是统统unmask掉，编译。</p>
+  <div class="entry-content"><p>Unmask 了 xorg-server，然后有一堆 x11-libs 和 x11-protos 的包要升级，而且都是给 mask 了的，于是统统 unmask 掉，编译。</p>
 
-<p>关于X相关组件的编译，这里再提一下<a href="http://labs.chinamobile.com/mblog/225">@gnawux</a>说过的：</p>
+<p>关于 X 相关组件的编译，这里再提一下<a href="http://labs.chinamobile.com/mblog/225">@gnawux</a>说过的：</p>
 
-<p><blockquote>先编译mesa-libs,再编译mesa，再编译xorg-server，再编译x11-drivers。其中一个升级了，它后面的软件都得重新依次编译。</blockquote></p>
+<p><blockquote>先编译 mesa-libs,再编译 mesa，再编译 xorg-server，再编译 x11-drivers。其中一个升级了，它后面的软件都得重新依次编译。</blockquote></p>
 
-<p>我现在是升级xorg-server，所以编译完之后要重新编译驱动，尤其是像这种1.6到1.7的跨大版本的更新。其中发现除了udev有一个新版本之外，其他的驱动都是老版本。</p>
+<p>我现在是升级 xorg-server，所以编译完之后要重新编译驱动，尤其是像这种 1.6 到 1.7 的跨大版本的更新。其中发现除了 udev 有一个新版本之外，其他的驱动都是老版本。</p>
 
-<p>编译完了之后发现/etc/X11/xorg.conf的格式有一点点改变，几乎没有影响，有没有增减字段我就不知道了。进了X之后，使用起来没有什么变化。</p>
+<p>编译完了之后发现/etc/X11/xorg.conf 的格式有一点点改变，几乎没有影响，有没有增减字段我就不知道了。进了 X 之后，使用起来没有什么变化。</p>
 
 <p>就这样。</p>
 
-<p>P.S. 今天去面试了某互联网公司，一塌糊涂。看来我真的不适合这样的公司，还是老老实实做我的Linux吧。</p>
+<p>P.S. 今天去面试了某互联网公司，一塌糊涂。看来我真的不适合这样的公司，还是老老实实做我的 Linux 吧。</p>
 </div>
   
   
@@ -264,7 +265,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/08/29/make-gpm-use-notify-osd/">让gnome-power-manager使用notify-osd通知</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/08/29/make-gpm-use-notify-osd/">让 Gnome-power-manager 使用 Notify-osd 通知</a></h1>
     
     
       <p class="meta">
@@ -283,15 +284,15 @@
   </header>
 
 
-  <div class="entry-content"><p>感谢<a href="http://imtx.cn" target="new">Tualatrix</a>同学对Notify-OSD, pidgin-libnotify, notification-daemon等包的hack，让我用上了Ubuntu下的Notify-OSD特性。不过因为笔记本经常要拔电源，这gnome-power-manager的事件通知还不能使用notify-osd，一拔电源就跳出窗口让人不爽，上网搜索，终于找到了解决方案。</p>
+  <div class="entry-content"><p>感谢<a href="http://imtx.cn" target="new">Tualatrix</a>同学对 Notify-OSD, pidgin-libnotify, notification-daemon 等包的 hack，让我用上了 Ubuntu 下的 Notify-OSD 特性。不过因为笔记本经常要拔电源，这 gnome-power-manager 的事件通知还不能使用 notify-osd，一拔电源就跳出窗口让人不爽，上网搜索，终于找到了解决方案。</p>
 
-<p>在AUR里面找到了这个: <a href="http://aur.archlinux.org/packages.php?ID=24699" target="new">http://aur.archlinux.org/packages.php?ID=24699</a>, 里面包含了notify-osd的补丁。可惜这是for 2.24的gpm的，直接patch会报错。我把它下载下来，修改了一下，让它能用在2.26.4的gpm上。修改后的patch可以从我在github上的overlay里下到：<a href="http://github.com/casparant/caspar-gentoo/tree/master" target="new">http://github.com/casparant/caspar-gentoo/tree/master</a>。</p>
+<p>在 AUR 里面找到了这个: <a href="http://aur.archlinux.org/packages.php?ID=24699" target="new">http://aur.archlinux.org/packages.php?ID=24699</a>, 里面包含了 notify-osd 的补丁。可惜这是 for 2.24 的 gpm 的，直接 patch 会报错。我把它下载下来，修改了一下，让它能用在 2.26.4 的 gpm 上。修改后的 patch 可以从我在 github 上的 overlay 里下到：<a href="http://github.com/casparant/caspar-gentoo/tree/master" target="new">http://github.com/casparant/caspar-gentoo/tree/master</a>。</p>
 
-<p>现在gpm已经正常使用notify-osd了。至少拔除电源的时候能正确通知，不知道其他情况下如何。</p>
+<p>现在 gpm 已经正常使用 notify-osd 了。至少拔除电源的时候能正确通知，不知道其他情况下如何。</p>
 
 <p><img src="http://img.ant.im/di-7718.png" /></p>
 
-<p>补充一个网址<a href="https://wiki.ubuntu.com/NotifyOSD" target="new">https://wiki.ubuntu.com/NotifyOSD</a>，看来Notify-OSD接管所有桌面通知任重而道远啊~</p>
+<p>补充一个网址<a href="https://wiki.ubuntu.com/NotifyOSD" target="new">https://wiki.ubuntu.com/NotifyOSD</a>，看来 Notify-OSD 接管所有桌面通知任重而道远啊~</p>
 </div>
   
   
@@ -304,7 +305,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/08/05/upgraded-to-kde-4-3/">更新了KDE 4.3</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/08/05/upgraded-to-kde-4-3/">更新了 KDE 4.3</a></h1>
     
     
       <p class="meta">
@@ -323,19 +324,19 @@
   </header>
 
 
-  <div class="entry-content"><p>发现portage里已经有了KDE4.3，只是mask掉了。思忖再三决定装上。没有好方法把kde4.3的东西一次性unmask掉，只好手动从/usr/portage/profiles/package.mask里面把kde4.3相关的每个包给unmask掉。解决了几个比较难缠的block问题，就进入漫长的80+个包的更新过程。幸好手头有一堆BUG要VERIFY，等下午开完会，发现已经装好了。</p>
+  <div class="entry-content"><p>发现 portage 里已经有了 KDE4.3，只是 mask 掉了。思忖再三决定装上。没有好方法把 kde4.3 的东西一次性 unmask 掉，只好手动从/usr/portage/profiles/package.mask 里面把 kde4.3 相关的每个包给 unmask 掉。解决了几个比较难缠的 block 问题，就进入漫长的 80+个包的更新过程。幸好手头有一堆 BUG 要 VERIFY，等下午开完会，发现已经装好了。</p>
 
-<p>重启之后略略有些失望，Plasma用了Air，浅色的主题看起来不习惯了。换回Oxygen去- -b</p>
+<p>重启之后略略有些失望，Plasma 用了 Air，浅色的主题看起来不习惯了。换回 Oxygen 去- -b</p>
 
-<p>然后打开一个窗口，原先KWin启用了很zb的摇摆特效，在KDE4.3中居然像一坨泥巴一样不停往下掉，往下掉，往下掉……从最大化恢复到小窗口后，整个窗口又好像被人从下面卷起来卷到了窗口顶部，总之这个效果绝非摇摆特效正常的效果。还是少zb一点，把这个不会提高工作效率的特效关掉吧。</p>
+<p>然后打开一个窗口，原先 KWin 启用了很 zb 的摇摆特效，在 KDE4.3 中居然像一坨泥巴一样不停往下掉，往下掉，往下掉……从最大化恢复到小窗口后，整个窗口又好像被人从下面卷起来卷到了窗口顶部，总之这个效果绝非摇摆特效正常的效果。还是少 zb 一点，把这个不会提高工作效率的特效关掉吧。</p>
 
-<p>右下角的systray，居然有了“隐藏不活动的图标”，向MS靠拢么？</p>
+<p>右下角的 systray，居然有了“隐藏不活动的图标”，向 MS 靠拢么？</p>
 
-<p>其他features没有体验到太多，用几天希望有新的好的感受吧。</p>
+<p>其他 features 没有体验到太多，用几天希望有新的好的感受吧。</p>
 
-<p>对了，KDE菜单又消失了，解决方法如下：</p>
+<p>对了，KDE 菜单又消失了，解决方法如下：</p>
 
-<p>emerge gnome-menus->emerge -C gnome-menus->cd /etc/xdg/menus->用vim打开里面的文件，一个一个爱抚一遍->心里骂几遍该死的菜单->重启->ok了。</p>
+<p>emerge gnome-menus->emerge -C gnome-menus->cd /etc/xdg/menus->用 vim 打开里面的文件，一个一个爱抚一遍->心里骂几遍该死的菜单->重启->ok 了。</p>
 </div>
   
   
@@ -348,7 +349,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/06/18/gcaldaemon-to-sync-with-kde/">GCALDaemon与KDE套件集成</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/06/18/gcaldaemon-to-sync-with-kde/">GCALDaemon 与 KDE 套件集成</a></h1>
     
     
       <p class="meta">
@@ -367,21 +368,21 @@
   </header>
 
 
-  <div class="entry-content"><p>文章主要参考的还是<a href="http://gcaldaemon.sourceforge.net/usage.html">GCALDaemon的usage页面</a>，本文主要介绍使用GCALDaemon将KOrganizer和Google Calendar同步、将KAddressbook和GMAIL地址簿同步。</p>
+  <div class="entry-content"><p>文章主要参考的还是<a href="http://gcaldaemon.sourceforge.net/usage.html">GCALDaemon 的 usage 页面</a>，本文主要介绍使用 GCALDaemon 将 KOrganizer 和 Google Calendar 同步、将 KAddressbook 和 GMAIL 地址簿同步。</p>
 
-<p>上次使用远程文件的方式在Arch下确实搞定了，但是今天在Gentoo下又搞不定了。而且要使用远程资源的话，要装kdepim-kresources这个包。对于我这个有洁癖的人，当然是包越少越好了。如果有兴趣使用远程文件的，看完本文，参考前面那篇文章和GCALDaemon的官方主页吧。</p>
+<p>上次使用远程文件的方式在 Arch 下确实搞定了，但是今天在 Gentoo 下又搞不定了。而且要使用远程资源的话，要装 kdepim-kresources 这个包。对于我这个有洁癖的人，当然是包越少越好了。如果有兴趣使用远程文件的，看完本文，参考前面那篇文章和 GCALDaemon 的官方主页吧。</p>
 
-<p>首先是下载GCALDaemon，下载完之后解压缩到/opt下，不知道GCALDaemon的开发人员刚开始怎么想的，居然想要解压缩到/usr/local/sbin下，囧。不过还要改三个文件，因为路径和预设的不一样了。使用sed命令：</p>
+<p>首先是下载 GCALDaemon，下载完之后解压缩到/opt 下，不知道 GCALDaemon 的开发人员刚开始怎么想的，居然想要解压缩到/usr/local/sbin 下，囧。不过还要改三个文件，因为路径和预设的不一样了。使用 sed 命令：</p>
 
 <p><pre lang="bash">sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/password-encoder.sh
 sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/standalone-start.sh
 sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/sync-now.sh</pre></p>
 
-<p>之后可以把dev文件夹删掉，因为用不着，然后把bin/下面的*.sh文件都给增加可执行权限。</p>
+<p>之后可以把 dev 文件夹删掉，因为用不着，然后把 bin/下面的*.sh 文件都给增加可执行权限。</p>
 
-<p>gentoo用户可以去<a href="http://bugs.gentoo.org/237336">gentoo bugs</a>下载ebuild文件，或者用我的这个改过一些内容的：<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanMTJhNDQ4MjItYTIwZi00ZmZlLTllYzYtYmRhYjc1YzhkMDdi&hl=zh_CN">点此下载>>></a></p>
+<p>gentoo 用户可以去<a href="http://bugs.gentoo.org/237336">gentoo bugs</a>下载 ebuild 文件，或者用我的这个改过一些内容的：<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanMTJhNDQ4MjItYTIwZi00ZmZlLTllYzYtYmRhYjc1YzhkMDdi&hl=zh_CN">点此下载>>></a></p>
 
-<p>之后可以选择用root权限启动config-editor.sh（当然也可以按照官方网站上说的那样，chown到当前用户下，用普通用户权限执行），进行配置。</p>
+<p>之后可以选择用 root 权限启动 config-editor.sh（当然也可以按照官方网站上说的那样，chown 到当前用户下，用普通用户权限执行），进行配置。</p>
 
 <p></div>
   
@@ -420,9 +421,9 @@ sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/sync-now.sh</pre></p>
 
   <div class="entry-content"><p>昨晚呢，由于一瓶水泼到了键盘上……</p>
 
-<p>1.5秒之后，当机立断拔掉电源和电池，把笔记本倒扣。</p>
+<p>1.5 秒之后，当机立断拔掉电源和电池，把笔记本倒扣。</p>
 
-<p>30分钟之后，键盘被拆下，甩了甩，各种出水。</p>
+<p>30 分钟之后，键盘被拆下，甩了甩，各种出水。</p>
 
 <p>为了确认笔记本别处没有进水，遂决定把整个笔记本都拆开。</p>
 
@@ -444,7 +445,7 @@ sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/sync-now.sh</pre></p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/06/16/using-gentoo-milestone-3/">Gentoo折腾 Milestone3</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/06/16/using-gentoo-milestone-3/">Gentoo 折腾 (Milestone 3)</a></h1>
     
     
       <p class="meta">
@@ -463,17 +464,17 @@ sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/sync-now.sh</pre></p>
   </header>
 
 
-  <div class="entry-content"><p>上次几位说我从Gentoo叛逃到Arch我就已经心生愧疚。本来嘛，选择Arch等于选择免编译的便捷，选择Gentoo等于选择了完全定制的自由。在便捷和自由的交锋中，伴随着我一次手欠的操作，最终后者胜了，我重新回到了Gentoo的怀抱。</p>
+  <div class="entry-content"><p>上次几位说我从 Gentoo 叛逃到 Arch 我就已经心生愧疚。本来嘛，选择 Arch 等于选择免编译的便捷，选择 Gentoo 等于选择了完全定制的自由。在便捷和自由的交锋中，伴随着我一次手欠的操作，最终后者胜了，我重新回到了 Gentoo 的怀抱。</p>
 
 <p>先说说那个手欠的操作。</p>
 
-<p>我不小心新建了一个名字为~的文件夹，然后发现不对，文件名弄错了。于是想要删除之。于是执行了 rm ~ -rf。就这样。等待了10秒中之后，还没意识到什么问题，居然还加了sudo再执行了一次那个命令- -||| 然后pwd，发现路径不存在。然后cd，发现路径还是不存在。于是我哭了。幸好在服务器上有半个月前的数据备份，最重要的数据都给找回来了，这半个月写的代码也都凭着记忆给补回来一些了（说明我这半个月基本上没编码，哈哈，万幸）。</p>
+<p>我不小心新建了一个名字为~的文件夹，然后发现不对，文件名弄错了。于是想要删除之。于是执行了 rm ~ -rf。就这样。等待了 10 秒中之后，还没意识到什么问题，居然还加了 sudo 再执行了一次那个命令- -||| 然后 pwd，发现路径不存在。然后 cd，发现路径还是不存在。于是我哭了。幸好在服务器上有半个月前的数据备份，最重要的数据都给找回来了，这半个月写的代码也都凭着记忆给补回来一些了（说明我这半个月基本上没编码，哈哈，万幸）。</p>
 
-<p>数据回来之后一不做二不休，全盘格，直接回Gentoo了。</p>
+<p>数据回来之后一不做二不休，全盘格，直接回 Gentoo 了。</p>
 
-<p>可爱的Arch就这么被我抛弃了。</p>
+<p>可爱的 Arch 就这么被我抛弃了。</p>
 
-<p>上来直接上ext4分区。以前碰到过grub能认分区，但是kernel panic的情况，后来发现原来是要从ext4分区启动，需要initramfs。于是genkernel --menuconfig all手动配置完内核，生成了initramfs(我目前只会这个方法，囧，谁能告诉我怎么样生成initramfs）。</p>
+<p>上来直接上 ext4 分区。以前碰到过 grub 能认分区，但是 kernel panic 的情况，后来发现原来是要从 ext4 分区启动，需要 initramfs。于是 genkernel --menuconfig all 手动配置完内核，生成了 initramfs(我目前只会这个方法，囧，谁能告诉我怎么样生成 initramfs）。</p>
 
 <p>回顾一下历史遗留问题：</p>
 
@@ -493,7 +494,7 @@ sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/sync-now.sh</pre></p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/06/02/arch-beginner/">小试ArchLinux</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/06/02/arch-beginner/">小试 ArchLinux</a></h1>
     
     
       <p class="meta">
@@ -512,19 +513,19 @@ sed -i "s|^GCALDIR=.*$|GCALDIR=/opt/gcaldaemon|g" bin/sync-now.sh</pre></p>
   </header>
 
 
-  <div class="entry-content"><p>夏日来临，再隔三差五地emerge一次估计我的电脑寿命将迅速缩短，短期内还没钱买新本，只好决定放弃Gentoo投奔Arch的怀抱。</p>
+  <div class="entry-content"><p>夏日来临，再隔三差五地 emerge 一次估计我的电脑寿命将迅速缩短，短期内还没钱买新本，只好决定放弃 Gentoo 投奔 Arch 的怀抱。</p>
 
-<p>话说用了Gentoo之后，装其他发行版全部是驾轻就熟，就算是配置相对比较麻烦的Arch都轻松搞定。装好之后发现一些疑难杂症，比如不能待机、glxgears分数过低、checkgmail乱码、注销后不能重新启动kdm等等，都不治而愈了。看来Gentoo的可定制性太强了，有些设置我都完全不知道。</p>
+<p>话说用了 Gentoo 之后，装其他发行版全部是驾轻就熟，就算是配置相对比较麻烦的 Arch 都轻松搞定。装好之后发现一些疑难杂症，比如不能待机、glxgears 分数过低、checkgmail 乱码、注销后不能重新启动 kdm 等等，都不治而愈了。看来 Gentoo 的可定制性太强了，有些设置我都完全不知道。</p>
 
-<p>由于刚开始不熟悉pacman和aur的包机制，不小心把一些自己不需要的包当依赖关系给装上了，下次有空一定要好好清理一遍。</p>
+<p>由于刚开始不熟悉 pacman 和 aur 的包机制，不小心把一些自己不需要的包当依赖关系给装上了，下次有空一定要好好清理一遍。</p>
 
-<p>正在慢慢适应AUR中，这种管理方式感觉有点混乱，毕竟是成千上万的Arch用户都往里面塞东西。莫非我真的有洁癖？哈哈。昨天给Monkey's Audio Codec包打了个补丁，提交PKGBUILD却发现不能覆盖已有的包，郁闷。</p>
+<p>正在慢慢适应 AUR 中，这种管理方式感觉有点混乱，毕竟是成千上万的 Arch 用户都往里面塞东西。莫非我真的有洁癖？哈哈。昨天给 Monkey's Audio Codec 包打了个补丁，提交 PKGBUILD 却发现不能覆盖已有的包，郁闷。</p>
 
-<p>PKGBUILD太凌乱了，还是怀念USE flag啊。</p>
+<p>PKGBUILD 太凌乱了，还是怀念 USE flag 啊。</p>
 
-<p>二进制包虽方便，有的用着还是不太爽，可能是心理作用，但是我的KNotes已经崩溃N次了。</p>
+<p>二进制包虽方便，有的用着还是不太爽，可能是心理作用，但是我的 KNotes 已经崩溃 N 次了。</p>
 
-<p>先用一段时间再看看。总体来说除了GentooUSE flag把我养得快有洁癖和偏执了，以至于Arch的PKGBUILD让我不爽，其他的Arch做得都不错。</p>
+<p>先用一段时间再看看。总体来说除了 GentooUSE flag 把我养得快有洁癖和偏执了，以至于 Arch 的 PKGBUILD 让我不爽，其他的 Arch 做得都不错。</p>
 </div>
   
   

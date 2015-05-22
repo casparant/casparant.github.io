@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -117,53 +118,53 @@
 
 <p><!--more-->语句覆盖率很简单，例如有以下示例代码：</p>
 
-<p><pre lang="cpp">// A, B的取值范围为0和1
+<p><pre lang="cpp">// A, B 的取值范围为 0 和 1
 if (A && B)
   99 statements;
 else
   1 statement;</pre></p>
 
-<p>当有如下测试用例，覆盖率为99%:</p>
+<p>当有如下测试用例，覆盖率为 99%:</p>
 
 <p><blockquote>A B if()<br />
 1 1 true</blockquote></p>
 
-<p>判定路径覆盖率也比较简单，仍旧是上面的样例代码，当有如下测试用例时，DDP覆盖率即为100%：</p>
+<p>判定路径覆盖率也比较简单，仍旧是上面的样例代码，当有如下测试用例时，DDP 覆盖率即为 100%：</p>
 
 <p><blockquote>A B if()<br />
 1 1 true<br />
 0 1 false</blockquote></p>
 
-<p>下面介绍一下比较麻烦的MC/DC。</p>
+<p>下面介绍一下比较麻烦的 MC/DC。</p>
 
 <p>以下摘自<a href="http://bbs.51testing.com/archiver/tid-42768.html">51testing</a>：</p>
 
-<p><blockquote>MC/DC是DO-178B（美军标准）中首次提出的，开始是为了提高航空软件测试中的覆盖率水平。在 DO-178B中阐明了MC/DC的意义: 对于关键性的实时程序而言，超过半数的可执行代码可能都与布尔运算表达式有关，表达式的复杂性应得到关注。MC/DC的提出是为了引起对布尔表达式的关注…<br />
-根据DO-178B，MC/DC（Modified Condition/Decision Coverage）有如下要求：<strong>判定中每个条件的所有可能结果至少出现一次，每个判定本身的所有可能结果也至少出现一次，每个入口点和出口点至少要执行一次，并且每个条件都能单独影响判定结果</strong>。这里条件是指不含任何逻辑操作符的布尔表达式，由关系操作符构成。判定是指包含逻辑操作符的布尔表达式。如果同一个布尔表达式在一个判定中出现了多次，那么该表达式应算作多个条件。例如(A OR B)AND(A OR C)中有4个条件。条件A能单独影响判定结果是指，判定中的其他条件取值都不变时，条件A取值的改变会引起判定结果的改变。</blockquote></p>
+<p><blockquote>MC/DC 是 DO-178B（美军标准）中首次提出的，开始是为了提高航空软件测试中的覆盖率水平。在 DO-178B 中阐明了 MC/DC 的意义: 对于关键性的实时程序而言，超过半数的可执行代码可能都与布尔运算表达式有关，表达式的复杂性应得到关注。MC/DC 的提出是为了引起对布尔表达式的关注…<br />
+根据 DO-178B，MC/DC（Modified Condition/Decision Coverage）有如下要求：<strong>判定中每个条件的所有可能结果至少出现一次，每个判定本身的所有可能结果也至少出现一次，每个入口点和出口点至少要执行一次，并且每个条件都能单独影响判定结果</strong>。这里条件是指不含任何逻辑操作符的布尔表达式，由关系操作符构成。判定是指包含逻辑操作符的布尔表达式。如果同一个布尔表达式在一个判定中出现了多次，那么该表达式应算作多个条件。例如(A OR B)AND(A OR C)中有 4 个条件。条件 A 能单独影响判定结果是指，判定中的其他条件取值都不变时，条件 A 取值的改变会引起判定结果的改变。</blockquote></p>
 
 <p>对于上面这段话，仍旧使用前面的样例代码来理解：</p>
 
-<p>在前面的代码中，有2个条件，分别是A和B，有一个判定(决策），判定结果有两种，true和false。所以要使MC/DC达到100%，A的取值0和1在测试用例中都要出现至少一次，B的取值也是如此，此外判定的结果true和false也至少要出现一次。使用讲解DDP覆盖率的时候的用例，即：</p>
+<p>在前面的代码中，有 2 个条件，分别是 A 和 B，有一个判定(决策），判定结果有两种，true 和 false。所以要使 MC/DC 达到 100%，A 的取值 0 和 1 在测试用例中都要出现至少一次，B 的取值也是如此，此外判定的结果 true 和 false 也至少要出现一次。使用讲解 DDP 覆盖率的时候的用例，即：</p>
 
 <p><blockquote>A B if()<br />
 1 1 true<br />
 0 1 false</blockquote></p>
 
-<p>此用例的MC/DC为66.6%，这是为什么呢？</p>
+<p>此用例的 MC/DC 为 66.6%，这是为什么呢？</p>
 
-<p>按照条件单独影响判定的原则，补全上面的测试用例到100%如下：</p>
+<p>按照条件单独影响判定的原则，补全上面的测试用例到 100%如下：</p>
 
 <p><blockquote>A B if()<br />
 1 1 true<br />
-0 1 false  -- 保持B不变，单独改变A的值，改变了判定的结果。此时A和判定的所有取值都已经出现。<br />
+0 1 false  -- 保持 B 不变，单独改变 A 的值，改变了判定的结果。此时 A 和判定的所有取值都已经出现。<br />
 1 1 true<br />
-1 0 false  -- 保持A不变，单独改变B的值，改变了判定结果，B的所有取值也已经出现。</blockquote></p>
+1 0 false  -- 保持 A 不变，单独改变 B 的值，改变了判定结果，B 的所有取值也已经出现。</blockquote></p>
 
-<p>以上测试用例，有两组重复了。即取用例集{(1,1), (0,1), (1,0)}就可以达到100%的MC/DC。</p>
+<p>以上测试用例，有两组重复了。即取用例集{(1,1), (0,1), (1,0)}就可以达到 100%的 MC/DC。</p>
 
-<p>所以前面那组测试用例的MC/DC是66.6%了。</p>
+<p>所以前面那组测试用例的 MC/DC 是 66.6%了。</p>
 
-<p>P.S. 这里有个问题，这里提到的MC/DC达到100%时的用例数，是指最少用例数。</p>
+<p>P.S. 这里有个问题，这里提到的 MC/DC 达到 100%时的用例数，是指最少用例数。</p>
 </div>
 
 
@@ -184,7 +185,7 @@ else
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/programming/'>programming</a>
   
 </span>
 
@@ -202,10 +203,10 @@ else
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2008/12/21/some-softwares-under-linux/" title="Previous Post: Linux下推荐的软件">&laquo; Linux下推荐的软件</a>
+        <a class="basic-alignment left" href="/blog/2008/12/21/some-softwares-under-linux/" title="Previous Post: Linux 下推荐的软件">&laquo; Linux 下推荐的软件</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/01/09/some-recently-used-skills/" title="Next Post: [备忘]最近用到的一些技巧">[备忘]最近用到的一些技巧 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/01/09/some-recently-used-skills/" title="Next Post: [备忘] 最近用到的一些技巧">[备忘] 最近用到的一些技巧 &raquo;</a>
       
     </p>
   </footer>

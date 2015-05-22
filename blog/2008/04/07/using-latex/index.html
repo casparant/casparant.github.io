@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>开始学习LaTeX - Ant-Veil</title>
+  <title>开始学习 LaTeX - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="在论坛上知道了LaTeX,又从monnand那里看到了它的应用，又听见某慕容同学嚷嚷着要学，那么我就看看LaTeX到底是怎么样一个东西吧…… What's LaTex?
-LaTeX is a high-quality typesetting system; it includes features &hellip;">
+  <meta name="description" content="在论坛上知道了 LaTeX,又从 monnand 那里看到了它的应用，又听见某慕容同学嚷嚷着要学，那么我就看看 LaTeX 到底是怎么样一个东西吧…… What's LaTex?
+LaTeX is a high-quality typesetting system; it includes &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +74,7 @@ LaTeX is a high-quality typesetting system; it includes features &hellip;">
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -85,7 +86,7 @@ LaTeX is a high-quality typesetting system; it includes features &hellip;">
   
   <header>
     
-      <h1 class="entry-title">开始学习LaTeX</h1>
+      <h1 class="entry-title">开始学习 LaTeX</h1>
     
     
       <p class="meta">
@@ -104,40 +105,40 @@ LaTeX is a high-quality typesetting system; it includes features &hellip;">
   </header>
 
 
-<div class="entry-content"><p>在论坛上知道了LaTeX,又从monnand那里看到了它的应用，又听见某慕容同学嚷嚷着要学，那么我就看看LaTeX到底是怎么样一个东西吧……</p>
+<div class="entry-content"><p>在论坛上知道了 LaTeX,又从 monnand 那里看到了它的应用，又听见某慕容同学嚷嚷着要学，那么我就看看 LaTeX 到底是怎么样一个东西吧……</p>
 
 <p>What's LaTex?
 <blockquote>LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation.<br />
 LaTeX is the de facto standard for the communication and publication of scientific documents. LaTeX is available as free software.</blockquote>
-请访问LaTeX Porjiect页面以了解更多信息：<a href="http://www.latex-project.org/">http://www.latex-project.org/</a></p>
+请访问 LaTeX Porjiect 页面以了解更多信息：<a href="http://www.latex-project.org/">http://www.latex-project.org/</a></p>
 
 <p>What's CJK?</p>
 
-<p>C就是Chinese，J就是Japanese，K就是Korean。CJK就是中日韩文字符支持……</p>
+<p>C 就是 Chinese，J 就是 Japanese，K 就是 Korean。CJK 就是中日韩文字符支持……</p>
 
-<p><!--more-->CJK的LaTeX扩展是必须的，要不然LaTeX对咱们来说就没易用性了……</p>
+<p><!--more-->CJK 的 LaTeX 扩展是必须的，要不然 LaTeX 对咱们来说就没易用性了……</p>
 
-<p>请访问CJK for LaTeX Extension 页面以了解更多信息：<a href="http://cjk.ffii.org/">http://cjk.ffii.org/</a></p>
+<p>请访问 CJK for LaTeX Extension 页面以了解更多信息：<a href="http://cjk.ffii.org/">http://cjk.ffii.org/</a></p>
 
-<p>Ubuntu下安装LaTeX+CJK(主要还是Chinese)很容易，apt-get install 一下就好了。
+<p>Ubuntu 下安装 LaTeX+CJK(主要还是 Chinese)很容易，apt-get install 一下就好了。
 <pre lang="bash">sudo apt-get install texlive texlive-math-extra texlive-latex-base texlive-latex-extra \
 texlive-latex-recommended texlive-pictures texlive-science texlive-bibtex-extra \
 texlive-common latex-beamer latex-cjk-chinese ttf-arphic-* hbf-*</pre>
 有了中文支持，但是没有中文字体。</p>
 
-<p>配置中文字体请参考Monnand和LDCN的文章：</p>
+<p>配置中文字体请参考 Monnand 和 LDCN 的文章：</p>
 
 <p><a href="http://blog.linuxsky.org/58/viewspace-3824.html">http://blog.linuxsky.org/58/viewspace-3824.html</a></p>
 
 <p><a href="http://linuxdesktop.cn/2008/02/26/config-texlive-cjk-under-ubuntu">http://linuxdesktop.cn/2008/02/26/config-texlive-cjk-under-ubuntu</a></p>
 
-<p>按照Monnand的做法（下载nsung的字体包，运行install.sh），整个过程中会发生错误，不爽。后来看了LDCN的文章才发现，刷新字体的命令需要用sudo权限运行。。。修改了一下代码，搞定了。</p>
+<p>按照 Monnand 的做法（下载 nsung 的字体包，运行 install.sh），整个过程中会发生错误，不爽。后来看了 LDCN 的文章才发现，刷新字体的命令需要用 sudo 权限运行。。。修改了一下代码，搞定了。</p>
 
-<p>顺便自己也生成了一个simsun的字体包，花了我一个半小时啊……</p>
+<p>顺便自己也生成了一个 simsun 的字体包，花了我一个半小时啊……</p>
 
-<p>测试两篇文章上的例子通过了，说明CJK支持配置成功。</p>
+<p>测试两篇文章上的例子通过了，说明 CJK 支持配置成功。</p>
 
-<p>现在的问题是：LaTeX怎么用？</p>
+<p>现在的问题是：LaTeX 怎么用？</p>
 
 <p>在网上找到一个教程，不错，给个地址，自己下载了看看吧，绝对权威……</p>
 
@@ -164,7 +165,7 @@ texlive-common latex-beamer latex-cjk-chinese ttf-arphic-* hbf-*</pre>
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -182,10 +183,10 @@ texlive-common latex-beamer latex-cjk-chinese ttf-arphic-* hbf-*</pre>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2008/04/02/wqy-zenhei-released/" title="Previous Post: 文泉驿正黑(夸父-final)，[正式版发布]">&laquo; 文泉驿正黑(夸父-final)，[正式版发布]</a>
+        <a class="basic-alignment left" href="/blog/2008/04/02/wqy-zenhei-released/" title="Previous Post: 文泉驿正黑 (夸父-final)，正式版发布">&laquo; 文泉驿正黑 (夸父-final)，正式版发布</a>
       
       
-        <a class="basic-alignment right" href="/blog/2008/04/08/openid-supported/" title="Next Post: 跟风提供OpenID的支持">跟风提供OpenID的支持 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2008/04/08/openid-supported/" title="Next Post: 跟风提供 OpenID 的支持">跟风提供 OpenID 的支持 &raquo;</a>
       
     </p>
   </footer>

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ubuntu 8.04 TTY配置 - Ant-Veil</title>
+  <title>Ubuntu 8.04 Tty 配置 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="解决了的问题：1.tty下显示中文，2.支持中文输入，3.合适的分辨率，4.关闭终端响铃 需要解决的问题：文字在屏幕上刷新不同步，造成花屏 第一步：打开FrameBuffer模块 参考网址：http://blog.chinaunix.net/u/12679/showart_513111.html &hellip;">
+  <meta name="description" content="解决了的问题：1.tty 下显示中文，2.支持中文输入，3.合适的分辨率，4.关闭终端响铃 需要解决的问题：文字在屏幕上刷新不同步，造成花屏 第一步：打开 FrameBuffer 模块 参考网址：http://blog.chinaunix.net/u/12679/showart_513111. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ubuntu 8.04 TTY配置</h1>
+      <h1 class="entry-title">Ubuntu 8.04 Tty 配置</h1>
     
     
       <p class="meta">
@@ -103,11 +104,11 @@
   </header>
 
 
-<div class="entry-content"><p>解决了的问题：1.tty下显示中文，2.支持中文输入，3.合适的分辨率，4.关闭终端响铃</p>
+<div class="entry-content"><p>解决了的问题：1.tty 下显示中文，2.支持中文输入，3.合适的分辨率，4.关闭终端响铃</p>
 
 <p><strong>需要解决的问题：文字在屏幕上刷新不同步，造成花屏</strong></p>
 
-<p><strong>第一步：打开FrameBuffer模块</strong></p>
+<p><strong>第一步：打开 FrameBuffer 模块</strong></p>
 
 <p>参考网址：<a href="http://blog.chinaunix.net/u/12679/showart_513111.html">http://blog.chinaunix.net/u/12679/showart_513111.html</a></p>
 
@@ -128,9 +129,9 @@ blacklist vga16fb</blockquote></p>
 
 <p>编辑文件：<pre lang="bash" line="1">sudo vi /boot/grub/menu.lst</pre></p>
 
-<p>在启动条目的内核项后面加入vga=xxx参数</p>
+<p>在启动条目的内核项后面加入 vga=xxx 参数</p>
 
-<p>xxx所代表的值可以用下面的方法来查看：</p>
+<p>xxx 所代表的值可以用下面的方法来查看：</p>
 
 <p><pre lang="bash" line="1">sudo hwinfo --framebuffer | grep 'Mode '</pre></p>
 
@@ -146,47 +147,47 @@ blacklist vga16fb</blockquote></p>
   Mode 0x0303: 800x600 (+832), 8 bits<br />
   Mode 0x0311: 640x480 (+1280), 16 bits</blockquote></p>
 
-<p>选择1024x768的分辨率，16位色，所以应该在vga=后面加上0x0317</p>
+<p>选择 1024x768 的分辨率，16 位色，所以应该在 vga=后面加上 0x0317</p>
 
-<p><strong>第二步，安装支持中文的控制台zhcon并启动</strong></p>
+<p><strong>第二步，安装支持中文的控制台 zhcon 并启动</strong></p>
 
 <p><pre lang="bash">sudo apt-get install zhcon</pre></p>
 
-<p>在tty状态下输入命令</p>
+<p>在 tty 状态下输入命令</p>
 
 <p><pre lang="bash">zhcon --utf8 --drv=fb</pre></p>
 
-<p>在很多网页上提到使用--drv=vga参数来启动zhcon，这样做在我的机子上显示的分辨率是640x480，我希望有一个我看着比较舒服的大分辨率，所以我使用--drv=fb参数来启动zhcon</p>
+<p>在很多网页上提到使用--drv=vga 参数来启动 zhcon，这样做在我的机子上显示的分辨率是 640x480，我希望有一个我看着比较舒服的大分辨率，所以我使用--drv=fb 参数来启动 zhcon</p>
 
 <p><strong>第三步，优化</strong></p>
 
-<p>化简zhcon启动的参数：</p>
+<p>化简 zhcon 启动的参数：</p>
 
-<p>在~/.bashrc中增加一行，</p>
+<p>在~/.bashrc 中增加一行，</p>
 
 <p><pre lang="bash">alias zhcon='zhcon --utf8 --drv=fb'</pre></p>
 
-<p>这样在启动zhcon时只需要输入zhcon即可。</p>
+<p>这样在启动 zhcon 时只需要输入 zhcon 即可。</p>
 
-<p>设置zhcon开机自动启动：</p>
+<p>设置 zhcon 开机自动启动：</p>
 
-<p>在~/.bashrc中增加一行，</p>
+<p>在~/.bashrc 中增加一行，</p>
 
 <p><pre lang="bash">[[ $(tty) == /dev/tty[0-9]* ]] && zhcon</pre></p>
 
-<p>不过这个方法只针对当前用户，即对tty登入时的帐户下的~/.bashrc设置这行才有效。</p>
+<p>不过这个方法只针对当前用户，即对 tty 登入时的帐户下的~/.bashrc 设置这行才有效。</p>
 
 <p><strong>第四步，中文输入法支持</strong></p>
 
-<p>zhcon中可以输入中文。Ctrl+Space即可。</p>
+<p>zhcon 中可以输入中文。Ctrl+Space 即可。</p>
 
 <p><strong>第五步，关闭终端响铃</strong></p>
 
-<p>因为有时候电脑要在课上用，所以关闭system bell还是很有必要的。</p>
+<p>因为有时候电脑要在课上用，所以关闭 system bell 还是很有必要的。</p>
 
-<p>网上找了半天，找到一个softbeep的软件，摆弄半天还是没成功。</p>
+<p>网上找了半天，找到一个 softbeep 的软件，摆弄半天还是没成功。</p>
 
-<p>继续google，发现Ubuntu这个模块名字叫pcspkr，blacklist之</p>
+<p>继续 google，发现 Ubuntu 这个模块名字叫 pcspkr，blacklist 之</p>
 
 <p><pre lang="bash">sudo vi /etc/modprobe.d/blacklist</pre></p>
 
@@ -217,7 +218,7 @@ blacklist vga16fb</blockquote></p>
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -235,10 +236,10 @@ blacklist vga16fb</blockquote></p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2008/08/06/rhel5-dvd-repos/" title="Previous Post: RHEL5添加DVD光盘为源">&laquo; RHEL5添加DVD光盘为源</a>
+        <a class="basic-alignment left" href="/blog/2008/08/06/rhel5-dvd-repos/" title="Previous Post: RHEL 5 添加 DVD 光盘为源">&laquo; RHEL 5 添加 DVD 光盘为源</a>
       
       
-        <a class="basic-alignment right" href="/blog/2008/08/13/gcc-4-3-1-bootstrap-succeeded-under-opensolaris/" title="Next Post: OpenSolaris编译安装gcc4.3.1成功">OpenSolaris编译安装gcc4.3.1成功 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2008/08/13/gcc-4-3-1-bootstrap-succeeded-under-opensolaris/" title="Next Post: OpenSolaris 编译安装 gcc-4.3.1 成功">OpenSolaris 编译安装 gcc-4.3.1 成功 &raquo;</a>
       
     </p>
   </footer>

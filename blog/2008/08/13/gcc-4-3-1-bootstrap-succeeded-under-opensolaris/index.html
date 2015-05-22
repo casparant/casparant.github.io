@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>OpenSolaris编译安装gcc4.3.1成功 - Ant-Veil</title>
+  <title>OpenSolaris 编译安装 gcc-4.3.1 成功 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="编译时间为1小时零12分钟，调试错误的时间累计就不知道多少了。要编译的语言为c,c++,f95。之前出过N多的错误，因为时间过去太久了，有些错误的名字记不太清楚了，只大概地写一下： Fatal error in reader: makefile, line XXX: Unexpected end &hellip;">
+  <meta name="description" content="编译时间为 1 小时零 12 分钟，调试错误的时间累计就不知道多少了。要编译的语言为 c,c++,f95。之前出过 N 多的错误，因为时间过去太久了，有些错误的名字记不太清楚了，只大概地写一下： Fatal error in reader: makefile, line XXX: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">OpenSolaris编译安装gcc4.3.1成功</h1>
+      <h1 class="entry-title">OpenSolaris 编译安装 gcc-4.3.1 成功</h1>
     
     
       <p class="meta">
@@ -103,11 +104,11 @@
   </header>
 
 
-<div class="entry-content"><p>编译时间为1小时零12分钟，调试错误的时间累计就不知道多少了。要编译的语言为c,c++,f95。之前出过N多的错误，因为时间过去太久了，有些错误的名字记不太清楚了，只大概地写一下：</p>
+<div class="entry-content"><p>编译时间为 1 小时零 12 分钟，调试错误的时间累计就不知道多少了。要编译的语言为 c,c++,f95。之前出过 N 多的错误，因为时间过去太久了，有些错误的名字记不太清楚了，只大概地写一下：</p>
 
 <p><blockquote>Fatal error in reader: makefile, line XXX: Unexpected end of line seen</blockquote></p>
 
-<p>解决这个问题，需要安装gmake，因为OpenSolaris中自带的语法和gnu make的语法可能不一样。</p>
+<p>解决这个问题，需要安装 gmake，因为 OpenSolaris 中自带的语法和 gnu make 的语法可能不一样。</p>
 
 <p>接下去碰到的问题，是采用以下编译选项的：</p>
 
@@ -125,7 +126,7 @@ gmake all</pre></p>
 
 <p>在网上找到这个网页：<a href="http://www.linuxidc.com/Linux/2008-07/14125p2.htm">http://www.linuxidc.com/Linux/2008-07/14125p2.htm</a></p>
 
-<p>看到如下的configure选项：</p>
+<p>看到如下的 configure 选项：</p>
 
 <p><!--more--><pre lang="bash" line="1">
 ./configure --prefix=/usr
@@ -141,7 +142,7 @@ gmake all</pre></p>
 --disable-multilib
 --enable-languages=c,c++,f95</pre></p>
 
-<p>第1,2,3不是关键选项。继续查找资料，第4项在gcc的README里面说明了是默认打开的。第5项我把posix改成了solaris，第6项在有glibc的情况下下才有用，第7,8,9,10没找到相关说明，第11项是禁止多个平台的库都编译(我觉得我过去几天没编译成功的原因很可能就是这样的，因为总是在AMD64相关的目录下编译，我的机子可是i386啊…)，最后一项指定要安装的语言，我下的是core包和自己要装的语言包，就用不着这个命令了。</p>
+<p>第 1,2,3 不是关键选项。继续查找资料，第 4 项在 gcc 的 README 里面说明了是默认打开的。第 5 项我把 posix 改成了 solaris，第 6 项在有 glibc 的情况下下才有用，第 7,8,9,10 没找到相关说明，第 11 项是禁止多个平台的库都编译(我觉得我过去几天没编译成功的原因很可能就是这样的，因为总是在 AMD64 相关的目录下编译，我的机子可是 i386 啊…)，最后一项指定要安装的语言，我下的是 core 包和自己要装的语言包，就用不着这个命令了。</p>
 
 <p>所以最后选定编译选项为：
 <pre lang="bash" line="1">./configure --prefix=/usr/local \
@@ -149,22 +150,22 @@ gmake all</pre></p>
 --disable-multilib \
 --with-gnu-ld=/usr/gnu/bin/ld</pre></p>
 
-<p>make的时候命令是</p>
+<p>make 的时候命令是</p>
 
 <p><pre lang="bash" line="1">make bootstrap</pre></p>
 
-<p>它显式指定了bootstrap，但是我看到帮助文档上说默认是开启了3-stage的bootstrap模式的，所以我觉得这也不是关键。</p>
+<p>它显式指定了 bootstrap，但是我看到帮助文档上说默认是开启了 3-stage 的 bootstrap 模式的，所以我觉得这也不是关键。</p>
 
 <p>中途只报了一个错，错误的内容大致是</p>
 
 <p><blockquote>libgcc.map has not a good format and tries without success to use it as ld script</blockquote></p>
 
-<p>查到解决方案是，把/gcc-4.3.1/gcc/config/t-slibgcc-sld文件第13行修改一下，把-M参数改为-Map参数，修改后的那一行如下：<br />
+<p>查到解决方案是，把/gcc-4.3.1/gcc/config/t-slibgcc-sld 文件第 13 行修改一下，把-M 参数改为-Map 参数，修改后的那一行如下：<br />
     <pre lang="bash" line="1">-Wl,-Map,$(SHLIB_MAP) -o $(SHLIB_DIR)/$(SHLIB_SONAME).tmp \</pre></p>
 
-<p>然后重新configure XXX, gmake bootstrap, gmake install</p>
+<p>然后重新 configure XXX, gmake bootstrap, gmake install</p>
 
-<p>整个过程真是艰辛阿，而且gcc编译出来之后发现，原来不是gcc的问题，还得想办法找glibc在OpenSolaris上的porting。</p>
+<p>整个过程真是艰辛阿，而且 gcc 编译出来之后发现，原来不是 gcc 的问题，还得想办法找 glibc 在 OpenSolaris 上的 porting。</p>
 </div>
 
 
@@ -185,7 +186,7 @@ gmake all</pre></p>
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -203,10 +204,10 @@ gmake all</pre></p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2008/08/07/tty-configuration-under-ubuntu/" title="Previous Post: Ubuntu 8.04 TTY配置">&laquo; Ubuntu 8.04 TTY配置</a>
+        <a class="basic-alignment left" href="/blog/2008/08/07/tty-configuration-under-ubuntu/" title="Previous Post: Ubuntu 8.04 tty 配置">&laquo; Ubuntu 8.04 tty 配置</a>
       
       
-        <a class="basic-alignment right" href="/blog/2008/08/18/gentoo-or-ubuntu/" title="Next Post: Gentoo还是Ubuntu?">Gentoo还是Ubuntu? &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2008/08/18/gentoo-or-ubuntu/" title="Next Post: Gentoo 还是 Ubuntu?">Gentoo 还是 Ubuntu? &raquo;</a>
       
     </p>
   </footer>

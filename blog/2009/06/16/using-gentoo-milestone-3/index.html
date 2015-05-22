@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Gentoo折腾 Milestone3 - Ant-Veil</title>
+  <title>Gentoo 折腾 (Milestone 3) - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="上次几位说我从Gentoo叛逃到Arch我就已经心生愧疚。本来嘛，选择Arch等于选择免编译的便捷，选择Gentoo等于选择了完全定制的自由。在便捷和自由的交锋中，伴随着我一次手欠的操作，最终后者胜了，我重新回到了Gentoo的怀抱。 先说说那个手欠的操作。 我不小心新建了一个名字为~的文件夹， &hellip;">
+  <meta name="description" content="上次几位说我从 Gentoo 叛逃到 Arch 我就已经心生愧疚。本来嘛，选择 Arch 等于选择免编译的便捷，选择 Gentoo 等于选择了完全定制的自由。在便捷和自由的交锋中，伴随着我一次手欠的操作，最终后者胜了，我重新回到了 Gentoo 的怀抱。 先说说那个手欠的操作。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Gentoo折腾 Milestone3</h1>
+      <h1 class="entry-title">Gentoo 折腾 (Milestone 3)</h1>
     
     
       <p class="meta">
@@ -103,43 +104,43 @@
   </header>
 
 
-<div class="entry-content"><p>上次几位说我从Gentoo叛逃到Arch我就已经心生愧疚。本来嘛，选择Arch等于选择免编译的便捷，选择Gentoo等于选择了完全定制的自由。在便捷和自由的交锋中，伴随着我一次手欠的操作，最终后者胜了，我重新回到了Gentoo的怀抱。</p>
+<div class="entry-content"><p>上次几位说我从 Gentoo 叛逃到 Arch 我就已经心生愧疚。本来嘛，选择 Arch 等于选择免编译的便捷，选择 Gentoo 等于选择了完全定制的自由。在便捷和自由的交锋中，伴随着我一次手欠的操作，最终后者胜了，我重新回到了 Gentoo 的怀抱。</p>
 
 <p>先说说那个手欠的操作。</p>
 
-<p>我不小心新建了一个名字为~的文件夹，然后发现不对，文件名弄错了。于是想要删除之。于是执行了 rm ~ -rf。就这样。等待了10秒中之后，还没意识到什么问题，居然还加了sudo再执行了一次那个命令- -||| 然后pwd，发现路径不存在。然后cd，发现路径还是不存在。于是我哭了。幸好在服务器上有半个月前的数据备份，最重要的数据都给找回来了，这半个月写的代码也都凭着记忆给补回来一些了（说明我这半个月基本上没编码，哈哈，万幸）。</p>
+<p>我不小心新建了一个名字为~的文件夹，然后发现不对，文件名弄错了。于是想要删除之。于是执行了 rm ~ -rf。就这样。等待了 10 秒中之后，还没意识到什么问题，居然还加了 sudo 再执行了一次那个命令- -||| 然后 pwd，发现路径不存在。然后 cd，发现路径还是不存在。于是我哭了。幸好在服务器上有半个月前的数据备份，最重要的数据都给找回来了，这半个月写的代码也都凭着记忆给补回来一些了（说明我这半个月基本上没编码，哈哈，万幸）。</p>
 
-<p>数据回来之后一不做二不休，全盘格，直接回Gentoo了。</p>
+<p>数据回来之后一不做二不休，全盘格，直接回 Gentoo 了。</p>
 
-<p>可爱的Arch就这么被我抛弃了。</p>
+<p>可爱的 Arch 就这么被我抛弃了。</p>
 
-<p>上来直接上ext4分区。以前碰到过grub能认分区，但是kernel panic的情况，后来发现原来是要从ext4分区启动，需要initramfs。于是genkernel --menuconfig all手动配置完内核，生成了initramfs(我目前只会这个方法，囧，谁能告诉我怎么样生成initramfs）。</p>
+<p>上来直接上 ext4 分区。以前碰到过 grub 能认分区，但是 kernel panic 的情况，后来发现原来是要从 ext4 分区启动，需要 initramfs。于是 genkernel --menuconfig all 手动配置完内核，生成了 initramfs(我目前只会这个方法，囧，谁能告诉我怎么样生成 initramfs）。</p>
 
 <p>回顾一下历史遗留问题：</p>
 
 <p><!--more--><blockquote>
 [E] 挂起、休眠恢复后死机，黑屏，键盘鼠标无任何响应。<br />
-[E] KDE4注销后黑屏，不能重新进入KDM界面<br />
-[H] Python, Perl的GUI程序乱码；<br />
-[H] GEM间歇性不能开启<br />
+[E] KDE4 注销后黑屏，不能重新进入 KDM 界面<br />
+[H] Python, Perl 的 GUI 程序乱码；<br />
+[H] GEM 间歇性不能开启<br />
 [H] 有时候关机出现循环提示：mount-ro: wait for killproc<br />
-[M] 配置KMS<br />
+[M] 配置 KMS<br />
 [M] 配置宽屏控制台
 </blockquote></p>
 
-<p>1。挂起、休眠恢复的问题解决。2.6.30内核似乎使用了tuxonice补丁，当然这个问题的修复和tuxonice补丁没关系，以前用了还是死机。这次不知道怎么回事莫名其妙就好了。</p>
+<p>1。挂起、休眠恢复的问题解决。2.6.30 内核似乎使用了 tuxonice 补丁，当然这个问题的修复和 tuxonice 补丁没关系，以前用了还是死机。这次不知道怎么回事莫名其妙就好了。</p>
 
-<p>2。注销后黑屏。估计是konsolekit这个服务的问题吧，忘了上次有没有启动这个服务了。反正这次启动这个服务之后，注销就能重新回到kdm界面了。</p>
+<p>2。注销后黑屏。估计是 konsolekit 这个服务的问题吧，忘了上次有没有启动这个服务了。反正这次启动这个服务之后，注销就能重新回到 kdm 界面了。</p>
 
-<p>3。Perl GUI乱码，尚未解决，估计是CPAN里的某个包的问题。</p>
+<p>3。Perl GUI 乱码，尚未解决，估计是 CPAN 里的某个包的问题。</p>
 
-<p>4。GEM间歇性不能开启。现在一切正常</p>
+<p>4。GEM 间歇性不能开启。现在一切正常</p>
 
-<p>5。mount-ro: wait for killproc。现在一切正常。顺便说一句fbsplash真不错。</p>
+<p>5。mount-ro: wait for killproc。现在一切正常。顺便说一句 fbsplash 真不错。</p>
 
 <p>6。KMS，还是不行，甚至比上次还糟糕，花屏过后直接键盘无响应了。</p>
 
-<p>7。宽屏控制台，还是没调出来。。。uvesafb真的能行么？</p>
+<p>7。宽屏控制台，还是没调出来。。。uvesafb 真的能行么？</p>
 
 <p>当然还碰到了新的问题，慢慢解决吧。</p>
 
@@ -164,7 +165,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -182,7 +183,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/06/02/arch-beginner/" title="Previous Post: 小试ArchLinux">&laquo; 小试ArchLinux</a>
+        <a class="basic-alignment left" href="/blog/2009/06/02/arch-beginner/" title="Previous Post: 小试 ArchLinux">&laquo; 小试 ArchLinux</a>
       
       
         <a class="basic-alignment right" href="/blog/2009/06/17/poor-my-notebook/" title="Next Post: 可怜的笔记本">可怜的笔记本 &raquo;</a>

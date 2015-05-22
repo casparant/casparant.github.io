@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>让gnome-power-manager使用notify-osd通知 - Ant-Veil</title>
+  <title>让 Gnome-power-manager 使用 Notify-osd 通知 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="感谢Tualatrix同学对Notify-OSD, pidgin-libnotify, notification-daemon等包的hack，让我用上了Ubuntu下的Notify-OSD特性。不过因为笔记本经常要拔电源，这gnome-power-manager的事件通知还不能使用notify- &hellip;">
+  <meta name="description" content="感谢Tualatrix同学对 Notify-OSD, pidgin-libnotify, notification-daemon 等包的 hack，让我用上了 Ubuntu 下的 Notify-OSD 特性。不过因为笔记本经常要拔电源，这 gnome-power-manager &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">让gnome-power-manager使用notify-osd通知</h1>
+      <h1 class="entry-title">让 Gnome-power-manager 使用 Notify-osd 通知</h1>
     
     
       <p class="meta">
@@ -103,15 +104,15 @@
   </header>
 
 
-<div class="entry-content"><p>感谢<a href="http://imtx.cn" target="new">Tualatrix</a>同学对Notify-OSD, pidgin-libnotify, notification-daemon等包的hack，让我用上了Ubuntu下的Notify-OSD特性。不过因为笔记本经常要拔电源，这gnome-power-manager的事件通知还不能使用notify-osd，一拔电源就跳出窗口让人不爽，上网搜索，终于找到了解决方案。</p>
+<div class="entry-content"><p>感谢<a href="http://imtx.cn" target="new">Tualatrix</a>同学对 Notify-OSD, pidgin-libnotify, notification-daemon 等包的 hack，让我用上了 Ubuntu 下的 Notify-OSD 特性。不过因为笔记本经常要拔电源，这 gnome-power-manager 的事件通知还不能使用 notify-osd，一拔电源就跳出窗口让人不爽，上网搜索，终于找到了解决方案。</p>
 
-<p>在AUR里面找到了这个: <a href="http://aur.archlinux.org/packages.php?ID=24699" target="new">http://aur.archlinux.org/packages.php?ID=24699</a>, 里面包含了notify-osd的补丁。可惜这是for 2.24的gpm的，直接patch会报错。我把它下载下来，修改了一下，让它能用在2.26.4的gpm上。修改后的patch可以从我在github上的overlay里下到：<a href="http://github.com/casparant/caspar-gentoo/tree/master" target="new">http://github.com/casparant/caspar-gentoo/tree/master</a>。</p>
+<p>在 AUR 里面找到了这个: <a href="http://aur.archlinux.org/packages.php?ID=24699" target="new">http://aur.archlinux.org/packages.php?ID=24699</a>, 里面包含了 notify-osd 的补丁。可惜这是 for 2.24 的 gpm 的，直接 patch 会报错。我把它下载下来，修改了一下，让它能用在 2.26.4 的 gpm 上。修改后的 patch 可以从我在 github 上的 overlay 里下到：<a href="http://github.com/casparant/caspar-gentoo/tree/master" target="new">http://github.com/casparant/caspar-gentoo/tree/master</a>。</p>
 
-<p>现在gpm已经正常使用notify-osd了。至少拔除电源的时候能正确通知，不知道其他情况下如何。</p>
+<p>现在 gpm 已经正常使用 notify-osd 了。至少拔除电源的时候能正确通知，不知道其他情况下如何。</p>
 
 <p><img src="http://img.ant.im/di-7718.png" /></p>
 
-<p>补充一个网址<a href="https://wiki.ubuntu.com/NotifyOSD" target="new">https://wiki.ubuntu.com/NotifyOSD</a>，看来Notify-OSD接管所有桌面通知任重而道远啊~</p>
+<p>补充一个网址<a href="https://wiki.ubuntu.com/NotifyOSD" target="new">https://wiki.ubuntu.com/NotifyOSD</a>，看来 Notify-OSD 接管所有桌面通知任重而道远啊~</p>
 </div>
 
 
@@ -132,7 +133,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/z-turn/'>z-turn</a>
   
 </span>
 
@@ -150,10 +151,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/08/05/upgraded-to-kde-4-3/" title="Previous Post: 更新了KDE 4.3">&laquo; 更新了KDE 4.3</a>
+        <a class="basic-alignment left" href="/blog/2009/08/05/upgraded-to-kde-4-3/" title="Previous Post: 更新了 KDE 4.3">&laquo; 更新了 KDE 4.3</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/10/16/update-to-xorg-server-1-7/" title="Next Post: 更新到了xorg-server-1.7">更新到了xorg-server-1.7 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/10/16/update-to-xorg-server-1-7/" title="Next Post: 更新到了 xorg-server-1.7">更新到了 xorg-server-1.7 &raquo;</a>
       
     </p>
   </footer>

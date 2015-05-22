@@ -5,17 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Fix Razer Orochi Re-connect Issue - Ant-Veil</title>
+  <title>Category: Programming - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="Issue 雷蛇八歧大蛇 2013 版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(预期行为)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。 Environment 1
-2
-3
-4
-5
-Razer Orochi 蓝牙鼠标
-Gentoo + &hellip;">
+  <meta name="description" content="Category: programming">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +18,7 @@ Gentoo + &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.casparzhang.com/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">
+  <link rel="canonical" href="http://www.casparzhang.com/blog/categories/programming/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
@@ -87,165 +81,140 @@ Gentoo + &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">Fix Razer Orochi Re-connect Issue</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-10T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="#disqus_thread"
-             data-disqus-identifier="http://www.casparzhang.com">Comments</a>
-        
-      </p>
+    <h1 class="entry-title">Category: Programming</h1>
     
   </header>
-
-
-<div class="entry-content"><h2>Issue</h2>
-
-<p>雷蛇八歧大蛇 2013 版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(预期行为)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
-
-<h2>Environment</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Razer Orochi 蓝牙鼠标
-</span><span class='line'>Gentoo + KDE
-</span><span class='line'>kernel 3.10 ~ 3.16
-</span><span class='line'>bluez 4.101 ~ 5.23
-</span><span class='line'>bluedevil 1.3.2 ~ 2.0_rc1</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Solution</h2>
-
-<!--more-->
-
-
-<p>通过 <code>hcidump</code> 工具发现：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt; HCI Event: Connect Request (0x04) plen 10
-</span><span class='line'>    bdaddr F0:65:DD:94:9F:BB class 0x002580 type ACL
-</span><span class='line'>&gt; HCI Event: Command Status (0x0f) plen 4
-</span><span class='line'>    Accept Connection Request (0x01|0x0009) status 0x00 ncmd 1
-</span><span class='line'>&gt; HCI Event: Connect Complete (0x03) plen 11
-</span><span class='line'>    status 0x00 handle 13 bdaddr F0:65:DD:94:9F:BB type ACL encrypt 0x00
-</span><span class='line'>&gt; HCI Event: Command Status (0x0f) plen 4
-</span><span class='line'>    Read Remote Supported Features (0x01|0x001b) status 0x00 ncmd 1
-</span><span class='line'>&gt; HCI Event: Read Remote Supported Features (0x0b) plen 11
-</span><span class='line'>    status 0x00 handle 13
-</span><span class='line'>    Features: 0xbf 0x00 0xa0 0x78 0x18 0x1e 0x59 0x83
-</span><span class='line'>&gt; HCI Event: Command Status (0x0f) plen 4
-</span><span class='line'>    Read Remote Extended Features (0x01|0x001c) status 0x00 ncmd 1
-</span><span class='line'>&gt; HCI Event: Read Remote Extended Features (0x23) plen 13
-</span><span class='line'>    status 0x00 handle 13 page 1 max 1
-</span><span class='line'>    Features: 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-</span><span class='line'>&gt; HCI Event: Command Status (0x0f) plen 4
-</span><span class='line'>    Remote Name Request (0x01|0x0019) status 0x00 ncmd 1
-</span><span class='line'>&gt; HCI Event: Remote Name Req Complete (0x07) plen 255
-</span><span class='line'>    status 0x00 bdaddr F0:65:DD:94:9F:BB name 'Razer Orochi 2013'
-</span><span class='line'>&gt; HCI Event: Command Complete (0x0e) plen 10
-</span><span class='line'>    Link Key Request Negative Reply (0x01|0x000c) ncmd 1
-</span><span class='line'>    status 0x00 bdaddr F0:65:DD:94:9F:BB
-</span><span class='line'>&gt; HCI Event: Disconn Complete (0x05) plen 4
-</span><span class='line'>    status 0x00 handle 13 reason 0x13
-</span><span class='line'>    Reason: Remote User Terminated Connection</span></code></pre></td></tr></table></div></figure>
-
-
-<p>出现 <strong><em>Link Key Request Negative Reply</em></strong> 的字样，怀疑是配对的时候使用自动 key，而蓝牙工具没有保存这个自动 key，导致鼠标从休眠恢复时试图以空 key 连接，从而失败。</p>
-
-<p>知道了问题，解决方法就简单了，配对的时候手工输入 key/PIN 为 <strong><em>1234</em></strong>，连接即可。</p>
-
-<p>就这么一个破问题，折腾了我半天时间，内核、bluez、bluedevil 都尝试了一遍，还在人家的 Macbook 上测试了一番。差点就冲动下单换 Mac 了。 <code>#我不是土豪#</code></p>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">Caspar</span></span>
-
-      
+  <div id="blog-archives" class="category">
 
 
 
-
-<time class='entry-date' datetime='2014-10-10T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
-      
-
-<span class="categories">
   
-    <a class='category' href='/blog/categories/z-turn/'>z-turn</a>
+  <h2>2010</h2>
+
+<article>
   
-</span>
+<h1><a href="/blog/2010/05/16/ya-bupt-thesis-bachelor-1-0-alpha-1-released/">Ya-bupt-thesis-bachelor 1.0 Alpha 1 Released</a></h1>
+<time datetime="2010-05-16T00:00:00+08:00" pubdate><span class='month'>May</span> <span class='day'>16</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/programming/'>programming</a></span>
+</footer>
 
 
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.casparzhang.com/blog/2014/10/10/fix-razer-orochi-re-connect-issue/" data-via="casparant" data-counturl="http://www.casparzhang.com/blog/2014/10/10/fix-razer-orochi-re-connect-issue/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/" title="Previous Post: Gentoo KDE 下折腾 OpenConnect">&laquo; Gentoo KDE 下折腾 OpenConnect</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2015/05/21/blog-revived/" title="Next Post: Blog 恢复">Blog 恢复 &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<article>
+  
+<h1><a href="/blog/2010/04/07/when-the-system-call-does-not-exist/">当系统调用不存在……</a></h1>
+<time datetime="2010-04-07T00:00:00+08:00" pubdate><span class='month'>Apr</span> <span class='day'>07</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/programming/'>programming</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/blog/2010/04/03/know-how-to-make-a-latex-beamer-template/">搞定 LaTeX Beamer 模板</a></h1>
+<time datetime="2010-04-03T00:00:00+08:00" pubdate><span class='month'>Apr</span> <span class='day'>03</span> <span class='year'>2010</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/programming/'>programming</a></span>
+</footer>
+
+
+</article>
+
+
+
+  
+  <h2>2009</h2>
+
+<article>
+  
+<h1><a href="/blog/2009/04/23/latex-resume-templates/">LaTeX Resume Templates</a></h1>
+<time datetime="2009-04-23T00:00:00+08:00" pubdate><span class='month'>Apr</span> <span class='day'>23</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/programming/'>programming</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/blog/2009/01/07/the-coverages-in-dynamic-testing/">动态测试中的覆盖率问题</a></h1>
+<time datetime="2009-01-07T00:00:00+08:00" pubdate><span class='month'>Jan</span> <span class='day'>07</span> <span class='year'>2009</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/programming/'>programming</a></span>
+</footer>
+
+
+</article>
+
+
+
+  
+  <h2>2008</h2>
+
+<article>
+  
+<h1><a href="/blog/2008/11/09/using-c-system-call-to-solve-smoker-problem-under-linux/">经典信号量例题“抽烟者问题”的 C 语言实现</a></h1>
+<time datetime="2008-11-09T00:00:00+08:00" pubdate><span class='month'>Nov</span> <span class='day'>09</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/programming/'>programming</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/blog/2008/06/10/java-basic-check-points/">Java 知识点没掌握扎实的后果</a></h1>
+<time datetime="2008-06-10T00:00:00+08:00" pubdate><span class='month'>Jun</span> <span class='day'>10</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/programming/'>programming</a></span>
+</footer>
+
+
+</article>
+
+
+
+<article>
+  
+<h1><a href="/blog/2008/06/09/asm-by-emu8086/">俺也汇编一下: EMU8086</a></h1>
+<time datetime="2008-06-09T00:00:00+08:00" pubdate><span class='month'>Jun</span> <span class='day'>09</span> <span class='year'>2008</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/programming/'>programming</a></span>
+</footer>
+
+
+</article>
+
 </div>
-  </section>
+
+  
+</article>
 
 </div>
 
@@ -320,31 +289,6 @@ Gentoo + &hellip;">
 
 
   
-  
-    
-        
-            
-            
-        
-
-
-
-
-
-
-        
-
-
-
-
-
-
-<div class="cc-license">
-    This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.<br />
-    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License" src="http://licensebuttons.net/l/by-nc-sa/3.0/80x15.png" /></a>
-</div>
-
-  
 </aside>
 
 
@@ -362,10 +306,7 @@ Gentoo + &hellip;">
       var disqus_shortname = 'casparant';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.casparzhang.com/blog/2014/10/10/fix-razer-orochi-re-connect-issue/';
-        var disqus_url = 'http://www.casparzhang.com/blog/2014/10/10/fix-razer-orochi-re-connect-issue/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

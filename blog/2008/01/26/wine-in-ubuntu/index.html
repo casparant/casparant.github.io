@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Wine在Ubuntu下的优异表现 - Ant-Veil</title>
+  <title>Wine 在 Ubuntu 下的优异表现 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="Wine这个软件功能越来越强大了，非常好用～～～ 源里面的Wine版本太旧，正好在昨天，Wine发布了0.9.54 ，可以直接去官方网站http://www.winehq.org/site/download下载： 首先要获取密钥： wget -q http://wine. &hellip;">
+  <meta name="description" content="Wine 这个软件功能越来越强大了，非常好用～～～ 源里面的 Wine 版本太旧，正好在昨天，Wine 发布了 0.9.54 ，可以直接去官方网站http://www.winehq.org/site/download下载： 首先要获取密钥： wget -q http://wine. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Wine在Ubuntu下的优异表现</h1>
+      <h1 class="entry-title">Wine 在 Ubuntu 下的优异表现</h1>
     
     
       <p class="meta">
@@ -103,9 +104,9 @@
   </header>
 
 
-<div class="entry-content"><p>Wine这个软件功能越来越强大了，非常好用～～～</p>
+<div class="entry-content"><p>Wine 这个软件功能越来越强大了，非常好用～～～</p>
 
-<p>源里面的Wine版本太旧，正好在昨天，Wine发布了0.9.54 ，可以直接去官方网站<a href="http://www.winehq.org/site/download" target="_blank">http://www.winehq.org/site/download</a>下载：</p>
+<p>源里面的 Wine 版本太旧，正好在昨天，Wine 发布了 0.9.54 ，可以直接去官方网站<a href="http://www.winehq.org/site/download" target="_blank">http://www.winehq.org/site/download</a>下载：</p>
 
 <p>首先要获取密钥：</p>
 
@@ -128,7 +129,7 @@ sudo apt-get install wine</pre></p>
 
 <p>下载完毕后处理中文问题：</p>
 
-<p>从Windows下拷贝SimSun.ttf字体到<code>~/.wine/drive_c/windows/fonts/</code>下，将权限改为755。</p>
+<p>从 Windows 下拷贝 SimSun.ttf 字体到<code>~/.wine/drive_c/windows/fonts/</code>下，将权限改为 755。</p>
 
 <p>编辑下面一段文字：
 <blockquote>REGEDIT4</blockquote></p>
@@ -159,11 +160,11 @@ sudo apt-get install wine</pre></p>
 "Times New Roman TUR,162"="simsun"<br />
 "Tms Rmn"="simsun"</p>
 
-<p>保存为zh.reg，在终端下通过regedit导入：</p>
+<p>保存为 zh.reg，在终端下通过 regedit 导入：</p>
 
 <p><pre lang="bash">regedit zh.reg</pre></p>
 
-<p>然后就可以开始安装Win下的软件了：</p>
+<p>然后就可以开始安装 Win 下的软件了：</p>
 
 <p><strong>范例一：安装迅雷国际版</strong></p>
 
@@ -171,17 +172,17 @@ sudo apt-get install wine</pre></p>
 
 <p><pre lang="bash">wine Gigaget.exe</pre></p>
 
-<p>像在Windows下安装一样，一路Next到底即可。</p>
+<p>像在 Windows 下安装一样，一路 Next 到底即可。</p>
 
-<p><strong>范例二：安装CS</strong></p>
+<p><strong>范例二：安装 CS</strong></p>
 
-<p>首先仍旧wine CS.exe，一路Next到底，然后进入游戏界面后可能会出现中文不能显示的问题，此时请回到上文，仔细按照“处理中文”的步骤操作，注意SimSun.ttf的权限需要改成755或777；开始游戏后会提示安装Gecko，这个软件是wine下模拟IE的一种方式，此时可以联网下载，如果从官网下载速度慢也可以先退出游戏，上网搜wine_Gecko-0.1.0的安装文件，下载后将wine_gecko-0.1.0.cab复制到~/.wine/drive_c下，在终端打开regedit，定位到<code>HKEY_CURRENT_USER/Software/Wine/MSHTML/</code>，在右侧窗口修改<code>GeckoUrl</code>值为：<code>C:\wine_gecko-0.1.0.cab</code>，然后重新进入游戏，在提示此窗口时执行Install即可马上安装完毕。</p>
+<p>首先仍旧 wine CS.exe，一路 Next 到底，然后进入游戏界面后可能会出现中文不能显示的问题，此时请回到上文，仔细按照“处理中文”的步骤操作，注意 SimSun.ttf 的权限需要改成 755 或 777；开始游戏后会提示安装 Gecko，这个软件是 wine 下模拟 IE 的一种方式，此时可以联网下载，如果从官网下载速度慢也可以先退出游戏，上网搜 wine_Gecko-0.1.0 的安装文件，下载后将 wine_gecko-0.1.0.cab 复制到~/.wine/drive_c 下，在终端打开 regedit，定位到<code>HKEY_CURRENT_USER/Software/Wine/MSHTML/</code>，在右侧窗口修改<code>GeckoUrl</code>值为：<code>C:\wine_gecko-0.1.0.cab</code>，然后重新进入游戏，在提示此窗口时执行 Install 即可马上安装完毕。</p>
 
-<p><strong>范例三：安装ies4linux</strong></p>
+<p><strong>范例三：安装 ies4linux</strong></p>
 
-<p>Gecko是一个浏览器核心，在软件中需要显示HTML页面的时候经常使用，比如超星阅读器或者CS，而要想更好地模拟IE，就需要使用ies4linux这个软件，可以到<a href="http://www.tatanka.com.br/" target="_blank">http://www.tatanka.com.br/</a>下载最新版的ies4linux，下载后解压缩到某处，执行./ies4linux，按照提示一步步回答若干问题之后，就开始联网下载安装所需的文件，下载完毕后就可以在桌面上看到ies4linux的图标，打开后修改安全权限为低，发现能够登录支付宝了。</p>
+<p>Gecko 是一个浏览器核心，在软件中需要显示 HTML 页面的时候经常使用，比如超星阅读器或者 CS，而要想更好地模拟 IE，就需要使用 ies4linux 这个软件，可以到<a href="http://www.tatanka.com.br/" target="_blank">http://www.tatanka.com.br/</a>下载最新版的 ies4linux，下载后解压缩到某处，执行./ies4linux，按照提示一步步回答若干问题之后，就开始联网下载安装所需的文件，下载完毕后就可以在桌面上看到 ies4linux 的图标，打开后修改安全权限为低，发现能够登录支付宝了。</p>
 
-<p>因为ies4linux的wine配置和系统中的wine配置是不同的，所以需要重新修改配置才能将ies4linux的中文显示问题完全解决：</p>
+<p>因为 ies4linux 的 wine 配置和系统中的 wine 配置是不同的，所以需要重新修改配置才能将 ies4linux 的中文显示问题完全解决：</p>
 
 <p><pre lang="bash">gedit ~/.ies4linux/ie6/system.reg</pre></p>
 
@@ -202,20 +203,20 @@ sudo apt-get install wine</pre></p>
 <p>"MS Shell Dlg"="SimSun"<br />
 "MS Shell Dlg 2"="SimSun"</p>
 
-<p><strong>范例四：安装极品飞车9</strong></p>
+<p><strong>范例四：安装极品飞车 9</strong></p>
 
 <p>不知道是我的集成显卡太差还是没有真正安装成功的原因，安装好了之后本该有文字的地方都变成方块了，只好卸载掉……</p>
 
 <p>安装方法：</p>
 
-<p>最好是DVD英文版光盘，将光盘中所有内容复制到一个临时文件夹中，为避免安装过程中提示没有DirectX9.0c，需要修改AutoRun的Autorun.cfg中其中两行的内容为：</p>
+<p>最好是 DVD 英文版光盘，将光盘中所有内容复制到一个临时文件夹中，为避免安装过程中提示没有 DirectX9.0c，需要修改 AutoRun 的 Autorun.cfg 中其中两行的内容为：</p>
 
 <p><code>DirectXVersion=0<br />
 StartMenuDXEULA=0</code></p>
 
-<p>然后执行安装，安装结束后，从Windows分区的System32文件夹中复制或者到此地址<a href="http://www.dll-files.com/dllindex/dll-files.shtml?d3dx9_26" target="_blank">http://www.dll-files.com/dllindex/dll-files.shtml?d3dx9_26</a>下载<code>d3dx9_26.dll</code>，放到<code>.wine/drive_c/windows/system32</code>下。</p>
+<p>然后执行安装，安装结束后，从 Windows 分区的 System32 文件夹中复制或者到此地址<a href="http://www.dll-files.com/dllindex/dll-files.shtml?d3dx9_26" target="_blank">http://www.dll-files.com/dllindex/dll-files.shtml?d3dx9_26</a>下载<code>d3dx9_26.dll</code>，放到<code>.wine/drive_c/windows/system32</code>下。</p>
 
-<p>上网下载极品飞车9的1.3版补丁和免CD补丁，覆盖即可。</p>
+<p>上网下载极品飞车 9 的 1.3 版补丁和免 CD 补丁，覆盖即可。</p>
 
 <p>可怜的显卡……我的极品飞车啊……</p>
 </div>
@@ -238,7 +239,7 @@ StartMenuDXEULA=0</code></p>
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 

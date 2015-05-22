@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ubuntu Server远程连接的配置 - Ant-Veil</title>
+  <title>Ubuntu Server 远程连接的配置 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="实验室的服务器(Ubuntu Linux 7.10 Server)需要远程登录，现在已经实现以下几种登录方式： 1. FTP 安装vsftpd，修改/etc/vsftpd.conf 取消local_enable=YES行的注释，即可使用FTP工具以服务器上的本地用户名和密码登录服务器。 &hellip;">
+  <meta name="description" content="实验室的服务器(Ubuntu Linux 7.10 Server)需要远程登录，现在已经实现以下几种登录方式： 1. FTP 安装 vsftpd，修改/etc/vsftpd.conf 取消 local_enable=YES 行的注释，即可使用 FTP 工具以服务器上的本地用户名和密码登录服务器。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ubuntu Server远程连接的配置</h1>
+      <h1 class="entry-title">Ubuntu Server 远程连接的配置</h1>
     
     
       <p class="meta">
@@ -107,23 +108,23 @@
 
 <p>1. FTP</p>
 
-<p>安装vsftpd，修改<code>/etc/vsftpd.conf</code></p>
+<p>安装 vsftpd，修改<code>/etc/vsftpd.conf</code></p>
 
-<p>取消local_enable=YES行的注释，即可使用FTP工具以服务器上的本地用户名和密码登录服务器。用户权限为服务器本地用户原有的权限。</p>
+<p>取消 local_enable=YES 行的注释，即可使用 FTP 工具以服务器上的本地用户名和密码登录服务器。用户权限为服务器本地用户原有的权限。</p>
 
-<p>要想允许root登录FTP，需要修改<code>/etc/ftpusers</code>，将root行注释掉</p>
+<p>要想允许 root 登录 FTP，需要修改<code>/etc/ftpusers</code>，将 root 行注释掉</p>
 
 <p>2.ssh</p>
 
-<p>在新立得里安装OpenSSH后，开机自动启动服务，即可通过ssh远程登录。</p>
+<p>在新立得里安装 OpenSSH 后，开机自动启动服务，即可通过 ssh 远程登录。</p>
 
-<p>要想允许root登录，修改<code>/etc/ssh/sshd_config</code>文件，将<code>PermitRootLogin</code>的值改为 yes</p>
+<p>要想允许 root 登录，修改<code>/etc/ssh/sshd_config</code>文件，将<code>PermitRootLogin</code>的值改为 yes</p>
 
 <p>3.vnc</p>
 
-<p>因为有时候需要进入X界面，所以还需要通过vnc登录服务器。这种方式比较麻烦，不想通过vino登录，想使用vnc4server，只要服务启动了就可以实现多用户远程登录。</p>
+<p>因为有时候需要进入 X 界面，所以还需要通过 vnc 登录服务器。这种方式比较麻烦，不想通过 vino 登录，想使用 vnc4server，只要服务启动了就可以实现多用户远程登录。</p>
 
-<p><!--more-->在gdmsetup中的“远程“选项卡里点“配置XDMCP“。取消 “遵从非直接请求“的勾选。</p>
+<p><!--more-->在 gdmsetup 中的“远程“选项卡里点“配置 XDMCP“。取消 “遵从非直接请求“的勾选。</p>
 
 <p>修改<code>/etc/gdm/gdm.conf</code>文件</p>
 
@@ -135,7 +136,7 @@
 
 <p>确保<code>vnc4server, xinetd</code>已经安装</p>
 
-<p>设定VNC连接密码：</p>
+<p>设定 VNC 连接密码：</p>
 
 <p><pre lang="bash">sudo vncpasswd /root/.vncpasswd
 sudo chmod 666 /root/.vncpasswd</pre></p>
@@ -157,9 +158,9 @@ port = 5901<br />
 }
 </blockquote></p>
 
-<p>重启后，用VNC客户端通过端口号1就可以服务器了。</p>
+<p>重启后，用 VNC 客户端通过端口号 1 就可以服务器了。</p>
 
-<p>注意要把~/.vnc/xstartup最后添加一行gnome-session &，这样才能以GNOME界面登录。如果是kde界面，则为kde-session &</p>
+<p>注意要把~/.vnc/xstartup 最后添加一行 gnome-session &，这样才能以 GNOME 界面登录。如果是 kde 界面，则为 kde-session &</p>
 </div>
 
 
@@ -180,7 +181,7 @@ port = 5901<br />
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -198,7 +199,7 @@ port = 5901<br />
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2008/03/12/ipmsg-problems/" title="Previous Post: Linux下飞鸽传书的两个问题的解决">&laquo; Linux下飞鸽传书的两个问题的解决</a>
+        <a class="basic-alignment left" href="/blog/2008/03/12/ipmsg-problems/" title="Previous Post: Linux 下飞鸽传书的两个问题的解决">&laquo; Linux 下飞鸽传书的两个问题的解决</a>
       
       
         <a class="basic-alignment right" href="/blog/2008/03/26/ubuntu-server-config/" title="Next Post: Ubuntu 7.10 Server Config">Ubuntu 7.10 Server Config &raquo;</a>

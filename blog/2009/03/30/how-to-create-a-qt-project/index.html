@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>如何创建QT工程 - Ant-Veil</title>
+  <title>如何创建 Qt 工程 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="刚才打了一大段字，不小心给其他页面覆盖了……看来WP的自动保存功能还是得开启…… 最近有心学一下GUI编程，在GTK, wxWidgets和QT之间选择，最后因为QT Designer和喜欢C++的缘故选择了QT。当然QT4 Designer也不是那么傻瓜化的东西，有很多步骤都需要自己来完成。 &hellip;">
+  <meta name="description" content="刚才打了一大段字，不小心给其他页面覆盖了……看来 WP 的自动保存功能还是得开启…… 最近有心学一下 GUI 编程，在 GTK, wxWidgets 和 QT 之间选择，最后因为 QT Designer 和喜欢 C++的缘故选择了 QT。当然 QT4 Designer 也不是那么傻瓜化的东西， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">如何创建QT工程</h1>
+      <h1 class="entry-title">如何创建 Qt 工程</h1>
     
     
       <p class="meta">
@@ -103,27 +104,27 @@
   </header>
 
 
-<div class="entry-content"><p>刚才打了一大段字，不小心给其他页面覆盖了……看来WP的自动保存功能还是得开启……</p>
+<div class="entry-content"><p>刚才打了一大段字，不小心给其他页面覆盖了……看来 WP 的自动保存功能还是得开启……</p>
 
-<p>最近有心学一下GUI编程，在GTK, wxWidgets和QT之间选择，最后因为QT Designer和喜欢C++的缘故选择了QT。当然QT4 Designer也不是那么傻瓜化的东西，有很多步骤都需要自己来完成。经过一番Google上的学习之后，我总算完成了一个简单的QT工程的创建，因此以这个工程为例，记录一下创建过程，以供参考。</p>
+<p>最近有心学一下 GUI 编程，在 GTK, wxWidgets 和 QT 之间选择，最后因为 QT Designer 和喜欢 C++的缘故选择了 QT。当然 QT4 Designer 也不是那么傻瓜化的东西，有很多步骤都需要自己来完成。经过一番 Google 上的学习之后，我总算完成了一个简单的 QT 工程的创建，因此以这个工程为例，记录一下创建过程，以供参考。</p>
 
 <p><blockquote>
 项目名称：POS<br />
 主程序名：main.cpp<br />
-主窗口及SIGNAL/SLOT处理：POSMainWindow[.h, .cpp]<br />
+主窗口及 SIGNAL/SLOT 处理：POSMainWindow[.h, .cpp]<br />
 界面文件：ui_POSMainWindow.h, POSMainWindow.ui
 <a href="http://www.qiliang.net/qt/moc.html">Meta Object Compiler</a>文件：moc_POSMainWindow[.h, .cpp]
 </blockquote></p>
 
 <p>1. 新建界面配置文件(POSMainWindow.ui)</p>
 
-<p><!--more-->通过在QT4 Designer中拖拽拖拽就能生成一个基本的.ui配置文件了。</p>
+<p><!--more-->通过在 QT4 Designer 中拖拽拖拽就能生成一个基本的.ui 配置文件了。</p>
 
-<p>2. 生成ui头文件(ui_POSMainWindow.h)</p>
+<p>2. 生成 ui 头文件(ui_POSMainWindow.h)</p>
 
 <p><pre lang="bash">uic POSMainWindow.ui -o ui_POSMainWindow.h</pre></p>
 
-<p>3. 编写主窗口及SIGNAL/SLOT处理文件(POSMainWindow.h, POSMainWindow.cpp)</p>
+<p>3. 编写主窗口及 SIGNAL/SLOT 处理文件(POSMainWindow.h, POSMainWindow.cpp)</p>
 
 <p>POSMainWindow.h</p>
 
@@ -162,13 +163,13 @@
 //    ...........<br />
 //}</p>
 
-<p>4. 生成MOC文件(moc_POSMainWindow.h, moc_POSMainWindow.cpp)</p>
+<p>4. 生成 MOC 文件(moc_POSMainWindow.h, moc_POSMainWindow.cpp)</p>
 
-<p>因为自定义SLOT之前需要使用Q_OBJECT宏，而这个宏<a href="http://www.qiliang.net/qt/moc.html">跟元对象编译器有关</a>，因此要生成对应的moc文件才不至于在link的时候报错。</p>
+<p>因为自定义 SLOT 之前需要使用 Q_OBJECT 宏，而这个宏<a href="http://www.qiliang.net/qt/moc.html">跟元对象编译器有关</a>，因此要生成对应的 moc 文件才不至于在 link 的时候报错。</p>
 
 <p><pre lang="bash">moc MainWindow.h -o moc_MainWindow.h</pre></p>
 
-<p>之后生成了两个moc前缀的文件。</p>
+<p>之后生成了两个 moc 前缀的文件。</p>
 
 <p>5. 生成主程序(main.cpp)</p>
 
@@ -183,7 +184,7 @@
 }
 </p>
 
-<p>6. 生成Makefile
+<p>6. 生成 Makefile
 <pre lang="bash">qmake -project
 qmake
 make</pre></p>
@@ -211,7 +212,7 @@ make</pre></p>
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -232,7 +233,7 @@ make</pre></p>
         <a class="basic-alignment left" href="/blog/2009/03/26/some-common-skills/" title="Previous Post: 几个日常技巧——我的滥竽充数">&laquo; 几个日常技巧——我的滥竽充数</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/03/30/mesa-and-opengl-problems/" title="Next Post: Mesa和OpenGL的那点破事|有第三者">Mesa和OpenGL的那点破事|有第三者 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/03/30/mesa-and-opengl-problems/" title="Next Post: Mesa 和 OpenGL 的那点破事 (有第三者)">Mesa 和 OpenGL 的那点破事 (有第三者) &raquo;</a>
       
     </p>
   </footer>

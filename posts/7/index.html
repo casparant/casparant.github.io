@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="在支付宝的官方Blog上，已经可以使用了。打开alipay的页面终于可以登录了，只是登录后要付款，发现招行还是不行，支付宝里面没钱也是白搭啊…… 下载地址在这里：http://blog.alipay.com/ 下面是官方消息的转载，暂时不支持数字签名。不管怎么说，还是值得期待的。 ">
+  <meta name="description" content="在支付宝的官方 Blog 上，已经可以使用了。打开 alipay 的页面终于可以登录了，只是登录后要付款，发现招行还是不行，支付宝里面没钱也是白搭啊…… 下载地址在这里：http://blog.alipay.com/ 下面是官方消息的转载，暂时不支持数字签名。不管怎么说，还是值得期待的。 ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -87,7 +88,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2008/10/23/alipay-for-linux/">[转]支付宝针Firefox 的安全控件 for Linux</a></h1>
+      <h1 class="entry-title"><a href="/blog/2008/10/23/alipay-for-linux/">[转] 支付宝针 Firefox 的安全控件 for Linux</a></h1>
     
     
       <p class="meta">
@@ -106,7 +107,7 @@
   </header>
 
 
-  <div class="entry-content"><p>在支付宝的官方Blog上，已经可以使用了。打开alipay的页面终于可以登录了，只是登录后要付款，发现招行还是不行，支付宝里面没钱也是白搭啊……</p>
+  <div class="entry-content"><p>在支付宝的官方 Blog 上，已经可以使用了。打开 alipay 的页面终于可以登录了，只是登录后要付款，发现招行还是不行，支付宝里面没钱也是白搭啊……</p>
 
 <p>下载地址在这里：<a href="http://blog.alipay.com/">http://blog.alipay.com/</a></p>
 
@@ -147,17 +148,17 @@
   </header>
 
 
-  <div class="entry-content"><p>第一步，安装mod_python</p>
+  <div class="entry-content"><p>第一步，安装 mod_python</p>
 
 <p><pre lang="bash">sudo apt-get install libapache2-mod-python</pre></p>
 
-<p>第二步，将mod_python模块加入到启用列表中</p>
+<p>第二步，将 mod_python 模块加入到启用列表中</p>
 
 <p><pre lang="bash">sudo ln -s /etc/apache2/mods-available/mod_python.load /etc/apache2/mods-enabled/</pre></p>
 
-<p><strong>注：在Ubuntu 8.10中，对应的模块配置文件名已经改成了python.load，后文中提到的也应相应改成python.conf</strong></p>
+<p><strong>注：在 Ubuntu 8.10 中，对应的模块配置文件名已经改成了 python.load，后文中提到的也应相应改成 python.conf</strong></p>
 
-<p>第三步，配置mod_python</p>
+<p>第三步，配置 mod_python</p>
 
 <p>先在<code>/etc/apache2/mods-available/</code>下新建一个文件<code>mod_python.conf</code></p>
 
@@ -187,7 +188,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2008/10/17/recommend-using-eioffice-2009-personal/">推荐：永中集成Office2009个人版发布</a></h1>
+      <h1 class="entry-title"><a href="/blog/2008/10/17/recommend-using-eioffice-2009-personal/">推荐：永中 Office 2009 个人版发布</a></h1>
     
     
       <p class="meta">
@@ -206,11 +207,11 @@
   </header>
 
 
-  <div class="entry-content"><p>这几天太忙，好久没有更新了。今天上来推荐一个软件：几天前，永中推出了它的Office2009版本，永中的Office一直都支持Linux平台，这次的亮点是永中有了免费的版本：<a href="http://www.evermoresw.com/webch/download/downEIOPersonal.jsp">集成Office个人版</a>。</p>
+  <div class="entry-content"><p>这几天太忙，好久没有更新了。今天上来推荐一个软件：几天前，永中推出了它的 Office2009 版本，永中的 Office 一直都支持 Linux 平台，这次的亮点是永中有了免费的版本：<a href="http://www.evermoresw.com/webch/download/downEIOPersonal.jsp">集成 Office 个人版</a>。</p>
 
-<p>永中Office的排版和WORD比较相近，这下交老师的实验报告就不用跑虚拟机下开Windows了。永中Office还支持M$ Office 2007格式，也支持UOF格式（虽然现在我还用不到）。永中Office的导出PDF功能还包含了自动书签功能，这一点比OOo好。不过OOo3.0发布了，我还没去下载，不知道使用效果如何。</p>
+<p>永中 Office 的排版和 WORD 比较相近，这下交老师的实验报告就不用跑虚拟机下开 Windows 了。永中 Office 还支持 M$ Office 2007 格式，也支持 UOF 格式（虽然现在我还用不到）。永中 Office 的导出 PDF 功能还包含了自动书签功能，这一点比 OOo 好。不过 OOo3.0 发布了，我还没去下载，不知道使用效果如何。</p>
 
-<p>顺便提示一个小技巧，因为永中Office用的永中宋体是直接放到了/usr/share/fonts/zh_CN/TrueType下，这个字体会直接影响系统中的字体，比如我的Qterm，为了恢复系统字体的原状，我尝试修改字体配置文件未果，最后发现永中Office字体除了上面的路径，还需要查找自带的JRE的路径，因此将字体文件移动到/opt/Evermore/EIOffice/Jre/lib/fonts/下即可，这样永中Office可以用宋体字体，系统字体也不会受到影响(话说宋体在Linux下显示的效果灰常难看……)。</p>
+<p>顺便提示一个小技巧，因为永中 Office 用的永中宋体是直接放到了/usr/share/fonts/zh_CN/TrueType 下，这个字体会直接影响系统中的字体，比如我的 Qterm，为了恢复系统字体的原状，我尝试修改字体配置文件未果，最后发现永中 Office 字体除了上面的路径，还需要查找自带的 JRE 的路径，因此将字体文件移动到/opt/Evermore/EIOffice/Jre/lib/fonts/下即可，这样永中 Office 可以用宋体字体，系统字体也不会受到影响(话说宋体在 Linux 下显示的效果灰常难看……)。</p>
 
 <p>最后上个截图：</p>
 
@@ -230,7 +231,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2008/09/22/using-chrome-under-windows/">跟风Chrome</a></h1>
+      <h1 class="entry-title"><a href="/blog/2008/09/22/using-chrome-under-windows/">跟风 Chrome</a></h1>
     
     
       <p class="meta">
@@ -249,15 +250,15 @@
   </header>
 
 
-  <div class="entry-content"><p>看来Google推出for Linux的Chrome还有待时日，那我就在实验室的XP上用用win下的版本好了。那天在三联生活周刊上都看到了Chrome的文章，看来Google推出的东西当真是能引起水波荡漾啊。</p>
+  <div class="entry-content"><p>看来 Google 推出 for Linux 的 Chrome 还有待时日，那我就在实验室的 XP 上用用 win 下的版本好了。那天在三联生活周刊上都看到了 Chrome 的文章，看来 Google 推出的东西当真是能引起水波荡漾啊。</p>
 
-<p>其实Chrome出来的当天我就下载试用了，安装包只有那么一丁点大，还要进行在线安装。这就意味着某人叫我帮她下载一个Chrome给她离线安装的愿望不能实现了- -|||当时用了一会儿马上就卸掉了，原因是：没有鼠标手势……</p>
+<p>其实 Chrome 出来的当天我就下载试用了，安装包只有那么一丁点大，还要进行在线安装。这就意味着某人叫我帮她下载一个 Chrome 给她离线安装的愿望不能实现了- -|||当时用了一会儿马上就卸掉了，原因是：没有鼠标手势……</p>
 
-<p>后来在网上看到可以用软件代替的方法启用鼠标手势。就是使用strokeit这个软件。这个软件专门针对Chrome作了优化，我安装后使用起来和Firefox插件感觉没有什么两样，相当不错。所以Chrome从此就常驻我的系统了。</p>
+<p>后来在网上看到可以用软件代替的方法启用鼠标手势。就是使用 strokeit 这个软件。这个软件专门针对 Chrome 作了优化，我安装后使用起来和 Firefox 插件感觉没有什么两样，相当不错。所以 Chrome 从此就常驻我的系统了。</p>
 
-<p>Google采用的是Webkit+V8，对于Web上的新技术我不了解，但是V8的前景据很多人说很好，这样看来Google有戏。</p>
+<p>Google 采用的是 Webkit+V8，对于 Web 上的新技术我不了解，但是 V8 的前景据很多人说很好，这样看来 Google 有戏。</p>
 
-<p>Google俨然成了一个品牌，据说推出下载没多久就下载记录破百万了~</p>
+<p>Google 俨然成了一个品牌，据说推出下载没多久就下载记录破百万了~</p>
 </div>
   
   
@@ -270,7 +271,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2008/09/17/sfd2008-in-bupt/">[活动预告]2008软件自由日(SFD)北邮站</a></h1>
+      <h1 class="entry-title"><a href="/blog/2008/09/17/sfd2008-in-bupt/">[活动预告] 2008 软件自由日 (SFD) 北邮站</a></h1>
     
     
       <p class="meta">
@@ -288,23 +289,23 @@
 
   <div class="entry-content"><p><strong>主办方</strong>：北京邮电大学开源软件协会（BOSS）</p>
 
-<p><strong>协办方</strong>：北京邮电大学嵌入式系统协会（BESA），北京Linux用户组（BLUG），中国开源软件推进联盟（COPU），信息产业部软件与集成电路促进中心（CSIP）</p>
+<p><strong>协办方</strong>：北京邮电大学嵌入式系统协会（BESA），北京 Linux 用户组（BLUG），中国开源软件推进联盟（COPU），信息产业部软件与集成电路促进中心（CSIP）</p>
 
-<p><strong>赞助商</strong>：Sun中国工程研究院，谋智网络技术有限公司（Mozilla）</p>
+<p><strong>赞助商</strong>：Sun 中国工程研究院，谋智网络技术有限公司（Mozilla）</p>
 
-<p><strong>丰厚礼品</strong>：300件T-shirt，近700张最新各种发型版Linux/OpenSolaris安装CD，10个超值杯子，Firefox贴纸，绒毛玩具，再加无数的软件自由日官方小礼品（胸章，贴纸），最后还有一个神秘大奖哦！<br />
+<p><strong>丰厚礼品</strong>：300 件 T-shirt，近 700 张最新各种发型版 Linux/OpenSolaris 安装 CD，10 个超值杯子，Firefox 贴纸，绒毛玩具，再加无数的软件自由日官方小礼品（胸章，贴纸），最后还有一个神秘大奖哦！<br />
 
 <strong>软件自由日简介</strong>：</p>
 
-<p>软件自由日（software freedom day，简称SFD）是一个全球性的、由普通人参与的向公众宣传软件自由的重要性、自由和开源软件的乐趣，以及推广自由及开源软件的活动。每年九月的第三个星期六，全球各地的团队都会组织一些活动。</p>
+<p>软件自由日（software freedom day，简称 SFD）是一个全球性的、由普通人参与的向公众宣传软件自由的重要性、自由和开源软件的乐趣，以及推广自由及开源软件的活动。每年九月的第三个星期六，全球各地的团队都会组织一些活动。</p>
 
-<p>今年的9月20日，我们有幸在北邮主办一次学生的自由软件盛会，邀请全校的同学一同来体验自由软件。</p>
+<p>今年的 9 月 20 日，我们有幸在北邮主办一次学生的自由软件盛会，邀请全校的同学一同来体验自由软件。</p>
 
 <p>本次活动的目的是活跃北邮开源社区，并吸引更多的人加入到自由软件的世界中来！如果你有兴趣来发掘一下自由软件如何让你美梦成真，本次活动一定要参加！</p>
 
 <p>在这次为时半天的活动中，您将见到每天使用自由软件的个人、团体及公司，他们将和您分享他们的开源技术和开源感悟。他们也将向您展示他们从这种超级体验中获取的益处，以及怎么加入他们的行列。</p>
 
-<p>如果你热爱自由，热爱开源，想结识Linux/Solaris的朋友们，或者感到好奇、希望学习、希望发掘新事物，并且想得到众多的免费礼品，一定要参与本次活动哦！<br />
+<p>如果你热爱自由，热爱开源，想结识 Linux/Solaris 的朋友们，或者感到好奇、希望学习、希望发掘新事物，并且想得到众多的免费礼品，一定要参与本次活动哦！<br />
 
 </div>
   
@@ -322,7 +323,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2008/09/05/migrate-feedburner-account-to-google-succeeded/">完成feedburner到Google帐户的迁移</a></h1>
+      <h1 class="entry-title"><a href="/blog/2008/09/05/migrate-feedburner-account-to-google-succeeded/">完成 Feedburner 到 Google 帐户的迁移</a></h1>
     
     
       <p class="meta">
@@ -341,15 +342,15 @@
   </header>
 
 
-  <div class="entry-content"><p>Feedburner虽然在国内被残忍地GFW了，但是因为它获取feed更新极快，我还是很喜欢它的。不过现在Feedsky的抓取速度也很比较快了，一般在半个小时内能够抓取到更新。</p>
+  <div class="entry-content"><p>Feedburner 虽然在国内被残忍地 GFW 了，但是因为它获取 feed 更新极快，我还是很喜欢它的。不过现在 Feedsky 的抓取速度也很比较快了，一般在半个小时内能够抓取到更新。</p>
 
-<p>大概十天前在<a href="http://fairyfish.net">我爱水煮鱼</a>上看到迁移<a href="http://fairyfish.net/2008/08/25/migrate-feedburner-to-google/">Feedburner帐户到Google Account</a>的文章，心想迁移过去后是不是就可以摆脱GFW的魔掌了，于是就发了邮件申请，今天受到通知说迁移成功了。</p>
+<p>大概十天前在<a href="http://fairyfish.net">我爱水煮鱼</a>上看到迁移<a href="http://fairyfish.net/2008/08/25/migrate-feedburner-to-google/">Feedburner 帐户到 Google Account</a>的文章，心想迁移过去后是不是就可以摆脱 GFW 的魔掌了，于是就发了邮件申请，今天受到通知说迁移成功了。</p>
 
-<p>可惜在几天前，<a href="http://www.williamlong.info/">月光博客</a>说Google的<a href="http://www.williamlong.info/archives/1486.html">Feedburner服务器也被GFW</a>了，顿时对相关部门的效率感到由衷地佩服。</p>
+<p>可惜在几天前，<a href="http://www.williamlong.info/">月光博客</a>说 Google 的<a href="http://www.williamlong.info/archives/1486.html">Feedburner 服务器也被 GFW</a>了，顿时对相关部门的效率感到由衷地佩服。</p>
 
-<p>现在我的fb订阅数才个位，在GFW的大环境下，长久以往，我的博客在feedburner上就没什么发展前途了。sigh~~</p>
+<p>现在我的 fb 订阅数才个位，在 GFW 的大环境下，长久以往，我的博客在 feedburner 上就没什么发展前途了。sigh~~</p>
 
-<p>另外根据邮件，feedburner也有像feedsky一样的域名绑定功能，在主机上添加一条CNAME记录，指向<em>ghs.google.com.</em>就可以了。可惜ghs.google.com早就被墙了……</p>
+<p>另外根据邮件，feedburner 也有像 feedsky 一样的域名绑定功能，在主机上添加一条 CNAME 记录，指向<em>ghs.google.com.</em>就可以了。可惜 ghs.google.com 早就被墙了……</p>
 </div>
   
   
@@ -362,7 +363,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2008/09/04/a-recently-hack-of-notification-area-in-awn-applet/">又对awn-applet的通知栏图标hack了一下</a></h1>
+      <h1 class="entry-title"><a href="/blog/2008/09/04/a-recently-hack-of-notification-area-in-awn-applet/">又对 Awn-applet 的通知栏图标 Hack 了一下</a></h1>
     
     
       <p class="meta">
@@ -381,7 +382,7 @@
   </header>
 
 
-  <div class="entry-content"><p>曾经写过一篇文章《<a href="http://www.casparzhang.com/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet">对awn-applet的notification area的一个小改动</a>》，目的是为了避免高像素图标将notification area这个applet的高度撑破，经过修改，确实能将每个图标的像素给固定住，使得applet保持原大小。今天通过重新解读代码，发现原来的修改步骤并不那么完美，事实上只需要修改一条语句即可，仍旧是在applet.c这个源文件中，看到如下代码：</p>
+  <div class="entry-content"><p>曾经写过一篇文章《<a href="http://www.casparzhang.com/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet">对 awn-applet 的 notification area 的一个小改动</a>》，目的是为了避免高像素图标将 notification area 这个 applet 的高度撑破，经过修改，确实能将每个图标的像素给固定住，使得 applet 保持原大小。今天通过重新解读代码，发现原来的修改步骤并不那么完美，事实上只需要修改一条语句即可，仍旧是在 applet.c 这个源文件中，看到如下代码：</p>
 
 <p><pre lang="cpp" line="1">static void
 tray_icon_added (EggTrayManager *manager,
@@ -413,7 +414,7 @@ tray_icon_added (EggTrayManager *manager,
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2008/09/04/a-collection-of-linux-softwares/">Linux软件更新推荐</a></h1>
+      <h1 class="entry-title"><a href="/blog/2008/09/04/a-collection-of-linux-softwares/">Linux 软件更新推荐</a></h1>
     
     
       <p class="meta">
@@ -432,29 +433,29 @@ tray_icon_added (EggTrayManager *manager,
   </header>
 
 
-  <div class="entry-content"><p>这几天折腾Gentoo，始终没好好用过系统，软件更新有点滞后了(其实Gentoo因其Portage系统恰恰是跟着软件更新步伐最近的操作系统)，回到Ubuntu后又恢复原来的生活，可以好好更新软件了。</p>
+  <div class="entry-content"><p>这几天折腾 Gentoo，始终没好好用过系统，软件更新有点滞后了(其实 Gentoo 因其 Portage 系统恰恰是跟着软件更新步伐最近的操作系统)，回到 Ubuntu 后又恢复原来的生活，可以好好更新软件了。</p>
 
 <p><strong>1. <a href="http://sourceforge.net/projects/pidgin/">Pidgin 2.5.1</a></strong></p>
 
-<p>这个版本主要是一个BUG修复版本，没有从2.4.3到2.5.0那么大变化。不过它的很多图标换过了，感觉还挺不错。根据它的Release Notes说，参加GOC的一些学生为Pidgin贡献代码，只是都没有完成，所以没有merge到这个版本中。这个版本修复了一些导致crash的BUG，这点是我很看重的，以前老是crash，这几天试试会不会好点。</p>
+<p>这个版本主要是一个 BUG 修复版本，没有从 2.4.3 到 2.5.0 那么大变化。不过它的很多图标换过了，感觉还挺不错。根据它的 Release Notes 说，参加 GOC 的一些学生为 Pidgin 贡献代码，只是都没有完成，所以没有 merge 到这个版本中。这个版本修复了一些导致 crash 的 BUG，这点是我很看重的，以前老是 crash，这几天试试会不会好点。</p>
 
 <p><strong>2. <a href="http://www.libfetion.cn/">LibFetion 0.8.1</a></strong></p>
 
-<p>这个版本同样是一些细节修改，比起0.2.x到0.8.0的大动作自然也没有太多。这个软件一直是我很推荐的，比Pidgin的飞信插件稳定多了(当然pidgin插件不稳定更多还是因为pidgin自身的问题)。P.S.最近LibFetion.cn的网站很卡啊。</p>
+<p>这个版本同样是一些细节修改，比起 0.2.x 到 0.8.0 的大动作自然也没有太多。这个软件一直是我很推荐的，比 Pidgin 的飞信插件稳定多了(当然 pidgin 插件不稳定更多还是因为 pidgin 自身的问题)。P.S.最近 LibFetion.cn 的网站很卡啊。</p>
 
 <p><strong>3. <a href="http://im.qq.com/qq/linux/download.shtml">QQ For Linux Preview 1.0-2</a></strong></p>
 
-<p>听说有些新的变化，关于支持龙芯那个早就在意料之中了，其他新变化没有什么激动人心的。至少我们可以肯定一毛前公司是在继续开发QQ for Linux的。</p>
+<p>听说有些新的变化，关于支持龙芯那个早就在意料之中了，其他新变化没有什么激动人心的。至少我们可以肯定一毛前公司是在继续开发 QQ for Linux 的。</p>
 
 <p><strong>4. <a href="http://www.virtualbox.org/wiki/Downloads">VirtualBox 1.6.6</a></strong></p>
 
-<p>这个版本也是个BUG修订版，正准备下来尝试一下呢。</p>
+<p>这个版本也是个 BUG 修订版，正准备下来尝试一下呢。</p>
 
-<p>———————————— 0904更新分割线 ————————————</p>
+<p>———————————— 0904 更新分割线 ————————————</p>
 
 <p><strong>4.1 VirtualBox 2.0.0</strong></p>
 
-<p>没想到今天VBox就发布了一个大更新版本，ChangLog在这里：<a href="http://virtualbox.org/wiki/Changelog">http://virtualbox.org/wiki/Changelog</a></p>
+<p>没想到今天 VBox 就发布了一个大更新版本，ChangLog 在这里：<a href="http://virtualbox.org/wiki/Changelog">http://virtualbox.org/wiki/Changelog</a></p>
 
 <p>———————————— 更新分割线完毕 ————————————</p>
 
@@ -490,19 +491,19 @@ tray_icon_added (EggTrayManager *manager,
   </header>
 
 
-  <div class="entry-content"><p>我们为什么要用Linux作自己的主操作系统？</p>
+  <div class="entry-content"><p>我们为什么要用 Linux 作自己的主操作系统？</p>
 
-<p>我的内心是一直很佩服微软的。比尔盖茨一直在奋斗的Windows确实很成功，无论是自身的细节打造还是市场推广策略，都是很棒的。尤其是在用户体验上，GNU的操作系统或者Unix操作系统在短时间内无法相与比肩。</p>
+<p>我的内心是一直很佩服微软的。比尔盖茨一直在奋斗的 Windows 确实很成功，无论是自身的细节打造还是市场推广策略，都是很棒的。尤其是在用户体验上，GNU 的操作系统或者 Unix 操作系统在短时间内无法相与比肩。</p>
 
-<p>我也不是一开始就喜欢上Ubuntu Linux的。一年多以前，我对Ubuntu也是抱着折腾的态度，最后总算是适应并且后来喜欢上了它。我也很佩服Ubuntu的发展之路。它已经抓住了M$的发展的部分路子，在用户体验上越来越贴近初级用户，在市场推广上，直接和笔记本厂商合作，弄得有模有样的。不过这也是很多Geeker对Ubuntu表示出不屑的原因。</p>
+<p>我也不是一开始就喜欢上 Ubuntu Linux 的。一年多以前，我对 Ubuntu 也是抱着折腾的态度，最后总算是适应并且后来喜欢上了它。我也很佩服 Ubuntu 的发展之路。它已经抓住了 M$的发展的部分路子，在用户体验上越来越贴近初级用户，在市场推广上，直接和笔记本厂商合作，弄得有模有样的。不过这也是很多 Geeker 对 Ubuntu 表示出不屑的原因。</p>
 
-<p>那么回归这个话题，我们为什么用Linux？</p>
+<p>那么回归这个话题，我们为什么用 Linux？</p>
 
-<p>首先讨论一个崇高的可能性：我们有自由精神，我们热爱开放源码事业。开源社区对中国的评价是，获取多，贡献少。我所在的实验室前阵子还准备把一个开源的VoIP项目改造改造，作为商业项目推出去。由此可推断持有Free Software思想的人毕竟该算是少数。</p>
+<p>首先讨论一个崇高的可能性：我们有自由精神，我们热爱开放源码事业。开源社区对中国的评价是，获取多，贡献少。我所在的实验室前阵子还准备把一个开源的 VoIP 项目改造改造，作为商业项目推出去。由此可推断持有 Free Software 思想的人毕竟该算是少数。</p>
 
-<p>那么，我们付不起高额的正版授权。在Free和Money Required之间，首选肯定是前者，可惜我们是在中国，一个盗版横行的国家。洁身自好的人估计比刚才说到的人数还少。</p>
+<p>那么，我们付不起高额的正版授权。在 Free 和 Money Required 之间，首选肯定是前者，可惜我们是在中国，一个盗版横行的国家。洁身自好的人估计比刚才说到的人数还少。</p>
 
-<p>另外一个可能性，工作需要。这种使用者可能连X都不需要，这种人要么就是Geeker，要么就是新手。</p>
+<p>另外一个可能性，工作需要。这种使用者可能连 X 都不需要，这种人要么就是 Geeker，要么就是新手。</p>
 
 <p>还有一种可能性，Zhuangbility。</p>
 
@@ -522,7 +523,7 @@ tray_icon_added (EggTrayManager *manager,
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2008/08/19/something-about-pidgin/">Pidgin琐碎二三事</a></h1>
+      <h1 class="entry-title"><a href="/blog/2008/08/19/something-about-pidgin/">Pidgin 琐碎二三事</a></h1>
     
     
       <p class="meta">
@@ -541,19 +542,19 @@ tray_icon_added (EggTrayManager *manager,
   </header>
 
 
-  <div class="entry-content"><p>1.<strong>Pidgin 2.5.0发布</strong></p>
+  <div class="entry-content"><p>1.<strong>Pidgin 2.5.0 发布</strong></p>
 
-<p>从<a href="http://yegle.net/2008/08/19/pidgin-250-released/">狗狗</a>那里看到<a href="http://www.cnbeta.com/articles/62626.htm">cnbeta</a>上说<a href="http://sourceforge.net/projects/pidgin/?abmode=1">sourceforge.net已经放出了pidgin-2.5.0</a>，而<a href="http://www.pidgin.im">官网上</a>还没发布呢。</p>
+<p>从<a href="http://yegle.net/2008/08/19/pidgin-250-released/">狗狗</a>那里看到<a href="http://www.cnbeta.com/articles/62626.htm">cnbeta</a>上说<a href="http://sourceforge.net/projects/pidgin/?abmode=1">sourceforge.net 已经放出了 pidgin-2.5.0</a>，而<a href="http://www.pidgin.im">官网上</a>还没发布呢。</p>
 
-<p>这不禁让我开始思考，我要不要把cb的rss重新放回我的订阅列表呢？</p>
+<p>这不禁让我开始思考，我要不要把 cb 的 rss 重新放回我的订阅列表呢？</p>
 
-<p>安装完毕需要运行一下ldconfig，要不然symbolic link有问题，囧。</p>
+<p>安装完毕需要运行一下 ldconfig，要不然 symbolic link 有问题，囧。</p>
 
 <p>安装完最显眼的就是那只鸽子的鼻子更红了- -b，刚开始差点被吓到……</p>
 
-<p>原来MSN的群里输入/showname就可以显示群里发言人的名字了呀，幸亏狗狗提醒我，要不然我又要打补丁了，真是够zt，嗯……</p>
+<p>原来 MSN 的群里输入/showname 就可以显示群里发言人的名字了呀，幸亏狗狗提醒我，要不然我又要打补丁了，真是够 zt，嗯……</p>
 
-<p>ChangeLog中的亮点：</p>
+<p>ChangeLog 中的亮点：</p>
 
 <p><blockquote>version 2.5.0 (08/18/2008):<br />
 	libpurple:<br />

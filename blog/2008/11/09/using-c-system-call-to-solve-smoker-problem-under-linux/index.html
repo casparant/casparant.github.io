@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>使用C系统调用函数解决“抽烟者问题” - Ant-Veil</title>
+  <title>经典信号量例题“抽烟者问题”的 C 语言实现 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">使用C系统调用函数解决“抽烟者问题”</h1>
+      <h1 class="entry-title">经典信号量例题“抽烟者问题”的 C 语言实现</h1>
     
     
       <p class="meta">
@@ -105,7 +106,7 @@
 
 <div class="entry-content"><p>问题描述:The Cigarette-Smokers Problem. Consider a system with three smoker processes and one agent process. Each smoker continuously rolls a cigarette and then smokes it. But to roll and smoke a cigarette, the smoker needs three ingredients: tobacco, paper, and matches. One of the smoker processes has paper, another has tobacco, and the third has matches. The agent has an infinite supply of all three materials. The agent places two of the ingredients on the table. The smoker who has the remaining ingredient then makes and smokes a cigarette, signaling the agent on completion. The agent then puts out another two of the three ingredients, and the cycle repeats.</p>
 
-<p>问题分析:通过问题描述,可以构建出一个 4 进程的系统,其中 3 个进程为 smoker 程序的实例,另一个是 agent 程序的实例。首先,Agent 执行提供材料的操作(原则上来说,抽烟者先就座等待也是可行的,代码上也易于实现,但是我编写了一段代码发现很累赘,这作为一个需要改进的部分,暂时在代码中做 TODO 标记),然后执行对 Smoker_i的 V 操作唤醒 Smoker_i,其信号量增 1,i 的值由 Agent 随机确定。接着,Agent 开始等待,进程切换到Smoker_i,Smoker_i 执行 P 操作,信号量减为 0,开始获取材料,卷烟,抽烟操作。抽完烟后 Smoker_i执行 V 操作,通知 Agent,然后 Smoker_i 循环至开头,开始等待,进程切换回 Agent。Agent 也开始循环,如此周期往复。采用同步机制的 PV 操作伪码如下:</p>
+<p>问题分析:通过问题描述,可以构建出一个 4 进程的系统,其中 3 个进程为 smoker 程序的实例,另一个是 agent 程序的实例。首先,Agent 执行提供材料的操作(原则上来说,抽烟者先就座等待也是可行的,代码上也易于实现,但是我编写了一段代码发现很累赘,这作为一个需要改进的部分,暂时在代码中做 TODO 标记),然后执行对 Smoker_i 的 V 操作唤醒 Smoker_i,其信号量增 1,i 的值由 Agent 随机确定。接着,Agent 开始等待,进程切换到 Smoker_i,Smoker_i 执行 P 操作,信号量减为 0,开始获取材料,卷烟,抽烟操作。抽完烟后 Smoker_i 执行 V 操作,通知 Agent,然后 Smoker_i 循环至开头,开始等待,进程切换回 Agent。Agent 也开始循环,如此周期往复。采用同步机制的 PV 操作伪码如下:</p>
 
 <p><!--more--><blockquote>
 Initial semaphores:<br />
@@ -330,7 +331,7 @@ int V(int semid, int sem_index);</p>
 <p>	return 0;<br />
 }</p>
 
-<p>顺便附一段用Java多线程实现的抽烟者问题解决代码，用Semaphore这个类实现的。</p>
+<p>顺便附一段用 Java 多线程实现的抽烟者问题解决代码，用 Semaphore 这个类实现的。</p>
 
 <p><pre lang="java" line="1">import java.util.Random;
 import java.util.concurrent.Semaphore;</pre></p>
@@ -478,7 +479,7 @@ public class AgentSmokerProblem <br />
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/programming/'>programming</a>
   
 </span>
 
@@ -496,10 +497,10 @@ public class AgentSmokerProblem <br />
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2008/11/02/recommend-fetion-3/" title="Previous Post: 推荐: 飞信手机3.0体验版">&laquo; 推荐: 飞信手机3.0体验版</a>
+        <a class="basic-alignment left" href="/blog/2008/11/02/recommend-fetion-3/" title="Previous Post: 推荐: 飞信手机 3.0 体验版">&laquo; 推荐: 飞信手机 3.0 体验版</a>
       
       
-        <a class="basic-alignment right" href="/blog/2008/11/16/char-confusion-in-mysql-under-python-web/" title="Next Post: Python Web操作MySQL乱码问题的解决">Python Web操作MySQL乱码问题的解决 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2008/11/16/char-confusion-in-mysql-under-python-web/" title="Next Post: Python Web 操作 MySQL 乱码问题的解决">Python Web 操作 MySQL 乱码问题的解决 &raquo;</a>
       
     </p>
   </footer>

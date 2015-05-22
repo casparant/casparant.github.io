@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="昨天晚上已经用上2.6.29的内核了，而且也解决了部分上次提到的问题，写出来，权当折腾Gentoo之Milestone2吧。 1. Amarok安装成功： 今天更新了overlay，发现svn版的amarok已经把qtscriptgenerator给单独分出来做成一个包了，顿时感觉有戏， &hellip;">
+  <meta name="description" content="昨天晚上已经用上 2.6.29 的内核了，而且也解决了部分上次提到的问题，写出来，权当折腾 Gentoo 之 Milestone2 吧。 1. Amarok 安装成功： 今天更新了 overlay，发现 svn 版的 amarok 已经把 qtscriptgenerator &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -87,7 +88,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/">Gentoo新老问题-Milestone2</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/">Gentoo 新老问题 (Milestone 2)</a></h1>
     
     
       <p class="meta">
@@ -106,11 +107,11 @@
   </header>
 
 
-  <div class="entry-content"><p>昨天晚上已经用上2.6.29的内核了，而且也解决了部分上次提到的问题，写出来，权当折腾Gentoo之Milestone2吧。</p>
+  <div class="entry-content"><p>昨天晚上已经用上 2.6.29 的内核了，而且也解决了部分上次提到的问题，写出来，权当折腾 Gentoo 之 Milestone2 吧。</p>
 
-<p>1. Amarok安装成功：</p>
+<p>1. Amarok 安装成功：</p>
 
-<p>今天更新了overlay，发现svn版的amarok已经把qtscriptgenerator给单独分出来做成一个包了，顿时感觉有戏，赶紧emerge一把，结果还是出错，不过错误提示和以前不太一样：
+<p>今天更新了 overlay，发现 svn 版的 amarok 已经把 qtscriptgenerator 给单独分出来做成一个包了，顿时感觉有戏，赶紧 emerge 一把，结果还是出错，不过错误提示和以前不太一样：
 <blockquote>/usr/lib/mysql/libmysqld.a(sql_parse.o): In function `mysql_parse(THD*, char const*, unsigned int, char const**)':                          <br />
 (.text+0xaadb): undefined reference to `clock_gettime'                                                                                      <br />
 /usr/lib/mysql/libmysqld.a(sql_parse.o): In function `mysql_parse(THD*, char const*, unsigned int, char const**)':                          <br />
@@ -144,7 +145,7 @@ make[1]: *** Waiting for unfinished jobs....                                    
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/">折腾Gentoo Milestone1</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/03/22/install-and-configure-gentoo-milestone1/">折腾 Gentoo (Milestone 1)</a></h1>
     
     
       <p class="meta">
@@ -163,19 +164,19 @@ make[1]: *** Waiting for unfinished jobs....                                    
   </header>
 
 
-  <div class="entry-content"><p>上次在日志中提到一下当Ubuntu9.04正式版出来的时候，我就换Gentoo，结果自己还是在Ubuntu Aplha6 出来之前就开始了Gentoo折腾之旅。</p>
+  <div class="entry-content"><p>上次在日志中提到一下当 Ubuntu9.04 正式版出来的时候，我就换 Gentoo，结果自己还是在 Ubuntu Aplha6 出来之前就开始了 Gentoo 折腾之旅。</p>
 
-<p>前一次折腾Gentoo还是在暑假，因为挂载和其他一堆莫名其妙的问题导致我直接放弃了Gentoo。这次是在心理准备充足的情况下开始的，没想到还是很折腾。</p>
+<p>前一次折腾 Gentoo 还是在暑假，因为挂载和其他一堆莫名其妙的问题导致我直接放弃了 Gentoo。这次是在心理准备充足的情况下开始的，没想到还是很折腾。</p>
 
-<p>桌面管理器从GNOME换到Openbox，然后转成KDE4，顺便还试用了一下enlightenment，发现这种轻量级桌面对我来说不是很适应，就没再继续下去了。</p>
+<p>桌面管理器从 GNOME 换到 Openbox，然后转成 KDE4，顺便还试用了一下 enlightenment，发现这种轻量级桌面对我来说不是很适应，就没再继续下去了。</p>
 
-<p>感谢Gentoo的文档和各种bugzilla，我解决了大部分问题。</p>
+<p>感谢 Gentoo 的文档和各种 bugzilla，我解决了大部分问题。</p>
 
-<p>比方说无线的问题，经常出现SCIOFLAGS: No such device，上网找了半天发现要把/etc/init.d/net.wlan0给删掉。因为现在网络接口已经移交wicd管理了。具体原因尚未知。</p>
+<p>比方说无线的问题，经常出现 SCIOFLAGS: No such device，上网找了半天发现要把/etc/init.d/net.wlan0 给删掉。因为现在网络接口已经移交 wicd 管理了。具体原因尚未知。</p>
 
 <p>当然也碰到了一些莫名其妙的问题，其中大部分是和内核选项有关。</p>
 
-<p>比如声卡，音箱和耳机会同时出声。后来我把和我的声卡沾边的选项统统勾上，重新编译模块，就OK了。还有ext4分区的问题，系统始终不认ext4分区，在水木求助了两天都没解决，后来自己重新编译一次内核，居然就OK了。</p>
+<p>比如声卡，音箱和耳机会同时出声。后来我把和我的声卡沾边的选项统统勾上，重新编译模块，就 OK 了。还有 ext4 分区的问题，系统始终不认 ext4 分区，在水木求助了两天都没解决，后来自己重新编译一次内核，居然就 OK 了。</p>
 
 <p></div>
   
@@ -193,7 +194,7 @@ make[1]: *** Waiting for unfinished jobs....                                    
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/03/16/test-posting/">再次测试Translate插件</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/03/16/test-posting/">再次测试 Translate 插件</a></h1>
     
     
       <p class="meta">
@@ -218,19 +219,19 @@ make[1]: *** Waiting for unfinished jobs....                                    
 
 <p>发文成功。我基本上知道是什么原因了。</p>
 
-<p>记得第一次发现不能发文是在那次Google很多服务都不能用的时候。当时正打算发个文章上来抱怨一把google code不能用了，google calendar不能用了，google group不能用了，google translate不能用了，还打算感叹一下Google对我们生活的巨大影响。结果一个文章发了老半天发不出去，只是存到草稿箱里去了。而且里面的内容全没了。</p>
+<p>记得第一次发现不能发文是在那次 Google 很多服务都不能用的时候。当时正打算发个文章上来抱怨一把 google code 不能用了，google calendar 不能用了，google group 不能用了，google translate 不能用了，还打算感叹一下 Google 对我们生活的巨大影响。结果一个文章发了老半天发不出去，只是存到草稿箱里去了。而且里面的内容全没了。</p>
 
-<p>以为是空间商的问题，不过后来还是没去怀疑空间商；后来觉得是自己的wp的问题，但是期间我没有改过wp的文件啊。</p>
+<p>以为是空间商的问题，不过后来还是没去怀疑空间商；后来觉得是自己的 wp 的问题，但是期间我没有改过 wp 的文件啊。</p>
 
 <p>只好郁闷地搁置了两个星期。</p>
 
-<p>现在知道问题在哪了。是因为<a href="http://wordpress.org/extend/plugins/wp-slug/">WP-slug translate</a>这个插件。这个插件会把日志的标题通过Google Tranlate翻译成永久链接。</p>
+<p>现在知道问题在哪了。是因为<a href="http://wordpress.org/extend/plugins/wp-slug/">WP-slug translate</a>这个插件。这个插件会把日志的标题通过 Google Tranlate 翻译成永久链接。</p>
 
-<p>然后这几天Google Translate经常down掉，所以由于某些原因，我的日志就发布失败了。</p>
+<p>然后这几天 Google Translate 经常 down 掉，所以由于某些原因，我的日志就发布失败了。</p>
 
 <p>sigh...</p>
 
-<p>顺便说一句，KDE4.2.1真的很不错，KWin真的很棒～</p>
+<p>顺便说一句，KDE4.2.1 真的很不错，KWin 真的很棒～</p>
 </div>
   
   
@@ -243,7 +244,7 @@ make[1]: *** Waiting for unfinished jobs....                                    
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/03/04/it-is-very-easy-to-configure-vncserver-in-centos/">原来在CentOS中配置VNCServer很容易</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/03/04/it-is-very-easy-to-configure-vncserver-in-centos/">原来在 CentOS 中配置 VNCServer 很容易</a></h1>
     
     
       <p class="meta">
@@ -264,17 +265,17 @@ make[1]: *** Waiting for unfinished jobs....                                    
 
   <div class="entry-content"><p>发现该学点脚本了，有空可以在服务器上折腾折腾。不过在此之前我还是先得把实验室这台服务器配置好。</p>
 
-<p>服务器是CentOS5.2，准备开启VNC服务。想起<a href="http://www.casparzhang.com/blog/2008/03/16/remote-login-under-ubuntu.html">当年在Ubuntu下配置费了九牛二虎之力</a>，估计着在CentOS上也不会容易。</p>
+<p>服务器是 CentOS5.2，准备开启 VNC 服务。想起<a href="http://www.casparzhang.com/blog/2008/03/16/remote-login-under-ubuntu.html">当年在 Ubuntu 下配置费了九牛二虎之力</a>，估计着在 CentOS 上也不会容易。</p>
 
 <p>没想到如此简单：</p>
 
-<p>服务器在安装时已经装好了VNCServer，接下去只要编辑<code>/etc/sysconfig/vncservers</code>文件中的<code>VNCSERVERS</code>字段（确保取消了这行的注释）：</p>
+<p>服务器在安装时已经装好了 VNCServer，接下去只要编辑<code>/etc/sysconfig/vncservers</code>文件中的<code>VNCSERVERS</code>字段（确保取消了这行的注释）：</p>
 
 <p><blockquote>VNCSERVERS="1:root 2:user1 3:user2 4:blablabla"</blockquote></p>
 
-<p>如果只要为单个用户开启VNC服务，只需按照PORT:USERNAME的格式修改，如果为多个用户开启VNC服务，则用空格隔开即可。</p>
+<p>如果只要为单个用户开启 VNC 服务，只需按照 PORT:USERNAME 的格式修改，如果为多个用户开启 VNC 服务，则用空格隔开即可。</p>
 
-<p>如果需要修改分辨率，设置是否允许通过TCP登录、是否允许通过Web登录以及是否允许不安全TCP tunel登录，则修改<code>VNCSERVERARGS[2]</code>字段：</p>
+<p>如果需要修改分辨率，设置是否允许通过 TCP 登录、是否允许通过 Web 登录以及是否允许不安全 TCP tunel 登录，则修改<code>VNCSERVERARGS[2]</code>字段：</p>
 
 <p></div>
   
@@ -292,7 +293,7 @@ make[1]: *** Waiting for unfinished jobs....                                    
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/03/03/using-ubuntu-jaunty-alpha5/">[白鼠六]Ubuntu Jaunty Aplha5试用</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/03/03/using-ubuntu-jaunty-alpha5/">[白鼠六] Ubuntu Jaunty Aplha 5 试用</a></h1>
     
     
       <p class="meta">
@@ -311,15 +312,15 @@ make[1]: *** Waiting for unfinished jobs....                                    
   </header>
 
 
-  <div class="entry-content"><p>又当了一回小白鼠。在写使用感受前，请允许我废话一句：等Ubuntu这个版本过时后，我肯定换Gentoo!实在受不了这种系统频繁升级和软件版本滞后的折磨了。</p>
+  <div class="entry-content"><p>又当了一回小白鼠。在写使用感受前，请允许我废话一句：等 Ubuntu 这个版本过时后，我肯定换 Gentoo!实在受不了这种系统频繁升级和软件版本滞后的折磨了。</p>
 
-<p>从8.10升级到9.04的原因主要是8.10不是很好用，在虚拟机上折腾了几天Jaunty，感觉还是很不错的，于是升级了。</p>
+<p>从 8.10 升级到 9.04 的原因主要是 8.10 不是很好用，在虚拟机上折腾了几天 Jaunty，感觉还是很不错的，于是升级了。</p>
 
-<p>结果升级完感觉没太大变化……打开Google Earth看地图，还是卡得不成样子(不过起码是可以看了，在8.10里面是看都看不了)。不是说这个版本的Ubuntu上Intel用了新驱动了么，还有Xorg也升级了呀。难道是我的显卡确实太挫了？</p>
+<p>结果升级完感觉没太大变化……打开 Google Earth 看地图，还是卡得不成样子(不过起码是可以看了，在 8.10 里面是看都看不了)。不是说这个版本的 Ubuntu 上 Intel 用了新驱动了么，还有 Xorg 也升级了呀。难道是我的显卡确实太挫了？</p>
 
-<p>Jaunty系统装了3个Python版本，2.5, 2.6, 3.0，默认是2.6。于是很多原先安装的Python程序都要重新安装，比如Django, Grnotify(值得一提的是Grnotify进入Ubuntu更新源了，可是依赖的python-xml需要Python2.5版本，死活装不上，后来用了Grnotify源码包才装上的）。</p>
+<p>Jaunty 系统装了 3 个 Python 版本，2.5, 2.6, 3.0，默认是 2.6。于是很多原先安装的 Python 程序都要重新安装，比如 Django, Grnotify(值得一提的是 Grnotify 进入 Ubuntu 更新源了，可是依赖的 python-xml 需要 Python2.5 版本，死活装不上，后来用了 Grnotify 源码包才装上的）。</p>
 
-<p>另外一个比较郁闷的是checkgmail不能正常工作了，提示connection failed，后面就是一堆乱码- -b这个问题谁碰到过，亟待解决啊～</p>
+<p>另外一个比较郁闷的是 checkgmail 不能正常工作了，提示 connection failed，后面就是一堆乱码- -b 这个问题谁碰到过，亟待解决啊～</p>
 
 <p><img src="http://img.ant.im/di-G0E2.png" /></p>
 
@@ -339,7 +340,7 @@ make[1]: *** Waiting for unfinished jobs....                                    
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/02/25/twitvim-a-good-twitter-client-under-vim/">VIM里的Twitter: TwitVIM</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/02/25/twitvim-a-good-twitter-client-under-vim/">VIM 里的 Twitter: TwitVIM</a></h1>
     
     
       <p class="meta">
@@ -358,18 +359,18 @@ make[1]: *** Waiting for unfinished jobs....                                    
   </header>
 
 
-  <div class="entry-content"><p>上网的时候发现了这个有意思的VIM插件，进VIM网站的插件页面后更加惊喜地发现作者还在更新这个插件(最近一次更新是2009年2月4日)。由于Linux下图形界面的Twitter客户端都不甚让我满意，看了看TwitVIM这个插件的介绍，决定下下来玩玩。</p>
+  <div class="entry-content"><p>上网的时候发现了这个有意思的 VIM 插件，进 VIM 网站的插件页面后更加惊喜地发现作者还在更新这个插件(最近一次更新是 2009 年 2 月 4 日)。由于 Linux 下图形界面的 Twitter 客户端都不甚让我满意，看了看 TwitVIM 这个插件的介绍，决定下下来玩玩。</p>
 
 <p>点击<a href="http://www.vim.org/scripts/script.php?script_id=2204" target="new">这里</a>下载插件。</p>
 
-<p>安装步骤很简单，作者打了一个.vba格式的Vimball压缩包，只需要打开这个vba文件，并执行一次source导入就可以了。</p>
+<p>安装步骤很简单，作者打了一个.vba 格式的 Vimball 压缩包，只需要打开这个 vba 文件，并执行一次 source 导入就可以了。</p>
 
 <p><pre lang="bash">vim twitvim.vba
 :source %</pre></p>
 
-<p>插件会自动安装到~/.vim下。</p>
+<p>插件会自动安装到~/.vim 下。</p>
 
-<p>接下来需要在vim配置文件(比如~/.vimrc)里配置用户名，密码，如果是通过代理上网还需要配置代理。</p>
+<p>接下来需要在 vim 配置文件(比如~/.vimrc)里配置用户名，密码，如果是通过代理上网还需要配置代理。</p>
 
 <p></div>
   
@@ -387,7 +388,7 @@ make[1]: *** Waiting for unfinished jobs....                                    
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/02/21/kde3-interface-font-settings/">Kde3界面字体设置</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/02/21/kde3-interface-font-settings/">KDE-3 界面字体设置</a></h1>
     
     
       <p class="meta">
@@ -406,9 +407,9 @@ make[1]: *** Waiting for unfinished jobs....                                    
   </header>
 
 
-  <div class="entry-content"><p>升级到Ubuntu 8.10之后，发现amarok, kile这些程序的英文字体特别大，用Qt3 configuration改字体只能把正文的字体改变，菜单栏、状态栏的字体都变不了。</p>
+  <div class="entry-content"><p>升级到 Ubuntu 8.10 之后，发现 amarok, kile 这些程序的英文字体特别大，用 Qt3 configuration 改字体只能把正文的字体改变，菜单栏、状态栏的字体都变不了。</p>
 
-<p>上网搜了一下发现kcontrol这个kde的工具可以调整菜单栏字体。但是Ubuntu 8.10吧kcontrol这个包给去掉了，所以不能轻易设置字体了。继续上网搜，发现可以直接改<code>~/.kde/share/config/kdeglobals</code>这个文件。</p>
+<p>上网搜了一下发现 kcontrol 这个 kde 的工具可以调整菜单栏字体。但是 Ubuntu 8.10 吧 kcontrol 这个包给去掉了，所以不能轻易设置字体了。继续上网搜，发现可以直接改<code>~/.kde/share/config/kdeglobals</code>这个文件。</p>
 
 <p>在文件中的<code>[General]</code>段添加下列几行：</p>
 
@@ -436,7 +437,7 @@ toolBarFont=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0</blockquote></p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/02/10/synchronize-your-mobile-with-gmail/">把你的手机和Gmail同步起来！</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/02/10/synchronize-your-mobile-with-gmail/">把你的手机和 Gmail 同步起来！</a></h1>
     
     
       <p class="meta">
@@ -455,15 +456,15 @@ toolBarFont=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0</blockquote></p>
   </header>
 
 
-  <div class="entry-content"><p>很早以前，在想要是Gmail里的列表能和我手机上的联系人同步那该有多好。现在这个想法终于实现了，Google推出的<a href="http://www.google.com/mobile/default/sync.html">Google Sync</a>服务，让你的手机联系人轻松与Gmail联系人同步。</p>
+  <div class="entry-content"><p>很早以前，在想要是 Gmail 里的列表能和我手机上的联系人同步那该有多好。现在这个想法终于实现了，Google 推出的<a href="http://www.google.com/mobile/default/sync.html">Google Sync</a>服务，让你的手机联系人轻松与 Gmail 联系人同步。</p>
 
-<p>Google总是能推出让人兴奋的产品，前几天的<a href="http://www.google.com/latitude/intro.html">Latitude</a>也是这样的产品，不过好多好友就是不确认我的请求，我的Latitude上现在还没几个人的信息。不过Sync这个产品绝对是值得每个拥有智能手机的人一试的好东西。</p>
+<p>Google 总是能推出让人兴奋的产品，前几天的<a href="http://www.google.com/latitude/intro.html">Latitude</a>也是这样的产品，不过好多好友就是不确认我的请求，我的 Latitude 上现在还没几个人的信息。不过 Sync 这个产品绝对是值得每个拥有智能手机的人一试的好东西。</p>
 
-<p>我的手机是N81，按照Google Sync页面上的<a href="http://www.google.com/support/mobile/bin/answer.py?answer=98230&topic=15015">提示</a>，很顺利就完成了同步。不过有点郁闷的是，以前对同一个人在手机上和在Gmail里用了不同名称，同步后就出现了两个联系方式，不过这是没办法的事情。对于名字相同的人，会把资料给合并。</p>
+<p>我的手机是 N81，按照 Google Sync 页面上的<a href="http://www.google.com/support/mobile/bin/answer.py?answer=98230&topic=15015">提示</a>，很顺利就完成了同步。不过有点郁闷的是，以前对同一个人在手机上和在 Gmail 里用了不同名称，同步后就出现了两个联系方式，不过这是没办法的事情。对于名字相同的人，会把资料给合并。</p>
 
-<p>另外有个不太好的地方是，由于手机和Gmail在栏位处理上的不同，同步后资料会有所偏差。比如我在Gmail上对一个人记录了5个电子邮件(1个home,1个work,3个other)，同步到手机上后，只有栏位不同的三个电子邮件同步到了手机上，其中Gmail上3个other电子邮件中只有最后一个同步到了手机上。<del datetime="2009-02-10T16:03:15+00:00">估计应该是同步的时候手机对栏位进行判断然后对号入座，对于同栏位不同号码的信息，它不会另外设置一个重复的栏位(事实上我的手机可以设置重复栏位，比如多个“电子邮件(家庭)”)，而是在同栏位上进行覆盖。</del>问题也可能出在Google那边，获取资料的时候自动覆盖相同栏位也是完全可能的。所以在这里提醒使用Gmail记通讯录的童鞋，注意一下mobile和E-mail的不同类型，防止同步到手机上后丢失重要信息。</p>
+<p>另外有个不太好的地方是，由于手机和 Gmail 在栏位处理上的不同，同步后资料会有所偏差。比如我在 Gmail 上对一个人记录了 5 个电子邮件(1 个 home,1 个 work,3 个 other)，同步到手机上后，只有栏位不同的三个电子邮件同步到了手机上，其中 Gmail 上 3 个 other 电子邮件中只有最后一个同步到了手机上。<del datetime="2009-02-10T16:03:15+00:00">估计应该是同步的时候手机对栏位进行判断然后对号入座，对于同栏位不同号码的信息，它不会另外设置一个重复的栏位(事实上我的手机可以设置重复栏位，比如多个“电子邮件(家庭)”)，而是在同栏位上进行覆盖。</del>问题也可能出在 Google 那边，获取资料的时候自动覆盖相同栏位也是完全可能的。所以在这里提醒使用 Gmail 记通讯录的童鞋，注意一下 mobile 和 E-mail 的不同类型，防止同步到手机上后丢失重要信息。</p>
 
-<p>使用Google Sync的最直接好处就是，丢了手机之后不用再担心通讯录遗失了-_-||。备份方便，同步简单，比nokia自带的同步工具还方便，只要有网络，一键同步就搞定了。</p>
+<p>使用 Google Sync 的最直接好处就是，丢了手机之后不用再担心通讯录遗失了-_-||。备份方便，同步简单，比 nokia 自带的同步工具还方便，只要有网络，一键同步就搞定了。</p>
 </div>
   
   
@@ -476,7 +477,7 @@ toolBarFont=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0</blockquote></p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2009/01/09/some-recently-used-skills/">[备忘]最近用到的一些技巧</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/01/09/some-recently-used-skills/">[备忘] 最近用到的一些技巧</a></h1>
     
     
       <p class="meta">
@@ -495,19 +496,19 @@ toolBarFont=WenQuanYi Zen Hei,9,-1,5,50,0,0,0,0,0</blockquote></p>
   </header>
 
 
-  <div class="entry-content"><p>1.<strong> VIM操作</strong></p>
+  <div class="entry-content"><p>1.<strong> VIM 操作</strong></p>
 
-<p>VIM在每行行首或行尾插入指定字符串：</p>
+<p>VIM 在每行行首或行尾插入指定字符串：</p>
 
 <p>行首 :%s/^/YOUR_STR/</p>
 
 <p>行尾 :%s/^$/YOUR_STR/</p>
 
-<p>删除^M标记 :%s/^M$//g，^M的输入方法为^V^M</p>
+<p>删除^M 标记 :%s/^M$//g，^M 的输入方法为^V^M</p>
 
-<p>2. <strong>Openoffice3.0在Ubuntu8.10中不能输入中文</strong></p>
+<p>2. <strong>Openoffice3.0 在 Ubuntu8.10 中不能输入中文</strong></p>
 
-<p>将libstdc++和libgcc的so文件软链到OOo的ure路径下即可：</p>
+<p>将 libstdc++和 libgcc 的 so 文件软链到 OOo 的 ure 路径下即可：</p>
 
 <p><pre lang="bash">sudo ln -snf /usr/lib/gcc/i486-linux-gnu/4.3.2/libstdc++.so \
 /opt/openoffice.org/ure/lib/libstdc++.so.6

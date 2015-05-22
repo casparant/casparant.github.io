@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>在Ubuntu下编程开发配置Tips - Ant-Veil</title>
+  <title>在 Ubuntu 下编程开发配置 Tips - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="值此Ubuntu 8.10发布之际（终于发布了，再不发布那就得叫Ubuntu 8.11了），特作此文。本文只是作为一个Ubuntu入门教材参考，因为很多人说我写Ubuntu安装教程时很多地方写的很模糊，对于没有Linux基础的人来说无异于天书- -b 孩子们，满足你们的愿望吧… &hellip;">
+  <meta name="description" content="值此 Ubuntu 8.10 发布之际（终于发布了，再不发布那就得叫 Ubuntu 8.11 了），特作此文。本文只是作为一个 Ubuntu 入门教材参考，因为很多人说我写 Ubuntu 安装教程时很多地方写的很模糊，对于没有 Linux 基础的人来说无异于天书- -b 孩子们，满足你们的愿望吧 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">在Ubuntu下编程开发配置Tips</h1>
+      <h1 class="entry-title">在 Ubuntu 下编程开发配置 Tips</h1>
     
     
       <p class="meta">
@@ -103,21 +104,21 @@
   </header>
 
 
-<div class="entry-content"><p>值此Ubuntu 8.10发布之际（终于发布了，再不发布那就得叫Ubuntu 8.11了），特作此文。本文只是作为一个Ubuntu入门教材参考，因为很多人说我写Ubuntu安装教程时很多地方写的很模糊，对于没有Linux基础的人来说无异于天书- -b 孩子们，满足你们的愿望吧…</p>
+<div class="entry-content"><p>值此 Ubuntu 8.10 发布之际（终于发布了，再不发布那就得叫 Ubuntu 8.11 了），特作此文。本文只是作为一个 Ubuntu 入门教材参考，因为很多人说我写 Ubuntu 安装教程时很多地方写的很模糊，对于没有 Linux 基础的人来说无异于天书- -b 孩子们，满足你们的愿望吧…</p>
 
 <p>本文基于如下对读者的假设：</p>
 
-<p>1. Ubuntu Linux安装成功。如果迄今为止没有成功，请询问身边已经安装成功的人。我相信安装成功的人的数量，在学校抓一把至少其中含有一个。</p>
+<p>1. Ubuntu Linux 安装成功。如果迄今为止没有成功，请询问身边已经安装成功的人。我相信安装成功的人的数量，在学校抓一把至少其中含有一个。</p>
 
-<p>2. 了解终端是什么，知道如何打开终端输入命令，了解命令语法。如果不知道如何打开终端输入命令，我也没办法……以下所有叙述，如果涉及命令操作，必然是在终端中进行操作。学过DOS的人应该对这一点在理解上没有难度，在Windows下用过cmd 运行ping命令检测网络的人在理解上应该也没有难度。关于命令的语法，比如sudo apt-get install OO_AND_XX这个命令，表示在使用root权限(sudo)的情况下使用软件包管理工具(apt-get)进行安装 (install)OO_AND_XX这个软件包的操作；同理sudo gedit /etc/apt/sources.list这个命令表示在使用root权限的情况下使用gedit这个文本编辑器打开/etc/apt/路径下的 sources.list这个文件进行编辑(真费劲- -b)</p>
+<p>2. 了解终端是什么，知道如何打开终端输入命令，了解命令语法。如果不知道如何打开终端输入命令，我也没办法……以下所有叙述，如果涉及命令操作，必然是在终端中进行操作。学过 DOS 的人应该对这一点在理解上没有难度，在 Windows 下用过 cmd 运行 ping 命令检测网络的人在理解上应该也没有难度。关于命令的语法，比如 sudo apt-get install OO_AND_XX 这个命令，表示在使用 root 权限(sudo)的情况下使用软件包管理工具(apt-get)进行安装 (install)OO_AND_XX 这个软件包的操作；同理 sudo gedit /etc/apt/sources.list 这个命令表示在使用 root 权限的情况下使用 gedit 这个文本编辑器打开/etc/apt/路径下的 sources.list 这个文件进行编辑(真费劲- -b)</p>
 
-<p><!--more-->3.了解Linux下root权限的基本知识，为什么在2中的例子都要带上root而你见过的Redhat的教科书上就没有？因为上述命令是需要root权限的……</p>
+<p><!--more-->3.了解 Linux 下 root 权限的基本知识，为什么在 2 中的例子都要带上 root 而你见过的 Redhat 的教科书上就没有？因为上述命令是需要 root 权限的……</p>
 
-<p>由于Ubuntu LiveCD不带开发工具的不良嗜好，在进行编程和开发之前，需要解决工具的安装问题。你所需要的工具都需要从网络上获取，因此你需要更新你的网络源。网络源是一个仓库，通过在/etc/apt/sources.list下的URL更新仓库中的软件包列表，然后通过apt-get或aptitude工具从列表上下载、安装、卸载所需的软件包。</p>
+<p>由于 Ubuntu LiveCD 不带开发工具的不良嗜好，在进行编程和开发之前，需要解决工具的安装问题。你所需要的工具都需要从网络上获取，因此你需要更新你的网络源。网络源是一个仓库，通过在/etc/apt/sources.list 下的 URL 更新仓库中的软件包列表，然后通过 apt-get 或 aptitude 工具从列表上下载、安装、卸载所需的软件包。</p>
 
 <p>在此提供一些比较好的教育网内的源列表：</p>
 
-<p><blockquote># 北邮Openware源，北邮校内人士首选源。曾经我说过这个源比较不稳定，但是后来经过验证，还是挺稳定的，推荐<br />
+<p><blockquote># 北邮 Openware 源，北邮校内人士首选源。曾经我说过这个源比较不稳定，但是后来经过验证，还是挺稳定的，推荐<br />
 deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ intrepid main multiverse restricted universe<br />
 deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ intrepid-backports main multiverse restricted universe<br />
 deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ intrepid-proposed main multiverse restricted universe<br />
@@ -138,11 +139,11 @@ deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ intrepid-proposed main multiverse res
 deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ intrepid-security main multiverse restricted universe<br />
 deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ intrepid-updates main multiverse restricted universe</blockquote></p>
 
-<p>从上述三个中挑选一个源，覆盖到/etc/apt/sources.list下即可。覆盖方法：</p>
+<p>从上述三个中挑选一个源，覆盖到/etc/apt/sources.list 下即可。覆盖方法：</p>
 
 <p><pre lang="bash">sudo gedit /etc/apt/sources.list</pre></p>
 
-<p>打开后挑选一个源，复制到文件中，覆盖原内容，保存退出。其中要注意的一点是，如果你的Ubuntu版本是8.04，那么保持源列表中的"hardy"不变，如果你的是Ubuntu 8.04，请将所有的"intrepid"改成"hardy"，如果是7.10，那么改成"gutsy"。</p>
+<p>打开后挑选一个源，复制到文件中，覆盖原内容，保存退出。其中要注意的一点是，如果你的 Ubuntu 版本是 8.04，那么保持源列表中的"hardy"不变，如果你的是 Ubuntu 8.04，请将所有的"intrepid"改成"hardy"，如果是 7.10，那么改成"gutsy"。</p>
 
 <p>安装完毕之后，请执行下列命令更新软件列表(仅仅是软件列表，还没有更新系统和下载软件)：</p>
 
@@ -152,41 +153,41 @@ deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ intrepid-updates main multiverse rest
 
 <p><pre lang="bash">sudo apt-get dist-upgrade</pre></p>
 
-<p>更新或者没有更新完系统之后，可以选择安装中文输入法和中文语言包支持。这一步我一般是在图形界面下完成的：到系统(System)->系统管理(Administration)->语言支持(Language Support)中，勾选汉语(Chinese)选项，自动下载中文语言包和SCIM的拼音支持。</p>
+<p>更新或者没有更新完系统之后，可以选择安装中文输入法和中文语言包支持。这一步我一般是在图形界面下完成的：到系统(System)->系统管理(Administration)->语言支持(Language Support)中，勾选汉语(Chinese)选项，自动下载中文语言包和 SCIM 的拼音支持。</p>
 
-<p>准备工作结束，可以开始安装编译器gcc了。</p>
+<p>准备工作结束，可以开始安装编译器 gcc 了。</p>
 
-<p>如果你只是运行sudo apt-get install gcc，那么当你写完一个c程序之后运行gcc test.c会提示你找不到头文件。那是因为你没有装libc-dev这个包。包含lib开头和dev结尾的软件包在Ubuntu下很流行，它表示这是一个开发库(developing library)，其中包含了C语言标准头文件和库。在Ubuntu下另外有一个软件包集合了这些常用的C/C++开发工具，它的名字叫build- essential。所以你可以只运行下列命令就可以完成gcc的配置：</p>
+<p>如果你只是运行 sudo apt-get install gcc，那么当你写完一个 c 程序之后运行 gcc test.c 会提示你找不到头文件。那是因为你没有装 libc-dev 这个包。包含 lib 开头和 dev 结尾的软件包在 Ubuntu 下很流行，它表示这是一个开发库(developing library)，其中包含了 C 语言标准头文件和库。在 Ubuntu 下另外有一个软件包集合了这些常用的 C/C++开发工具，它的名字叫 build- essential。所以你可以只运行下列命令就可以完成 gcc 的配置：</p>
 
 <p><pre lang="bash">sudo apt-get install build-essential</pre></p>
 
-<p>gcc是一个强大的工具，目前我只是使用它来编译C、C++和ASM，关于gcc的更多使用方法，可以使用下列两个方法：</p>
+<p>gcc 是一个强大的工具，目前我只是使用它来编译 C、C++和 ASM，关于 gcc 的更多使用方法，可以使用下列两个方法：</p>
 
 <p><pre lang="bash">man gcc</pre></p>
 
 <p>http://gcc.gnu.org/onlinedocs/</p>
 
-<p>至于man命令的作用，请运行man man-_-|||</p>
+<p>至于 man 命令的作用，请运行 man man-_-|||</p>
 
-<p>接下去可以按相同的方法安装gdb，只需要一条命令：</p>
+<p>接下去可以按相同的方法安装 gdb，只需要一条命令：</p>
 
 <p><pre lang="bash">sudo apt-get install gdb</pre></p>
 
-<p>然后谈谈vi。现在大家使用的vi基本上都是vim，可以使用方向键来控制移动，而Ubuntu自带的vi由于习惯问题让人很不适应，所以你应该安装vim-full这个软件，它包含了vim和gvim，后者是一个GUI化的vim编辑器：</p>
+<p>然后谈谈 vi。现在大家使用的 vi 基本上都是 vim，可以使用方向键来控制移动，而 Ubuntu 自带的 vi 由于习惯问题让人很不适应，所以你应该安装 vim-full 这个软件，它包含了 vim 和 gvim，后者是一个 GUI 化的 vim 编辑器：</p>
 
 <p><pre lang="bash">sudo apt-get install vim-full</pre></p>
 
-<p>刚离开VS或者VC的你，可能不适应Linux下的编程环境。然而适应VI的操作是一个必须的技能，传说Linux程序员有三种，使用VI进行开发的，使用EMACS开发的，和使用其他进行开发的。如果你有兴趣了解emacs，可以运行下列命令：</p>
+<p>刚离开 VS 或者 VC 的你，可能不适应 Linux 下的编程环境。然而适应 VI 的操作是一个必须的技能，传说 Linux 程序员有三种，使用 VI 进行开发的，使用 EMACS 开发的，和使用其他进行开发的。如果你有兴趣了解 emacs，可以运行下列命令：</p>
 
 <p><pre lang="bash">sudo apt-get install emacs21</pre></p>
 
-<p>vi和emacs的使用，请访问下列站点：</p>
+<p>vi 和 emacs 的使用，请访问下列站点：</p>
 
 <p>http://vimdoc.sourceforge.net/htmldoc/usr_toc.html</p>
 
 <p>http://www.gnu.org/software/emacs/manual/</p>
 
-<p>至此，vi+gcc+gdb的开发环境基本上搭建完毕，进行操作系统课上的基础编程作业应该绰绰有余了。
+<p>至此，vi+gcc+gdb 的开发环境基本上搭建完毕，进行操作系统课上的基础编程作业应该绰绰有余了。
 </p>
 </div>
 
@@ -208,7 +209,7 @@ deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ intrepid-updates main multiverse rest
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -226,10 +227,10 @@ deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ intrepid-updates main multiverse rest
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2008/10/23/alipay-for-linux/" title="Previous Post: [转]支付宝针Firefox 的安全控件 for Linux">&laquo; [转]支付宝针Firefox 的安全控件 for Linux</a>
+        <a class="basic-alignment left" href="/blog/2008/10/23/alipay-for-linux/" title="Previous Post: [转] 支付宝针 Firefox 的安全控件 for Linux">&laquo; [转] 支付宝针 Firefox 的安全控件 for Linux</a>
       
       
-        <a class="basic-alignment right" href="/blog/2008/11/01/recover-installing-packages-quickly/" title="Next Post: 快速恢复Ubuntu配置">快速恢复Ubuntu配置 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2008/11/01/recover-installing-packages-quickly/" title="Next Post: 快速恢复 Ubuntu 配置">快速恢复 Ubuntu 配置 &raquo;</a>
       
     </p>
   </footer>

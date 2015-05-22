@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Linux启动时的一些闲言碎语 - Ant-Veil</title>
+  <title>Linux 启动时的一些闲言碎语 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="这两天被启动的东西给弄晕了，现在回过神来写一段备用。 一、启动冲突 造成启动冲突的原因往往只有一个，MBR覆盖。比如先装的XP再装的Linux，Linux就会把XP安装时写入MBR的数据给覆盖掉，如果先装Ubuntu再装Fedora， &hellip;">
+  <meta name="description" content="这两天被启动的东西给弄晕了，现在回过神来写一段备用。 一、启动冲突 造成启动冲突的原因往往只有一个，MBR 覆盖。比如先装的 XP 再装的 Linux，Linux 就会把 XP 安装时写入 MBR 的数据给覆盖掉，如果先装 Ubuntu 再装 Fedora，Fedora 的 GRUB 会安装到 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Linux启动时的一些闲言碎语</h1>
+      <h1 class="entry-title">Linux 启动时的一些闲言碎语</h1>
     
     
       <p class="meta">
@@ -107,67 +108,67 @@
 
 <p><h3>一、启动冲突</h3></p>
 
-<p>造成启动冲突的原因往往只有一个，MBR覆盖。比如先装的XP再装的Linux，Linux就会把XP安装时写入MBR的数据给覆盖掉，如果先装Ubuntu再装Fedora，Fedora的GRUB会安装到MBR上覆盖了Ubuntu的GRUB。这些情况都可能会造成某些操作系统不能启动。</p>
+<p>造成启动冲突的原因往往只有一个，MBR 覆盖。比如先装的 XP 再装的 Linux，Linux 就会把 XP 安装时写入 MBR 的数据给覆盖掉，如果先装 Ubuntu 再装 Fedora，Fedora 的 GRUB 会安装到 MBR 上覆盖了 Ubuntu 的 GRUB。这些情况都可能会造成某些操作系统不能启动。</p>
 
-<p>幸好Linux在这方面还算人性化，它在覆盖XP在MBR中的数据之后，会自动搜索可启动的Windows分区，并且把XP的启动信息写到自己GRUB的menu.lst中，这样在装完Linux后能在启动菜单上看见原先的 Windows启动项（通常在最后一项）。</p>
+<p>幸好 Linux 在这方面还算人性化，它在覆盖 XP 在 MBR 中的数据之后，会自动搜索可启动的 Windows 分区，并且把 XP 的启动信息写到自己 GRUB 的 menu.lst 中，这样在装完 Linux 后能在启动菜单上看见原先的 Windows 启动项（通常在最后一项）。</p>
 
-<p>而有时候不小心会把Windows弄坏，需要重装Windows，等你Windows重新装好了，Linux也就启动不了了，因为Windows把MBR又给更新了。Windows和Linux抢MBR的矛盾一直如此激化……</p>
+<p>而有时候不小心会把 Windows 弄坏，需要重装 Windows，等你 Windows 重新装好了，Linux 也就启动不了了，因为 Windows 把 MBR 又给更新了。Windows 和 Linux 抢 MBR 的矛盾一直如此激化……</p>
 
 <p>那么如何防止两个系统吵架呢？两种方法。</p>
 
-<p><!--more-->第一种就是事后修复。用任何一张可以引导到grub的启动盘（比如，可以是你的LiveCD），进入grub。如果先进入的是终端，那么以超级用户模式在终端中输入<code>grub</code>即可进入终端，然后进行grub修复安装过程，如果你知道你的磁盘序号X（一般为0）和Linux分区序号(Partition Number)Y（从0开始数），那么可以运行：</p>
+<p><!--more-->第一种就是事后修复。用任何一张可以引导到 grub 的启动盘（比如，可以是你的 LiveCD），进入 grub。如果先进入的是终端，那么以超级用户模式在终端中输入<code>grub</code>即可进入终端，然后进行 grub 修复安装过程，如果你知道你的磁盘序号 X（一般为 0）和 Linux 分区序号(Partition Number)Y（从 0 开始数），那么可以运行：</p>
 
 <p><pre lang="cpp">root (hdX,Y)
 setup (hd0)</pre></p>
 
-<p>后面一句的hd0表示把grub写到MBR上。</p>
+<p>后面一句的 hd0 表示把 grub 写到 MBR 上。</p>
 
 <p>也可以简单地一句话：</p>
 
 <p><pre lang="cpp">setup (hd0) (hdX,Y)</pre></p>
 
-<p>成功了的话会返回successful.</p>
+<p>成功了的话会返回 successful.</p>
 
-<p>如果不知道或者忘记了Linux的分区序号（磁盘序号你应该知道吧，要是不确定就填0），先键入</p>
+<p>如果不知道或者忘记了 Linux 的分区序号（磁盘序号你应该知道吧，要是不确定就填 0），先键入</p>
 
 <p><pre lang="cpp">root (hdX,</pre></p>
 
-<p>然后按TAB键两次，将会出现自动补全信息，此时你应该就知道Linux分区所在的序号了吧。</p>
+<p>然后按 TAB 键两次，将会出现自动补全信息，此时你应该就知道 Linux 分区所在的序号了吧。</p>
 
-<p>输入完毕后仍旧再进行setup操作。这样重启后GRUB就修复了。</p>
+<p>输入完毕后仍旧再进行 setup 操作。这样重启后 GRUB 就修复了。</p>
 
-<p>第二种方法就是在重装XP前，先把Linux写在MBR里的信息给保存出来，保存成一个文件，通常这个文件的大小必须是512字节。运行这个命令：</p>
+<p>第二种方法就是在重装 XP 前，先把 Linux 写在 MBR 里的信息给保存出来，保存成一个文件，通常这个文件的大小必须是 512 字节。运行这个命令：</p>
 
 <p><pre lang="bash">sudo dd if=/dev/sda of=~/linux bs=512 count=1</pre></p>
 
-<p>（如果是SCSI硬盘则为sda，IDE硬盘为hda。of=后面的路径为输出路径，路径和文件名可以任意。）</p>
+<p>（如果是 SCSI 硬盘则为 sda，IDE 硬盘为 hda。of=后面的路径为输出路径，路径和文件名可以任意。）</p>
 
-<p>就可以把MBR中的前512字节的信息保存到用户文件夹下名为linux的文件中。</p>
+<p>就可以把 MBR 中的前 512 字节的信息保存到用户文件夹下名为 linux 的文件中。</p>
 
-<p>然后重装XP，把这个linux文件放到Winodws分区中，为了便于管理，我们习惯上将其放入C盘根目录下。</p>
+<p>然后重装 XP，把这个 linux 文件放到 Winodws 分区中，为了便于管理，我们习惯上将其放入 C 盘根目录下。</p>
 
-<p>接着修改XP的boot.ini，在最后一行添加如下语句：</p>
+<p>接着修改 XP 的 boot.ini，在最后一行添加如下语句：</p>
 
 <p><code>c:\linux="Ubuntu Linux Operation System"</code></p>
 
 <p>并修改启动菜单读秒的长度。</p>
 
-<p>重启之后想办法进入DOS重写分区表：</p>
+<p>重启之后想办法进入 DOS 重写分区表：</p>
 
 <p><pre lang="bash">fdisk /mbr</pre></p>
 
-<p>再次重启就可以看到，XP的启动管理器中出现了双启动菜单，而选择"Ubuntu Linux Operation System"就和以前进入MBR的时候一样了。这种方法的原理也很清晰，将MBR头512字节（包含启动信息的头512字节啊～～）保存成文件，让Windows系统来调用这个文件并且处理启动。</p>
+<p>再次重启就可以看到，XP 的启动管理器中出现了双启动菜单，而选择"Ubuntu Linux Operation System"就和以前进入 MBR 的时候一样了。这种方法的原理也很清晰，将 MBR 头 512 字节（包含启动信息的头 512 字节啊～～）保存成文件，让 Windows 系统来调用这个文件并且处理启动。</p>
 
-<p>以后重装Windows，只要实现把那个长度为512字节的“linux”文件转移到别处，装完后移回来，修改boot.ini就可以了。<br />
-Linux不同发行版之间也需要协调才能和平共处，装了Ubuntu，还想装个Fedora，于是在硬盘上独立分区安装。结果装好后Ubuntu进不去了。想到肯定是Fedora也霸道地把自己的启动信息写到MBR中去而覆盖了Ubuntu的信息了。</p>
+<p>以后重装 Windows，只要实现把那个长度为 512 字节的“linux”文件转移到别处，装完后移回来，修改 boot.ini 就可以了。<br />
+Linux 不同发行版之间也需要协调才能和平共处，装了 Ubuntu，还想装个 Fedora，于是在硬盘上独立分区安装。结果装好后 Ubuntu 进不去了。想到肯定是 Fedora 也霸道地把自己的启动信息写到 MBR 中去而覆盖了 Ubuntu 的信息了。</p>
 
-<p>于是想到修改menu.lst，因为menu.lst可以显示处理启动菜单。把Ubuntu分区挂载之后，找到Ubuntu下的menu.lst，把和它有关的启动语句给复制到Fedora的menu.lst中，重启电脑，可以了。</p>
+<p>于是想到修改 menu.lst，因为 menu.lst 可以显示处理启动菜单。把 Ubuntu 分区挂载之后，找到 Ubuntu 下的 menu.lst，把和它有关的启动语句给复制到 Fedora 的 menu.lst 中，重启电脑，可以了。</p>
 
-<p><h3>二、关于menu.lst</h3></p>
+<p><h3>二、关于 menu.lst</h3></p>
 
-<p>menu.lst用于管理启动菜单项。包括是否隐藏启动菜单、启动菜单倒计时、启动项显示等选项。一般的操作顾名思义就可以看懂是什么意思。</p>
+<p>menu.lst 用于管理启动菜单项。包括是否隐藏启动菜单、启动菜单倒计时、启动项显示等选项。一般的操作顾名思义就可以看懂是什么意思。</p>
 
-<p>值得一提的是Linux的启动都是通过这两个文件的引导：kernel的vmlinuz-XXXXX和initrd的initrd.img。也就是说需要引导一个操作系统的话，在grub的menu中告知这两个文件所在的分区，加入这两个文件的路径就可以启动了。</p>
+<p>值得一提的是 Linux 的启动都是通过这两个文件的引导：kernel 的 vmlinuz-XXXXX 和 initrd 的 initrd.img。也就是说需要引导一个操作系统的话，在 grub 的 menu 中告知这两个文件所在的分区，加入这两个文件的路径就可以启动了。</p>
 
 <p>比如：</p>
 
@@ -179,15 +180,15 @@ initrd /boot/initrd.img-2.6.22-14-generic
 
 <p><h3>三、启动时候的挂载</h3></p>
 
-<p>老是手动挂一个分区太麻烦了，于是想到用fstab来自动挂载</p>
+<p>老是手动挂一个分区太麻烦了，于是想到用 fstab 来自动挂载</p>
 
-<p>fstab的每一个非注释行都挂了一个分区到对应路径下，其参数分别为：挂载的设备 挂载点 文件格式 挂载模式（此后的一大段我不甚了解）</p>
+<p>fstab 的每一个非注释行都挂了一个分区到对应路径下，其参数分别为：挂载的设备 挂载点 文件格式 挂载模式（此后的一大段我不甚了解）</p>
 
-<p>“挂载的设备”中，我试过/dev/sda1这种的格式，发现不好使；再看看用UUID，先手动挂载需要的盘，在终端键入</p>
+<p>“挂载的设备”中，我试过/dev/sda1 这种的格式，发现不好使；再看看用 UUID，先手动挂载需要的盘，在终端键入</p>
 
 <p><pre lang="bash">ls -l /dev/disks/by-uuid</pre></p>
 
-<p>显示每个分区的uuid，一串乱七八糟的数字，在fstab中写下：</p>
+<p>显示每个分区的 uuid，一串乱七八糟的数字，在 fstab 中写下：</p>
 
 <p><pre lang="bash">UUID=xxxxxxxxxxxxxx /media/sda8 vfat user,noauto,utf8,umask=000,gid=46 0 0</pre></p>
 
@@ -212,7 +213,7 @@ initrd /boot/initrd.img-2.6.22-14-generic
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 

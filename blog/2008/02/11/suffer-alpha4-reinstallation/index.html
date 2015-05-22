@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>历经苦难的Ubuntu硬盘重装 - Ant-Veil</title>
+  <title>历经苦难的 Ubuntu 硬盘重装 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="在表姐家拜年的时候，系统坏了。其实也不是坏了，就是nautilus等几个组件出了问题。想想系统也被我弄乱得一塌糊涂了，就决定重装了。现在的问题是，只有一个1M带宽的ADSL网，没有光盘。折腾就此开始。 首先，到http://cdimage.ubuntu.com/releases/ &hellip;">
+  <meta name="description" content="在表姐家拜年的时候，系统坏了。其实也不是坏了，就是 nautilus 等几个组件出了问题。想想系统也被我弄乱得一塌糊涂了，就决定重装了。现在的问题是，只有一个 1M 带宽的 ADSL 网，没有光盘。折腾就此开始。 首先，到http://cdimage.ubuntu.com/releases/找到 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">历经苦难的Ubuntu硬盘重装</h1>
+      <h1 class="entry-title">历经苦难的 Ubuntu 硬盘重装</h1>
     
     
       <p class="meta">
@@ -103,15 +104,15 @@
   </header>
 
 
-<div class="entry-content"><p>在表姐家拜年的时候，系统坏了。其实也不是坏了，就是nautilus等几个组件出了问题。想想系统也被我弄乱得一塌糊涂了，就决定重装了。现在的问题是，只有一个1M带宽的ADSL网，没有光盘。折腾就此开始。</p>
+<div class="entry-content"><p>在表姐家拜年的时候，系统坏了。其实也不是坏了，就是 nautilus 等几个组件出了问题。想想系统也被我弄乱得一塌糊涂了，就决定重装了。现在的问题是，只有一个 1M 带宽的 ADSL 网，没有光盘。折腾就此开始。</p>
 
-<p>首先，到<a href="http://cdimage.ubuntu.com/releases/" target="_blank">http://cdimage.ubuntu.com/releases/</a>找到alpha4的下载地址，下载alternative的光盘——耗时N小时-_-|||。是开着虚拟机用迅雷下完的。下载完后拷贝到home路径下的时候突然虚拟机黑屏……于是看了看home路径下的iso，大小正确，就以为复制完毕了。（居然忘了md5校验了）</p>
+<p>首先，到<a href="http://cdimage.ubuntu.com/releases/" target="_blank">http://cdimage.ubuntu.com/releases/</a>找到 alpha4 的下载地址，下载 alternative 的光盘——耗时 N 小时-_-|||。是开着虚拟机用迅雷下完的。下载完后拷贝到 home 路径下的时候突然虚拟机黑屏……于是看了看 home 路径下的 iso，大小正确，就以为复制完毕了。（居然忘了 md5 校验了）</p>
 
-<p>然后，下载硬盘安装需要的东西……for hardy的启动文件：</p>
+<p>然后，下载硬盘安装需要的东西……for hardy 的启动文件：</p>
 
 <p><a href="http://archive.ubuntu.com/ubuntu/dists/hardy/main/installer-i386/current/images/hd-media/" target="_blank">http://archive.ubuntu.com/ubuntu/dists/hardy/main/installer-i386/current/images/hd-media/</a></p>
 
-<p>下载完了，把这几个文件放到/下，在menu.lst中添加如下几句启动信息：</p>
+<p>下载完了，把这几个文件放到/下，在 menu.lst 中添加如下几句启动信息：</p>
 
 <p><!--more-->
 <blockquote>title Linux Hardy Installer</blockquote></p>
@@ -123,33 +124,33 @@
 <p>boot
 重启后进入硬盘安装模式，结果校验包的时候……发现包校验不正确。这才后悔莫及，当时怎么不校验镜像文件！</p>
 
-<p>退出硬盘安装模式后重启，提示Missing Operation System.看来是原来的系统的启动文件被删除了。</p>
+<p>退出硬盘安装模式后重启，提示 Missing Operation System.看来是原来的系统的启动文件被删除了。</p>
 
-<p>想起来自己还有个XP在硬盘上，但是需要XP盘修改硬盘分区表，找了找表姐的光盘，居然发现我暑假留下的番茄花园还在，哈哈。天助我也～</p>
+<p>想起来自己还有个 XP 在硬盘上，但是需要 XP 盘修改硬盘分区表，找了找表姐的光盘，居然发现我暑假留下的番茄花园还在，哈哈。天助我也～</p>
 
-<p>于是启动到XP的故障恢复控制台，执行FIXBOOT C:, FIXMBR C:</p>
+<p>于是启动到 XP 的故障恢复控制台，执行 FIXBOOT C:, FIXMBR C:</p>
 
-<p>重启后，居然还是Missing Operation System……</p>
+<p>重启后，居然还是 Missing Operation System……</p>
 
-<p>无奈之下，在光盘启动画面乱点，点到了PQ Magic里，看了一下分区信息，原来是把sda1(linux的分区)设置成了启动分区，XP的那个分区不是。于是将其设为启动分区（不同软件有不同描述，如“可启动的”，“激活”，“活动分区”等）。重新到故障恢复控制台FIXBOOT C：， FIXMBR C：</p>
+<p>无奈之下，在光盘启动画面乱点，点到了 PQ Magic 里，看了一下分区信息，原来是把 sda1(linux 的分区)设置成了启动分区，XP 的那个分区不是。于是将其设为启动分区（不同软件有不同描述，如“可启动的”，“激活”，“活动分区”等）。重新到故障恢复控制台 FIXBOOT C：， FIXMBR C：</p>
 
-<p>终于启动到了XP，但是进了XP干什么呢？难道要重新下一个Alternative？</p>
+<p>终于启动到了 XP，但是进了 XP 干什么呢？难道要重新下一个 Alternative？</p>
 
-<p>于是想到把原来的虚拟机镜像给挪过来。到VBOX的官网上下载了for win的VirtualBox，然后用explore2fs将那个镜像导出到win下（耗时近半小时T_T），终于挪过来了。这次校验了md5，正确的。</p>
+<p>于是想到把原来的虚拟机镜像给挪过来。到 VBOX 的官网上下载了 for win 的 VirtualBox，然后用 explore2fs 将那个镜像导出到 win 下（耗时近半小时 T_T），终于挪过来了。这次校验了 md5，正确的。</p>
 
-<p>然后需要grub4dos啊——</p>
+<p>然后需要 grub4dos 啊——</p>
 
-<p>到<a href="http://download.gna.org/grub4dos/" target="_blank">http://download.gna.org/grub4dos/</a>下了一个最新的。下完后，把menu.lst给写好，启动，开始安装。</p>
+<p>到<a href="http://download.gna.org/grub4dos/" target="_blank">http://download.gna.org/grub4dos/</a>下了一个最新的。下完后，把 menu.lst 给写好，启动，开始安装。</p>
 
 <p>结果还是提示校验错误！</p>
 
 <p>顿时疯了……</p>
 
-<p>仔细想想，应该是home的那个iso被默认选定了。现在任务很明显，要删掉那个镜像。</p>
+<p>仔细想想，应该是 home 的那个 iso 被默认选定了。现在任务很明显，要删掉那个镜像。</p>
 
-<p>可是explore2fs是只读的……</p>
+<p>可是 explore2fs 是只读的……</p>
 
-<p>上网继续搜，找到一个软件paragon mount everything。</p>
+<p>上网继续搜，找到一个软件 paragon mount everything。</p>
 
 <p>可惜软件名气好，对付我的盘却不好使。</p>
 
@@ -163,9 +164,9 @@
 
 <p>装完后……</p>
 
-<p>发现nautilus有问题，还是有问题！</p>
+<p>发现 nautilus 有问题，还是有问题！</p>
 
-<p>彻底疯了……明天回家装回gutsy去！</p>
+<p>彻底疯了……明天回家装回 gutsy 去！</p>
 </div>
 
 
@@ -186,7 +187,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -204,10 +205,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2008/02/04/using-hardy-alpha4/" title="Previous Post: [白鼠二]Hardy Alpha4 评测">&laquo; [白鼠二]Hardy Alpha4 评测</a>
+        <a class="basic-alignment left" href="/blog/2008/02/04/using-hardy-alpha4/" title="Previous Post: [白鼠二] Hardy Alpha 4 评测">&laquo; [白鼠二] Hardy Alpha 4 评测</a>
       
       
-        <a class="basic-alignment right" href="/blog/2008/02/14/true-xp-in-vmware/" title="Next Post: 把真实的XP系统转换为Linux下的虚拟机——VMware">把真实的XP系统转换为Linux下的虚拟机——VMware &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2008/02/14/true-xp-in-vmware/" title="Next Post: 把真实的 XP 系统转换为 Linux 下的虚拟机 (VMWare)">把真实的 XP 系统转换为 Linux 下的虚拟机 (VMWare) &raquo;</a>
       
     </p>
   </footer>

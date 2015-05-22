@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>折腾Gentoo Milestone1 - Ant-Veil</title>
+  <title>折腾 Gentoo (Milestone 1) - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="上次在日志中提到一下当Ubuntu9.04正式版出来的时候，我就换Gentoo，结果自己还是在Ubuntu Aplha6 出来之前就开始了Gentoo折腾之旅。 前一次折腾Gentoo还是在暑假，因为挂载和其他一堆莫名其妙的问题导致我直接放弃了Gentoo。这次是在心理准备充足的情况下开始的， &hellip;">
+  <meta name="description" content="上次在日志中提到一下当 Ubuntu9.04 正式版出来的时候，我就换 Gentoo，结果自己还是在 Ubuntu Aplha6 出来之前就开始了 Gentoo 折腾之旅。 前一次折腾 Gentoo 还是在暑假，因为挂载和其他一堆莫名其妙的问题导致我直接放弃了 Gentoo。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">折腾Gentoo Milestone1</h1>
+      <h1 class="entry-title">折腾 Gentoo (Milestone 1)</h1>
     
     
       <p class="meta">
@@ -103,25 +104,25 @@
   </header>
 
 
-<div class="entry-content"><p>上次在日志中提到一下当Ubuntu9.04正式版出来的时候，我就换Gentoo，结果自己还是在Ubuntu Aplha6 出来之前就开始了Gentoo折腾之旅。</p>
+<div class="entry-content"><p>上次在日志中提到一下当 Ubuntu9.04 正式版出来的时候，我就换 Gentoo，结果自己还是在 Ubuntu Aplha6 出来之前就开始了 Gentoo 折腾之旅。</p>
 
-<p>前一次折腾Gentoo还是在暑假，因为挂载和其他一堆莫名其妙的问题导致我直接放弃了Gentoo。这次是在心理准备充足的情况下开始的，没想到还是很折腾。</p>
+<p>前一次折腾 Gentoo 还是在暑假，因为挂载和其他一堆莫名其妙的问题导致我直接放弃了 Gentoo。这次是在心理准备充足的情况下开始的，没想到还是很折腾。</p>
 
-<p>桌面管理器从GNOME换到Openbox，然后转成KDE4，顺便还试用了一下enlightenment，发现这种轻量级桌面对我来说不是很适应，就没再继续下去了。</p>
+<p>桌面管理器从 GNOME 换到 Openbox，然后转成 KDE4，顺便还试用了一下 enlightenment，发现这种轻量级桌面对我来说不是很适应，就没再继续下去了。</p>
 
-<p>感谢Gentoo的文档和各种bugzilla，我解决了大部分问题。</p>
+<p>感谢 Gentoo 的文档和各种 bugzilla，我解决了大部分问题。</p>
 
-<p>比方说无线的问题，经常出现SCIOFLAGS: No such device，上网找了半天发现要把/etc/init.d/net.wlan0给删掉。因为现在网络接口已经移交wicd管理了。具体原因尚未知。</p>
+<p>比方说无线的问题，经常出现 SCIOFLAGS: No such device，上网找了半天发现要把/etc/init.d/net.wlan0 给删掉。因为现在网络接口已经移交 wicd 管理了。具体原因尚未知。</p>
 
 <p>当然也碰到了一些莫名其妙的问题，其中大部分是和内核选项有关。</p>
 
-<p>比如声卡，音箱和耳机会同时出声。后来我把和我的声卡沾边的选项统统勾上，重新编译模块，就OK了。还有ext4分区的问题，系统始终不认ext4分区，在水木求助了两天都没解决，后来自己重新编译一次内核，居然就OK了。</p>
+<p>比如声卡，音箱和耳机会同时出声。后来我把和我的声卡沾边的选项统统勾上，重新编译模块，就 OK 了。还有 ext4 分区的问题，系统始终不认 ext4 分区，在水木求助了两天都没解决，后来自己重新编译一次内核，居然就 OK 了。</p>
 
-<p><!--more-->ibus在KDE4上经常抽风，无奈换成了SunPinyin，突然发现SUN-Pinyin也不是那么囧，用起来比以前顺手多了（在设置里多了个词频调整幅度之类的选项）。</p>
+<p><!--more-->ibus 在 KDE4 上经常抽风，无奈换成了 SunPinyin，突然发现 SUN-Pinyin 也不是那么囧，用起来比以前顺手多了（在设置里多了个词频调整幅度之类的选项）。</p>
 
-<p>到现在为止还有很多细节问题没解决，先发个TODO List(其中有很多不是Gentoo发行版特有的问题)，看到这篇文章且有相关经验的童鞋欢迎赐教：</p>
+<p>到现在为止还有很多细节问题没解决，先发个 TODO List(其中有很多不是 Gentoo 发行版特有的问题)，看到这篇文章且有相关经验的童鞋欢迎赐教：</p>
 
-<p><blockquote>1. Amarok2编译失败，提示：</blockquote></p>
+<p><blockquote>1. Amarok2 编译失败，提示：</blockquote></p>
 
 <p>[ 93%] Building CXX object src/scriptengine/generator/generator/CMakeFiles/qtscript_gui.dir/generated_cpp/com_trolltech_qt_gui/qtscriptshell_QColorDialog.o                           <br />
 [ 93%] Building CXX object src/scriptengine/generator/generator/CMakeFiles/qtscript_gui.dir/generated_cpp/com_trolltech_qt_gui/qtscriptshell_QFontDialog.o                            <br />
@@ -130,19 +131,19 @@ Linking CXX shared module ../../../../lib/libqtscript_gui.so<br />
 [ 93%] Built target qtscript_gui<br />
 make: *** [all] Error 2</p>
 
-<p>3. <del datetime="2009-03-24T02:56:49+00:00">vbox开机自动加载vboxdrv模块和vboxnetflt模块(/etc/modules.autoload/kernel-2.6里面加上语句也不行)</del></p>
+<p>3. <del datetime="2009-03-24T02:56:49+00:00">vbox 开机自动加载 vboxdrv 模块和 vboxnetflt 模块(/etc/modules.autoload/kernel-2.6 里面加上语句也不行)</del></p>
 
-<p>已解决：因为/etc/init.d/vboxdrv的脚本文件和gentoo通过runscript管理的脚本文件格式不一样，最后的那行exit 0惹祸了，注释掉就OK了。</p>
+<p>已解决：因为/etc/init.d/vboxdrv 的脚本文件和 gentoo 通过 runscript 管理的脚本文件格式不一样，最后的那行 exit 0 惹祸了，注释掉就 OK 了。</p>
 
 <p>4. 待机、休眠恢复失败（ACPI related)</p>
 
-<p>5. 实现宽屏控制台和KMS(打了915resolution补丁没有作用，TX童鞋等你有空了我要向你请教一下细节)。</p>
+<p>5. 实现宽屏控制台和 KMS(打了 915resolution 补丁没有作用，TX 童鞋等你有空了我要向你请教一下细节)。</p>
 
-<p>6. wine-gecko在QQ、迅雷中会造成程序僵死出错(Wine related，老问题了）</p>
+<p>6. wine-gecko 在 QQ、迅雷中会造成程序僵死出错(Wine related，老问题了）</p>
 
 <p>7. 麻将牌乱码</p>
 
-<p>这个问题好要好解释一下：现在的情况是，ibus和scim-python中都出现了麻将牌乱码（这两个都是python程序），checkgmail中的非ANSI字符也是麻将牌（这个是perl程序），Droid Sans Fallback字体的页面抓取字体的时候也出现了乱码（这个似乎是Flash?)，上几个截图吧：</p>
+<p>这个问题好要好解释一下：现在的情况是，ibus 和 scim-python 中都出现了麻将牌乱码（这两个都是 python 程序），checkgmail 中的非 ANSI 字符也是麻将牌（这个是 perl 程序），Droid Sans Fallback 字体的页面抓取字体的时候也出现了乱码（这个似乎是 Flash?)，上几个截图吧：</p>
 
 <p><img src="http://img.ant.im/di-RF68.png" /></p>
 
@@ -160,7 +161,7 @@ KeyBinding: xbindkeys<br />
 Twitter Client: qwit
 </blockquote></p>
 
-<p>最最后求一个比较好的KDE4下面用的TODO软件，像GNOME下tasque和gtodo那样的。</p>
+<p>最最后求一个比较好的 KDE4 下面用的 TODO 软件，像 GNOME 下 tasque 和 gtodo 那样的。</p>
 </div>
 
 
@@ -181,7 +182,7 @@ Twitter Client: qwit
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -199,10 +200,10 @@ Twitter Client: qwit
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/03/16/test-posting/" title="Previous Post: 再次测试Translate插件">&laquo; 再次测试Translate插件</a>
+        <a class="basic-alignment left" href="/blog/2009/03/16/test-posting/" title="Previous Post: 再次测试 Translate 插件">&laquo; 再次测试 Translate 插件</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/" title="Next Post: Gentoo新老问题-Milestone2">Gentoo新老问题-Milestone2 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/03/26/solved-some-problems-on-gentoo-and-new-ones-come-up/" title="Next Post: Gentoo 新老问题 (Milestone 2)">Gentoo 新老问题 (Milestone 2) &raquo;</a>
       
     </p>
   </footer>

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Mesa和OpenGL的那点破事|有第三者 - Ant-Veil</title>
+  <title>Mesa 和 OpenGL 的那点破事 (有第三者) - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="刚才在折腾Mesa，因为早上更新系统的时候发现mesa7.4放出了。上次升级mesa到svn版的时候发现glxgears只到100+，就给降级了。这次看到mesa7.4正式版已出，侥幸心理作怪下继续升级。结果跟上次一样，100+的glxgears，wine下打CS卡死，但是Google &hellip;">
+  <meta name="description" content="刚才在折腾 Mesa，因为早上更新系统的时候发现 mesa7.4 放出了。上次升级 mesa 到 svn 版的时候发现 glxgears 只到 100+，就给降级了。这次看到 mesa7.4 正式版已出，侥幸心理作怪下继续升级。结果跟上次一样，100+的 glxgears，wine 下打 CS &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Mesa和OpenGL的那点破事|有第三者</h1>
+      <h1 class="entry-title">Mesa 和 OpenGL 的那点破事 (有第三者)</h1>
     
     
       <p class="meta">
@@ -103,29 +104,29 @@
   </header>
 
 
-<div class="entry-content"><p>刚才在折腾Mesa，因为早上更新系统的时候发现mesa7.4放出了。上次升级mesa到svn版的时候发现glxgears只到100+，就给降级了。这次看到mesa7.4正式版已出，侥幸心理作怪下继续升级。结果跟上次一样，100+的glxgears，wine下打CS卡死，但是Google Earth一切正常。</p>
+<div class="entry-content"><p>刚才在折腾 Mesa，因为早上更新系统的时候发现 mesa7.4 放出了。上次升级 mesa 到 svn 版的时候发现 glxgears 只到 100+，就给降级了。这次看到 mesa7.4 正式版已出，侥幸心理作怪下继续升级。结果跟上次一样，100+的 glxgears，wine 下打 CS 卡死，但是 Google Earth 一切正常。</p>
 
-<p>降级回7.3之后，Google Earth一如往常地卡，但是glxgears恢复了400+。</p>
+<p>降级回 7.3 之后，Google Earth 一如往常地卡，但是 glxgears 恢复了 400+。</p>
 
-<p>后来glxinfo了一下，发现：</p>
+<p>后来 glxinfo 了一下，发现：</p>
 
 <p>OpenGL version string: 1.4 Mesa 7.4</p>
 
 <p>OpenGL version string: 2.1 Mesa 7.4</p>
 
-<p>这是几次折腾中的两次OpenGL版本对比。</p>
+<p>这是几次折腾中的两次 OpenGL 版本对比。</p>
 
-<p><del datetime="2009-03-31T03:26:10+00:00">难道glxgears和wine使用的都是OpenGL1.4版本，而Google Earth支持OpenGL2.1?</del></p>
+<p><del datetime="2009-03-31T03:26:10+00:00">难道 glxgears 和 wine 使用的都是 OpenGL1.4 版本，而 Google Earth 支持 OpenGL2.1?</del></p>
 
-<p>Mesa和OpenGL的破事，真TM难理清。</p>
+<p>Mesa 和 OpenGL 的破事，真 TM 难理清。</p>
 
-<p>———————————— 3月31日更新 ————————————</p>
+<p>———————————— 3 月 31 日更新 ————————————</p>
 
-<p>今天早上--sync的时候发现要升级libdrm，在Linux@BUPT上也看到了大牛的回复。这才发现原来是GEM没有开启。没想到原来以为是Mesa和OpenGL俩人的勾当，竟然是因为第三者GEM的原因……o(╯□╰)o</p>
+<p>今天早上--sync 的时候发现要升级 libdrm，在 Linux@BUPT 上也看到了大牛的回复。这才发现原来是 GEM 没有开启。没想到原来以为是 Mesa 和 OpenGL 俩人的勾当，竟然是因为第三者 GEM 的原因……o(╯□╰)o</p>
 
-<p>更新libdrm，glxgears回到500+，Google Earth开始小卡。</p>
+<p>更新 libdrm，glxgears 回到 500+，Google Earth 开始小卡。</p>
 
-<p>记得TX同学说过<a href="http://www.imtx.cn/archives/1111.html">GEM对Google Earth的显示效果有改进</a>啊，怎么我不开启GEM的时候反而更好一些呢……</p>
+<p>记得 TX 同学说过<a href="http://www.imtx.cn/archives/1111.html">GEM 对 Google Earth 的显示效果有改进</a>啊，怎么我不开启 GEM 的时候反而更好一些呢……</p>
 </div>
 
 
@@ -146,7 +147,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -164,10 +165,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/03/30/how-to-create-a-qt-project/" title="Previous Post: 如何创建QT工程">&laquo; 如何创建QT工程</a>
+        <a class="basic-alignment left" href="/blog/2009/03/30/how-to-create-a-qt-project/" title="Previous Post: 如何创建 Qt 工程">&laquo; 如何创建 Qt 工程</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/04/11/high-pv-ended/" title="Next Post: 我的高PV结束了">我的高PV结束了 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/04/11/high-pv-ended/" title="Next Post: 我的高 PV 结束了">我的高 PV 结束了 &raquo;</a>
       
     </p>
   </footer>

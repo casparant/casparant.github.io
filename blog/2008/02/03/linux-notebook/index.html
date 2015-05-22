@@ -5,15 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Linux学习笔记(1) - Ant-Veil</title>
+  <title>Linux学习笔记 (1) - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
   <meta name="description" content="不断更新中……
-Q: 如何挂载ISO镜像到光驱（即虚拟光驱）
+Q: 如何挂载 ISO 镜像到光驱（即虚拟光驱）
 A: sudo mount -t iso9660 -o loop ./cdimg.iso /mnt/test
 Q: 如何更改文件为可执行文件？何时需要更改？
-A: 输入sudo chmod a+x filename &hellip;">
+A: 输入 sudo chmod a+x filename &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,7 @@ A: 输入sudo chmod a+x filename &hellip;">
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -88,7 +89,7 @@ A: 输入sudo chmod a+x filename &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Linux学习笔记(1)</h1>
+      <h1 class="entry-title">Linux学习笔记 (1)</h1>
     
     
       <p class="meta">
@@ -108,27 +109,27 @@ A: 输入sudo chmod a+x filename &hellip;">
 
 
 <div class="entry-content"><p>不断更新中……
-<blockquote>Q: 如何挂载ISO镜像到光驱（即虚拟光驱）<br />
+<blockquote>Q: 如何挂载 ISO 镜像到光驱（即虚拟光驱）<br />
 A: sudo mount -t iso9660 -o loop ./cdimg.iso /mnt/test</blockquote>
 <blockquote>Q: 如何更改文件为可执行文件？何时需要更改？<br />
-A: 输入sudo chmod a+x filename 即可将文件改为可执行文件。当用文本格式编写了脚本之后，可以执行这个操作执行脚本。</blockquote>
+A: 输入 sudo chmod a+x filename 即可将文件改为可执行文件。当用文本格式编写了脚本之后，可以执行这个操作执行脚本。</blockquote>
 <blockquote>Q: 如何在终端下执行可执行文件？<br />
 A: ./filename 即可。</blockquote>
 <!--more-->
 <blockquote>Q: 如何安装软件：<br />
 A: 软件的安装有两种，一种是二进制包安装，一种是源码安装。<br />
-二进制包可以直接用./filename执行，按照提示逐步操作即可。<br />
-对于Ubuntu Linux，可以直接执行deb包以安装，命令行下用sudo dpkg -i XXX.deb或者sudo gdebi XXX.deb<br />
-对于Redhat/Fedora、Suse等操作系统，可以直接执行rpm包安装，命令行下用rpm -i XXX.rpm<br />
-如Adobe Flash Player之类tar.gz的压缩包，应先解压，寻找类似于install、installer等文件，仍旧使用./filename安装。（注意，虽然也是tar.gz压缩包，但是有别于源码包）<br />
+二进制包可以直接用./filename 执行，按照提示逐步操作即可。<br />
+对于 Ubuntu Linux，可以直接执行 deb 包以安装，命令行下用 sudo dpkg -i XXX.deb 或者 sudo gdebi XXX.deb<br />
+对于 Redhat/Fedora、Suse 等操作系统，可以直接执行 rpm 包安装，命令行下用 rpm -i XXX.rpm<br />
+如 Adobe Flash Player 之类 tar.gz 的压缩包，应先解压，寻找类似于 install、installer 等文件，仍旧使用./filename 安装。（注意，虽然也是 tar.gz 压缩包，但是有别于源码包）<br />
 对于源码包，通常使用“安装三部曲”来进行：<br />
-配置安装环境，生成Makefile：<br />
+配置安装环境，生成 Makefile：<br />
 ./configure （可带参数--prefix，为定义安装路径，如：./configure –prefix /home/caspar/google-earth）<br />
 编译链接生成可执行文件、类库等目标文件：<br />
 make<br />
 将生成的文件复制到对应的路径以安装：<br />
 make install<br />
-另外，一般的软件包解压缩后都可以找到一个README文件，可以按照文件里的步骤安装。</blockquote></p>
+另外，一般的软件包解压缩后都可以找到一个 README 文件，可以按照文件里的步骤安装。</blockquote></p>
 </div>
 
 
@@ -149,7 +150,7 @@ make install<br />
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -170,7 +171,7 @@ make install<br />
         <a class="basic-alignment left" href="/blog/2008/02/03/compile-error-index/" title="Previous Post: 编译错误索引">&laquo; 编译错误索引</a>
       
       
-        <a class="basic-alignment right" href="/blog/2008/02/04/using-hardy-alpha4/" title="Next Post: [白鼠二]Hardy Alpha4 评测">[白鼠二]Hardy Alpha4 评测 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2008/02/04/using-hardy-alpha4/" title="Next Post: [白鼠二] Hardy Alpha 4 评测">[白鼠二] Hardy Alpha 4 评测 &raquo;</a>
       
     </p>
   </footer>

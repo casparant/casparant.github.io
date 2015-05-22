@@ -4,7 +4,7 @@
   <title><![CDATA[Ant-Veil]]></title>
   <link href="http://www.casparzhang.com/atom.xml" rel="self"/>
   <link href="http://www.casparzhang.com/"/>
-  <updated>2015-05-21T23:22:25+08:00</updated>
+  <updated>2015-05-22T11:11:09+08:00</updated>
   <id>http://www.casparzhang.com/</id>
   <author>
     <name><![CDATA[Caspar]]></name>
@@ -59,7 +59,7 @@
 
 <p>稍微验证了一下，发现可以用了，于是开始改其他的。</p>
 
-<p>结果——WTF! 一共有40+个被引用的导出符号！一个一个改的话，这后端驱动的代码还能看么？</p>
+<p>结果——WTF! 一共有 40+个被引用的导出符号！一个一个改的话，这后端驱动的代码还能看么？</p>
 
 <p>思来想去，觉得，该改的还是得改。决定写个宏包装一下，尽量提高一下可读性。</p>
 
@@ -120,7 +120,7 @@
 </span><span class='line'>
 </span><span class='line'><span class="cm">/*</span>
 </span><span class='line'><span class="cm"> * 下面这两个宏会拼成一个函数，放在前后端驱动中，前面这个宏还定义了一个</span>
-</span><span class='line'><span class="cm"> * 全局静态结构用于存放symbol的集合</span>
+</span><span class='line'><span class="cm"> * 全局静态结构用于存放 symbol 的集合</span>
 </span><span class='line'><span class="cm"> */</span>
 </span><span class='line'><span class="cp">#define IMPORT_SYMBOL_START                                             \</span>
 </span><span class='line'><span class="cp">static struct symbol_set sym;                                           \</span>
@@ -162,7 +162,7 @@
 </span><span class='line'>
 </span><span class='line'><span class="n">IMPORT_SYMBOL_START</span>
 </span><span class='line'><span class="nf">IMPORT_SYMBOL</span><span class="p">(</span><span class="n">target_complete_cmd</span><span class="p">);</span>
-</span><span class='line'><span class="cm">/* 这里还可以继续添加IMPORT_SYMBOL宏以查找更多需要用的符号 */</span>
+</span><span class='line'><span class="cm">/* 这里还可以继续添加 IMPORT_SYMBOL 宏以查找更多需要用的符号 */</span>
 </span><span class='line'><span class="n">IMPORT_SYMBOL_END</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="n">snip</span><span class="p">...</span><span class="o">&gt;</span>
@@ -490,7 +490,7 @@
     <id>http://www.casparzhang.com/blog/2014/10/10/fix-razer-orochi-re-connect-issue</id>
     <content type="html"><![CDATA[<h2>Issue</h2>
 
-<p>雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
+<p>雷蛇八歧大蛇 2013 版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(预期行为)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
 
 <h2>Environment</h2>
 
@@ -580,11 +580,11 @@
     <link href="http://www.casparzhang.com/blog/2014/03/21/configure-openconnect-in-gentoo-kde/"/>
     <updated>2014-03-21T00:00:00+08:00</updated>
     <id>http://www.casparzhang.com/blog/2014/03/21/configure-openconnect-in-gentoo-kde</id>
-    <content type="html"><![CDATA[<p>最近呢，推上某奸商推出了 AnyConnect 套餐，这对广大翻墙群众来说绝对是个利好消息啊，可以自动配路由的东东。我毫不犹豫去把自己的绝版廉价套餐换成了100元的套餐，然后开始折腾 AnyConnect 配置。</p>
+    <content type="html"><![CDATA[<p>最近呢，推上某奸商推出了 AnyConnect 套餐，这对广大翻墙群众来说绝对是个利好消息啊，可以自动配路由的东东。我毫不犹豫去把自己的绝版廉价套餐换成了 100 元的套餐，然后开始折腾 AnyConnect 配置。</p>
 
-<p>iOS上配置十分简单，找到 Cisco AnyConnect 这个 App 就搞定。Linux 下要把它配置得很舒服，着实花了一番功夫。</p>
+<p>iOS 上配置十分简单，找到 Cisco AnyConnect 这个 App 就搞定。Linux 下要把它配置得很舒服，着实花了一番功夫。</p>
 
-<p>公司 VPN 用的也是 AnyConnect，我就继续用着公司的客户端(Cisco AnyConnect Secure Mobility Client), 直到今天早上我修复了笔记本上的无线网，机器有了两个IP为止。有了两个IP的 AnyConnect service 居然segfault了，看了一下 debug 信息，我觉得对这种闭源工具我还是别折腾了。直接换开源方案 OpenConnect.</p>
+<p>公司 VPN 用的也是 AnyConnect，我就继续用着公司的客户端(Cisco AnyConnect Secure Mobility Client), 直到今天早上我修复了笔记本上的无线网，机器有了两个 IP 为止。有了两个 IP 的 AnyConnect service 居然 segfault 了，看了一下 debug 信息，我觉得对这种闭源工具我还是别折腾了。直接换开源方案 OpenConnect.</p>
 
 <p>Portage 里搜了一下，openconnect 有两个包，networkmanager-openconnect 有 libkeyring-gnome 依赖，我现在是个有洁癖的 KDE 党，果断不能装啊，于是用第二个， openconnect 命令行版…… 不行，不能这么罗里八嗦，反正最后折腾结果如下：</p>
 
@@ -600,38 +600,38 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[WizNote: 终于找到比较干净的QT的笔记软件]]></title>
+    <title type="html"><![CDATA[WizNote: 终于找到比较干净的 Qt 的笔记软件]]></title>
     <link href="http://www.casparzhang.com/blog/2014/03/11/an-introduction-of-wiz-note/"/>
     <updated>2014-03-11T00:00:00+08:00</updated>
     <id>http://www.casparzhang.com/blog/2014/03/11/an-introduction-of-wiz-note</id>
-    <content type="html"><![CDATA[<p>Linux上记笔记，向来很纠结。以前用过一段时间<a href="http://zim-wiki.org/index.html" target="_blank">Zim</a>，后来变成了KDE党，只好果断抛弃了。找到<a href="http://basket.kde.org/" target="_blank">BasKet</a>，功能还是很强大的，可是格式一团糟。无法以Plain Text存储文字，拷贝来拷贝去的时候经常格式混乱。也尝试在Web端存东西，结果还是发现不习惯，而且离线无法访问。</p>
+    <content type="html"><![CDATA[<p>Linux 上记笔记，向来很纠结。以前用过一段时间<a href="http://zim-wiki.org/index.html" target="_blank">Zim</a>，后来变成了 KDE 党，只好果断抛弃了。找到<a href="http://basket.kde.org/" target="_blank">BasKet</a>，功能还是很强大的，可是格式一团糟。无法以 Plain Text 存储文字，拷贝来拷贝去的时候经常格式混乱。也尝试在 Web 端存东西，结果还是发现不习惯，而且离线无法访问。</p>
 
-<p>然后今天工作的时候有同事提到客户报告鄙厂<a href="http://www.aliyun.com/" target="_blank">产品</a>的问题，碰到了故障（当然在内核组大牛们的努力下该问题已经解决了），我就好奇去看了一下报告者信息，然后就发现了这个笔记软件：<a href="http://wiz.cn/index.html" target="_blank">Wiz</a>. 看起来还挺Geek的，有手机端有Linux端有Mac OS端。于是去gentoo-zh的Overlay找了一圈（是的，5年过去了我还在Gentoo的不归路上慢慢走着），<a href="https://github.com/microcai/gentoo-zh/blob/master/app-text/wiznote/wiznote-2.0.64.ebuild" target="_blank">找到了</a>。</p>
+<p>然后今天工作的时候有同事提到客户报告鄙厂<a href="http://www.aliyun.com/" target="_blank">产品</a>的问题，碰到了故障（当然在内核组大牛们的努力下该问题已经解决了），我就好奇去看了一下报告者信息，然后就发现了这个笔记软件：<a href="http://wiz.cn/index.html" target="_blank">Wiz</a>. 看起来还挺 Geek 的，有手机端有 Linux 端有 Mac OS 端。于是去 gentoo-zh 的 Overlay 找了一圈（是的，5 年过去了我还在 Gentoo 的不归路上慢慢走着），<a href="https://github.com/microcai/gentoo-zh/blob/master/app-text/wiznote/wiznote-2.0.64.ebuild" target="_blank">找到了</a>。</p>
 
-<p>看起来样子还不错，还比较清爽，也可以格式化为Plain Text。功能上比BasKet少一些，但是用着还是挺舒服的。</p>
+<p>看起来样子还不错，还比较清爽，也可以格式化为 Plain Text。功能上比 BasKet 少一些，但是用着还是挺舒服的。</p>
 
 <p>最不能忍受的问题是没有任务栏图标，于是接着搜。</p>
 
-<p>找到了一年前某人的一个没有Merge的<a href="https://github.com/WizTeam/WizQTClient/pull/80" target="_blank">Pull Request</a>，然后稍微修改了一下补丁，打到源代码里，发现可以用了。</p>
+<p>找到了一年前某人的一个没有 Merge 的<a href="https://github.com/WizTeam/WizQTClient/pull/80" target="_blank">Pull Request</a>，然后稍微修改了一下补丁，打到源代码里，发现可以用了。</p>
 
-<p>修改后的ebuild请<a href="https://github.com/casparant/caspar-gentoo/blob/master/app-text/wiznote/wiznote-2.1.0_beta.ebuild" target="_blank">猛戳</a>。</p>
+<p>修改后的 ebuild 请<a href="https://github.com/casparant/caspar-gentoo/blob/master/app-text/wiznote/wiznote-2.1.0_beta.ebuild" target="_blank">猛戳</a>。</p>
 
 <p>最后，有更靠谱的笔记软件请推荐。</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Mce的一些零散记录]]></title>
+    <title type="html"><![CDATA[MCE 的一些零散记录]]></title>
     <link href="http://www.casparzhang.com/blog/2013/06/06/some-misc-items-of-mce/"/>
     <updated>2013-06-06T00:00:00+08:00</updated>
     <id>http://www.casparzhang.com/blog/2013/06/06/some-misc-items-of-mce</id>
-    <content type="html"><![CDATA[<p>以前也测过MCE相关的东西，但是惭愧，一直不清不楚。这两天稍微整理了一下相关知识，感觉见识还是很浅，记些零碎的东西在这，权当博客复活第一篇。如有理解错误，欢迎指出。</p>
+    <content type="html"><![CDATA[<p>以前也测过 MCE 相关的东西，但是惭愧，一直不清不楚。这两天稍微整理了一下相关知识，感觉见识还是很浅，记些零碎的东西在这，权当博客复活第一篇。如有理解错误，欢迎指出。</p>
 
-<p>CPU检测到硬件错误时，内核会报Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; UCE/UE, Un-correctable Error)，内核做出不同反应。CE的话内核只把相关信息写到一个字符设备/dev/mcelog中，UE的话是会在记录相关信息之余，还会做出不同处理，比如中断当前遇错的应用程序，或者Panic. [TODO: 这块相关的内核代码还得再看几遍]</p>
+<p>CPU 检测到硬件错误时，内核会报 Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; UCE/UE, Un-correctable Error)，内核做出不同反应。CE 的话内核只把相关信息写到一个字符设备/dev/mcelog 中，UE 的话是会在记录相关信息之余，还会做出不同处理，比如中断当前遇错的应用程序，或者 Panic. [TODO: 这块相关的内核代码还得再看几遍]</p>
 
-<p>/dev/mcelog中的信息可以用用户空间工具<a href="https://github.com/andikleen/mcelog" target="_blank">mcelog</a>来读取。mcelog比较有意思的一个参数是<code>--dmi</code>，可以尝试解析ADDR字段以获取诸如内存出厂信息，DIMM位置等有用的信息，可是很遗憾在实际环境中这些DIMM信息基本上都是错的。（mcelog man page说了，不要怪Linux，得怪那稀奇古怪的主板厂商……）</p>
+<p>/dev/mcelog 中的信息可以用用户空间工具<a href="https://github.com/andikleen/mcelog" target="_blank">mcelog</a>来读取。mcelog 比较有意思的一个参数是<code>--dmi</code>，可以尝试解析 ADDR 字段以获取诸如内存出厂信息，DIMM 位置等有用的信息，可是很遗憾在实际环境中这些 DIMM 信息基本上都是错的。（mcelog man page 说了，不要怪 Linux，得怪那稀奇古怪的主板厂商……）</p>
 
-<p>mcelog man page还有一个地方提到：</p>
+<p>mcelog man page 还有一个地方提到：</p>
 
 <p><blockquote>The kernel prefers old messages over new. If the log buffer overflows only old ones will be kept.</blockquote></p>
 
@@ -650,22 +650,22 @@
 };
 </p>
 
-<p>这里的MCE_LOG_LEN就是man page中提到的log buffer长度。</p>
+<p>这里的 MCE_LOG_LEN 就是 man page 中提到的 log buffer 长度。</p>
 
-<p>内核中还有个mce_inject模块（CONFIG_X86_MCE_INJECT=m/y）,可以用于产生一些假的MCE以测试相关功能。需要配合用户空间工具<a href="https://github.com/andikleen/mce-inject/" target="_blank">mce-inject</a>来使用。</p>
+<p>内核中还有个 mce_inject 模块（CONFIG_X86_MCE_INJECT=m/y）,可以用于产生一些假的 MCE 以测试相关功能。需要配合用户空间工具<a href="https://github.com/andikleen/mce-inject/" target="_blank">mce-inject</a>来使用。</p>
 
-<p>如果要做一个比较完整的测试，<a href="https://github.com/andikleen/mce-test" target="_blank">mce-test</a>工具可以帮忙，其中会设计一些RAS特性，比如hwpoison(Documentation/vm/hwpoison.txt)，不过我现在的活儿不怎么管测试，暂时就没去回顾这个测试工具了。</p>
+<p>如果要做一个比较完整的测试，<a href="https://github.com/andikleen/mce-test" target="_blank">mce-test</a>工具可以帮忙，其中会设计一些 RAS 特性，比如 hwpoison(Documentation/vm/hwpoison.txt)，不过我现在的活儿不怎么管测试，暂时就没去回顾这个测试工具了。</p>
 
 <p>先记这些，回头把细节都搞懂了再补充……</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Resolved: 如何更新git补丁]]></title>
+    <title type="html"><![CDATA[Resolved: 如何更新 Git 补丁]]></title>
     <link href="http://www.casparzhang.com/blog/2012/01/03/how-to-update-your-git-patches/"/>
     <updated>2012-01-03T00:00:00+08:00</updated>
     <id>http://www.casparzhang.com/blog/2012/01/03/how-to-update-your-git-patches</id>
-    <content type="html"><![CDATA[<p>使用git制作补丁时，经常发现补丁需要修改。如果只是最后一次commit需要修改，那就好办，用下面的方法就可以搞定：
+    <content type="html"><![CDATA[<p>使用 git 制作补丁时，经常发现补丁需要修改。如果只是最后一次 commit 需要修改，那就好办，用下面的方法就可以搞定：
 <pre lang="bash">
 $ git reset HEAD^
 # edit edit edit
@@ -677,9 +677,9 @@ $ git format-patch --subject-prefix="PATCH v2"
 
 <p><del datetime="2012-01-03T16:12:57+00:00">笨办法已经被删掉>.<</del></p>
 
-<p><!--more--><strong>Update 1:</strong> 非常感谢wangcong的指点！"<code>git rebase -i</code>"可以出色地完成这个任务，方法在man-page里面有详述，见"INTERACTIVE MODE"和"SPLITTING COMMITS"部分。</p>
+<p><!--more--><strong>Update 1:</strong> 非常感谢 wangcong 的指点！"<code>git rebase -i</code>"可以出色地完成这个任务，方法在 man-page 里面有详述，见"INTERACTIVE MODE"和"SPLITTING COMMITS"部分。</p>
 
-<p>假设当前所在分支名为"topic"，做了3个补丁，打算提交给邮件列表的时候发现中间一个补丁需要更新，此时使用下列命令：</p>
+<p>假设当前所在分支名为"topic"，做了 3 个补丁，打算提交给邮件列表的时候发现中间一个补丁需要更新，此时使用下列命令：</p>
 
 <p><pre lang="bash">
 git rebase -i master
@@ -692,7 +692,7 @@ pick c3751d1 hugemmap01: clean-up format<br />
 pick d75449c mm/swapping01: change sleep time to 5 sec
 </blockquote></p>
 
-<p>此时需要修改commit c3751d1，则把<code>pick</code>改为<code>edit</code>即可。保存退出后git会rebase到需要修改的commit处停止，此时可以直接修改内容，然后执行：
+<p>此时需要修改 commit c3751d1，则把<code>pick</code>改为<code>edit</code>即可。保存退出后 git 会 rebase 到需要修改的 commit 处停止，此时可以直接修改内容，然后执行：
 <pre lang="bash">
 git add xxx # mark as resolved
 git commit --amend
@@ -707,9 +707,9 @@ git commit -a -s -c ORIG_HEAD
 
 <p>之后执行"<code>git rebase --continue</code>"即可。</p>
 
-<p>突然想起来一年前就请教过wangcong这个问题，只不过当时对<code>git rebase</code>完全不了解，后来就忘了，惭愧-_-|||。</p>
+<p>突然想起来一年前就请教过 wangcong 这个问题，只不过当时对<code>git rebase</code>完全不了解，后来就忘了，惭愧-_-|||。</p>
 
-<p><strong>Update 2</strong>: 同样感谢Iven的指点，可以去看看他的文章：<a href="http://www.kissuki.com/?p=135" target="_blank">http://www.kissuki.com/?p=135</a></p>
+<p><strong>Update 2</strong>: 同样感谢 Iven 的指点，可以去看看他的文章：<a href="http://www.kissuki.com/?p=135" target="_blank">http://www.kissuki.com/?p=135</a></p>
 ]]></content>
   </entry>
   
@@ -739,31 +739,31 @@ git commit -a -s -c ORIG_HEAD
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[在Red Hat两年]]></title>
+    <title type="html"><![CDATA[在 Red Hat 两年]]></title>
     <link href="http://www.casparzhang.com/blog/2011/07/16/beginning-of-my-third-year-in-red-hat/"/>
     <updated>2011-07-16T00:00:00+08:00</updated>
     <id>http://www.casparzhang.com/blog/2011/07/16/beginning-of-my-third-year-in-red-hat</id>
-    <content type="html"><![CDATA[<p>已经进入我在Red Hat的第三年了，看到两年来这贫瘠无比的博客，决定把阶段总结发到这里来，挽回一下我那正在疯狂下滑的订阅数，嗯。回头看了一下以前的日志，去年这个时候竟然没有写总结，干脆两年的一起写好了。行文照旧会比较混乱，请将就将就。</p>
+    <content type="html"><![CDATA[<p>已经进入我在 Red Hat 的第三年了，看到两年来这贫瘠无比的博客，决定把阶段总结发到这里来，挽回一下我那正在疯狂下滑的订阅数，嗯。回头看了一下以前的日志，去年这个时候竟然没有写总结，干脆两年的一起写好了。行文照旧会比较混乱，请将就将就。</p>
 
-<p>刚以实习生身份进入Red Hat时，主要工作就是验Bug。记得当时很多Bug的描述都很不清晰，往往一个Bug就浪费一两天时间去分析。有的Bug还不能用脚本重现，只能物理接触硬件。有一次在机房里呆了一个下午，要用针头去戳机器上的一个小孔[<a href="http://en.wikipedia.org/wiki/Non-maskable_interrupt" target="_blank">1</a>]，戳了我整整一个下午。类似的折腾人的Bug仿佛是永远都不会消失，现在我还在跟他们打交道。</p>
+<p>刚以实习生身份进入 Red Hat 时，主要工作就是验 Bug。记得当时很多 Bug 的描述都很不清晰，往往一个 Bug 就浪费一两天时间去分析。有的 Bug 还不能用脚本重现，只能物理接触硬件。有一次在机房里呆了一个下午，要用针头去戳机器上的一个小孔[<a href="http://en.wikipedia.org/wiki/Non-maskable_interrupt" target="_blank">1</a>]，戳了我整整一个下午。类似的折腾人的 Bug 仿佛是永远都不会消失，现在我还在跟他们打交道。</p>
 
-<p>一个月后，老板让我了解一个测试套件<a href="http://ltp.sourceforge.net/" target="_blank">LTP</a>，之前是他一直在维护这个工具在内部测试平台上的正常运行，交给我之后他基本上就没再怎么管过它了（直到最近，他开始往LTP提交内存相关的测试代码，这是后话了）。我当时的基本工作就是定期把LTP的稳定发布版本移植回内部测试平台，然后如果运行出错，根据运行情况如果是LTP的问题，就写一些补丁来修复LTP运行时出现的错误。从此我才正式结束和开源项目社区浅尝辄止的试水活动，开始深入社区贡献代码。为LTP编写补丁对我的帮助很大，一方面跟编写补丁相关的工具，比如说git，都熟练掌握了；另一方面通过熟悉LTP的测试代码，了解了很多从用户空间测试内核功能的方法；而且我也学会了怎么在邮件列表里面跟开发者吵架:)</p>
+<p>一个月后，老板让我了解一个测试套件<a href="http://ltp.sourceforge.net/" target="_blank">LTP</a>，之前是他一直在维护这个工具在内部测试平台上的正常运行，交给我之后他基本上就没再怎么管过它了（直到最近，他开始往 LTP 提交内存相关的测试代码，这是后话了）。我当时的基本工作就是定期把 LTP 的稳定发布版本移植回内部测试平台，然后如果运行出错，根据运行情况如果是 LTP 的问题，就写一些补丁来修复 LTP 运行时出现的错误。从此我才正式结束和开源项目社区浅尝辄止的试水活动，开始深入社区贡献代码。为 LTP 编写补丁对我的帮助很大，一方面跟编写补丁相关的工具，比如说 git，都熟练掌握了；另一方面通过熟悉 LTP 的测试代码，了解了很多从用户空间测试内核功能的方法；而且我也学会了怎么在邮件列表里面跟开发者吵架:)</p>
 
-<p><!--more-->随后的几个月里，基本上就是继续了解一些公司内部的测试工具，同时照旧维护LTP，验Bug，写自动化测试脚本，分析测试结果。期间出错也不少，比如Bug回错地方让人误解这算是小事了，把巨大的二进制包checkin到CVS仓库里面（从美国那边同步一次得十几分钟）也算是小事了。有一次是让我分析自动化测试结果，结果马马虎虎没仔细看，就认为内核通过测试了，结果内核发布给客户之后被发现了问题，回过头来一看就是我当时马虎漏掉的那段，于是被老板叫过去促膝长谈了。这也是我当时跟客户关系最接近的一次，囧- -|||。还有一次是测试一个网络有关的Bug，结果我在远程机器上做的测试，洪水般的数据包把整个公司在所有办公室的测试环境都搞挂了……所幸的是类似的问题后来从来没犯过。</p>
+<p><!--more-->随后的几个月里，基本上就是继续了解一些公司内部的测试工具，同时照旧维护 LTP，验 Bug，写自动化测试脚本，分析测试结果。期间出错也不少，比如 Bug 回错地方让人误解这算是小事了，把巨大的二进制包 checkin 到 CVS 仓库里面（从美国那边同步一次得十几分钟）也算是小事了。有一次是让我分析自动化测试结果，结果马马虎虎没仔细看，就认为内核通过测试了，结果内核发布给客户之后被发现了问题，回过头来一看就是我当时马虎漏掉的那段，于是被老板叫过去促膝长谈了。这也是我当时跟客户关系最接近的一次，囧- -|||。还有一次是测试一个网络有关的 Bug，结果我在远程机器上做的测试，洪水般的数据包把整个公司在所有办公室的测试环境都搞挂了……所幸的是类似的问题后来从来没犯过。</p>
 
 <p>而真正理解软件测试的过程是在半年后了，那时候老板让我尝试编写一个测试项目的测试计划，当然后来因为过年回家，没做成，美国的同事接过去做了。不过慢慢开始知道测试计划、测试用例和测试脚本之间的关系了。我们整个组看起来也是一个刚形成规范的组，现在组里在用的一些测试计划都是从那时候开始遵循<a href="http://wilma.vub.ac.be/~se1_0607/svn/bin/cgi/viewvc.cgi/documents/standards/IEEE/IEEE-STD-829-1998.pdf" target="_blank">IEEE829</a>写的。同时组里开始招人，依据内核子系统功能划分测试任务。恰好同时隔壁组的新版测试用例管理系统(上游版本<a href="https://fedoraproject.org/wiki/Nitrate" target="_blank">在此</a>)上线了，每个测试项目的成员把一些具体的测试用例都写到那上面，确实看起来更规范也更清晰了一些。</p>
 
-<p>2010年上半年准备毕业设计，老板又给了我另外一个开源社区的测试套件<a href="http://crackerjack.sourceforge.net/" target="_blank">Crackerjack</a>来移植，作为我毕设的内容。最后移植是成功了，只是那个开源社区几乎都没人参与了，后来我向管理员要了个commit权限，不过因为项目活跃度太低，而且里面很多代码都已经移植到了LTP中，也就抛下了。</p>
+<p>2010 年上半年准备毕业设计，老板又给了我另外一个开源社区的测试套件<a href="http://crackerjack.sourceforge.net/" target="_blank">Crackerjack</a>来移植，作为我毕设的内容。最后移植是成功了，只是那个开源社区几乎都没人参与了，后来我向管理员要了个 commit 权限，不过因为项目活跃度太低，而且里面很多代码都已经移植到了 LTP 中，也就抛下了。</p>
 
-<p>10年中旬结束学生身份，正式入职，我的工作重心继续在内核测试工具这一块，有之前一年的积累，我敢说我是全组对测试工具第二了解的人了。同时领到了新的任务，带实习生(美其名曰：Intern Tech Lead)，简而言之，就是实习生在测试时碰到问题就来找我，其中有很多问题肯定是跟测试工具相关的（吐槽：我还真是适合干这个活啊>.<）。既然继续做测试工具，我又领到一些测试工具相关的活，这些工具大多是Python写的，于是我又被迫无师自通地学会了Python。在此期间我深深感受到一件事情，碰到问题，看代码是最有效的debug方式。当然我不推荐碰到内核问题直接去看内核代码，那对不了解的人来说是一个黑洞，一陷进去就会浪费掉好久的时间。</p>
+<p>10 年中旬结束学生身份，正式入职，我的工作重心继续在内核测试工具这一块，有之前一年的积累，我敢说我是全组对测试工具第二了解的人了。同时领到了新的任务，带实习生(美其名曰：Intern Tech Lead)，简而言之，就是实习生在测试时碰到问题就来找我，其中有很多问题肯定是跟测试工具相关的（吐槽：我还真是适合干这个活啊>.<）。既然继续做测试工具，我又领到一些测试工具相关的活，这些工具大多是 Python 写的，于是我又被迫无师自通地学会了 Python。在此期间我深深感受到一件事情，碰到问题，看代码是最有效的 debug 方式。当然我不推荐碰到内核问题直接去看内核代码，那对不了解的人来说是一个黑洞，一陷进去就会浪费掉好久的时间。</p>
 
-<p>10年下半年有个重要事件，RHEL6发布了，刚好在我生日前后。公司搞了个庆祝活动，其实也就把自助餐厅搬到了公司里面而已，可能后续还有抽奖什么的，我反正没参加=.= 老大让每个组的负责人都上去讲讲心得，我老板上去之后把组里每个人感谢了一遍，说到我的时候我才发现原来我是个打杂的……因为在RHEL6发布前，我把组里每个人的活，除了存储测试之外，都干了一遍。<a href="http://wangcong.org/blog/?p=1416" target="_blank">kdump</a>测试人手不足的时候，我上去顶了一个星期的班；<a href="http://dup.et.redhat.com/" target="_blank">DUP</a>需要交接工作的时候，我就作为过渡人员测试一段时间；<a href="https://fedorahosted.org/v7/" target="_blank">v7</a>没人测的时候，我就承担了测试任务……当时就觉得挺忙的，不过多打打杂，开阔开阔眼界，也是挺开心的事情。得感谢老板让我多方面了解内核测试的内容。</p>
+<p>10 年下半年有个重要事件，RHEL6 发布了，刚好在我生日前后。公司搞了个庆祝活动，其实也就把自助餐厅搬到了公司里面而已，可能后续还有抽奖什么的，我反正没参加=.= 老大让每个组的负责人都上去讲讲心得，我老板上去之后把组里每个人感谢了一遍，说到我的时候我才发现原来我是个打杂的……因为在 RHEL6 发布前，我把组里每个人的活，除了存储测试之外，都干了一遍。<a href="http://wangcong.org/blog/?p=1416" target="_blank">kdump</a>测试人手不足的时候，我上去顶了一个星期的班；<a href="http://dup.et.redhat.com/" target="_blank">DUP</a>需要交接工作的时候，我就作为过渡人员测试一段时间；<a href="https://fedorahosted.org/v7/" target="_blank">v7</a>没人测的时候，我就承担了测试任务……当时就觉得挺忙的，不过多打打杂，开阔开阔眼界，也是挺开心的事情。得感谢老板让我多方面了解内核测试的内容。</p>
 
-<p>11年初，老板开始突然向LTP提交了很多内存测试的代码，代码被上游接受后，他把内存管理的测试连同测试计划，测试用例都丢给了我，于是我的任务又增加了一个。不过终于有机会开始直接接触内核核心组件了，心里很兴奋。可惜老板留下的代码带着一身BUG，我花了平均每个月20个补丁的代价才把它们修得差不多，而且现在还在继续修。</p>
+<p>11 年初，老板开始突然向 LTP 提交了很多内存测试的代码，代码被上游接受后，他把内存管理的测试连同测试计划，测试用例都丢给了我，于是我的任务又增加了一个。不过终于有机会开始直接接触内核核心组件了，心里很兴奋。可惜老板留下的代码带着一身 BUG，我花了平均每个月 20 个补丁的代价才把它们修得差不多，而且现在还在继续修。</p>
 
-<p>从去年校园招聘前后开始，我就参与了一系列面试。现在组里有几个人就是我当时面试定下来的。自己主要面试的是应聘实习或者校园招聘的学生，因为自己也刚从学生过来，所以比较能理解面试者的心态。学生面试的时候一般会关心测试职位有没有技术含量，自己能不能学到东西。我总是喜欢拿自己在Red Hat之前一年的经历，特别是自己打杂的经历跟他们讲。我面试时也带着一些倾向性，那些偏Geek的，给开源社区做过贡献的，阅读过内核代码的，我就比较喜欢。不过根本一些的层次，我还是喜欢学习能力、理解能力、沟通能力强的。</p>
+<p>从去年校园招聘前后开始，我就参与了一系列面试。现在组里有几个人就是我当时面试定下来的。自己主要面试的是应聘实习或者校园招聘的学生，因为自己也刚从学生过来，所以比较能理解面试者的心态。学生面试的时候一般会关心测试职位有没有技术含量，自己能不能学到东西。我总是喜欢拿自己在 Red Hat 之前一年的经历，特别是自己打杂的经历跟他们讲。我面试时也带着一些倾向性，那些偏 Geek 的，给开源社区做过贡献的，阅读过内核代码的，我就比较喜欢。不过根本一些的层次，我还是喜欢学习能力、理解能力、沟通能力强的。</p>
 
-<p>有了之前一年半的测试经验积累，我对测试本身的流程也比较了解了，于是现在开始参加一些更偏向于组内的测试过程控制的事情。这才理解到，所谓QA，不仅仅是写几个测试计划，验几个bug就完事的。测试周期开始前，要保证测试计划的完整；测试开始后，要定期保证测试进度；测试中发现新的Bug，要根据严重程度及时跟进DEV/PM那边的状态……刚开始干这活，完全没有经验，所以一个测试周期快结束的时候，笔记本里就满是总结经验教训。而在项目进度接近尾声的时候，往往是加班的疯狂时期。我当时既承担内存测试任务，跟踪组内的测试进度，还负责了v7那个项目的测试管理。虽说后两项不用我自己一件一件去做，但是碰到人手交接什么的活时，经验不足的我为了保证进度，只有自己上阵了，因此加班是不可避免的。在v7发布进入尾声的时候，碰到了几个严重的bug，于是我半夜跟美国那边的开发者同步跟踪进度。他一出修复版本，我就马上测试，甚至他来不及修复的时候，我就自己动手修了>.< 最后总算是把产品发布出去了，也因此搞得身心俱疲。</p>
+<p>有了之前一年半的测试经验积累，我对测试本身的流程也比较了解了，于是现在开始参加一些更偏向于组内的测试过程控制的事情。这才理解到，所谓 QA，不仅仅是写几个测试计划，验几个 bug 就完事的。测试周期开始前，要保证测试计划的完整；测试开始后，要定期保证测试进度；测试中发现新的 Bug，要根据严重程度及时跟进 DEV/PM 那边的状态……刚开始干这活，完全没有经验，所以一个测试周期快结束的时候，笔记本里就满是总结经验教训。而在项目进度接近尾声的时候，往往是加班的疯狂时期。我当时既承担内存测试任务，跟踪组内的测试进度，还负责了 v7 那个项目的测试管理。虽说后两项不用我自己一件一件去做，但是碰到人手交接什么的活时，经验不足的我为了保证进度，只有自己上阵了，因此加班是不可避免的。在 v7 发布进入尾声的时候，碰到了几个严重的 bug，于是我半夜跟美国那边的开发者同步跟踪进度。他一出修复版本，我就马上测试，甚至他来不及修复的时候，我就自己动手修了>.< 最后总算是把产品发布出去了，也因此搞得身心俱疲。</p>
 
 <p>然后就是最近的一两个月，一边带实习生，一边准备新项目的计划阶段。最近组里的同志们似乎又被测试工具相关的问题缠住了，于是相应的，我又有点事情要忙了，~o(>_<)o~</p>
 
@@ -784,19 +784,19 @@ git commit -a -s -c ORIG_HEAD
     <id>http://www.casparzhang.com/blog/2011/03/03/jibber-jabber-on-the-resumes</id>
     <content type="html"><![CDATA[<p>最近在帮组里招人，不过一直没有招到合适的（去年校园招聘时候招到过一个合适的，结果被隔壁<a href="http://twitter.com/#!/guaneryu" _target="new">@GMoto</a>组里给抢去了……泪了个奔的）。一直不停地在系统里刷简历，邮件列表里收简历，于是有些碎碎念就冒出来了。想到我不久以前也是简历那一头的角色，现在变成站在这一边的角色了，正好可以忆苦思甜，对比一下。丢在这里，大家凑合着看。</p>
 
-<p>首先得先介绍一下我所在的公司的背景，因为不同公司对待简历有不同的风格。好多人都知道，我现在呆在Red Hat，就是那个跟某快递公司重名的做Linux的公司。至少我们研发部门这边，不会因为简历没写称呼没写落款就不看，也不会因为简历排版混乱就丢在一旁，甚至发现提交的是个Word文档，或者联系邮箱留了个带qq号码的qq邮箱也会认真的去看——只不过第一印象和心理上已经有些想法而已。一般来说，我们喜欢排版简洁的正文简历和pdf简历，如果能提交个odt格式的也能感觉出投简历的人确实是用心的。另外不是为了装X，我们要求中英文简历是因为，如果面试结果良好，通常把简历会转交给国外的同事看，决定是否进一步面试。</p>
+<p>首先得先介绍一下我所在的公司的背景，因为不同公司对待简历有不同的风格。好多人都知道，我现在呆在 Red Hat，就是那个跟某快递公司重名的做 Linux 的公司。至少我们研发部门这边，不会因为简历没写称呼没写落款就不看，也不会因为简历排版混乱就丢在一旁，甚至发现提交的是个 Word 文档，或者联系邮箱留了个带 qq 号码的 qq 邮箱也会认真的去看——只不过第一印象和心理上已经有些想法而已。一般来说，我们喜欢排版简洁的正文简历和 pdf 简历，如果能提交个 odt 格式的也能感觉出投简历的人确实是用心的。另外不是为了装 X，我们要求中英文简历是因为，如果面试结果良好，通常把简历会转交给国外的同事看，决定是否进一步面试。</p>
 
 <p>小结一下，不管简历样式有多糟糕，只要能打开，我们就会认真看。当然非常不幸地，这也是我觉得某些提交简历的同学是折翼的天使的原因。</p>
 
-<p><!--more-->然后是简历的内容。有些简历——真是太折翼了！一看就知道是海投用的“一简历走天下”的那种。某种程度上智联招聘起了为虎作伥的作用，可恨的是我们还不得不用智联……这些简历，“求职目标”一栏把能想到的IT职位估计都填遍了，互联网，软件，硬件，开发，测试，通信，嵌入式神马的都写着；然后在项目经历里面大书特书Oracle数据库、JavaSE/JavaEE框架、C#，更发指的是写着有很丰富的Windows下某过气的图形界面库编程经验；而掌握技能里面，要么就是只写会Java，要么就是把听说过的所有语言，从HTML到.Net都写上……我能体会作为一个学生投简历时广撒网捕大鱼的心理和写简历时生怕简历单薄的心情，但是最起码投简历之前也要对应聘职位做一些分析吧，对方是"Linux""内核""测试"职位，三个关键字，至少在简历里要提到一项相关的吧……</p>
+<p><!--more-->然后是简历的内容。有些简历——真是太折翼了！一看就知道是海投用的“一简历走天下”的那种。某种程度上智联招聘起了为虎作伥的作用，可恨的是我们还不得不用智联……这些简历，“求职目标”一栏把能想到的 IT 职位估计都填遍了，互联网，软件，硬件，开发，测试，通信，嵌入式神马的都写着；然后在项目经历里面大书特书 Oracle 数据库、JavaSE/JavaEE 框架、C#，更发指的是写着有很丰富的 Windows 下某过气的图形界面库编程经验；而掌握技能里面，要么就是只写会 Java，要么就是把听说过的所有语言，从 HTML 到.Net 都写上……我能体会作为一个学生投简历时广撒网捕大鱼的心理和写简历时生怕简历单薄的心情，但是最起码投简历之前也要对应聘职位做一些分析吧，对方是"Linux""内核""测试"职位，三个关键字，至少在简历里要提到一项相关的吧……</p>
 
-<p>针对简历内容，我个人有一些建议，觉得不对的就直接忽略吧。首先是求职目标，对方招什么职位，求职目标一栏就改成什么职位，或者这个职位的大类，别太大，更别写得明显不对口。其次作为学生，项目经历可能不多，那么就在教育经历和掌握技能上稍微补充一些：教育经历一栏可以把跟应聘职位相关的课程列出来，或者把所有重要课程列出来，职位相关的课程加粗醒目表示。这样面试的时候一般都会根据上过的课程问一下相关的理论知识；另外掌握技能这一栏，就要对职位描述作更细致的审察，对方要求什么技能，就写什么技能，哪怕是职位描述上写着“对XXX技术有热情，有自主学习能力”，也可以在技能一栏写上对应的话（自学能力不也是一种技能么）。而项目经历一栏，就别填发过传单搭过Windows服务器的事情了，宁愿你写一些学校学院布置过的大作业和实训。如果有Linux实验和大作业，完全是可以写到项目经历里面的，只要你曾做过。另外每个项目最好能多写几句，一是强调自己个人在项目中的职责，二是技术要点，三可以是项目的难点和解决方案，四可以是自己负责的部分的结果。当然写每点都要有概括成一行文字的能力，长篇大论也是不讨喜的。再小结一下，简历内容一定要有针对性，让人看得出你是用心投这个职位的；技能、知识、经历都与职位要求相关最好，无关的不写或尽量一笔带过。</p>
+<p>针对简历内容，我个人有一些建议，觉得不对的就直接忽略吧。首先是求职目标，对方招什么职位，求职目标一栏就改成什么职位，或者这个职位的大类，别太大，更别写得明显不对口。其次作为学生，项目经历可能不多，那么就在教育经历和掌握技能上稍微补充一些：教育经历一栏可以把跟应聘职位相关的课程列出来，或者把所有重要课程列出来，职位相关的课程加粗醒目表示。这样面试的时候一般都会根据上过的课程问一下相关的理论知识；另外掌握技能这一栏，就要对职位描述作更细致的审察，对方要求什么技能，就写什么技能，哪怕是职位描述上写着“对 XXX 技术有热情，有自主学习能力”，也可以在技能一栏写上对应的话（自学能力不也是一种技能么）。而项目经历一栏，就别填发过传单搭过 Windows 服务器的事情了，宁愿你写一些学校学院布置过的大作业和实训。如果有 Linux 实验和大作业，完全是可以写到项目经历里面的，只要你曾做过。另外每个项目最好能多写几句，一是强调自己个人在项目中的职责，二是技术要点，三可以是项目的难点和解决方案，四可以是自己负责的部分的结果。当然写每点都要有概括成一行文字的能力，长篇大论也是不讨喜的。再小结一下，简历内容一定要有针对性，让人看得出你是用心投这个职位的；技能、知识、经历都与职位要求相关最好，无关的不写或尽量一笔带过。</p>
 
 <p>接下来是一些细节的问题，想到什么说什么。比如说错别字要避免，专业词汇不要拼错；中英文简历排版最好统一，内容保持对应；描述不要夸张，特别是对于技能掌握程度的描述，避免用“精通”一词，因为还有“熟悉”“掌握”“了解”等表示程度的词语；态度要诚恳，用心写的话看的人能看出其中的态度是否诚恳。<em>其他的暂时想不起来了，待补充。</em></p>
 
-<p>最后是针对我个人，或者说我和我周围这群体的人觉得能加分的细节：简历中带一个技术博客或者开源项目的链接；简历后附带一段自己写的C/Shell/Python/Perl代码；用LaTeX写简历；有RHCE的证书。<em>其他的又想不起来了，待补充。</em></p>
+<p>最后是针对我个人，或者说我和我周围这群体的人觉得能加分的细节：简历中带一个技术博客或者开源项目的链接；简历后附带一段自己写的 C/Shell/Python/Perl 代码；用 LaTeX 写简历；有 RHCE 的证书。<em>其他的又想不起来了，待补充。</em></p>
 
-<p>不知道订阅我博客的五六百人都是什么群体，居然能忍受我半年不更新博客……要是是学生居多，希望上面的闲言碎语有一些能对你有帮助。当然希望能给我投简历，如果你是一个Linux和开源软件的爱好者。过一段时间如果我面试面得郁闷了，可能会发一个关于面试的碎碎念。</p>
+<p>不知道订阅我博客的五六百人都是什么群体，居然能忍受我半年不更新博客……要是是学生居多，希望上面的闲言碎语有一些能对你有帮助。当然希望能给我投简历，如果你是一个 Linux 和开源软件的爱好者。过一段时间如果我面试面得郁闷了，可能会发一个关于面试的碎碎念。</p>
 ]]></content>
   </entry>
   
@@ -844,23 +844,23 @@ git commit -a -s -c ORIG_HEAD
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[重新装回Gentoo]]></title>
+    <title type="html"><![CDATA[重新装回 Gentoo]]></title>
     <link href="http://www.casparzhang.com/blog/2010/07/02/back-to-gentoo-again/"/>
     <updated>2010-07-02T00:00:00+08:00</updated>
     <id>http://www.casparzhang.com/blog/2010/07/02/back-to-gentoo-again</id>
-    <content type="html"><![CDATA[<p>最近到手T410，先是折腾了几天把里面的正版Win7 Pro通过无损分区移到角落里，然后是装了个RHEL6.0用来做测试，最后重新开始折腾Gentoo。</p>
+    <content type="html"><![CDATA[<p>最近到手 T410，先是折腾了几天把里面的正版 Win7 Pro 通过无损分区移到角落里，然后是装了个 RHEL6.0 用来做测试，最后重新开始折腾 Gentoo。</p>
 
-<p>这次没有纠结于选择哪个桌面环境上，我一点也不嫌弃GNOME的臃肿，于是装了个gnome-light。USE Flag把以前用过的拿过来修改了一下，顺便提一句，在我不用Gentoo的这段时间听说hal被干掉了，所以我也追风把hal标记给去掉了。</p>
+<p>这次没有纠结于选择哪个桌面环境上，我一点也不嫌弃 GNOME 的臃肿，于是装了个 gnome-light。USE Flag 把以前用过的拿过来修改了一下，顺便提一句，在我不用 Gentoo 的这段时间听说 hal 被干掉了，所以我也追风把 hal 标记给去掉了。</p>
 
-<p>启动的时候使用grub2，本来打了915resolution补丁来使grub宽屏显示，但是打的补丁和grub-1.98似乎不是特别搭配，导致启动grub前后各有5秒停滞时间，加上grub启动过后仍然会有一个分辨率只有640x480的屏幕，我干脆就不用915resolution补丁了。使用grub2，配上ext4分区，就可以不使用initramfs了，关键在两点，一是内核中ACHI选项要编译进内核，二是kernel行参数中不要使用UUID。</p>
+<p>启动的时候使用 grub2，本来打了 915resolution 补丁来使 grub 宽屏显示，但是打的补丁和 grub-1.98 似乎不是特别搭配，导致启动 grub 前后各有 5 秒停滞时间，加上 grub 启动过后仍然会有一个分辨率只有 640x480 的屏幕，我干脆就不用 915resolution 补丁了。使用 grub2，配上 ext4 分区，就可以不使用 initramfs 了，关键在两点，一是内核中 ACHI 选项要编译进内核，二是 kernel 行参数中不要使用 UUID。</p>
 
-<p>说一下一些Thinkpad相关的配置：</p>
+<p>说一下一些 Thinkpad 相关的配置：</p>
 
-<p>一是声卡驱动。Thinkpad T410的声卡应该是CONEXANT的，但是选择这个驱动后内核还是不认我的声卡。最后只好选择了通用驱动。</p>
+<p>一是声卡驱动。Thinkpad T410 的声卡应该是 CONEXANT 的，但是选择这个驱动后内核还是不认我的声卡。最后只好选择了通用驱动。</p>
 
-<p>二是hdaps，所谓的硬盘防震保护系统。portage里面相关的三个包，一个是hdaps模块，一个是GNOME的Applet，还有一个是OpenGL绘制的小程序，用来展示你的笔记本目前的水平状态。</p>
+<p>二是 hdaps，所谓的硬盘防震保护系统。portage 里面相关的三个包，一个是 hdaps 模块，一个是 GNOME 的 Applet，还有一个是 OpenGL 绘制的小程序，用来展示你的笔记本目前的水平状态。</p>
 
-<p><!--more-->三是Thinkpad相关的快捷键。目前键盘上展示的快捷键基本上都能用，除了Fn+F6的“摄像头、耳机”、Fn+F8的“触摸板、小红点切换”还有麦克风静音三个按钮不能工作。根据Thinkwiki的<a href="http://www.thinkwiki.org/wiki/How_to_get_special_keys_to_work" target="_blank">这里</a>说，Fn+F8可以通过thinkpad-acpi或者tps使之工作，其他两个目前还没办法。不过我连Fn+F8都没搞定，只是自己写了个脚本，用来切换触摸板的开关（用小红点的时候肯定很讨厌触摸板开着）：</p>
+<p><!--more-->三是 Thinkpad 相关的快捷键。目前键盘上展示的快捷键基本上都能用，除了 Fn+F6 的“摄像头、耳机”、Fn+F8 的“触摸板、小红点切换”还有麦克风静音三个按钮不能工作。根据 Thinkwiki 的<a href="http://www.thinkwiki.org/wiki/How_to_get_special_keys_to_work" target="_blank">这里</a>说，Fn+F8 可以通过 thinkpad-acpi 或者 tps 使之工作，其他两个目前还没办法。不过我连 Fn+F8 都没搞定，只是自己写了个脚本，用来切换触摸板的开关（用小红点的时候肯定很讨厌触摸板开着）：</p>
 
 <p><pre lang="bash">
 #!/bin/bash</pre></p>
@@ -876,16 +876,16 @@ then<br />
     notify-send "Touchpad is enabled"<br />
 fi
 
-把它保存为脚本，加上x权限，通过GNOME的键盘快捷键来控制，比如Win+Space。</p>
+把它保存为脚本，加上 x 权限，通过 GNOME 的键盘快捷键来控制，比如 Win+Space。</p>
 
-<p>另外我给蓝牙设置了一个快捷键。笔记本上那个蓝色的ThinkVantage按钮没用到，就把它绑定了一个ACPI事件，设置为给蓝牙控制开关。事件代码如下：</p>
+<p>另外我给蓝牙设置了一个快捷键。笔记本上那个蓝色的 ThinkVantage 按钮没用到，就把它绑定了一个 ACPI 事件，设置为给蓝牙控制开关。事件代码如下：</p>
 
 <p><pre lang="bash">
 event=ibm/hotkey HKEY 00000080 00001018
 action=/home/caspar/.local/bin/bluetooth.sh
 </pre></p>
 
-<p>上述代码保存为ACPI事件文件，如/etc/acpi/events/bluetooth。快捷键对应的KEY CODE可以到Thinkwiki上面去找，也可以看内核的:Documentation/laptop/thinkpad-acpi.txt文档。至于用于控制的bluetooth.sh脚本，则如下(代码来源仍旧是ThinkWiki，看<a href="http://www.thinkwiki.org/wiki/How_to_setup_Bluetooth" target="_blank">这里</a>)：</p>
+<p>上述代码保存为 ACPI 事件文件，如/etc/acpi/events/bluetooth。快捷键对应的 KEY CODE 可以到 Thinkwiki 上面去找，也可以看内核的:Documentation/laptop/thinkpad-acpi.txt 文档。至于用于控制的 bluetooth.sh 脚本，则如下(代码来源仍旧是 ThinkWiki，看<a href="http://www.thinkwiki.org/wiki/How_to_setup_Bluetooth" target="_blank">这里</a>)：</p>
 
 <p><pre lang="bash">
 #!/bin/bash
@@ -918,20 +918,20 @@ if [[ ! -z "${SYSFS}" && -r "${SYSFS}/state" ]]; then
 fi
 </pre></p>
 
-<p>重启ACPI服务就可以看到蓝牙可以被ThinkVantage按钮控制了。</p>
+<p>重启 ACPI 服务就可以看到蓝牙可以被 ThinkVantage 按钮控制了。</p>
 
-<p>目前还不能工作的设备有：指纹识别器，从lshw中看到似乎还有HECI控制器(Intel似乎不想管这个咚咚了？）、温度检测设备(Thermal Subsystem)和一个Ricoh的外围设备。</p>
+<p>目前还不能工作的设备有：指纹识别器，从 lshw 中看到似乎还有 HECI 控制器(Intel 似乎不想管这个咚咚了？）、温度检测设备(Thermal Subsystem)和一个 Ricoh 的外围设备。</p>
 
-<p>最后向使用Thinkpad的同学严重推荐<a href="http://www.thinkwiki.org" target="_blank">ThinkWiki</a>。</p>
+<p>最后向使用 Thinkpad 的同学严重推荐<a href="http://www.thinkwiki.org" target="_blank">ThinkWiki</a>。</p>
 
-<p>P.S. 设置充电阈值：据说如果电池不怎么经常使用的话，充电不充满有利于延长电池寿命（Win7下的配套软件是这么说的），所以可以设置一个充电阈值，把下面命令放到/etc/conf.d/local.start去：</p>
+<p>P.S. 设置充电阈值：据说如果电池不怎么经常使用的话，充电不充满有利于延长电池寿命（Win7 下的配套软件是这么说的），所以可以设置一个充电阈值，把下面命令放到/etc/conf.d/local.start 去：</p>
 
 <p><pre lang="bash">echo 95 > /sys/devices/platform/smapi/BAT0/stop_charge_thresh</pre></p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[ya-bupt-thesis-bachelor-1.0-Alpha-1 Released]]></title>
+    <title type="html"><![CDATA[Ya-bupt-thesis-bachelor 1.0 Alpha 1 Released]]></title>
     <link href="http://www.casparzhang.com/blog/2010/05/16/ya-bupt-thesis-bachelor-1-0-alpha-1-released/"/>
     <updated>2010-05-16T00:00:00+08:00</updated>
     <id>http://www.casparzhang.com/blog/2010/05/16/ya-bupt-thesis-bachelor-1-0-alpha-1-released</id>
@@ -939,13 +939,13 @@ fi
 
 <p>简要介绍一下这个模板。</p>
 
-<p>缘起是@yegle曾经推荐过他的同学梵高(cnMuggle)的一个<a href="http://code.google.com/p/buptthesis-bachelor/" target="_blank">北邮本科毕业论文模板</a>，我看了一下觉得不太符合我的需求，最主要是他用了CTeX，这玩意儿在我的机子上水土不服。作为一个Linux+XeTeX+xeCJK党，我就自己动手开始写。</p>
+<p>缘起是@yegle 曾经推荐过他的同学梵高(cnMuggle)的一个<a href="http://code.google.com/p/buptthesis-bachelor/" target="_blank">北邮本科毕业论文模板</a>，我看了一下觉得不太符合我的需求，最主要是他用了 CTeX，这玩意儿在我的机子上水土不服。作为一个 Linux+XeTeX+xeCJK 党，我就自己动手开始写。</p>
 
-<p>期间参考了梵高同学的模板，当然也参考了<a href="http://wangxu.me" target="_blank">@gnawux(apt)</a>同学<a href="http://code.google.com/p/latex-bupt/" target="_blank">的</a>，还有DazzleZhang在apt的基础上改进<a href="http://code.google.com/p/buptthesis/" target="blank">的</a>，还有老牌的<a href="http://sourceforge.net/projects/thuthesis/" target="_blank">ThuThesis</a>。当然最主要还是依靠Google和CTeX论坛，把一些稀奇古怪的问题给解决了。</p>
+<p>期间参考了梵高同学的模板，当然也参考了<a href="http://wangxu.me" target="_blank">@gnawux(apt)</a>同学<a href="http://code.google.com/p/latex-bupt/" target="_blank">的</a>，还有 DazzleZhang 在 apt 的基础上改进<a href="http://code.google.com/p/buptthesis/" target="blank">的</a>，还有老牌的<a href="http://sourceforge.net/projects/thuthesis/" target="_blank">ThuThesis</a>。当然最主要还是依靠 Google 和 CTeX 论坛，把一些稀奇古怪的问题给解决了。</p>
 
-<p>今天又解决了几个大问题，同时也把插入图片、插入表格、插入公式的格式整理了一下，所以就发布Alpha-1版本了。地址在<a href="http://code.google.com/p/yet-another-bupt-thesis-bachelor/" target="_blank">Google Code</a>上。接下来要完成的主要工作就是参考文献的排版。我一看其他模板的bst文件，几千行的代码，吓坏了。下次再搞好了。</p>
+<p>今天又解决了几个大问题，同时也把插入图片、插入表格、插入公式的格式整理了一下，所以就发布 Alpha-1 版本了。地址在<a href="http://code.google.com/p/yet-another-bupt-thesis-bachelor/" target="_blank">Google Code</a>上。接下来要完成的主要工作就是参考文献的排版。我一看其他模板的 bst 文件，几千行的代码，吓坏了。下次再搞好了。</p>
 
-<p>欢迎提Bug~</p>
+<p>欢迎提 Bug~</p>
 ]]></content>
   </entry>
   
@@ -977,7 +977,7 @@ fi
 │   │   └── waitpid_err_test.c<br />
 .....</blockquote></p>
 
-<p><!--more-->现在要把这堆系统调用的测试代码移植到各硬件平台和各发行版上，因此要考虑内核版本、glibc版本等等问题。比如说getcpu这个东东只在2.6.19及以后版本中存在并且只有x86_64 and i386架构才可用。而编译这堆系统调用使用的Makefile大致如下：</p>
+<p><!--more-->现在要把这堆系统调用的测试代码移植到各硬件平台和各发行版上，因此要考虑内核版本、glibc 版本等等问题。比如说 getcpu 这个东东只在 2.6.19 及以后版本中存在并且只有 x86_64 and i386 架构才可用。而编译这堆系统调用使用的 Makefile 大致如下：</p>
 
 <p><pre lang="bash" line="1">
 MAKEFILES_FOR_TESTCASES = $(shell find testcases -name Makefile)
@@ -989,7 +989,7 @@ TESTCASES_BY_MAKE = $(addsuffix /test,$(dir $(MAKEFILES_FOR_TESTCASES)))</pre></
 
 <p>因此可能的解决方案有如下几种：</p>
 
-<p><h4>1. 修改Makefile，禁止编译会出错的测试用例</h4></p>
+<p><h4>1. 修改 Makefile，禁止编译会出错的测试用例</h4></p>
 
 <p><pre lang="bash" line="1">
 FILTER_OUT_CASES = testcase1 testcase2 testcase3
@@ -1002,11 +1002,11 @@ TESTCASES_BY_MAKE = $(addsuffix /test,$(dir $(MAKEFILES_FOR_TESTCASES)))</pre></
         $(MAKE) -C $(dir $@) test
 </p>
 
-<p>代码很平淡无奇，之所以贴出这段代码是为了温习一下Makefile中wildcard,filter-out和foreach的用法 :-)</p>
+<p>代码很平淡无奇，之所以贴出这段代码是为了温习一下 Makefile 中 wildcard,filter-out 和 foreach 的用法 :-)</p>
 
-<p><h4>2.修改c代码，使用预处理判断是否存在</h4></p>
+<p><h4>2.修改 c 代码，使用预处理判断是否存在</h4></p>
 
-<p>这种办法在<a href="ltp.sf.net/" target="_blank">ltp</a>上应用十分广泛，ltp中自动从configure文件中生成include/config.h，生成的config.h包含了一系列预处理，例如：</p>
+<p>这种办法在<a href="ltp.sf.net/" target="_blank">ltp</a>上应用十分广泛，ltp 中自动从 configure 文件中生成 include/config.h，生成的 config.h 包含了一系列预处理，例如：</p>
 
 <p><pre lang="cpp" line="1">
 /* Define to 1 if you have the <sys/signalfd.h> header file. */
@@ -1016,7 +1016,7 @@ TESTCASES_BY_MAKE = $(addsuffix /test,$(dir $(MAKEFILES_FOR_TESTCASES)))</pre></
 #define HAVE_SYS_STAT_H 1
 </p>
 
-<p>当内核版本不同导致系统调用不存在时，可以设置undef预处理；如果系统调用存在，则define一下。</p>
+<p>当内核版本不同导致系统调用不存在时，可以设置 undef 预处理；如果系统调用存在，则 define 一下。</p>
 
 <p>接下去可以修改源代码，在可能会在不同内核版本上出现分歧的代码前后加上：</p>
 
@@ -1030,9 +1030,9 @@ int main()
 }
 #endif</pre></p>
 
-<p>同时ltp还在C代码中判断内核版本，内核版本在<sys/utsname.h>中有声明。</p>
+<p>同时 ltp 还在 C 代码中判断内核版本，内核版本在<sys/utsname.h>中有声明。</p>
 
-<p>如果不使用configure文件，可以自己写一个shell脚本来生成，例如：</p>
+<p>如果不使用 configure 文件，可以自己写一个 shell 脚本来生成，例如：</p>
 
 <p><pre lang="bash" line="1">
 #!/bin/sh</pre></p>
@@ -1063,32 +1063,42 @@ fi
     <content type="html"><![CDATA[<p>现在上网的，没下列东东都不好意思说自己是混互联网的：</p>
 
 <p><blockquote>
-<a href="http://www.casparzhang.com">个人博客</a>（BSP/独立的至少得有一个吧），<a href="http://twitter.com/casparant" target="_blank">twitter</a>（以及其他各种围脖们），<a href="http://www.douban.com/people/casparant/" target="_blank">豆瓣</a>，<a href="http://www.facebook.com/casparant" target="_blank">facebook</a>，<a href="https://www.google.com/reader/shared/casparant" target="_blank">Google Reader</a>（或者其他rss订阅工具），<a href="http://feeds.feedburner.com/casparant" target="_blank">feedburner</a>/<a href="http://feed.feedsky.com/casparant" target="_blank">feedsky</a>，<a href="http://www.flickr.com/photos/ant-veil/" target="_blank">flickr相册</a>(或者picasaweb,或者国内的oo和xx），<a href="http://cn.last.fm/user/casparant" target="_blank">lastfm</a>, youtube订阅，friendfeed……
+    <a href="http://www.casparzhang.com">个人博客</a>（BSP/独立的至少得有一个吧），<br/>
+    <a href="http://twitter.com/casparant" target="_blank">twitter</a>（以及其他各种围脖们），<br />
+    <a href="http://www.douban.com/people/casparant/" target="_blank">豆瓣</a>，<br />
+    <a href="http://www.facebook.com/casparant" target="_blank">facebook</a>，<br />
+    <a href="https://www.google.com/reader/shared/casparant" target="_blank">Google Reader</a>（或者其他 rss 订阅工具），<br />
+    <a href="http://feeds.feedburner.com/casparant" target="_blank">feedburner</a>/<a href="http://feed.feedsky.com/casparant" target="_blank">feedsky</a>，<br />
+    <a href="http://www.flickr.com/photos/ant-veil/" target="_blank">flickr 相册</a>(或者 picasaweb,或者国内的 oo 和 xx），<br />
+    <a href="http://cn.last.fm/user/casparant" target="_blank">lastfm</a>, <br />
+    youtube 订阅，<br />
+    friendfeed, <br />
+    ……
 </blockquote></p>
 
 <p>在这个信息膨胀的社会，如何获取信息是个头疼的问题。下面列一下自己是如何把这些信息来源整合起来的，以供参考：</p>
 
-<p>整合所有信息的核心就是feed/rss，所以首先要把博客搞一个托管，或者干脆直接用自带的feed（前者的好处是，换了博客可以不用通知别人修改你的rss地址）。我主要采用feedburner，在wordpress里用了<a href="http://vonye.com/projects/feedred">feedred</a>这个插件，把自带的feed重定向到了feedburner上。因为很久很久以前feedburner被墙了，所以feedsky也用过。</p>
+<p>整合所有信息的核心就是 feed/rss，所以首先要把博客搞一个托管，或者干脆直接用自带的 feed（前者的好处是，换了博客可以不用通知别人修改你的 rss 地址）。我主要采用 feedburner，在 wordpress 里用了<a href="http://vonye.com/projects/feedred">feedred</a>这个插件，把自带的 feed 重定向到了 feedburner 上。因为很久很久以前 feedburner 被墙了，所以 feedsky 也用过。</p>
 
-<p>然后就是Twitter，作为一个重度Twitter患者，巴不得把自己博客更新、Google Reader分享、豆瓣新鲜事、新拍的照片等一堆东西同步到Twitter上。这里有两种解决方案：</p>
+<p>然后就是 Twitter，作为一个重度 Twitter 患者，巴不得把自己博客更新、Google Reader 分享、豆瓣新鲜事、新拍的照片等一堆东西同步到 Twitter 上。这里有两种解决方案：</p>
 
 <p>1. 使用<a href="http://twitterfeed.com">TwitterFeed.com</a></p>
 
-<p>2. 使用FeedBurner。</p>
+<p>2. 使用 FeedBurner。</p>
 
-<p>前者自己摸索就好了，我更推荐后者，因为自己有种感觉FeedBurner同步速度很快，莫非它采用了每分钟轮询的策略？Orz……在FeedBurner管理界面的"Publicize"中有个"Socialize"，里面可以设置把当前feed同步到Twitter上。</p>
+<p>前者自己摸索就好了，我更推荐后者，因为自己有种感觉 FeedBurner 同步速度很快，莫非它采用了每分钟轮询的策略？Orz……在 FeedBurner 管理界面的"Publicize"中有个"Socialize"，里面可以设置把当前 feed 同步到 Twitter 上。</p>
 
-<p><!--more-->因此只要你的信息源有feed，就可以同步到Twitter上。</p>
+<p><!--more-->因此只要你的信息源有 feed，就可以同步到 Twitter 上。</p>
 
-<p>接下来是facebook、校内这类社交网站，把twitter同步到facebook/校内上。</p>
+<p>接下来是 facebook、校内这类社交网站，把 twitter 同步到 facebook/校内上。</p>
 
-<p>校内的话，狗狗<a href="http://yegle.net/2009/04/21/use-bash-to-update-xiaonei-status-and-blog/" target="_blank">写过一个脚本</a>，请自行取用。facebook的话，也有两种方式：</p>
+<p>校内的话，狗狗<a href="http://yegle.net/2009/04/21/use-bash-to-update-xiaonei-status-and-blog/" target="_blank">写过一个脚本</a>，请自行取用。facebook 的话，也有两种方式：</p>
 
-<p>1. 使用friendfeed（已被facebook收购鸟），</p>
+<p>1. 使用 friendfeed（已被 facebook 收购鸟），</p>
 
-<p>2.使用facebook app</p>
+<p>2.使用 facebook app</p>
 
-<p>后者据<a href="http://twitter.com/luopf" target="_blank">lpf</a>同学反映，密码老是不对。我自己是很早很早以前设置的，忘了。建议有问题的同学使用第一种方案。friendfeed因为被facebook收购了，也就更好地集成在了facebook中（不好意思我忘了怎么集成了，自己摸索一下吧>_<）。需要注意的是friendfeed除了可以从twitter同步，还可以从其他源同步，这些源可能会和你之前设定的Twitter集成重复。</p>
+<p>后者据<a href="http://twitter.com/luopf" target="_blank">lpf</a>同学反映，密码老是不对。我自己是很早很早以前设置的，忘了。建议有问题的同学使用第一种方案。friendfeed 因为被 facebook 收购了，也就更好地集成在了 facebook 中（不好意思我忘了怎么集成了，自己摸索一下吧>_<）。需要注意的是 friendfeed 除了可以从 twitter 同步，还可以从其他源同步，这些源可能会和你之前设定的 Twitter 集成重复。</p>
 
 <p>其他的，比如同步到<a href="http://www.williamlong.info/archives/1962.html" target="_blank">新浪围脖</a>，请自行查阅。</p>
 
@@ -1097,27 +1107,27 @@ fi
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[搞定LaTeX Beamer模板]]></title>
+    <title type="html"><![CDATA[搞定 LaTeX Beamer 模板]]></title>
     <link href="http://www.casparzhang.com/blog/2010/04/03/know-how-to-make-a-latex-beamer-template/"/>
     <updated>2010-04-03T00:00:00+08:00</updated>
     <id>http://www.casparzhang.com/blog/2010/04/03/know-how-to-make-a-latex-beamer-template</id>
-    <content type="html"><![CDATA[<p>过一段时间公司和学校都得做presentation，所以现在就得好好开始准备slides。以前我就用Beamer做过一次slide，而且是匆匆忙忙用了默认模板搞定的。这次借着再做slides的机会，我得自己搞个模板。</p>
+    <content type="html"><![CDATA[<p>过一段时间公司和学校都得做 presentation，所以现在就得好好开始准备 slides。以前我就用 Beamer 做过一次 slide，而且是匆匆忙忙用了默认模板搞定的。这次借着再做 slides 的机会，我得自己搞个模板。</p>
 
 <p>需求如下，非常简单：</p>
 
-<p><blockquote>1. 要在合适的位置打上Logo（一般是左上角或者右上角）;<br />
+<p><blockquote>1. 要在合适的位置打上 Logo（一般是左上角或者右上角）;<br />
 2. 要能自定义页脚<br />
 3. 首页要有背景</blockquote></p>
 
 <p>经过半个白天加一个晚上的折腾，基本上解决了上述问题：</p>
 
-<p>要打Logo，并且自定义位置，可以使用如下语句：</p>
+<p>要打 Logo，并且自定义位置，可以使用如下语句：</p>
 
 <p><pre lang="latex"> \logo{\pgfputat{\pgfxy(#1,#2)}{\pgfbox[center,base]{\includegraphics[height=0.5cm]{#3}}}}</pre></p>
 
-<p>事先要包含pgf宏包，#1,#2是Logo坐标，#3是Logo路径。关于坐标，我发现用pdflatex编译和用xelatex编译时坐标表示的实际位置是不同的，反正自己手工慢慢调就是了。也可以把上述代码加个\newcommand，做成一个带参数的命令直接调用。</p>
+<p>事先要包含 pgf 宏包，#1,#2 是 Logo 坐标，#3 是 Logo 路径。关于坐标，我发现用 pdflatex 编译和用 xelatex 编译时坐标表示的实际位置是不同的，反正自己手工慢慢调就是了。也可以把上述代码加个\newcommand，做成一个带参数的命令直接调用。</p>
 
-<p>自定义页脚，我参考了beamer guide和beamer里面的某个宏包的写法：</p>
+<p>自定义页脚，我参考了 beamer guide 和 beamer 里面的某个宏包的写法：</p>
 
 <p><!--more--><pre lang="latex">
 %% Custom footer
@@ -1136,13 +1146,13 @@ fi
 }
 </pre></p>
 
-<p>需要说明的是，我始终搞不懂\tinycolouredline的第一个参数structure还能用什么代替，而且上述方案有个及其大的BUG，在页脚最左边的那列的左边有1em的空白，如果要给这列填充了和那个空白区与不一样的背景色，就会很难看。我也没找到消除那列空白的代码。</p>
+<p>需要说明的是，我始终搞不懂\tinycolouredline 的第一个参数 structure 还能用什么代替，而且上述方案有个及其大的 BUG，在页脚最左边的那列的左边有 1em 的空白，如果要给这列填充了和那个空白区与不一样的背景色，就会很难看。我也没找到消除那列空白的代码。</p>
 
-<p>首页加背景就太简单了，我直接用wallpaper宏包，然后在第一页加入：</p>
+<p>首页加背景就太简单了，我直接用 wallpaper 宏包，然后在第一页加入：</p>
 
 <p><pre lang="latex">\ThisCenterWallPaper{1}{inc/cover}</pre></p>
 
-<p>不管是加Logo也好，加墙纸也好，它们都很容易被colortheme中定义的背景色覆盖，这可以通过\setbeamercolor来去掉背景色，基本语法如下：</p>
+<p>不管是加 Logo 也好，加墙纸也好，它们都很容易被 colortheme 中定义的背景色覆盖，这可以通过\setbeamercolor 来去掉背景色，基本语法如下：</p>
 
 <p><pre lang="latex">\setbeamercolor{background canvas}{bg=}
 \setbeamercolor{title}{fg=black, bg=lightgray!80!white}</pre></p>
@@ -1156,34 +1166,34 @@ fi
     <link href="http://www.casparzhang.com/blog/2010/03/27/chrowety-a-chrome-twitter-extension/"/>
     <updated>2010-03-27T00:00:00+08:00</updated>
     <id>http://www.casparzhang.com/blog/2010/03/27/chrowety-a-chrome-twitter-extension</id>
-    <content type="html"><![CDATA[<p>事先承认，我是土星人+火星人，最近才知道Chrowety这等利器，又能用Twitter API，又能官方RT，又能有声音提示，界面做得还不错。为了拯救广大比我还火星的朋友们，特推荐此扩展。</p>
+    <content type="html"><![CDATA[<p>事先承认，我是土星人+火星人，最近才知道 Chrowety 这等利器，又能用 Twitter API，又能官方 RT，又能有声音提示，界面做得还不错。为了拯救广大比我还火星的朋友们，特推荐此扩展。</p>
 
-<p>由于本人推荐之心实在很强烈，所以几乎就要把这篇可怜不到100字的最新文章发表。幸好发表前我强忍住了，于是找点其他东西凑数，列几个其他的Chrome扩展供大家讨论。因为最近工作和平时使用浏览器都在Chrome上了，同时越来越觉得Firefox不好用了。</p>
+<p>由于本人推荐之心实在很强烈，所以几乎就要把这篇可怜不到 100 字的最新文章发表。幸好发表前我强忍住了，于是找点其他东西凑数，列几个其他的 Chrome 扩展供大家讨论。因为最近工作和平时使用浏览器都在 Chrome 上了，同时越来越觉得 Firefox 不好用了。</p>
 
-<p>代理自动切换：不得不承认AutoProxy这等生活在西朝鲜屁民共和国的使用Firefox的我们的必备工具还是很好用的，在Chrome上迄今没找到同样利索的工具，只有用Switch Proxy + 自己在 <a href="http://autoproxy2pac.appspot.com/">autoproxy2pac.appspot.com（已被墙）</a>上下的pac文件凑合一下。</p>
+<p>代理自动切换：不得不承认 AutoProxy 这等生活在西朝鲜屁民共和国的使用 Firefox 的我们的必备工具还是很好用的，在 Chrome 上迄今没找到同样利索的工具，只有用 Switch Proxy + 自己在 <a href="http://autoproxy2pac.appspot.com/">autoproxy2pac.appspot.com（已被墙）</a>上下的 pac 文件凑合一下。</p>
 
-<p>书签同步：在使用了前一个扩展的前提下，使用XMarks。</p>
+<p>书签同步：在使用了前一个扩展的前提下，使用 XMarks。</p>
 
-<p>看Alexa和Google PR排名：Chrome SEO，功能很齐全。</p>
+<p>看 Alexa 和 Google PR 排名：Chrome SEO，功能很齐全。</p>
 
-<p>其他的诸如Google官方应用的扩展就不再赘述。</p>
+<p>其他的诸如 Google 官方应用的扩展就不再赘述。</p>
 
 <p><!--more-->谢谢<a href="http://www.mellonwand.com" target="_blank">小瓜瓜</a>的提醒，我想起来还有几个：</p>
 
-<p>GMAIL Web扩展：Better GMail 2 + Folders4Gmail。</p>
+<p>GMAIL Web 扩展：Better GMail 2 + Folders4Gmail。</p>
 
-<p>鼠标手势+文字选中/链接拖拽：Smooth Gestures + Yet Another Drag and Go(Drag and Go很不好用，还是这个好)。</p>
+<p>鼠标手势+文字选中/链接拖拽：Smooth Gestures + Yet Another Drag and Go(Drag and Go 很不好用，还是这个好)。</p>
 
-<p>欢迎向我推荐其他更好用的Chrome扩展。</p>
+<p>欢迎向我推荐其他更好用的 Chrome 扩展。</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[D3000安装裂像屏的惨痛经历]]></title>
+    <title type="html"><![CDATA[D3000 安装裂像屏的惨痛经历]]></title>
     <link href="http://www.casparzhang.com/blog/2010/03/14/the-painful-experience-of-installing-split-image-screen-on-d3000/"/>
     <updated>2010-03-14T00:00:00+08:00</updated>
     <id>http://www.casparzhang.com/blog/2010/03/14/the-painful-experience-of-installing-split-image-screen-on-d3000</id>
-    <content type="html"><![CDATA[<p>下午实在等不住晚一天拿到裂像屏，就自己冒雪跑上地取了，汗。设备是在淘宝上一个叫“对焦工厂”的店里买的，他那对焦设备还挺齐全，连D3000这种超低端机的裂像屏都有，价格在110-190都有。我买了个最好的裂像屏，再买了个取景放大器。回到家中鞋子都没甩干就开始安装。</p>
+    <content type="html"><![CDATA[<p>下午实在等不住晚一天拿到裂像屏，就自己冒雪跑上地取了，汗。设备是在淘宝上一个叫“对焦工厂”的店里买的，他那对焦设备还挺齐全，连 D3000 这种超低端机的裂像屏都有，价格在 110-190 都有。我买了个最好的裂像屏，再买了个取景放大器。回到家中鞋子都没甩干就开始安装。</p>
 
 <p>按照网上的说明，机身倒放，打开弹簧钢丝卡扣。结果手指指甲刚剪掉，伸进去扳不开卡扣，用了镊子挑，还把周围的塑料刮花了。没想到的是这就成了今天装裂像屏的惨痛开端。</p>
 
@@ -1195,17 +1205,17 @@ fi
 
 <p><!--more-->最后总算是安装完成了，没有灰卡，找了个钢尺测试对焦，裂像重合的时候正好合焦，对焦还是很准确的。</p>
 
-<p>使用感受：D3000机器实在是比较小，取景器也好小，我安装了一个取景放大器看起来都不够大，在被摄体对比不明显的时候，中间裂像的圆圈容易被取景器中间对焦点的圆矩形方框盖住，很难观察清楚被摄体的裂像。另外D3000机器拆装对焦屏太折腾了，远没有网上介绍的那么容易拆卸。不过现在对安装裂像屏的效果下断言还太早，拍几天试试吧。</p>
+<p>使用感受：D3000 机器实在是比较小，取景器也好小，我安装了一个取景放大器看起来都不够大，在被摄体对比不明显的时候，中间裂像的圆圈容易被取景器中间对焦点的圆矩形方框盖住，很难观察清楚被摄体的裂像。另外 D3000 机器拆装对焦屏太折腾了，远没有网上介绍的那么容易拆卸。不过现在对安装裂像屏的效果下断言还太早，拍几天试试吧。</p>
 
-<p>经验教训：拆卸弹簧钢丝卡扣的时候，不要心急，钢丝外侧的正中间卡在塑料扣的下方，往外稍微用力把钢丝拉离塑料扣就可以了，实在不行仔细地用极细的针挑出来也可以。对焦屏取出来可以用来倒，放回去要注意防呆设计，屏上长边的突起朝左外侧。用镊子的时候一定要包好橡胶。卡口推回去要找准地方，可以用指甲往塑料扣方向按下去，然后推向相机里侧。总之一定不能心急，心急吃不了臭豆腐，还会弄坏零件T_T</p>
+<p>经验教训：拆卸弹簧钢丝卡扣的时候，不要心急，钢丝外侧的正中间卡在塑料扣的下方，往外稍微用力把钢丝拉离塑料扣就可以了，实在不行仔细地用极细的针挑出来也可以。对焦屏取出来可以用来倒，放回去要注意防呆设计，屏上长边的突起朝左外侧。用镊子的时候一定要包好橡胶。卡口推回去要找准地方，可以用指甲往塑料扣方向按下去，然后推向相机里侧。总之一定不能心急，心急吃不了臭豆腐，还会弄坏零件 T_T</p>
 
-<p>P.S. 新建Photography分类，记录摄影相关文章。</p>
+<p>P.S. 新建 Photography 分类，记录摄影相关文章。</p>
 
 <p>------ 0318 分割线 ------</p>
 
-<p>终于忍不住重新买了块屏，所谓“大眼睛”，裂像特别大，直径占了取景器短边的70%左右。在公司收到快递，花了一分钟就组装好了，这次特别麻利。大裂像果然用起来特别舒服，哇哈哈。不过问题还是有的，一个是上下两个半圆居然不是平分在中心对焦点两侧，而是偏上方一点点，不过还好裂像比较大，没什么关系。<del datetime="2010-03-18T16:13:39+00:00">就是比较影响测光，减了0.7ev差不多正常。因为在公司，没法仔细检测测光，回家后再测吧。</del></p>
+<p>终于忍不住重新买了块屏，所谓“大眼睛”，裂像特别大，直径占了取景器短边的 70%左右。在公司收到快递，花了一分钟就组装好了，这次特别麻利。大裂像果然用起来特别舒服，哇哈哈。不过问题还是有的，一个是上下两个半圆居然不是平分在中心对焦点两侧，而是偏上方一点点，不过还好裂像比较大，没什么关系。<del datetime="2010-03-18T16:13:39+00:00">就是比较影响测光，减了 0.7ev 差不多正常。因为在公司，没法仔细检测测光，回家后再测吧。</del></p>
 
-<p>那块废掉的屏，呜呜呜……就当我在路上走路丢了200块钱吧……</p>
+<p>那块废掉的屏，呜呜呜……就当我在路上走路丢了 200 块钱吧……</p>
 ]]></content>
   </entry>
   

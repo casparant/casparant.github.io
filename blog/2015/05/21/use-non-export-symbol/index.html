@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -144,7 +145,7 @@
 
 <p>稍微验证了一下，发现可以用了，于是开始改其他的。</p>
 
-<p>结果——WTF! 一共有40+个被引用的导出符号！一个一个改的话，这后端驱动的代码还能看么？</p>
+<p>结果——WTF! 一共有 40+个被引用的导出符号！一个一个改的话，这后端驱动的代码还能看么？</p>
 
 <p>思来想去，觉得，该改的还是得改。决定写个宏包装一下，尽量提高一下可读性。</p>
 
@@ -205,7 +206,7 @@
 </span><span class='line'>
 </span><span class='line'><span class="cm">/*</span>
 </span><span class='line'><span class="cm"> * 下面这两个宏会拼成一个函数，放在前后端驱动中，前面这个宏还定义了一个</span>
-</span><span class='line'><span class="cm"> * 全局静态结构用于存放symbol的集合</span>
+</span><span class='line'><span class="cm"> * 全局静态结构用于存放 symbol 的集合</span>
 </span><span class='line'><span class="cm"> */</span>
 </span><span class='line'><span class="cp">#define IMPORT_SYMBOL_START                                             \</span>
 </span><span class='line'><span class="cp">static struct symbol_set sym;                                           \</span>
@@ -247,7 +248,7 @@
 </span><span class='line'>
 </span><span class='line'><span class="n">IMPORT_SYMBOL_START</span>
 </span><span class='line'><span class="nf">IMPORT_SYMBOL</span><span class="p">(</span><span class="n">target_complete_cmd</span><span class="p">);</span>
-</span><span class='line'><span class="cm">/* 这里还可以继续添加IMPORT_SYMBOL宏以查找更多需要用的符号 */</span>
+</span><span class='line'><span class="cm">/* 这里还可以继续添加 IMPORT_SYMBOL 宏以查找更多需要用的符号 */</span>
 </span><span class='line'><span class="n">IMPORT_SYMBOL_END</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="n">snip</span><span class="p">...</span><span class="o">&gt;</span>

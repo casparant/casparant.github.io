@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>更新到了xorg-server-1.7 - Ant-Veil</title>
+  <title>更新到了 xorg-server-1.7 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="Unmask了xorg-server，然后有一堆x11-libs和x11-protos的包要升级，而且都是给mask了的，于是统统unmask掉，编译。 关于X相关组件的编译，这里再提一下@gnawux说过的： 先编译mesa-libs,再编译mesa，再编译xorg-server，再编译x11- &hellip;">
+  <meta name="description" content="Unmask 了 xorg-server，然后有一堆 x11-libs 和 x11-protos 的包要升级，而且都是给 mask 了的，于是统统 unmask 掉，编译。 关于 X 相关组件的编译，这里再提一下@gnawux说过的： 先编译 mesa-libs,再编译 mesa，再编译 xorg &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">更新到了xorg-server-1.7</h1>
+      <h1 class="entry-title">更新到了 xorg-server-1.7</h1>
     
     
       <p class="meta">
@@ -103,19 +104,19 @@
   </header>
 
 
-<div class="entry-content"><p>Unmask了xorg-server，然后有一堆x11-libs和x11-protos的包要升级，而且都是给mask了的，于是统统unmask掉，编译。</p>
+<div class="entry-content"><p>Unmask 了 xorg-server，然后有一堆 x11-libs 和 x11-protos 的包要升级，而且都是给 mask 了的，于是统统 unmask 掉，编译。</p>
 
-<p>关于X相关组件的编译，这里再提一下<a href="http://labs.chinamobile.com/mblog/225">@gnawux</a>说过的：</p>
+<p>关于 X 相关组件的编译，这里再提一下<a href="http://labs.chinamobile.com/mblog/225">@gnawux</a>说过的：</p>
 
-<p><blockquote>先编译mesa-libs,再编译mesa，再编译xorg-server，再编译x11-drivers。其中一个升级了，它后面的软件都得重新依次编译。</blockquote></p>
+<p><blockquote>先编译 mesa-libs,再编译 mesa，再编译 xorg-server，再编译 x11-drivers。其中一个升级了，它后面的软件都得重新依次编译。</blockquote></p>
 
-<p>我现在是升级xorg-server，所以编译完之后要重新编译驱动，尤其是像这种1.6到1.7的跨大版本的更新。其中发现除了udev有一个新版本之外，其他的驱动都是老版本。</p>
+<p>我现在是升级 xorg-server，所以编译完之后要重新编译驱动，尤其是像这种 1.6 到 1.7 的跨大版本的更新。其中发现除了 udev 有一个新版本之外，其他的驱动都是老版本。</p>
 
-<p>编译完了之后发现/etc/X11/xorg.conf的格式有一点点改变，几乎没有影响，有没有增减字段我就不知道了。进了X之后，使用起来没有什么变化。</p>
+<p>编译完了之后发现/etc/X11/xorg.conf 的格式有一点点改变，几乎没有影响，有没有增减字段我就不知道了。进了 X 之后，使用起来没有什么变化。</p>
 
 <p>就这样。</p>
 
-<p>P.S. 今天去面试了某互联网公司，一塌糊涂。看来我真的不适合这样的公司，还是老老实实做我的Linux吧。</p>
+<p>P.S. 今天去面试了某互联网公司，一塌糊涂。看来我真的不适合这样的公司，还是老老实实做我的 Linux 吧。</p>
 </div>
 
 
@@ -136,7 +137,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -154,10 +155,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/08/29/make-gpm-use-notify-osd/" title="Previous Post: 让gnome-power-manager使用notify-osd通知">&laquo; 让gnome-power-manager使用notify-osd通知</a>
+        <a class="basic-alignment left" href="/blog/2009/08/29/make-gpm-use-notify-osd/" title="Previous Post: 让 gnome-power-manager 使用 notify-osd 通知">&laquo; 让 gnome-power-manager 使用 notify-osd 通知</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/12/03/photograph-related-tools-under-linux/" title="Next Post: Linux下与相片有关的工具">Linux下与相片有关的工具 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/12/03/photograph-related-tools-under-linux/" title="Next Post: Linux 下与相片有关的工具">Linux 下与相片有关的工具 &raquo;</a>
       
     </p>
   </footer>

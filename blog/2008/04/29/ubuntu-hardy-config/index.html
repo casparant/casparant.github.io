@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="注：本文并非为纯新手准备，请在看本文前至少了解一些命令行操作并最好对Ubuntu以前版本或其他发行版的图形界面操作比较熟悉。如果你需要一些更初级的内容请访问下列页面： Ubuntu 7.10 配置参考 Ubuntu 8.04 (Hardy Heron)果然没有让我失望， &hellip;">
+  <meta name="description" content="注：本文并非为纯新手准备，请在看本文前至少了解一些命令行操作并最好对 Ubuntu 以前版本或其他发行版的图形界面操作比较熟悉。如果你需要一些更初级的内容请访问下列页面： Ubuntu 7.10 配置参考 Ubuntu 8.04 (Hardy Heron)果然没有让我失望，X2300 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -103,11 +104,11 @@
   </header>
 
 
-<div class="entry-content"><p>注：本文并非为纯新手准备，请在看本文前至少了解一些命令行操作并最好对Ubuntu以前版本或其他发行版的图形界面操作比较熟悉。如果你需要一些更初级的内容请访问下列页面：</p>
+<div class="entry-content"><p>注：本文并非为纯新手准备，请在看本文前至少了解一些命令行操作并最好对 Ubuntu 以前版本或其他发行版的图形界面操作比较熟悉。如果你需要一些更初级的内容请访问下列页面：</p>
 
 <p><a href="http://www.casparzhang.com/blog/2008/01/20/ubuntu-gutsy-config/">Ubuntu 7.10 配置参考</a></p>
 
-<p>Ubuntu 8.04 (Hardy Heron)果然没有让我失望，X2300的特效已经可以开启了，色偏，分辨率默认低的问题都完美解决了。</p>
+<p>Ubuntu 8.04 (Hardy Heron)果然没有让我失望，X2300 的特效已经可以开启了，色偏，分辨率默认低的问题都完美解决了。</p>
 
 <p>闲话少叙，直接开始配置吧:)</p>
 
@@ -127,7 +128,7 @@ deb http://archive.ubuntu.com/ubuntu hardy-updates main restricted universe mult
 deb http://archive.ubuntu.com/ubuntu hardy-backports main restricted universe multiverse<br />
 deb http://archive.ubuntu.com/ubuntu hardy-proposed main restricted universe multiverse</code></blockquote></p>
 
-<p><blockquote><code># 台湾NCHC源：<br />
+<p><blockquote><code># 台湾 NCHC 源：<br />
 deb http://free.nchc.org.tw/ubuntu/ hardy main restricted multiverse universe<br />
 deb http://free.nchc.org.tw/ubuntu/ hardy-updates main restricted multiverse universe<br />
 deb http://free.nchc.org.tw/ubuntu/ hardy-security main restricted multiverse universe<br />
@@ -141,28 +142,28 @@ deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ hardy-proposed main multiverse restri
 deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ hardy-security main multiverse restricted universe<br />
 deb http://ubuntu.csie.nctu.edu.tw/ubuntu/ hardy-updates main multiverse restricted universe</code></blockquote></p>
 
-<p><blockquote><code># 北京邮电大学Openware源：<br />
+<p><blockquote><code># 北京邮电大学 Openware 源：<br />
 deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ hardy main multiverse restricted universe<br />
 deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ hardy-backports main multiverse restricted universe<br />
 deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ hardy-proposed main multiverse restricted universe<br />
 deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ hardy-security main multiverse restricted universe<br />
 deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ hardy-updates main multiverse restricted universe</code></blockquote></p>
 
-<p>更新系统完毕后，安装中文语言包，到系统(System)->系统管理(Administration)->语言支持(Language Support)中，勾选汉语(Chinese)选项，自动下载中文语言包和SCIM的拼音支持。一直很奇怪hardy的语言包依赖关系，居然会把hunderbird安装上- -b</p>
+<p>更新系统完毕后，安装中文语言包，到系统(System)->系统管理(Administration)->语言支持(Language Support)中，勾选汉语(Chinese)选项，自动下载中文语言包和 SCIM 的拼音支持。一直很奇怪 hardy 的语言包依赖关系，居然会把 hunderbird 安装上- -b</p>
 
-<p>如果是NVIDIA/ATI显卡，可以安装显卡驱动了，在系统->硬件驱动中，勾选“未使用”的显卡驱动，会自动从源上下载相关驱动。重启后就可以正常使用特效等功能了。如果在“硬件驱动”中还有其他“未使用”的驱动，也可以勾选下载安装，通常无线网卡和某些声卡。</p>
+<p>如果是 NVIDIA/ATI 显卡，可以安装显卡驱动了，在系统->硬件驱动中，勾选“未使用”的显卡驱动，会自动从源上下载相关驱动。重启后就可以正常使用特效等功能了。如果在“硬件驱动”中还有其他“未使用”的驱动，也可以勾选下载安装，通常无线网卡和某些声卡。</p>
 
 <p>★软件包安装</p>
 
 <p><b>系统相关</b></p>
 
-<p>QT程序输入法: scim-bridge-client-qt, scim-bridge-client-qt4</p>
+<p>QT 程序输入法: scim-bridge-client-qt, scim-bridge-client-qt4</p>
 
-<p>Compiz特效管理器: compizconfig-settings-manager</p>
+<p>Compiz 特效管理器: compizconfig-settings-manager</p>
 
-<p>转换ID3v2标签为UTF-8: python-mutagen</p>
+<p>转换 ID3v2 标签为 UTF-8: python-mutagen</p>
 
-<p>★转换当前目录层下的mp3文件：</p>
+<p>★转换当前目录层下的 mp3 文件：</p>
 
 <p><pre lang="bash">mid3iconv -e gbk *.mp3</pre></p>
 
@@ -179,7 +180,7 @@ compizconfig-settings-manager python-mutagen</pre></p>
 
 <p>gcc: build-essential</p>
 
-<p>★因为gcc版本的问题，build-essential中不包含libstdc++5了，在安装一些deb或者从源码编译的时候会出错，需要自己安装。</p>
+<p>★因为 gcc 版本的问题，build-essential 中不包含 libstdc++5 了，在安装一些 deb 或者从源码编译的时候会出错，需要自己安装。</p>
 
 <p>java: sun-java6-*</p>
 
@@ -190,7 +191,7 @@ compizconfig-settings-manager python-mutagen</pre></p>
 <p><pre lang="bash">cp /etc/vim/vimrc ~/.vimrc
 vi ~/.vimrc</pre></p>
 
-<p>可以Google一下配置文件，网上有很多强大的配置文件。</p>
+<p>可以 Google 一下配置文件，网上有很多强大的配置文件。</p>
 
 <p>命令集合：</p>
 
@@ -202,7 +203,7 @@ vi ~/.vimrc</pre></p>
 
 <p>Video: vlc, smplayer</p>
 
-<p>★如果Mplayer播放出现异常，将视频驱动选择为x11再试试。在hardy中的mplayer打开中文文件名的BUG已经消除了。</p>
+<p>★如果 Mplayer 播放出现异常，将视频驱动选择为 x11 再试试。在 hardy 中的 mplayer 打开中文文件名的 BUG 已经消除了。</p>
 
 <p>Audio: amarok, audacious</p>
 
@@ -217,32 +218,32 @@ sudo dpkg -i w32codecs_20071007-0.1_i386.deb</pre></p>
 
 <p>FTP: <del datetime="2008-12-21T05:33:16+00:00">gftp</del></p>
 
-<p>★解决gFTP显示中文列表乱码问题：</p>
+<p>★解决 gFTP 显示中文列表乱码问题：</p>
 
 <p>修改启动脚本文件：</p>
 
 <p><pre lang="bash">sudo gedit /usr/bin/gftp</pre></p>
 
-<p>在#!/bin/sh之后加上一行：<pre lang="bash">export LANG=zh_CN</pre></p>
+<p>在#!/bin/sh 之后加上一行：<pre lang="bash">export LANG=zh_CN</pre></p>
 
-<p>保存并执行命令生成相应的locale：</p>
+<p>保存并执行命令生成相应的 locale：</p>
 
 <p><pre lang="bash">sudo locale-gen zh_CN</pre></p>
 
-<p>gFTP已经落伍了，推荐Filezilla，在设置里可以调整locale，下载中文文件也不会乱码，还能登陆ipv6站点~</p>
+<p>gFTP 已经落伍了，推荐 Filezilla，在设置里可以调整 locale，下载中文文件也不会乱码，还能登陆 ipv6 站点~</p>
 
 <p>Web Server: LAMP</p>
 
 <p>ssh: OpenSSH</p>
 
-<p>Gmail邮件监测: checkgmail</p>
+<p>Gmail 邮件监测: checkgmail</p>
 
 <p>命令集合：<pre lang="bash">sudo apt-get install filezilla checkgmail
 openssh-server apache2 mysql-server php5-common php5-mysql</pre></p>
 
 <p><b>其他软件</b></p>
 
-<p>解压缩: rar压缩&解压缩、rpm包转换工具、7zip</p>
+<p>解压缩: rar 压缩&解压缩、rpm 包转换工具、7zip</p>
 
 <p>电子书: kchmviewer</p>
 
@@ -250,7 +251,7 @@ openssh-server apache2 mysql-server php5-common php5-mysql</pre></p>
 
 <p>★到此处下载：<a href="http://www.adobe.com/products/acrobat/readstep2_allversions.html">http://www.adobe.com/products/acrobat/readstep2_allversions.html</a></p>
 
-<p>字典: 星际译王stardict</p>
+<p>字典: 星际译王 stardict</p>
 
 <p>★字典库需要到<a href="http://stardict.sourceforge.net/cn/Dictionaries_zh_CN.php">http://stardict.sourceforge.net/cn/Dictionaries_zh_CN.php</a>下载，下载完毕后解压缩到<code>/usr/share/stardict/dic </code></p>
 
@@ -275,7 +276,7 @@ openssh-server apache2 mysql-server php5-common php5-mysql</pre></p>
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -293,10 +294,10 @@ openssh-server apache2 mysql-server php5-common php5-mysql</pre></p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2008/04/24/ubuntu-hardy-released/" title="Previous Post: [白鼠五]Ubuntu 8.04发布">&laquo; [白鼠五]Ubuntu 8.04发布</a>
+        <a class="basic-alignment left" href="/blog/2008/04/24/ubuntu-hardy-released/" title="Previous Post: [白鼠五] Ubuntu 8.04 发布">&laquo; [白鼠五] Ubuntu 8.04 发布</a>
       
       
-        <a class="basic-alignment right" href="/blog/2008/04/30/opera-fonts-under-hardy/" title="Next Post: Opera 9.50配置文泉驿正黑字体">Opera 9.50配置文泉驿正黑字体 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2008/04/30/opera-fonts-under-hardy/" title="Next Post: Opera 9.50 配置文泉驿正黑字体">Opera 9.50 配置文泉驿正黑字体 &raquo;</a>
       
     </p>
   </footer>

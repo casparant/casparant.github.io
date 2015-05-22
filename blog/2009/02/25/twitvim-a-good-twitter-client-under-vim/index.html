@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>VIM里的Twitter: TwitVIM - Ant-Veil</title>
+  <title>VIM 里的 Twitter: TwitVIM - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="上网的时候发现了这个有意思的VIM插件，进VIM网站的插件页面后更加惊喜地发现作者还在更新这个插件(最近一次更新是2009年2月4日)。由于Linux下图形界面的Twitter客户端都不甚让我满意，看了看TwitVIM这个插件的介绍，决定下下来玩玩。 点击这里下载插件。 安装步骤很简单， &hellip;">
+  <meta name="description" content="上网的时候发现了这个有意思的 VIM 插件，进 VIM 网站的插件页面后更加惊喜地发现作者还在更新这个插件(最近一次更新是 2009 年 2 月 4 日)。由于 Linux 下图形界面的 Twitter 客户端都不甚让我满意，看了看 TwitVIM 这个插件的介绍，决定下下来玩玩。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">VIM里的Twitter: TwitVIM</h1>
+      <h1 class="entry-title">VIM 里的 Twitter: TwitVIM</h1>
     
     
       <p class="meta">
@@ -103,48 +104,48 @@
   </header>
 
 
-<div class="entry-content"><p>上网的时候发现了这个有意思的VIM插件，进VIM网站的插件页面后更加惊喜地发现作者还在更新这个插件(最近一次更新是2009年2月4日)。由于Linux下图形界面的Twitter客户端都不甚让我满意，看了看TwitVIM这个插件的介绍，决定下下来玩玩。</p>
+<div class="entry-content"><p>上网的时候发现了这个有意思的 VIM 插件，进 VIM 网站的插件页面后更加惊喜地发现作者还在更新这个插件(最近一次更新是 2009 年 2 月 4 日)。由于 Linux 下图形界面的 Twitter 客户端都不甚让我满意，看了看 TwitVIM 这个插件的介绍，决定下下来玩玩。</p>
 
 <p>点击<a href="http://www.vim.org/scripts/script.php?script_id=2204" target="new">这里</a>下载插件。</p>
 
-<p>安装步骤很简单，作者打了一个.vba格式的Vimball压缩包，只需要打开这个vba文件，并执行一次source导入就可以了。</p>
+<p>安装步骤很简单，作者打了一个.vba 格式的 Vimball 压缩包，只需要打开这个 vba 文件，并执行一次 source 导入就可以了。</p>
 
 <p><pre lang="bash">vim twitvim.vba
 :source %</pre></p>
 
-<p>插件会自动安装到~/.vim下。</p>
+<p>插件会自动安装到~/.vim 下。</p>
 
-<p>接下来需要在vim配置文件(比如~/.vimrc)里配置用户名，密码，如果是通过代理上网还需要配置代理。</p>
+<p>接下来需要在 vim 配置文件(比如~/.vimrc)里配置用户名，密码，如果是通过代理上网还需要配置代理。</p>
 
 <p><!--more--><pre lang="vim">let twitvim_login = "USER:PASS"
 let twitvim_proxy = "proxyhost:proxyport"</pre></p>
 
-<p><b>请注意，系统必须安装cURL，如果没有安装的请自行安装。</b></p>
+<p><b>请注意，系统必须安装 cURL，如果没有安装的请自行安装。</b></p>
 
-<p>接下来就可以启动TwitVIM了，在任意的一个VIM窗口中，输入<code>:FriendsTwitter</code>，VIM界面就分割出一个新的窗口，里面有所有好友的Twitter记录，如图：</p>
+<p>接下来就可以启动 TwitVIM 了，在任意的一个 VIM 窗口中，输入<code>:FriendsTwitter</code>，VIM 界面就分割出一个新的窗口，里面有所有好友的 Twitter 记录，如图：</p>
 
 <p><a href="http://img.ant.im/pm-VAVS.html" title="twitvim"><img src="http://img.ant.im/dm-VAVS.png" alt="twitvim" /></a></p>
 
-<p>你还可以使用下列命令来更新、回复、查看、搜索你的Twitter：</p>
+<p>你还可以使用下列命令来更新、回复、查看、搜索你的 Twitter：</p>
 
 <p><blockquote>
-: PosttoTwitter - 写一条Twitter并发送。<br />
-: CPosttoTwitter - 发送当前缓冲区中当前行的内容到Twitter(当前缓冲区的内容是指你打开Twitter窗口之前，当前窗口里的内容).<br />
-: BPosttoTwitter - 发送当前缓冲区的所有内容到Twitter</blockquote></p>
+: PosttoTwitter - 写一条 Twitter 并发送。<br />
+: CPosttoTwitter - 发送当前缓冲区中当前行的内容到 Twitter(当前缓冲区的内容是指你打开 Twitter 窗口之前，当前窗口里的内容).<br />
+: BPosttoTwitter - 发送当前缓冲区的所有内容到 Twitter</blockquote></p>
 
-<p>Alt-T - 可视模式下, Alt+T 组合键把选中文本发送到Twitter(如果VIM的菜单栏可用，组合键变为Ctrl+t)<br />
-Alt-R - 针对当前的timeline进行@方式回复<br />
-Alt-D - 针对当前的timeline直接发消息</p>
+<p>Alt-T - 可视模式下, Alt+T 组合键把选中文本发送到 Twitter(如果 VIM 的菜单栏可用，组合键变为 Ctrl+t)<br />
+Alt-R - 针对当前的 timeline 进行@方式回复<br />
+Alt-D - 针对当前的 timeline 直接发消息</p>
 
-<p>: FriendsTwitter - 查看所有朋友的timeline.<br />
-: UserTwitter - 查看自己的timeline.<br />
+<p>: FriendsTwitter - 查看所有朋友的 timeline.<br />
+: UserTwitter - 查看自己的 timeline.<br />
 : RepliesTwitter - 查看所有的@回复.<br />
-: PublicTwitter - 查看公开的timeline.<br />
+: PublicTwitter - 查看公开的 timeline.<br />
 : DMTwitter - 查看直接消息.</p>
 
-<p>: Summize - 搜索Twitter记录. </p>
+<p>: Summize - 搜索 Twitter 记录. </p>
 
-<p>P.S. 貌似Emacs也有一个VIM插件: <a href="http://www.emacswiki.org/cgi-bin/emacs/twit.el">twit.el</a></p>
+<p>P.S. 貌似 Emacs 也有一个 VIM 插件: <a href="http://www.emacswiki.org/cgi-bin/emacs/twit.el">twit.el</a></p>
 </div>
 
 
@@ -165,7 +166,7 @@ Alt-D - 针对当前的timeline直接发消息</p>
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -183,10 +184,10 @@ Alt-D - 针对当前的timeline直接发消息</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/02/21/kde3-interface-font-settings/" title="Previous Post: kde3界面字体设置">&laquo; kde3界面字体设置</a>
+        <a class="basic-alignment left" href="/blog/2009/02/21/kde3-interface-font-settings/" title="Previous Post: KDE-3 界面字体设置">&laquo; KDE-3 界面字体设置</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/03/03/using-ubuntu-jaunty-alpha5/" title="Next Post: [白鼠六]Ubuntu Jaunty Aplha5试用">[白鼠六]Ubuntu Jaunty Aplha5试用 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/03/03/using-ubuntu-jaunty-alpha5/" title="Next Post: [白鼠六] Ubuntu Jaunty Aplha 5 试用">[白鼠六] Ubuntu Jaunty Aplha 5 试用 &raquo;</a>
       
     </p>
   </footer>

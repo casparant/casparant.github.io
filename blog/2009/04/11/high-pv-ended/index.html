@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>我的高PV结束了 - Ant-Veil</title>
+  <title>我的高 PV 结束了 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="最近一直有很高很高的PV，yahoo stat里面一看就猜到是某个页面重重复访问（事实上是重复刷新）得到的结果。因为自己用的FF3一直没有出现问题，就没从自己网站上去找症结。不过最近网站访问速度很慢，有时候数据库连接还出错，问了Paveo，他说我MySQL资源超标。虽然不知道是怎么回事（现在知道了 &hellip;">
+  <meta name="description" content="最近一直有很高很高的 PV，yahoo stat里面一看就猜到是某个页面重重复访问（事实上是重复刷新）得到的结果。因为自己用的 FF3 一直没有出现问题，就没从自己网站上去找症结。不过最近网站访问速度很慢，有时候数据库连接还出错，问了 Paveo，他说我 MySQL 资源超标。虽然不知道是怎么回事 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">我的高PV结束了</h1>
+      <h1 class="entry-title">我的高 PV 结束了</h1>
     
     
       <p class="meta">
@@ -103,17 +104,17 @@
   </header>
 
 
-<div class="entry-content"><p>最近一直有很高很高的PV，<a href="http://tongji.cn.yahoo.com/report.html?unit_id=472876">yahoo stat</a>里面一看就猜到是某个页面重重复访问（事实上是重复刷新）得到的结果。因为自己用的FF3一直没有出现问题，就没从自己网站上去找症结。不过最近网站访问速度很慢，有时候数据库连接还出错，问了Paveo，他说我MySQL资源超标。虽然不知道是怎么回事（现在知道了，页面重复刷新不断请求MySQL资源），但是怀疑跟那个重复访问的页面有关。从yahoo stat里面找到了那个页面，稍微一看，我靠，居然是侧边栏的Google Friend Connect在搞鬼。那个重复访问的页面URL的GET数据就是我的Google Friend Connect里的参数。</p>
+<div class="entry-content"><p>最近一直有很高很高的 PV，<a href="http://tongji.cn.yahoo.com/report.html?unit_id=472876">yahoo stat</a>里面一看就猜到是某个页面重重复访问（事实上是重复刷新）得到的结果。因为自己用的 FF3 一直没有出现问题，就没从自己网站上去找症结。不过最近网站访问速度很慢，有时候数据库连接还出错，问了 Paveo，他说我 MySQL 资源超标。虽然不知道是怎么回事（现在知道了，页面重复刷新不断请求 MySQL 资源），但是怀疑跟那个重复访问的页面有关。从 yahoo stat 里面找到了那个页面，稍微一看，我靠，居然是侧边栏的 Google Friend Connect 在搞鬼。那个重复访问的页面 URL 的 GET 数据就是我的 Google Friend Connect 里的参数。</p>
 
-<p>于是去Google Friend Connect网站重新按步骤操作了一次，发现原来是我上次清理Blog的文件，把根目录下的canvas.html和rpc_relay.html这两个文件给删掉了。补上之后，到今天一直没问题。</p>
+<p>于是去 Google Friend Connect 网站重新按步骤操作了一次，发现原来是我上次清理 Blog 的文件，把根目录下的 canvas.html 和 rpc_relay.html 这两个文件给删掉了。补上之后，到今天一直没问题。</p>
 
-<p>刚才YuLei师兄告诉我，页面终于能留言了，我就奇怪了，以前不能留言么。他说他用IE和Chrome访问我的页面就一个劲刷新，根本没法浏览，更别提留言了。于是真相大白……原来缺了那两个文件，页面就不停刷新，不停从MySQL请求数据，我网站就资源超标，访问过慢。</p>
+<p>刚才 YuLei 师兄告诉我，页面终于能留言了，我就奇怪了，以前不能留言么。他说他用 IE 和 Chrome 访问我的页面就一个劲刷新，根本没法浏览，更别提留言了。于是真相大白……原来缺了那两个文件，页面就不停刷新，不停从 MySQL 请求数据，我网站就资源超标，访问过慢。</p>
 
-<p>不过这段时间每天有近1000PV呢，可惜了，嘿嘿。</p>
+<p>不过这段时间每天有近 1000PV 呢，可惜了，嘿嘿。</p>
 
-<p><!--more-->另外说几个事。一个是交换友情链接，我昨天更新了一下友情链接列表，发现一年多过去，好多人的Blog都因为域名到期之类的问题关闭了。所以我就删除了你们的链接。如果你们换了域名，请跟我联系，我会补上。另外申请友情链接的，给我Mail或者在留言页面留言都可以。我的PR不高，所以对对方的PR也没要求。</p>
+<p><!--more-->另外说几个事。一个是交换友情链接，我昨天更新了一下友情链接列表，发现一年多过去，好多人的 Blog 都因为域名到期之类的问题关闭了。所以我就删除了你们的链接。如果你们换了域名，请跟我联系，我会补上。另外申请友情链接的，给我 Mail 或者在留言页面留言都可以。我的 PR 不高，所以对对方的 PR 也没要求。</p>
 
-<p>还有一个就是，我终于把Google Friend Connect的留言板弄起来了，娃哈哈……大家可以在那上面灌水，嗯。</p>
+<p>还有一个就是，我终于把 Google Friend Connect 的留言板弄起来了，娃哈哈……大家可以在那上面灌水，嗯。</p>
 </div>
 
 
@@ -134,7 +135,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -152,7 +153,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/03/30/mesa-and-opengl-problems/" title="Previous Post: Mesa和OpenGL的那点破事|有第三者">&laquo; Mesa和OpenGL的那点破事|有第三者</a>
+        <a class="basic-alignment left" href="/blog/2009/03/30/mesa-and-opengl-problems/" title="Previous Post: Mesa 和 OpenGL 的那点破事 (有第三者)">&laquo; Mesa 和 OpenGL 的那点破事 (有第三者)</a>
       
       
         <a class="basic-alignment right" href="/blog/2009/04/20/a-practice-is-a-progress/" title="Next Post: 每一次实验和大作业都是学习的过程">每一次实验和大作业都是学习的过程 &raquo;</a>

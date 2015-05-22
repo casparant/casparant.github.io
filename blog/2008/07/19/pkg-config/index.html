@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Pkg-config命令学习 - Ant-Veil</title>
+  <title>Pkg-config 命令学习 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="接着凌晨的文章说。 昨天说自己被Ubuntu养懒了，确实懒了，懒得自己连系统的某些工具的用处都不知道。比如pkg-config 以前一直不知道，Linux下那么多库，在./configure时时怎么判断它们存不存在的，难道是靠递归搜索？现在我才知道我zt了，pkg-config这个命令和/*/ &hellip;">
+  <meta name="description" content="接着凌晨的文章说。 昨天说自己被 Ubuntu 养懒了，确实懒了，懒得自己连系统的某些工具的用处都不知道。比如 pkg-config 以前一直不知道，Linux 下那么多库，在./configure 时时怎么判断它们存不存在的，难道是靠递归搜索？现在我才知道我 zt 了，pkg-config &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Pkg-config命令学习</h1>
+      <h1 class="entry-title">Pkg-config 命令学习</h1>
     
     
       <p class="meta">
@@ -105,11 +106,11 @@
 
 <div class="entry-content"><p>接着凌晨的文章说。</p>
 
-<p>昨天说自己被Ubuntu养懒了，确实懒了，懒得自己连系统的某些工具的用处都不知道。比如pkg-config</p>
+<p>昨天说自己被 Ubuntu 养懒了，确实懒了，懒得自己连系统的某些工具的用处都不知道。比如 pkg-config</p>
 
-<p>以前一直不知道，Linux下那么多库，在./configure时时怎么判断它们存不存在的，难道是靠递归搜索？现在我才知道我zt了，pkg-config这个命令和/*/lib/pkgconfig下的一些.pc文件才是主角。</p>
+<p>以前一直不知道，Linux 下那么多库，在./configure 时时怎么判断它们存不存在的，难道是靠递归搜索？现在我才知道我 zt 了，pkg-config 这个命令和/*/lib/pkgconfig 下的一些.pc 文件才是主角。</p>
 
-<p>每个.pc文件定义了库的名字、路径、编译选项等，比如glib-2.0.pc文件：</p>
+<p>每个.pc 文件定义了库的名字、路径、编译选项等，比如 glib-2.0.pc 文件：</p>
 
 <p><blockquote>
 prefix=/usr<br />
@@ -128,14 +129,14 @@ Libs: -L${libdir} -lglib-2.0<br />
 Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
 </p>
 
-<p><!--more-->configure到某个时刻的时候，pkg-config命令会首先去PKG_CONFIG_PATH定义好的路径下搜索库名字对应的.pc文件，找到了就行了，等会儿make的时候就可以通过正则表达式取出libs和cflags的值来使用，否则的话就报错。</p>
+<p><!--more-->configure 到某个时刻的时候，pkg-config 命令会首先去 PKG_CONFIG_PATH 定义好的路径下搜索库名字对应的.pc 文件，找到了就行了，等会儿 make 的时候就可以通过正则表达式取出 libs 和 cflags 的值来使用，否则的话就报错。</p>
 
-<p>刚才pkg-config提示没有libgnomeui-2.0的库，我找了一下，找到了这个.pc文件呀，但是pkg-config就是说找不到。我脑子抽筋了那么几分钟，终于意识到，在~/.bashrc中，添加libgnomeui-2.0所在的文件夹路径到PKG_CONFIG_PATH下：
+<p>刚才 pkg-config 提示没有 libgnomeui-2.0 的库，我找了一下，找到了这个.pc 文件呀，但是 pkg-config 就是说找不到。我脑子抽筋了那么几分钟，终于意识到，在~/.bashrc 中，添加 libgnomeui-2.0 所在的文件夹路径到 PKG_CONFIG_PATH 下：
 <pre lang="bash" line="1">
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 </pre></p>
 
-<p>然后source ~/.bashrc就可以了。</p>
+<p>然后 source ~/.bashrc 就可以了。</p>
 
 <p>顺便说一句，编译真是个惊心动魄的过程啊，不亚于看恐怖小说。</p>
 
@@ -161,7 +162,7 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -182,7 +183,7 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
         <a class="basic-alignment left" href="/blog/2008/07/19/i-am-lazy/" title="Previous Post: 我是被养懒了的人">&laquo; 我是被养懒了的人</a>
       
       
-        <a class="basic-alignment right" href="/blog/2008/08/06/rhel5-dvd-repos/" title="Next Post: RHEL5添加DVD光盘为源">RHEL5添加DVD光盘为源 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2008/08/06/rhel5-dvd-repos/" title="Next Post: RHEL 5 添加 DVD 光盘为源">RHEL 5 添加 DVD 光盘为源 &raquo;</a>
       
     </p>
   </footer>

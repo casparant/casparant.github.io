@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Python Web操作MySQL乱码问题的解决 - Ant-Veil</title>
+  <title>Python Web 操作 MySQL 乱码问题的解决 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="乱码，身为CJK语言国度的程序员永恒的主题…… 乱码，在stardict里面查了一下翻译，居然出来这么一长串： characters changed to be irrecognizable because different coder or other reasons 不管怎么说， &hellip;">
+  <meta name="description" content="乱码，身为 CJK 语言国度的程序员永恒的主题…… 乱码，在 stardict 里面查了一下翻译，居然出来这么一长串： characters changed to be irrecognizable because different coder or other reasons 不管怎么说， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Python Web操作MySQL乱码问题的解决</h1>
+      <h1 class="entry-title">Python Web 操作 MySQL 乱码问题的解决</h1>
     
     
       <p class="meta">
@@ -103,23 +104,23 @@
   </header>
 
 
-<div class="entry-content"><p>乱码，身为CJK语言国度的程序员永恒的主题……</p>
+<div class="entry-content"><p>乱码，身为 CJK 语言国度的程序员永恒的主题……</p>
 
-<p>乱码，在stardict里面查了一下翻译，居然出来这么一长串：</p>
+<p>乱码，在 stardict 里面查了一下翻译，居然出来这么一长串：</p>
 
 <p><blockquote>characters changed to be irrecognizable because different coder or other reasons</blockquote></p>
 
 <p>不管怎么说，这次是又碰上乱码了。</p>
 
-<p>症状是这样的，写了几个psp文件，内容大概是通过POST方法从表单获取数据，写入数据库然后另一个页面调用数据库内容显示。结果在写完之后调用显示页面，提示错误：<code>unicodeDecodeError: 'ascii' codec can't decode byte</code>，看来是因为我数据库里的字段用了中文，显示不出来，然后在MySQL里面SELECT * 了一下，发现含中文的内容都是???字样的乱码(以前怎么就没注意捏……）。</p>
+<p>症状是这样的，写了几个 psp 文件，内容大概是通过 POST 方法从表单获取数据，写入数据库然后另一个页面调用数据库内容显示。结果在写完之后调用显示页面，提示错误：<code>unicodeDecodeError: 'ascii' codec can't decode byte</code>，看来是因为我数据库里的字段用了中文，显示不出来，然后在 MySQL 里面 SELECT * 了一下，发现含中文的内容都是???字样的乱码(以前怎么就没注意捏……）。</p>
 
 <p>上网搜，发现了这个网页：<a href="http://blog.csdn.net/foyuan/archive/2007/07/27/1711100.aspx">http://blog.csdn.net/foyuan/archive/2007/07/27/1711100.aspx</a>，文中提示了四个步骤确保乱码消失。</p>
 
-<p><!--more-->因为我写的是PSP页面，不是纯粹的python，似乎不能用#-*- coding -*-来指定编码，但是参照里面提示的两个步骤，我最后也成功解决了乱码问题：</p>
+<p><!--more-->因为我写的是 PSP 页面，不是纯粹的 python，似乎不能用#-*- coding -*-来指定编码，但是参照里面提示的两个步骤，我最后也成功解决了乱码问题：</p>
 
-<p>1. 解决MySQL显示乱码，修改<code>/etc/mysql/my.cnf</code>文件，分别在<code>[client]、[mysqld]</code>后指定编码：<code>default-character-set = utf8</code>，重启mysql服务。</p>
+<p>1. 解决 MySQL 显示乱码，修改<code>/etc/mysql/my.cnf</code>文件，分别在<code>[client]、[mysqld]</code>后指定编码：<code>default-character-set = utf8</code>，重启 mysql 服务。</p>
 
-<p>2. 解决PSP页面不能解析Unicode字符，在python语法块内，导入sys包，然后指定编码：</p>
+<p>2. 解决 PSP 页面不能解析 Unicode 字符，在 python 语法块内，导入 sys 包，然后指定编码：</p>
 
 <p><pre lang="python">
 import sys
@@ -149,7 +150,7 @@ sys.setdefaultencoding('utf-8')</p>
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -167,10 +168,10 @@ sys.setdefaultencoding('utf-8')</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2008/11/09/using-c-system-call-to-solve-smoker-problem-under-linux/" title="Previous Post: 使用C系统调用函数解决“抽烟者问题”">&laquo; 使用C系统调用函数解决“抽烟者问题”</a>
+        <a class="basic-alignment left" href="/blog/2008/11/09/using-c-system-call-to-solve-smoker-problem-under-linux/" title="Previous Post: 经典信号量例题“抽烟者问题”的 C 语言实现">&laquo; 经典信号量例题“抽烟者问题”的 C 语言实现</a>
       
       
-        <a class="basic-alignment right" href="/blog/2008/11/29/funny-song-god-wrote-in-lisp/" title="Next Post: [周末休闲]God Wrote in LISP">[周末休闲]God Wrote in LISP &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2008/11/29/funny-song-god-wrote-in-lisp/" title="Next Post: [周末休闲] God Wrote in LISP">[周末休闲] God Wrote in LISP &raquo;</a>
       
     </p>
   </footer>

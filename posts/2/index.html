@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -108,7 +109,7 @@
 
   <div class="entry-content"><p>最近在帮组里招人，不过一直没有招到合适的（去年校园招聘时候招到过一个合适的，结果被隔壁<a href="http://twitter.com/#!/guaneryu" _target="new">@GMoto</a>组里给抢去了……泪了个奔的）。一直不停地在系统里刷简历，邮件列表里收简历，于是有些碎碎念就冒出来了。想到我不久以前也是简历那一头的角色，现在变成站在这一边的角色了，正好可以忆苦思甜，对比一下。丢在这里，大家凑合着看。</p>
 
-<p>首先得先介绍一下我所在的公司的背景，因为不同公司对待简历有不同的风格。好多人都知道，我现在呆在Red Hat，就是那个跟某快递公司重名的做Linux的公司。至少我们研发部门这边，不会因为简历没写称呼没写落款就不看，也不会因为简历排版混乱就丢在一旁，甚至发现提交的是个Word文档，或者联系邮箱留了个带qq号码的qq邮箱也会认真的去看——只不过第一印象和心理上已经有些想法而已。一般来说，我们喜欢排版简洁的正文简历和pdf简历，如果能提交个odt格式的也能感觉出投简历的人确实是用心的。另外不是为了装X，我们要求中英文简历是因为，如果面试结果良好，通常把简历会转交给国外的同事看，决定是否进一步面试。</p>
+<p>首先得先介绍一下我所在的公司的背景，因为不同公司对待简历有不同的风格。好多人都知道，我现在呆在 Red Hat，就是那个跟某快递公司重名的做 Linux 的公司。至少我们研发部门这边，不会因为简历没写称呼没写落款就不看，也不会因为简历排版混乱就丢在一旁，甚至发现提交的是个 Word 文档，或者联系邮箱留了个带 qq 号码的 qq 邮箱也会认真的去看——只不过第一印象和心理上已经有些想法而已。一般来说，我们喜欢排版简洁的正文简历和 pdf 简历，如果能提交个 odt 格式的也能感觉出投简历的人确实是用心的。另外不是为了装 X，我们要求中英文简历是因为，如果面试结果良好，通常把简历会转交给国外的同事看，决定是否进一步面试。</p>
 
 <p>小结一下，不管简历样式有多糟糕，只要能打开，我们就会认真看。当然非常不幸地，这也是我觉得某些提交简历的同学是折翼的天使的原因。</p>
 
@@ -211,7 +212,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2010/07/02/back-to-gentoo-again/">重新装回Gentoo</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/07/02/back-to-gentoo-again/">重新装回 Gentoo</a></h1>
     
     
       <p class="meta">
@@ -230,17 +231,17 @@
   </header>
 
 
-  <div class="entry-content"><p>最近到手T410，先是折腾了几天把里面的正版Win7 Pro通过无损分区移到角落里，然后是装了个RHEL6.0用来做测试，最后重新开始折腾Gentoo。</p>
+  <div class="entry-content"><p>最近到手 T410，先是折腾了几天把里面的正版 Win7 Pro 通过无损分区移到角落里，然后是装了个 RHEL6.0 用来做测试，最后重新开始折腾 Gentoo。</p>
 
-<p>这次没有纠结于选择哪个桌面环境上，我一点也不嫌弃GNOME的臃肿，于是装了个gnome-light。USE Flag把以前用过的拿过来修改了一下，顺便提一句，在我不用Gentoo的这段时间听说hal被干掉了，所以我也追风把hal标记给去掉了。</p>
+<p>这次没有纠结于选择哪个桌面环境上，我一点也不嫌弃 GNOME 的臃肿，于是装了个 gnome-light。USE Flag 把以前用过的拿过来修改了一下，顺便提一句，在我不用 Gentoo 的这段时间听说 hal 被干掉了，所以我也追风把 hal 标记给去掉了。</p>
 
-<p>启动的时候使用grub2，本来打了915resolution补丁来使grub宽屏显示，但是打的补丁和grub-1.98似乎不是特别搭配，导致启动grub前后各有5秒停滞时间，加上grub启动过后仍然会有一个分辨率只有640x480的屏幕，我干脆就不用915resolution补丁了。使用grub2，配上ext4分区，就可以不使用initramfs了，关键在两点，一是内核中ACHI选项要编译进内核，二是kernel行参数中不要使用UUID。</p>
+<p>启动的时候使用 grub2，本来打了 915resolution 补丁来使 grub 宽屏显示，但是打的补丁和 grub-1.98 似乎不是特别搭配，导致启动 grub 前后各有 5 秒停滞时间，加上 grub 启动过后仍然会有一个分辨率只有 640x480 的屏幕，我干脆就不用 915resolution 补丁了。使用 grub2，配上 ext4 分区，就可以不使用 initramfs 了，关键在两点，一是内核中 ACHI 选项要编译进内核，二是 kernel 行参数中不要使用 UUID。</p>
 
-<p>说一下一些Thinkpad相关的配置：</p>
+<p>说一下一些 Thinkpad 相关的配置：</p>
 
-<p>一是声卡驱动。Thinkpad T410的声卡应该是CONEXANT的，但是选择这个驱动后内核还是不认我的声卡。最后只好选择了通用驱动。</p>
+<p>一是声卡驱动。Thinkpad T410 的声卡应该是 CONEXANT 的，但是选择这个驱动后内核还是不认我的声卡。最后只好选择了通用驱动。</p>
 
-<p>二是hdaps，所谓的硬盘防震保护系统。portage里面相关的三个包，一个是hdaps模块，一个是GNOME的Applet，还有一个是OpenGL绘制的小程序，用来展示你的笔记本目前的水平状态。</p>
+<p>二是 hdaps，所谓的硬盘防震保护系统。portage 里面相关的三个包，一个是 hdaps 模块，一个是 GNOME 的 Applet，还有一个是 OpenGL 绘制的小程序，用来展示你的笔记本目前的水平状态。</p>
 
 <p></div>
   
@@ -258,7 +259,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2010/05/16/ya-bupt-thesis-bachelor-1-0-alpha-1-released/">ya-bupt-thesis-bachelor-1.0-Alpha-1 Released</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/05/16/ya-bupt-thesis-bachelor-1-0-alpha-1-released/">Ya-bupt-thesis-bachelor 1.0 Alpha 1 Released</a></h1>
     
     
       <p class="meta">
@@ -281,13 +282,13 @@
 
 <p>简要介绍一下这个模板。</p>
 
-<p>缘起是@yegle曾经推荐过他的同学梵高(cnMuggle)的一个<a href="http://code.google.com/p/buptthesis-bachelor/" target="_blank">北邮本科毕业论文模板</a>，我看了一下觉得不太符合我的需求，最主要是他用了CTeX，这玩意儿在我的机子上水土不服。作为一个Linux+XeTeX+xeCJK党，我就自己动手开始写。</p>
+<p>缘起是@yegle 曾经推荐过他的同学梵高(cnMuggle)的一个<a href="http://code.google.com/p/buptthesis-bachelor/" target="_blank">北邮本科毕业论文模板</a>，我看了一下觉得不太符合我的需求，最主要是他用了 CTeX，这玩意儿在我的机子上水土不服。作为一个 Linux+XeTeX+xeCJK 党，我就自己动手开始写。</p>
 
-<p>期间参考了梵高同学的模板，当然也参考了<a href="http://wangxu.me" target="_blank">@gnawux(apt)</a>同学<a href="http://code.google.com/p/latex-bupt/" target="_blank">的</a>，还有DazzleZhang在apt的基础上改进<a href="http://code.google.com/p/buptthesis/" target="blank">的</a>，还有老牌的<a href="http://sourceforge.net/projects/thuthesis/" target="_blank">ThuThesis</a>。当然最主要还是依靠Google和CTeX论坛，把一些稀奇古怪的问题给解决了。</p>
+<p>期间参考了梵高同学的模板，当然也参考了<a href="http://wangxu.me" target="_blank">@gnawux(apt)</a>同学<a href="http://code.google.com/p/latex-bupt/" target="_blank">的</a>，还有 DazzleZhang 在 apt 的基础上改进<a href="http://code.google.com/p/buptthesis/" target="blank">的</a>，还有老牌的<a href="http://sourceforge.net/projects/thuthesis/" target="_blank">ThuThesis</a>。当然最主要还是依靠 Google 和 CTeX 论坛，把一些稀奇古怪的问题给解决了。</p>
 
-<p>今天又解决了几个大问题，同时也把插入图片、插入表格、插入公式的格式整理了一下，所以就发布Alpha-1版本了。地址在<a href="http://code.google.com/p/yet-another-bupt-thesis-bachelor/" target="_blank">Google Code</a>上。接下来要完成的主要工作就是参考文献的排版。我一看其他模板的bst文件，几千行的代码，吓坏了。下次再搞好了。</p>
+<p>今天又解决了几个大问题，同时也把插入图片、插入表格、插入公式的格式整理了一下，所以就发布 Alpha-1 版本了。地址在<a href="http://code.google.com/p/yet-another-bupt-thesis-bachelor/" target="_blank">Google Code</a>上。接下来要完成的主要工作就是参考文献的排版。我一看其他模板的 bst 文件，几千行的代码，吓坏了。下次再搞好了。</p>
 
-<p>欢迎提Bug~</p>
+<p>欢迎提 Bug~</p>
 </div>
   
   
@@ -380,20 +381,30 @@
   <div class="entry-content"><p>现在上网的，没下列东东都不好意思说自己是混互联网的：</p>
 
 <p><blockquote>
-<a href="http://www.casparzhang.com">个人博客</a>（BSP/独立的至少得有一个吧），<a href="http://twitter.com/casparant" target="_blank">twitter</a>（以及其他各种围脖们），<a href="http://www.douban.com/people/casparant/" target="_blank">豆瓣</a>，<a href="http://www.facebook.com/casparant" target="_blank">facebook</a>，<a href="https://www.google.com/reader/shared/casparant" target="_blank">Google Reader</a>（或者其他rss订阅工具），<a href="http://feeds.feedburner.com/casparant" target="_blank">feedburner</a>/<a href="http://feed.feedsky.com/casparant" target="_blank">feedsky</a>，<a href="http://www.flickr.com/photos/ant-veil/" target="_blank">flickr相册</a>(或者picasaweb,或者国内的oo和xx），<a href="http://cn.last.fm/user/casparant" target="_blank">lastfm</a>, youtube订阅，friendfeed……
+    <a href="http://www.casparzhang.com">个人博客</a>（BSP/独立的至少得有一个吧），<br/>
+    <a href="http://twitter.com/casparant" target="_blank">twitter</a>（以及其他各种围脖们），<br />
+    <a href="http://www.douban.com/people/casparant/" target="_blank">豆瓣</a>，<br />
+    <a href="http://www.facebook.com/casparant" target="_blank">facebook</a>，<br />
+    <a href="https://www.google.com/reader/shared/casparant" target="_blank">Google Reader</a>（或者其他 rss 订阅工具），<br />
+    <a href="http://feeds.feedburner.com/casparant" target="_blank">feedburner</a>/<a href="http://feed.feedsky.com/casparant" target="_blank">feedsky</a>，<br />
+    <a href="http://www.flickr.com/photos/ant-veil/" target="_blank">flickr 相册</a>(或者 picasaweb,或者国内的 oo 和 xx），<br />
+    <a href="http://cn.last.fm/user/casparant" target="_blank">lastfm</a>, <br />
+    youtube 订阅，<br />
+    friendfeed, <br />
+    ……
 </blockquote></p>
 
 <p>在这个信息膨胀的社会，如何获取信息是个头疼的问题。下面列一下自己是如何把这些信息来源整合起来的，以供参考：</p>
 
-<p>整合所有信息的核心就是feed/rss，所以首先要把博客搞一个托管，或者干脆直接用自带的feed（前者的好处是，换了博客可以不用通知别人修改你的rss地址）。我主要采用feedburner，在wordpress里用了<a href="http://vonye.com/projects/feedred">feedred</a>这个插件，把自带的feed重定向到了feedburner上。因为很久很久以前feedburner被墙了，所以feedsky也用过。</p>
+<p>整合所有信息的核心就是 feed/rss，所以首先要把博客搞一个托管，或者干脆直接用自带的 feed（前者的好处是，换了博客可以不用通知别人修改你的 rss 地址）。我主要采用 feedburner，在 wordpress 里用了<a href="http://vonye.com/projects/feedred">feedred</a>这个插件，把自带的 feed 重定向到了 feedburner 上。因为很久很久以前 feedburner 被墙了，所以 feedsky 也用过。</p>
 
-<p>然后就是Twitter，作为一个重度Twitter患者，巴不得把自己博客更新、Google Reader分享、豆瓣新鲜事、新拍的照片等一堆东西同步到Twitter上。这里有两种解决方案：</p>
+<p>然后就是 Twitter，作为一个重度 Twitter 患者，巴不得把自己博客更新、Google Reader 分享、豆瓣新鲜事、新拍的照片等一堆东西同步到 Twitter 上。这里有两种解决方案：</p>
 
 <p>1. 使用<a href="http://twitterfeed.com">TwitterFeed.com</a></p>
 
-<p>2. 使用FeedBurner。</p>
+<p>2. 使用 FeedBurner。</p>
 
-<p>前者自己摸索就好了，我更推荐后者，因为自己有种感觉FeedBurner同步速度很快，莫非它采用了每分钟轮询的策略？Orz……在FeedBurner管理界面的"Publicize"中有个"Socialize"，里面可以设置把当前feed同步到Twitter上。</p>
+<p>前者自己摸索就好了，我更推荐后者，因为自己有种感觉 FeedBurner 同步速度很快，莫非它采用了每分钟轮询的策略？Orz……在 FeedBurner 管理界面的"Publicize"中有个"Socialize"，里面可以设置把当前 feed 同步到 Twitter 上。</p>
 
 <p></div>
   
@@ -411,7 +422,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2010/04/03/know-how-to-make-a-latex-beamer-template/">搞定LaTeX Beamer模板</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/04/03/know-how-to-make-a-latex-beamer-template/">搞定 LaTeX Beamer 模板</a></h1>
     
     
       <p class="meta">
@@ -430,23 +441,23 @@
   </header>
 
 
-  <div class="entry-content"><p>过一段时间公司和学校都得做presentation，所以现在就得好好开始准备slides。以前我就用Beamer做过一次slide，而且是匆匆忙忙用了默认模板搞定的。这次借着再做slides的机会，我得自己搞个模板。</p>
+  <div class="entry-content"><p>过一段时间公司和学校都得做 presentation，所以现在就得好好开始准备 slides。以前我就用 Beamer 做过一次 slide，而且是匆匆忙忙用了默认模板搞定的。这次借着再做 slides 的机会，我得自己搞个模板。</p>
 
 <p>需求如下，非常简单：</p>
 
-<p><blockquote>1. 要在合适的位置打上Logo（一般是左上角或者右上角）;<br />
+<p><blockquote>1. 要在合适的位置打上 Logo（一般是左上角或者右上角）;<br />
 2. 要能自定义页脚<br />
 3. 首页要有背景</blockquote></p>
 
 <p>经过半个白天加一个晚上的折腾，基本上解决了上述问题：</p>
 
-<p>要打Logo，并且自定义位置，可以使用如下语句：</p>
+<p>要打 Logo，并且自定义位置，可以使用如下语句：</p>
 
 <p><pre lang="latex"> \logo{\pgfputat{\pgfxy(#1,#2)}{\pgfbox[center,base]{\includegraphics[height=0.5cm]{#3}}}}</pre></p>
 
-<p>事先要包含pgf宏包，#1,#2是Logo坐标，#3是Logo路径。关于坐标，我发现用pdflatex编译和用xelatex编译时坐标表示的实际位置是不同的，反正自己手工慢慢调就是了。也可以把上述代码加个\newcommand，做成一个带参数的命令直接调用。</p>
+<p>事先要包含 pgf 宏包，#1,#2 是 Logo 坐标，#3 是 Logo 路径。关于坐标，我发现用 pdflatex 编译和用 xelatex 编译时坐标表示的实际位置是不同的，反正自己手工慢慢调就是了。也可以把上述代码加个\newcommand，做成一个带参数的命令直接调用。</p>
 
-<p>自定义页脚，我参考了beamer guide和beamer里面的某个宏包的写法：</p>
+<p>自定义页脚，我参考了 beamer guide 和 beamer 里面的某个宏包的写法：</p>
 
 <p></div>
   
@@ -483,17 +494,17 @@
   </header>
 
 
-  <div class="entry-content"><p>事先承认，我是土星人+火星人，最近才知道Chrowety这等利器，又能用Twitter API，又能官方RT，又能有声音提示，界面做得还不错。为了拯救广大比我还火星的朋友们，特推荐此扩展。</p>
+  <div class="entry-content"><p>事先承认，我是土星人+火星人，最近才知道 Chrowety 这等利器，又能用 Twitter API，又能官方 RT，又能有声音提示，界面做得还不错。为了拯救广大比我还火星的朋友们，特推荐此扩展。</p>
 
-<p>由于本人推荐之心实在很强烈，所以几乎就要把这篇可怜不到100字的最新文章发表。幸好发表前我强忍住了，于是找点其他东西凑数，列几个其他的Chrome扩展供大家讨论。因为最近工作和平时使用浏览器都在Chrome上了，同时越来越觉得Firefox不好用了。</p>
+<p>由于本人推荐之心实在很强烈，所以几乎就要把这篇可怜不到 100 字的最新文章发表。幸好发表前我强忍住了，于是找点其他东西凑数，列几个其他的 Chrome 扩展供大家讨论。因为最近工作和平时使用浏览器都在 Chrome 上了，同时越来越觉得 Firefox 不好用了。</p>
 
-<p>代理自动切换：不得不承认AutoProxy这等生活在西朝鲜屁民共和国的使用Firefox的我们的必备工具还是很好用的，在Chrome上迄今没找到同样利索的工具，只有用Switch Proxy + 自己在 <a href="http://autoproxy2pac.appspot.com/">autoproxy2pac.appspot.com（已被墙）</a>上下的pac文件凑合一下。</p>
+<p>代理自动切换：不得不承认 AutoProxy 这等生活在西朝鲜屁民共和国的使用 Firefox 的我们的必备工具还是很好用的，在 Chrome 上迄今没找到同样利索的工具，只有用 Switch Proxy + 自己在 <a href="http://autoproxy2pac.appspot.com/">autoproxy2pac.appspot.com（已被墙）</a>上下的 pac 文件凑合一下。</p>
 
-<p>书签同步：在使用了前一个扩展的前提下，使用XMarks。</p>
+<p>书签同步：在使用了前一个扩展的前提下，使用 XMarks。</p>
 
-<p>看Alexa和Google PR排名：Chrome SEO，功能很齐全。</p>
+<p>看 Alexa 和 Google PR 排名：Chrome SEO，功能很齐全。</p>
 
-<p>其他的诸如Google官方应用的扩展就不再赘述。</p>
+<p>其他的诸如 Google 官方应用的扩展就不再赘述。</p>
 
 <p></div>
   
@@ -511,7 +522,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2010/03/14/the-painful-experience-of-installing-split-image-screen-on-d3000/">D3000安装裂像屏的惨痛经历</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/03/14/the-painful-experience-of-installing-split-image-screen-on-d3000/">D3000 安装裂像屏的惨痛经历</a></h1>
     
     
       <p class="meta">
@@ -530,7 +541,7 @@
   </header>
 
 
-  <div class="entry-content"><p>下午实在等不住晚一天拿到裂像屏，就自己冒雪跑上地取了，汗。设备是在淘宝上一个叫“对焦工厂”的店里买的，他那对焦设备还挺齐全，连D3000这种超低端机的裂像屏都有，价格在110-190都有。我买了个最好的裂像屏，再买了个取景放大器。回到家中鞋子都没甩干就开始安装。</p>
+  <div class="entry-content"><p>下午实在等不住晚一天拿到裂像屏，就自己冒雪跑上地取了，汗。设备是在淘宝上一个叫“对焦工厂”的店里买的，他那对焦设备还挺齐全，连 D3000 这种超低端机的裂像屏都有，价格在 110-190 都有。我买了个最好的裂像屏，再买了个取景放大器。回到家中鞋子都没甩干就开始安装。</p>
 
 <p>按照网上的说明，机身倒放，打开弹簧钢丝卡扣。结果手指指甲刚剪掉，伸进去扳不开卡扣，用了镊子挑，还把周围的塑料刮花了。没想到的是这就成了今天装裂像屏的惨痛开端。</p>
 

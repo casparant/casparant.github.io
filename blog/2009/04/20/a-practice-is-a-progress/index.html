@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="这次学会了结构体的对齐，记录锁和QT的基本操作。顺便强烈推荐使用qt-creator进行开发。 当然还碰到个囧事，一个文件用r方式打开了，然后想往上面加写锁，加了半天就是报“错误的文件描述符”，郁闷之下man了下fcntl的内容，顿悟： EBADF fd is not an open file &hellip;">
+  <meta name="description" content="这次学会了结构体的对齐，记录锁和 QT 的基本操作。顺便强烈推荐使用 qt-creator 进行开发。 当然还碰到个囧事，一个文件用 r 方式打开了，然后想往上面加写锁，加了半天就是报“错误的文件描述符”，郁闷之下 man 了下 fcntl 的内容，顿悟： EBADF fd is not an &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -103,9 +104,9 @@
   </header>
 
 
-<div class="entry-content"><p>这次学会了<a href="http://www.google.com/search?q=%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%AF%B9%E9%BD%90">结构体的对齐</a>，记录锁和QT的基本操作。顺便强烈推荐使用qt-creator进行开发。</p>
+<div class="entry-content"><p>这次学会了<a href="http://www.google.com/search?q=%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%AF%B9%E9%BD%90">结构体的对齐</a>，记录锁和 QT 的基本操作。顺便强烈推荐使用 qt-creator 进行开发。</p>
 
-<p>当然还碰到个囧事，一个文件用r方式打开了，然后想往上面加写锁，加了半天就是报“错误的文件描述符”，郁闷之下man了下fcntl的内容，顿悟：</p>
+<p>当然还碰到个囧事，一个文件用 r 方式打开了，然后想往上面加写锁，加了半天就是报“错误的文件描述符”，郁闷之下 man 了下 fcntl 的内容，顿悟：</p>
 
 <p><blockquote>EBADF  fd is not an open file descriptor, <strong>or the command was  F_SETLK  or  F_SETLKW<br />
               and  the  file  descriptor  open  mode  doesn't  match with the type of lock<br />
@@ -132,7 +133,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -150,7 +151,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/04/11/high-pv-ended/" title="Previous Post: 我的高PV结束了">&laquo; 我的高PV结束了</a>
+        <a class="basic-alignment left" href="/blog/2009/04/11/high-pv-ended/" title="Previous Post: 我的高 PV 结束了">&laquo; 我的高 PV 结束了</a>
       
       
         <a class="basic-alignment right" href="/blog/2009/04/20/sun-is-acquired-by-oracle/" title="Next Post: 当年日志里的两个主角">当年日志里的两个主角 &raquo;</a>

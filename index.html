@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -276,7 +277,7 @@
 
   <div class="entry-content"><h2>Issue</h2>
 
-<p>雷蛇八歧大蛇2013版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(expected)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
+<p>雷蛇八歧大蛇 2013 版鼠标，短时间内不用自动休眠，系统中蓝牙连接断(预期行为)，鼠标从休眠恢复后系统中的蓝牙连接却无法自动重连，只能将鼠标置为配对模式，通过系统中的蓝牙工具手工连接。</p>
 
 <h2>Environment</h2>
 
@@ -329,11 +330,11 @@
   </header>
 
 
-  <div class="entry-content"><p>最近呢，推上某奸商推出了 AnyConnect 套餐，这对广大翻墙群众来说绝对是个利好消息啊，可以自动配路由的东东。我毫不犹豫去把自己的绝版廉价套餐换成了100元的套餐，然后开始折腾 AnyConnect 配置。</p>
+  <div class="entry-content"><p>最近呢，推上某奸商推出了 AnyConnect 套餐，这对广大翻墙群众来说绝对是个利好消息啊，可以自动配路由的东东。我毫不犹豫去把自己的绝版廉价套餐换成了 100 元的套餐，然后开始折腾 AnyConnect 配置。</p>
 
-<p>iOS上配置十分简单，找到 Cisco AnyConnect 这个 App 就搞定。Linux 下要把它配置得很舒服，着实花了一番功夫。</p>
+<p>iOS 上配置十分简单，找到 Cisco AnyConnect 这个 App 就搞定。Linux 下要把它配置得很舒服，着实花了一番功夫。</p>
 
-<p>公司 VPN 用的也是 AnyConnect，我就继续用着公司的客户端(Cisco AnyConnect Secure Mobility Client), 直到今天早上我修复了笔记本上的无线网，机器有了两个IP为止。有了两个IP的 AnyConnect service 居然segfault了，看了一下 debug 信息，我觉得对这种闭源工具我还是别折腾了。直接换开源方案 OpenConnect.</p>
+<p>公司 VPN 用的也是 AnyConnect，我就继续用着公司的客户端(Cisco AnyConnect Secure Mobility Client), 直到今天早上我修复了笔记本上的无线网，机器有了两个 IP 为止。有了两个 IP 的 AnyConnect service 居然 segfault 了，看了一下 debug 信息，我觉得对这种闭源工具我还是别折腾了。直接换开源方案 OpenConnect.</p>
 
 <p>Portage 里搜了一下，openconnect 有两个包，networkmanager-openconnect 有 libkeyring-gnome 依赖，我现在是个有洁癖的 KDE 党，果断不能装啊，于是用第二个， openconnect 命令行版…… 不行，不能这么罗里八嗦，反正最后折腾结果如下：</p>
 
@@ -353,7 +354,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的QT的笔记软件</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的 Qt 的笔记软件</a></h1>
     
     
       <p class="meta">
@@ -372,17 +373,17 @@
   </header>
 
 
-  <div class="entry-content"><p>Linux上记笔记，向来很纠结。以前用过一段时间<a href="http://zim-wiki.org/index.html" target="_blank">Zim</a>，后来变成了KDE党，只好果断抛弃了。找到<a href="http://basket.kde.org/" target="_blank">BasKet</a>，功能还是很强大的，可是格式一团糟。无法以Plain Text存储文字，拷贝来拷贝去的时候经常格式混乱。也尝试在Web端存东西，结果还是发现不习惯，而且离线无法访问。</p>
+  <div class="entry-content"><p>Linux 上记笔记，向来很纠结。以前用过一段时间<a href="http://zim-wiki.org/index.html" target="_blank">Zim</a>，后来变成了 KDE 党，只好果断抛弃了。找到<a href="http://basket.kde.org/" target="_blank">BasKet</a>，功能还是很强大的，可是格式一团糟。无法以 Plain Text 存储文字，拷贝来拷贝去的时候经常格式混乱。也尝试在 Web 端存东西，结果还是发现不习惯，而且离线无法访问。</p>
 
-<p>然后今天工作的时候有同事提到客户报告鄙厂<a href="http://www.aliyun.com/" target="_blank">产品</a>的问题，碰到了故障（当然在内核组大牛们的努力下该问题已经解决了），我就好奇去看了一下报告者信息，然后就发现了这个笔记软件：<a href="http://wiz.cn/index.html" target="_blank">Wiz</a>. 看起来还挺Geek的，有手机端有Linux端有Mac OS端。于是去gentoo-zh的Overlay找了一圈（是的，5年过去了我还在Gentoo的不归路上慢慢走着），<a href="https://github.com/microcai/gentoo-zh/blob/master/app-text/wiznote/wiznote-2.0.64.ebuild" target="_blank">找到了</a>。</p>
+<p>然后今天工作的时候有同事提到客户报告鄙厂<a href="http://www.aliyun.com/" target="_blank">产品</a>的问题，碰到了故障（当然在内核组大牛们的努力下该问题已经解决了），我就好奇去看了一下报告者信息，然后就发现了这个笔记软件：<a href="http://wiz.cn/index.html" target="_blank">Wiz</a>. 看起来还挺 Geek 的，有手机端有 Linux 端有 Mac OS 端。于是去 gentoo-zh 的 Overlay 找了一圈（是的，5 年过去了我还在 Gentoo 的不归路上慢慢走着），<a href="https://github.com/microcai/gentoo-zh/blob/master/app-text/wiznote/wiznote-2.0.64.ebuild" target="_blank">找到了</a>。</p>
 
-<p>看起来样子还不错，还比较清爽，也可以格式化为Plain Text。功能上比BasKet少一些，但是用着还是挺舒服的。</p>
+<p>看起来样子还不错，还比较清爽，也可以格式化为 Plain Text。功能上比 BasKet 少一些，但是用着还是挺舒服的。</p>
 
 <p>最不能忍受的问题是没有任务栏图标，于是接着搜。</p>
 
-<p>找到了一年前某人的一个没有Merge的<a href="https://github.com/WizTeam/WizQTClient/pull/80" target="_blank">Pull Request</a>，然后稍微修改了一下补丁，打到源代码里，发现可以用了。</p>
+<p>找到了一年前某人的一个没有 Merge 的<a href="https://github.com/WizTeam/WizQTClient/pull/80" target="_blank">Pull Request</a>，然后稍微修改了一下补丁，打到源代码里，发现可以用了。</p>
 
-<p>修改后的ebuild请<a href="https://github.com/casparant/caspar-gentoo/blob/master/app-text/wiznote/wiznote-2.1.0_beta.ebuild" target="_blank">猛戳</a>。</p>
+<p>修改后的 ebuild 请<a href="https://github.com/casparant/caspar-gentoo/blob/master/app-text/wiznote/wiznote-2.1.0_beta.ebuild" target="_blank">猛戳</a>。</p>
 
 <p>最后，有更靠谱的笔记软件请推荐。</p>
 </div>
@@ -397,7 +398,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/06/06/some-misc-items-of-mce/">Mce的一些零散记录</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/06/06/some-misc-items-of-mce/">MCE 的一些零散记录</a></h1>
     
     
       <p class="meta">
@@ -416,13 +417,13 @@
   </header>
 
 
-  <div class="entry-content"><p>以前也测过MCE相关的东西，但是惭愧，一直不清不楚。这两天稍微整理了一下相关知识，感觉见识还是很浅，记些零碎的东西在这，权当博客复活第一篇。如有理解错误，欢迎指出。</p>
+  <div class="entry-content"><p>以前也测过 MCE 相关的东西，但是惭愧，一直不清不楚。这两天稍微整理了一下相关知识，感觉见识还是很浅，记些零碎的东西在这，权当博客复活第一篇。如有理解错误，欢迎指出。</p>
 
-<p>CPU检测到硬件错误时，内核会报Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; UCE/UE, Un-correctable Error)，内核做出不同反应。CE的话内核只把相关信息写到一个字符设备/dev/mcelog中，UE的话是会在记录相关信息之余，还会做出不同处理，比如中断当前遇错的应用程序，或者Panic. [TODO: 这块相关的内核代码还得再看几遍]</p>
+<p>CPU 检测到硬件错误时，内核会报 Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; UCE/UE, Un-correctable Error)，内核做出不同反应。CE 的话内核只把相关信息写到一个字符设备/dev/mcelog 中，UE 的话是会在记录相关信息之余，还会做出不同处理，比如中断当前遇错的应用程序，或者 Panic. [TODO: 这块相关的内核代码还得再看几遍]</p>
 
-<p>/dev/mcelog中的信息可以用用户空间工具<a href="https://github.com/andikleen/mcelog" target="_blank">mcelog</a>来读取。mcelog比较有意思的一个参数是<code>--dmi</code>，可以尝试解析ADDR字段以获取诸如内存出厂信息，DIMM位置等有用的信息，可是很遗憾在实际环境中这些DIMM信息基本上都是错的。（mcelog man page说了，不要怪Linux，得怪那稀奇古怪的主板厂商……）</p>
+<p>/dev/mcelog 中的信息可以用用户空间工具<a href="https://github.com/andikleen/mcelog" target="_blank">mcelog</a>来读取。mcelog 比较有意思的一个参数是<code>--dmi</code>，可以尝试解析 ADDR 字段以获取诸如内存出厂信息，DIMM 位置等有用的信息，可是很遗憾在实际环境中这些 DIMM 信息基本上都是错的。（mcelog man page 说了，不要怪 Linux，得怪那稀奇古怪的主板厂商……）</p>
 
-<p>mcelog man page还有一个地方提到：</p>
+<p>mcelog man page 还有一个地方提到：</p>
 
 <p><blockquote>The kernel prefers old messages over new. If the log buffer overflows only old ones will be kept.</blockquote></p>
 
@@ -442,7 +443,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新git补丁</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新 Git 补丁</a></h1>
     
     
       <p class="meta">
@@ -461,7 +462,7 @@
   </header>
 
 
-  <div class="entry-content"><p>使用git制作补丁时，经常发现补丁需要修改。如果只是最后一次commit需要修改，那就好办，用下面的方法就可以搞定：
+  <div class="entry-content"><p>使用 git 制作补丁时，经常发现补丁需要修改。如果只是最后一次 commit 需要修改，那就好办，用下面的方法就可以搞定：
 <pre lang="bash">
 $ git reset HEAD^
 # edit edit edit
@@ -536,7 +537,7 @@ $ git format-patch --subject-prefix="PATCH v2"
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/07/16/beginning-of-my-third-year-in-red-hat/">在Red Hat两年</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/07/16/beginning-of-my-third-year-in-red-hat/">在 Red Hat 两年</a></h1>
     
     
       <p class="meta">
@@ -555,11 +556,11 @@ $ git format-patch --subject-prefix="PATCH v2"
   </header>
 
 
-  <div class="entry-content"><p>已经进入我在Red Hat的第三年了，看到两年来这贫瘠无比的博客，决定把阶段总结发到这里来，挽回一下我那正在疯狂下滑的订阅数，嗯。回头看了一下以前的日志，去年这个时候竟然没有写总结，干脆两年的一起写好了。行文照旧会比较混乱，请将就将就。</p>
+  <div class="entry-content"><p>已经进入我在 Red Hat 的第三年了，看到两年来这贫瘠无比的博客，决定把阶段总结发到这里来，挽回一下我那正在疯狂下滑的订阅数，嗯。回头看了一下以前的日志，去年这个时候竟然没有写总结，干脆两年的一起写好了。行文照旧会比较混乱，请将就将就。</p>
 
-<p>刚以实习生身份进入Red Hat时，主要工作就是验Bug。记得当时很多Bug的描述都很不清晰，往往一个Bug就浪费一两天时间去分析。有的Bug还不能用脚本重现，只能物理接触硬件。有一次在机房里呆了一个下午，要用针头去戳机器上的一个小孔[<a href="http://en.wikipedia.org/wiki/Non-maskable_interrupt" target="_blank">1</a>]，戳了我整整一个下午。类似的折腾人的Bug仿佛是永远都不会消失，现在我还在跟他们打交道。</p>
+<p>刚以实习生身份进入 Red Hat 时，主要工作就是验 Bug。记得当时很多 Bug 的描述都很不清晰，往往一个 Bug 就浪费一两天时间去分析。有的 Bug 还不能用脚本重现，只能物理接触硬件。有一次在机房里呆了一个下午，要用针头去戳机器上的一个小孔[<a href="http://en.wikipedia.org/wiki/Non-maskable_interrupt" target="_blank">1</a>]，戳了我整整一个下午。类似的折腾人的 Bug 仿佛是永远都不会消失，现在我还在跟他们打交道。</p>
 
-<p>一个月后，老板让我了解一个测试套件<a href="http://ltp.sourceforge.net/" target="_blank">LTP</a>，之前是他一直在维护这个工具在内部测试平台上的正常运行，交给我之后他基本上就没再怎么管过它了（直到最近，他开始往LTP提交内存相关的测试代码，这是后话了）。我当时的基本工作就是定期把LTP的稳定发布版本移植回内部测试平台，然后如果运行出错，根据运行情况如果是LTP的问题，就写一些补丁来修复LTP运行时出现的错误。从此我才正式结束和开源项目社区浅尝辄止的试水活动，开始深入社区贡献代码。为LTP编写补丁对我的帮助很大，一方面跟编写补丁相关的工具，比如说git，都熟练掌握了；另一方面通过熟悉LTP的测试代码，了解了很多从用户空间测试内核功能的方法；而且我也学会了怎么在邮件列表里面跟开发者吵架:)</p>
+<p>一个月后，老板让我了解一个测试套件<a href="http://ltp.sourceforge.net/" target="_blank">LTP</a>，之前是他一直在维护这个工具在内部测试平台上的正常运行，交给我之后他基本上就没再怎么管过它了（直到最近，他开始往 LTP 提交内存相关的测试代码，这是后话了）。我当时的基本工作就是定期把 LTP 的稳定发布版本移植回内部测试平台，然后如果运行出错，根据运行情况如果是 LTP 的问题，就写一些补丁来修复 LTP 运行时出现的错误。从此我才正式结束和开源项目社区浅尝辄止的试水活动，开始深入社区贡献代码。为 LTP 编写补丁对我的帮助很大，一方面跟编写补丁相关的工具，比如说 git，都熟练掌握了；另一方面通过熟悉 LTP 的测试代码，了解了很多从用户空间测试内核功能的方法；而且我也学会了怎么在邮件列表里面跟开发者吵架:)</p>
 
 <p></div>
   

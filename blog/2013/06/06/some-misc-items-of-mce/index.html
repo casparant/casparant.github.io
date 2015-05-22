@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Mce的一些零散记录 - Ant-Veil</title>
+  <title>MCE 的一些零散记录 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="以前也测过MCE相关的东西，但是惭愧，一直不清不楚。这两天稍微整理了一下相关知识，感觉见识还是很浅，记些零碎的东西在这，权当博客复活第一篇。如有理解错误，欢迎指出。 CPU检测到硬件错误时，内核会报Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; &hellip;">
+  <meta name="description" content="以前也测过 MCE 相关的东西，但是惭愧，一直不清不楚。这两天稍微整理了一下相关知识，感觉见识还是很浅，记些零碎的东西在这，权当博客复活第一篇。如有理解错误，欢迎指出。 CPU 检测到硬件错误时，内核会报 Machine-check，根据硬件错误是否可以修正(CE, Correctable &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Mce的一些零散记录</h1>
+      <h1 class="entry-title">MCE 的一些零散记录</h1>
     
     
       <p class="meta">
@@ -103,13 +104,13 @@
   </header>
 
 
-<div class="entry-content"><p>以前也测过MCE相关的东西，但是惭愧，一直不清不楚。这两天稍微整理了一下相关知识，感觉见识还是很浅，记些零碎的东西在这，权当博客复活第一篇。如有理解错误，欢迎指出。</p>
+<div class="entry-content"><p>以前也测过 MCE 相关的东西，但是惭愧，一直不清不楚。这两天稍微整理了一下相关知识，感觉见识还是很浅，记些零碎的东西在这，权当博客复活第一篇。如有理解错误，欢迎指出。</p>
 
-<p>CPU检测到硬件错误时，内核会报Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; UCE/UE, Un-correctable Error)，内核做出不同反应。CE的话内核只把相关信息写到一个字符设备/dev/mcelog中，UE的话是会在记录相关信息之余，还会做出不同处理，比如中断当前遇错的应用程序，或者Panic. [TODO: 这块相关的内核代码还得再看几遍]</p>
+<p>CPU 检测到硬件错误时，内核会报 Machine-check，根据硬件错误是否可以修正(CE, Correctable Error; UCE/UE, Un-correctable Error)，内核做出不同反应。CE 的话内核只把相关信息写到一个字符设备/dev/mcelog 中，UE 的话是会在记录相关信息之余，还会做出不同处理，比如中断当前遇错的应用程序，或者 Panic. [TODO: 这块相关的内核代码还得再看几遍]</p>
 
-<p>/dev/mcelog中的信息可以用用户空间工具<a href="https://github.com/andikleen/mcelog" target="_blank">mcelog</a>来读取。mcelog比较有意思的一个参数是<code>--dmi</code>，可以尝试解析ADDR字段以获取诸如内存出厂信息，DIMM位置等有用的信息，可是很遗憾在实际环境中这些DIMM信息基本上都是错的。（mcelog man page说了，不要怪Linux，得怪那稀奇古怪的主板厂商……）</p>
+<p>/dev/mcelog 中的信息可以用用户空间工具<a href="https://github.com/andikleen/mcelog" target="_blank">mcelog</a>来读取。mcelog 比较有意思的一个参数是<code>--dmi</code>，可以尝试解析 ADDR 字段以获取诸如内存出厂信息，DIMM 位置等有用的信息，可是很遗憾在实际环境中这些 DIMM 信息基本上都是错的。（mcelog man page 说了，不要怪 Linux，得怪那稀奇古怪的主板厂商……）</p>
 
-<p>mcelog man page还有一个地方提到：</p>
+<p>mcelog man page 还有一个地方提到：</p>
 
 <p><blockquote>The kernel prefers old messages over new. If the log buffer overflows only old ones will be kept.</blockquote></p>
 
@@ -128,11 +129,11 @@
 };
 </p>
 
-<p>这里的MCE_LOG_LEN就是man page中提到的log buffer长度。</p>
+<p>这里的 MCE_LOG_LEN 就是 man page 中提到的 log buffer 长度。</p>
 
-<p>内核中还有个mce_inject模块（CONFIG_X86_MCE_INJECT=m/y）,可以用于产生一些假的MCE以测试相关功能。需要配合用户空间工具<a href="https://github.com/andikleen/mce-inject/" target="_blank">mce-inject</a>来使用。</p>
+<p>内核中还有个 mce_inject 模块（CONFIG_X86_MCE_INJECT=m/y）,可以用于产生一些假的 MCE 以测试相关功能。需要配合用户空间工具<a href="https://github.com/andikleen/mce-inject/" target="_blank">mce-inject</a>来使用。</p>
 
-<p>如果要做一个比较完整的测试，<a href="https://github.com/andikleen/mce-test" target="_blank">mce-test</a>工具可以帮忙，其中会设计一些RAS特性，比如hwpoison(Documentation/vm/hwpoison.txt)，不过我现在的活儿不怎么管测试，暂时就没去回顾这个测试工具了。</p>
+<p>如果要做一个比较完整的测试，<a href="https://github.com/andikleen/mce-test" target="_blank">mce-test</a>工具可以帮忙，其中会设计一些 RAS 特性，比如 hwpoison(Documentation/vm/hwpoison.txt)，不过我现在的活儿不怎么管测试，暂时就没去回顾这个测试工具了。</p>
 
 <p>先记这些，回头把细节都搞懂了再补充……</p>
 </div>
@@ -155,7 +156,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/kernel/'>kernel</a>
   
 </span>
 
@@ -173,10 +174,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/01/03/how-to-update-your-git-patches/" title="Previous Post: Resolved: 如何更新git补丁">&laquo; Resolved: 如何更新git补丁</a>
+        <a class="basic-alignment left" href="/blog/2012/01/03/how-to-update-your-git-patches/" title="Previous Post: Resolved: 如何更新 git 补丁">&laquo; Resolved: 如何更新 git 补丁</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/03/11/an-introduction-of-wiz-note/" title="Next Post: WizNote: 终于找到比较干净的QT的笔记软件">WizNote: 终于找到比较干净的QT的笔记软件 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/03/11/an-introduction-of-wiz-note/" title="Next Post: WizNote: 终于找到比较干净的 Qt 的笔记软件">WizNote: 终于找到比较干净的 Qt 的笔记软件 &raquo;</a>
       
     </p>
   </footer>

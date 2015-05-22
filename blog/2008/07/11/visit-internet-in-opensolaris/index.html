@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>搞定OpenSolaris上网 - Ant-Veil</title>
+  <title>搞定 OpenSolaris 上网 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="装好OpenSolaris后，居然有线网卡不能识别，上网看了一下，很多人都有这个问题。翻了一下网上的资料，自己总结了一下。 我的机子是Dell 640m， 有线网卡是Broadcom 440x 10/100 Integrated Controller； 无线网卡是Intel PRO/ &hellip;">
+  <meta name="description" content="装好 OpenSolaris 后，居然有线网卡不能识别，上网看了一下，很多人都有这个问题。翻了一下网上的资料，自己总结了一下。 我的机子是 Dell 640m， 有线网卡是 Broadcom 440x 10/100 Integrated Controller； 无线网卡是 Intel PRO/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">搞定OpenSolaris上网</h1>
+      <h1 class="entry-title">搞定 OpenSolaris 上网</h1>
     
     
       <p class="meta">
@@ -103,63 +104,63 @@
   </header>
 
 
-<div class="entry-content"><p>装好OpenSolaris后，居然有线网卡不能识别，上网看了一下，很多人都有这个问题。翻了一下网上的资料，自己总结了一下。</p>
+<div class="entry-content"><p>装好 OpenSolaris 后，居然有线网卡不能识别，上网看了一下，很多人都有这个问题。翻了一下网上的资料，自己总结了一下。</p>
 
-<p>我的机子是Dell 640m，</p>
+<p>我的机子是 Dell 640m，</p>
 
-<p>有线网卡是Broadcom 440x 10/100 Integrated Controller；</p>
+<p>有线网卡是 Broadcom 440x 10/100 Integrated Controller；</p>
 
-<p>无线网卡是Intel PRO/Wireless 3945ABG。</p>
+<p>无线网卡是 Intel PRO/Wireless 3945ABG。</p>
 
 <p>系统安装好之后，无线网卡可以被识别。在自动配置服务(Network Auto-Magic, NWAM)打开的情况下，搜索到无线网络，可以很方便配置好。</p>
 
-<p>但是有线网卡不能被识别，按照北邮人论坛上的一篇文章：<a href="http://forum.byr.edu.cn/wForum/disparticle.php?boardName=Linux&amp;ID=49780&amp;pos=23">http://forum.byr.edu.cn/wForum/disparticle.php?boardName=Linux&amp;ID=49780&amp;pos=23</a>的提示，我到<a href="http://solaris-x86.org/software/drivers/">这里</a>下载了自己的驱动bfe-2.6.0a：<a href="http://homepage2.nifty.com/mrym3/taiyodo/eng/">http://homepage2.nifty.com/mrym3/taiyodo/eng/</a></p>
+<p>但是有线网卡不能被识别，按照北邮人论坛上的一篇文章：<a href="http://forum.byr.edu.cn/wForum/disparticle.php?boardName=Linux&amp;ID=49780&amp;pos=23">http://forum.byr.edu.cn/wForum/disparticle.php?boardName=Linux&amp;ID=49780&amp;pos=23</a>的提示，我到<a href="http://solaris-x86.org/software/drivers/">这里</a>下载了自己的驱动 bfe-2.6.0a：<a href="http://homepage2.nifty.com/mrym3/taiyodo/eng/">http://homepage2.nifty.com/mrym3/taiyodo/eng/</a></p>
 
-<p>下载完了之后解压缩，按照README的提示开始安装。</p>
+<p>下载完了之后解压缩，按照 README 的提示开始安装。</p>
 
-<p>结果发现OpenSolaris2008.05的LiveCD没有自带gcc - -b</p>
+<p>结果发现 OpenSolaris2008.05 的 LiveCD 没有自带 gcc - -b</p>
 
-<p>于是到<a href="http://www.sunfreeware.com/programlistintel10.html">http://www.sunfreeware.com/programlistintel10.html</a>上下载了gcc-3.4.6，还有它的依赖包libiconv-1.11。</p>
+<p>于是到<a href="http://www.sunfreeware.com/programlistintel10.html">http://www.sunfreeware.com/programlistintel10.html</a>上下载了 gcc-3.4.6，还有它的依赖包 libiconv-1.11。</p>
 
-<p>gunzip命令解压缩，pkgadd -d命令安装。</p>
+<p>gunzip 命令解压缩，pkgadd -d 命令安装。</p>
 
-<p>完成后正式开始安装驱动。步骤在README中有，非常详细，在此不再赘述。</p>
+<p>完成后正式开始安装驱动。步骤在 README 中有，非常详细，在此不再赘述。</p>
 
-<p>配置网络IP我使用的是固定IP，没有用dhcp。然而不管是dhcp还是固定IP，都需要先关闭NWAM服务：</p>
+<p>配置网络 IP 我使用的是固定 IP，没有用 dhcp。然而不管是 dhcp 还是固定 IP，都需要先关闭 NWAM 服务：</p>
 
 <p><pre lang="bash">svcadm disable nwam</pre></p>
 
-<p>我比较懒，使用network-admin来配置IP，把IP，Netmask，Gateway，DNS都给修改好了。</p>
+<p>我比较懒，使用 network-admin 来配置 IP，把 IP，Netmask，Gateway，DNS 都给修改好了。</p>
 
-<p><!--more-->其对应的/etc下的文件操作如下：</p>
+<p><!--more-->其对应的/etc 下的文件操作如下：</p>
 
-<p>1.hosts文件</p>
+<p>1.hosts 文件</p>
 
 <p>在其中自定义一个解析条目为：IP domain。</p>
 
-<p>2.hostname.interface文件</p>
+<p>2.hostname.interface 文件</p>
 
-<p>我的无线interface名为wpi0，有线interface名为bfe0，所以就有hostname.wpi0,hostname.bfe0两个文件。</p>
+<p>我的无线 interface 名为 wpi0，有线 interface 名为 bfe0，所以就有 hostname.wpi0,hostname.bfe0 两个文件。</p>
 
-<p>其中的内容是自己的主机名(前提是在hosts文件中定义了)，或者自己固定的IP。</p>
+<p>其中的内容是自己的主机名(前提是在 hosts 文件中定义了)，或者自己固定的 IP。</p>
 
-<p>3.nodename文件</p>
+<p>3.nodename 文件</p>
 
 <p>添加内容同样为主机名</p>
 
-<p>4.netmasks文件</p>
+<p>4.netmasks 文件</p>
 
 <p>添加内容为 network-number netmask</p>
 
-<p>5.defaultrouter文件</p>
+<p>5.defaultrouter 文件</p>
 
-<p>内容为Gateway</p>
+<p>内容为 Gateway</p>
 
-<p>6.resolv.conf文件</p>
+<p>6.resolv.conf 文件</p>
 
-<p>内容为 nameserver DNS地址</p>
+<p>内容为 nameserver DNS 地址</p>
 
-<p>7.在<a href="http://www.unix-center.net/bbs/viewthread.php?tid=4797&amp;extra=page%3D1">这里</a>还说需要修改/etc/nsswitch.conf文件，在hosts及ipnodes后加入dns和mdns，即：
+<p>7.在<a href="http://www.unix-center.net/bbs/viewthread.php?tid=4797&amp;extra=page%3D1">这里</a>还说需要修改/etc/nsswitch.conf 文件，在 hosts 及 ipnodes 后加入 dns 和 mdns，即：
 <blockquote>hosts:      files        dns        mdns<br />
 ipnodes:    files        dns        mdns</blockquote></p>
 
@@ -184,7 +185,7 @@ ipnodes:    files        dns        mdns</blockquote></p>
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -202,7 +203,7 @@ ipnodes:    files        dns        mdns</blockquote></p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/" title="Previous Post: 对awn-applet在通知栏的一个小改动">&laquo; 对awn-applet在通知栏的一个小改动</a>
+        <a class="basic-alignment left" href="/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/" title="Previous Post: 对 awn-applet 在通知栏的一个小改动">&laquo; 对 awn-applet 在通知栏的一个小改动</a>
       
       
         <a class="basic-alignment right" href="/blog/2008/07/16/wordpress-26released/" title="Next Post: Wordpress 2.6 发布">Wordpress 2.6 发布 &raquo;</a>

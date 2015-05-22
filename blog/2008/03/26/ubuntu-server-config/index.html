@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="这几天真是囧死了，因为自己经验不足，对服务器的一些配置相当不熟，绕了不少弯路……现在把几天下来的配置过程写一下，以供存档。 操作系统是Ubuntu 7.10 Server。选择它还是主要因为它的软件库的方便，反正都是Linux的内核。实验室的服务器也只是在小范围内使用， &hellip;">
+  <meta name="description" content="这几天真是囧死了，因为自己经验不足，对服务器的一些配置相当不熟，绕了不少弯路……现在把几天下来的配置过程写一下，以供存档。 操作系统是 Ubuntu 7.10 Server。选择它还是主要因为它的软件库的方便，反正都是 Linux 的内核。实验室的服务器也只是在小范围内使用， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -105,36 +106,36 @@
 
 <div class="entry-content"><p>这几天真是囧死了，因为自己经验不足，对服务器的一些配置相当不熟，绕了不少弯路……现在把几天下来的配置过程写一下，以供存档。</p>
 
-<p>操作系统是Ubuntu 7.10 Server。选择它还是主要因为它的软件库的方便，反正都是Linux的内核。实验室的服务器也只是在小范围内使用，安全措施可以不用那么严格和专业。</p>
+<p>操作系统是 Ubuntu 7.10 Server。选择它还是主要因为它的软件库的方便，反正都是 Linux 的内核。实验室的服务器也只是在小范围内使用，安全措施可以不用那么严格和专业。</p>
 
 <p>安装完毕更换源，<strong>安装桌面环境</strong>。
 <pre lang="bash">deb ftp://openware.byr.edu.cn/pub/mirror/ubuntu/ gutsy main restricted universe multiverse</pre></p>
 
-<p>完毕后安装下列软件(最后一个实在无奈，7.10默认用的是compiz管理器，我想换回metacity结果屡次不成功)</p>
+<p>完毕后安装下列软件(最后一个实在无奈，7.10 默认用的是 compiz 管理器，我想换回 metacity 结果屡次不成功)</p>
 
 <p><pre lang="bash"> sudo apt-get install gdm x-window-system-core gnome-core language-selector compiz</pre></p>
 
-<p><!--more-->安装完毕之后startx就可以了。</p>
+<p><!--more-->安装完毕之后 startx 就可以了。</p>
 
-<p>然后把一些需要处理的东西比如窗口装饰、登录界面等等，都给弄好，不需要好看，只需要能用就行了，毕竟时不时还是要用vnc登录的。</p>
+<p>然后把一些需要处理的东西比如窗口装饰、登录界面等等，都给弄好，不需要好看，只需要能用就行了，毕竟时不时还是要用 vnc 登录的。</p>
 
-<p>之后到gdmsetup中把root登录权限打开。</p>
+<p>之后到 gdmsetup 中把 root 登录权限打开。</p>
 
 <p>随后换上其他源，给系统打补丁。</p>
 
-<p>在系统安装的时候就已经选择了LAMP, OpenSSH，所以这里就不用另外单独安装了。剩下还有几个服务需要装：</p>
+<p>在系统安装的时候就已经选择了 LAMP, OpenSSH，所以这里就不用另外单独安装了。剩下还有几个服务需要装：</p>
 
 <p><pre lang="bash">sudo apt-get install vsftpd cvsd</pre></p>
 
-<p><strong>FTP的配置</strong>：</p>
+<p><strong>FTP 的配置</strong>：</p>
 
-<p>修改vsftpd的配置，在<code>/etc/vsftpd.conf</code>文件中。</p>
+<p>修改 vsftpd 的配置，在<code>/etc/vsftpd.conf</code>文件中。</p>
 
 <p>允许本地用户登录：<code>local_enable=YES</code></p>
 
 <p>允许写操作：<code>wirte_enable=YES</code></p>
 
-<p>让本地用户只能查看自己家下的文件，除root外：</p>
+<p>让本地用户只能查看自己家下的文件，除 root 外：</p>
 
 <p><code>chroot_local_user=YES</code></p>
 
@@ -142,13 +143,13 @@
 
 <p>chroot_list_file=/etc/vsftpd.chroot_list</p>
 
-<p>编辑<code>/etc/vsftpd.chroot_list</code>文件，添加root</p>
+<p>编辑<code>/etc/vsftpd.chroot_list</code>文件，添加 root</p>
 
-<p>允许root登录ftp：修改<code>/etc/ftpusers</code>文件，将root行注释掉</p>
+<p>允许 root 登录 ftp：修改<code>/etc/ftpusers</code>文件，将 root 行注释掉</p>
 
-<p><strong>cvs的配置</strong>：</p>
+<p><strong>cvs 的配置</strong>：</p>
 
-<p>囧的是Ubuntu的CVS的仓库路径默认在/var/lib/cvsd下，而原先服务器上不是，所以我就得把BuildRoot给改掉，结果当时一时脑热，将/var/lib/cvsd下的文件直接覆盖到了/下，结果瞬间，服务器就将我弹出，之后所有连接均拒绝。到机房重启一看，系统崩溃了，因文件损坏不能启动了。。。。只好重装。</p>
+<p>囧的是 Ubuntu 的 CVS 的仓库路径默认在/var/lib/cvsd 下，而原先服务器上不是，所以我就得把 BuildRoot 给改掉，结果当时一时脑热，将/var/lib/cvsd 下的文件直接覆盖到了/下，结果瞬间，服务器就将我弹出，之后所有连接均拒绝。到机房重启一看，系统崩溃了，因文件损坏不能启动了。。。。只好重装。</p>
 
 <p>其实只要这个命令就可以了：</p>
 
@@ -160,7 +161,7 @@
 
 <p>终于搞定了。</p>
 
-<p>至于如何打开VNC服务，参看<a href="http://www.casparant.com/remote-login.html">我前面的日志</a>即可。</p>
+<p>至于如何打开 VNC 服务，参看<a href="http://www.casparant.com/remote-login.html">我前面的日志</a>即可。</p>
 </div>
 
 
@@ -181,7 +182,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -199,10 +200,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2008/03/16/remote-login-under-ubuntu/" title="Previous Post: Ubuntu Server远程连接的配置">&laquo; Ubuntu Server远程连接的配置</a>
+        <a class="basic-alignment left" href="/blog/2008/03/16/remote-login-under-ubuntu/" title="Previous Post: Ubuntu Server 远程连接的配置">&laquo; Ubuntu Server 远程连接的配置</a>
       
       
-        <a class="basic-alignment right" href="/blog/2008/03/28/how-open-source-make-money/" title="Next Post: [转]开源软件逐渐融入市场并开始走向赢利">[转]开源软件逐渐融入市场并开始走向赢利 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2008/03/28/how-open-source-make-money/" title="Next Post: [转] 开源软件逐渐融入市场并开始走向赢利">[转] 开源软件逐渐融入市场并开始走向赢利 &raquo;</a>
       
     </p>
   </footer>

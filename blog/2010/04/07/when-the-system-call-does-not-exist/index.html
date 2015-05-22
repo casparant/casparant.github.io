@@ -76,6 +76,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -129,7 +130,7 @@
 │   │   └── waitpid_err_test.c<br />
 .....</blockquote></p>
 
-<p><!--more-->现在要把这堆系统调用的测试代码移植到各硬件平台和各发行版上，因此要考虑内核版本、glibc版本等等问题。比如说getcpu这个东东只在2.6.19及以后版本中存在并且只有x86_64 and i386架构才可用。而编译这堆系统调用使用的Makefile大致如下：</p>
+<p><!--more-->现在要把这堆系统调用的测试代码移植到各硬件平台和各发行版上，因此要考虑内核版本、glibc 版本等等问题。比如说 getcpu 这个东东只在 2.6.19 及以后版本中存在并且只有 x86_64 and i386 架构才可用。而编译这堆系统调用使用的 Makefile 大致如下：</p>
 
 <p><pre lang="bash" line="1">
 MAKEFILES_FOR_TESTCASES = $(shell find testcases -name Makefile)
@@ -141,7 +142,7 @@ TESTCASES_BY_MAKE = $(addsuffix /test,$(dir $(MAKEFILES_FOR_TESTCASES)))</pre></
 
 <p>因此可能的解决方案有如下几种：</p>
 
-<p><h4>1. 修改Makefile，禁止编译会出错的测试用例</h4></p>
+<p><h4>1. 修改 Makefile，禁止编译会出错的测试用例</h4></p>
 
 <p><pre lang="bash" line="1">
 FILTER_OUT_CASES = testcase1 testcase2 testcase3
@@ -154,11 +155,11 @@ TESTCASES_BY_MAKE = $(addsuffix /test,$(dir $(MAKEFILES_FOR_TESTCASES)))</pre></
         $(MAKE) -C $(dir $@) test
 </p>
 
-<p>代码很平淡无奇，之所以贴出这段代码是为了温习一下Makefile中wildcard,filter-out和foreach的用法 :-)</p>
+<p>代码很平淡无奇，之所以贴出这段代码是为了温习一下 Makefile 中 wildcard,filter-out 和 foreach 的用法 :-)</p>
 
-<p><h4>2.修改c代码，使用预处理判断是否存在</h4></p>
+<p><h4>2.修改 c 代码，使用预处理判断是否存在</h4></p>
 
-<p>这种办法在<a href="ltp.sf.net/" target="_blank">ltp</a>上应用十分广泛，ltp中自动从configure文件中生成include/config.h，生成的config.h包含了一系列预处理，例如：</p>
+<p>这种办法在<a href="ltp.sf.net/" target="_blank">ltp</a>上应用十分广泛，ltp 中自动从 configure 文件中生成 include/config.h，生成的 config.h 包含了一系列预处理，例如：</p>
 
 <p><pre lang="cpp" line="1">
 /* Define to 1 if you have the <sys/signalfd.h> header file. */
@@ -168,7 +169,7 @@ TESTCASES_BY_MAKE = $(addsuffix /test,$(dir $(MAKEFILES_FOR_TESTCASES)))</pre></
 #define HAVE_SYS_STAT_H 1
 </p>
 
-<p>当内核版本不同导致系统调用不存在时，可以设置undef预处理；如果系统调用存在，则define一下。</p>
+<p>当内核版本不同导致系统调用不存在时，可以设置 undef 预处理；如果系统调用存在，则 define 一下。</p>
 
 <p>接下去可以修改源代码，在可能会在不同内核版本上出现分歧的代码前后加上：</p>
 
@@ -182,9 +183,9 @@ int main()
 }
 #endif</pre></p>
 
-<p>同时ltp还在C代码中判断内核版本，内核版本在<sys/utsname.h>中有声明。</p>
+<p>同时 ltp 还在 C 代码中判断内核版本，内核版本在<sys/utsname.h>中有声明。</p>
 
-<p>如果不使用configure文件，可以自己写一个shell脚本来生成，例如：</p>
+<p>如果不使用 configure 文件，可以自己写一个 shell 脚本来生成，例如：</p>
 
 <p><pre lang="bash" line="1">
 #!/bin/sh</pre></p>
@@ -224,7 +225,7 @@ fi
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/programming/'>programming</a>
   
 </span>
 
@@ -245,7 +246,7 @@ fi
         <a class="basic-alignment left" href="/blog/2010/04/07/how-to-organize-your-information/" title="Previous Post: 生活在信息膨胀的社会">&laquo; 生活在信息膨胀的社会</a>
       
       
-        <a class="basic-alignment right" href="/blog/2010/05/16/ya-bupt-thesis-bachelor-1-0-alpha-1-released/" title="Next Post: ya-bupt-thesis-bachelor-1.0-Alpha-1 Released">ya-bupt-thesis-bachelor-1.0-Alpha-1 Released &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2010/05/16/ya-bupt-thesis-bachelor-1-0-alpha-1-released/" title="Next Post: ya-bupt-thesis-bachelor 1.0 Alpha 1 Released">ya-bupt-thesis-bachelor 1.0 Alpha 1 Released &raquo;</a>
       
     </p>
   </footer>

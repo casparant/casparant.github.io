@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>搞定LaTeX Beamer模板 - Ant-Veil</title>
+  <title>搞定 LaTeX Beamer 模板 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="过一段时间公司和学校都得做presentation，所以现在就得好好开始准备slides。以前我就用Beamer做过一次slide，而且是匆匆忙忙用了默认模板搞定的。这次借着再做slides的机会，我得自己搞个模板。 需求如下，非常简单： 1. 要在合适的位置打上Logo（一般是左上角或者右上角 &hellip;">
+  <meta name="description" content="过一段时间公司和学校都得做 presentation，所以现在就得好好开始准备 slides。以前我就用 Beamer 做过一次 slide，而且是匆匆忙忙用了默认模板搞定的。这次借着再做 slides 的机会，我得自己搞个模板。 需求如下，非常简单： 1. 要在合适的位置打上 Logo（ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">搞定LaTeX Beamer模板</h1>
+      <h1 class="entry-title">搞定 LaTeX Beamer 模板</h1>
     
     
       <p class="meta">
@@ -103,23 +104,23 @@
   </header>
 
 
-<div class="entry-content"><p>过一段时间公司和学校都得做presentation，所以现在就得好好开始准备slides。以前我就用Beamer做过一次slide，而且是匆匆忙忙用了默认模板搞定的。这次借着再做slides的机会，我得自己搞个模板。</p>
+<div class="entry-content"><p>过一段时间公司和学校都得做 presentation，所以现在就得好好开始准备 slides。以前我就用 Beamer 做过一次 slide，而且是匆匆忙忙用了默认模板搞定的。这次借着再做 slides 的机会，我得自己搞个模板。</p>
 
 <p>需求如下，非常简单：</p>
 
-<p><blockquote>1. 要在合适的位置打上Logo（一般是左上角或者右上角）;<br />
+<p><blockquote>1. 要在合适的位置打上 Logo（一般是左上角或者右上角）;<br />
 2. 要能自定义页脚<br />
 3. 首页要有背景</blockquote></p>
 
 <p>经过半个白天加一个晚上的折腾，基本上解决了上述问题：</p>
 
-<p>要打Logo，并且自定义位置，可以使用如下语句：</p>
+<p>要打 Logo，并且自定义位置，可以使用如下语句：</p>
 
 <p><pre lang="latex"> \logo{\pgfputat{\pgfxy(#1,#2)}{\pgfbox[center,base]{\includegraphics[height=0.5cm]{#3}}}}</pre></p>
 
-<p>事先要包含pgf宏包，#1,#2是Logo坐标，#3是Logo路径。关于坐标，我发现用pdflatex编译和用xelatex编译时坐标表示的实际位置是不同的，反正自己手工慢慢调就是了。也可以把上述代码加个\newcommand，做成一个带参数的命令直接调用。</p>
+<p>事先要包含 pgf 宏包，#1,#2 是 Logo 坐标，#3 是 Logo 路径。关于坐标，我发现用 pdflatex 编译和用 xelatex 编译时坐标表示的实际位置是不同的，反正自己手工慢慢调就是了。也可以把上述代码加个\newcommand，做成一个带参数的命令直接调用。</p>
 
-<p>自定义页脚，我参考了beamer guide和beamer里面的某个宏包的写法：</p>
+<p>自定义页脚，我参考了 beamer guide 和 beamer 里面的某个宏包的写法：</p>
 
 <p><!--more--><pre lang="latex">
 %% Custom footer
@@ -138,13 +139,13 @@
 }
 </pre></p>
 
-<p>需要说明的是，我始终搞不懂\tinycolouredline的第一个参数structure还能用什么代替，而且上述方案有个及其大的BUG，在页脚最左边的那列的左边有1em的空白，如果要给这列填充了和那个空白区与不一样的背景色，就会很难看。我也没找到消除那列空白的代码。</p>
+<p>需要说明的是，我始终搞不懂\tinycolouredline 的第一个参数 structure 还能用什么代替，而且上述方案有个及其大的 BUG，在页脚最左边的那列的左边有 1em 的空白，如果要给这列填充了和那个空白区与不一样的背景色，就会很难看。我也没找到消除那列空白的代码。</p>
 
-<p>首页加背景就太简单了，我直接用wallpaper宏包，然后在第一页加入：</p>
+<p>首页加背景就太简单了，我直接用 wallpaper 宏包，然后在第一页加入：</p>
 
 <p><pre lang="latex">\ThisCenterWallPaper{1}{inc/cover}</pre></p>
 
-<p>不管是加Logo也好，加墙纸也好，它们都很容易被colortheme中定义的背景色覆盖，这可以通过\setbeamercolor来去掉背景色，基本语法如下：</p>
+<p>不管是加 Logo 也好，加墙纸也好，它们都很容易被 colortheme 中定义的背景色覆盖，这可以通过\setbeamercolor 来去掉背景色，基本语法如下：</p>
 
 <p><pre lang="latex">\setbeamercolor{background canvas}{bg=}
 \setbeamercolor{title}{fg=black, bg=lightgray!80!white}</pre></p>
@@ -170,7 +171,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/programming/'>programming</a>
   
 </span>
 

@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="最近呢，推上某奸商推出了 AnyConnect 套餐，这对广大翻墙群众来说绝对是个利好消息啊，可以自动配路由的东东。我毫不犹豫去把自己的绝版廉价套餐换成了100元的套餐，然后开始折腾 AnyConnect 配置。 iOS上配置十分简单，找到 Cisco AnyConnect 这个 App 就搞定。 &hellip;">
+  <meta name="description" content="最近呢，推上某奸商推出了 AnyConnect 套餐，这对广大翻墙群众来说绝对是个利好消息啊，可以自动配路由的东东。我毫不犹豫去把自己的绝版廉价套餐换成了 100 元的套餐，然后开始折腾 AnyConnect 配置。 iOS 上配置十分简单，找到 Cisco AnyConnect 这个 App &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -103,11 +104,11 @@
   </header>
 
 
-<div class="entry-content"><p>最近呢，推上某奸商推出了 AnyConnect 套餐，这对广大翻墙群众来说绝对是个利好消息啊，可以自动配路由的东东。我毫不犹豫去把自己的绝版廉价套餐换成了100元的套餐，然后开始折腾 AnyConnect 配置。</p>
+<div class="entry-content"><p>最近呢，推上某奸商推出了 AnyConnect 套餐，这对广大翻墙群众来说绝对是个利好消息啊，可以自动配路由的东东。我毫不犹豫去把自己的绝版廉价套餐换成了 100 元的套餐，然后开始折腾 AnyConnect 配置。</p>
 
-<p>iOS上配置十分简单，找到 Cisco AnyConnect 这个 App 就搞定。Linux 下要把它配置得很舒服，着实花了一番功夫。</p>
+<p>iOS 上配置十分简单，找到 Cisco AnyConnect 这个 App 就搞定。Linux 下要把它配置得很舒服，着实花了一番功夫。</p>
 
-<p>公司 VPN 用的也是 AnyConnect，我就继续用着公司的客户端(Cisco AnyConnect Secure Mobility Client), 直到今天早上我修复了笔记本上的无线网，机器有了两个IP为止。有了两个IP的 AnyConnect service 居然segfault了，看了一下 debug 信息，我觉得对这种闭源工具我还是别折腾了。直接换开源方案 OpenConnect.</p>
+<p>公司 VPN 用的也是 AnyConnect，我就继续用着公司的客户端(Cisco AnyConnect Secure Mobility Client), 直到今天早上我修复了笔记本上的无线网，机器有了两个 IP 为止。有了两个 IP 的 AnyConnect service 居然 segfault 了，看了一下 debug 信息，我觉得对这种闭源工具我还是别折腾了。直接换开源方案 OpenConnect.</p>
 
 <p>Portage 里搜了一下，openconnect 有两个包，networkmanager-openconnect 有 libkeyring-gnome 依赖，我现在是个有洁癖的 KDE 党，果断不能装啊，于是用第二个， openconnect 命令行版…… 不行，不能这么罗里八嗦，反正最后折腾结果如下：</p>
 
@@ -139,7 +140,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/z-turn/'>z-turn</a>
   
 </span>
 
@@ -157,7 +158,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/03/11/an-introduction-of-wiz-note/" title="Previous Post: WizNote: 终于找到比较干净的QT的笔记软件">&laquo; WizNote: 终于找到比较干净的QT的笔记软件</a>
+        <a class="basic-alignment left" href="/blog/2014/03/11/an-introduction-of-wiz-note/" title="Previous Post: WizNote: 终于找到比较干净的 Qt 的笔记软件">&laquo; WizNote: 终于找到比较干净的 Qt 的笔记软件</a>
       
       
         <a class="basic-alignment right" href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/" title="Next Post: Fix Razer Orochi re-connect issue">Fix Razer Orochi re-connect issue &raquo;</a>

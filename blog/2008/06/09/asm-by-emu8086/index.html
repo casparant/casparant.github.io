@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>俺也汇编一下：EMU8086 - Ant-Veil</title>
+  <title>俺也汇编一下: EMU8086 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="对不住各位看官了……这个EMU8086模拟器是Windows下的，还是破解的……我只是为了完成计组老师的作业而已。只是有道题比较有意思，我深深地想了好久，发现一些问题，估计老师不会认真改我的作业，我把它发上来发泄发泄，嗯。 话说EMU8086预先弄了几个PORT， &hellip;">
+  <meta name="description" content="对不住各位看官了……这个 EMU8086 模拟器是 Windows 下的，还是破解的……我只是为了完成计组老师的作业而已。只是有道题比较有意思，我深深地想了好久，发现一些问题，估计老师不会认真改我的作业，我把它发上来发泄发泄，嗯。 话说 EMU8086 预先弄了几个 PORT，其中 PORT9 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">俺也汇编一下：EMU8086</h1>
+      <h1 class="entry-title">俺也汇编一下: EMU8086</h1>
     
     
       <p class="meta">
@@ -103,9 +104,9 @@
   </header>
 
 
-<div class="entry-content"><p>对不住各位看官了……这个EMU8086模拟器是Windows下的，还是破解的……我只是为了完成计组老师的作业而已。只是有道题比较有意思，我深深地想了好久，发现一些问题，估计老师不会认真改我的作业，我把它发上来发泄发泄，嗯。</p>
+<div class="entry-content"><p>对不住各位看官了……这个 EMU8086 模拟器是 Windows 下的，还是破解的……我只是为了完成计组老师的作业而已。只是有道题比较有意思，我深深地想了好久，发现一些问题，估计老师不会认真改我的作业，我把它发上来发泄发泄，嗯。</p>
 
-<p>话说EMU8086预先弄了几个PORT，其中PORT9就是实现了一个机器人的东东。具体描述如下：在一个9X6的地图内，有墙、灯、机器人三种东西。机器人碰到墙和灯都过不去，但是碰到灯的时候会自动改变灯的状态，也就是关灯或者开灯。<br />
+<p>话说 EMU8086 预先弄了几个 PORT，其中 PORT9 就是实现了一个机器人的东东。具体描述如下：在一个 9X6 的地图内，有墙、灯、机器人三种东西。机器人碰到墙和灯都过不去，但是碰到灯的时候会自动改变灯的状态，也就是关灯或者开灯。<br />
 现在在地图上画一个地图，机器人使用给定的算法会产生死角，问怎么样消除死角。</p>
 
 <p>话说原来给定的代码太弱了，一眼看出破绽：机器人碰墙只能单纯地朝一个方向转，那么碰到开了一口的闭合空间时，一旦进去就出不来了(如图)，必然得改进。改进的方法有两个，一个是把行走改成随机方向，那么机器人再怎么囧最后也能走出去，可是老师不提倡随机，那么只好接着改了。</p>
@@ -132,7 +133,7 @@
 
 <p><img src="http://img.ant.im/di-WD0J.png" /></p>
 
-<p>为了解决这个死角，可以采用“抵消副作用”法。对于以上右手法则，可以很容易获得其状态机：(其实这个状态机挺扯的，原谅我自动机课没学好T_T)</p>
+<p>为了解决这个死角，可以采用“抵消副作用”法。对于以上右手法则，可以很容易获得其状态机：(其实这个状态机挺扯的，原谅我自动机课没学好 T_T)</p>
 
 <p><img src="http://img.ant.im/di-TO8N.png" /></p>
 
@@ -260,11 +261,11 @@ WAIT_EXAM	ENDP
 
 <p>写完了。反正问题就在，会绕圈……</p>
 
-<p>等考完事再来看。估计也就是几个register的问题。</p>
+<p>等考完事再来看。估计也就是几个 register 的问题。</p>
 
 <p>最后附上一个可启动的小东东：<a href="http://docs.google.com/leaf?id=0B-GDvj9JsmanM2VhYjkzOWUtNzIzNy00ZmExLWE4ZDMtNWU0ZTU0OTEwYWM3&hl=zh_CN">打字训练</a>——所谓的“操作系统”作业，Orz。专门为某打字不按指法的家伙准备的。</p>
 
-<p>谢帆说还要把Loader和Kernel分开写，我继续Orz了，这个小东西填MBR的牙缝都不够呢，还分开……</p>
+<p>谢帆说还要把 Loader 和 Kernel 分开写，我继续 Orz 了，这个小东西填 MBR 的牙缝都不够呢，还分开……</p>
 </div>
 
 
@@ -285,7 +286,7 @@ WAIT_EXAM	ENDP
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/programming/'>programming</a>
   
 </span>
 
@@ -306,7 +307,7 @@ WAIT_EXAM	ENDP
         <a class="basic-alignment left" href="/blog/2008/06/08/baidu-records-me/" title="Previous Post: 终于被百度收录了">&laquo; 终于被百度收录了</a>
       
       
-        <a class="basic-alignment right" href="/blog/2008/06/10/java-basic-check-points/" title="Next Post: Java知识点没掌握扎实的后果">Java知识点没掌握扎实的后果 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2008/06/10/java-basic-check-points/" title="Next Post: Java 知识点没掌握扎实的后果">Java 知识点没掌握扎实的后果 &raquo;</a>
       
     </p>
   </footer>

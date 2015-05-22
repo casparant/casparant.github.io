@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>原来在CentOS中配置VNCServer很容易 - Ant-Veil</title>
+  <title>原来在 CentOS 中配置 VNCServer 很容易 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="发现该学点脚本了，有空可以在服务器上折腾折腾。不过在此之前我还是先得把实验室这台服务器配置好。 服务器是CentOS5.2，准备开启VNC服务。想起当年在Ubuntu下配置费了九牛二虎之力，估计着在CentOS上也不会容易。 没想到如此简单： 服务器在安装时已经装好了VNCServer， &hellip;">
+  <meta name="description" content="发现该学点脚本了，有空可以在服务器上折腾折腾。不过在此之前我还是先得把实验室这台服务器配置好。 服务器是 CentOS5.2，准备开启 VNC 服务。想起当年在 Ubuntu 下配置费了九牛二虎之力，估计着在 CentOS 上也不会容易。 没想到如此简单： 服务器在安装时已经装好了 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">原来在CentOS中配置VNCServer很容易</h1>
+      <h1 class="entry-title">原来在 CentOS 中配置 VNCServer 很容易</h1>
     
     
       <p class="meta">
@@ -105,29 +106,29 @@
 
 <div class="entry-content"><p>发现该学点脚本了，有空可以在服务器上折腾折腾。不过在此之前我还是先得把实验室这台服务器配置好。</p>
 
-<p>服务器是CentOS5.2，准备开启VNC服务。想起<a href="http://www.casparzhang.com/blog/2008/03/16/remote-login-under-ubuntu.html">当年在Ubuntu下配置费了九牛二虎之力</a>，估计着在CentOS上也不会容易。</p>
+<p>服务器是 CentOS5.2，准备开启 VNC 服务。想起<a href="http://www.casparzhang.com/blog/2008/03/16/remote-login-under-ubuntu.html">当年在 Ubuntu 下配置费了九牛二虎之力</a>，估计着在 CentOS 上也不会容易。</p>
 
 <p>没想到如此简单：</p>
 
-<p>服务器在安装时已经装好了VNCServer，接下去只要编辑<code>/etc/sysconfig/vncservers</code>文件中的<code>VNCSERVERS</code>字段（确保取消了这行的注释）：</p>
+<p>服务器在安装时已经装好了 VNCServer，接下去只要编辑<code>/etc/sysconfig/vncservers</code>文件中的<code>VNCSERVERS</code>字段（确保取消了这行的注释）：</p>
 
 <p><blockquote>VNCSERVERS="1:root 2:user1 3:user2 4:blablabla"</blockquote></p>
 
-<p>如果只要为单个用户开启VNC服务，只需按照PORT:USERNAME的格式修改，如果为多个用户开启VNC服务，则用空格隔开即可。</p>
+<p>如果只要为单个用户开启 VNC 服务，只需按照 PORT:USERNAME 的格式修改，如果为多个用户开启 VNC 服务，则用空格隔开即可。</p>
 
-<p>如果需要修改分辨率，设置是否允许通过TCP登录、是否允许通过Web登录以及是否允许不安全TCP tunel登录，则修改<code>VNCSERVERARGS[2]</code>字段：</p>
+<p>如果需要修改分辨率，设置是否允许通过 TCP 登录、是否允许通过 Web 登录以及是否允许不安全 TCP tunel 登录，则修改<code>VNCSERVERARGS[2]</code>字段：</p>
 
 <p><!--more--><blockquote>VNCSERVERARGS[2]="-geometry 1024x768  -nolisten tcp -nohttpd -localhost"</blockquote></p>
 
 <p>注意按照注释提示，酌情修改。</p>
 
-<p>如果系统开启了防火墙，还要把5901~590x端口（取决于你为多少个用户开启VNC服务，如果VNC第一个端口开放，则为5901，以此类推）打开，至于是开启TCP端口还是UDP端口，按照自己的设置来修改。</p>
+<p>如果系统开启了防火墙，还要把 5901~590x 端口（取决于你为多少个用户开启 VNC 服务，如果 VNC 第一个端口开放，则为 5901，以此类推）打开，至于是开启 TCP 端口还是 UDP 端口，按照自己的设置来修改。</p>
 
-<p>修改完毕后，把vncserver加入开机自动启动：</p>
+<p>修改完毕后，把 vncserver 加入开机自动启动：</p>
 
 <p><pre lang="bash">chkconfig vncserver on</pre></p>
 
-<p>或者手动往<code>rc2~5.d/</code>中加入vncserver的链接。</p>
+<p>或者手动往<code>rc2~5.d/</code>中加入 vncserver 的链接。</p>
 
 <p>同时仍然要注意使用<code>vncpasswd</code>修改密码，并且修改<code>~/.vnc/xstartup</code>，注释最后两行，添加一行<code>gnome-session &</code></p>
 
@@ -135,7 +136,7 @@
 # twm &
 gnome-session &</pre></p>
 
-<p>从此每个用户都顺利过上了vnc登录生活……</p>
+<p>从此每个用户都顺利过上了 vnc 登录生活……</p>
 
 <p></p>
 </div>
@@ -158,7 +159,7 @@ gnome-session &</pre></p>
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -176,10 +177,10 @@ gnome-session &</pre></p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/03/03/using-ubuntu-jaunty-alpha5/" title="Previous Post: [白鼠六]Ubuntu Jaunty Aplha5试用">&laquo; [白鼠六]Ubuntu Jaunty Aplha5试用</a>
+        <a class="basic-alignment left" href="/blog/2009/03/03/using-ubuntu-jaunty-alpha5/" title="Previous Post: [白鼠六] Ubuntu Jaunty Aplha 5 试用">&laquo; [白鼠六] Ubuntu Jaunty Aplha 5 试用</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/03/16/test-posting/" title="Next Post: 再次测试Translate插件">再次测试Translate插件 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/03/16/test-posting/" title="Next Post: 再次测试 Translate 插件">再次测试 Translate 插件 &raquo;</a>
       
     </p>
   </footer>

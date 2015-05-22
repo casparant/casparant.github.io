@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Linux下与相片有关的工具 - Ant-Veil</title>
+  <title>Linux 下与相片有关的工具 - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="前段时间入手了一台入门单反，看网上都是使用光影啊、PS啊、Nikon光盘自带的ViewNX等工具来处理相片，我就想在Linux找到类似的软件。 PS这个好说，GIMP可以搞定。不过强烈期盼GIMP的单一窗口模式早点出来啊～ 相片管理软件只好暂时用用Wine的Picasa了， &hellip;">
+  <meta name="description" content="前段时间入手了一台入门单反，看网上都是使用光影啊、PS 啊、Nikon 光盘自带的 ViewNX 等工具来处理相片，我就想在 Linux 找到类似的软件。 PS 这个好说，GIMP 可以搞定。不过强烈期盼GIMP 的单一窗口模式早点出来啊～ 相片管理软件只好暂时用用 Wine 的 Picasa 了 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +73,7 @@
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/about">About</a></li>
   <li><a href="/blog/categories/kernel">Kernel</a></li>
+  <li><a href="/blog/categories/programming">Programming</a></li>
   <li><a href="/blog/categories/z-turn">Z-Turn</a></li>
 </ul>
 
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Linux下与相片有关的工具</h1>
+      <h1 class="entry-title">Linux 下与相片有关的工具</h1>
     
     
       <p class="meta">
@@ -103,29 +104,29 @@
   </header>
 
 
-<div class="entry-content"><p>前段时间入手了一台入门单反，看网上都是使用光影啊、PS啊、Nikon光盘自带的ViewNX等工具来处理相片，我就想在Linux找到类似的软件。</p>
+<div class="entry-content"><p>前段时间入手了一台入门单反，看网上都是使用光影啊、PS 啊、Nikon 光盘自带的 ViewNX 等工具来处理相片，我就想在 Linux 找到类似的软件。</p>
 
-<p>PS这个好说，GIMP可以搞定。不过强烈期盼<a href="http://www.gimpusers.com/news/2009-09-19/single-window-mode-gimp-2-8-confirmed.html" target="new">GIMP的单一窗口模式</a>早点出来啊～</p>
+<p>PS 这个好说，GIMP 可以搞定。不过强烈期盼<a href="http://www.gimpusers.com/news/2009-09-19/single-window-mode-gimp-2-8-confirmed.html" target="new">GIMP 的单一窗口模式</a>早点出来啊～</p>
 
-<p>相片管理软件只好暂时用用Wine的Picasa了，同样期待Linux下原生的Picasa，不过这个希望相当渺茫……其实wine的Picasa还是很好用的，修正照片功能也不错，Google招牌式的I'm feeling lucky按钮，对于我等懒人，效果极佳。</p>
+<p>相片管理软件只好暂时用用 Wine 的 Picasa 了，同样期待 Linux 下原生的 Picasa，不过这个希望相当渺茫……其实 wine 的 Picasa 还是很好用的，修正照片功能也不错，Google 招牌式的 I'm feeling lucky 按钮，对于我等懒人，效果极佳。</p>
 
-<p>光影类的软件，我迄今为止没有找到。我主要喜欢光影的加框功能。Linux下尝试过f-spot，最后放弃，主要是修改完出片的时候根本没有压缩，遂怀疑这个软件的相片修正功能是否真正可用，而且没有加框的插件。还发现几个KDE的程序，但是因为要编译安装kdebase-lib这种大块头，我宁愿wine一个光影魔术手……现在调曝光拉曲线加框出片基本上都是靠wine的光影，痛苦啊T_T不过批量操作的时候还是用Picasa～</p>
+<p>光影类的软件，我迄今为止没有找到。我主要喜欢光影的加框功能。Linux 下尝试过 f-spot，最后放弃，主要是修改完出片的时候根本没有压缩，遂怀疑这个软件的相片修正功能是否真正可用，而且没有加框的插件。还发现几个 KDE 的程序，但是因为要编译安装 kdebase-lib 这种大块头，我宁愿 wine 一个光影魔术手……现在调曝光拉曲线加框出片基本上都是靠 wine 的光影，痛苦啊 T_T 不过批量操作的时候还是用 Picasa～</p>
 
-<p>然后就是RAW出片的问题。我在虚拟机上运行ViewNX来修改RAW的片子居然把虚拟机搞假死了，RAW片果然不是省油的灯……只好转战Linux平台，找了许久之后发现这个工具：<a href="http://ufraw.sourceforge.net/" target="new">UFRaw</a>，发现其功能还是很强大的，拉曲线、白平衡、曝光补偿、去噪、裁切缩放都有，而且它能认出我的D3000，在Gentoo中加上gimp的USE Flag后可以在处理完片子后在GIMP中继续编辑。目前没有发现这个软件在功能上的缺失，而且平时因为RAW出片不多，所以对这个功能的研究也比较少。</p>
+<p>然后就是 RAW 出片的问题。我在虚拟机上运行 ViewNX 来修改 RAW 的片子居然把虚拟机搞假死了，RAW 片果然不是省油的灯……只好转战 Linux 平台，找了许久之后发现这个工具：<a href="http://ufraw.sourceforge.net/" target="new">UFRaw</a>，发现其功能还是很强大的，拉曲线、白平衡、曝光补偿、去噪、裁切缩放都有，而且它能认出我的 D3000，在 Gentoo 中加上 gimp 的 USE Flag 后可以在处理完片子后在 GIMP 中继续编辑。目前没有发现这个软件在功能上的缺失，而且平时因为 RAW 出片不多，所以对这个功能的研究也比较少。</p>
 
-<p>其他工具正在继续发掘中，有类似经历的朋友欢迎推荐好用的工具。总体来说Linux下处理相片的工具还是有的，就是找到它们需要一些时间～</p>
+<p>其他工具正在继续发掘中，有类似经历的朋友欢迎推荐好用的工具。总体来说 Linux 下处理相片的工具还是有的，就是找到它们需要一些时间～</p>
 
 <p><!--more-->====== 我是分割线 ======</p>
 
-<p>最近人比较懒，Blog更新非常不勤快。在搬家之后，我思考了一下这个Blog未来的定位，最后觉得以后应该侧重于这么几个方面：</p>
+<p>最近人比较懒，Blog 更新非常不勤快。在搬家之后，我思考了一下这个 Blog 未来的定位，最后觉得以后应该侧重于这么几个方面：</p>
 
-<p>1. Linux下的软件或者其他平台的开源软件的介绍（当然都是生活中常用的软件，那种跟我八杆子打不着的软件，我也不会因为它是开源的就一个劲儿宣传）</p>
+<p>1. Linux 下的软件或者其他平台的开源软件的介绍（当然都是生活中常用的软件，那种跟我八杆子打不着的软件，我也不会因为它是开源的就一个劲儿宣传）</p>
 
-<p>2. 编程，这个永远是Blog中应该出现的话题，虽然我已经好久没有编程了。</p>
+<p>2. 编程，这个永远是 Blog 中应该出现的话题，虽然我已经好久没有编程了。</p>
 
-<p>3. 因为最近折腾系统比较少了，所以关于Linux系统配置等文章，以后基本上不会出现了。而跟Linux系统有关的软件，当我有兴趣研究之后我会作为话题发上来。</p>
+<p>3. 因为最近折腾系统比较少了，所以关于 Linux 系统配置等文章，以后基本上不会出现了。而跟 Linux 系统有关的软件，当我有兴趣研究之后我会作为话题发上来。</p>
 
-<p>暂时就想到这么多，以后本Blog尽量不那么杂乱，好好耕耘，完毕～</p>
+<p>暂时就想到这么多，以后本 Blog 尽量不那么杂乱，好好耕耘，完毕～</p>
 </div>
 
 
@@ -146,7 +147,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/deprecated/'>deprecated</a>
+    <a class='category' href='/blog/categories/tooyoung/'>tooyoung</a>
   
 </span>
 
@@ -164,10 +165,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2009/10/16/update-to-xorg-server-1-7/" title="Previous Post: 更新到了xorg-server-1.7">&laquo; 更新到了xorg-server-1.7</a>
+        <a class="basic-alignment left" href="/blog/2009/10/16/update-to-xorg-server-1-7/" title="Previous Post: 更新到了 xorg-server-1.7">&laquo; 更新到了 xorg-server-1.7</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/12/23/some-notes-of-building-wordpress-blog/" title="Next Post: 新近摆弄WP的一点备忘">新近摆弄WP的一点备忘 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/12/23/some-notes-of-building-wordpress-blog/" title="Next Post: 新近摆弄 WP 的一点备忘">新近摆弄 WP 的一点备忘 &raquo;</a>
       
     </p>
   </footer>
