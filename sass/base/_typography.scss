@@ -111,8 +111,8 @@ article blockquote {
   $bq-margin: 1.2em;
   font-style: italic;
   position: relative;
-  font-size: 1.2em;
-  line-height: 1.5em;
+  font-size: .9em;
+  line-height: 1.2em;
   padding-left: 1em;
   border-left: 4px solid rgba($text-color-light, .5);
   cite {
@@ -161,4 +161,3 @@ article blockquote {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
-
