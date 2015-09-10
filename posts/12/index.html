@@ -9,7 +9,10 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="Wine 这个软件功能越来越强大了，非常好用～～～ 源里面的 Wine 版本太旧，正好在昨天，Wine 发布了 0.9.54 ，可以直接去官方网站http://www.winehq.org/site/download下载： 首先要获取密钥： wget -q http://wine. &hellip;">
+  <meta name="description" content="编译软件在 Linux 的软件安装方式中有着重要角色，最常用的就是使用“编译三部曲”：
+./configure (配置环境，生成 Makefile)
+make (编译链接，生成可执行文件或库)
+make install (将生成的文件复制到对应的路径下) 而在 configure &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +85,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/03/compile-error-index/">编译错误索引</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-02-03T00:00:00+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/02/03/compile-error-index/#disqus_thread"
+             data-disqus-identifier="http://www.casparzhang.com/blog/2008/02/03/compile-error-index/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>编译软件在 Linux 的软件安装方式中有着重要角色，最常用的就是使用“编译三部曲”：<br />
+./configure       (配置环境，生成 Makefile)<br />
+make                (编译链接，生成可执行文件或库)<br />
+make install     (将生成的文件复制到对应的路径下)</p>
+
+<p>而在 configure 阶段会产生各种各样的错误，大都是由于没有对应的类库而造成的。本文以 Ubuntu 为例列出如下索引：
+<blockquote>错误信息：C compiler cannot create executables<br />
+错误信息：C++ preprocessor "/lib/cpp" fails sanity check<br />
+错误分析：以上两条信息都是由于 C/C++编译组件没有安装完全导致的。在 Ubuntu 下有一个 build-essential 包，可以一次性将 C/C++编译包安装完全。
+<blockquote>sudo apt-get install build-essential</blockquote>
+</blockquote>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/02/03/compile-error-index/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -429,11 +478,15 @@ f 命令表示强制创建，覆盖同名文件。
   
     <section>
   <h1>Monthly Archives</h1>
-  <div class="monthly_archive"><ul class="year_list"><li class="year first_open">2015 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2015/05/'>MAY (3)</a></li></ul><li class="year first_open">2014 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2014/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2014/03/'>MAR (2)</a></li></ul><li class="year first_open">2013 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2013/06/'>JUN (1)</a></li></ul><li class="year first_open">2012 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2012/01/'>JAN (1)</a></li></ul><li class="year first_open">2011 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2011/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2011/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2011/03/'>MAR (1)</a></li></ul><li class="year first_open">2010 (10)</li><ul class="month_list"><li class="month"><a href='/blog/2010/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2010/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2010/05/'>MAY (1)</a></li><li class="month"><a href='/blog/2010/04/'>APR (3)</a></li><li class="month"><a href='/blog/2010/03/'>MAR (2)</a></li><li class="month"><a href='/blog/2010/01/'>JAN (1)</a></li></ul><li class="year first_open">2009 (29)</li><ul class="month_list"><li class="month"><a href='/blog/2009/12/'>DEC (2)</a></li><li class="month"><a href='/blog/2009/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2009/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2009/06/'>JUN (4)</a></li><li class="month"><a href='/blog/2009/05/'>MAY (2)</a></li><li class="month"><a href='/blog/2009/04/'>APR (5)</a></li><li class="month"><a href='/blog/2009/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2009/02/'>FEB (3)</a></li><li class="month"><a href='/blog/2009/01/'>JAN (2)</a></li></ul><li class="year first_open">2008 (66)</li><ul class="month_list"><li class="month"><a href='/blog/2008/12/'>DEC (3)</a></li><li class="month"><a href='/blog/2008/11/'>NOV (6)</a></li><li class="month"><a href='/blog/2008/10/'>OCT (4)</a></li><li class="month"><a href='/blog/2008/09/'>SEP (6)</a></li><li class="month"><a href='/blog/2008/08/'>AUG (5)</a></li><li class="month"><a href='/blog/2008/07/'>JUL (5)</a></li><li class="month"><a href='/blog/2008/06/'>JUN (5)</a></li><li class="month"><a href='/blog/2008/05/'>MAY (3)</a></li><li class="month"><a href='/blog/2008/04/'>APR (8)</a></li><li class="month"><a href='/blog/2008/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2008/02/'>FEB (7)</a></li><li class="month"><a href='/blog/2008/01/'>JAN (6)</a></li></ul><li class="year first_open">2007 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2007/12/'>DEC (1)</a></li></ul></ul></div>
+  <div class="monthly_archive"><ul class="year_list"><li class="year first_open">2015 (4)</li><ul class="month_list"><li class="month"><a href='/blog/2015/09/'>SEP (1)</a></li><li class="month"><a href='/blog/2015/05/'>MAY (3)</a></li></ul><li class="year first_open">2014 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2014/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2014/03/'>MAR (2)</a></li></ul><li class="year first_open">2013 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2013/06/'>JUN (1)</a></li></ul><li class="year first_open">2012 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2012/01/'>JAN (1)</a></li></ul><li class="year first_open">2011 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2011/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2011/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2011/03/'>MAR (1)</a></li></ul><li class="year first_open">2010 (10)</li><ul class="month_list"><li class="month"><a href='/blog/2010/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2010/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2010/05/'>MAY (1)</a></li><li class="month"><a href='/blog/2010/04/'>APR (3)</a></li><li class="month"><a href='/blog/2010/03/'>MAR (2)</a></li><li class="month"><a href='/blog/2010/01/'>JAN (1)</a></li></ul><li class="year first_open">2009 (29)</li><ul class="month_list"><li class="month"><a href='/blog/2009/12/'>DEC (2)</a></li><li class="month"><a href='/blog/2009/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2009/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2009/06/'>JUN (4)</a></li><li class="month"><a href='/blog/2009/05/'>MAY (2)</a></li><li class="month"><a href='/blog/2009/04/'>APR (5)</a></li><li class="month"><a href='/blog/2009/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2009/02/'>FEB (3)</a></li><li class="month"><a href='/blog/2009/01/'>JAN (2)</a></li></ul><li class="year first_open">2008 (66)</li><ul class="month_list"><li class="month"><a href='/blog/2008/12/'>DEC (3)</a></li><li class="month"><a href='/blog/2008/11/'>NOV (6)</a></li><li class="month"><a href='/blog/2008/10/'>OCT (4)</a></li><li class="month"><a href='/blog/2008/09/'>SEP (6)</a></li><li class="month"><a href='/blog/2008/08/'>AUG (5)</a></li><li class="month"><a href='/blog/2008/07/'>JUL (5)</a></li><li class="month"><a href='/blog/2008/06/'>JUN (5)</a></li><li class="month"><a href='/blog/2008/05/'>MAY (3)</a></li><li class="month"><a href='/blog/2008/04/'>APR (8)</a></li><li class="month"><a href='/blog/2008/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2008/02/'>FEB (7)</a></li><li class="month"><a href='/blog/2008/01/'>JAN (6)</a></li></ul><li class="year first_open">2007 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2007/12/'>DEC (1)</a></li></ul></ul></div>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/09/10/block-device-plugging/">Block Device Plugging</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/05/21/use-non-export-symbol/">Use Non-export Symbol</a>
@@ -449,10 +502,6 @@ f 命令表示强制创建，覆盖同名文件。
     
       <li class="post">
         <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
       </li>
     
   </ul>

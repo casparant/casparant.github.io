@@ -5,18 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Resolved: 如何更新 Git 补丁 - Ant-Veil</title>
+  <title>Block Device Plugging - Ant-Veil</title>
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="使用 git 制作补丁时，经常发现补丁需要修改。如果只是最后一次 commit 需要修改，那就好办，用下面的方法就可以搞定： 1
-2
-3
-4
-git reset HEAD^
-# edit edit edit
-git commit -a -s -c ORIG_HEAD
-git format- &hellip;">
+  <meta name="description" content="关于 block 设备的 plug 和 unplug 机制，可以参考这篇内核文档。简单来说就是内核提供了一个 plug 机制，请求被放到一个空队列里之后，队列就处于 &ldquo;plugged&rdquo; 状态，攒够足够多的请求之后，将队列 &ldquo;unplug"， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -25,7 +18,7 @@ git format- &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.casparzhang.com/blog/2012/01/03/how-to-update-your-git-patches/">
+  <link rel="canonical" href="http://www.casparzhang.com/blog/2015/09/10/block-device-plugging/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Ant-Veil" type="application/atom+xml">
@@ -92,7 +85,7 @@ git format- &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Resolved: 如何更新 Git 补丁</h1>
+      <h1 class="entry-title">Block Device Plugging</h1>
     
     
       <p class="meta">
@@ -101,7 +94,7 @@ git format- &hellip;">
 
 
 
-<time class='entry-date' datetime='2012-01-03T00:00:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+<time class='entry-date' datetime='2015-09-10T18:31:25+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:31 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://www.casparzhang.com">Comments</a>
@@ -111,71 +104,111 @@ git format- &hellip;">
   </header>
 
 
-<div class="entry-content"><p>使用 git 制作补丁时，经常发现补丁需要修改。如果只是最后一次 commit 需要修改，那就好办，用下面的方法就可以搞定：</p>
+<div class="entry-content"><p>关于 block 设备的 plug 和 unplug 机制，可以参考<a href="http://lxr.free-electrons.com/source/Documentation/block/biodoc.txt#L1011">这篇</a>内核文档。简单来说就是内核提供了一个 plug 机制，请求被放到一个空队列里之后，队列就处于 &ldquo;plugged&rdquo; 状态，攒够足够多的请求之后，将队列 &ldquo;unplug"，然后把队列里的请求一次性发射到驱动中，在这期间，I/O 的调度算法将有机会对请求进行合并和排序。unplug 的时机可以是一个手工的 <code>blk_unplug()</code> 操作，也可以由一个 <code>unplug_timer</code> 定时器超时触发。显而易见，这个定时器的启动是在 plug 阶段(见 block/blk-core.c 中的实现):</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git reset HEAD^
-</span><span class='line'><span class="c"># edit edit edit</span>
-</span><span class='line'>git commit -a -s -c ORIG_HEAD
-</span><span class='line'>git format-patch --subject-prefix<span class="o">=</span><span class="s2">&quot;PATCH v2&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>void blk_plug_device(struct request_queue *q)
+</span><span class='line'>{
+</span><span class='line'>        WARN_ON(!irqs_disabled());
+</span><span class='line'>        /*
+</span><span class='line'>         * don't plug a stopped queue, it must be paired with blk_start_queue()
+</span><span class='line'>         * which will restart the queueing
+</span><span class='line'>         */
+</span><span class='line'>        if (blk_queue_stopped(q))
+</span><span class='line'>                return;
+</span><span class='line'>        if (!queue_flag_test_and_set(QUEUE_FLAG_PLUGGED, q)) {
+</span><span class='line'>                mod_timer(&q-&gt;unplug_timer, jiffies + q-&gt;unplug_delay);
+</span><span class='line'>                trace_block_plug(q);
+</span><span class='line'>        }
+</span><span class='line'>}
+</span><span class='line'>EXPORT_SYMBOL(blk_plug_device);</span></code></pre></td></tr></table></div></figure>
 
 
-<p>但是如果是一系列补丁中的中间几个补丁需要修改，该怎么办呢？</p>
+<p>而定时器超时函数见同一个文件：</p>
 
-<p><del datetime="2012-01-03T16:12:57+00:00">笨办法已经被删掉>.&lt;</del></p>
-
-<!--more-->
-
-
-<p><strong>Update 1:</strong> 非常感谢 wangcong 的指点！<code>git rebase -i</code> 可以出色地完成这个任务，方法在 man-page 里面有详述，见 <strong><em>INTERACTIVE MODE</em></strong> 和 <strong><em>SPLITTING COMMITS</em></strong> 部分。</p>
-
-<p>假设当前所在分支名为 <strong>topic</strong> ，做了 3 个补丁，打算提交给邮件列表的时候发现中间一个补丁需要更新，此时使用下列命令：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git rebase -i HEAD~4
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>出现编辑窗口如下：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>pick 21732a8 mm/swapping01: new testcase
-</span><span class='line'>pick c3751d1 hugemmap01: clean-up format
-</span><span class='line'>pick d75449c mm/swapping01: change sleep <span class="nb">time </span>to <span class="m">5</span> sec
-</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>void blk_unplug_timeout(unsigned long data)
+</span><span class='line'>{
+</span><span class='line'>        struct request_queue *q = (struct request_queue *)data;
+</span><span class='line'>        trace_block_unplug_timer(q);
+</span><span class='line'>        kblockd_schedule_work(q, &q-&gt;unplug_work);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 
-<p>此时需要修改 <code>commit c3751d1</code>，则把 <code>pick</code> 改为 <code>edit</code> 即可。保存退出后 git 会 rebase 到需要修改的 commit 处停止，此时可以直接修改内容，然后执行：</p>
+<p>这个函数是在 <code>blk_queue_make_request</code> 定义的时候设置的(见 block/blk-settings.c)：</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git add xxx <span class="c"># mark as resolved</span>
-</span><span class='line'>git commit --amend
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>或者</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git reset --soft HEAD^
-</span><span class='line'><span class="c">#edit edit edit</span>
-</span><span class='line'>git commit -a -s -c ORIG_HEAD
-</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>void blk_queue_make_request(struct request_queue *q, make_request_fn *mfn)
+</span><span class='line'>{
+</span><span class='line'>        &lt;snip&gt;
+</span><span class='line'>        q-&gt;unplug_thresh = 4;           /* hmm */
+</span><span class='line'>        q-&gt;unplug_delay = msecs_to_jiffies(3);  /* 3 milliseconds */
+</span><span class='line'>        if (q-&gt;unplug_delay == 0)
+</span><span class='line'>                q-&gt;unplug_delay = 1;
+</span><span class='line'>        q-&gt;unplug_timer.function = blk_unplug_timeout;
+</span><span class='line'>        q-&gt;unplug_timer.data = (unsigned long)q;
+</span><span class='line'>        &lt;snip&gt;</span></code></pre></td></tr></table></div></figure>
 
 
-<p>之后执行 <code>git rebase --continue</code> 即可。</p>
+<p></p>
 
-<p>突然想起来一年前就请教过 wangcong 这个问题，只不过当时对 <code>git rebase</code> 完全不了解，后来就忘了，惭愧 -_-|||。</p>
+<p>可以看到除了定义了超时函数，还定义了超时的时间，是 3ms. 这个 3ms 可以用来排查一系列奇怪的 I/O 性能问题。比如说在 iodepth 为 1 的情况下，发现 IOPS 是很固定的 333，那么多半就是因为请求队列没有及时 unplug 而等到定时器超时了。因为每个队列需要 3ms 传输，那一秒钟只能传送 333 个队列，而此时一个队列只包含一个 I/O。</p>
 
-<p><strong>Update 2</strong>: 同样感谢 Iven 的指点，可以去看看他的文章: <a href="http://www.kissuki.com/?p=135">http://www.kissuki.com/?p=135</a></p>
+<p>如果要及时 unplug，就需要调用 <code>blk_unplug()</code> 函数，或者 <code>generic_unplug_device()</code> 函数，从通用性来说，调用前者会比较好，看如下代码(block/blk-core.c):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>void blk_unplug(struct request_queue *q)
+</span><span class='line'>{
+</span><span class='line'>        /*
+</span><span class='line'>         * devices don't necessarily have an -&gt;unplug_fn defined
+</span><span class='line'>         */
+</span><span class='line'>        if (q-&gt;unplug_fn) {
+</span><span class='line'>                trace_block_unplug_io(q);
+</span><span class='line'>                q-&gt;unplug_fn(q);
+</span><span class='line'>        }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果 <code>q-&gt;unplug_fn</code> 没有定义，会使用默认的函数，即 <code>generic_unplug_device()</code>。</p>
+
+<p>看完了这几个函数，可以知道，plug 完之后及时 unplug 某种程度上是避免延迟过高的良好手段。</p>
 </div>
 
 
@@ -191,12 +224,12 @@ git format- &hellip;">
 
 
 
-<time class='entry-date' datetime='2012-01-03T00:00:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+<time class='entry-date' datetime='2015-09-10T18:31:25+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:31 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/z-turn/'>z-turn</a>
+    <a class='category' href='/blog/categories/kernel/'>kernel</a>
   
 </span>
 
@@ -205,7 +238,7 @@ git format- &hellip;">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.casparzhang.com/blog/2012/01/03/how-to-update-your-git-patches/" data-via="casparant" data-counturl="http://www.casparzhang.com/blog/2012/01/03/how-to-update-your-git-patches/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.casparzhang.com/blog/2015/09/10/block-device-plugging/" data-via="casparant" data-counturl="http://www.casparzhang.com/blog/2015/09/10/block-device-plugging/" >Tweet</a>
   
   
   
@@ -214,10 +247,8 @@ git format- &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2011/10/12/cm7-1-on-defy/" title="Previous Post: CM7.1 on DEFY">&laquo; CM7.1 on DEFY</a>
+        <a class="basic-alignment left" href="/blog/2015/05/21/use-non-export-symbol/" title="Previous Post: Use Non-export Symbol">&laquo; Use Non-export Symbol</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/06/06/some-misc-items-of-mce/" title="Next Post: MCE 的一些零散记录">MCE 的一些零散记录 &raquo;</a>
       
     </p>
   </footer>
@@ -345,8 +376,8 @@ git format- &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.casparzhang.com/blog/2012/01/03/how-to-update-your-git-patches/';
-        var disqus_url = 'http://www.casparzhang.com/blog/2012/01/03/how-to-update-your-git-patches/';
+        var disqus_identifier = 'http://www.casparzhang.com/blog/2015/09/10/block-device-plugging/';
+        var disqus_url = 'http://www.casparzhang.com/blog/2015/09/10/block-device-plugging/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="在支付宝的官方 Blog 上，已经可以使用了。打开 alipay 的页面终于可以登录了，只是登录后要付款，发现招行还是不行，支付宝里面没钱也是白搭啊…… 下载地址在这里：http://blog.alipay.com/ 下面是官方消息的转载，暂时不支持数字签名。不管怎么说，还是值得期待的。 ">
+  <meta name="description" content="值此 Ubuntu 8.10 发布之际（终于发布了，再不发布那就得叫 Ubuntu 8.11 了），特作此文。本文只是作为一个 Ubuntu 入门教材参考，因为很多人说我写 Ubuntu 安装教程时很多地方写的很模糊，对于没有 Linux 基础的人来说无异于天书- -b 孩子们，满足你们的愿望吧 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/10/31/ubuntu-configuration-appendix/">在 Ubuntu 下编程开发配置 Tips</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-10-31T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/10/31/ubuntu-configuration-appendix/#disqus_thread"
+             data-disqus-identifier="http://www.casparzhang.com/blog/2008/10/31/ubuntu-configuration-appendix/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>值此 Ubuntu 8.10 发布之际（终于发布了，再不发布那就得叫 Ubuntu 8.11 了），特作此文。本文只是作为一个 Ubuntu 入门教材参考，因为很多人说我写 Ubuntu 安装教程时很多地方写的很模糊，对于没有 Linux 基础的人来说无异于天书- -b 孩子们，满足你们的愿望吧…</p>
+
+<p>本文基于如下对读者的假设：</p>
+
+<p>1. Ubuntu Linux 安装成功。如果迄今为止没有成功，请询问身边已经安装成功的人。我相信安装成功的人的数量，在学校抓一把至少其中含有一个。</p>
+
+<p>2. 了解终端是什么，知道如何打开终端输入命令，了解命令语法。如果不知道如何打开终端输入命令，我也没办法……以下所有叙述，如果涉及命令操作，必然是在终端中进行操作。学过 DOS 的人应该对这一点在理解上没有难度，在 Windows 下用过 cmd 运行 ping 命令检测网络的人在理解上应该也没有难度。关于命令的语法，比如 sudo apt-get install OO_AND_XX 这个命令，表示在使用 root 权限(sudo)的情况下使用软件包管理工具(apt-get)进行安装 (install)OO_AND_XX 这个软件包的操作；同理 sudo gedit /etc/apt/sources.list 这个命令表示在使用 root 权限的情况下使用 gedit 这个文本编辑器打开/etc/apt/路径下的 sources.list 这个文件进行编辑(真费劲- -b)</p>
+
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/10/31/ubuntu-configuration-appendix/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -518,71 +561,6 @@ tray_icon_added (EggTrayManager *manager,
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/08/19/something-about-pidgin/">Pidgin 琐碎二三事</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-08-19T00:00:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2008/08/19/something-about-pidgin/#disqus_thread"
-             data-disqus-identifier="http://www.casparzhang.com/blog/2008/08/19/something-about-pidgin/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>1.<strong>Pidgin 2.5.0 发布</strong></p>
-
-<p>从<a href="http://yegle.net/2008/08/19/pidgin-250-released/">狗狗</a>那里看到<a href="http://www.cnbeta.com/articles/62626.htm">cnbeta</a>上说<a href="http://sourceforge.net/projects/pidgin/?abmode=1">sourceforge.net 已经放出了 pidgin-2.5.0</a>，而<a href="http://www.pidgin.im">官网上</a>还没发布呢。</p>
-
-<p>这不禁让我开始思考，我要不要把 cb 的 rss 重新放回我的订阅列表呢？</p>
-
-<p>安装完毕需要运行一下 ldconfig，要不然 symbolic link 有问题，囧。</p>
-
-<p>安装完最显眼的就是那只鸽子的鼻子更红了- -b，刚开始差点被吓到……</p>
-
-<p>原来 MSN 的群里输入/showname 就可以显示群里发言人的名字了呀，幸亏狗狗提醒我，要不然我又要打补丁了，真是够 zt，嗯……</p>
-
-<p>ChangeLog 中的亮点：</p>
-
-<p><blockquote>version 2.5.0 (08/18/2008):<br />
-	libpurple:<br />
-	* Ability to create custom smileys (currently only the MSN protocol<br />
-	  utilizes the feature). (Thanks to Mauro Sérgio Ferreira Brasil,<br />
-	  Marcus Lundblad, Jorge Villaseñor and other contributors)</blockquote></p>
-
-<p>	MSN:<br />
-	* Update MSN support to protocol 15 (Elliott Sales de Andrade, Jorge<br />
-	  Villaseñor, Mike Ruprecht, Carlos Silva, Ma Yuan, Daniel Ljungborg<br />
-	  and others)<br />
-	* Personal messages are now supported. They are treated as status<br />
-	  messages.<br />
-	* Offline IM is now supported.<br />
-	* Aliasing is now supported server-side.
-</p>
-
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2008/08/19/something-about-pidgin/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/8">&larr; Older</a>
@@ -597,11 +575,15 @@ tray_icon_added (EggTrayManager *manager,
   
     <section>
   <h1>Monthly Archives</h1>
-  <div class="monthly_archive"><ul class="year_list"><li class="year first_open">2015 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2015/05/'>MAY (3)</a></li></ul><li class="year first_open">2014 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2014/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2014/03/'>MAR (2)</a></li></ul><li class="year first_open">2013 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2013/06/'>JUN (1)</a></li></ul><li class="year first_open">2012 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2012/01/'>JAN (1)</a></li></ul><li class="year first_open">2011 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2011/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2011/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2011/03/'>MAR (1)</a></li></ul><li class="year first_open">2010 (10)</li><ul class="month_list"><li class="month"><a href='/blog/2010/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2010/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2010/05/'>MAY (1)</a></li><li class="month"><a href='/blog/2010/04/'>APR (3)</a></li><li class="month"><a href='/blog/2010/03/'>MAR (2)</a></li><li class="month"><a href='/blog/2010/01/'>JAN (1)</a></li></ul><li class="year first_open">2009 (29)</li><ul class="month_list"><li class="month"><a href='/blog/2009/12/'>DEC (2)</a></li><li class="month"><a href='/blog/2009/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2009/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2009/06/'>JUN (4)</a></li><li class="month"><a href='/blog/2009/05/'>MAY (2)</a></li><li class="month"><a href='/blog/2009/04/'>APR (5)</a></li><li class="month"><a href='/blog/2009/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2009/02/'>FEB (3)</a></li><li class="month"><a href='/blog/2009/01/'>JAN (2)</a></li></ul><li class="year first_open">2008 (66)</li><ul class="month_list"><li class="month"><a href='/blog/2008/12/'>DEC (3)</a></li><li class="month"><a href='/blog/2008/11/'>NOV (6)</a></li><li class="month"><a href='/blog/2008/10/'>OCT (4)</a></li><li class="month"><a href='/blog/2008/09/'>SEP (6)</a></li><li class="month"><a href='/blog/2008/08/'>AUG (5)</a></li><li class="month"><a href='/blog/2008/07/'>JUL (5)</a></li><li class="month"><a href='/blog/2008/06/'>JUN (5)</a></li><li class="month"><a href='/blog/2008/05/'>MAY (3)</a></li><li class="month"><a href='/blog/2008/04/'>APR (8)</a></li><li class="month"><a href='/blog/2008/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2008/02/'>FEB (7)</a></li><li class="month"><a href='/blog/2008/01/'>JAN (6)</a></li></ul><li class="year first_open">2007 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2007/12/'>DEC (1)</a></li></ul></ul></div>
+  <div class="monthly_archive"><ul class="year_list"><li class="year first_open">2015 (4)</li><ul class="month_list"><li class="month"><a href='/blog/2015/09/'>SEP (1)</a></li><li class="month"><a href='/blog/2015/05/'>MAY (3)</a></li></ul><li class="year first_open">2014 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2014/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2014/03/'>MAR (2)</a></li></ul><li class="year first_open">2013 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2013/06/'>JUN (1)</a></li></ul><li class="year first_open">2012 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2012/01/'>JAN (1)</a></li></ul><li class="year first_open">2011 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2011/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2011/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2011/03/'>MAR (1)</a></li></ul><li class="year first_open">2010 (10)</li><ul class="month_list"><li class="month"><a href='/blog/2010/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2010/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2010/05/'>MAY (1)</a></li><li class="month"><a href='/blog/2010/04/'>APR (3)</a></li><li class="month"><a href='/blog/2010/03/'>MAR (2)</a></li><li class="month"><a href='/blog/2010/01/'>JAN (1)</a></li></ul><li class="year first_open">2009 (29)</li><ul class="month_list"><li class="month"><a href='/blog/2009/12/'>DEC (2)</a></li><li class="month"><a href='/blog/2009/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2009/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2009/06/'>JUN (4)</a></li><li class="month"><a href='/blog/2009/05/'>MAY (2)</a></li><li class="month"><a href='/blog/2009/04/'>APR (5)</a></li><li class="month"><a href='/blog/2009/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2009/02/'>FEB (3)</a></li><li class="month"><a href='/blog/2009/01/'>JAN (2)</a></li></ul><li class="year first_open">2008 (66)</li><ul class="month_list"><li class="month"><a href='/blog/2008/12/'>DEC (3)</a></li><li class="month"><a href='/blog/2008/11/'>NOV (6)</a></li><li class="month"><a href='/blog/2008/10/'>OCT (4)</a></li><li class="month"><a href='/blog/2008/09/'>SEP (6)</a></li><li class="month"><a href='/blog/2008/08/'>AUG (5)</a></li><li class="month"><a href='/blog/2008/07/'>JUL (5)</a></li><li class="month"><a href='/blog/2008/06/'>JUN (5)</a></li><li class="month"><a href='/blog/2008/05/'>MAY (3)</a></li><li class="month"><a href='/blog/2008/04/'>APR (8)</a></li><li class="month"><a href='/blog/2008/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2008/02/'>FEB (7)</a></li><li class="month"><a href='/blog/2008/01/'>JAN (6)</a></li></ul><li class="year first_open">2007 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2007/12/'>DEC (1)</a></li></ul></ul></div>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/09/10/block-device-plugging/">Block Device Plugging</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/05/21/use-non-export-symbol/">Use Non-export Symbol</a>
@@ -617,10 +599,6 @@ tray_icon_added (EggTrayManager *manager,
     
       <li class="post">
         <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a>
       </li>
     
   </ul>

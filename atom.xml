@@ -4,7 +4,7 @@
   <title><![CDATA[Ant-Veil]]></title>
   <link href="http://www.casparzhang.com/atom.xml" rel="self"/>
   <link href="http://www.casparzhang.com/"/>
-  <updated>2015-09-06T12:33:00+08:00</updated>
+  <updated>2015-09-10T18:32:55+08:00</updated>
   <id>http://www.casparzhang.com/</id>
   <author>
     <name><![CDATA[Caspar]]></name>
@@ -12,6 +12,119 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Block Device Plugging]]></title>
+    <link href="http://www.casparzhang.com/blog/2015/09/10/block-device-plugging/"/>
+    <updated>2015-09-10T18:31:25+08:00</updated>
+    <id>http://www.casparzhang.com/blog/2015/09/10/block-device-plugging</id>
+    <content type="html"><![CDATA[<p>关于 block 设备的 plug 和 unplug 机制，可以参考<a href="http://lxr.free-electrons.com/source/Documentation/block/biodoc.txt#L1011">这篇</a>内核文档。简单来说就是内核提供了一个 plug 机制，请求被放到一个空队列里之后，队列就处于 &ldquo;plugged&rdquo; 状态，攒够足够多的请求之后，将队列 &ldquo;unplug"，然后把队列里的请求一次性发射到驱动中，在这期间，I/O 的调度算法将有机会对请求进行合并和排序。unplug 的时机可以是一个手工的 <code>blk_unplug()</code> 操作，也可以由一个 <code>unplug_timer</code> 定时器超时触发。显而易见，这个定时器的启动是在 plug 阶段(见 block/blk-core.c 中的实现):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>void blk_plug_device(struct request_queue *q)
+</span><span class='line'>{
+</span><span class='line'>        WARN_ON(!irqs_disabled());
+</span><span class='line'>        /*
+</span><span class='line'>         * don't plug a stopped queue, it must be paired with blk_start_queue()
+</span><span class='line'>         * which will restart the queueing
+</span><span class='line'>         */
+</span><span class='line'>        if (blk_queue_stopped(q))
+</span><span class='line'>                return;
+</span><span class='line'>        if (!queue_flag_test_and_set(QUEUE_FLAG_PLUGGED, q)) {
+</span><span class='line'>                mod_timer(&q-&gt;unplug_timer, jiffies + q-&gt;unplug_delay);
+</span><span class='line'>                trace_block_plug(q);
+</span><span class='line'>        }
+</span><span class='line'>}
+</span><span class='line'>EXPORT_SYMBOL(blk_plug_device);</span></code></pre></td></tr></table></div></figure>
+
+
+<p>而定时器超时函数见同一个文件：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>void blk_unplug_timeout(unsigned long data)
+</span><span class='line'>{
+</span><span class='line'>        struct request_queue *q = (struct request_queue *)data;
+</span><span class='line'>        trace_block_unplug_timer(q);
+</span><span class='line'>        kblockd_schedule_work(q, &q-&gt;unplug_work);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个函数是在 <code>blk_queue_make_request</code> 定义的时候设置的(见 block/blk-settings.c)：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>void blk_queue_make_request(struct request_queue *q, make_request_fn *mfn)
+</span><span class='line'>{
+</span><span class='line'>        &lt;snip&gt;
+</span><span class='line'>        q-&gt;unplug_thresh = 4;           /* hmm */
+</span><span class='line'>        q-&gt;unplug_delay = msecs_to_jiffies(3);  /* 3 milliseconds */
+</span><span class='line'>        if (q-&gt;unplug_delay == 0)
+</span><span class='line'>                q-&gt;unplug_delay = 1;
+</span><span class='line'>        q-&gt;unplug_timer.function = blk_unplug_timeout;
+</span><span class='line'>        q-&gt;unplug_timer.data = (unsigned long)q;
+</span><span class='line'>        &lt;snip&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>可以看到除了定义了超时函数，还定义了超时的时间，是 3ms. 这个 3ms 可以用来排查一系列奇怪的 I/O 性能问题。比如说在 iodepth 为 1 的情况下，发现 IOPS 是很固定的 333，那么多半就是因为请求队列没有及时 unplug 而等到定时器超时了。因为每个队列需要 3ms 传输，那一秒钟只能传送 333 个队列，而此时一个队列只包含一个 I/O。</p>
+
+<p>如果要及时 unplug，就需要调用 <code>blk_unplug()</code> 函数，或者 <code>generic_unplug_device()</code> 函数，从通用性来说，调用前者会比较好，看如下代码(block/blk-core.c):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>void blk_unplug(struct request_queue *q)
+</span><span class='line'>{
+</span><span class='line'>        /*
+</span><span class='line'>         * devices don't necessarily have an -&gt;unplug_fn defined
+</span><span class='line'>         */
+</span><span class='line'>        if (q-&gt;unplug_fn) {
+</span><span class='line'>                trace_block_unplug_io(q);
+</span><span class='line'>                q-&gt;unplug_fn(q);
+</span><span class='line'>        }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果 <code>q-&gt;unplug_fn</code> 没有定义，会使用默认的函数，即 <code>generic_unplug_device()</code>。</p>
+
+<p>看完了这几个函数，可以知道，plug 完之后及时 unplug 某种程度上是避免延迟过高的良好手段。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Use Non-export Symbol]]></title>
@@ -1222,37 +1335,6 @@ fi
 <p>鼠标手势+文字选中/链接拖拽：Smooth Gestures + Yet Another Drag and Go(Drag and Go 很不好用，还是这个好)。</p>
 
 <p>欢迎向我推荐其他更好用的 Chrome 扩展。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[D3000 安装裂像屏的惨痛经历]]></title>
-    <link href="http://www.casparzhang.com/blog/2010/03/14/the-painful-experience-of-installing-split-image-screen-on-d3000/"/>
-    <updated>2010-03-14T00:00:00+08:00</updated>
-    <id>http://www.casparzhang.com/blog/2010/03/14/the-painful-experience-of-installing-split-image-screen-on-d3000</id>
-    <content type="html"><![CDATA[<p>下午实在等不住晚一天拿到裂像屏，就自己冒雪跑上地取了，汗。设备是在淘宝上一个叫“对焦工厂”的店里买的，他那对焦设备还挺齐全，连 D3000 这种超低端机的裂像屏都有，价格在 110-190 都有。我买了个最好的裂像屏，再买了个取景放大器。回到家中鞋子都没甩干就开始安装。</p>
-
-<p>按照网上的说明，机身倒放，打开弹簧钢丝卡扣。结果手指指甲刚剪掉，伸进去扳不开卡扣，用了镊子挑，还把周围的塑料刮花了。没想到的是这就成了今天装裂像屏的惨痛开端。</p>
-
-<p>终于把钢丝卡扣打开了，把原来的屏倒出来，把对焦屏放进去。然后想把卡扣卡回去。用了手指按，按不下去。用包了橡胶的镊子按，使不上力。一急之下把橡胶给去掉继续用镊子按，结果手一滑，镊子在对焦屏上划过……留下两条道道。顿时觉得这一百多大洋买的东西就这么被我给毁了，心痛万分。</p>
-
-<p>后来找到窍门了，还是需要指甲，看看自己右手食指指甲昨天没剪太短，伸进去，一按一推，终于把钢丝推回去了。</p>
-
-<p>打开相机，取景器里面一看，两条道道清晰可见，以后只能在拍照的时候视而不见了，痛苦万分。再仔细观察对焦屏，居然有两颗巨大的灰尘，取下镜头一看，还是在里侧，只好再次打开弹簧卡扣，用气吹吹掉，再放回去。这两下折腾，钢丝似乎都被我弄变形了。</p>
-
-<p><!--more-->最后总算是安装完成了，没有灰卡，找了个钢尺测试对焦，裂像重合的时候正好合焦，对焦还是很准确的。</p>
-
-<p>使用感受：D3000 机器实在是比较小，取景器也好小，我安装了一个取景放大器看起来都不够大，在被摄体对比不明显的时候，中间裂像的圆圈容易被取景器中间对焦点的圆矩形方框盖住，很难观察清楚被摄体的裂像。另外 D3000 机器拆装对焦屏太折腾了，远没有网上介绍的那么容易拆卸。不过现在对安装裂像屏的效果下断言还太早，拍几天试试吧。</p>
-
-<p>经验教训：拆卸弹簧钢丝卡扣的时候，不要心急，钢丝外侧的正中间卡在塑料扣的下方，往外稍微用力把钢丝拉离塑料扣就可以了，实在不行仔细地用极细的针挑出来也可以。对焦屏取出来可以用来倒，放回去要注意防呆设计，屏上长边的突起朝左外侧。用镊子的时候一定要包好橡胶。卡口推回去要找准地方，可以用指甲往塑料扣方向按下去，然后推向相机里侧。总之一定不能心急，心急吃不了臭豆腐，还会弄坏零件 T_T</p>
-
-<p>P.S. 新建 Photography 分类，记录摄影相关文章。</p>
-
-<p>------ 0318 分割线 ------</p>
-
-<p>终于忍不住重新买了块屏，所谓“大眼睛”，裂像特别大，直径占了取景器短边的 70%左右。在公司收到快递，花了一分钟就组装好了，这次特别麻利。大裂像果然用起来特别舒服，哇哈哈。不过问题还是有的，一个是上下两个半圆居然不是平分在中心对焦点两侧，而是偏上方一点点，不过还好裂像比较大，没什么关系。<del datetime="2010-03-18T16:13:39+00:00">就是比较影响测光，减了 0.7ev 差不多正常。因为在公司，没法仔细检测测光，回家后再测吧。</del></p>
-
-<p>那块废掉的屏，呜呜呜……就当我在路上走路丢了 200 块钱吧……</p>
 ]]></content>
   </entry>
   
