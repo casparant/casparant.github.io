@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Kernel | Ant-Veil]]></title>
   <link href="http://www.casparzhang.com/blog/categories/kernel/atom.xml" rel="self"/>
   <link href="http://www.casparzhang.com/"/>
-  <updated>2015-09-10T18:32:55+08:00</updated>
+  <updated>2015-09-10T18:35:36+08:00</updated>
   <id>http://www.casparzhang.com/</id>
   <author>
     <name><![CDATA[Caspar]]></name>
@@ -46,6 +46,9 @@ EXPORT_SYMBOL(blk_plug_device);
         kblockd_schedule_work(q, &amp;q-&gt;unplug_work);
 }
 </code></pre>
+
+<!--more-->
+
 
 <p>这个函数是在 <code>blk_queue_make_request</code> 定义的时候设置的(见 block/blk-settings.c)：</p>
 

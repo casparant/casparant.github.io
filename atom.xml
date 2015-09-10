@@ -4,7 +4,7 @@
   <title><![CDATA[Ant-Veil]]></title>
   <link href="http://www.casparzhang.com/atom.xml" rel="self"/>
   <link href="http://www.casparzhang.com/"/>
-  <updated>2015-09-10T18:32:55+08:00</updated>
+  <updated>2015-09-10T18:35:36+08:00</updated>
   <id>http://www.casparzhang.com/</id>
   <author>
     <name><![CDATA[Caspar]]></name>
@@ -66,6 +66,11 @@
 </span><span class='line'>        trace_block_unplug_timer(q);
 </span><span class='line'>        kblockd_schedule_work(q, &q-&gt;unplug_work);
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!--more-->
 
 
 <p>这个函数是在 <code>blk_queue_make_request</code> 定义的时候设置的(见 block/blk-settings.c)：</p>
