@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Kernel | Ant-Veil]]></title>
   <link href="http://www.casparzhang.com/blog/categories/kernel/atom.xml" rel="self"/>
   <link href="http://www.casparzhang.com/"/>
-  <updated>2015-09-10T18:35:36+08:00</updated>
+  <updated>2015-09-10T20:24:15+08:00</updated>
   <id>http://www.casparzhang.com/</id>
   <author>
     <name><![CDATA[Caspar]]></name>
@@ -18,7 +18,9 @@
     <link href="http://www.casparzhang.com/blog/2015/09/10/block-device-plugging/"/>
     <updated>2015-09-10T18:31:25+08:00</updated>
     <id>http://www.casparzhang.com/blog/2015/09/10/block-device-plugging</id>
-    <content type="html"><![CDATA[<p>关于 block 设备的 plug 和 unplug 机制，可以参考<a href="http://lxr.free-electrons.com/source/Documentation/block/biodoc.txt#L1011">这篇</a>内核文档。简单来说就是内核提供了一个 plug 机制，请求被放到一个空队列里之后，队列就处于 &ldquo;plugged&rdquo; 状态，攒够足够多的请求之后，将队列 &ldquo;unplug"，然后把队列里的请求一次性发射到驱动中，在这期间，I/O 的调度算法将有机会对请求进行合并和排序。unplug 的时机可以是一个手工的 <code>blk_unplug()</code> 操作，也可以由一个 <code>unplug_timer</code> 定时器超时触发。显而易见，这个定时器的启动是在 plug 阶段(见 block/blk-core.c 中的实现):</p>
+    <content type="html"><![CDATA[<p>关于 block 设备的 plug 和 unplug 机制，可以参考<a href="http://lxr.free-electrons.com/source/Documentation/block/biodoc.txt#L1011">这篇</a>内核文档。简单来说就是内核提供了一个 plug 机制，请求被放到一个空队列里之后，可以将队列处于 &ldquo;plugged&rdquo; 状态，此时队列并不真正向下层设备发射(issue)请求，而是攒够足够多的请求之后，将队列 &ldquo;unplug&rdquo; 之后才发射，在这期间，I/O 的调度算法将有机会对请求进行合并和排序。unplug 的时机既可以是一个手工的 <code>blk_unplug()</code> 操作，也可以由一个 <code>unplug_timer</code> 定时器超时触发。这整个过程听起来有点像在等机场大巴，到站停靠(plug)，装载乘客(攒 request)，到点发车(unplug_timeout)或者人满发车(blk_unplug)。</p>
+
+<p>很容易想到，unplug_timer 这个定时器的启动会发生在 plug 阶段(见 block/blk-core.c 中的实现):</p>
 
 <pre><code>void blk_plug_device(struct request_queue *q)
 {
@@ -37,7 +39,7 @@
 EXPORT_SYMBOL(blk_plug_device);
 </code></pre>
 
-<p>而定时器超时函数见同一个文件：</p>
+<p>而定时器超时函数见同一个文件下的实现：</p>
 
 <pre><code>void blk_unplug_timeout(unsigned long data)
 {
@@ -46,9 +48,6 @@ EXPORT_SYMBOL(blk_plug_device);
         kblockd_schedule_work(q, &amp;q-&gt;unplug_work);
 }
 </code></pre>
-
-<!--more-->
-
 
 <p>这个函数是在 <code>blk_queue_make_request</code> 定义的时候设置的(见 block/blk-settings.c)：</p>
 
@@ -62,11 +61,12 @@ EXPORT_SYMBOL(blk_plug_device);
         q-&gt;unplug_timer.function = blk_unplug_timeout;
         q-&gt;unplug_timer.data = (unsigned long)q;
         &lt;snip&gt;
+}
 </code></pre>
 
-<p>可以看到除了定义了超时函数，还定义了超时的时间，是 3ms. 这个 3ms 可以用来排查一系列奇怪的 I/O 性能问题。比如说在 iodepth 为 1 的情况下，发现 IOPS 是很固定的 333，那么多半就是因为请求队列没有及时 unplug 而等到定时器超时了。因为每个队列需要 3ms 传输，那一秒钟只能传送 333 个队列，而此时一个队列只包含一个 I/O。</p>
+<p>可以看到除了定义了超时函数，还定义了超时的时间，是 3ms. 这个 3ms 可以用来排查一系列奇怪的 I/O 性能问题。比如说在 iodepth 为 1 的情况下，发现 IOPS 是很固定的 333，那么多半就是因为请求队列没有及时 unplug 而导致定时器超时自动 unplug 了。通过简单计算得知，因为每个队列需要 3ms 传输，那一秒钟只能传送 333 个队列，即 IOPS == 333.</p>
 
-<p>如果要及时 unplug，就需要调用 <code>blk_unplug()</code> 函数，或者 <code>generic_unplug_device()</code> 函数，从通用性来说，调用前者会比较好，看如下代码(block/blk-core.c):</p>
+<p>如果要主动 unplug，就需要调用 <code>blk_unplug()</code> 函数，或者 <code>generic_unplug_device()</code> 函数，从通用性来说，调用前者会比较好，看如下代码(block/blk-core.c):</p>
 
 <pre><code>void blk_unplug(struct request_queue *q)
 {
@@ -80,9 +80,9 @@ EXPORT_SYMBOL(blk_plug_device);
 }
 </code></pre>
 
-<p>如果 <code>q-&gt;unplug_fn</code> 没有定义，会使用默认的函数，即 <code>generic_unplug_device()</code>。</p>
+<p> <code>q-&gt;unplug_fn</code> 一般不需要自行设置，如果没有定义，会使用默认的函数，即 <code>generic_unplug_device()</code>。</p>
 
-<p>看完了这几个函数，可以知道，plug 完之后及时 unplug 某种程度上是避免延迟过高的良好手段。</p>
+<p>看完了这几个函数，可以知道，plug 完之后及时 unplug 通常是避免 IO 延迟过高的良好手段。</p>
 ]]></content>
   </entry>
   
