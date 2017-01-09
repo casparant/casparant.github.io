@@ -9,7 +9,8 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="关于 block 设备的 plug 和 unplug 机制，可以参考这篇内核文档。简单来说就是内核提供了一个 plug 机制，请求被放到一个空队列里之后，可以将队列处于 &ldquo;plugged&rdquo; 状态，此时队列并不真正向下层设备发射(issue)请求，而是攒够足够多的请求之后， &hellip;">
+  <meta name="description" content="关于 Kdump 和 Crash 的背景知识，不是本文的重点，可以参考下列文章： developerworks 社区深入探索 Kdump 系列文档
+Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁了，抓了个 vmcore 来研究，现在要看层层包含的某个结构体的一个 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +83,204 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/01/10/analyse-kernel-structures-with-crash-utility/">Analyse Kernel Structures With Crash Utility</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-01-10T00:35:59+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>12:35 am</span></time>
+        
+           | <a href="/blog/2017/01/10/analyse-kernel-structures-with-crash-utility/#disqus_thread"
+             data-disqus-identifier="http://www.casparzhang.com/blog/2017/01/10/analyse-kernel-structures-with-crash-utility/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>关于 Kdump 和 Crash 的背景知识，不是本文的重点，可以参考下列文章：</p>
+
+<ul>
+<li><a href="http://www.ibm.com/developerworks/cn/views/linux/libraryview.jsp?search_by=%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2+Kdump">developerworks 社区深入探索 Kdump 系列文档</a></li>
+<li><a href="https://people.redhat.com/anderson/crash_whitepaper/">Dave Anderson Crash 官方文档</a></li>
+</ul>
+
+
+<p>这次碰到的问题是，系统当时死锁了，抓了个 vmcore 来研究，现在要看层层包含的某个结构体的一个 <code>rw_semaphore</code> 结构体变量的信息。当时这一层层的基本结构大体是这样的：</p>
+
+<p>有两个链表，分别叫做: <code>sets</code> 和 <code>set_devs</code>; 顾名思义，第一个 <code>sets</code> 是一堆 <code>set</code> 结构体组成的链表；第二个 <code>set_devs</code> 是一堆 <code>set_dev</code> 结构体组成的链表。两个结构体如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>struct set {
+</span><span class='line'>    struct list_head *list;
+</span><span class='line'>    blah blah blah;
+</span><span class='line'>    struct list_head *set_devs;
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>struct set_dev {
+</span><span class='line'>    struct list_head *list;
+</span><span class='line'>    blah blah blah;
+</span><span class='line'>    struct rw_semaphore rw_sem;
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最终任务是要找到 <code>set_devs</code> 这个列表里所有 <code>set_dev</code> 的 <code>lock</code> 这个信号量成员变量的信息。</p>
+
+<p>首先，打开 vmcore (确保 kernel debuginfo 都在)：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo crash /usr/lib/debug/lib/modules/3.10.0/vmlinux /var/crash/vmcore</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果要分析的结构体在内核模块中，还需要用 <code>mod -s/-S</code> 来加载内核模块的 debuginfo.</p>
+
+<p>然后找到 <code>sets</code> 这个链表的入口地址。很幸运，模块里这个链表是全局的，直接找到 symbol 就可以用：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>crash&gt; p sets
+</span><span class='line'>sets = $1 = {
+</span><span class='line'>  next = 0xffffc90056696030,
+</span><span class='line'>  prev = 0xffffc90056696030
+</span><span class='line'>}
+</span><span class='line'>crash&gt; p &sets // 顺手确认一下链表是否为空，如果 &sets == sets-&gt;next 就为空
+</span><span class='line'>$2 = (struct list_head *) 0xffffffffa04401f0 &lt;sets&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>我们就得到了一个不为空的链表的第一个元素（从上面也可以看到是唯一的一个）。由于内核里的链表只有指针没有元素内容，我们需要用类似 <code>container_of</code> 的机制来从成员反查链表元素的地址：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>crash&gt; set -l set.list 0xffffc90056696030
+</span><span class='line'>struct set {
+</span><span class='line'>  &lt;snip&gt;
+</span><span class='line'>  list = {
+</span><span class='line'>    next = 0xffffffffa04401f0 &lt;sets&gt;,
+</span><span class='line'>    prev = 0xffffffffa04401f0 &lt;sets&gt;
+</span><span class='line'>  },
+</span><span class='line'>  &lt;snip&gt;
+</span><span class='line'>  set_devs = {
+</span><span class='line'>    next = 0xffffc90050f67000,
+</span><span class='line'>    prev = 0xffffc90056ee4000
+</span><span class='line'>  },    
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样我们又得到了一个链表的 LIST_HEAD 地址：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>crash&gt; list_head 0xffffc90050f67000
+</span><span class='line'>struct list_head {
+</span><span class='line'>  next = 0xffffc90065f2a000,
+</span><span class='line'>  prev = 0xffffc90056696da8
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>得到第一个元素地址后反查 <code>set_dev</code> 结构体：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>crash&gt; struct set_dev -l set_dev.list 0xffffc90065f2a000
+</span><span class='line'>struct set_dev {
+</span><span class='line'>  list = {
+</span><span class='line'>    next = 0xffffc900583dc000,
+</span><span class='line'>    prev = 0xffffc90050f67000
+</span><span class='line'>  },
+</span><span class='line'>  &lt;snip&gt;
+</span><span class='line'>  rw_sem = {
+</span><span class='line'>    count = 0,
+</span><span class='line'>    wait_lock = {
+</span><span class='line'>      raw_lock = {
+</span><span class='line'>        {
+</span><span class='line'>          head_tail = 0,
+</span><span class='line'>          tickets = {
+</span><span class='line'>            head = 0,
+</span><span class='line'>            tail = 0
+</span><span class='line'>          }
+</span><span class='line'>        }
+</span><span class='line'>      }
+</span><span class='line'>    },
+</span><span class='line'>    wait_list = {
+</span><span class='line'>      next = 0xffffc90065f2ab48,
+</span><span class='line'>      prev = 0xffffc90065f2ab48
+</span><span class='line'>    }
+</span><span class='line'>  },
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>找到 <code>rw_sem</code> 结构体信息，这正是我们想要的。然后依次往下找即可。btw, 我忘记链表是循环链表了，所以我傻乎乎地手工查了半个小时最后才发现自己重复了……</p>
+
+<p>所以问题来了，crash 里面有快捷的方法可以挨个链表元素查找么……</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -630,53 +829,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/12/cm7-1-on-defy/">CM7.1 on DEFY</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-10-12T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2011/10/12/cm7-1-on-defy/#disqus_thread"
-             data-disqus-identifier="http://www.casparzhang.com/blog/2011/10/12/cm7-1-on-defy/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>CyanogenMod, the community Android mod, is officially <a href="http://www.cyanogenmod.com/blog/cyanogenmod-7-1-released" target="_blank">supporting Motorlora Defy</a> in the latest release CM7.1. Now the system seems running well on my device.</p>
-
-<p>Why I want CM7.1 on my machine:</p>
-
-<p><ul>
-	<li>try something new</li>
-	<li>I need openvpn</li>
-	<li>2.3.4 ROM for ME525+ not working well on my device :-(</li>
-</ul></p>
-
-<p>I followed most of the instructions from <a href="http://forum.cyanogenmod.com/topic/32469-cyanogenmod-7-for-the-motorola-defy-v710-9-oct-2011/" target="_blank">the post in CM forum</a>, except that I didn't install gapps-gb-20110828. For some reason, <em>Android Market</em> from 20110828 package continously got crashed once I opened the application. I tried with <a href="http://goo-inside.me/gapps/gapps-gb-20110613-signed.zip" target="_blank">gapps-gb-20110613</a> and <em>Android Market</em> worked as normal, so I recommend using this version of gapps if you ever encountered similar issue like me.</p>
-
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/10/12/cm7-1-on-defy/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -689,11 +841,15 @@
   
     <section>
   <h1>Monthly Archives</h1>
-  <div class="monthly_archive"><ul class="year_list"><li class="year first_open">2015 (4)</li><ul class="month_list"><li class="month"><a href='/blog/2015/09/'>SEP (1)</a></li><li class="month"><a href='/blog/2015/05/'>MAY (3)</a></li></ul><li class="year first_open">2014 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2014/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2014/03/'>MAR (2)</a></li></ul><li class="year first_open">2013 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2013/06/'>JUN (1)</a></li></ul><li class="year first_open">2012 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2012/01/'>JAN (1)</a></li></ul><li class="year first_open">2011 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2011/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2011/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2011/03/'>MAR (1)</a></li></ul><li class="year first_open">2010 (10)</li><ul class="month_list"><li class="month"><a href='/blog/2010/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2010/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2010/05/'>MAY (1)</a></li><li class="month"><a href='/blog/2010/04/'>APR (3)</a></li><li class="month"><a href='/blog/2010/03/'>MAR (2)</a></li><li class="month"><a href='/blog/2010/01/'>JAN (1)</a></li></ul><li class="year first_open">2009 (29)</li><ul class="month_list"><li class="month"><a href='/blog/2009/12/'>DEC (2)</a></li><li class="month"><a href='/blog/2009/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2009/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2009/06/'>JUN (4)</a></li><li class="month"><a href='/blog/2009/05/'>MAY (2)</a></li><li class="month"><a href='/blog/2009/04/'>APR (5)</a></li><li class="month"><a href='/blog/2009/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2009/02/'>FEB (3)</a></li><li class="month"><a href='/blog/2009/01/'>JAN (2)</a></li></ul><li class="year first_open">2008 (66)</li><ul class="month_list"><li class="month"><a href='/blog/2008/12/'>DEC (3)</a></li><li class="month"><a href='/blog/2008/11/'>NOV (6)</a></li><li class="month"><a href='/blog/2008/10/'>OCT (4)</a></li><li class="month"><a href='/blog/2008/09/'>SEP (6)</a></li><li class="month"><a href='/blog/2008/08/'>AUG (5)</a></li><li class="month"><a href='/blog/2008/07/'>JUL (5)</a></li><li class="month"><a href='/blog/2008/06/'>JUN (5)</a></li><li class="month"><a href='/blog/2008/05/'>MAY (3)</a></li><li class="month"><a href='/blog/2008/04/'>APR (8)</a></li><li class="month"><a href='/blog/2008/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2008/02/'>FEB (7)</a></li><li class="month"><a href='/blog/2008/01/'>JAN (6)</a></li></ul><li class="year first_open">2007 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2007/12/'>DEC (1)</a></li></ul></ul></div>
+  <div class="monthly_archive"><ul class="year_list"><li class="year first_open">2017 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2017/01/'>JAN (1)</a></li></ul><li class="year first_open">2015 (4)</li><ul class="month_list"><li class="month"><a href='/blog/2015/09/'>SEP (1)</a></li><li class="month"><a href='/blog/2015/05/'>MAY (3)</a></li></ul><li class="year first_open">2014 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2014/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2014/03/'>MAR (2)</a></li></ul><li class="year first_open">2013 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2013/06/'>JUN (1)</a></li></ul><li class="year first_open">2012 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2012/01/'>JAN (1)</a></li></ul><li class="year first_open">2011 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2011/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2011/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2011/03/'>MAR (1)</a></li></ul><li class="year first_open">2010 (10)</li><ul class="month_list"><li class="month"><a href='/blog/2010/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2010/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2010/05/'>MAY (1)</a></li><li class="month"><a href='/blog/2010/04/'>APR (3)</a></li><li class="month"><a href='/blog/2010/03/'>MAR (2)</a></li><li class="month"><a href='/blog/2010/01/'>JAN (1)</a></li></ul><li class="year first_open">2009 (29)</li><ul class="month_list"><li class="month"><a href='/blog/2009/12/'>DEC (2)</a></li><li class="month"><a href='/blog/2009/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2009/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2009/06/'>JUN (4)</a></li><li class="month"><a href='/blog/2009/05/'>MAY (2)</a></li><li class="month"><a href='/blog/2009/04/'>APR (5)</a></li><li class="month"><a href='/blog/2009/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2009/02/'>FEB (3)</a></li><li class="month"><a href='/blog/2009/01/'>JAN (2)</a></li></ul><li class="year first_open">2008 (66)</li><ul class="month_list"><li class="month"><a href='/blog/2008/12/'>DEC (3)</a></li><li class="month"><a href='/blog/2008/11/'>NOV (6)</a></li><li class="month"><a href='/blog/2008/10/'>OCT (4)</a></li><li class="month"><a href='/blog/2008/09/'>SEP (6)</a></li><li class="month"><a href='/blog/2008/08/'>AUG (5)</a></li><li class="month"><a href='/blog/2008/07/'>JUL (5)</a></li><li class="month"><a href='/blog/2008/06/'>JUN (5)</a></li><li class="month"><a href='/blog/2008/05/'>MAY (3)</a></li><li class="month"><a href='/blog/2008/04/'>APR (8)</a></li><li class="month"><a href='/blog/2008/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2008/02/'>FEB (7)</a></li><li class="month"><a href='/blog/2008/01/'>JAN (6)</a></li></ul><li class="year first_open">2007 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2007/12/'>DEC (1)</a></li></ul></ul></div>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/01/10/analyse-kernel-structures-with-crash-utility/">Analyse Kernel Structures With Crash Utility</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/09/10/block-device-plugging/">Block Device Plugging</a>
@@ -709,10 +865,6 @@
     
       <li class="post">
         <a href="/blog/2015/05/21/blog-revived/">Blog 恢复</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
       </li>
     
   </ul>
@@ -761,7 +913,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Caspar -
+  Copyright &copy; 2017 - Caspar -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

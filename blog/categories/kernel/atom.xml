@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Kernel | Ant-Veil]]></title>
   <link href="http://www.casparzhang.com/blog/categories/kernel/atom.xml" rel="self"/>
   <link href="http://www.casparzhang.com/"/>
-  <updated>2015-09-10T20:24:15+08:00</updated>
+  <updated>2017-01-10T01:13:55+08:00</updated>
   <id>http://www.casparzhang.com/</id>
   <author>
     <name><![CDATA[Caspar]]></name>
@@ -12,6 +12,118 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Analyse Kernel Structures With Crash Utility]]></title>
+    <link href="http://www.casparzhang.com/blog/2017/01/10/analyse-kernel-structures-with-crash-utility/"/>
+    <updated>2017-01-10T00:35:59+08:00</updated>
+    <id>http://www.casparzhang.com/blog/2017/01/10/analyse-kernel-structures-with-crash-utility</id>
+    <content type="html"><![CDATA[<p>关于 Kdump 和 Crash 的背景知识，不是本文的重点，可以参考下列文章：</p>
+
+<ul>
+<li><a href="http://www.ibm.com/developerworks/cn/views/linux/libraryview.jsp?search_by=%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2+Kdump">developerworks 社区深入探索 Kdump 系列文档</a></li>
+<li><a href="https://people.redhat.com/anderson/crash_whitepaper/">Dave Anderson Crash 官方文档</a></li>
+</ul>
+
+
+<p>这次碰到的问题是，系统当时死锁了，抓了个 vmcore 来研究，现在要看层层包含的某个结构体的一个 <code>rw_semaphore</code> 结构体变量的信息。当时这一层层的基本结构大体是这样的：</p>
+
+<p>有两个链表，分别叫做: <code>sets</code> 和 <code>set_devs</code>; 顾名思义，第一个 <code>sets</code> 是一堆 <code>set</code> 结构体组成的链表；第二个 <code>set_devs</code> 是一堆 <code>set_dev</code> 结构体组成的链表。两个结构体如下：</p>
+
+<pre><code>struct set {
+    struct list_head *list;
+    blah blah blah;
+    struct list_head *set_devs;
+};
+
+struct set_dev {
+    struct list_head *list;
+    blah blah blah;
+    struct rw_semaphore rw_sem;
+};
+</code></pre>
+
+<p>最终任务是要找到 <code>set_devs</code> 这个列表里所有 <code>set_dev</code> 的 <code>lock</code> 这个信号量成员变量的信息。</p>
+
+<p>首先，打开 vmcore (确保 kernel debuginfo 都在)：</p>
+
+<pre><code>sudo crash /usr/lib/debug/lib/modules/3.10.0/vmlinux /var/crash/vmcore
+</code></pre>
+
+<p>如果要分析的结构体在内核模块中，还需要用 <code>mod -s/-S</code> 来加载内核模块的 debuginfo.</p>
+
+<p>然后找到 <code>sets</code> 这个链表的入口地址。很幸运，模块里这个链表是全局的，直接找到 symbol 就可以用：</p>
+
+<pre><code>crash&gt; p sets
+sets = $1 = {
+  next = 0xffffc90056696030,
+  prev = 0xffffc90056696030
+}
+crash&gt; p &amp;sets // 顺手确认一下链表是否为空，如果 &amp;sets == sets-&gt;next 就为空
+$2 = (struct list_head *) 0xffffffffa04401f0 &lt;sets&gt;
+</code></pre>
+
+<p>我们就得到了一个不为空的链表的第一个元素（从上面也可以看到是唯一的一个）。由于内核里的链表只有指针没有元素内容，我们需要用类似 <code>container_of</code> 的机制来从成员反查链表元素的地址：</p>
+
+<pre><code>crash&gt; set -l set.list 0xffffc90056696030
+struct set {
+  &lt;snip&gt;
+  list = {
+    next = 0xffffffffa04401f0 &lt;sets&gt;,
+    prev = 0xffffffffa04401f0 &lt;sets&gt;
+  },
+  &lt;snip&gt;
+  set_devs = {
+    next = 0xffffc90050f67000,
+    prev = 0xffffc90056ee4000
+  },    
+}
+</code></pre>
+
+<p>这样我们又得到了一个链表的 LIST_HEAD 地址：</p>
+
+<pre><code>crash&gt; list_head 0xffffc90050f67000
+struct list_head {
+  next = 0xffffc90065f2a000,
+  prev = 0xffffc90056696da8
+}
+</code></pre>
+
+<p>得到第一个元素地址后反查 <code>set_dev</code> 结构体：</p>
+
+<pre><code>crash&gt; struct set_dev -l set_dev.list 0xffffc90065f2a000
+struct set_dev {
+  list = {
+    next = 0xffffc900583dc000,
+    prev = 0xffffc90050f67000
+  },
+  &lt;snip&gt;
+  rw_sem = {
+    count = 0,
+    wait_lock = {
+      raw_lock = {
+        {
+          head_tail = 0,
+          tickets = {
+            head = 0,
+            tail = 0
+          }
+        }
+      }
+    },
+    wait_list = {
+      next = 0xffffc90065f2ab48,
+      prev = 0xffffc90065f2ab48
+    }
+  },
+}
+</code></pre>
+
+<p>找到 <code>rw_sem</code> 结构体信息，这正是我们想要的。然后依次往下找即可。btw, 我忘记链表是循环链表了，所以我傻乎乎地手工查了半个小时最后才发现自己重复了……</p>
+
+<p>所以问题来了，crash 里面有快捷的方法可以挨个链表元素查找么……</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Block Device Plugging]]></title>

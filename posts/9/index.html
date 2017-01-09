@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="都有人把 M$ Office 2007 给 Wine 成功了，我这篇文章看起来异常火星。 当初我不 Wine Office 的原因很简单，字体。我当时不知道 M$ Office 自己带有一个很庞大的字体包，我怕装好后出现中文不能显示等问题，干脆就没来装了。结果装好了之后，发现效果非常好。 &hellip;">
+  <meta name="description" content="话说，用了 awn-extra-applet 之后，腰不疼了，腿不酸了，吃饭也香了，身体也有劲儿了…… 不过有点不爽的就是，awn applets 里面的 notification area(用来代替 panel 上的 notification area 的东东)显示图标有问题。当某程序的 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/">对 Awn-applet 在通知栏的一个小改动</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-07-04T00:00:00+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/#disqus_thread"
+             data-disqus-identifier="http://www.casparzhang.com/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>话说，用了 awn-extra-applet 之后，腰不疼了，腿不酸了，吃饭也香了，身体也有劲儿了……</p>
+
+<p>不过有点不爽的就是，awn applets 里面的 notification area(用来代替 panel 上的 notification area 的东东)显示图标有问题。当某程序的 status icon 使用的是高像素图标(比如 128x128)时，整个 notification area 就被撑满了，高度也撑破了。</p>
+
+<p>如下图：</p>
+
+<p><img src="http://img.ant.im/index.php?di=0CWK" /></p>
+
+<p>于是好好的一个 awn 的美观就被破坏殆尽。</p>
+
+<p>最近对代码有点犯怵，不过还是去看了看 notification area 的代码，发现只有三个文件。</p>
+
+<p>在 applet.c 中，找到这么一段代码：</p>
+
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -509,58 +558,6 @@ html,body,*{ font-family:"WenQuanYi Zen Hei" !important; }</pre></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/04/29/ubuntu-hardy-config/">Ubuntu 8.04 Config</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-04-29T00:00:00+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2008/04/29/ubuntu-hardy-config/#disqus_thread"
-             data-disqus-identifier="http://www.casparzhang.com/blog/2008/04/29/ubuntu-hardy-config/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>注：本文并非为纯新手准备，请在看本文前至少了解一些命令行操作并最好对 Ubuntu 以前版本或其他发行版的图形界面操作比较熟悉。如果你需要一些更初级的内容请访问下列页面：</p>
-
-<p><a href="http://www.casparzhang.com/blog/2008/01/20/ubuntu-gutsy-config/">Ubuntu 7.10 配置参考</a></p>
-
-<p>Ubuntu 8.04 (Hardy Heron)果然没有让我失望，X2300 的特效已经可以开启了，色偏，分辨率默认低的问题都完美解决了。</p>
-
-<p>闲话少叙，直接开始配置吧:)</p>
-
-<p>★更新</p>
-
-<p>请根据您的网络环境和网速条件选择以下合适的一组源用以获取服务器软件包资源以及更新系统。教育网用户推荐台湾的源（光纤就是爽啊～～）更新源列表及系统的命令为：</p>
-
-<p><pre lang="bash">sudo apt-get update
-sudo apt-get dist-upgrade</pre></p>
-
-<p>推荐源列表：</p>
-
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2008/04/29/ubuntu-hardy-config/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/10">&larr; Older</a>
@@ -575,11 +572,15 @@ sudo apt-get dist-upgrade</pre></p>
   
     <section>
   <h1>Monthly Archives</h1>
-  <div class="monthly_archive"><ul class="year_list"><li class="year first_open">2015 (4)</li><ul class="month_list"><li class="month"><a href='/blog/2015/09/'>SEP (1)</a></li><li class="month"><a href='/blog/2015/05/'>MAY (3)</a></li></ul><li class="year first_open">2014 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2014/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2014/03/'>MAR (2)</a></li></ul><li class="year first_open">2013 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2013/06/'>JUN (1)</a></li></ul><li class="year first_open">2012 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2012/01/'>JAN (1)</a></li></ul><li class="year first_open">2011 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2011/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2011/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2011/03/'>MAR (1)</a></li></ul><li class="year first_open">2010 (10)</li><ul class="month_list"><li class="month"><a href='/blog/2010/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2010/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2010/05/'>MAY (1)</a></li><li class="month"><a href='/blog/2010/04/'>APR (3)</a></li><li class="month"><a href='/blog/2010/03/'>MAR (2)</a></li><li class="month"><a href='/blog/2010/01/'>JAN (1)</a></li></ul><li class="year first_open">2009 (29)</li><ul class="month_list"><li class="month"><a href='/blog/2009/12/'>DEC (2)</a></li><li class="month"><a href='/blog/2009/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2009/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2009/06/'>JUN (4)</a></li><li class="month"><a href='/blog/2009/05/'>MAY (2)</a></li><li class="month"><a href='/blog/2009/04/'>APR (5)</a></li><li class="month"><a href='/blog/2009/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2009/02/'>FEB (3)</a></li><li class="month"><a href='/blog/2009/01/'>JAN (2)</a></li></ul><li class="year first_open">2008 (66)</li><ul class="month_list"><li class="month"><a href='/blog/2008/12/'>DEC (3)</a></li><li class="month"><a href='/blog/2008/11/'>NOV (6)</a></li><li class="month"><a href='/blog/2008/10/'>OCT (4)</a></li><li class="month"><a href='/blog/2008/09/'>SEP (6)</a></li><li class="month"><a href='/blog/2008/08/'>AUG (5)</a></li><li class="month"><a href='/blog/2008/07/'>JUL (5)</a></li><li class="month"><a href='/blog/2008/06/'>JUN (5)</a></li><li class="month"><a href='/blog/2008/05/'>MAY (3)</a></li><li class="month"><a href='/blog/2008/04/'>APR (8)</a></li><li class="month"><a href='/blog/2008/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2008/02/'>FEB (7)</a></li><li class="month"><a href='/blog/2008/01/'>JAN (6)</a></li></ul><li class="year first_open">2007 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2007/12/'>DEC (1)</a></li></ul></ul></div>
+  <div class="monthly_archive"><ul class="year_list"><li class="year first_open">2017 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2017/01/'>JAN (1)</a></li></ul><li class="year first_open">2015 (4)</li><ul class="month_list"><li class="month"><a href='/blog/2015/09/'>SEP (1)</a></li><li class="month"><a href='/blog/2015/05/'>MAY (3)</a></li></ul><li class="year first_open">2014 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2014/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2014/03/'>MAR (2)</a></li></ul><li class="year first_open">2013 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2013/06/'>JUN (1)</a></li></ul><li class="year first_open">2012 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2012/01/'>JAN (1)</a></li></ul><li class="year first_open">2011 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2011/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2011/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2011/03/'>MAR (1)</a></li></ul><li class="year first_open">2010 (10)</li><ul class="month_list"><li class="month"><a href='/blog/2010/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2010/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2010/05/'>MAY (1)</a></li><li class="month"><a href='/blog/2010/04/'>APR (3)</a></li><li class="month"><a href='/blog/2010/03/'>MAR (2)</a></li><li class="month"><a href='/blog/2010/01/'>JAN (1)</a></li></ul><li class="year first_open">2009 (29)</li><ul class="month_list"><li class="month"><a href='/blog/2009/12/'>DEC (2)</a></li><li class="month"><a href='/blog/2009/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2009/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2009/06/'>JUN (4)</a></li><li class="month"><a href='/blog/2009/05/'>MAY (2)</a></li><li class="month"><a href='/blog/2009/04/'>APR (5)</a></li><li class="month"><a href='/blog/2009/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2009/02/'>FEB (3)</a></li><li class="month"><a href='/blog/2009/01/'>JAN (2)</a></li></ul><li class="year first_open">2008 (66)</li><ul class="month_list"><li class="month"><a href='/blog/2008/12/'>DEC (3)</a></li><li class="month"><a href='/blog/2008/11/'>NOV (6)</a></li><li class="month"><a href='/blog/2008/10/'>OCT (4)</a></li><li class="month"><a href='/blog/2008/09/'>SEP (6)</a></li><li class="month"><a href='/blog/2008/08/'>AUG (5)</a></li><li class="month"><a href='/blog/2008/07/'>JUL (5)</a></li><li class="month"><a href='/blog/2008/06/'>JUN (5)</a></li><li class="month"><a href='/blog/2008/05/'>MAY (3)</a></li><li class="month"><a href='/blog/2008/04/'>APR (8)</a></li><li class="month"><a href='/blog/2008/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2008/02/'>FEB (7)</a></li><li class="month"><a href='/blog/2008/01/'>JAN (6)</a></li></ul><li class="year first_open">2007 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2007/12/'>DEC (1)</a></li></ul></ul></div>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/01/10/analyse-kernel-structures-with-crash-utility/">Analyse Kernel Structures With Crash Utility</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/09/10/block-device-plugging/">Block Device Plugging</a>
@@ -595,10 +596,6 @@ sudo apt-get dist-upgrade</pre></p>
     
       <li class="post">
         <a href="/blog/2015/05/21/blog-revived/">Blog 恢复</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
       </li>
     
   </ul>
@@ -647,7 +644,7 @@ sudo apt-get dist-upgrade</pre></p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Caspar -
+  Copyright &copy; 2017 - Caspar -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Ant-Veil]]></title>
   <link href="http://www.casparzhang.com/atom.xml" rel="self"/>
   <link href="http://www.casparzhang.com/"/>
-  <updated>2015-09-10T20:24:15+08:00</updated>
+  <updated>2017-01-10T01:13:55+08:00</updated>
   <id>http://www.casparzhang.com/</id>
   <author>
     <name><![CDATA[Caspar]]></name>
@@ -12,6 +12,181 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Analyse Kernel Structures With Crash Utility]]></title>
+    <link href="http://www.casparzhang.com/blog/2017/01/10/analyse-kernel-structures-with-crash-utility/"/>
+    <updated>2017-01-10T00:35:59+08:00</updated>
+    <id>http://www.casparzhang.com/blog/2017/01/10/analyse-kernel-structures-with-crash-utility</id>
+    <content type="html"><![CDATA[<p>关于 Kdump 和 Crash 的背景知识，不是本文的重点，可以参考下列文章：</p>
+
+<ul>
+<li><a href="http://www.ibm.com/developerworks/cn/views/linux/libraryview.jsp?search_by=%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%B4%A2+Kdump">developerworks 社区深入探索 Kdump 系列文档</a></li>
+<li><a href="https://people.redhat.com/anderson/crash_whitepaper/">Dave Anderson Crash 官方文档</a></li>
+</ul>
+
+
+<p>这次碰到的问题是，系统当时死锁了，抓了个 vmcore 来研究，现在要看层层包含的某个结构体的一个 <code>rw_semaphore</code> 结构体变量的信息。当时这一层层的基本结构大体是这样的：</p>
+
+<p>有两个链表，分别叫做: <code>sets</code> 和 <code>set_devs</code>; 顾名思义，第一个 <code>sets</code> 是一堆 <code>set</code> 结构体组成的链表；第二个 <code>set_devs</code> 是一堆 <code>set_dev</code> 结构体组成的链表。两个结构体如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>struct set {
+</span><span class='line'>    struct list_head *list;
+</span><span class='line'>    blah blah blah;
+</span><span class='line'>    struct list_head *set_devs;
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>struct set_dev {
+</span><span class='line'>    struct list_head *list;
+</span><span class='line'>    blah blah blah;
+</span><span class='line'>    struct rw_semaphore rw_sem;
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最终任务是要找到 <code>set_devs</code> 这个列表里所有 <code>set_dev</code> 的 <code>lock</code> 这个信号量成员变量的信息。</p>
+
+<p>首先，打开 vmcore (确保 kernel debuginfo 都在)：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo crash /usr/lib/debug/lib/modules/3.10.0/vmlinux /var/crash/vmcore</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果要分析的结构体在内核模块中，还需要用 <code>mod -s/-S</code> 来加载内核模块的 debuginfo.</p>
+
+<p>然后找到 <code>sets</code> 这个链表的入口地址。很幸运，模块里这个链表是全局的，直接找到 symbol 就可以用：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>crash&gt; p sets
+</span><span class='line'>sets = $1 = {
+</span><span class='line'>  next = 0xffffc90056696030,
+</span><span class='line'>  prev = 0xffffc90056696030
+</span><span class='line'>}
+</span><span class='line'>crash&gt; p &sets // 顺手确认一下链表是否为空，如果 &sets == sets-&gt;next 就为空
+</span><span class='line'>$2 = (struct list_head *) 0xffffffffa04401f0 &lt;sets&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>我们就得到了一个不为空的链表的第一个元素（从上面也可以看到是唯一的一个）。由于内核里的链表只有指针没有元素内容，我们需要用类似 <code>container_of</code> 的机制来从成员反查链表元素的地址：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>crash&gt; set -l set.list 0xffffc90056696030
+</span><span class='line'>struct set {
+</span><span class='line'>  &lt;snip&gt;
+</span><span class='line'>  list = {
+</span><span class='line'>    next = 0xffffffffa04401f0 &lt;sets&gt;,
+</span><span class='line'>    prev = 0xffffffffa04401f0 &lt;sets&gt;
+</span><span class='line'>  },
+</span><span class='line'>  &lt;snip&gt;
+</span><span class='line'>  set_devs = {
+</span><span class='line'>    next = 0xffffc90050f67000,
+</span><span class='line'>    prev = 0xffffc90056ee4000
+</span><span class='line'>  },    
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样我们又得到了一个链表的 LIST_HEAD 地址：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>crash&gt; list_head 0xffffc90050f67000
+</span><span class='line'>struct list_head {
+</span><span class='line'>  next = 0xffffc90065f2a000,
+</span><span class='line'>  prev = 0xffffc90056696da8
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>得到第一个元素地址后反查 <code>set_dev</code> 结构体：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>crash&gt; struct set_dev -l set_dev.list 0xffffc90065f2a000
+</span><span class='line'>struct set_dev {
+</span><span class='line'>  list = {
+</span><span class='line'>    next = 0xffffc900583dc000,
+</span><span class='line'>    prev = 0xffffc90050f67000
+</span><span class='line'>  },
+</span><span class='line'>  &lt;snip&gt;
+</span><span class='line'>  rw_sem = {
+</span><span class='line'>    count = 0,
+</span><span class='line'>    wait_lock = {
+</span><span class='line'>      raw_lock = {
+</span><span class='line'>        {
+</span><span class='line'>          head_tail = 0,
+</span><span class='line'>          tickets = {
+</span><span class='line'>            head = 0,
+</span><span class='line'>            tail = 0
+</span><span class='line'>          }
+</span><span class='line'>        }
+</span><span class='line'>      }
+</span><span class='line'>    },
+</span><span class='line'>    wait_list = {
+</span><span class='line'>      next = 0xffffc90065f2ab48,
+</span><span class='line'>      prev = 0xffffc90065f2ab48
+</span><span class='line'>    }
+</span><span class='line'>  },
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>找到 <code>rw_sem</code> 结构体信息，这正是我们想要的。然后依次往下找即可。btw, 我忘记链表是循环链表了，所以我傻乎乎地手工查了半个小时最后才发现自己重复了……</p>
+
+<p>所以问题来了，crash 里面有快捷的方法可以挨个链表元素查找么……</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Block Device Plugging]]></title>
@@ -1312,33 +1487,6 @@ fi
 \setbeamercolor{title}{fg=black, bg=lightgray!80!white}</pre></p>
 
 <p>最后放出模板，<a href="https://docs.google.com/leaf?id=0B-GDvj9JsmanZjUzZDI4M2MtYzE3MS00YTNjLWEyZjUtYjFhMzY5MzY5NWVi&hl=zh_CN">点此下载>>>></a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Chrowety - a Chrome Twitter Extension]]></title>
-    <link href="http://www.casparzhang.com/blog/2010/03/27/chrowety-a-chrome-twitter-extension/"/>
-    <updated>2010-03-27T00:00:00+08:00</updated>
-    <id>http://www.casparzhang.com/blog/2010/03/27/chrowety-a-chrome-twitter-extension</id>
-    <content type="html"><![CDATA[<p>事先承认，我是土星人+火星人，最近才知道 Chrowety 这等利器，又能用 Twitter API，又能官方 RT，又能有声音提示，界面做得还不错。为了拯救广大比我还火星的朋友们，特推荐此扩展。</p>
-
-<p>由于本人推荐之心实在很强烈，所以几乎就要把这篇可怜不到 100 字的最新文章发表。幸好发表前我强忍住了，于是找点其他东西凑数，列几个其他的 Chrome 扩展供大家讨论。因为最近工作和平时使用浏览器都在 Chrome 上了，同时越来越觉得 Firefox 不好用了。</p>
-
-<p>代理自动切换：不得不承认 AutoProxy 这等生活在西朝鲜屁民共和国的使用 Firefox 的我们的必备工具还是很好用的，在 Chrome 上迄今没找到同样利索的工具，只有用 Switch Proxy + 自己在 <a href="http://autoproxy2pac.appspot.com/">autoproxy2pac.appspot.com（已被墙）</a>上下的 pac 文件凑合一下。</p>
-
-<p>书签同步：在使用了前一个扩展的前提下，使用 XMarks。</p>
-
-<p>看 Alexa 和 Google PR 排名：Chrome SEO，功能很齐全。</p>
-
-<p>其他的诸如 Google 官方应用的扩展就不再赘述。</p>
-
-<p><!--more-->谢谢<a href="http://www.mellonwand.com" target="_blank">小瓜瓜</a>的提醒，我想起来还有几个：</p>
-
-<p>GMAIL Web 扩展：Better GMail 2 + Folders4Gmail。</p>
-
-<p>鼠标手势+文字选中/链接拖拽：Smooth Gestures + Yet Another Drag and Go(Drag and Go 很不好用，还是这个好)。</p>
-
-<p>欢迎向我推荐其他更好用的 Chrome 扩展。</p>
 ]]></content>
   </entry>
   

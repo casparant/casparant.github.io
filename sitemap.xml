@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.casparzhang.com/blog/2017/01/10/analyse-kernel-structures-with-crash-utility/</loc>
+    <lastmod>2017-01-10T00:35:59+08:00</lastmod>
+  </url>
+  <url>
     <loc>http://www.casparzhang.com/blog/2015/09/10/block-device-plugging/</loc>
     <lastmod>2015-09-10T18:31:25+08:00</lastmod>
   </url>
@@ -497,6 +501,9 @@
     <loc>http://www.casparzhang.com/blog/categories/kernel/</loc>
   </url>
   <url>
+    <loc>http://www.casparzhang.com/blog/2017/01/</loc>
+  </url>
+  <url>
     <loc>http://www.casparzhang.com/blog/2015/09/</loc>
   </url>
   <url>
@@ -606,38 +613,5 @@
   </url>
   <url>
     <loc>http://www.casparzhang.com/blog/2007/12/</loc>
-  </url>
-  <url>
-    <loc>http://www.casparzhang.com/posts/2/</loc>
-  </url>
-  <url>
-    <loc>http://www.casparzhang.com/posts/3/</loc>
-  </url>
-  <url>
-    <loc>http://www.casparzhang.com/posts/4/</loc>
-  </url>
-  <url>
-    <loc>http://www.casparzhang.com/posts/5/</loc>
-  </url>
-  <url>
-    <loc>http://www.casparzhang.com/posts/6/</loc>
-  </url>
-  <url>
-    <loc>http://www.casparzhang.com/posts/7/</loc>
-  </url>
-  <url>
-    <loc>http://www.casparzhang.com/posts/8/</loc>
-  </url>
-  <url>
-    <loc>http://www.casparzhang.com/posts/9/</loc>
-  </url>
-  <url>
-    <loc>http://www.casparzhang.com/posts/10/</loc>
-  </url>
-  <url>
-    <loc>http://www.casparzhang.com/posts/11/</loc>
-  </url>
-  <url>
-    <loc>http://www.casparzhang.com/posts/12/</loc>
   </url>
 </urlset>

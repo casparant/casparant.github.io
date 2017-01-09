@@ -9,7 +9,7 @@
   <meta name="author" content="Caspar">
 
   
-  <meta name="description" content="1.Pidgin 2.5.0 发布 从狗狗那里看到cnbeta上说sourceforge.net 已经放出了 pidgin-2.5.0，而官网上还没发布呢。 这不禁让我开始思考，我要不要把 cb 的 rss 重新放回我的订阅列表呢？ 安装完毕需要运行一下 ldconfig，要不然 symbolic &hellip;">
+  <meta name="description" content="我们为什么要用 Linux 作自己的主操作系统？ 我的内心是一直很佩服微软的。比尔盖茨一直在奋斗的 Windows 确实很成功，无论是自身的细节打造还是市场推广策略，都是很棒的。尤其是在用户体验上，GNU 的操作系统或者 Unix 操作系统在短时间内无法相与比肩。 我也不是一开始就喜欢上 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,57 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/09/03/stop-trying-gentoo/">咱先不折腾了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-09-03T00:00:00+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+           | <a href="/blog/2008/09/03/stop-trying-gentoo/#disqus_thread"
+             data-disqus-identifier="http://www.casparzhang.com/blog/2008/09/03/stop-trying-gentoo/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>我们为什么要用 Linux 作自己的主操作系统？</p>
+
+<p>我的内心是一直很佩服微软的。比尔盖茨一直在奋斗的 Windows 确实很成功，无论是自身的细节打造还是市场推广策略，都是很棒的。尤其是在用户体验上，GNU 的操作系统或者 Unix 操作系统在短时间内无法相与比肩。</p>
+
+<p>我也不是一开始就喜欢上 Ubuntu Linux 的。一年多以前，我对 Ubuntu 也是抱着折腾的态度，最后总算是适应并且后来喜欢上了它。我也很佩服 Ubuntu 的发展之路。它已经抓住了 M$的发展的部分路子，在用户体验上越来越贴近初级用户，在市场推广上，直接和笔记本厂商合作，弄得有模有样的。不过这也是很多 Geeker 对 Ubuntu 表示出不屑的原因。</p>
+
+<p>那么回归这个话题，我们为什么用 Linux？</p>
+
+<p>首先讨论一个崇高的可能性：我们有自由精神，我们热爱开放源码事业。开源社区对中国的评价是，获取多，贡献少。我所在的实验室前阵子还准备把一个开源的 VoIP 项目改造改造，作为商业项目推出去。由此可推断持有 Free Software 思想的人毕竟该算是少数。</p>
+
+<p>那么，我们付不起高额的正版授权。在 Free 和 Money Required 之间，首选肯定是前者，可惜我们是在中国，一个盗版横行的国家。洁身自好的人估计比刚才说到的人数还少。</p>
+
+<p>另外一个可能性，工作需要。这种使用者可能连 X 都不需要，这种人要么就是 Geeker，要么就是新手。</p>
+
+<p>还有一种可能性，Zhuangbility。</p>
+
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2008/09/03/stop-trying-gentoo/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -573,55 +624,6 @@ Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/">对 Awn-applet 在通知栏的一个小改动</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-07-04T00:00:00+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
-        
-           | <a href="/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/#disqus_thread"
-             data-disqus-identifier="http://www.casparzhang.com/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>话说，用了 awn-extra-applet 之后，腰不疼了，腿不酸了，吃饭也香了，身体也有劲儿了……</p>
-
-<p>不过有点不爽的就是，awn applets 里面的 notification area(用来代替 panel 上的 notification area 的东东)显示图标有问题。当某程序的 status icon 使用的是高像素图标(比如 128x128)时，整个 notification area 就被撑满了，高度也撑破了。</p>
-
-<p>如下图：</p>
-
-<p><img src="http://img.ant.im/index.php?di=0CWK" /></p>
-
-<p>于是好好的一个 awn 的美观就被破坏殆尽。</p>
-
-<p>最近对代码有点犯怵，不过还是去看了看 notification area 的代码，发现只有三个文件。</p>
-
-<p>在 applet.c 中，找到这么一段代码：</p>
-
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2008/07/04/a-hack-of-notification-area-in-awn-applet/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/9">&larr; Older</a>
@@ -636,11 +638,15 @@ Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
   
     <section>
   <h1>Monthly Archives</h1>
-  <div class="monthly_archive"><ul class="year_list"><li class="year first_open">2015 (4)</li><ul class="month_list"><li class="month"><a href='/blog/2015/09/'>SEP (1)</a></li><li class="month"><a href='/blog/2015/05/'>MAY (3)</a></li></ul><li class="year first_open">2014 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2014/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2014/03/'>MAR (2)</a></li></ul><li class="year first_open">2013 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2013/06/'>JUN (1)</a></li></ul><li class="year first_open">2012 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2012/01/'>JAN (1)</a></li></ul><li class="year first_open">2011 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2011/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2011/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2011/03/'>MAR (1)</a></li></ul><li class="year first_open">2010 (10)</li><ul class="month_list"><li class="month"><a href='/blog/2010/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2010/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2010/05/'>MAY (1)</a></li><li class="month"><a href='/blog/2010/04/'>APR (3)</a></li><li class="month"><a href='/blog/2010/03/'>MAR (2)</a></li><li class="month"><a href='/blog/2010/01/'>JAN (1)</a></li></ul><li class="year first_open">2009 (29)</li><ul class="month_list"><li class="month"><a href='/blog/2009/12/'>DEC (2)</a></li><li class="month"><a href='/blog/2009/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2009/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2009/06/'>JUN (4)</a></li><li class="month"><a href='/blog/2009/05/'>MAY (2)</a></li><li class="month"><a href='/blog/2009/04/'>APR (5)</a></li><li class="month"><a href='/blog/2009/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2009/02/'>FEB (3)</a></li><li class="month"><a href='/blog/2009/01/'>JAN (2)</a></li></ul><li class="year first_open">2008 (66)</li><ul class="month_list"><li class="month"><a href='/blog/2008/12/'>DEC (3)</a></li><li class="month"><a href='/blog/2008/11/'>NOV (6)</a></li><li class="month"><a href='/blog/2008/10/'>OCT (4)</a></li><li class="month"><a href='/blog/2008/09/'>SEP (6)</a></li><li class="month"><a href='/blog/2008/08/'>AUG (5)</a></li><li class="month"><a href='/blog/2008/07/'>JUL (5)</a></li><li class="month"><a href='/blog/2008/06/'>JUN (5)</a></li><li class="month"><a href='/blog/2008/05/'>MAY (3)</a></li><li class="month"><a href='/blog/2008/04/'>APR (8)</a></li><li class="month"><a href='/blog/2008/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2008/02/'>FEB (7)</a></li><li class="month"><a href='/blog/2008/01/'>JAN (6)</a></li></ul><li class="year first_open">2007 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2007/12/'>DEC (1)</a></li></ul></ul></div>
+  <div class="monthly_archive"><ul class="year_list"><li class="year first_open">2017 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2017/01/'>JAN (1)</a></li></ul><li class="year first_open">2015 (4)</li><ul class="month_list"><li class="month"><a href='/blog/2015/09/'>SEP (1)</a></li><li class="month"><a href='/blog/2015/05/'>MAY (3)</a></li></ul><li class="year first_open">2014 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2014/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2014/03/'>MAR (2)</a></li></ul><li class="year first_open">2013 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2013/06/'>JUN (1)</a></li></ul><li class="year first_open">2012 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2012/01/'>JAN (1)</a></li></ul><li class="year first_open">2011 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2011/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2011/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2011/03/'>MAR (1)</a></li></ul><li class="year first_open">2010 (10)</li><ul class="month_list"><li class="month"><a href='/blog/2010/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2010/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2010/05/'>MAY (1)</a></li><li class="month"><a href='/blog/2010/04/'>APR (3)</a></li><li class="month"><a href='/blog/2010/03/'>MAR (2)</a></li><li class="month"><a href='/blog/2010/01/'>JAN (1)</a></li></ul><li class="year first_open">2009 (29)</li><ul class="month_list"><li class="month"><a href='/blog/2009/12/'>DEC (2)</a></li><li class="month"><a href='/blog/2009/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2009/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2009/06/'>JUN (4)</a></li><li class="month"><a href='/blog/2009/05/'>MAY (2)</a></li><li class="month"><a href='/blog/2009/04/'>APR (5)</a></li><li class="month"><a href='/blog/2009/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2009/02/'>FEB (3)</a></li><li class="month"><a href='/blog/2009/01/'>JAN (2)</a></li></ul><li class="year first_open">2008 (66)</li><ul class="month_list"><li class="month"><a href='/blog/2008/12/'>DEC (3)</a></li><li class="month"><a href='/blog/2008/11/'>NOV (6)</a></li><li class="month"><a href='/blog/2008/10/'>OCT (4)</a></li><li class="month"><a href='/blog/2008/09/'>SEP (6)</a></li><li class="month"><a href='/blog/2008/08/'>AUG (5)</a></li><li class="month"><a href='/blog/2008/07/'>JUL (5)</a></li><li class="month"><a href='/blog/2008/06/'>JUN (5)</a></li><li class="month"><a href='/blog/2008/05/'>MAY (3)</a></li><li class="month"><a href='/blog/2008/04/'>APR (8)</a></li><li class="month"><a href='/blog/2008/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2008/02/'>FEB (7)</a></li><li class="month"><a href='/blog/2008/01/'>JAN (6)</a></li></ul><li class="year first_open">2007 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2007/12/'>DEC (1)</a></li></ul></ul></div>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/01/10/analyse-kernel-structures-with-crash-utility/">Analyse Kernel Structures With Crash Utility</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/09/10/block-device-plugging/">Block Device Plugging</a>
@@ -656,10 +662,6 @@ Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
     
       <li class="post">
         <a href="/blog/2015/05/21/blog-revived/">Blog 恢复</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a>
       </li>
     
   </ul>
@@ -708,7 +710,7 @@ Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Caspar -
+  Copyright &copy; 2017 - Caspar -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
