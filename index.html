@@ -8,17 +8,17 @@
   <title>Ant-Veil</title>
   <meta name="author" content="Caspar">
 
-  
+
   <meta name="description" content="关于 Kdump 和 Crash 的背景知识，不是本文的重点，可以参考下列文章： developerworks 社区深入探索 Kdump 系列文档
 Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁了，抓了个 vmcore 来研究，现在要看层层包含的某个结构体的一个 &hellip;">
-  
+
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
+
   <link rel="canonical" href="http://www.casparzhang.com/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -32,7 +32,7 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <script src="/javascripts/monthly_archive.js"></script>
 
-  
+
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-63208569-1']);
@@ -51,24 +51,24 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 <body   >
   <header role="banner"><hgroup>
   <h1><a href="/">Ant-Veil</a></h1>
-  
+
     <h2>Caspar Blog</h2>
-  
+
 </hgroup>
 
 </header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
+
 </ul>
-  
+
 <form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="sitesearch" value="www.casparzhang.com">
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
-  
+
 <ul class="main-navigation">
   <li><a href="/">Home</a></li>
   <li><a href="/blog/archives">Archives</a></li>
@@ -82,29 +82,29 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
   <div id="main">
     <div id="content">
       <div class="blog-index">
-  
-  
-  
+
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2017/01/10/analyse-kernel-structures-with-crash-utility/">Analyse Kernel Structures With Crash Utility</a></h1>
-    
-    
+
+
       <p class="meta">
-        
+
 
 
 
 
 <time class='entry-date' datetime='2017-01-10T00:35:59+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>12:35 am</span></time>
-        
+
            | <a href="/blog/2017/01/10/analyse-kernel-structures-with-crash-utility/#disqus_thread"
              data-disqus-identifier="http://www.casparzhang.com/blog/2017/01/10/analyse-kernel-structures-with-crash-utility/">Comments</a>
-        
+
       </p>
-    
+
   </header>
 
 
@@ -198,7 +198,7 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 </span><span class='line'>  set_devs = {
 </span><span class='line'>    next = 0xffffc90050f67000,
 </span><span class='line'>    prev = 0xffffc90056ee4000
-</span><span class='line'>  },    
+</span><span class='line'>  },
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 
@@ -276,33 +276,33 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 
 <p>所以问题来了，crash 里面有快捷的方法可以挨个链表元素查找么……</p>
 </div>
-  
-  
+
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2015/09/10/block-device-plugging/">Block Device Plugging</a></h1>
-    
-    
+
+
       <p class="meta">
-        
+
 
 
 
 
 <time class='entry-date' datetime='2015-09-10T18:31:25+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:31 pm</span></time>
-        
+
            | <a href="/blog/2015/09/10/block-device-plugging/#disqus_thread"
              data-disqus-identifier="http://www.casparzhang.com/blog/2015/09/10/block-device-plugging/">Comments</a>
-        
+
       </p>
-    
+
   </header>
 
 
@@ -416,33 +416,33 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 
 <p>看完了这几个函数，可以知道，plug 完之后及时 unplug 通常是避免 IO 延迟过高的良好手段。</p>
 </div>
-  
-  
+
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2015/05/21/use-non-export-symbol/">Use Non-export Symbol</a></h1>
-    
-    
+
+
       <p class="meta">
-        
+
 
 
 
 
 <time class='entry-date' datetime='2015-05-21T18:38:25+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:38 pm</span></time>
-        
+
            | <a href="/blog/2015/05/21/use-non-export-symbol/#disqus_thread"
              data-disqus-identifier="http://www.casparzhang.com/blog/2015/05/21/use-non-export-symbol/">Comments</a>
-        
+
       </p>
-    
+
   </header>
 
 
@@ -455,37 +455,37 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 <p>于是我拿了这个函数开开心心地去改代码了。以<code>target_complete_cmd()</code>这个函数为例，我在后端驱动模块的代码需要调用这个函数的地方：</p>
 
 </div>
-  
-  
+
+
     <footer>
       <a rel="full-article" href="/blog/2015/05/21/use-non-export-symbol/">Read on &rarr;</a>
     </footer>
-  
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2015/05/21/208-day-crash-issue/">Linux Kernel 208.5d Panic Issue</a></h1>
-    
-    
+
+
       <p class="meta">
-        
+
 
 
 
 
 <time class='entry-date' datetime='2015-05-21T15:39:33+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>3:39 pm</span></time>
-        
+
            | <a href="/blog/2015/05/21/208-day-crash-issue/#disqus_thread"
              data-disqus-identifier="http://www.casparzhang.com/blog/2015/05/21/208-day-crash-issue/">Comments</a>
-        
+
       </p>
-    
+
   </header>
 
 
@@ -544,37 +544,37 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 
 
 </div>
-  
-  
+
+
     <footer>
       <a rel="full-article" href="/blog/2015/05/21/208-day-crash-issue/">Read on &rarr;</a>
     </footer>
-  
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2015/05/21/blog-revived/">Blog 恢复</a></h1>
-    
-    
+
+
       <p class="meta">
-        
+
 
 
 
 
 <time class='entry-date' datetime='2015-05-21T15:17:37+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>3:17 pm</span></time>
-        
+
            | <a href="/blog/2015/05/21/blog-revived/#disqus_thread"
              data-disqus-identifier="http://www.casparzhang.com/blog/2015/05/21/blog-revived/">Comments</a>
-        
+
       </p>
-    
+
   </header>
 
 
@@ -584,33 +584,33 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 
 <p>对了，坚持用 FeedBurner 订阅的用户，跳出来冒个泡呗…… 估计已经没有多少了吧？</p>
 </div>
-  
-  
+
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Fix Razer Orochi Re-connect Issue</a></h1>
-    
-    
+
+
       <p class="meta">
-        
+
 
 
 
 
 <time class='entry-date' datetime='2014-10-10T00:00:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
-        
+
            | <a href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/#disqus_thread"
              data-disqus-identifier="http://www.casparzhang.com/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Comments</a>
-        
+
       </p>
-    
+
   </header>
 
 
@@ -635,37 +635,37 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 <h2>Solution</h2>
 
 </div>
-  
-  
+
+
     <footer>
       <a rel="full-article" href="/blog/2014/10/10/fix-razer-orochi-re-connect-issue/">Read on &rarr;</a>
     </footer>
-  
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Gentoo KDE 下折腾 OpenConnect</a></h1>
-    
-    
+
+
       <p class="meta">
-        
+
 
 
 
 
 <time class='entry-date' datetime='2014-03-21T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
-        
+
            | <a href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/#disqus_thread"
              data-disqus-identifier="http://www.casparzhang.com/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Comments</a>
-        
+
       </p>
-    
+
   </header>
 
 
@@ -678,37 +678,37 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 <p>Portage 里搜了一下，openconnect 有两个包，networkmanager-openconnect 有 libkeyring-gnome 依赖，我现在是个有洁癖的 KDE 党，果断不能装啊，于是用第二个， openconnect 命令行版…… 不行，不能这么罗里八嗦，反正最后折腾结果如下：</p>
 
 </div>
-  
-  
+
+
     <footer>
       <a rel="full-article" href="/blog/2014/03/21/configure-openconnect-in-gentoo-kde/">Read on &rarr;</a>
     </footer>
-  
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2014/03/11/an-introduction-of-wiz-note/">WizNote: 终于找到比较干净的 Qt 的笔记软件</a></h1>
-    
-    
+
+
       <p class="meta">
-        
+
 
 
 
 
 <time class='entry-date' datetime='2014-03-11T00:00:00+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
-        
+
            | <a href="/blog/2014/03/11/an-introduction-of-wiz-note/#disqus_thread"
              data-disqus-identifier="http://www.casparzhang.com/blog/2014/03/11/an-introduction-of-wiz-note/">Comments</a>
-        
+
       </p>
-    
+
   </header>
 
 
@@ -726,33 +726,33 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 
 <p>最后，有更靠谱的笔记软件请推荐。</p>
 </div>
-  
-  
+
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2013/06/06/some-misc-items-of-mce/">MCE 的一些零散记录</a></h1>
-    
-    
+
+
       <p class="meta">
-        
+
 
 
 
 
 <time class='entry-date' datetime='2013-06-06T00:00:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
-        
+
            | <a href="/blog/2013/06/06/some-misc-items-of-mce/#disqus_thread"
              data-disqus-identifier="http://www.casparzhang.com/blog/2013/06/06/some-misc-items-of-mce/">Comments</a>
-        
+
       </p>
-    
+
   </header>
 
 
@@ -767,37 +767,37 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 <blockquote><p>The kernel prefers old messages over new. If the log buffer overflows only old ones will be kept.</p></blockquote>
 
 </div>
-  
-  
+
+
     <footer>
       <a rel="full-article" href="/blog/2013/06/06/some-misc-items-of-mce/">Read on &rarr;</a>
     </footer>
-  
+
 
 
     </article>
-  
-  
+
+
     <article>
-      
+
   <header>
-    
+
       <h1 class="entry-title"><a href="/blog/2012/01/03/how-to-update-your-git-patches/">Resolved: 如何更新 Git 补丁</a></h1>
-    
-    
+
+
       <p class="meta">
-        
+
 
 
 
 
 <time class='entry-date' datetime='2012-01-03T00:00:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
-        
+
            | <a href="/blog/2012/01/03/how-to-update-your-git-patches/#disqus_thread"
              data-disqus-identifier="http://www.casparzhang.com/blog/2012/01/03/how-to-update-your-git-patches/">Comments</a>
-        
+
       </p>
-    
+
   </header>
 
 
@@ -819,26 +819,26 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 <p><del datetime="2012-01-03T16:12:57+00:00">笨办法已经被删掉>.&lt;</del></p>
 
 </div>
-  
-  
+
+
     <footer>
       <a rel="full-article" href="/blog/2012/01/03/how-to-update-your-git-patches/">Read on &rarr;</a>
     </footer>
-  
+
 
 
     </article>
-  
+
   <div class="pagination">
-    
+
       <a class="prev" href="/posts/2">&larr; Older</a>
-    
+
     <a href="/blog/archives">Blog Archives</a>
-    
+
   </div>
 </div>
 <aside class="sidebar">
-  
+
     <section>
   <h1>Monthly Archives</h1>
   <div class="monthly_archive"><ul class="year_list"><li class="year first_open">2017 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2017/01/'>JAN (1)</a></li></ul><li class="year first_open">2015 (4)</li><ul class="month_list"><li class="month"><a href='/blog/2015/09/'>SEP (1)</a></li><li class="month"><a href='/blog/2015/05/'>MAY (3)</a></li></ul><li class="year first_open">2014 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2014/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2014/03/'>MAR (2)</a></li></ul><li class="year first_open">2013 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2013/06/'>JUN (1)</a></li></ul><li class="year first_open">2012 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2012/01/'>JAN (1)</a></li></ul><li class="year first_open">2011 (3)</li><ul class="month_list"><li class="month"><a href='/blog/2011/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2011/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2011/03/'>MAR (1)</a></li></ul><li class="year first_open">2010 (10)</li><ul class="month_list"><li class="month"><a href='/blog/2010/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2010/07/'>JUL (1)</a></li><li class="month"><a href='/blog/2010/05/'>MAY (1)</a></li><li class="month"><a href='/blog/2010/04/'>APR (3)</a></li><li class="month"><a href='/blog/2010/03/'>MAR (2)</a></li><li class="month"><a href='/blog/2010/01/'>JAN (1)</a></li></ul><li class="year first_open">2009 (29)</li><ul class="month_list"><li class="month"><a href='/blog/2009/12/'>DEC (2)</a></li><li class="month"><a href='/blog/2009/10/'>OCT (1)</a></li><li class="month"><a href='/blog/2009/08/'>AUG (2)</a></li><li class="month"><a href='/blog/2009/06/'>JUN (4)</a></li><li class="month"><a href='/blog/2009/05/'>MAY (2)</a></li><li class="month"><a href='/blog/2009/04/'>APR (5)</a></li><li class="month"><a href='/blog/2009/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2009/02/'>FEB (3)</a></li><li class="month"><a href='/blog/2009/01/'>JAN (2)</a></li></ul><li class="year first_open">2008 (66)</li><ul class="month_list"><li class="month"><a href='/blog/2008/12/'>DEC (3)</a></li><li class="month"><a href='/blog/2008/11/'>NOV (6)</a></li><li class="month"><a href='/blog/2008/10/'>OCT (4)</a></li><li class="month"><a href='/blog/2008/09/'>SEP (6)</a></li><li class="month"><a href='/blog/2008/08/'>AUG (5)</a></li><li class="month"><a href='/blog/2008/07/'>JUL (5)</a></li><li class="month"><a href='/blog/2008/06/'>JUN (5)</a></li><li class="month"><a href='/blog/2008/05/'>MAY (3)</a></li><li class="month"><a href='/blog/2008/04/'>APR (8)</a></li><li class="month"><a href='/blog/2008/03/'>MAR (8)</a></li><li class="month"><a href='/blog/2008/02/'>FEB (7)</a></li><li class="month"><a href='/blog/2008/01/'>JAN (6)</a></li></ul><li class="year first_open">2007 (1)</li><ul class="month_list"><li class="month"><a href='/blog/2007/12/'>DEC (1)</a></li></ul></ul></div>
@@ -846,27 +846,27 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
-    
+
       <li class="post">
         <a href="/blog/2017/01/10/analyse-kernel-structures-with-crash-utility/">Analyse Kernel Structures With Crash Utility</a>
       </li>
-    
+
       <li class="post">
         <a href="/blog/2015/09/10/block-device-plugging/">Block Device Plugging</a>
       </li>
-    
+
       <li class="post">
         <a href="/blog/2015/05/21/use-non-export-symbol/">Use Non-export Symbol</a>
       </li>
-    
+
       <li class="post">
         <a href="/blog/2015/05/21/208-day-crash-issue/">Linux Kernel 208.5d Panic Issue</a>
       </li>
-    
+
       <li class="post">
         <a href="/blog/2015/05/21/blog-revived/">Blog 恢复</a>
       </li>
-    
+
   </ul>
 </section>
 <section>
@@ -879,9 +879,9 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
   <ul id="gh_repos">
     <li class="loading">Status updating...</li>
   </ul>
-  
+
   <a href="https://github.com/casparant">@casparant</a> on GitHub
-  
+
   <script type="text/javascript">
     $(document).ready(function(){
         if (!window.jXHR){
@@ -907,7 +907,7 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 
 
 
-  
+
 </aside>
 
     </div>
@@ -918,14 +918,14 @@ Dave Anderson Crash 官方文档 这次碰到的问题是，系统当时死锁�
 </p>
 
 </footer>
-  
+
 
 <script type="text/javascript">
       var disqus_shortname = 'casparant';
-      
-        
+
+
         var disqus_script = 'count.js';
-      
+
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
       dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
